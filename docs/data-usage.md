@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/data-usage.md
-Downloaded: 2026-02-10T20:21:02.746Z
+Downloaded: 2026-02-10T21:17:45.583Z
 -->
 
 > ## Documentation Index

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/vs-code.md
-Downloaded: 2026-02-10T20:21:02.751Z
+Downloaded: 2026-02-10T21:17:45.589Z
 -->
 
 > ## Documentation Index
