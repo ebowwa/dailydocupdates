@@ -11,7 +11,7 @@
  */
 
 import { scrapeMarkdownDocs } from "@ebowwa/markdown-docs-scraper";
-import { mkdir } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 interface GitHubCommit {
   sha: string;
@@ -380,6 +380,33 @@ async function saveReport(markdown: string, date: Date): Promise<string> {
   return filepath;
 }
 
+// Update README.md with last updated date and doc count
+async function updateReadme(docCount: number): Promise<void> {
+  const readmePath = "README.md";
+  const today = formatDate(new Date());
+
+  try {
+    let readme = await readFile(readmePath, "utf-8");
+
+    // Update Last Updated line
+    readme = readme.replace(
+      /\*\*Last Updated:\*\* \d{4}-\d{2}-\d{2}/,
+      `**Last Updated:** ${today}`
+    );
+
+    // Update doc count in structure section if present
+    readme = readme.replace(
+      /(\d+)\+ downloaded documentation files/,
+      `${docCount}+ downloaded documentation files`
+    );
+
+    await writeFile(readmePath, readme, "utf-8");
+    console.log(`Updated README.md: Last Updated ${today}, ${docCount} docs`);
+  } catch (error) {
+    console.error("Error updating README.md:", error);
+  }
+}
+
 // Main execution
 async function main() {
   console.log("Scraping Anthropic Claude Code documentation...");
@@ -422,6 +449,9 @@ async function main() {
 
   const markdown = generateMarkdown(report);
   const filepath = await saveReport(markdown, today);
+
+  // Update README with last updated date and doc count
+  await updateReadme(docResults.downloaded.length);
 
   console.log(`Report saved to: ${filepath}`);
   console.log(`Summary: ${summary}`);
