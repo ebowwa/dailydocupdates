@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/security.md
-Downloaded: 2026-02-10T04:28:15.685Z
+Downloaded: 2026-02-10T20:21:02.749Z
 -->
 
 > ## Documentation Index
