@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/hooks.md
-Downloaded: 2026-02-11T20:17:21.546Z
+Downloaded: 2026-02-11T21:14:00.064Z
 -->
 
 > ## Documentation Index

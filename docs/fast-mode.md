@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/fast-mode.md
-Downloaded: 2026-02-11T20:17:21.545Z
+Downloaded: 2026-02-11T21:14:00.063Z
 -->
 
 > ## Documentation Index
