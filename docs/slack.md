@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/slack.md
-Downloaded: 2026-02-12T21:11:08.575Z
+Downloaded: 2026-02-13T20:17:17.107Z
 -->
 
 > ## Documentation Index
