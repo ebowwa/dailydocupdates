@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-teams.md
-Downloaded: 2026-02-13T20:17:17.100Z
+Downloaded: 2026-02-13T21:13:09.469Z
 -->
 
 > ## Documentation Index

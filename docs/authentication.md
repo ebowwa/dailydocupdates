@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/authentication.md
-Downloaded: 2026-02-13T20:17:17.101Z
+Downloaded: 2026-02-13T21:13:09.470Z
 -->
 
 > ## Documentation Index
