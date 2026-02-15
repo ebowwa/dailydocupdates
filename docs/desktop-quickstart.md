@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/desktop-quickstart.md
-Downloaded: 2026-02-15T20:10:19.997Z
+Downloaded: 2026-02-15T21:07:12.499Z
 -->
 
 > ## Documentation Index
