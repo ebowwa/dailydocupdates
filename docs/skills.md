@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/skills.md
-Downloaded: 2026-02-14T21:06:35.710Z
+Downloaded: 2026-02-15T20:10:20.003Z
 -->
 
 > ## Documentation Index
