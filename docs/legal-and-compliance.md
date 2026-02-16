@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/legal-and-compliance.md
-Downloaded: 2026-02-16T20:13:08.865Z
+Downloaded: 2026-02-16T21:08:15.749Z
 -->
 
 > ## Documentation Index
