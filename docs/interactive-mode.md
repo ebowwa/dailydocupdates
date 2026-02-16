@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/interactive-mode.md
-Downloaded: 2026-02-15T21:07:12.501Z
+Downloaded: 2026-02-16T20:13:08.865Z
 -->
 
 > ## Documentation Index
