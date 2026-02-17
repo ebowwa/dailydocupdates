@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/mcp.md
-Downloaded: 2026-02-16T21:08:15.749Z
+Downloaded: 2026-02-17T20:17:14.029Z
 -->
 
 > ## Documentation Index
@@ -752,6 +752,31 @@ If you've already configured MCP servers in Claude Desktop, you can import them:
   * Imported servers will have the same names as in Claude Desktop
   * If servers with the same names already exist, they will get a numerical suffix (for example, `server_1`)
 </Tip>
+
+## Use MCP servers from Claude.ai
+
+If you've logged into Claude Code with a [Claude.ai](https://claude.ai) account, MCP servers you've added in Claude.ai are automatically available in Claude Code:
+
+<Steps>
+  <Step title="Configure MCP servers in Claude.ai">
+    Add servers at [claude.ai/settings/connectors](https://claude.ai/settings/connectors). On Team and Enterprise plans, only admins can add servers.
+  </Step>
+
+  <Step title="Authenticate the MCP server">
+    Complete any required authentication steps in Claude.ai.
+  </Step>
+
+  <Step title="View and manage servers in Claude Code">
+    In Claude Code, use the command:
+
+    ```
+    # Within Claude Code, see all MCP servers including Claude.ai ones
+    > /mcp
+    ```
+
+    Claude.ai servers appear in the list with indicators showing they come from Claude.ai.
+  </Step>
+</Steps>
 
 ## Use Claude Code as an MCP server
 

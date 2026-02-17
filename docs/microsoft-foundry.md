@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/microsoft-foundry.md
-Downloaded: 2026-02-16T21:08:15.749Z
+Downloaded: 2026-02-17T20:17:14.029Z
 -->
 
 > ## Documentation Index
@@ -76,7 +76,7 @@ export ANTHROPIC_FOUNDRY_RESOURCE={resource}
 # export ANTHROPIC_FOUNDRY_BASE_URL=https://{resource}.services.ai.azure.com/anthropic
 
 # Set models to your resource's deployment names
-export ANTHROPIC_DEFAULT_SONNET_MODEL='claude-sonnet-4-5'
+export ANTHROPIC_DEFAULT_SONNET_MODEL='claude-sonnet-4-6'
 export ANTHROPIC_DEFAULT_HAIKU_MODEL='claude-haiku-4-5'
 export ANTHROPIC_DEFAULT_OPUS_MODEL='claude-opus-4-6'
 ```
