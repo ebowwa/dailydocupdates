@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/amazon-bedrock.md
-Downloaded: 2026-02-18T20:18:31.714Z
+Downloaded: 2026-02-18T21:14:18.603Z
 -->
 
 > ## Documentation Index
