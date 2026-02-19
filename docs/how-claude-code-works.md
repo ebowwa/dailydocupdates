@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/how-claude-code-works.md
-Downloaded: 2026-02-18T21:14:18.609Z
+Downloaded: 2026-02-19T20:15:19.201Z
 -->
 
 > ## Documentation Index
@@ -147,7 +147,6 @@ Press `Shift+Tab` to cycle through permission modes:
 * **Default**: Claude asks before file edits and shell commands
 * **Auto-accept edits**: Claude edits files without asking, still asks for commands
 * **Plan mode**: Claude uses read-only tools only, creating a plan you can approve before execution
-* **Delegate mode**: Claude coordinates work through [agent teammates](/en/agent-teams) only, with no direct implementation. Only available when an agent team is active.
 
 You can also allow specific commands in `.claude/settings.json` so Claude doesn't ask each time. This is useful for trusted commands like `npm test` or `git status`. Settings can be scoped from organization-wide policies down to personal preferences. See [Permissions](/en/permissions) for details.
 

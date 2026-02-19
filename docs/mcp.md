@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/mcp.md
-Downloaded: 2026-02-18T21:14:18.610Z
+Downloaded: 2026-02-19T20:15:19.202Z
 -->
 
 > ## Documentation Index
