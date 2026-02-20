@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/cli-reference.md
-Downloaded: 2026-02-20T20:12:44.489Z
+Downloaded: 2026-02-20T21:06:19.650Z
 -->
 
 > ## Documentation Index
