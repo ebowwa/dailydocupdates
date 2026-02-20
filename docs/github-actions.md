@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/github-actions.md
-Downloaded: 2026-02-19T21:09:41.785Z
+Downloaded: 2026-02-20T20:12:44.490Z
 -->
 
 > ## Documentation Index

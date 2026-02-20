@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/server-managed-settings.md
-Downloaded: 2026-02-19T21:09:41.789Z
+Downloaded: 2026-02-20T20:12:44.494Z
 -->
 
 > ## Documentation Index
@@ -154,6 +154,8 @@ Server-managed settings provide centralized policy enforcement, but they operate
 | API is unavailable                               | Cached settings apply if available, otherwise managed settings are not enforced until the next successful fetch |
 | User authenticates with a different organization | Settings are not delivered for accounts outside the managed organization                                        |
 | User sets a non-default `ANTHROPIC_BASE_URL`     | Server-managed settings are bypassed when using third-party API providers                                       |
+
+To detect runtime configuration changes, use [`ConfigChange` hooks](/en/hooks#configchange) to log modifications or block unauthorized changes before they take effect.
 
 For stronger enforcement guarantees, use [endpoint-managed settings](/en/permissions#managed-settings) on devices enrolled in an MDM solution.
 

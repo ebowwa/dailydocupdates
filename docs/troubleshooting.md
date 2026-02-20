@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/troubleshooting.md
-Downloaded: 2026-02-19T21:09:41.790Z
+Downloaded: 2026-02-20T20:12:44.495Z
 -->
 
 > ## Documentation Index

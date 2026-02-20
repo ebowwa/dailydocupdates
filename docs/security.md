@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/security.md
-Downloaded: 2026-02-19T21:09:41.789Z
+Downloaded: 2026-02-20T20:12:44.494Z
 -->
 
 > ## Documentation Index
@@ -126,6 +126,7 @@ For more details on cloud execution, see [Claude Code on the web](/en/claude-cod
 * Share approved permission configurations through version control
 * Train team members on security best practices
 * Monitor Claude Code usage through [OpenTelemetry metrics](/en/monitoring-usage)
+* Audit or block settings changes during sessions with [`ConfigChange` hooks](/en/hooks#configchange)
 
 ### Reporting security issues
 
