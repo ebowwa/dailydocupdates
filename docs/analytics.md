@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/analytics.md
-Downloaded: 2026-02-20T21:06:19.647Z
+Downloaded: 2026-02-21T20:09:36.310Z
 -->
 
 > ## Documentation Index

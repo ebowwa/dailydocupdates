@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/microsoft-foundry.md
-Downloaded: 2026-02-20T21:06:19.653Z
+Downloaded: 2026-02-21T20:09:36.316Z
 -->
 
 > ## Documentation Index
