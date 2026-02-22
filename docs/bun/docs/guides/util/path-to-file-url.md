@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/util/path-to-file-url.md
-Downloaded: 2026-02-22T05:37:58.503Z
+Downloaded: 2026-02-22T10:30:22.167Z
 -->
 
 > ## Documentation Index

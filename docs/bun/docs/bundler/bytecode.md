@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/bundler/bytecode.md
-Downloaded: 2026-02-22T05:37:58.275Z
+Downloaded: 2026-02-22T10:30:22.150Z
 -->
 
 > ## Documentation Index

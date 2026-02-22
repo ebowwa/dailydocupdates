@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/monitoring-usage.md
-Downloaded: 2026-02-22T05:37:54.547Z
+Downloaded: 2026-02-22T10:30:18.957Z
 -->
 
 > ## Documentation Index

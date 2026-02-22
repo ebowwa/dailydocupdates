@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/util/upgrade.md
-Downloaded: 2026-02-22T05:37:58.504Z
+Downloaded: 2026-02-22T10:30:22.167Z
 -->
 
 > ## Documentation Index

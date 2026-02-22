@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/test/index.md
-Downloaded: 2026-02-22T05:37:58.591Z
+Downloaded: 2026-02-22T10:30:22.180Z
 -->
 
 > ## Documentation Index

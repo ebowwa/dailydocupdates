@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/comments/get-comments-by-user-address.md
-Downloaded: 2026-02-22T05:37:54.993Z
+Downloaded: 2026-02-22T10:30:19.668Z
 -->
 
 > ## Documentation Index

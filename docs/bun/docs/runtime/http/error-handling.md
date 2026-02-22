@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/http/error-handling.md
-Downloaded: 2026-02-22T05:37:58.569Z
+Downloaded: 2026-02-22T10:30:22.177Z
 -->
 
 > ## Documentation Index

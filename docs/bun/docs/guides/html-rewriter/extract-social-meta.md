@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/html-rewriter/extract-social-meta.md
-Downloaded: 2026-02-22T05:37:58.396Z
+Downloaded: 2026-02-22T10:30:22.157Z
 -->
 
 > ## Documentation Index

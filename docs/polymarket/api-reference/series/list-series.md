@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/series/list-series.md
-Downloaded: 2026-02-22T05:37:55.064Z
+Downloaded: 2026-02-22T10:30:19.677Z
 -->
 
 > ## Documentation Index

@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/bundler/plugins.md
-Downloaded: 2026-02-22T05:37:58.280Z
+Downloaded: 2026-02-22T10:30:22.151Z
 -->
 
 > ## Documentation Index

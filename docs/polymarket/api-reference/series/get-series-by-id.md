@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/series/get-series-by-id.md
-Downloaded: 2026-02-22T05:37:55.062Z
+Downloaded: 2026-02-22T10:30:19.677Z
 -->
 
 > ## Documentation Index

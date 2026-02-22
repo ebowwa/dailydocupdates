@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/ctf/merge.md
-Downloaded: 2026-02-22T05:37:55.166Z
+Downloaded: 2026-02-22T10:30:19.692Z
 -->
 
 > ## Documentation Index

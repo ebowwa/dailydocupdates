@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/misc/get-total-markets-a-user-has-traded.md
-Downloaded: 2026-02-22T05:37:55.042Z
+Downloaded: 2026-02-22T10:30:19.677Z
 -->
 
 > ## Documentation Index

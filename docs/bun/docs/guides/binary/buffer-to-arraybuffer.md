@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/binary/buffer-to-arraybuffer.md
-Downloaded: 2026-02-22T05:37:58.294Z
+Downloaded: 2026-02-22T10:30:22.152Z
 -->
 
 > ## Documentation Index

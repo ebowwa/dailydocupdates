@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/test/update-snapshots.md
-Downloaded: 2026-02-22T05:37:58.486Z
+Downloaded: 2026-02-22T10:30:22.165Z
 -->
 
 > ## Documentation Index

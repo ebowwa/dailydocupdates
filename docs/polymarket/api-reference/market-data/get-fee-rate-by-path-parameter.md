@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/market-data/get-fee-rate-by-path-parameter.md
-Downloaded: 2026-02-22T05:37:55.021Z
+Downloaded: 2026-02-22T10:30:19.671Z
 -->
 
 > ## Documentation Index

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/quickstart.md
-Downloaded: 2026-02-22T05:37:55.170Z
+Downloaded: 2026-02-22T10:30:19.694Z
 -->
 
 > ## Documentation Index

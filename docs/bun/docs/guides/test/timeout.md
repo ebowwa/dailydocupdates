@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/test/timeout.md
-Downloaded: 2026-02-22T05:37:58.484Z
+Downloaded: 2026-02-22T10:30:22.165Z
 -->
 
 > ## Documentation Index

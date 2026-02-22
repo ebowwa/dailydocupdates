@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/util/detect-bun.md
-Downloaded: 2026-02-22T05:37:58.493Z
+Downloaded: 2026-02-22T10:30:22.165Z
 -->
 
 > ## Documentation Index

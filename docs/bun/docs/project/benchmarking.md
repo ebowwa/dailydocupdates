@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/project/benchmarking.md
-Downloaded: 2026-02-22T05:37:58.552Z
+Downloaded: 2026-02-22T10:30:22.172Z
 -->
 
 > ## Documentation Index

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/core/get-trades-for-a-user-or-markets.md
-Downloaded: 2026-02-22T05:37:55.008Z
+Downloaded: 2026-02-22T10:30:19.669Z
 -->
 
 > ## Documentation Index

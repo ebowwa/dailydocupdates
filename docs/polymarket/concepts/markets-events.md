@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/concepts/markets-events.md
-Downloaded: 2026-02-22T05:37:55.150Z
+Downloaded: 2026-02-22T10:30:19.690Z
 -->
 
 > ## Documentation Index

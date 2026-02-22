@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/runtime/heap-snapshot.md
-Downloaded: 2026-02-22T05:37:58.444Z
+Downloaded: 2026-02-22T10:30:22.162Z
 -->
 
 > ## Documentation Index

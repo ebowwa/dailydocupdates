@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/deployment/railway.md
-Downloaded: 2026-02-22T05:37:58.317Z
+Downloaded: 2026-02-22T10:30:22.154Z
 -->
 
 > ## Documentation Index

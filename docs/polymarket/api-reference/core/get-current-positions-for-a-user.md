@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/core/get-current-positions-for-a-user.md
-Downloaded: 2026-02-22T05:37:54.997Z
+Downloaded: 2026-02-22T10:30:19.669Z
 -->
 
 > ## Documentation Index

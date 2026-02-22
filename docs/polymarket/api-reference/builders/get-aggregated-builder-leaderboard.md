@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/builders/get-aggregated-builder-leaderboard.md
-Downloaded: 2026-02-22T05:37:54.991Z
+Downloaded: 2026-02-22T10:30:19.667Z
 -->
 
 > ## Documentation Index

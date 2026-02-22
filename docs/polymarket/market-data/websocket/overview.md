@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-data/websocket/overview.md
-Downloaded: 2026-02-22T05:37:55.154Z
+Downloaded: 2026-02-22T10:30:19.691Z
 -->
 
 > ## Documentation Index

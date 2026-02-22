@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/json5.md
-Downloaded: 2026-02-22T05:37:58.574Z
+Downloaded: 2026-02-22T10:30:22.178Z
 -->
 
 > ## Documentation Index

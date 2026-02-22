@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/tags/get-tag-by-id.md
-Downloaded: 2026-02-22T05:37:55.082Z
+Downloaded: 2026-02-22T10:30:19.682Z
 -->
 
 > ## Documentation Index

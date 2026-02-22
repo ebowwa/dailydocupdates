@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/networking/dns.md
-Downloaded: 2026-02-22T05:37:58.581Z
+Downloaded: 2026-02-22T10:30:22.178Z
 -->
 
 > ## Documentation Index

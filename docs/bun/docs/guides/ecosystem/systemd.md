@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/ecosystem/systemd.md
-Downloaded: 2026-02-22T05:37:58.375Z
+Downloaded: 2026-02-22T10:30:22.157Z
 -->
 
 > ## Documentation Index

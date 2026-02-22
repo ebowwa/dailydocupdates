@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/trade/get-builder-trades.md
-Downloaded: 2026-02-22T05:37:55.102Z
+Downloaded: 2026-02-22T10:30:19.689Z
 -->
 
 > ## Documentation Index

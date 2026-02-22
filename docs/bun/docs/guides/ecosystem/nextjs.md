@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/ecosystem/nextjs.md
-Downloaded: 2026-02-22T05:37:58.342Z
+Downloaded: 2026-02-22T10:30:22.156Z
 -->
 
 > ## Documentation Index

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/bridge/status.md
-Downloaded: 2026-02-22T05:37:55.161Z
+Downloaded: 2026-02-22T10:30:19.692Z
 -->
 
 > ## Documentation Index

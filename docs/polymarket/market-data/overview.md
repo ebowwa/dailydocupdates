@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-data/overview.md
-Downloaded: 2026-02-22T05:37:55.153Z
+Downloaded: 2026-02-22T10:30:19.690Z
 -->
 
 > ## Documentation Index

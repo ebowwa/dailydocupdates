@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/cookies.md
-Downloaded: 2026-02-22T05:37:58.561Z
+Downloaded: 2026-02-22T10:30:22.174Z
 -->
 
 > ## Documentation Index
