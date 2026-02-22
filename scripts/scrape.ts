@@ -24,6 +24,7 @@ import {
   polymarketSource,
   bunSource,
   rustSource,
+  kalshiSource,
   fetchRecentCommits,
   fetchRecentReleases,
   fetchRecentPRs,
@@ -92,7 +93,7 @@ async function main() {
   const dateStr = formatDate(today);
 
   // Define all sources
-  const sources = [claudeCodeSource, polymarketSource, bunSource, rustSource];
+  const sources = [claudeCodeSource, polymarketSource, bunSource, rustSource, kalshiSource];
 
   // Run all sources in parallel
   const results = await Promise.all(

@@ -22,6 +22,9 @@ export { bunSource } from "./bun";
 // Rust source
 export { rustSource } from "./rust";
 
+// Kalshi source
+export { kalshiSource } from "./kalshi";
+
 // Re-export types from package
 export type { SourceConfig, SourceType } from "@ebowwa/markdown-docs-scraper/scrapers";
 
