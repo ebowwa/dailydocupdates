@@ -10,6 +10,7 @@
     "@ebowwa/markdown-docs-scraper": "^1.1.0"
   },
   "devDependencies": {
+    "@types/bun": "^1.1.0",
     "@types/node": "^20.11.0",
     "typescript": "^5.3.3"
   },

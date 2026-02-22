@@ -104,6 +104,8 @@ async function main() {
         source,
         result,
         date: dateStr,
+        github: result.github,
+        releaseNotes: result.releaseNotes,
       });
 
       const filepath = await saveReport(markdown, today, source.reportDir);

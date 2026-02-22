@@ -9,31 +9,14 @@
  */
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import type { SourceConfig, ScrapeResult, DownloadResult } from "@ebowwa/markdown-docs-scraper/scrapers";
+
+// Re-export types from package for convenience
+export type { SourceConfig, ScrapeResult, DownloadResult } from "@ebowwa/markdown-docs-scraper/scrapers";
 
 // ============================================================================
-// TYPES
+// LOCAL TYPES (GitHub-specific, not in package)
 // ============================================================================
-
-export interface DownloadResult {
-  success: boolean;
-  path: string;
-  title: string;
-}
-
-export interface SourceConfig {
-  name: string;
-  baseUrl: string;
-  docsPath: string;
-  outputDir: string;
-  reportDir: string;
-  llmsTxtPath?: string;
-  github?: {
-    repo: string;
-    includeCommits: boolean;
-    includeReleases: boolean;
-    includePRs: boolean;
-  };
-}
 
 export interface GitHubCommit {
   sha: string;
@@ -62,21 +45,18 @@ export interface GitHubPR {
   merged_at: string;
 }
 
-export interface ScrapeResult {
-  downloaded: DownloadResult[];
-  failed: Array<{ url: string; error: string }>;
-  github?: {
-    commits: GitHubCommit[];
-    releases: GitHubRelease[];
-    pullRequests: GitHubPR[];
-  };
-  releaseNotes?: string[];
+export interface GitHubData {
+  commits: GitHubCommit[];
+  releases: GitHubRelease[];
+  pullRequests: GitHubPR[];
 }
 
 export interface DailyReportOptions {
   source: SourceConfig;
   result: ScrapeResult;
   date: string;
+  github?: GitHubData;
+  releaseNotes?: string[];
 }
 
 // ============================================================================
@@ -111,7 +91,7 @@ export async function ensureDir(path: string): Promise<void> {
 
 /** Generate daily markdown report */
 export function generateDailyReport(options: DailyReportOptions): string {
-  const { source, result, date } = options;
+  const { source, result, date, github, releaseNotes } = options;
 
   let md = `# ${source.name} Documentation Update - ${date}\n\n`;
   md += `**Generated:** ${new Date().toISOString()}\n\n`;
@@ -120,16 +100,16 @@ export function generateDailyReport(options: DailyReportOptions): string {
   md += `## Summary\n\n`;
   const parts = [];
 
-  if (result.github) {
-    if (result.github.commits.length > 0) parts.push(`${result.github.commits.length} commit${result.github.commits.length > 1 ? "s" : ""}`);
-    if (result.github.releases.length > 0) parts.push(`${result.github.releases.length} release${result.github.releases.length > 1 ? "s" : ""}`);
-    if (result.github.pullRequests.length > 0) parts.push(`${result.github.pullRequests.length} PR${result.github.pullRequests.length > 1 ? "s" : ""}`);
+  if (github) {
+    if (github.commits.length > 0) parts.push(`${github.commits.length} commit${github.commits.length > 1 ? "s" : ""}`);
+    if (github.releases.length > 0) parts.push(`${github.releases.length} release${github.releases.length > 1 ? "s" : ""}`);
+    if (github.pullRequests.length > 0) parts.push(`${github.pullRequests.length} PR${github.pullRequests.length > 1 ? "s" : ""}`);
   }
 
   if (result.downloaded.length > 0) parts.push(`${result.downloaded.length} doc page${result.downloaded.length > 1 ? "s" : ""} downloaded`);
 
-  if (result.releaseNotes && result.releaseNotes.length > 0) {
-    parts.push(`${result.releaseNotes.length} release note${result.releaseNotes.length > 1 ? "s" : ""}`);
+  if (releaseNotes && releaseNotes.length > 0) {
+    parts.push(`${releaseNotes.length} release note${releaseNotes.length > 1 ? "s" : ""}`);
   }
 
   if (parts.length === 0) {
@@ -139,9 +119,9 @@ export function generateDailyReport(options: DailyReportOptions): string {
   }
 
   // GitHub Commits
-  if (result.github?.commits && result.github.commits.length > 0) {
-    md += `## GitHub Commits (${result.github.commits.length})\n\n`;
-    for (const commit of result.github.commits) {
+  if (github?.commits && github.commits.length > 0) {
+    md += `## GitHub Commits (${github.commits.length})\n\n`;
+    for (const commit of github.commits) {
       md += `- [${commit.sha}](${commit.html_url}) - ${commit.commit.message}\n`;
       md += `  - by ${commit.commit.author.name} at ${new Date(commit.commit.author.date).toISOString()}\n`;
     }
@@ -151,9 +131,9 @@ export function generateDailyReport(options: DailyReportOptions): string {
   }
 
   // Releases
-  if (result.github?.releases && result.github.releases.length > 0) {
-    md += `## Releases (${result.github.releases.length})\n\n`;
-    for (const release of result.github.releases) {
+  if (github?.releases && github.releases.length > 0) {
+    md += `## Releases (${github.releases.length})\n\n`;
+    for (const release of github.releases) {
       md += `- [${release.tag_name}](${release.html_url}) - ${release.name}\n`;
       md += `  - ${release.body}\n`;
       md += `  - Published: ${new Date(release.published_at).toISOString()}\n`;
@@ -164,9 +144,9 @@ export function generateDailyReport(options: DailyReportOptions): string {
   }
 
   // Pull Requests
-  if (result.github?.pullRequests && result.github.pullRequests.length > 0) {
-    md += `## Merged Pull Requests (${result.github.pullRequests.length})\n\n`;
-    for (const pr of result.github.pullRequests) {
+  if (github?.pullRequests && github.pullRequests.length > 0) {
+    md += `## Merged Pull Requests (${github.pullRequests.length})\n\n`;
+    for (const pr of github.pullRequests) {
       md += `- [#${pr.number}](${pr.html_url}) - ${pr.title}\n`;
       md += `  - Merged: ${new Date(pr.merged_at).toISOString()}\n`;
     }
@@ -192,7 +172,8 @@ export function generateDailyReport(options: DailyReportOptions): string {
     for (const [category, docs] of Object.entries(byCategory).sort()) {
       md += `#### ${category} (${docs.length})\n\n`;
       for (const doc of docs.slice(0, 20)) {
-        md += `- [${doc.title}](${doc.path})\n`;
+        const title = doc.title || doc.path;
+        md += `- [${title}](${doc.path})\n`;
       }
       if (docs.length > 20) {
         md += `\n*... and ${docs.length - 20} more*\n`;
@@ -213,13 +194,13 @@ export function generateDailyReport(options: DailyReportOptions): string {
   }
 
   // Release Notes
-  if (result.releaseNotes && result.releaseNotes.length > 0) {
+  if (releaseNotes && releaseNotes.length > 0) {
     md += `## Platform Release Notes\n\n`;
-    for (const note of result.releaseNotes.slice(0, 10)) {
+    for (const note of releaseNotes.slice(0, 10)) {
       md += `- ${note}\n`;
     }
-    if (result.releaseNotes.length > 10) {
-      md += `\n*... and ${result.releaseNotes.length - 10} more entries*\n`;
+    if (releaseNotes.length > 10) {
+      md += `\n*... and ${releaseNotes.length - 10} more entries*\n`;
     }
     md += `\n`;
   }
