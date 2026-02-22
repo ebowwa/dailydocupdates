@@ -36,7 +36,7 @@ Once complete, you'll be presented with your bot's *private key*. Let's add this
 <Note>This is an example token that has already been invalidated.</Note>
 
 ```ini .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
-DISCORD_TOKEN=NzkyNzE1NDU0MTk2MDg4ODQy.X-hvzA.Ovy4MCQywSkoMRRclStW4xAYK7I
+DISCORD_TOKEN=YOUR_BOT_TOKEN_HERE
 ```
 
 ***

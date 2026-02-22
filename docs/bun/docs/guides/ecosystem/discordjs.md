@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/ecosystem/discordjs.md
-Downloaded: 2026-02-22T05:37:58.330Z
+Downloaded: 2026-02-22T08:24:48.476Z
 -->
 
 > ## Documentation Index
@@ -36,7 +36,7 @@ Once complete, you'll be presented with your bot's *private key*. Let's add this
 <Note>This is an example token that has already been invalidated.</Note>
 
 ```ini .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
-DISCORD_TOKEN=NzkyNzE1NDU0MTk2MDg4ODQy.X-hvzA.Ovy4MCQywSkoMRRclStW4xAYK7I
+DISCORD_TOKEN=YOUR_BOT_TOKEN_HERE
 ```
 
 ***
