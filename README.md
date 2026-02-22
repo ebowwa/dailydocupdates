@@ -1,17 +1,24 @@
-# Anthropic Claude Code Documentation
+# Daily Doc Updates
 
-> Daily scraped documentation from Anthropic's official Claude Code resources.
+> Daily scraped documentation from Claude Code and Polymarket.
 
-**Last Updated:** 2026-02-10
+**Last Updated:** 2026-02-21
 
 ---
 
 ## Overview
 
-This repository contains automatically generated documentation based on daily scrapes of Anthropic's official Claude Code resources:
+This repository contains automatically generated documentation from daily scrapes:
+
+### Claude Code Docs
 - Full markdown documentation downloads from code.claude.com
 - GitHub repository commits and releases
 - Platform release notes
+
+### Polymarket Docs
+- API reference documentation
+- Trading guides and concepts
+- Market data and builders documentation
 
 ---
 
@@ -20,48 +27,33 @@ This repository contains automatically generated documentation based on daily sc
 This repository is updated **daily at 12 noon PST** via GitHub Actions.
 
 The automation:
-1. **Downloads full markdown documentation** from [code.claude.com/docs](https://code.claude.com/docs)
-2. **Tracks GitHub activity** on [anthropics/claude-code](https://github.com/anthropics/claude-code)
-3. **Monitors release notes** from [platform.claude.com](https://platform.claude.com/docs/en/release-notes/overview)
+1. **Claude Code**: Downloads from [code.claude.com/docs](https://code.claude.com/docs)
+2. **Polymarket**: Scrapes [docs.polymarket.com](https://docs.polymarket.com)
 
 ---
 
 ## Structure
 
 ```
-claude-code-anthropic-docs/
+dailydocupdates/
 ├── README.md              # This file
-├── docs/                  # Downloaded documentation
-│   ├── getting-started/   # Getting started guides
-│   ├── features/          # Feature documentation
-│   ├── guides/            # How-to guides
-│   ├── reference/         # Reference documentation
-│   └── architecture/      # Architecture docs
+├── docs/
+│   ├── claude/            # Claude Code documentation
+│   │   ├── getting-started/
+│   │   ├── features/
+│   │   ├── guides/
+│   │   └── reference/
+│   └── polymarket/        # Polymarket documentation
+│       ├── api-reference/
+│       ├── trading/
+│       ├── market-data/
+│       └── builders/
 ├── daily/                 # Daily generated updates
-│   └── YYYY/MM/
-│       └── DD.md          # Daily update report
 ├── scripts/               # Automation scripts
-│   └── scrape.ts          # Main scraping script
 └── .github/
     └── workflows/
         └── daily.yml      # GitHub Actions workflow
 ```
-
----
-
-## Documentation Categories
-
-The downloaded documentation is organized into:
-
-- **Getting Started** - Introduction, installation, quick start, configuration
-- **Features** - Inline edits, tool use, file operations, terminal integration
-- **Guides** - Debugging, testing, refactoring, best practices
-- **Reference** - CLI commands, configuration options, keyboard shortcuts
-- **Architecture** - Overview, MCP integration, extension system
-
-Each downloaded file includes a header comment with:
-- Source URL
-- Download timestamp
 
 ---
 
@@ -73,20 +65,17 @@ Each downloaded file includes a header comment with:
 bun run scrape
 ```
 
-### View daily updates
-
-Check the `daily/{YEAR}/{MONTH}/` directory for daily reports.
-
 ### Browse documentation
 
-Navigate to the `docs/` directory to explore the downloaded markdown files.
+- **Claude Code**: `docs/claude/`
+- **Polymarket**: `docs/polymarket/`
 
 ---
 
 ## License
 
-This documentation aggregates content from Anthropic's official resources.
-Original content is copyright Anthropic, PBC.
+This documentation aggregates content from official resources.
+Original content is copyright their respective owners.
 
 ---
 
