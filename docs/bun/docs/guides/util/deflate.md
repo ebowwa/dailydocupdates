@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/util/deflate.md
-Downloaded: 2026-02-22T05:01:20.569Z
+Downloaded: 2026-02-22T05:37:58.489Z
 -->
 
 > ## Documentation Index

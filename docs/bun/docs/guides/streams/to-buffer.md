@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/streams/to-buffer.md
-Downloaded: 2026-02-22T05:01:20.567Z
+Downloaded: 2026-02-22T05:37:58.462Z
 -->
 
 > ## Documentation Index

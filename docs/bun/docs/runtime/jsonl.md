@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/jsonl.md
-Downloaded: 2026-02-22T05:01:20.579Z
+Downloaded: 2026-02-22T05:37:58.576Z
 -->
 
 > ## Documentation Index

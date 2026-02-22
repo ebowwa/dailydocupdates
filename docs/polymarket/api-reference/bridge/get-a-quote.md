@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/bridge/get-a-quote.md
-Downloaded: 2026-02-22T05:01:17.193Z
+Downloaded: 2026-02-22T05:37:54.989Z
 -->
 
 > ## Documentation Index

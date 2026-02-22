@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/bundler/minifier.md
-Downloaded: 2026-02-22T05:01:20.546Z
+Downloaded: 2026-02-22T05:37:58.279Z
 -->
 
 > ## Documentation Index

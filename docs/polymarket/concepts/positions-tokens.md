@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/concepts/positions-tokens.md
-Downloaded: 2026-02-22T05:01:17.205Z
+Downloaded: 2026-02-22T05:37:55.151Z
 -->
 
 > ## Documentation Index

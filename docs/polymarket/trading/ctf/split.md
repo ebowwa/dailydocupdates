@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/ctf/split.md
-Downloaded: 2026-02-22T05:01:17.208Z
+Downloaded: 2026-02-22T05:37:55.167Z
 -->
 
 > ## Documentation Index

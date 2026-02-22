@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/test/reporters.md
-Downloaded: 2026-02-22T05:01:20.584Z
+Downloaded: 2026-02-22T05:37:58.595Z
 -->
 
 > ## Documentation Index

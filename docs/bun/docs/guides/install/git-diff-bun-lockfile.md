@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/install/git-diff-bun-lockfile.md
-Downloaded: 2026-02-22T05:01:20.556Z
+Downloaded: 2026-02-22T05:37:58.410Z
 -->
 
 > ## Documentation Index

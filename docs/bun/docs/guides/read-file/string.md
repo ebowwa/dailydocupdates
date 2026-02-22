@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/read-file/string.md
-Downloaded: 2026-02-22T05:01:20.563Z
+Downloaded: 2026-02-22T05:37:58.437Z
 -->
 
 > ## Documentation Index

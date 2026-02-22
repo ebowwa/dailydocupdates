@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/misc/get-live-volume-for-an-event.md
-Downloaded: 2026-02-22T05:01:17.200Z
+Downloaded: 2026-02-22T05:37:55.041Z
 -->
 
 > ## Documentation Index

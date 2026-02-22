@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/deployment/google-cloud-run.md
-Downloaded: 2026-02-22T05:01:20.550Z
+Downloaded: 2026-02-22T05:37:58.316Z
 -->
 
 > ## Documentation Index

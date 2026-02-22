@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/core/get-trader-leaderboard-rankings.md
-Downloaded: 2026-02-22T05:01:17.197Z
+Downloaded: 2026-02-22T05:37:55.007Z
 -->
 
 > ## Documentation Index

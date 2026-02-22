@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/bundler/esbuild.md
-Downloaded: 2026-02-22T05:01:20.544Z
+Downloaded: 2026-02-22T05:37:58.276Z
 -->
 
 > ## Documentation Index

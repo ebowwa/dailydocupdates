@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/test/discovery.md
-Downloaded: 2026-02-22T05:01:20.583Z
+Downloaded: 2026-02-22T05:37:58.591Z
 -->
 
 > ## Documentation Index

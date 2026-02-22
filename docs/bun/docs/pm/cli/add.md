@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/pm/cli/add.md
-Downloaded: 2026-02-22T05:01:20.572Z
+Downloaded: 2026-02-22T05:37:58.542Z
 -->
 
 > ## Documentation Index

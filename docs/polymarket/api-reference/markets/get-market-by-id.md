@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/markets/get-market-by-id.md
-Downloaded: 2026-02-22T05:01:17.199Z
+Downloaded: 2026-02-22T05:37:55.036Z
 -->
 
 > ## Documentation Index

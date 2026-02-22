@@ -4,7 +4,7 @@
  * Downloads markdown files directly from GitHub raw content.
  */
 
-import type { SourceConfig } from "../scrapers/types";
+import type { SourceConfig } from "@ebowwa/markdown-docs-scraper/scrapers";
 
 // ============================================================================
 // SOURCE CONFIGURATION

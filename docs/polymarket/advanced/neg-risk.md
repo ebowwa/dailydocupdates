@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/advanced/neg-risk.md
-Downloaded: 2026-02-22T05:01:17.192Z
+Downloaded: 2026-02-22T05:37:54.984Z
 -->
 
 > ## Documentation Index

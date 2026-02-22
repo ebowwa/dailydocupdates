@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/binary/buffer-to-readablestream.md
-Downloaded: 2026-02-22T05:01:20.549Z
+Downloaded: 2026-02-22T05:37:58.304Z
 -->
 
 > ## Documentation Index

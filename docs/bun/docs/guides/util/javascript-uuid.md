@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/util/javascript-uuid.md
-Downloaded: 2026-02-22T05:01:20.570Z
+Downloaded: 2026-02-22T05:37:58.501Z
 -->
 
 > ## Documentation Index

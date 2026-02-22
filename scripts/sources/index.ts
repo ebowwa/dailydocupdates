@@ -22,8 +22,8 @@ export { bunSource } from "./bun";
 // Rust source
 export { rustSource } from "./rust";
 
-// Re-export types from scrapers
-export type { SourceConfig, SourceType } from "../scrapers/types";
+// Re-export types from package
+export type { SourceConfig, SourceType } from "@ebowwa/markdown-docs-scraper/scrapers";
 
 // Re-export GitHub types from base
 export type { GitHubCommit, GitHubRelease, GitHubPR } from "../base";

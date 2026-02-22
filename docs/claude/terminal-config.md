@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/terminal-config.md
-Downloaded: 2026-02-22T05:01:17.478Z
+Downloaded: 2026-02-22T05:37:54.557Z
 -->
 
 > ## Documentation Index

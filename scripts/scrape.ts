@@ -8,7 +8,7 @@
  * 3. Bun (docs site via llms.txt)
  * 4. Rust (GitHub raw content)
  *
- * Uses composable scrapers registered by source type.
+ * Uses composable scrapers from @ebowwa/markdown-docs-scraper
  */
 
 import {
@@ -17,8 +17,8 @@ import {
   saveReport,
   updateReadme,
 } from "./base";
-import { scrapeSource } from "./scrapers/registry";
-import type { SourceConfig, ScrapeResult } from "./scrapers/types";
+import { scrapeSource } from "@ebowwa/markdown-docs-scraper/scrapers";
+import type { SourceConfig, ScrapeResult } from "@ebowwa/markdown-docs-scraper/scrapers";
 import {
   claudeCodeSource,
   polymarketSource,

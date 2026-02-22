@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/binary/arraybuffer-to-string.md
-Downloaded: 2026-02-22T05:01:20.548Z
+Downloaded: 2026-02-22T05:37:58.282Z
 -->
 
 > ## Documentation Index

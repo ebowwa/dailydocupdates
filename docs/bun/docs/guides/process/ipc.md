@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/process/ipc.md
-Downloaded: 2026-02-22T05:01:20.559Z
+Downloaded: 2026-02-22T05:37:58.418Z
 -->
 
 > ## Documentation Index

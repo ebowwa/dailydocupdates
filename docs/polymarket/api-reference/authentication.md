@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/authentication.md
-Downloaded: 2026-02-22T05:01:17.193Z
+Downloaded: 2026-02-22T05:37:54.986Z
 -->
 
 > ## Documentation Index

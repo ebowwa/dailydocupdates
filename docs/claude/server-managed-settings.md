@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/server-managed-settings.md
-Downloaded: 2026-02-22T05:01:17.477Z
+Downloaded: 2026-02-22T05:37:54.554Z
 -->
 
 > ## Documentation Index

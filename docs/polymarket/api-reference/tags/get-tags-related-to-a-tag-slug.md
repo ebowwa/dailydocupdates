@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/tags/get-tags-related-to-a-tag-slug.md
-Downloaded: 2026-02-22T05:01:17.202Z
+Downloaded: 2026-02-22T05:37:55.087Z
 -->
 
 > ## Documentation Index

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/search/search-markets-events-and-profiles.md
-Downloaded: 2026-02-22T05:01:17.201Z
+Downloaded: 2026-02-22T05:37:55.055Z
 -->
 
 > ## Documentation Index

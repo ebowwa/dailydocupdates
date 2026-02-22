@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/websocket/simple.md
-Downloaded: 2026-02-22T05:01:20.571Z
+Downloaded: 2026-02-22T05:37:58.535Z
 -->
 
 > ## Documentation Index

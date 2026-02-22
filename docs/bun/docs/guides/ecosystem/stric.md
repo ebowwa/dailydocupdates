@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/ecosystem/stric.md
-Downloaded: 2026-02-22T05:01:20.552Z
+Downloaded: 2026-02-22T05:37:58.367Z
 -->
 
 > ## Documentation Index

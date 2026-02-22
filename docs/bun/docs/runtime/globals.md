@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/globals.md
-Downloaded: 2026-02-22T05:01:20.576Z
+Downloaded: 2026-02-22T05:37:58.567Z
 -->
 
 > ## Documentation Index

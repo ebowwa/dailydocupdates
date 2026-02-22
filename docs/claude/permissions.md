@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/permissions.md
-Downloaded: 2026-02-22T05:01:17.476Z
+Downloaded: 2026-02-22T05:37:54.549Z
 -->
 
 > ## Documentation Index

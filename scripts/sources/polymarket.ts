@@ -4,7 +4,7 @@
  * Configuration for Polymarket docs using shared @ebowwa/markdown-docs-scraper
  */
 
-import type { SourceConfig } from "../scrapers/types";
+import type { SourceConfig } from "@ebowwa/markdown-docs-scraper/scrapers";
 
 // ============================================================================
 // SOURCE CONFIGURATION

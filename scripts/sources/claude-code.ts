@@ -8,7 +8,7 @@
  * - Platform release notes
  */
 
-import type { SourceConfig } from "../scrapers/types";
+import type { SourceConfig } from "@ebowwa/markdown-docs-scraper/scrapers";
 import type { GitHubCommit, GitHubRelease, GitHubPR } from "../base";
 
 // ============================================================================

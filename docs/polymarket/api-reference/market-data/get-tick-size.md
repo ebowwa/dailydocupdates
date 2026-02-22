@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/market-data/get-tick-size.md
-Downloaded: 2026-02-22T05:01:17.199Z
+Downloaded: 2026-02-22T05:37:55.032Z
 -->
 
 > ## Documentation Index

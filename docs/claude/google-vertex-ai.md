@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/google-vertex-ai.md
-Downloaded: 2026-02-22T05:01:17.472Z
+Downloaded: 2026-02-22T05:37:54.532Z
 -->
 
 > ## Documentation Index

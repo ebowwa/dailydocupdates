@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/bundler/hot-reloading.md
-Downloaded: 2026-02-22T05:01:20.545Z
+Downloaded: 2026-02-22T05:37:58.278Z
 -->
 
 > ## Documentation Index

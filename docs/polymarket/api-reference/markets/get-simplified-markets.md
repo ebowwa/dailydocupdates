@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/markets/get-simplified-markets.md
-Downloaded: 2026-02-22T05:01:17.200Z
+Downloaded: 2026-02-22T05:37:55.039Z
 -->
 
 > ## Documentation Index
