@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/util/hash-a-password.md
-Downloaded: 2026-02-22T10:30:22.166Z
+Downloaded: 2026-02-22T23:06:45.127Z
 -->
 
 > ## Documentation Index

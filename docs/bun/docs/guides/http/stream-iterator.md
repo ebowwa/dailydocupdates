@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/http/stream-iterator.md
-Downloaded: 2026-02-22T10:30:22.158Z
+Downloaded: 2026-02-22T23:06:45.117Z
 -->
 
 > ## Documentation Index

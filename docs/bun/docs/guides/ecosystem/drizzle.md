@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/ecosystem/drizzle.md
-Downloaded: 2026-02-22T10:30:22.155Z
+Downloaded: 2026-02-22T23:06:45.113Z
 -->
 
 > ## Documentation Index

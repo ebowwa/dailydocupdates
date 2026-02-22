@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/discover-plugins.md
-Downloaded: 2026-02-22T10:30:18.955Z
+Downloaded: 2026-02-22T23:06:41.652Z
 -->
 
 > ## Documentation Index

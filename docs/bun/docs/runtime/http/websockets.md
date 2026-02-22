@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/http/websockets.md
-Downloaded: 2026-02-22T10:30:22.177Z
+Downloaded: 2026-02-22T23:06:45.135Z
 -->
 
 > ## Documentation Index

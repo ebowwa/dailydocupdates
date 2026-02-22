@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/typescript-sdk/api/EventsApi.md
-Downloaded: 2026-02-22T10:30:23.771Z
+Downloaded: 2026-02-22T23:06:59.953Z
 -->
 
 > ## Documentation Index

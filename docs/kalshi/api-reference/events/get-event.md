@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-event.md
-Downloaded: 2026-02-22T10:30:23.742Z
+Downloaded: 2026-02-22T23:06:59.940Z
 -->
 
 > ## Documentation Index

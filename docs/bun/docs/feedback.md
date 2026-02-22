@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/feedback.md
-Downloaded: 2026-02-22T10:30:22.151Z
+Downloaded: 2026-02-22T23:06:45.110Z
 -->
 
 > ## Documentation Index

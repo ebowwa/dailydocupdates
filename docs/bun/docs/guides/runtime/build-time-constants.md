@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/runtime/build-time-constants.md
-Downloaded: 2026-02-22T10:30:22.161Z
+Downloaded: 2026-02-22T23:06:45.121Z
 -->
 
 > ## Documentation Index

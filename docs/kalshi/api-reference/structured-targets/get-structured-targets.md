@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/structured-targets/get-structured-targets.md
-Downloaded: 2026-02-22T10:30:23.763Z
+Downloaded: 2026-02-22T23:06:59.948Z
 -->
 
 > ## Documentation Index

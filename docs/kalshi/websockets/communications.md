@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/communications.md
-Downloaded: 2026-02-22T10:30:23.772Z
+Downloaded: 2026-02-22T23:06:59.954Z
 -->
 
 > ## Documentation Index

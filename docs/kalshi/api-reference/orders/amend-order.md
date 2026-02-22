@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/amend-order.md
-Downloaded: 2026-02-22T10:30:23.756Z
+Downloaded: 2026-02-22T23:06:59.946Z
 -->
 
 > ## Documentation Index

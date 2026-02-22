@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/delete-quote.md
-Downloaded: 2026-02-22T10:30:23.740Z
+Downloaded: 2026-02-22T23:06:59.939Z
 -->
 
 > ## Documentation Index

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/market-data/get-spread.md
-Downloaded: 2026-02-22T10:30:19.673Z
+Downloaded: 2026-02-22T23:06:41.923Z
 -->
 
 > ## Documentation Index

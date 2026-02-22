@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/websocket/compression.md
-Downloaded: 2026-02-22T10:30:22.168Z
+Downloaded: 2026-02-22T23:06:45.128Z
 -->
 
 > ## Documentation Index

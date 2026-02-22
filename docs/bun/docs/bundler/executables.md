@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/bundler/executables.md
-Downloaded: 2026-02-22T10:30:22.150Z
+Downloaded: 2026-02-22T23:06:45.108Z
 -->
 
 > ## Documentation Index

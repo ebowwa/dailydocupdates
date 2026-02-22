@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/pm/cli/audit.md
-Downloaded: 2026-02-22T10:30:22.170Z
+Downloaded: 2026-02-22T23:06:45.130Z
 -->
 
 > ## Documentation Index

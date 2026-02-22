@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/bridge/get-supported-assets.md
-Downloaded: 2026-02-22T10:30:19.665Z
+Downloaded: 2026-02-22T23:06:41.919Z
 -->
 
 > ## Documentation Index

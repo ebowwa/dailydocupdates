@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/making_your_first_request.md
-Downloaded: 2026-02-22T10:30:23.766Z
+Downloaded: 2026-02-22T23:06:59.950Z
 -->
 
 > ## Documentation Index

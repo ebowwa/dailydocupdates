@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/html-rewriter/extract-links.md
-Downloaded: 2026-02-22T10:30:22.157Z
+Downloaded: 2026-02-22T23:06:45.116Z
 -->
 
 > ## Documentation Index

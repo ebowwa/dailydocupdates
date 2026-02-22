@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/multivariate/create-market-in-multivariate-event-collection.md
-Downloaded: 2026-02-22T10:30:23.753Z
+Downloaded: 2026-02-22T23:06:59.944Z
 -->
 
 > ## Documentation Index

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-fills.md
-Downloaded: 2026-02-22T10:30:23.748Z
+Downloaded: 2026-02-22T23:06:59.942Z
 -->
 
 > ## Documentation Index

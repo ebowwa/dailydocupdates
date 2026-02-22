@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/market-ticker.md
-Downloaded: 2026-02-22T10:30:23.773Z
+Downloaded: 2026-02-22T23:06:59.955Z
 -->
 
 > ## Documentation Index

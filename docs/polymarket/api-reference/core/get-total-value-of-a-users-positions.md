@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/core/get-total-value-of-a-users-positions.md
-Downloaded: 2026-02-22T10:30:19.669Z
+Downloaded: 2026-02-22T23:06:41.920Z
 -->
 
 > ## Documentation Index

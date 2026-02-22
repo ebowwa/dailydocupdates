@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/multivariate/get-multivariate-event-collections.md
-Downloaded: 2026-02-22T10:30:23.754Z
+Downloaded: 2026-02-22T23:06:59.945Z
 -->
 
 > ## Documentation Index

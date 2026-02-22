@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-trades.md
-Downloaded: 2026-02-22T10:30:23.753Z
+Downloaded: 2026-02-22T23:06:59.944Z
 -->
 
 > ## Documentation Index

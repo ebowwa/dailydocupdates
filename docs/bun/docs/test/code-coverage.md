@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/test/code-coverage.md
-Downloaded: 2026-02-22T10:30:22.179Z
+Downloaded: 2026-02-22T23:06:45.139Z
 -->
 
 > ## Documentation Index

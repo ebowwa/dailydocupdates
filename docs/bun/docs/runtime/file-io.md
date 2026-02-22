@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/file-io.md
-Downloaded: 2026-02-22T10:30:22.177Z
+Downloaded: 2026-02-22T23:06:45.134Z
 -->
 
 > ## Documentation Index

@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/install/trusted.md
-Downloaded: 2026-02-22T10:30:22.160Z
+Downloaded: 2026-02-22T23:06:45.118Z
 -->
 
 > ## Documentation Index

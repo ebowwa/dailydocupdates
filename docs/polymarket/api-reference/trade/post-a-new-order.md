@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/trade/post-a-new-order.md
-Downloaded: 2026-02-22T10:30:19.689Z
+Downloaded: 2026-02-22T23:06:41.928Z
 -->
 
 > ## Documentation Index

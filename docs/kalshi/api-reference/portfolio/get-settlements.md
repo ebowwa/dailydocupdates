@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-settlements.md
-Downloaded: 2026-02-22T10:30:23.761Z
+Downloaded: 2026-02-22T23:06:59.947Z
 -->
 
 > ## Documentation Index

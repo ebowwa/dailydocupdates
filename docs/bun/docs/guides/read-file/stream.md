@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/read-file/stream.md
-Downloaded: 2026-02-22T10:30:22.161Z
+Downloaded: 2026-02-22T23:06:45.120Z
 -->
 
 > ## Documentation Index

@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/runtime/shell.md
-Downloaded: 2026-02-22T10:30:22.163Z
+Downloaded: 2026-02-22T23:06:45.122Z
 -->
 
 > ## Documentation Index

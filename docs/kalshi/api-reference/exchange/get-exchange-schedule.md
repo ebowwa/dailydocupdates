@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/exchange/get-exchange-schedule.md
-Downloaded: 2026-02-22T10:30:23.746Z
+Downloaded: 2026-02-22T23:06:59.941Z
 -->
 
 > ## Documentation Index

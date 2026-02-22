@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/quick_start_market_data.md
-Downloaded: 2026-02-22T10:30:23.767Z
+Downloaded: 2026-02-22T23:06:59.951Z
 -->
 
 > ## Documentation Index

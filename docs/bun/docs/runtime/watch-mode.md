@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/watch-mode.md
-Downloaded: 2026-02-22T10:30:22.179Z
+Downloaded: 2026-02-22T23:06:45.138Z
 -->
 
 > ## Documentation Index

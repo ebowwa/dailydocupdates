@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/install/add-optional.md
-Downloaded: 2026-02-22T10:30:22.159Z
+Downloaded: 2026-02-22T23:06:45.117Z
 -->
 
 > ## Documentation Index

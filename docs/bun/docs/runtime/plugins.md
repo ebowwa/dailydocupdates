@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/plugins.md
-Downloaded: 2026-02-22T10:30:22.178Z
+Downloaded: 2026-02-22T23:06:45.137Z
 -->
 
 > ## Documentation Index

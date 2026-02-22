@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/search/get-tags-for-series-categories.md
-Downloaded: 2026-02-22T10:30:23.762Z
+Downloaded: 2026-02-22T23:06:59.948Z
 -->
 
 > ## Documentation Index

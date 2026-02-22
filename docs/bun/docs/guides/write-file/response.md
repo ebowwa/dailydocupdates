@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/write-file/response.md
-Downloaded: 2026-02-22T10:30:22.168Z
+Downloaded: 2026-02-22T23:06:45.129Z
 -->
 
 > ## Documentation Index

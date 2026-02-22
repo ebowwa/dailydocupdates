@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/session-management.md
-Downloaded: 2026-02-22T10:30:23.765Z
+Downloaded: 2026-02-22T23:06:59.950Z
 -->
 
 > ## Documentation Index

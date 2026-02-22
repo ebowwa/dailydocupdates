@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/install/registry-scope.md
-Downloaded: 2026-02-22T10:30:22.159Z
+Downloaded: 2026-02-22T23:06:45.118Z
 -->
 
 > ## Documentation Index

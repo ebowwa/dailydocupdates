@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/typescript.md
-Downloaded: 2026-02-22T10:30:22.181Z
+Downloaded: 2026-02-22T23:06:45.140Z
 -->
 
 > ## Documentation Index

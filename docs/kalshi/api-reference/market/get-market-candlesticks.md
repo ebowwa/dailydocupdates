@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-market-candlesticks.md
-Downloaded: 2026-02-22T10:30:23.751Z
+Downloaded: 2026-02-22T23:06:59.943Z
 -->
 
 > ## Documentation Index

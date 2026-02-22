@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/util/base64.md
-Downloaded: 2026-02-22T10:30:22.165Z
+Downloaded: 2026-02-22T23:06:45.126Z
 -->
 
 > ## Documentation Index

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/market-data/get-last-trade-prices-request-body.md
-Downloaded: 2026-02-22T10:30:19.672Z
+Downloaded: 2026-02-22T23:06:41.922Z
 -->
 
 > ## Documentation Index
