@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/index.md
-Downloaded: 2026-02-22T02:57:47.667Z
+Downloaded: 2026-02-22T05:01:17.205Z
 -->
 
 > ## Documentation Index

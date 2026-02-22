@@ -1,11 +1,12 @@
 # Dependencies
 node_modules/
 bun.lock
-
+.claude
 # Database
 lmdb.db
 lmdb.db-lock
-
+state-mcp.db-shm
+state-mcp.db-wal
 # OS
 .DS_Store
 

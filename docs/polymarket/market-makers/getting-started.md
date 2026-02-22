@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/getting-started.md
-Downloaded: 2026-02-22T02:57:47.668Z
+Downloaded: 2026-02-22T05:01:17.206Z
 -->
 
 > ## Documentation Index

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/fees.md
-Downloaded: 2026-02-22T02:57:47.673Z
+Downloaded: 2026-02-22T05:01:17.208Z
 -->
 
 > ## Documentation Index

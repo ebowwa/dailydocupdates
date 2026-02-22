@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/geoblock.md
-Downloaded: 2026-02-22T02:57:47.657Z
+Downloaded: 2026-02-22T05:01:17.198Z
 -->
 
 > ## Documentation Index

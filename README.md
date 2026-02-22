@@ -1,8 +1,8 @@
 # Daily Doc Updates
 
-> Daily scraped documentation from Claude Code and Polymarket.
+> Daily scraped documentation from Claude Code, Polymarket, Bun, and Rust.
 
-**Last Updated:** 2026-02-21
+**Last Updated:** 2026-02-22
 
 ---
 
@@ -20,6 +20,17 @@ This repository contains automatically generated documentation from daily scrape
 - Trading guides and concepts
 - Market data and builders documentation
 
+### Bun Docs
+- Runtime API documentation
+- Bundler guides
+- Package manager references
+- Test runner documentation
+
+### Rust Docs
+- The Rust Programming Language Book
+- Downloaded from GitHub raw content
+- 20 chapters + appendices
+
 ---
 
 ## Automation
@@ -29,6 +40,8 @@ This repository is updated **daily at 12 noon PST** via GitHub Actions.
 The automation:
 1. **Claude Code**: Downloads from [code.claude.com/docs](https://code.claude.com/docs)
 2. **Polymarket**: Scrapes [docs.polymarket.com](https://docs.polymarket.com)
+3. **Bun**: Scrapes [bun.sh/docs](https://bun.sh/docs)
+4. **Rust**: Downloads from [rust-lang/book](https://github.com/rust-lang/book)
 
 ---
 
@@ -43,13 +56,29 @@ dailydocupdates/
 │   │   ├── features/
 │   │   ├── guides/
 │   │   └── reference/
-│   └── polymarket/        # Polymarket documentation
-│       ├── api-reference/
-│       ├── trading/
-│       ├── market-data/
-│       └── builders/
+│   ├── polymarket/        # Polymarket documentation
+│   │   ├── api-reference/
+│   │   ├── trading/
+│   │   ├── market-data/
+│   │   └── builders/
+│   ├── bun/               # Bun documentation
+│   │   ├── runtime/
+│   │   ├── bundler/
+│   │   ├── guides/
+│   │   └── test-runner/
+│   └── rust/              # Rust Book
+│       ├── ch01-*.md
+│       ├── ch02-*.md
+│       └── appendix-*.md
 ├── daily/                 # Daily generated updates
+│   ├── claude-code/
+│   ├── polymarket/
+│   ├── bun/
+│   └── rust/
 ├── scripts/               # Automation scripts
+│   ├── scrape.ts          # Main orchestrator
+│   ├── base.ts            # Shared utilities
+│   └── sources/           # Source composables
 └── .github/
     └── workflows/
         └── daily.yml      # GitHub Actions workflow
@@ -69,6 +98,8 @@ bun run scrape
 
 - **Claude Code**: `docs/claude/`
 - **Polymarket**: `docs/polymarket/`
+- **Bun**: `docs/bun/`
+- **Rust**: `docs/rust/`
 
 ---
 

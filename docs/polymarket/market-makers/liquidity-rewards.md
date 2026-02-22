@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/liquidity-rewards.md
-Downloaded: 2026-02-22T02:57:47.669Z
+Downloaded: 2026-02-22T05:01:17.206Z
 -->
 
 > ## Documentation Index

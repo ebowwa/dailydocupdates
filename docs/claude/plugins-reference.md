@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/plugins-reference.md
-Downloaded: 2026-02-21T21:05:48.430Z
+Downloaded: 2026-02-22T05:01:17.477Z
 -->
 
 > ## Documentation Index

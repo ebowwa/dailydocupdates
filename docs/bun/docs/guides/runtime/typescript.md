@@ -1,0 +1,56 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/typescript.md
+Downloaded: 2026-02-22T05:01:20.566Z
+-->
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Install TypeScript declarations for Bun
+
+To install TypeScript definitions for Bun's built-in APIs in your project, install `@types/bun`.
+
+```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun add -d @types/bun # dev dependency
+```
+
+***
+
+Below is the full set of recommended `compilerOptions` for a Bun project. With this `tsconfig.json`, you can use top-level await, extensioned or extensionless imports, and JSX.
+
+```json tsconfig.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
+{
+  "compilerOptions": {
+    // Environment setup & latest features
+    "lib": ["ESNext"],
+    "target": "ESNext",
+    "module": "Preserve",
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "allowJs": true,
+
+    // Bundler mode
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+
+    // Best practices
+    "strict": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    // Some stricter flags (disabled by default)
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noPropertyAccessFromIndexSignature": false
+  }
+}
+```
+
+***
+
+Refer to [Ecosystem > TypeScript](/runtime/typescript) for a complete guide to TypeScript support in Bun.

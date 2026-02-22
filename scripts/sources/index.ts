@@ -1,0 +1,29 @@
+/**
+ * Source exports
+ *
+ * Re-exports all source configurations and their associated functions.
+ */
+
+// Claude Code source
+export {
+  claudeCodeSource,
+  fetchRecentCommits,
+  fetchRecentReleases,
+  fetchRecentPRs,
+  checkReleaseNotes,
+} from "./claude-code";
+
+// Polymarket source
+export { polymarketSource } from "./polymarket";
+
+// Bun source
+export { bunSource } from "./bun";
+
+// Rust source
+export { rustSource } from "./rust";
+
+// Re-export types from scrapers
+export type { SourceConfig, SourceType } from "../scrapers/types";
+
+// Re-export GitHub types from base
+export type { GitHubCommit, GitHubRelease, GitHubPR } from "../base";
