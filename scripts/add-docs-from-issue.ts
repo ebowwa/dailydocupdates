@@ -2,8 +2,15 @@
 /**
  * Add docs from GitHub issue using GLM-4.7
  *
+ * WIP: Requires ZAI_API_KEY secret to be set before use
+ *
  * Triggered by: GitHub Action on new issues
  * Uses: Z.AI GLM-4.7 to parse issue and extract doc source
+ *
+ * Setup:
+ * 1. Add ZAI_API_KEY to repo secrets (Settings → Secrets → Actions)
+ * 2. Remove `if: false &&` from workflow to enable
+ * 3. Create issue: "Add X docs" with URL in body
  */
 
 import OpenAI from "openai";

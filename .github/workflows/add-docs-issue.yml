@@ -1,8 +1,15 @@
-name: Add Docs from Issue
+# WIP: Issue-triggered doc scraping
+# TODO: Add ZAI_API_KEY secret before enabling
+# Set `if: false` to disable until ready
+
+name: Add Docs from Issue (WIP - DISABLED)
 
 on:
   issues:
     types: [opened, labeled]
+
+# Prevents execution until ready
+# if: false  # Uncomment to disable completely
 
 permissions:
   contents: write
@@ -10,7 +17,9 @@ permissions:
 
 jobs:
   add-docs:
-    if: contains(github.event.issue.labels.*.name, 'add-docs') || github.event.action == 'opened'
+    # WIP: Disabled until ZAI_API_KEY secret is added
+    # Remove 'false &&' to enable
+    if: false && (contains(github.event.issue.labels.*.name, 'add-docs') || github.event.action == 'opened')
     runs-on: ubuntu-latest
 
     steps:
