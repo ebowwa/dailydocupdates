@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/geoblock.md
-Downloaded: 2026-02-22T23:06:41.922Z
+Downloaded: 2026-02-23T20:19:51.566Z
 -->
 
 > ## Documentation Index
@@ -76,6 +76,7 @@ The following countries are restricted from placing orders on Polymarket. Countr
 | LY           | Libya                                | Blocked    |
 | MM           | Myanmar                              | Blocked    |
 | NI           | Nicaragua                            | Blocked    |
+| NL           | Netherlands                          | Blocked    |
 | PL           | Poland                               | Close-only |
 | RU           | Russia                               | Blocked    |
 | SG           | Singapore                            | Close-only |

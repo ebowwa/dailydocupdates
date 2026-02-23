@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/bundler/index.md
-Downloaded: 2026-02-22T23:06:45.109Z
+Downloaded: 2026-02-23T20:19:48.252Z
 -->
 
 > ## Documentation Index
@@ -1311,6 +1311,28 @@ declare module "bun:bundle" {
 
 Ensure the file is included in your `tsconfig.json` (e.g., `"include": ["src", "env.d.ts"]`). Now `feature()` only accepts those flags, and invalid strings like `feature("TYPO")` become type errors.
 
+### optimizeImports
+
+Skip parsing unused submodules of barrel files (re-export index files). When you import only a few named exports from a large library, normally the bundler parses every file the barrel re-exports. With `optimizeImports`, only the submodules you actually use are parsed.
+
+```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+await Bun.build({
+  entrypoints: ["./app.ts"],
+  outdir: "./out",
+  optimizeImports: ["antd", "@mui/material", "lodash-es"],
+});
+```
+
+For example, `import { Button } from 'antd'` normally parses all \~3000 modules that `antd/index.js` re-exports. With `optimizeImports: ['antd']`, only the `Button` submodule is parsed.
+
+This works for **pure barrel files** — files where every named export is a re-export (`export { X } from './x'`). If a barrel file has any local exports (`export const foo = ...`), or if any importer uses `import *`, all submodules are loaded.
+
+`export *` re-exports are always loaded (never deferred) to avoid circular resolution issues. Only named re-exports (`export { X } from './x'`) that aren't used by any importer are deferred.
+
+**Automatic mode:** Packages with `"sideEffects": false` in their `package.json` get barrel optimization automatically — no `optimizeImports` config needed. Use `optimizeImports` for packages that don't have this field.
+
+**Plugins:** Resolve and load plugins work correctly with barrel optimization. Deferred submodules go through the plugin pipeline when they are eventually loaded.
+
 ### metafile
 
 Generate metadata about the build in a structured format. The metafile contains information about all input files, output files, their sizes, imports, and exports. This is useful for:
@@ -1834,7 +1856,7 @@ declare class ResolveMessage {
 
 ## CLI Usage
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build <entry points>
 ```
 

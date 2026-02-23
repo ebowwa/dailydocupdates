@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/matching-engine.md
-Downloaded: 2026-02-22T23:06:41.933Z
+Downloaded: 2026-02-23T20:19:51.576Z
 -->
 
 > ## Documentation Index
@@ -17,12 +17,12 @@ The Polymarket matching engine undergoes periodic restarts for maintenance and u
 
 ## Restart Schedule
 
-The matching engine restarts **weekly on Mondays at 20:00 ET**. During a restart window, the engine is temporarily unavailable — typically for about **90 seconds**.
+The matching engine restarts **weekly on Tuesdays at 7:00 AM ET**. During a restart window, the engine is temporarily unavailable — typically for about **90 seconds**.
 
 |                      | Details                                     |
 | -------------------- | ------------------------------------------- |
 | **Cadence**          | Weekly                                      |
-| **Day & time**       | Monday, 20:00 ET                            |
+| **Day & time**       | Tuesday, 7:00 AM ET                         |
 | **Typical duration** | \~90 seconds                                |
 | **What happens**     | Order matching is paused, API returns `425` |
 

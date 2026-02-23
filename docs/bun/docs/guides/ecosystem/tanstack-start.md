@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/ecosystem/tanstack-start.md
-Downloaded: 2026-02-22T23:06:45.115Z
+Downloaded: 2026-02-23T20:19:48.259Z
 -->
 
 > ## Documentation Index
@@ -18,7 +18,7 @@ Downloaded: 2026-02-22T23:06:45.115Z
     Use the interactive CLI to create a new TanStack Start app.
 
     ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-    bun create @tanstack/start@latest my-tanstack-app
+    bunx @tanstack/cli create my-tanstack-app
     ```
   </Step>
 
