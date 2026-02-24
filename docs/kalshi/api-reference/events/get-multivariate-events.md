@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-multivariate-events.md
-Downloaded: 2026-02-22T23:06:59.941Z
+Downloaded: 2026-02-24T20:16:38.352Z
 -->
 
 > ## Documentation Index
@@ -218,6 +218,10 @@ components:
           x-omitempty: true
           description: Additional metadata for the event.
           x-go-type-skip-optional-pointer: true
+        last_updated_ts:
+          type: string
+          format: date-time
+          description: Timestamp of when this event's metadata was last updated.
     Market:
       type: object
       required:

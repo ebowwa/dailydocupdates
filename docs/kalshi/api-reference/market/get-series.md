@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-series.md
-Downloaded: 2026-02-22T23:06:59.944Z
+Downloaded: 2026-02-24T20:16:38.354Z
 -->
 
 > ## Documentation Index
@@ -201,6 +201,10 @@ components:
           description: >-
             String representation of the total number of contracts traded across
             all events in this series.
+        last_updated_ts:
+          type: string
+          format: date-time
+          description: Timestamp of when this series' metadata was last updated.
     ErrorResponse:
       type: object
       properties:

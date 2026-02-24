@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-02-22T23:06:59.948Z
+Downloaded: 2026-02-24T20:16:38.359Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,25 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Feb 22, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "last_updated_ts on events, series, and milestones",
+description: "Events, series, and milestones now expose a last_updated_ts field and support a min_updated_ts query parameter for efficient polling."
+}}
+>
+  `GET /events`, `GET /series`, and `GET /milestones` now support an optional `min_updated_ts` query parameter (Unix timestamp in seconds). When provided, only events, series, or milestones whose metadata was updated after the given timestamp are returned.
+
+  Response objects for events and series also include a new `last_updated_ts` field indicating when the metadata was last modified.
+
+  Affected endpoints:
+
+  * `GET /events` — new `min_updated_ts` query param, new `last_updated_ts` response field on `EventData`
+  * `GET /series` — new `min_updated_ts` query param, new `last_updated_ts` response field on `Series`
+  * `GET /milestones` — new `min_updated_ts` query param
+</Update>
 
 <Update
   label="Feb 21, 2026"

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-events.md
-Downloaded: 2026-02-22T23:06:59.941Z
+Downloaded: 2026-02-24T20:16:38.352Z
 -->
 
 > ## Documentation Index
@@ -140,6 +140,15 @@ paths:
           schema:
             type: integer
             format: int64
+        - name: min_updated_ts
+          in: query
+          required: false
+          description: >-
+            Filter events with metadata updated after this Unix timestamp (in
+            seconds). Use this to efficiently poll for changes.
+          schema:
+            type: integer
+            format: int64
       responses:
         '200':
           description: Events retrieved successfully
@@ -256,6 +265,10 @@ components:
           x-omitempty: true
           description: Additional metadata for the event.
           x-go-type-skip-optional-pointer: true
+        last_updated_ts:
+          type: string
+          format: date-time
+          description: Timestamp of when this event's metadata was last updated.
     Milestone:
       type: object
       required:

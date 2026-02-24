@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/milestone/get-milestones.md
-Downloaded: 2026-02-22T23:06:59.944Z
+Downloaded: 2026-02-24T20:16:38.355Z
 -->
 
 > ## Documentation Index
@@ -120,6 +120,15 @@ paths:
           required: false
           schema:
             type: string
+        - name: min_updated_ts
+          in: query
+          required: false
+          description: >-
+            Filter milestones with metadata updated after this Unix timestamp
+            (in seconds). Use this to efficiently poll for changes.
+          schema:
+            type: integer
+            format: int64
       responses:
         '200':
           description: Milestones retrieved successfully

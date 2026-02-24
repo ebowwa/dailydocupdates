@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/setup.md
-Downloaded: 2026-02-22T23:06:41.656Z
+Downloaded: 2026-02-24T20:16:23.963Z
 -->
 
 > ## Documentation Index
@@ -258,7 +258,7 @@ Configure this via `/config` → **Auto-update channel**, or add it to your [set
 }
 ```
 
-For enterprise deployments, you can enforce a consistent release channel across your organization using [managed settings](/en/permissions#managed-settings).
+For enterprise deployments, you can enforce a consistent release channel across your organization using [managed settings](/en/settings#settings-files).
 
 ### Disable auto-updates
 

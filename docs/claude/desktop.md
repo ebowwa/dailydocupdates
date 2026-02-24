@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/desktop.md
-Downloaded: 2026-02-22T23:06:41.651Z
+Downloaded: 2026-02-24T20:16:23.957Z
 -->
 
 > ## Documentation Index
@@ -374,9 +374,9 @@ These settings are configured through the [admin settings console](https://claud
 
 Managed settings override project and user settings and apply when Desktop spawns CLI sessions. You can set these keys in your organization's [managed settings](/en/settings#settings-precedence) file or push them remotely through the admin console.
 
-| Key                            | Description                                                                                                                     |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
-| `disableBypassPermissionsMode` | set to `"disable"` to prevent users from enabling Bypass permissions mode. See [permissions](/en/permissions#managed-settings). |
+| Key                            | Description                                                                                                                               |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `disableBypassPermissionsMode` | set to `"disable"` to prevent users from enabling Bypass permissions mode. See [managed settings](/en/permissions#managed-only-settings). |
 
 For the complete list of managed-only settings including `allowManagedPermissionRulesOnly` and `allowManagedHooksOnly`, see [managed-only settings](/en/permissions#managed-only-settings).
 
