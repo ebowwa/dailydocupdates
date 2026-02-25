@@ -101,13 +101,16 @@ async function summarizeDocs(docContents: string): Promise<string> {
 
 ${docContents}
 
-SUMMARIZE THE ACTUAL DOCUMENTATION CONTENT:
-1. NEW FEATURES - What new capabilities, APIs, or features are documented?
-2. KEY CONCEPTS - What important technical concepts are explained?
-3. GUIDES/TUTORIALS - What how-to guides or tutorials are available?
-4. CHANGES - What's new or different from previous versions?
+For EACH project, provide a 1-2 sentence summary of:
+- Key features/APIs documented
+- Notable guides or tutorials
 
-Provide a concise summary (under 250 words) organized by project. Focus on what a developer would find USEFUL - specific features, APIs, patterns, or insights. Be specific, not vague.`;
+Keep it VERY concise. Format as:
+
+### PROJECT_NAME
+Brief summary here.
+
+Total output must be under 150 words. Be specific, not vague.`;
 
   try {
     const client = new GLMClient();
@@ -200,12 +203,41 @@ async function main() {
   const channel = new TelegramChannel(telegramConfig);
   const chatIdNum = parseInt(chatId, 10);
 
+  // Telegram has 4096 char limit - split if needed
+  const MAX_LEN = 4000;
+
   try {
-    try {
-      await channel.sendMessage(chatIdNum, report, { parse_mode: "Markdown" });
-    } catch {
-      console.log("Markdown parse failed, sending as plain text...");
-      await channel.sendMessage(chatIdNum, report);
+    if (report.length <= MAX_LEN) {
+      try {
+        await channel.sendMessage(chatIdNum, report, { parse_mode: "Markdown" });
+      } catch {
+        await channel.sendMessage(chatIdNum, report);
+      }
+    } else {
+      // Split into parts
+      const parts = report.split(/(?=### )/g).filter(Boolean);
+      let currentPart = "";
+
+      for (const part of parts) {
+        if ((currentPart + part).length > MAX_LEN && currentPart) {
+          try {
+            await channel.sendMessage(chatIdNum, currentPart, { parse_mode: "Markdown" });
+          } catch {
+            await channel.sendMessage(chatIdNum, currentPart);
+          }
+          currentPart = part;
+        } else {
+          currentPart += part;
+        }
+      }
+
+      if (currentPart) {
+        try {
+          await channel.sendMessage(chatIdNum, currentPart, { parse_mode: "Markdown" });
+        } catch {
+          await channel.sendMessage(chatIdNum, currentPart);
+        }
+      }
     }
     console.log("Sent successfully!");
 
