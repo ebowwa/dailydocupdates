@@ -9,9 +9,12 @@
     "notify:dry": "bun run scripts/notify.ts --dry-run"
   },
   "dependencies": {
-    "@ebowwa/cron-notifier": "^0.1.7",
-    "@ebowwa/markdown-docs-scraper": "^1.2.2",
-    "openai": "^4.0.0"
+    "@ebowwa/ai": "^0.3.9",
+    "@ebowwa/channel-telegram": "^1.14.7",
+    "@ebowwa/codespaces-types": "^1.6.3",
+    "@ebowwa/cron-notifier": "^0.6.0",
+    "@ebowwa/git-ops": "^0.1.4",
+    "@ebowwa/markdown-docs-scraper": "^1.2.2"
   },
   "devDependencies": {
     "@types/bun": "^1.1.0",
