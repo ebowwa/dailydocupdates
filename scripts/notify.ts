@@ -189,7 +189,13 @@ async function main() {
   const chatIdNum = parseInt(chatId, 10);
 
   try {
-    await channel.sendMessage(chatIdNum, report, { parse_mode: "Markdown" });
+    // Try Markdown first, fall back to plain text if parsing fails
+    try {
+      await channel.sendMessage(chatIdNum, report, { parse_mode: "Markdown" });
+    } catch (markdownError) {
+      console.log("Markdown parse failed, sending as plain text...");
+      await channel.sendMessage(chatIdNum, report);
+    }
     console.log("Sent successfully!");
 
     // Update state after successful send
