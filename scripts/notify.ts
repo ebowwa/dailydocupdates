@@ -128,44 +128,51 @@ async function summarizeChanges(allChanges: ReturnType<typeof getDocChanges>[]):
 ### ${c.project.toUpperCase()} ${label}
 
 TODAY:
-${c.today.slice(0, 2500)}
+${c.today.slice(0, 3500)}
 
 ${c.yesterday ? `YESTERDAY:
-${c.yesterday.slice(0, 1000)}` : "(no previous version)"}
+${c.yesterday.slice(0, 1500)}` : "(no previous version)"}
 `;
     })
     .join("\n---\n");
 
-  const prompt = `You are a technical documentation analyst. Compare TODAY's documentation vs YESTERDAY's for each project.
+  const prompt = `You are a senior developer writing for other developers. Analyze documentation changes and explain what matters for USING these libraries/SDKs.
 
 ${comparisons}
 
-For EACH project with changes, describe what's NEW or DIFFERENT:
-1. NEW SECTIONS - What new pages, guides, or topics appeared?
-2. CONTENT UPDATES - What information was added, changed, or removed?
-3. NEW FEATURES - Any new APIs, commands, or capabilities documented?
+For each changed project, provide:
 
-IGNORE:
-- Timestamps, generation dates, metadata
-- Whitespace/formatting changes
-- Identical content
+**NEW APIS/METHODS** - New functions, endpoints, or methods with their signatures
+**BREAKING CHANGES** - Deprecated methods, changed signatures, removed features
+**NEW PARAMETERS** - New options, flags, or config values
+**BUG FIXES** - Issues that were resolved (if relevant to usage)
+**USAGE EXAMPLES** - Code snippets showing how to use new features
 
-Format:
-### PROJECT (CHANGED/NEW)
-What changed in 1-2 sentences. Be SPECIFIC about the actual content changes.
+Be TECHNICAL and SPECIFIC. Include:
+- Actual method/endpoint names
+- Parameter names and types
+- Code examples where relevant
+- Version numbers if mentioned
 
-Skip projects with no real changes. Be concise - under 200 words total.`;
+Skip boilerplate like "documentation was updated". Focus on what a developer needs to KNOW to use these changes.
+
+Format each project as:
+### PROJECT
+- **New**: \`method_name(params)\` - what it does
+- **Changed**: what changed and how to migrate
+- **Fixed**: specific bugs resolved
+
+Keep under 300 words total. Be concise but technically precise.`;
 
   try {
     const client = new GLMClient();
-    const response = await client.chatCompletion(
-      [{ role: "user", content: prompt }],
+    // Use generateWithSystem to provide clear instructions
+    const response = await client.generateWithSystem(
+      "You are a senior developer. Respond directly with the technical summary. Do not show your reasoning process.",
+      prompt,
       { model: "GLM-4.7", maxTokens: 2000 }
     );
-
-    const choice = response.choices[0];
-    const message = choice?.message as any;
-    return message?.content || message?.reasoning_content || "Failed to generate summary.";
+    return response || "Failed to generate summary.";
   } catch (error) {
     console.error("LLM error:", error);
     if (error instanceof Error && error.message.includes("API key not found")) {
