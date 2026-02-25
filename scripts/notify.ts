@@ -63,17 +63,27 @@ async function summarizeChanges(data: {
   additions: number;
   deletions: number;
 }): Promise<string> {
-  const prompt = `You are a technical documentation analyst. Summarize the following git changes for a developer.
+  const prompt = `You are a technical documentation analyst. Your job is to summarize the CONTENT of documentation updates, NOT the git/repo metadata.
 
-Files changed (${data.filesChanged.length}):
+Documentation files updated (${data.filesChanged.length}):
 ${data.filesChanged.map((f) => `- ${f}`).join("\n")}
 
-Stats: +${data.additions}/-${data.deletions}
+Diff content:
+\`\`\`
+${data.diffText.slice(0, 8000) || "(no diff content)"}
+\`\`\`
 
-Diff content (may be truncated):
-\`\`\`
-${data.diffText.slice(0, 5000) || "(no diff content)"}
-\`\`\`
+FOCUS ON:
+1. NEW FEATURES/GUIDES - What new capabilities, APIs, or features are documented?
+2. CONTENT CHANGES - What actual information was added, changed, or removed?
+3. ACTIONABLE INSIGHTS - What should a developer know or do based on these docs?
+
+IGNORE:
+- Timestamps, metadata, generated dates
+- File structure changes without content
+- Formatting/whitespace only changes
+
+Provide a concise summary (under 200 words) of what's NEW or CHANGED in the documentation itself. Be specific about features, APIs, or concepts.`;
 
 Provide a concise summary (under 250 words) covering:
 1. What was updated
