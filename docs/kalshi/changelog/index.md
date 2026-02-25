@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-02-24T20:16:38.359Z
+Downloaded: 2026-02-25T20:12:09.476Z
 -->
 
 > ## Documentation Index
@@ -20,22 +20,38 @@ This changelog is a work in progress. As always, we welcome any feedback in our 
 ## Recent Updates
 
 <Update
-  label="Feb 22, 2026"
+  label="Feb 24, 2026"
   tags={["New Feature", "Upcoming"]}
   rss={{
-title: "last_updated_ts on events, series, and milestones",
-description: "Events, series, and milestones now expose a last_updated_ts field and support a min_updated_ts query parameter for efficient polling."
+title: "Top-of-book sizes available on Market responses",
+description: "Top-of-book sizes available on Market responses"
 }}
 >
-  `GET /events`, `GET /series`, and `GET /milestones` now support an optional `min_updated_ts` query parameter (Unix timestamp in seconds). When provided, only events, series, or milestones whose metadata was updated after the given timestamp are returned.
+  Market responses now include:
 
-  Response objects for events and series also include a new `last_updated_ts` field indicating when the metadata was last modified.
+  * `yes_bid_size_fp`: total contract size of orders to buy yes at the best bid price
+  * `yes_ask_size_fp`: total contract size of orders to sell yes at the best ask price
 
   Affected endpoints:
 
-  * `GET /events` — new `min_updated_ts` query param, new `last_updated_ts` response field on `EventData`
-  * `GET /series` — new `min_updated_ts` query param, new `last_updated_ts` response field on `Series`
-  * `GET /milestones` — new `min_updated_ts` query param
+  * `GET /markets`
+  * `GET /markets/{ticker}`
+</Update>
+
+<Update
+  label="Feb 23, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Per-subaccount netting settings",
+description: "New endpoints to get and update netting settings per subaccount.",
+}}
+>
+  New endpoints for managing netting settings on individual subaccounts:
+
+  * **`GET /portfolio/subaccounts/netting`**: returns the netting enabled status for all subaccounts
+  * **`PUT /portfolio/subaccounts/netting`**: updates the netting enabled status for a specific subaccount (pass `subaccount_number` and `enabled` in the request body)
+
+  Use `subaccount_number=0` for the primary account or `1`–`32` for numbered subaccounts. New subaccounts inherit the primary account's netting setting at creation time.
 </Update>
 
 <Update

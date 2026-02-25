@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/ecosystem/ssr-react.md
-Downloaded: 2026-02-22T23:06:45.115Z
+Downloaded: 2026-02-25T20:12:33.791Z
 -->
 
 > ## Documentation Index
@@ -38,7 +38,7 @@ const stream = await renderToReadableStream(<Component message="Hello from serve
 
 Combining this with `Bun.serve()`, we get a simple SSR HTTP server:
 
-```tsx server.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```tsx server.tsx icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   async fetch() {
     const stream = await renderToReadableStream(<Component message="Hello from server!" />);

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/multivariate/create-market-in-multivariate-event-collection.md
-Downloaded: 2026-02-22T23:06:59.944Z
+Downloaded: 2026-02-25T20:12:09.471Z
 -->
 
 > ## Documentation Index
@@ -178,6 +178,8 @@ components:
         - no_bid_dollars
         - no_ask
         - no_ask_dollars
+        - yes_bid_size_fp
+        - yes_ask_size_fp
         - last_price
         - last_price_dollars
         - previous_yes_bid
@@ -281,6 +283,11 @@ components:
         yes_bid_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           description: Price for the highest YES buy offer on this market in dollars
+        yes_bid_size_fp:
+          $ref: '#/components/schemas/FixedPointCount'
+          description: >-
+            Total contract size of orders to buy YES at the best bid price
+            (fixed-point count string).
         yes_ask:
           type: number
           deprecated: true
@@ -288,6 +295,11 @@ components:
         yes_ask_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           description: Price for the lowest YES sell offer on this market in dollars
+        yes_ask_size_fp:
+          $ref: '#/components/schemas/FixedPointCount'
+          description: >-
+            Total contract size of orders to sell YES at the best ask price
+            (fixed-point count string).
         no_bid:
           type: number
           deprecated: true

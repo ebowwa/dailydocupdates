@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/overview.md
-Downloaded: 2026-02-24T20:16:23.961Z
+Downloaded: 2026-02-25T20:12:07.071Z
 -->
 
 > ## Documentation Index
@@ -43,13 +43,15 @@ Choose your environment to get started. Most surfaces require a [Claude subscrip
         curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
         ```
 
+        **Windows requires [Git for Windows](https://git-scm.com/downloads/win).** Install it first if you don't have it.
+
         <Info>
           Native installations automatically update in the background to keep you on the latest version.
         </Info>
       </Tab>
 
       <Tab title="Homebrew">
-        ```sh  theme={null}
+        ```bash  theme={null}
         brew install --cask claude-code
         ```
 

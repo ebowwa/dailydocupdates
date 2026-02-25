@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/typescript-sdk/api/PortfolioApi.md
-Downloaded: 2026-02-22T23:06:59.954Z
+Downloaded: 2026-02-25T20:12:09.482Z
 -->
 
 > ## Documentation Index
@@ -23,7 +23,9 @@ All URIs are relative to *[https://api.elections.kalshi.com/trade-api/v2](https:
 | [**getPositions**](#getpositions)                                             | **GET** /portfolio/positions                            | Get Positions                 |
 | [**getSettlements**](#getsettlements)                                         | **GET** /portfolio/settlements                          | Get Settlements               |
 | [**getSubaccountBalances**](#getsubaccountbalances)                           | **GET** /portfolio/subaccounts/balances                 | Get All Subaccount Balances   |
+| [**getSubaccountNetting**](#getsubaccountnetting)                             | **GET** /portfolio/subaccounts/netting                  | Get Subaccount Netting        |
 | [**getSubaccountTransfers**](#getsubaccounttransfers)                         | **GET** /portfolio/subaccounts/transfers                | Get Subaccount Transfers      |
+| [**updateSubaccountNetting**](#updatesubaccountnetting)                       | **PUT** /portfolio/subaccounts/netting                  | Update Subaccount Netting     |
 
 # **applySubaccountTransfer**
 
@@ -305,6 +307,37 @@ This endpoint does not have any parameters.
 | **401**     | Unauthorized - authentication required | -                |
 | **500**     | Internal server error                  | -                |
 
+# **getSubaccountNetting**
+
+> GetSubaccountNettingResponse getSubaccountNetting()
+
+Gets the netting enabled settings for all subaccounts.
+
+### Parameters
+
+This endpoint does not have any parameters.
+
+### Return type
+
+**GetSubaccountNettingResponse**
+
+### Authorization
+
+[kalshiAccessSignature](../README.md#kalshiAccessSignature), [kalshiAccessKey](../README.md#kalshiAccessKey), [kalshiAccessTimestamp](../README.md#kalshiAccessTimestamp)
+
+### HTTP request headers
+
+* **Content-Type**: Not defined
+* **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                             | Response headers |
+| ----------- | --------------------------------------- | ---------------- |
+| **200**     | Netting settings retrieved successfully | -                |
+| **401**     | Unauthorized - authentication required  | -                |
+| **500**     | Internal server error                   | -                |
+
 # **getSubaccountTransfers**
 
 > GetSubaccountTransfersResponse getSubaccountTransfers()
@@ -336,5 +369,39 @@ Gets a paginated list of all transfers between subaccounts for the authenticated
 | Status code | Description                            | Response headers |
 | ----------- | -------------------------------------- | ---------------- |
 | **200**     | Transfers retrieved successfully       | -                |
+| **401**     | Unauthorized - authentication required | -                |
+| **500**     | Internal server error                  | -                |
+
+# **updateSubaccountNetting**
+
+> updateSubaccountNetting(updateSubaccountNettingRequest)
+
+Updates the netting enabled setting for a specific subaccount. Use 0 for the primary account, or 1-32 for numbered subaccounts.
+
+### Parameters
+
+| Name                               | Type                               | Description | Notes |
+| ---------------------------------- | ---------------------------------- | ----------- | ----- |
+| **updateSubaccountNettingRequest** | **UpdateSubaccountNettingRequest** |             |       |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[kalshiAccessSignature](../README.md#kalshiAccessSignature), [kalshiAccessKey](../README.md#kalshiAccessKey), [kalshiAccessTimestamp](../README.md#kalshiAccessTimestamp)
+
+### HTTP request headers
+
+* **Content-Type**: application/json
+* **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description                            | Response headers |
+| ----------- | -------------------------------------- | ---------------- |
+| **200**     | Netting setting updated successfully   | -                |
+| **400**     | Bad request - invalid input            | -                |
 | **401**     | Unauthorized - authentication required | -                |
 | **500**     | Internal server error                  | -                |
