@@ -2,11 +2,7 @@
 /**
  * Daily Doc Update Telegram Notifier
  *
- * Orchestrates:
- * 1. @ebowwa/cron-notifier - State tracking and scheduling
- * 2. @ebowwa/git-ops - Get git diff
- * 3. @ebowwa/ai - Generate LLM summary (GLMClient)
- * 4. @ebowwa/channel-telegram - Send to Telegram
+ * Summarizes the CONTENT of scraped documentation, not just git diffs.
  *
  * Usage:
  *   bun run notify           # Live send
@@ -14,9 +10,8 @@
  *   bun run notify --force   # Force run (skip schedule check)
  */
 
-import { readFileSync, writeFileSync, existsSync } from "fs";
+import { readFileSync, writeFileSync, existsSync, readdirSync, statSync } from "fs";
 import { join } from "path";
-import { getDiff } from "@ebowwa/git-ops";
 import { GLMClient } from "@ebowwa/ai";
 import {
   TelegramChannel,
@@ -36,7 +31,7 @@ const dryRun = args.includes("--dry-run") || args.includes("--dry");
 const forceRun = args.includes("--force") || args.includes("-f");
 
 const STATE_FILE = join(process.cwd(), ".notify-state.json");
-const SCHEDULE = SCHEDULES.DAILY; // 0 9 * * *
+const SCHEDULE = SCHEDULES.DAILY;
 
 function loadState(): JobState {
   if (existsSync(STATE_FILE)) {
@@ -55,35 +50,64 @@ function saveState(state: JobState): void {
 }
 
 /**
- * Generate summary using @ebowwa/ai GLMClient
+ * Get today's doc files from daily/ directory
  */
-async function summarizeChanges(data: {
-  diffText: string;
-  filesChanged: string[];
-  additions: number;
-  deletions: number;
-}): Promise<string> {
-  const prompt = `You are a technical documentation analyst. Your job is to summarize the CONTENT of documentation updates, NOT the git/repo metadata.
+function getTodaysDocFiles(): string[] {
+  const today = new Date().toISOString().split("T")[0];
+  const [year, month, day] = today.split("-");
+  const dailyDir = join(process.cwd(), "daily");
 
-Documentation files updated (${data.filesChanged.length}):
-${data.filesChanged.map((f) => `- ${f}`).join("\n")}
+  const files: string[] = [];
 
-Diff content:
-\`\`\`
-${data.diffText.slice(0, 8000) || "(no diff content)"}
-\`\`\`
+  if (!existsSync(dailyDir)) return files;
 
-FOCUS ON:
-1. NEW FEATURES/GUIDES - What new capabilities, APIs, or features are documented?
-2. CONTENT CHANGES - What actual information was added, changed, or removed?
-3. ACTIONABLE INSIGHTS - What should a developer know or do based on these docs?
+  // Read all subdirectories (bun, claude, kalshi, polymarket, rust)
+  const dirs = readdirSync(dailyDir).filter((d) => {
+    const stat = statSync(join(dailyDir, d));
+    return stat.isDirectory();
+  });
 
-IGNORE:
-- Timestamps, metadata, generated dates
-- File structure changes without content
-- Formatting/whitespace only changes
+  for (const dir of dirs) {
+    // Look for today's file: daily/{dir}/{year}/{month}/{day}.md
+    const todayFile = join(dailyDir, dir, year, month, `${day}.md`);
+    if (existsSync(todayFile)) {
+      files.push(todayFile);
+    }
+  }
 
-Provide a concise summary (under 200 words) of what's NEW or CHANGED in the documentation itself. Be specific about features, APIs, or concepts.`;
+  return files;
+}
+
+/**
+ * Read doc content from file
+ */
+function readDocContent(filePath: string): string {
+  try {
+    const content = readFileSync(filePath, "utf-8");
+    // Get the project name from path
+    const parts = filePath.split("/");
+    const projectName = parts[parts.indexOf("daily") + 1] || "unknown";
+    return `\n### ${projectName.toUpperCase()}\n\n${content.slice(0, 3000)}`;
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Generate summary of doc CONTENT (not git diffs)
+ */
+async function summarizeDocs(docContents: string): Promise<string> {
+  const prompt = `You are a technical documentation analyst. Summarize the CONTENT of these documentation files for a developer.
+
+${docContents}
+
+SUMMARIZE THE ACTUAL DOCUMENTATION CONTENT:
+1. NEW FEATURES - What new capabilities, APIs, or features are documented?
+2. KEY CONCEPTS - What important technical concepts are explained?
+3. GUIDES/TUTORIALS - What how-to guides or tutorials are available?
+4. CHANGES - What's new or different from previous versions?
+
+Provide a concise summary (under 250 words) organized by project. Focus on what a developer would find USEFUL - specific features, APIs, patterns, or insights. Be specific, not vague.`;
 
   try {
     const client = new GLMClient();
@@ -97,44 +121,38 @@ Provide a concise summary (under 200 words) of what's NEW or CHANGED in the docu
     return message?.content || message?.reasoning_content || "Failed to generate summary.";
   } catch (error) {
     console.error("LLM error:", error);
-
     if (error instanceof Error && error.message.includes("API key not found")) {
-      return "No LLM API key configured. Set Z_AI_API_KEY, ZAI_API_KEY, or GLM_API_KEY.";
+      return "No LLM API key configured. Set Z_AI_API_KEY.";
     }
-
     return `Error generating summary: ${error instanceof Error ? error.message : "Unknown error"}`;
   }
 }
 
 /**
- * Generate daily report
+ * Generate daily report from doc content
  */
-async function generateDailyReport(data: {
-  filesChanged: string[];
-  additions: number;
-  deletions: number;
-  diffText: string;
-  state: JobState;
-}): Promise<string> {
+async function generateDailyReport(docFiles: string[], state: JobState): Promise<string> {
   const date = new Date().toISOString().split("T")[0];
-  const header = `*Daily Doc Updates - ${date}*\n_Run #${data.state.runCount + 1}_\n\n`;
-  const stats =
-    data.filesChanged.length > 0
-      ? `📊 _${data.filesChanged.length} files changed (+${data.additions}/-${data.deletions})_\n\n`
-      : `📊 _No changes detected_\n\n`;
+  const header = `*Daily Docs - ${date}*\n_Run #${state.runCount + 1}_\n\n`;
+  const stats = `📚 _${docFiles.length} documentation sources scraped_\n\n`;
 
-  if (data.filesChanged.length === 0) {
-    return header + stats + "No changes detected in the last 24 hours.";
+  if (docFiles.length === 0) {
+    return header + stats + "No doc files found for today.";
   }
 
-  const summary = await summarizeChanges(data);
+  // Read all doc content
+  const docContents = docFiles
+    .map(readDocContent)
+    .filter((c) => c.length > 0)
+    .join("\n---\n");
+
+  const summary = await summarizeDocs(docContents);
   return header + stats + summary;
 }
 
 async function main() {
   console.log("Daily Doc Updates - Telegram Notifier\n");
 
-  // Load state
   const state = loadState();
   const lastRun = state.lastRun ? new Date(state.lastRun) : null;
   const now = new Date();
@@ -144,7 +162,7 @@ async function main() {
     if (!isTimeToRun(SCHEDULE, lastRun, now)) {
       const nextRun = getNextRun(SCHEDULE, now);
       const timeUntil = formatDuration(nextRun.getTime() - now.getTime());
-      console.log(`Not time to run yet. Next run in ${timeUntil} (${nextRun.toISOString()})`);
+      console.log(`Not time to run yet. Next run in ${timeUntil}`);
       process.exit(0);
     }
   }
@@ -153,31 +171,23 @@ async function main() {
     console.log("[FORCE] Running regardless of schedule\n");
   }
 
-  // 1. Get git diff using @ebowwa/git-ops
-  console.log("Getting git diff...");
-  const gitDiff = await getDiff("HEAD~1", "HEAD", { cwd: process.cwd() });
-  console.log(`Found ${gitDiff.filesChanged.length} files changed`);
+  // Get today's doc files
+  console.log("Reading today's documentation...");
+  const docFiles = getTodaysDocFiles();
+  console.log(`Found ${docFiles.length} doc files for today`);
 
-  // 2. Generate report using @ebowwa/ai GLMClient
+  // Generate report from doc content
   console.log("Generating summary...");
-  const report = await generateDailyReport({
-    filesChanged: gitDiff.filesChanged,
-    additions: gitDiff.additions,
-    deletions: gitDiff.deletions,
-    diffText: gitDiff.diffText,
-    state,
-  });
+  const report = await generateDailyReport(docFiles, state);
 
-  // 3. Dry run or send to Telegram
+  // Dry run or send to Telegram
   if (dryRun) {
     console.log("\n[DRY RUN] Would send:\n");
     console.log(`To: ${process.env.TELEGRAM_CHAT_ID}`);
     console.log(`Message:\n${report}`);
-    console.log(`\nState: ${JSON.stringify(state, null, 2)}`);
     return;
   }
 
-  // Get Telegram config
   const telegramConfig = createTelegramConfigFromEnv();
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
@@ -186,22 +196,19 @@ async function main() {
     process.exit(1);
   }
 
-  // Send using @ebowwa/channel-telegram
   console.log("Sending to Telegram...");
   const channel = new TelegramChannel(telegramConfig);
   const chatIdNum = parseInt(chatId, 10);
 
   try {
-    // Try Markdown first, fall back to plain text if parsing fails
     try {
       await channel.sendMessage(chatIdNum, report, { parse_mode: "Markdown" });
-    } catch (markdownError) {
+    } catch {
       console.log("Markdown parse failed, sending as plain text...");
       await channel.sendMessage(chatIdNum, report);
     }
     console.log("Sent successfully!");
 
-    // Update state after successful send
     const newState = updateJobState(state, SCHEDULE, now);
     saveState(newState);
     console.log(`Next run: ${newState.nextRun}`);
