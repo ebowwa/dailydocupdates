@@ -85,13 +85,6 @@ IGNORE:
 
 Provide a concise summary (under 200 words) of what's NEW or CHANGED in the documentation itself. Be specific about features, APIs, or concepts.`;
 
-Provide a concise summary (under 250 words) covering:
-1. What was updated
-2. Key changes (new features, API changes, deprecations)
-3. Action items if any
-
-Format as a clean message with emoji headers. Be brief and actionable.`;
-
   try {
     const client = new GLMClient();
     const response = await client.chatCompletion(
