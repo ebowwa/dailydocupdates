@@ -2,7 +2,7 @@
 /**
  * Daily Doc Update Telegram Notifier
  *
- * Summarizes the CONTENT of scraped documentation, not just git diffs.
+ * Compares TODAY's docs vs YESTERDAY's docs to show what CHANGED.
  *
  * Usage:
  *   bun run notify           # Live send
@@ -50,32 +50,29 @@ function saveState(state: JobState): void {
 }
 
 /**
- * Get today's doc files from daily/ directory
+ * Get doc file path for a specific date
  */
-function getTodaysDocFiles(): string[] {
-  const today = new Date().toISOString().split("T")[0];
-  const [year, month, day] = today.split("-");
+function getDocFile(project: string, date: Date): string | null {
   const dailyDir = join(process.cwd(), "daily");
+  const [year, month, day] = date.toISOString().split("T")[0].split("-");
+  const filePath = join(dailyDir, project, year, month, `${day}.md`);
+  return existsSync(filePath) ? filePath : null;
+}
 
-  const files: string[] = [];
-
-  if (!existsSync(dailyDir)) return files;
-
-  // Read all subdirectories (bun, claude, kalshi, polymarket, rust)
-  const dirs = readdirSync(dailyDir).filter((d) => {
-    const stat = statSync(join(dailyDir, d));
-    return stat.isDirectory();
-  });
-
-  for (const dir of dirs) {
-    // Look for today's file: daily/{dir}/{year}/{month}/{day}.md
-    const todayFile = join(dailyDir, dir, year, month, `${day}.md`);
-    if (existsSync(todayFile)) {
-      files.push(todayFile);
+/**
+ * Get all project directories
+ */
+function getProjects(): string[] {
+  const dailyDir = join(process.cwd(), "daily");
+  if (!existsSync(dailyDir)) return [];
+  return readdirSync(dailyDir).filter((d) => {
+    try {
+      const stat = statSync(join(dailyDir, d));
+      return stat.isDirectory();
+    } catch {
+      return false;
     }
-  }
-
-  return files;
+  });
 }
 
 /**
@@ -83,34 +80,81 @@ function getTodaysDocFiles(): string[] {
  */
 function readDocContent(filePath: string): string {
   try {
-    const content = readFileSync(filePath, "utf-8");
-    // Get the project name from path
-    const parts = filePath.split("/");
-    const projectName = parts[parts.indexOf("daily") + 1] || "unknown";
-    return `\n### ${projectName.toUpperCase()}\n\n${content.slice(0, 3000)}`;
+    return readFileSync(filePath, "utf-8");
   } catch {
     return "";
   }
 }
 
 /**
- * Generate summary of doc CONTENT (not git diffs)
+ * Get what changed between today and yesterday for a project
  */
-async function summarizeDocs(docContents: string): Promise<string> {
-  const prompt = `You are a technical documentation analyst. Summarize the CONTENT of these documentation files for a developer.
+function getDocChanges(project: string): {
+  project: string;
+  today: string;
+  yesterday: string;
+  hasChanges: boolean;
+  isNew: boolean;
+} {
+  const today = new Date();
+  const yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
 
-${docContents}
+  const todayFile = getDocFile(project, today);
+  const yesterdayFile = getDocFile(project, yesterday);
 
-For EACH project, provide a 1-2 sentence summary of:
-- Key features/APIs documented
-- Notable guides or tutorials
+  const todayContent = todayFile ? readDocContent(todayFile) : "";
+  const yesterdayContent = yesterdayFile ? readDocContent(yesterdayFile) : "";
 
-Keep it VERY concise. Format as:
+  return {
+    project,
+    today: todayContent,
+    yesterday: yesterdayContent,
+    hasChanges: todayContent !== yesterdayContent && todayContent.length > 0,
+    isNew: !yesterdayContent && todayContent.length > 0
+  };
+}
 
-### PROJECT_NAME
-Brief summary here.
+/**
+ * Generate summary of CHANGES between today and yesterday
+ */
+async function summarizeChanges(allChanges: ReturnType<typeof getDocChanges>[]): Promise<string> {
+  // Build comparison text for each project
+  const comparisons = allChanges
+    .filter(c => c.today.length > 0)
+    .map(c => {
+      const label = c.isNew ? "(NEW)" : c.hasChanges ? "(CHANGED)" : "(unchanged)";
+      return `
+### ${c.project.toUpperCase()} ${label}
 
-Total output must be under 150 words. Be specific, not vague.`;
+TODAY:
+${c.today.slice(0, 2500)}
+
+${c.yesterday ? `YESTERDAY:
+${c.yesterday.slice(0, 1000)}` : "(no previous version)"}
+`;
+    })
+    .join("\n---\n");
+
+  const prompt = `You are a technical documentation analyst. Compare TODAY's documentation vs YESTERDAY's for each project.
+
+${comparisons}
+
+For EACH project with changes, describe what's NEW or DIFFERENT:
+1. NEW SECTIONS - What new pages, guides, or topics appeared?
+2. CONTENT UPDATES - What information was added, changed, or removed?
+3. NEW FEATURES - Any new APIs, commands, or capabilities documented?
+
+IGNORE:
+- Timestamps, generation dates, metadata
+- Whitespace/formatting changes
+- Identical content
+
+Format:
+### PROJECT (CHANGED/NEW)
+What changed in 1-2 sentences. Be SPECIFIC about the actual content changes.
+
+Skip projects with no real changes. Be concise - under 200 words total.`;
 
   try {
     const client = new GLMClient();
@@ -132,24 +176,24 @@ Total output must be under 150 words. Be specific, not vague.`;
 }
 
 /**
- * Generate daily report from doc content
+ * Generate daily report from doc changes
  */
-async function generateDailyReport(docFiles: string[], state: JobState): Promise<string> {
+async function generateDailyReport(state: JobState): Promise<string> {
   const date = new Date().toISOString().split("T")[0];
-  const header = `*Daily Docs - ${date}*\n_Run #${state.runCount + 1}_\n\n`;
-  const stats = `📚 _${docFiles.length} documentation sources scraped_\n\n`;
+  const projects = getProjects();
 
-  if (docFiles.length === 0) {
-    return header + stats + "No doc files found for today.";
+  const allChanges = projects.map(getDocChanges);
+  const changedProjects = allChanges.filter(c => c.hasChanges || c.isNew);
+  const newProjects = allChanges.filter(c => c.isNew);
+
+  const header = `*Daily Doc Changes - ${date}*\n_Run #${state.runCount + 1}_\n\n`;
+  const stats = `📚 ${projects.length} sources tracked | ${changedProjects.length} changed | ${newProjects.length} new\n\n`;
+
+  if (changedProjects.length === 0) {
+    return header + stats + "No documentation changes detected today.";
   }
 
-  // Read all doc content
-  const docContents = docFiles
-    .map(readDocContent)
-    .filter((c) => c.length > 0)
-    .join("\n---\n");
-
-  const summary = await summarizeDocs(docContents);
+  const summary = await summarizeChanges(allChanges);
   return header + stats + summary;
 }
 
@@ -174,14 +218,9 @@ async function main() {
     console.log("[FORCE] Running regardless of schedule\n");
   }
 
-  // Get today's doc files
-  console.log("Reading today's documentation...");
-  const docFiles = getTodaysDocFiles();
-  console.log(`Found ${docFiles.length} doc files for today`);
-
-  // Generate report from doc content
-  console.log("Generating summary...");
-  const report = await generateDailyReport(docFiles, state);
+  // Compare today vs yesterday
+  console.log("Comparing today's docs vs yesterday's...");
+  const report = await generateDailyReport(state);
 
   // Dry run or send to Telegram
   if (dryRun) {
