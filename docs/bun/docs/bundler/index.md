@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/bundler/index.md
-Downloaded: 2026-02-23T20:19:48.252Z
+Downloaded: 2026-02-26T20:14:42.970Z
 -->
 
 > ## Documentation Index
@@ -1856,7 +1856,7 @@ declare class ResolveMessage {
 
 ## CLI Usage
 
-```bash theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build <entry points>
 ```
 

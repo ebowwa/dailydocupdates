@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/bundler/executables.md
-Downloaded: 2026-02-22T23:06:45.108Z
+Downloaded: 2026-02-26T20:14:42.969Z
 -->
 
 > ## Documentation Index
@@ -165,6 +165,30 @@ To build for Windows x64:
   </Tab>
 </Tabs>
 
+To build for Windows arm64:
+
+<Tabs>
+  <Tab title="CLI">
+    ```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile --target=bun-windows-arm64 ./path/to/my/app.ts --outfile myapp
+
+    # note: if no .exe extension is provided, Bun will automatically add it for Windows executables
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./path/to/my/app.ts"],
+      compile: {
+        target: "bun-windows-arm64",
+        outfile: "./myapp", // .exe added automatically
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
+
 To build for macOS arm64:
 
 <Tabs>
@@ -213,16 +237,16 @@ To build for macOS x64:
 
 The order of the `--target` flag does not matter, as long as they're delimited by a `-`.
 
-| --target              | Operating System | Architecture | Modern | Baseline | Libc  |
-| --------------------- | ---------------- | ------------ | ------ | -------- | ----- |
-| bun-linux-x64         | Linux            | x64          | ✅      | ✅        | glibc |
-| bun-linux-arm64       | Linux            | arm64        | ✅      | N/A      | glibc |
-| bun-windows-x64       | Windows          | x64          | ✅      | ✅        | -     |
-| ~~bun-windows-arm64~~ | ~~Windows~~      | ~~arm64~~    | ❌      | ❌        | -     |
-| bun-darwin-x64        | macOS            | x64          | ✅      | ✅        | -     |
-| bun-darwin-arm64      | macOS            | arm64        | ✅      | N/A      | -     |
-| bun-linux-x64-musl    | Linux            | x64          | ✅      | ✅        | musl  |
-| bun-linux-arm64-musl  | Linux            | arm64        | ✅      | N/A      | musl  |
+| --target             | Operating System | Architecture | Modern | Baseline | Libc  |
+| -------------------- | ---------------- | ------------ | ------ | -------- | ----- |
+| bun-linux-x64        | Linux            | x64          | ✅      | ✅        | glibc |
+| bun-linux-arm64      | Linux            | arm64        | ✅      | N/A      | glibc |
+| bun-windows-x64      | Windows          | x64          | ✅      | ✅        | -     |
+| bun-windows-arm64    | Windows          | arm64        | ✅      | N/A      | -     |
+| bun-darwin-x64       | macOS            | x64          | ✅      | ✅        | -     |
+| bun-darwin-arm64     | macOS            | arm64        | ✅      | N/A      | -     |
+| bun-linux-x64-musl   | Linux            | x64          | ✅      | ✅        | musl  |
+| bun-linux-arm64-musl | Linux            | arm64        | ✅      | N/A      | musl  |
 
 <Warning>
   On x64 platforms, Bun uses SIMD optimizations which require a modern CPU supporting AVX2 instructions. The `-baseline`
@@ -1265,7 +1289,8 @@ type Target =
   | "bun-linux-arm64-musl"
   | "bun-windows-x64"
   | "bun-windows-x64-baseline"
-  | "bun-windows-x64-modern";
+  | "bun-windows-x64-modern"
+  | "bun-windows-arm64";
 ```
 
 ### Complete example

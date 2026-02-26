@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/interactive-mode.md
-Downloaded: 2026-02-22T23:06:41.653Z
+Downloaded: 2026-02-26T20:14:19.663Z
 -->
 
 > ## Documentation Index
@@ -113,13 +113,13 @@ To create your own commands you can invoke with `/`, see [skills](/en/skills).
 | `/model`                  | Select or change the AI model. With Opus 4.6, use left/right arrows to [adjust effort level](/en/model-config#adjust-effort-level). The change takes effect immediately without waiting for the current response to finish |
 | `/permissions`            | View or update [permissions](/en/permissions#manage-permissions)                                                                                                                                                           |
 | `/plan`                   | Enter plan mode directly from the prompt                                                                                                                                                                                   |
-| `/rename <name>`          | Rename the current session for easier identification                                                                                                                                                                       |
+| `/rename [name]`          | Rename the current session. Without a name, generates one from conversation history (requires at least one message in the conversation context).                                                                           |
 | `/resume [session]`       | Resume a conversation by ID or name, or open the session picker                                                                                                                                                            |
 | `/rewind`                 | Rewind the conversation and/or code, or summarize from a selected message                                                                                                                                                  |
 | `/stats`                  | Visualize daily usage, session history, streaks, and model preferences                                                                                                                                                     |
 | `/status`                 | Open the Settings interface (Status tab) showing version, model, account, and connectivity                                                                                                                                 |
 | `/statusline`             | Set up Claude Code's status line UI                                                                                                                                                                                        |
-| `/copy`                   | Copy the last assistant response to clipboard                                                                                                                                                                              |
+| `/copy`                   | Copy the last response to clipboard. When code blocks are present, shows an interactive picker to select individual code blocks or the full response                                                                       |
 | `/tasks`                  | List and manage background tasks                                                                                                                                                                                           |
 | `/teleport`               | Resume a remote session from claude.ai (subscribers only)                                                                                                                                                                  |
 | `/desktop`                | Hand off the current CLI session to the Claude Code Desktop app (macOS and Windows only)                                                                                                                                   |

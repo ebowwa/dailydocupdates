@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/quick_start_authenticated_requests.md
-Downloaded: 2026-02-22T23:06:59.951Z
+Downloaded: 2026-02-26T20:14:30.342Z
 -->
 
 > ## Documentation Index
@@ -120,7 +120,7 @@ from cryptography.hazmat.primitives.asymmetric import padding
 # Configuration
 API_KEY_ID = 'your-api-key-id-here'
 PRIVATE_KEY_PATH = 'path/to/your/kalshi-key.key'
-BASE_URL = 'https://demo-api.kalshi.co'  # or 'https://api.kalshi.com' for production
+BASE_URL = 'https://demo-api.kalshi.co'  # or 'https://api.elections.kalshi.com' for production
 
 def load_private_key(key_path):
     """Load the private key from file."""
