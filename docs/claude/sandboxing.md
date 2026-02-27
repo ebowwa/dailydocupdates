@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/sandboxing.md
-Downloaded: 2026-02-22T23:06:41.656Z
+Downloaded: 2026-02-27T20:10:31.465Z
 -->
 
 > ## Documentation Index
@@ -94,7 +94,7 @@ On **Linux and WSL2**, install the required packages first:
 
 You can enable sandboxing by running the `/sandbox` command:
 
-```
+```text  theme={null}
 > /sandbox
 ```
 

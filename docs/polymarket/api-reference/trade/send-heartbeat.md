@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/trade/send-heartbeat.md
-Downloaded: 2026-02-22T23:06:41.928Z
+Downloaded: 2026-02-27T20:10:39.331Z
 -->
 
 > ## Documentation Index
@@ -45,6 +45,8 @@ tags:
     description: User notification endpoints
   - name: Rewards
     description: Rewards and earnings endpoints
+  - name: Rebates
+    description: Maker rebate endpoints
 paths:
   /heartbeats:
     post:

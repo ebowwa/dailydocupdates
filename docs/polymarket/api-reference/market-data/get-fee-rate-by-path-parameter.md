@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/market-data/get-fee-rate-by-path-parameter.md
-Downloaded: 2026-02-22T23:06:41.922Z
+Downloaded: 2026-02-27T20:10:39.323Z
 -->
 
 > ## Documentation Index
@@ -42,6 +42,8 @@ tags:
     description: User notification endpoints
   - name: Rewards
     description: Rewards and earnings endpoints
+  - name: Rebates
+    description: Maker rebate endpoints
 paths:
   /fee-rate/{token_id}:
     get:

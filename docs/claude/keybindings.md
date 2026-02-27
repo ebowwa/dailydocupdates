@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/keybindings.md
-Downloaded: 2026-02-22T23:06:41.654Z
+Downloaded: 2026-02-27T20:10:31.463Z
 -->
 
 > ## Documentation Index
@@ -297,7 +297,7 @@ Use modifier keys with the `+` separator:
 
 For example:
 
-```
+```text  theme={null}
 ctrl+k          Single key with modifier
 shift+tab       Shift + Tab
 meta+p          Command/Meta + P
@@ -314,7 +314,7 @@ Uppercase letters with modifiers (e.g., `ctrl+K`) are treated as stylistic and d
 
 Chords are sequences of keystrokes separated by spaces:
 
-```
+```text  theme={null}
 ctrl+k ctrl+s   Press Ctrl+K, release, then Ctrl+S
 ```
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/github-actions.md
-Downloaded: 2026-02-22T23:06:41.652Z
+Downloaded: 2026-02-27T20:10:31.461Z
 -->
 
 > ## Documentation Index
@@ -205,7 +205,7 @@ jobs:
 
 In issue or PR comments:
 
-```
+```text  theme={null}
 @claude implement this feature based on the issue description
 @claude how should I implement user authentication for this endpoint?
 @claude fix the TypeError in the user dashboard component

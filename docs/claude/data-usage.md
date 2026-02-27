@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/data-usage.md
-Downloaded: 2026-02-24T20:16:23.956Z
+Downloaded: 2026-02-27T20:10:31.459Z
 -->
 
 > ## Documentation Index
@@ -47,7 +47,7 @@ Anthropic retains Claude Code data based on your account type and preferences.
 **Commercial users (Team, Enterprise, and API)**:
 
 * Standard: 30-day retention period
-* Zero data retention: Available with appropriately configured API keys - Claude Code will not retain chat transcripts on servers
+* [Zero data retention](/en/zero-data-retention): available for Claude Code on Claude for Enterprise. ZDR is enabled on a per-organization basis; each new organization must have ZDR enabled separately by your account team
 * Local caching: Claude Code clients may store sessions locally for up to 30 days to enable session resumption (configurable)
 
 Learn more about data retention practices in our [Privacy Center](https://privacy.anthropic.com/).

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/desktop.md
-Downloaded: 2026-02-24T20:16:23.957Z
+Downloaded: 2026-02-27T20:10:31.459Z
 -->
 
 > ## Documentation Index
@@ -467,6 +467,8 @@ This table compares core capabilities between the CLI and Desktop. For a full li
 | Scripting and automation                              | [`--print`](/en/cli-reference), [Agent SDK](/en/headless) | not available                                                                               |
 
 ### What's not available in Desktop
+
+The following features are only available in the CLI or VS Code extension:
 
 * **Third-party providers**: Desktop connects to Anthropic's API directly. Use the [CLI](/en/quickstart) with Bedrock, Vertex, or Foundry instead.
 * **Linux**: the desktop app is available on macOS and Windows only.

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/troubleshooting.md
-Downloaded: 2026-02-25T20:12:07.075Z
+Downloaded: 2026-02-27T20:10:31.467Z
 -->
 
 > ## Documentation Index
@@ -838,7 +838,7 @@ If you notice code blocks like this in generated markdown:
 function example() {
   return "hello";
 }
-```
+```text
 ````
 
 Instead of properly tagged blocks like:
@@ -848,7 +848,7 @@ Instead of properly tagged blocks like:
 function example() {
   return "hello";
 }
-```
+```text
 ````
 
 **Solutions:**

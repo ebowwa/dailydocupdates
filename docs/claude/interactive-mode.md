@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/interactive-mode.md
-Downloaded: 2026-02-26T20:14:19.663Z
+Downloaded: 2026-02-27T20:10:31.462Z
 -->
 
 > ## Documentation Index
@@ -18,9 +18,9 @@ Downloaded: 2026-02-26T20:14:19.663Z
 
   **macOS users**: Option/Alt key shortcuts (`Alt+B`, `Alt+F`, `Alt+Y`, `Alt+M`, `Alt+P`) require configuring Option as Meta in your terminal:
 
-  * **iTerm2**: Settings → Profiles → Keys → Set Left/Right Option key to "Esc+"
-  * **Terminal.app**: Settings → Profiles → Keyboard → Check "Use Option as Meta Key"
-  * **VS Code**: Settings → Profiles → Keys → Set Left/Right Option key to "Esc+"
+  * **iTerm2**: settings → Profiles → Keys → set Left/Right Option key to "Esc+"
+  * **Terminal.app**: settings → Profiles → Keyboard → check "Use Option as Meta Key"
+  * **VS Code**: settings → Profiles → Keys → set Left/Right Option key to "Esc+"
 
   See [Terminal configuration](/en/terminal-config) for details.
 </Note>
@@ -209,18 +209,18 @@ Text objects work with operators like `d`, `c`, and `y`:
 
 Claude Code maintains command history for the current session:
 
-* History is stored per working directory
-* Cleared with `/clear` command
+* Input history is stored per working directory
+* Input history resets when you run `/clear` to start a new session. The previous session's conversation is preserved and can be resumed.
 * Use Up/Down arrows to navigate (see keyboard shortcuts above)
-* **Note**: History expansion (`!`) is disabled by default
+* **Note**: history expansion (`!`) is disabled by default
 
 ### Reverse search with Ctrl+R
 
 Press `Ctrl+R` to interactively search through your command history:
 
-1. **Start search**: Press `Ctrl+R` to activate reverse history search
-2. **Type query**: Enter text to search for in previous commands - the search term will be highlighted in matching results
-3. **Navigate matches**: Press `Ctrl+R` again to cycle through older matches
+1. **Start search**: press `Ctrl+R` to activate reverse history search
+2. **Type query**: enter text to search for in previous commands. The search term is highlighted in matching results
+3. **Navigate matches**: press `Ctrl+R` again to cycle through older matches
 4. **Accept match**:
    * Press `Tab` or `Esc` to accept the current match and continue editing
    * Press `Enter` to accept and execute the command immediately
@@ -228,7 +228,7 @@ Press `Ctrl+R` to interactively search through your command history:
    * Press `Ctrl+C` to cancel and restore your original input
    * Press `Backspace` on empty search to cancel
 
-The search displays matching commands with the search term highlighted, making it easy to find and reuse previous inputs.
+The search displays matching commands with the search term highlighted, so you can find and reuse previous inputs.
 
 ## Background bash commands
 

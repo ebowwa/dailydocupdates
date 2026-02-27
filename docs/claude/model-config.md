@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/model-config.md
-Downloaded: 2026-02-22T23:06:41.654Z
+Downloaded: 2026-02-27T20:10:31.464Z
 -->
 
 > ## Documentation Index
@@ -60,7 +60,7 @@ claude --model opus
 
 Example settings file:
 
-```
+```json  theme={null}
 {
     "permissions": {
         ...
@@ -144,6 +144,8 @@ Three levels are available: **low**, **medium**, and **high** (default).
 * **Settings**: set `effortLevel` in your settings file
 
 Effort is currently supported on Opus 4.6. The effort slider appears in `/model` when a supported model is selected.
+
+To disable adaptive reasoning on Opus 4.6 and Sonnet 4.6 and revert to the previous fixed thinking budget, set `CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1`. When disabled, these models use the fixed budget controlled by `MAX_THINKING_TOKENS`. See [environment variables](/en/settings#environment-variables).
 
 ### Extended context
 

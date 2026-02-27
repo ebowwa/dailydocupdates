@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/trade/get-order-scoring-status.md
-Downloaded: 2026-02-22T23:06:41.927Z
+Downloaded: 2026-02-27T20:10:39.330Z
 -->
 
 > ## Documentation Index
@@ -48,6 +48,8 @@ tags:
     description: User notification endpoints
   - name: Rewards
     description: Rewards and earnings endpoints
+  - name: Rebates
+    description: Maker rebate endpoints
 paths:
   /order-scoring:
     get:

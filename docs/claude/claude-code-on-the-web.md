@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/claude-code-on-the-web.md
-Downloaded: 2026-02-26T20:14:19.660Z
+Downloaded: 2026-02-27T20:10:31.458Z
 -->
 
 > ## Documentation Index
@@ -236,7 +236,7 @@ When you start a session in Claude Code on the web, here's what happens under th
 <Note>
   Environment variables must be specified as key-value pairs, in [`.env` format](https://www.dotenv.org/). For example:
 
-  ```
+  ```text  theme={null}
   API_KEY=your_api_key
   DEBUG=true
   ```

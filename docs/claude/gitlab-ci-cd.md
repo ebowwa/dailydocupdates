@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/gitlab-ci-cd.md
-Downloaded: 2026-02-22T23:06:41.652Z
+Downloaded: 2026-02-27T20:10:31.461Z
 -->
 
 > ## Documentation Index
@@ -131,7 +131,7 @@ If you prefer a more controlled setup or need enterprise providers:
 
 In an issue comment:
 
-```
+```text  theme={null}
 @claude implement this feature based on the issue description
 ```
 
@@ -141,7 +141,7 @@ Claude analyzes the issue and codebase, writes changes in a branch, and opens an
 
 In an MR discussion:
 
-```
+```text  theme={null}
 @claude suggest a concrete approach to cache the results of this API call
 ```
 
@@ -151,7 +151,7 @@ Claude proposes changes, adds code with appropriate caching, and updates the MR.
 
 In an issue or MR comment:
 
-```
+```text  theme={null}
 @claude fix the TypeError in the user dashboard component
 ```
 
