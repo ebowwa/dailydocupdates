@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/data-usage.md
-Downloaded: 2026-02-27T20:10:31.459Z
+Downloaded: 2026-02-28T20:07:11.172Z
 -->
 
 > ## Documentation Index
@@ -49,6 +49,8 @@ Anthropic retains Claude Code data based on your account type and preferences.
 * Standard: 30-day retention period
 * [Zero data retention](/en/zero-data-retention): available for Claude Code on Claude for Enterprise. ZDR is enabled on a per-organization basis; each new organization must have ZDR enabled separately by your account team
 * Local caching: Claude Code clients may store sessions locally for up to 30 days to enable session resumption (configurable)
+
+You can delete individual Claude Code on the web sessions at any time. Deleting a session permanently removes the session's event data. For instructions on how to delete sessions, see [Managing sessions](/en/claude-code-on-the-web#managing-sessions).
 
 Learn more about data retention practices in our [Privacy Center](https://privacy.anthropic.com/).
 

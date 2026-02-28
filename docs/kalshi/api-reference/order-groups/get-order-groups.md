@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/order-groups/get-order-groups.md
-Downloaded: 2026-02-22T23:06:59.945Z
+Downloaded: 2026-02-28T20:07:14.974Z
 -->
 
 > ## Documentation Index
@@ -92,7 +92,7 @@ components:
       in: query
       description: >-
         Subaccount number (0 for primary, 1-32 for subaccounts). If omitted,
-        returns results across all subaccounts.
+        defaults to all subaccounts.
       schema:
         type: integer
   schemas:

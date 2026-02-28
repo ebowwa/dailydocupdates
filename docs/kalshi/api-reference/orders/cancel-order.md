@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/cancel-order.md
-Downloaded: 2026-02-22T23:06:59.946Z
+Downloaded: 2026-02-28T20:07:14.974Z
 -->
 
 > ## Documentation Index
@@ -68,7 +68,7 @@ paths:
       operationId: CancelOrder
       parameters:
         - $ref: '#/components/parameters/OrderIdPath'
-        - $ref: '#/components/parameters/SubaccountQuery'
+        - $ref: '#/components/parameters/SubaccountQueryDefaultPrimary'
       responses:
         '200':
           description: Order cancelled successfully
@@ -95,12 +95,10 @@ components:
       description: Order ID
       schema:
         type: string
-    SubaccountQuery:
+    SubaccountQueryDefaultPrimary:
       name: subaccount
       in: query
-      description: >-
-        Subaccount number (0 for primary, 1-32 for subaccounts). If omitted,
-        returns results across all subaccounts.
+      description: Subaccount number (0 for primary, 1-32 for subaccounts). Defaults to 0.
       schema:
         type: integer
   schemas:

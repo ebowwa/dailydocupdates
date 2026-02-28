@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/get-queue-positions-for-orders.md
-Downloaded: 2026-02-22T23:06:59.947Z
+Downloaded: 2026-02-28T20:07:14.975Z
 -->
 
 > ## Documentation Index
@@ -77,7 +77,7 @@ paths:
           description: Event ticker to filter by
           schema:
             type: string
-        - $ref: '#/components/parameters/SubaccountQuery'
+        - $ref: '#/components/parameters/SubaccountQueryDefaultPrimary'
       responses:
         '200':
           description: Queue positions retrieved successfully
@@ -97,12 +97,10 @@ paths:
           kalshiAccessTimestamp: []
 components:
   parameters:
-    SubaccountQuery:
+    SubaccountQueryDefaultPrimary:
       name: subaccount
       in: query
-      description: >-
-        Subaccount number (0 for primary, 1-32 for subaccounts). If omitted,
-        returns results across all subaccounts.
+      description: Subaccount number (0 for primary, 1-32 for subaccounts). Defaults to 0.
       schema:
         type: integer
   schemas:

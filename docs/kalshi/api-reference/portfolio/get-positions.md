@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-positions.md
-Downloaded: 2026-02-22T23:06:59.947Z
+Downloaded: 2026-02-28T20:07:14.976Z
 -->
 
 > ## Documentation Index
@@ -75,7 +75,7 @@ paths:
         - $ref: '#/components/parameters/CountFilterQuery'
         - $ref: '#/components/parameters/TickerQuery'
         - $ref: '#/components/parameters/EventTickerQuery'
-        - $ref: '#/components/parameters/SubaccountQuery'
+        - $ref: '#/components/parameters/SubaccountQueryDefaultPrimary'
       responses:
         '200':
           description: Positions retrieved successfully
@@ -139,12 +139,10 @@ components:
       schema:
         type: string
         x-go-type-skip-optional-pointer: true
-    SubaccountQuery:
+    SubaccountQueryDefaultPrimary:
       name: subaccount
       in: query
-      description: >-
-        Subaccount number (0 for primary, 1-32 for subaccounts). If omitted,
-        returns results across all subaccounts.
+      description: Subaccount number (0 for primary, 1-32 for subaccounts). Defaults to 0.
       schema:
         type: integer
   schemas:
