@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/hashing.md
-Downloaded: 2026-02-22T23:06:45.134Z
+Downloaded: 2026-03-01T20:07:31.644Z
 -->
 
 > ## Documentation Index
@@ -104,7 +104,7 @@ $2b$10$Lyj9kHYZtiyfxh2G60TEfeqs7xkkGiEFFDi3iJGc50ZG/XJ1sxIFi;
 The format is composed of:
 
 * `bcrypt`: `$2b`
-* `rounds`: `$10` - rounds (log10 of the actual number of rounds)
+* `rounds`: `$10` - rounds (log2 of the actual number of rounds)
 * `salt`: `$Lyj9kHYZtiyfxh2G60TEfeqs7xkkGiEFFDi3iJGc50ZG/XJ1sxIFi`
 * `hash`: `$GzJ8PuBi+K+BVojzPfS5mjnC8OpLGtv8KJqF99eP6a4`
 

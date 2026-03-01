@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/hooks-guide.md
-Downloaded: 2026-02-28T20:07:11.174Z
+Downloaded: 2026-03-01T20:07:25.354Z
 -->
 
 > ## Documentation Index
@@ -628,7 +628,7 @@ For full configuration options and response handling, see [HTTP hooks](/en/hooks
 
 ### Limitations
 
-* Command hooks communicate through stdout, stderr, and exit codes only. They cannot trigger slash commands or tool calls directly. HTTP hooks communicate through the response body instead.
+* Command hooks communicate through stdout, stderr, and exit codes only. They cannot trigger commands or tool calls directly. HTTP hooks communicate through the response body instead.
 * Hook timeout is 10 minutes by default, configurable per hook with the `timeout` field (in seconds).
 * `PostToolUse` hooks cannot undo actions since the tool has already executed.
 * `PermissionRequest` hooks do not fire in [non-interactive mode](/en/headless) (`-p`). Use `PreToolUse` hooks for automated permission decisions.

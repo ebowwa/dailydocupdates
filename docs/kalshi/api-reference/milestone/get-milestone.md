@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/milestone/get-milestone.md
-Downloaded: 2026-02-22T23:06:59.944Z
+Downloaded: 2026-03-01T20:07:36.745Z
 -->
 
 > ## Documentation Index
@@ -145,6 +145,11 @@ components:
           type: string
           nullable: true
           description: Source id of milestone if available.
+        source_ids:
+          type: object
+          additionalProperties:
+            type: string
+          description: Source ids of milestone if available.
         details:
           type: object
           additionalProperties: true

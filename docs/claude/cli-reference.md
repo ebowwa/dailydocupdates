@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/cli-reference.md
-Downloaded: 2026-02-28T20:07:11.171Z
+Downloaded: 2026-03-01T20:07:25.352Z
 -->
 
 > ## Documentation Index
@@ -50,7 +50,7 @@ Customize Claude Code's behavior with these command-line flags:
 | `--continue`, `-c`                     | Load the most recent conversation in the current directory                                                                                                                                                | `claude --continue`                                                                                |
 | `--dangerously-skip-permissions`       | Skip all permission prompts (use with caution)                                                                                                                                                            | `claude --dangerously-skip-permissions`                                                            |
 | `--debug`                              | Enable debug mode with optional category filtering (for example, `"api,hooks"` or `"!statsig,!file"`)                                                                                                     | `claude --debug "api,mcp"`                                                                         |
-| `--disable-slash-commands`             | Disable all skills and slash commands for this session                                                                                                                                                    | `claude --disable-slash-commands`                                                                  |
+| `--disable-slash-commands`             | Disable all skills and commands for this session                                                                                                                                                          | `claude --disable-slash-commands`                                                                  |
 | `--disallowedTools`                    | Tools that are removed from the model's context and cannot be used                                                                                                                                        | `"Bash(git log *)" "Bash(git diff *)" "Edit"`                                                      |
 | `--fallback-model`                     | Enable automatic fallback to specified model when default model is overloaded (print mode only)                                                                                                           | `claude -p --fallback-model sonnet "query"`                                                        |
 | `--fork-session`                       | When resuming, create a new session ID instead of reusing the original (use with `--resume` or `--continue`)                                                                                              | `claude --resume abc123 --fork-session`                                                            |
