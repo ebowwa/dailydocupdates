@@ -13,7 +13,7 @@
  * 3. Create issue: "Add X docs" with URL in body
  */
 
-import OpenAI from "openai";
+import { GLMClient } from "@ebowwa/ai";
 import { scrapeMarkdownDocs, type ScraperOptions } from "@ebowwa/markdown-docs-scraper";
 import { writeFileSync } from "fs";
 
@@ -34,10 +34,7 @@ interface ParsedIssue {
 // GLM-4.7 CLIENT
 // ============================================================================
 
-const glm = new OpenAI({
-  baseURL: "https://api.z.ai/api/coding/paas/v4",
-  apiKey: process.env.ZAI_API_KEY,
-});
+const glm = new GLMClient();
 
 // ============================================================================
 // ISSUE PARSING
@@ -68,13 +65,11 @@ Issue Title: ${title}
 Issue Body: ${body || "(no body)"}`;
 
   try {
-    const completion = await glm.chat.completions.create({
+    const response = await glm.generate(prompt, {
       model: "GLM-4.7",
-      messages: [{ role: "user", content: prompt }],
-      response_format: { type: "json_object" },
     });
 
-    const result = JSON.parse(completion.choices[0].message.content || "{}");
+    const result = JSON.parse(response || "{}");
     return result as ParsedIssue;
   } catch (error) {
     return {

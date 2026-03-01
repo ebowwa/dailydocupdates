@@ -204,6 +204,167 @@ async function generateDailyReport(state: JobState): Promise<string> {
   return header + stats + summary;
 }
 
+/**
+ * Chunk a long text into smaller pieces that fit within Telegram's limit.
+ * Prefers splitting at paragraph boundaries, then sentence, then word.
+ * Never truncates - always returns all chunks.
+ */
+function chunkText(text: string, maxLen: number = 4000): string[] {
+  if (text.length <= maxLen) {
+    return [text];
+  }
+
+  const chunks: string[] = [];
+
+  // First, try to split by sections (### headers)
+  const sections = text.split(/(?=### )/g).filter(Boolean);
+
+  let currentChunk = "";
+
+  for (const section of sections) {
+    // If adding this section would exceed limit
+    if ((currentChunk + section).length > maxLen) {
+      // If we have accumulated content, save it
+      if (currentChunk.trim()) {
+        chunks.push(currentChunk.trim());
+        currentChunk = "";
+      }
+
+      // If the section itself is too long, we need to split it further
+      if (section.length > maxLen) {
+        const subChunks = splitLongSection(section, maxLen);
+        chunks.push(...subChunks);
+      } else {
+        currentChunk = section;
+      }
+    } else {
+      currentChunk += section;
+    }
+  }
+
+  // Don't forget the last chunk
+  if (currentChunk.trim()) {
+    chunks.push(currentChunk.trim());
+  }
+
+  return chunks;
+}
+
+/**
+ * Split a long section that exceeds the limit.
+ * Tries paragraphs first, then sentences, then words.
+ */
+function splitLongSection(text: string, maxLen: number): string[] {
+  const chunks: string[] = [];
+
+  // Try splitting by double newlines (paragraphs)
+  const paragraphs = text.split(/\n\n+/g);
+  let currentChunk = "";
+
+  for (const para of paragraphs) {
+    if ((currentChunk + "\n\n" + para).length <= maxLen) {
+      currentChunk = currentChunk ? currentChunk + "\n\n" + para : para;
+    } else {
+      if (currentChunk) {
+        chunks.push(currentChunk);
+        currentChunk = "";
+      }
+
+      // If single paragraph is too long, split by sentences
+      if (para.length > maxLen) {
+        const sentenceChunks = splitBySentences(para, maxLen);
+        chunks.push(...sentenceChunks);
+      } else {
+        currentChunk = para;
+      }
+    }
+  }
+
+  if (currentChunk) {
+    chunks.push(currentChunk);
+  }
+
+  return chunks;
+}
+
+/**
+ * Split text by sentences when paragraphs are too long.
+ */
+function splitBySentences(text: string, maxLen: number): string[] {
+  const chunks: string[] = [];
+
+  // Split by sentence boundaries (., !, ? followed by space or end)
+  const sentences = text.split(/(?<=[.!?])\s+/g);
+  let currentChunk = "";
+
+  for (const sentence of sentences) {
+    if ((currentChunk + " " + sentence).length <= maxLen) {
+      currentChunk = currentChunk ? currentChunk + " " + sentence : sentence;
+    } else {
+      if (currentChunk) {
+        chunks.push(currentChunk);
+        currentChunk = "";
+      }
+
+      // If single sentence is too long, split by words
+      if (sentence.length > maxLen) {
+        const wordChunks = splitByWords(sentence, maxLen);
+        chunks.push(...wordChunks);
+      } else {
+        currentChunk = sentence;
+      }
+    }
+  }
+
+  if (currentChunk) {
+    chunks.push(currentChunk);
+  }
+
+  return chunks;
+}
+
+/**
+ * Last resort: split by words when sentences are too long.
+ */
+function splitByWords(text: string, maxLen: number): string[] {
+  const chunks: string[] = [];
+  const words = text.split(/\s+/g);
+  let currentChunk = "";
+
+  for (const word of words) {
+    if ((currentChunk + " " + word).length <= maxLen) {
+      currentChunk = currentChunk ? currentChunk + " " + word : word;
+    } else {
+      if (currentChunk) {
+        chunks.push(currentChunk);
+      }
+      currentChunk = word;
+    }
+  }
+
+  if (currentChunk) {
+    chunks.push(currentChunk);
+  }
+
+  return chunks;
+}
+
+/**
+ * Send a message to Telegram, falling back to plain text if markdown fails.
+ */
+async function sendTelegramMessage(
+  channel: TelegramChannel,
+  chatId: number,
+  text: string
+): Promise<void> {
+  try {
+    await channel.sendMessage(chatId, text, { parse_mode: "Markdown" });
+  } catch {
+    // Markdown parsing failed, try plain text
+    await channel.sendMessage(chatId, text);
+  }
+}
+
 async function main() {
   console.log("Daily Doc Updates - Telegram Notifier\n");
 
@@ -233,7 +394,12 @@ async function main() {
   if (dryRun) {
     console.log("\n[DRY RUN] Would send:\n");
     console.log(`To: ${process.env.TELEGRAM_CHAT_ID}`);
-    console.log(`Message:\n${report}`);
+    const chunks = chunkText(report);
+    console.log(`Chunks: ${chunks.length}`);
+    chunks.forEach((chunk, i) => {
+      console.log(`\n--- Chunk ${i + 1}/${chunks.length} (${chunk.length} chars) ---\n`);
+      console.log(chunk);
+    });
     return;
   }
 
@@ -249,42 +415,22 @@ async function main() {
   const channel = new TelegramChannel(telegramConfig);
   const chatIdNum = parseInt(chatId, 10);
 
-  // Telegram has 4096 char limit - split if needed
-  const MAX_LEN = 4000;
+  // Chunk the message into Telegram-safe pieces
+  const chunks = chunkText(report);
+  console.log(`Split into ${chunks.length} message(s)`);
 
   try {
-    if (report.length <= MAX_LEN) {
-      try {
-        await channel.sendMessage(chatIdNum, report, { parse_mode: "Markdown" });
-      } catch {
-        await channel.sendMessage(chatIdNum, report);
-      }
-    } else {
-      // Split into parts
-      const parts = report.split(/(?=### )/g).filter(Boolean);
-      let currentPart = "";
+    for (let i = 0; i < chunks.length; i++) {
+      const chunk = chunks[i];
+      console.log(`Sending chunk ${i + 1}/${chunks.length} (${chunk.length} chars)...`);
+      await sendTelegramMessage(channel, chatIdNum, chunk);
 
-      for (const part of parts) {
-        if ((currentPart + part).length > MAX_LEN && currentPart) {
-          try {
-            await channel.sendMessage(chatIdNum, currentPart, { parse_mode: "Markdown" });
-          } catch {
-            await channel.sendMessage(chatIdNum, currentPart);
-          }
-          currentPart = part;
-        } else {
-          currentPart += part;
-        }
-      }
-
-      if (currentPart) {
-        try {
-          await channel.sendMessage(chatIdNum, currentPart, { parse_mode: "Markdown" });
-        } catch {
-          await channel.sendMessage(chatIdNum, currentPart);
-        }
+      // Small delay between messages to avoid rate limiting
+      if (i < chunks.length - 1) {
+        await new Promise((resolve) => setTimeout(resolve, 100));
       }
     }
+
     console.log("Sent successfully!");
 
     const newState = updateJobState(state, SCHEDULE, now);
