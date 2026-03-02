@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/historical_data.md
-Downloaded: 2026-02-22T23:06:59.950Z
+Downloaded: 2026-03-02T20:11:57.898Z
 -->
 
 > ## Documentation Index
@@ -57,7 +57,7 @@ The following live endpoints will no longer return data older than the correspon
 | --------------------------------------------- | ------------------- | ----------------------------------------------------------------------------------------------- |
 | `GET /markets`, `GET /markets/{ticker}`       | `market_settled_ts` | Settled markets and their candlesticks older than the cutoff will not appear                    |
 | `GET /events` with `with_nested_markets=true` | `market_settled_ts` | Nested markets older than the cutoff will not be included, only markets impacted                |
-| `GET /markets/trades`, `GET /portfolio/fills` | `trades_created_ts` | Fills older than the cutoff will not appear                                                     |
+| `GET /portfolio/fills`                        | `trades_created_ts` | Fills older than the cutoff will not appear                                                     |
 | `GET /portfolio/orders`                       | `orders_updated_ts` | Completed/canceled orders older than the cutoff will not appear (resting orders are unaffected) |
 
 ## Migration Guide
@@ -73,5 +73,5 @@ The following live endpoints will no longer return data older than the correspon
 <Warning>
   For the time being, historical data is still available through the standard live endpoints. However, we are targeting **March 6th, 2026** for the removal of historical data from the live API. Please migrate to the historical endpoints before this date.
 
-  The initial cutoff timestamps are initially intended to be the same across \**markets*, **trades**, and **orders**, and to start with a 1 year lookback. Over time, the cutoff timestamps are intended to move up to approximately 2-3 months.
+  The initial cutoff timestamps are initially intended to be the same across **markets**, **trades**, and **orders**, and to start with a 1 year lookback. Over time, the cutoff timestamps are intended to move up to approximately 2-3 months.
 </Warning>

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/trading.md
-Downloaded: 2026-02-22T23:06:41.931Z
+Downloaded: 2026-03-02T20:11:47.804Z
 -->
 
 > ## Documentation Index
@@ -253,8 +253,7 @@ Your order price must conform to the market's tick size, or it will be rejected.
 
 Most markets have **zero fees** for both makers and takers. However, the following market types have taker fees:
 
-* **5-minute crypto markets**
-* **15-minute crypto markets**
+* **All crypto markets** (1H, 4H, daily, and weekly starting March 6, 2026 for new markets)
 * **Select sports markets** (e.g., NCAAB, Serie A)
 
 See [Fees](/trading/fees) for the full fee schedule and calculation details.

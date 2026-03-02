@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/typescript-sdk/api/PortfolioApi.md
-Downloaded: 2026-02-25T20:12:09.482Z
+Downloaded: 2026-03-02T20:11:57.903Z
 -->
 
 > ## Documentation Index
@@ -101,9 +101,9 @@ Endpoint for getting the balance and portfolio value of a member. Both values ar
 
 ### Parameters
 
-| Name           | Type          | Description                                                                                                  | Notes                            |
-| -------------- | ------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------- |
-| **subaccount** | \[**number**] | Subaccount number (0 for primary, 1-32 for subaccounts). If omitted, returns results across all subaccounts. | (optional) defaults to undefined |
+| Name           | Type          | Description                                                             | Notes                            |
+| -------------- | ------------- | ----------------------------------------------------------------------- | -------------------------------- |
+| **subaccount** | \[**number**] | Subaccount number (0 for primary, 1-32 for subaccounts). Defaults to 0. | (optional) defaults to undefined |
 
 ### Return type
 
@@ -130,7 +130,7 @@ Endpoint for getting the balance and portfolio value of a member. Both values ar
 
 > GetFillsResponse getFills()
 
-Endpoint for getting all fills for the member. A fill is when a trade you have is matched.
+Endpoint for getting all fills for the member. A fill is when a trade you have is matched. Fills that occurred before the historical cutoff are only available via `GET /historical/fills`. See [Historical Data](https://kalshi.com/docs/getting_started/historical_data) for details.
 
 ### Parameters
 
@@ -142,7 +142,7 @@ Endpoint for getting all fills for the member. A fill is when a trade you have i
 | **maxTs**      | \[**number**] | Filter items before this Unix timestamp                                                                                                      | (optional) defaults to undefined |
 | **limit**      | \[**number**] | Number of results per page. Defaults to 100. Maximum value is 200.                                                                           | (optional) defaults to 100       |
 | **cursor**     | \[**string**] | Pagination cursor. Use the cursor value returned from the previous response to get the next page of results. Leave empty for the first page. | (optional) defaults to undefined |
-| **subaccount** | \[**number**] | Subaccount number (0 for primary, 1-32 for subaccounts). If omitted, returns results across all subaccounts.                                 | (optional) defaults to undefined |
+| **subaccount** | \[**number**] | Subaccount number (0 for primary, 1-32 for subaccounts). If omitted, defaults to all subaccounts.                                            | (optional) defaults to undefined |
 
 ### Return type
 
@@ -212,7 +212,7 @@ Restricts the positions to those with any of following fields with non-zero valu
 | **countFilter** | \[**string**] | Restricts the positions to those with any of following fields with non-zero values, as a comma separated list. The following values are accepted - position, total\_traded | (optional) defaults to undefined |
 | **ticker**      | \[**string**] | Filter by market ticker                                                                                                                                                    | (optional) defaults to undefined |
 | **eventTicker** | \[**string**] | Event ticker of desired positions. Multiple event tickers can be provided as a comma-separated list (maximum 10).                                                          | (optional) defaults to undefined |
-| **subaccount**  | \[**number**] | Subaccount number (0 for primary, 1-32 for subaccounts). If omitted, returns results across all subaccounts.                                                               | (optional) defaults to undefined |
+| **subaccount**  | \[**number**] | Subaccount number (0 for primary, 1-32 for subaccounts). Defaults to 0.                                                                                                    | (optional) defaults to undefined |
 
 ### Return type
 
@@ -252,7 +252,7 @@ Endpoint for getting the member's settlements historical track.
 | **eventTicker** | \[**string**] | Event ticker of desired positions. Multiple event tickers can be provided as a comma-separated list (maximum 10).                            | (optional) defaults to undefined |
 | **minTs**       | \[**number**] | Filter items after this Unix timestamp                                                                                                       | (optional) defaults to undefined |
 | **maxTs**       | \[**number**] | Filter items before this Unix timestamp                                                                                                      | (optional) defaults to undefined |
-| **subaccount**  | \[**number**] | Subaccount number (0 for primary, 1-32 for subaccounts). If omitted, returns results across all subaccounts.                                 | (optional) defaults to undefined |
+| **subaccount**  | \[**number**] | Subaccount number (0 for primary, 1-32 for subaccounts). If omitted, defaults to all subaccounts.                                            | (optional) defaults to undefined |
 
 ### Return type
 

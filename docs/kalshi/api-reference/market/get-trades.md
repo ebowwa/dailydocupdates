@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-trades.md
-Downloaded: 2026-02-22T23:06:59.944Z
+Downloaded: 2026-03-02T20:11:57.890Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,8 @@ Downloaded: 2026-02-22T23:06:59.944Z
 
 # Get Trades
 
->  Endpoint for getting all trades for all markets.  A trade represents a completed transaction between two users on a specific market. Each trade includes the market ticker, price, quantity, and timestamp information.  This endpoint returns a paginated response. Use the 'limit' parameter to control page size (1-1000, defaults to 100). The response includes a 'cursor' field - pass this value in the 'cursor' parameter of your next request to get the next page. An empty cursor indicates no more pages are available.
+> Endpoint for getting all trades for all markets. A trade represents a completed transaction between two users on a specific market. Each trade includes the market ticker, price, quantity, and timestamp information. This endpoint returns a paginated response. Use the 'limit' parameter to control page size (1-1000, defaults to 100). The response includes a 'cursor' field - pass this value in the 'cursor' parameter of your next request to get the next page. An empty cursor indicates no more pages are available.
+
 
 
 
@@ -64,7 +65,15 @@ paths:
       tags:
         - market
       summary: Get Trades
-      description: ' Endpoint for getting all trades for all markets.  A trade represents a completed transaction between two users on a specific market. Each trade includes the market ticker, price, quantity, and timestamp information.  This endpoint returns a paginated response. Use the ''limit'' parameter to control page size (1-1000, defaults to 100). The response includes a ''cursor'' field - pass this value in the ''cursor'' parameter of your next request to get the next page. An empty cursor indicates no more pages are available.'
+      description: >
+        Endpoint for getting all trades for all markets. A trade represents a
+        completed transaction between two users on a specific market. Each trade
+        includes the market ticker, price, quantity, and timestamp information.
+        This endpoint returns a paginated response. Use the 'limit' parameter to
+        control page size (1-1000, defaults to 100). The response includes a
+        'cursor' field - pass this value in the 'cursor' parameter of your next
+        request to get the next page. An empty cursor indicates no more pages
+        are available.
       operationId: GetTrades
       parameters:
         - $ref: '#/components/parameters/MarketLimitQuery'

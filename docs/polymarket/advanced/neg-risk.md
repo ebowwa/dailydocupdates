@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/advanced/neg-risk.md
-Downloaded: 2026-02-22T23:06:41.918Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

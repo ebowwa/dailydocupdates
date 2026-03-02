@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/guides/binary/arraybuffer-to-array.md
-Downloaded: 2026-02-22T23:06:45.110Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

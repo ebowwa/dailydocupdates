@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/get-orders.md
-Downloaded: 2026-02-28T20:07:14.975Z
+Downloaded: 2026-03-02T20:11:57.893Z
 -->
 
 > ## Documentation Index
@@ -10,6 +10,8 @@ Downloaded: 2026-02-28T20:07:14.975Z
 # Get Orders
 
 > Restricts the response to orders that have a certain status: resting, canceled, or executed.
+Orders that have been canceled or fully executed before the historical cutoff are only available via `GET /historical/orders`. Resting orders will always be available through this endpoint. See [Historical Data](https://kalshi.com/docs/getting_started/historical_data) for details.
+
 
 
 
@@ -64,9 +66,15 @@ paths:
       tags:
         - orders
       summary: Get Orders
-      description: >-
+      description: >
         Restricts the response to orders that have a certain status: resting,
         canceled, or executed.
+
+        Orders that have been canceled or fully executed before the historical
+        cutoff are only available via `GET /historical/orders`. Resting orders
+        will always be available through this endpoint. See [Historical
+        Data](https://kalshi.com/docs/getting_started/historical_data) for
+        details.
       operationId: GetOrders
       parameters:
         - $ref: '#/components/parameters/TickerQuery'

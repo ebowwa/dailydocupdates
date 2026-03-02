@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/api-reference/historical/get-historical-fills.md
-Downloaded: 2026-02-22T23:06:59.942Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

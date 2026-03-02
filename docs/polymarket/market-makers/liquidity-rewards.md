@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/liquidity-rewards.md
-Downloaded: 2026-02-22T23:06:41.931Z
+Downloaded: 2026-03-02T20:11:47.804Z
 -->
 
 > ## Documentation Index
@@ -166,6 +166,6 @@ Q<sub>no</sub> is calculated every minute using random sampling.
   </Card>
 
   <Card title="Maker Rebates" icon="receipt" href="/market-makers/maker-rebates">
-    Earn USDC rebates on 15-minute crypto markets
+    Earn USDC rebates on eligible crypto and sports markets
   </Card>
 </CardGroup>

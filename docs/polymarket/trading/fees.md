@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/fees.md
-Downloaded: 2026-02-22T23:06:41.933Z
+Downloaded: 2026-03-02T20:11:47.808Z
 -->
 
 > ## Documentation Index
@@ -28,8 +28,7 @@ The vast majority of Polymarket markets have **no trading fees**:
 
 The following market types charge a small taker fee on each trade. These fees are collected and redistributed daily to market makers as rebates, incentivizing deeper liquidity and tighter spreads.
 
-* **15-minute crypto markets**
-* **5-minute crypto markets**
+* **All crypto markets** (1H, 4H, daily, and weekly starting March 6, 2026 for new markets)
 * **NCAAB (college basketball) markets** (starting February 18, 2026 for new markets)
 * **Serie A markets** (starting February 18, 2026 for new markets)
 
@@ -38,16 +37,16 @@ The following market types charge a small taker fee on each trade. These fees ar
 Fees are calculated using the following formula:
 
 ```text  theme={null}
-fee = C × feeRate × (p × (1 - p))^exponent
+fee = C × p × feeRate × (p × (1 - p))^exponent
 ```
 
 Where **C** = number of shares traded and **p** = price of the shares. The fee parameters differ by market type:
 
-| Parameter      | Sports (NCAAB, Serie A) | 5-Min & 15-Min Crypto |
-| -------------- | ----------------------- | --------------------- |
-| Fee Rate       | 0.0175                  | 0.25                  |
-| Exponent       | 1                       | 2                     |
-| Maker Rebate % | 25%                     | 20%                   |
+| Parameter      | Sports (NCAAB, Serie A) | Crypto |
+| -------------- | ----------------------- | ------ |
+| Fee Rate       | 0.0175                  | 0.25   |
+| Exponent       | 1                       | 2      |
+| Maker Rebate % | 25%                     | 20%    |
 
 Taker fees are calculated in USDC and vary based on the share price. However, fees are collected in shares on buy orders and USDC on sell orders. The effective rate **peaks at 50%** probability and decreases symmetrically toward the extremes.
 
@@ -60,7 +59,7 @@ Taker fees are calculated in USDC and vary based on the share price. However, fe
 ### Fee Table
 
 <Tabs>
-  <Tab title="5-Min and 15-Min Crypto">
+  <Tab title="Crypto">
     | Price  | Trade Value | Fee (USDC) | Effective Rate |
     | ------ | ----------- | ---------- | -------------- |
     | \$0.01 | \$1         | \$0.00     | 0.00%          |
@@ -127,8 +126,7 @@ Fees are rounded to 4 decimal places. The smallest fee charged is **0.0001 USDC*
 
 The following market types have fees enabled:
 
-* **15-minute crypto markets**
-* **5-minute crypto markets**
+* **All crypto markets** (1H, 4H, daily, and weekly starting March 6, 2026 for new markets)
 * **NCAAB (college basketball) markets** (starting February 18, 2026 for new markets)
 * **Serie A markets** (starting February 18, 2026 for new markets)
 

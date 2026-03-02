@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/typescript-sdk/api/CommunicationsApi.md
-Downloaded: 2026-02-22T23:06:59.953Z
+Downloaded: 2026-03-02T20:11:57.902Z
 -->
 
 > ## Documentation Index
@@ -388,7 +388,7 @@ Endpoint for getting RFQs
 | **cursor**        | \[**string**] | Pagination cursor. Use the cursor value returned from the previous response to get the next page of results. Leave empty for the first page. | (optional) defaults to undefined |
 | **eventTicker**   | \[**string**] | Event ticker of desired positions. Multiple event tickers can be provided as a comma-separated list (maximum 10).                            | (optional) defaults to undefined |
 | **marketTicker**  | \[**string**] | Filter by market ticker                                                                                                                      | (optional) defaults to undefined |
-| **subaccount**    | \[**number**] | Subaccount number (0 for primary, 1-32 for subaccounts). If omitted, returns results across all subaccounts.                                 | (optional) defaults to undefined |
+| **subaccount**    | \[**number**] | Subaccount number (0 for primary, 1-32 for subaccounts). If omitted, defaults to all subaccounts.                                            | (optional) defaults to undefined |
 | **limit**         | \[**number**] | Parameter to specify the number of results per page. Defaults to 100.                                                                        | (optional) defaults to 100       |
 | **status**        | \[**string**] | Filter RFQs by status                                                                                                                        | (optional) defaults to undefined |
 | **creatorUserId** | \[**string**] | Filter RFQs by creator user ID                                                                                                               | (optional) defaults to undefined |

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-markets.md
-Downloaded: 2026-02-25T20:12:09.470Z
+Downloaded: 2026-03-02T20:11:57.890Z
 -->
 
 > ## Documentation Index
@@ -19,6 +19,8 @@ Downloaded: 2026-02-25T20:12:09.470Z
  | min_close_ts, max_close_ts | `closed`, *empty* | |
  | min_settled_ts, max_settled_ts | `settled`, *empty* | |
  | min_updated_ts | *empty* | Incompatible with all filters besides `mve_filter=exclude` |
+
+ Markets that settled before the historical cutoff are only available via `GET /historical/markets`. See [Historical Data](https://kalshi.com/docs/getting_started/historical_data) for details.
 
 
 
@@ -86,6 +88,8 @@ paths:
          | min_close_ts, max_close_ts | `closed`, *empty* | |
          | min_settled_ts, max_settled_ts | `settled`, *empty* | |
          | min_updated_ts | *empty* | Incompatible with all filters besides `mve_filter=exclude` |
+
+         Markets that settled before the historical cutoff are only available via `GET /historical/markets`. See [Historical Data](https://kalshi.com/docs/getting_started/historical_data) for details.
       operationId: GetMarkets
       parameters:
         - $ref: '#/components/parameters/MarketLimitQuery'

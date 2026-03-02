@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/index.md
-Downloaded: 2026-02-22T23:06:45.117Z
+Downloaded: 2026-03-02T20:12:05.050Z
 -->
 
 > ## Documentation Index
@@ -267,6 +267,9 @@ export const GuidesList = () => {
       }, {
         title: "Streaming HTTP Server with Async Iterators",
         href: "/guides/http/stream-iterator"
+      }, {
+        title: "Server-Sent Events (SSE)",
+        href: "/guides/http/sse"
       }, {
         title: "Streaming HTTP Server with Node.js Streams",
         href: "/guides/http/stream-node-streams-in-bun"

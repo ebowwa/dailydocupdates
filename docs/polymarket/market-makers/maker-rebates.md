@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/maker-rebates.md
-Downloaded: 2026-02-22T23:06:41.931Z
+Downloaded: 2026-03-02T20:11:47.804Z
 -->
 
 > ## Documentation Index
@@ -11,7 +11,7 @@ Downloaded: 2026-02-22T23:06:41.931Z
 
 > Earn daily USDC rebates by providing liquidity on Polymarket
 
-Polymarket has enabled taker fees on **15-minute crypto markets**, **5-minute crypto markets**, **NCAAB (college basketball)**, and **Serie A** markets. These fees fund a **Maker Rebates** program that pays daily USDC rebates to liquidity providers.
+Polymarket has enabled taker fees on **all crypto markets**, **NCAAB (college basketball)**, and **Serie A** markets. These fees fund a **Maker Rebates** program that pays daily USDC rebates to liquidity providers.
 
 ***
 
@@ -47,16 +47,17 @@ Rebates are paid daily in USDC, directly to your wallet.
 
 Maker Rebates are funded by taker fees collected in eligible markets. A percentage of these fees are redistributed to makers who keep the markets liquid. The rebate percentage differs by market type.
 
-| Market Type             | Period        | Maker Rebate | Distribution Method |
-| ----------------------- | ------------- | ------------ | ------------------- |
-| 15-Min Crypto           | Jan 19, 2026+ | 20%          | Fee-curve weighted  |
-| 5-Min Crypto            | Feb 12, 2026+ | 20%          | Fee-curve weighted  |
-| Sports (NCAAB, Serie A) | Feb 18, 2026+ | 25%          | Fee-curve weighted  |
+| Market Type                  | Period        | Maker Rebate | Distribution Method |
+| ---------------------------- | ------------- | ------------ | ------------------- |
+| 15-Min Crypto                | Jan 19, 2026+ | 20%          | Fee-curve weighted  |
+| 5-Min Crypto                 | Feb 12, 2026+ | 20%          | Fee-curve weighted  |
+| Sports (NCAAB, Serie A)      | Feb 18, 2026+ | 25%          | Fee-curve weighted  |
+| 1H, 4H, Daily, Weekly Crypto | Mar 6, 2026+  | 20%          | Fee-curve weighted  |
 
 <Note>
-  Polymarket collects taker fees in eligible markets (15-minute crypto, 5-minute
-  crypto, NCAAB, and Serie A). The rebate percentage is at the sole discretion
-  of Polymarket and may change over time.
+  Polymarket collects taker fees in eligible markets (all crypto markets, NCAAB,
+  and Serie A). The rebate percentage is at the sole discretion of Polymarket
+  and may change over time.
 </Note>
 
 ***
@@ -73,10 +74,10 @@ fee_equivalent = C × p × feeRate × (p × (1 - p))^exponent
 
 Where **C** = number of shares traded and **p** = price of the shares. The fee parameters differ by market type:
 
-| Parameter | Sports (NCAAB, Serie A) | 5-Min & 15-Min Crypto |
-| --------- | ----------------------- | --------------------- |
-| Fee Rate  | 0.0175                  | 0.25                  |
-| Exponent  | 1                       | 2                     |
+| Parameter | Sports (NCAAB, Serie A) | Crypto |
+| --------- | ----------------------- | ------ |
+| Fee Rate  | 0.0175                  | 0.25   |
+| Exponent  | 1                       | 2      |
 
 Your daily rebate:
 
@@ -101,7 +102,7 @@ Taker fees are calculated in USDC and vary based on the share price. However, fe
 ### Fee Table
 
 <Tabs>
-  <Tab title="5-Min and 15-Min Crypto">
+  <Tab title="Crypto">
     | Price  | Trade Value | Fee (USDC) | Effective Rate |
     | ------ | ----------- | ---------- | -------------- |
     | \$0.01 | \$1         | \$0.00     | 0.00%          |
@@ -168,8 +169,7 @@ Fees are rounded to 4 decimal places. The smallest fee charged is 0.0001 USDC. A
 
 The following market types have taker fees enabled and are eligible for maker rebates:
 
-* **15-minute crypto markets**
-* **5-minute crypto markets**
+* **All crypto markets** (1H, 4H, daily, and weekly starting March 6, 2026 for new markets)
 * **NCAAB (college basketball) markets** (starting February 18, 2026 for new markets)
 * **Serie A markets** (starting February 18, 2026 for new markets)
 
@@ -199,13 +199,13 @@ All other markets remain fee-free.
   </Accordion>
 
   <Accordion title="Which markets have fees enabled">
-    15-minute crypto markets, 5-minute crypto markets, and starting February 18,
-    2026, NCAAB and Serie A markets.
+    All crypto markets, NCAAB, and Serie A markets. 1H, 4H, daily, and weekly
+    crypto markets started March 6, 2026 for new markets.
   </Accordion>
 
   <Accordion title="Is Polymarket charging fees on all markets">
-    No. Fees apply only to 15-minute crypto, 5-minute crypto, NCAAB, and Serie A
-    markets. All other markets remain fee-free.
+    No. Fees apply only to crypto markets, NCAAB, and Serie A markets. All other
+    markets remain fee-free.
   </Accordion>
 </AccordionGroup>
 
