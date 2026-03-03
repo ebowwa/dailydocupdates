@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/get-orders.md
-Downloaded: 2026-03-02T20:11:57.893Z
+Downloaded: 2026-03-03T20:11:28.681Z
 -->
 
 > ## Documentation Index
@@ -78,7 +78,7 @@ paths:
       operationId: GetOrders
       parameters:
         - $ref: '#/components/parameters/TickerQuery'
-        - $ref: '#/components/parameters/EventTickerQuery'
+        - $ref: '#/components/parameters/MultipleEventTickerQuery'
         - $ref: '#/components/parameters/MinTsQuery'
         - $ref: '#/components/parameters/MaxTsQuery'
         - $ref: '#/components/parameters/StatusQuery'
@@ -111,12 +111,10 @@ components:
       schema:
         type: string
         x-go-type-skip-optional-pointer: true
-    EventTickerQuery:
+    MultipleEventTickerQuery:
       name: event_ticker
       in: query
-      description: >-
-        Event ticker of desired positions. Multiple event tickers can be
-        provided as a comma-separated list (maximum 10).
+      description: Event tickers to filter by, as a comma-separated list (maximum 10).
       schema:
         type: string
         x-go-type-skip-optional-pointer: true

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/multivariate/create-market-in-multivariate-event-collection.md
-Downloaded: 2026-02-25T20:12:09.471Z
+Downloaded: 2026-03-03T20:11:28.679Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,7 @@ Downloaded: 2026-02-25T20:12:09.471Z
 
 # Create Market In Multivariate Event Collection
 
->  Endpoint for creating an individual market in a multivariate event collection. This endpoint must be hit at least once before trading or looking up a market.
+> Endpoint for creating an individual market in a multivariate event collection. This endpoint must be hit at least once before trading or looking up a market. Users are limited to 5000 creations per week.
 
 
 
@@ -64,7 +64,10 @@ paths:
       tags:
         - multivariate
       summary: Create Market In Multivariate Event Collection
-      description: ' Endpoint for creating an individual market in a multivariate event collection. This endpoint must be hit at least once before trading or looking up a market.'
+      description: >-
+        Endpoint for creating an individual market in a multivariate event
+        collection. This endpoint must be hit at least once before trading or
+        looking up a market. Users are limited to 5000 creations per week.
       operationId: CreateMarketInMultivariateEventCollection
       parameters:
         - name: collection_ticker
@@ -92,6 +95,8 @@ paths:
           $ref: '#/components/responses/BadRequestError'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
+        '429':
+          $ref: '#/components/responses/RateLimitError'
         '500':
           $ref: '#/components/responses/InternalServerError'
       security:
@@ -590,6 +595,12 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     UnauthorizedError:
       description: Unauthorized - authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    RateLimitError:
+      description: Rate limit exceeded
       content:
         application/json:
           schema:

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/typescript-sdk/api/PortfolioApi.md
-Downloaded: 2026-03-02T20:11:57.903Z
+Downloaded: 2026-03-03T20:11:28.686Z
 -->
 
 > ## Documentation Index
@@ -211,7 +211,7 @@ Restricts the positions to those with any of following fields with non-zero valu
 | **limit**       | \[**number**] | Parameter to specify the number of results per page. Defaults to 100.                                                                                                      | (optional) defaults to 100       |
 | **countFilter** | \[**string**] | Restricts the positions to those with any of following fields with non-zero values, as a comma separated list. The following values are accepted - position, total\_traded | (optional) defaults to undefined |
 | **ticker**      | \[**string**] | Filter by market ticker                                                                                                                                                    | (optional) defaults to undefined |
-| **eventTicker** | \[**string**] | Event ticker of desired positions. Multiple event tickers can be provided as a comma-separated list (maximum 10).                                                          | (optional) defaults to undefined |
+| **eventTicker** | \[**string**] | Event ticker to filter by. Only a single event ticker is supported.                                                                                                        | (optional) defaults to undefined |
 | **subaccount**  | \[**number**] | Subaccount number (0 for primary, 1-32 for subaccounts). Defaults to 0.                                                                                                    | (optional) defaults to undefined |
 
 ### Return type
@@ -249,7 +249,7 @@ Endpoint for getting the member's settlements historical track.
 | **limit**       | \[**number**] | Number of results per page. Defaults to 100. Maximum value is 200.                                                                           | (optional) defaults to 100       |
 | **cursor**      | \[**string**] | Pagination cursor. Use the cursor value returned from the previous response to get the next page of results. Leave empty for the first page. | (optional) defaults to undefined |
 | **ticker**      | \[**string**] | Filter by market ticker                                                                                                                      | (optional) defaults to undefined |
-| **eventTicker** | \[**string**] | Event ticker of desired positions. Multiple event tickers can be provided as a comma-separated list (maximum 10).                            | (optional) defaults to undefined |
+| **eventTicker** | \[**string**] | Event ticker to filter by. Only a single event ticker is supported.                                                                          | (optional) defaults to undefined |
 | **minTs**       | \[**number**] | Filter items after this Unix timestamp                                                                                                       | (optional) defaults to undefined |
 | **maxTs**       | \[**number**] | Filter items before this Unix timestamp                                                                                                      | (optional) defaults to undefined |
 | **subaccount**  | \[**number**] | Subaccount number (0 for primary, 1-32 for subaccounts). If omitted, defaults to all subaccounts.                                            | (optional) defaults to undefined |

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/fcm/get-fcm-orders.md
+Downloaded: 2026-03-03T20:11:28.677Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -77,7 +82,7 @@ paths:
           schema:
             type: string
         - $ref: '#/components/parameters/CursorQuery'
-        - $ref: '#/components/parameters/EventTickerQuery'
+        - $ref: '#/components/parameters/SingleEventTickerQuery'
         - $ref: '#/components/parameters/TickerQuery'
         - name: min_ts
           in: query
@@ -142,12 +147,10 @@ components:
       schema:
         type: string
         x-go-type-skip-optional-pointer: true
-    EventTickerQuery:
+    SingleEventTickerQuery:
       name: event_ticker
       in: query
-      description: >-
-        Event ticker of desired positions. Multiple event tickers can be
-        provided as a comma-separated list (maximum 10).
+      description: Event ticker to filter by. Only a single event ticker is supported.
       schema:
         type: string
         x-go-type-skip-optional-pointer: true

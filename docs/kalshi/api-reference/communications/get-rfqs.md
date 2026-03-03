@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/get-rfqs.md
-Downloaded: 2026-02-28T20:07:14.969Z
+Downloaded: 2026-03-03T20:11:28.676Z
 -->
 
 > ## Documentation Index
@@ -68,7 +68,7 @@ paths:
       operationId: GetRFQs
       parameters:
         - $ref: '#/components/parameters/CursorQuery'
-        - $ref: '#/components/parameters/EventTickerQuery'
+        - $ref: '#/components/parameters/SingleEventTickerQuery'
         - $ref: '#/components/parameters/MarketTickerQuery'
         - $ref: '#/components/parameters/SubaccountQuery'
         - name: limit
@@ -119,12 +119,10 @@ components:
       schema:
         type: string
         x-go-type-skip-optional-pointer: true
-    EventTickerQuery:
+    SingleEventTickerQuery:
       name: event_ticker
       in: query
-      description: >-
-        Event ticker of desired positions. Multiple event tickers can be
-        provided as a comma-separated list (maximum 10).
+      description: Event ticker to filter by. Only a single event ticker is supported.
       schema:
         type: string
         x-go-type-skip-optional-pointer: true

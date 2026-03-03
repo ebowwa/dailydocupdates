@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-markets.md
-Downloaded: 2026-02-25T20:12:09.469Z
+Downloaded: 2026-03-03T20:11:28.678Z
 -->
 
 > ## Documentation Index
@@ -73,7 +73,7 @@ paths:
         - $ref: '#/components/parameters/MarketLimitQuery'
         - $ref: '#/components/parameters/CursorQuery'
         - $ref: '#/components/parameters/TickersQuery'
-        - $ref: '#/components/parameters/EventTickerQuery'
+        - $ref: '#/components/parameters/SingleEventTickerQuery'
         - $ref: '#/components/parameters/MveHistoricalFilterQuery'
       responses:
         '200':
@@ -118,12 +118,10 @@ components:
         tickers to retrieve.
       schema:
         type: string
-    EventTickerQuery:
+    SingleEventTickerQuery:
       name: event_ticker
       in: query
-      description: >-
-        Event ticker of desired positions. Multiple event tickers can be
-        provided as a comma-separated list (maximum 10).
+      description: Event ticker to filter by. Only a single event ticker is supported.
       schema:
         type: string
         x-go-type-skip-optional-pointer: true

@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/terminal-config.md
-Downloaded: 2026-02-23T20:19:44.148Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
