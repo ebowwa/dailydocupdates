@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix/subpenny-pricing.md
+Downloaded: 2026-03-04T20:12:07.862Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -5,6 +10,8 @@
 # Subpenny Pricing
 
 > Dollar-based pricing format for subpenny precision
+
+For the general overview of fixed-point pricing and contract quantities across REST and WebSocket APIs, see [Fixed-Point Migration](/getting_started/fixed_point_migration).
 
 ## Technical Specification
 

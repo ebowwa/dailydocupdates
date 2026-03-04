@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-02-25T20:12:09.476Z
+Downloaded: 2026-03-04T20:12:07.861Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,21 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Mar 3, 2026"
+  tags={["Change", "Upcoming"]}
+  rss={{
+title: "Fixed-point migration: deprecation March 12; fractional trading week of March 9",
+description: "Legacy integer count and price fields will be removed March 12, 2026. Fractional trading rolls out per-market starting the week of March 9."
+}}
+>
+  * Legacy integer count fields (with `_fp` equivalents) and integer cents price fields (with `_dollars` equivalents) will be removed on **March 12, 2026**
+  * Fractional trading will roll out per-market starting the week of **March 9, 2026**; check `fractional_trading_enabled` on Market responses
+  * On fractional-enabled markets, legacy integer fields may be truncated; migrate to `_fp` and `_dollars` to avoid data loss
+
+  Docs: [Fixed-Point Migration](/getting_started/fixed_point_migration) and [Fee Rounding](/getting_started/fee_rounding).
+</Update>
 
 <Update
   label="Feb 24, 2026"
