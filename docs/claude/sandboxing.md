@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/sandboxing.md
-Downloaded: 2026-02-28T20:07:11.177Z
+Downloaded: 2026-03-05T20:14:52.288Z
 -->
 
 > ## Documentation Index
@@ -54,7 +54,7 @@ You can grant write access to additional paths using `sandbox.filesystem.allowWr
 Network access is controlled through a proxy server running outside the sandbox:
 
 * **Domain restrictions**: Only approved domains can be accessed
-* **User confirmation**: New domain requests trigger permission prompts
+* **User confirmation**: New domain requests trigger permission prompts (unless [`allowManagedDomainsOnly`](/en/settings#sandbox-settings) is enabled, which blocks non-allowed domains automatically)
 * **Custom proxy support**: Advanced users can implement custom rules on outgoing traffic
 * **Comprehensive coverage**: Restrictions apply to all scripts, programs, and subprocesses spawned by commands
 

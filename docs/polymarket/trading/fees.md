@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/fees.md
-Downloaded: 2026-03-02T20:11:47.808Z
+Downloaded: 2026-03-05T20:15:09.939Z
 -->
 
 > ## Documentation Index
@@ -28,9 +28,13 @@ The vast majority of Polymarket markets have **no trading fees**:
 
 The following market types charge a small taker fee on each trade. These fees are collected and redistributed daily to market makers as rebates, incentivizing deeper liquidity and tighter spreads.
 
-* **All crypto markets** (1H, 4H, daily, and weekly starting March 6, 2026 for new markets)
-* **NCAAB (college basketball) markets** (starting February 18, 2026 for new markets)
-* **Serie A markets** (starting February 18, 2026 for new markets)
+* **All crypto markets** (starting March 6, 2026)
+* **NCAAB (college basketball) markets**
+* **Serie A markets**
+
+<Note>
+  Fees apply only to markets deployed on or after the activation date. Pre-existing markets are unaffected. Markets with fees enabled have `feesEnabled` set to `true` on the market object.
+</Note>
 
 ### Fee Structure
 
@@ -124,13 +128,7 @@ Fees are rounded to 4 decimal places. The smallest fee charged is **0.0001 USDC*
 
 ## Identifying Fee-Enabled Markets
 
-The following market types have fees enabled:
-
-* **All crypto markets** (1H, 4H, daily, and weekly starting March 6, 2026 for new markets)
-* **NCAAB (college basketball) markets** (starting February 18, 2026 for new markets)
-* **Serie A markets** (starting February 18, 2026 for new markets)
-
-Query the fee-rate endpoint to check any specific market. See the [API Reference](/api-reference/introduction) for full endpoint documentation.
+Markets with fees have `feesEnabled` set to `true` on the market object. You can also query the fee-rate endpoint to check any specific market. See the [API Reference](/api-reference/introduction) for full endpoint documentation.
 
 ```bash  theme={null}
 GET https://clob.polymarket.com/fee-rate?token_id={token_id}

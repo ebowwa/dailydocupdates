@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/server-managed-settings.md
+Downloaded: 2026-03-05T20:14:52.289Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -89,7 +94,7 @@ Server-managed settings have the following limitations during the beta period:
 
 ### Settings precedence
 
-Server-managed settings and [endpoint-managed settings](/en/settings#settings-files) both occupy the highest tier in the Claude Code [settings hierarchy](/en/settings#settings-precedence), and user or project settings cannot override them. When both are present, server-managed settings take precedence and endpoint-managed settings are not used.
+Server-managed settings and [endpoint-managed settings](/en/settings#settings-files) both occupy the highest tier in the Claude Code [settings hierarchy](/en/settings#settings-precedence). No other settings level can override them, including command line arguments. When both are present, server-managed settings take precedence and endpoint-managed settings are not used.
 
 ### Fetch and caching behavior
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/fullstack.md
+Downloaded: 2026-03-05T20:15:31.341Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -132,22 +137,21 @@ To use React in your client-side code, import `react-dom/client` and render your
   import { serve } from "bun";
 
   serve({
-  routes: {
-  "/": dashboard,
-  },
-  async fetch(req) {
-  // ...api requests
-  return new Response("hello world");
-  },
+    routes: {
+      "/": dashboard,
+    },
+    async fetch(req) {
+      // ...api requests
+      return new Response("hello world");
+    },
   });
-
   ```
 
   ```tsx title="src/frontend.tsx" icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
-  import { createRoot } from 'react-dom/client';
-  import App from './app';
+  import { createRoot } from "react-dom/client";
+  import App from "./app";
 
-  const container = document.getElementById('root');
+  const container = document.getElementById("root");
   const root = createRoot(container!);
   root.render(<App />);
   ```
