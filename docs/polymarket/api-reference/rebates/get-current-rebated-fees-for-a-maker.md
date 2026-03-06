@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/api-reference/rebates/get-current-rebated-fees-for-a-maker.md
-Downloaded: 2026-02-27T20:10:39.327Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

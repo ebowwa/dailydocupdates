@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-03-04T20:12:07.861Z
+Downloaded: 2026-03-06T20:10:48.530Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,18 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Mar 5, 2026"
+  tags={["Change", "Upcoming"]}
+  rss={{
+title: "User orders WebSocket: added is_yes",
+description: "The user orders WebSocket channel adds an is_yes boolean field while retaining the side string field."
+}}
+>
+  * Added `is_yes` (boolean) to the `user_orders` WebSocket channel
+  * `side` (string `"yes"`/`"no"`) remains available for compatibility
+</Update>
 
 <Update
   label="Mar 3, 2026"
