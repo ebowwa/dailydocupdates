@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/historical_data.md
-Downloaded: 2026-03-02T20:11:57.898Z
+Downloaded: 2026-03-07T20:07:10.227Z
 -->
 
 > ## Documentation Index
@@ -28,11 +28,11 @@ The cutoff timestamps will be regularly updated, advancing forward over time. Th
 
 ## Cutoff Timestamps
 
-| Field               | Partitioned By                       | Meaning                                                                                                            |
-| ------------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `market_settled_ts` | Market settlement time               | Markets and their candlesticks that settled before this timestamp are only available via `GET /historical/markets` |
-| `trades_created_ts` | Trade fill time                      | Fills that occurred before this timestamp are only available via `GET /historical/fills`                           |
-| `orders_updated_ts` | Order cancellation or execution time | Orders canceled or fully executed before this timestamp are only available via `GET /historical/orders`            |
+| Field               | Partitioned By                       | Meaning                                                                                                                                               |
+| ------------------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `market_settled_ts` | Market settlement time               | Markets and their candlesticks that settled before this timestamp are only available via `GET /historical/markets`                                    |
+| `trades_created_ts` | Trade fill time                      | Trades that occurred before this timestamp are only available via `GET /historical/trades`. User fills are only available via `GET /historical/fills` |
+| `orders_updated_ts` | Order cancellation or execution time | Orders canceled or fully executed before this timestamp are only available via `GET /historical/orders`                                               |
 
 <Note>
   Resting (active) orders are unaffected and always appear in `GET /portfolio/orders`, regardless of the cutoff.
@@ -46,7 +46,8 @@ The cutoff timestamps will be regularly updated, advancing forward over time. Th
 | `GET /historical/markets`                       | Settled markets older than the cutoff          |
 | `GET /historical/markets/{ticker}`              | Single historical market by ticker             |
 | `GET /historical/markets/{ticker}/candlesticks` | Candlestick data for historical markets        |
-| `GET /historical/fills`                         | Trade fills older than the cutoff              |
+| `GET /historical/trades`                        | All trades older than the cutoff               |
+| `GET /historical/fills`                         | User-scoped trade fills older than the cutoff  |
 | `GET /historical/orders`                        | Canceled/executed orders older than the cutoff |
 
 ## Impacted Live Endpoints
@@ -57,6 +58,7 @@ The following live endpoints will no longer return data older than the correspon
 | --------------------------------------------- | ------------------- | ----------------------------------------------------------------------------------------------- |
 | `GET /markets`, `GET /markets/{ticker}`       | `market_settled_ts` | Settled markets and their candlesticks older than the cutoff will not appear                    |
 | `GET /events` with `with_nested_markets=true` | `market_settled_ts` | Nested markets older than the cutoff will not be included, only markets impacted                |
+| `GET /markets/trades`                         | `trades_created_ts` | Trades older than the cutoff will not appear                                                    |
 | `GET /portfolio/fills`                        | `trades_created_ts` | Fills older than the cutoff will not appear                                                     |
 | `GET /portfolio/orders`                       | `orders_updated_ts` | Completed/canceled orders older than the cutoff will not appear (resting orders are unaffected) |
 

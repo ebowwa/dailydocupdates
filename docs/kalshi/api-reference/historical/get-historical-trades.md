@@ -1,21 +1,21 @@
 <!--
-Source: https://docs.kalshi.com/api-reference/historical/get-historical-fills.md
-Downloaded: 2026-03-07T20:07:10.218Z
+Source: https://docs.kalshi.com/api-reference/historical/get-historical-trades.md
+Downloaded: 2026-03-07T20:07:10.219Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Get Historical Fills
+# Get Historical Trades
 
->  Endpoint for getting all historical fills for the member. A fill is when a trade you have is matched.
+>  Endpoint for getting all historical trades for all markets. Trades that were filled before the historical cutoff are available via this endpoint. See [Historical Data](https://kalshi.com/docs/getting_started/historical_data) for details.
 
 
 
 ## OpenAPI
 
-````yaml openapi.yaml get /historical/fills
+````yaml openapi.yaml get /historical/trades
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -59,37 +59,32 @@ tags:
   - name: structured-targets
     description: Structured targets endpoints
 paths:
-  /historical/fills:
+  /historical/trades:
     get:
       tags:
         - historical
-      summary: Get Historical Fills
-      description: ' Endpoint for getting all historical fills for the member. A fill is when a trade you have is matched.'
-      operationId: GetFillsHistorical
+      summary: Get Historical Trades
+      description: ' Endpoint for getting all historical trades for all markets. Trades that were filled before the historical cutoff are available via this endpoint. See [Historical Data](https://kalshi.com/docs/getting_started/historical_data) for details.'
+      operationId: GetTradesHistorical
       parameters:
         - $ref: '#/components/parameters/TickerQuery'
+        - $ref: '#/components/parameters/MinTsQuery'
         - $ref: '#/components/parameters/MaxTsQuery'
-        - $ref: '#/components/parameters/LimitQuery'
+        - $ref: '#/components/parameters/MarketLimitQuery'
         - $ref: '#/components/parameters/CursorQuery'
       responses:
         '200':
-          description: Fills retrieved successfully
+          description: Historical trades retrieved successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetFillsResponse'
+                $ref: '#/components/schemas/GetTradesResponse'
         '400':
-          description: Bad request
-        '401':
-          description: Unauthorized
+          $ref: '#/components/responses/BadRequestError'
         '404':
           $ref: '#/components/responses/NotFoundError'
         '500':
-          description: Internal server error
-      security:
-        - kalshiAccessKey: []
-          kalshiAccessSignature: []
-          kalshiAccessTimestamp: []
+          $ref: '#/components/responses/InternalServerError'
 components:
   parameters:
     TickerQuery:
@@ -99,6 +94,13 @@ components:
       schema:
         type: string
         x-go-type-skip-optional-pointer: true
+    MinTsQuery:
+      name: min_ts
+      in: query
+      description: Filter items after this Unix timestamp
+      schema:
+        type: integer
+        format: int64
     MaxTsQuery:
       name: max_ts
       in: query
@@ -106,18 +108,18 @@ components:
       schema:
         type: integer
         format: int64
-    LimitQuery:
+    MarketLimitQuery:
       name: limit
       in: query
-      description: Number of results per page. Defaults to 100. Maximum value is 200.
+      description: Number of results per page. Defaults to 100. Maximum value is 1000.
       schema:
         type: integer
         format: int64
         minimum: 1
-        maximum: 200
+        maximum: 1000
         default: 100
         x-oapi-codegen-extra-tags:
-          validate: omitempty,min=1,max=200
+          validate: omitempty,gte=1,lte=1000
     CursorQuery:
       name: cursor
       in: query
@@ -129,114 +131,74 @@ components:
         type: string
         x-go-type-skip-optional-pointer: true
   schemas:
-    GetFillsResponse:
+    GetTradesResponse:
       type: object
       required:
-        - fills
+        - trades
         - cursor
       properties:
-        fills:
+        trades:
           type: array
           items:
-            $ref: '#/components/schemas/Fill'
+            $ref: '#/components/schemas/Trade'
         cursor:
           type: string
-    Fill:
+    Trade:
       type: object
       required:
-        - fill_id
         - trade_id
-        - order_id
         - ticker
-        - market_ticker
-        - side
-        - action
+        - price
         - count
         - count_fp
-        - price
         - yes_price
         - no_price
-        - yes_price_fixed
-        - no_price_fixed
-        - is_taker
-        - fee_cost
+        - yes_price_dollars
+        - no_price_dollars
+        - taker_side
       properties:
-        fill_id:
-          type: string
-          description: Unique identifier for this fill
         trade_id:
           type: string
-          description: Unique identifier for this fill (legacy field name, same as fill_id)
-        order_id:
-          type: string
-          description: Unique identifier for the order that resulted in this fill
-        client_order_id:
-          type: string
-          description: Client-provided identifier for the order that resulted in this fill
+          description: Unique identifier for this trade
         ticker:
           type: string
           description: Unique identifier for the market
-        market_ticker:
-          type: string
-          description: Unique identifier for the market (legacy field name, same as ticker)
-        side:
-          type: string
-          enum:
-            - 'yes'
-            - 'no'
-          description: Specifies if this is a 'yes' or 'no' fill
-        action:
-          type: string
-          enum:
-            - buy
-            - sell
-          description: Specifies if this is a buy or sell order
+        price:
+          type: number
+          description: Trade price (deprecated - use yes_price or no_price)
         count:
           type: integer
-          description: Number of contracts bought or sold in this fill
+          description: Number of contracts bought or sold in this trade
         count_fp:
           $ref: '#/components/schemas/FixedPointCount'
           description: >-
             String representation of the number of contracts bought or sold in
-            this fill
-        price:
-          type: number
-          description: Fill price (deprecated - use yes_price or no_price)
+            this trade
         yes_price:
           type: integer
-          description: Fill price for the yes side in cents
+          description: Yes price for this trade in cents
         no_price:
           type: integer
-          description: Fill price for the no side in cents
-        yes_price_fixed:
+          description: No price for this trade in cents
+        yes_price_dollars:
+          $ref: '#/components/schemas/FixedPointDollars'
+          description: Yes price for this trade in dollars
+        no_price_dollars:
+          $ref: '#/components/schemas/FixedPointDollars'
+          description: No price for this trade in dollars
+        taker_side:
           type: string
-          description: Fill price for the yes side in fixed point dollars
-        no_price_fixed:
-          type: string
-          description: Fill price for the no side in fixed point dollars
-        is_taker:
-          type: boolean
-          description: >-
-            If true, this fill was a taker (removed liquidity from the order
-            book)
+          enum:
+            - 'yes'
+            - 'no'
+          x-enum-varnames:
+            - TradeTakerSideYes
+            - TradeTakerSideNo
+          description: Side for the taker of this trade
         created_time:
           type: string
           format: date-time
-          description: Timestamp when this fill was executed
-        fee_cost:
-          $ref: '#/components/schemas/FixedPointDollars'
-          description: Fee cost in centi-cents
-        subaccount_number:
-          type: integer
-          nullable: true
-          x-omitempty: true
-          description: >-
-            Subaccount number (0 for primary, 1-32 for subaccounts). Present for
-            direct users.
-        ts:
-          type: integer
-          format: int64
-          description: Unix timestamp when this fill was executed (legacy field name)
+          description: Timestamp when this trade was executed
     ErrorResponse:
       type: object
       properties:
@@ -272,27 +234,23 @@ components:
         price level structure.
       example: '0.5600'
   responses:
+    BadRequestError:
+      description: Bad request - invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     NotFoundError:
       description: Resource not found
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  securitySchemes:
-    kalshiAccessKey:
-      type: apiKey
-      in: header
-      name: KALSHI-ACCESS-KEY
-      description: Your API key ID
-    kalshiAccessSignature:
-      type: apiKey
-      in: header
-      name: KALSHI-ACCESS-SIGNATURE
-      description: RSA-PSS signature of the request
-    kalshiAccessTimestamp:
-      type: apiKey
-      in: header
-      name: KALSHI-ACCESS-TIMESTAMP
-      description: Request timestamp in milliseconds
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
 
 ````
