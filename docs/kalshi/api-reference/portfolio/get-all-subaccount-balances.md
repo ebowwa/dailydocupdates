@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/portfolio/get-all-subaccount-balances.md
+Downloaded: 2026-03-08T20:07:09.341Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -122,7 +127,7 @@ components:
     FixedPointDollars:
       type: string
       description: >-
-        US dollar amount as a fixed-point decimal string with up to 4 decimal
+        US dollar amount as a fixed-point decimal string with up to 6 decimal
         places of precision. This is the maximum supported precision; valid
         quote intervals for a given market are constrained by that market's
         price level structure.

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-positions.md
-Downloaded: 2026-03-03T20:11:28.682Z
+Downloaded: 2026-03-08T20:07:09.342Z
 -->
 
 > ## Documentation Index
@@ -303,7 +303,7 @@ components:
     FixedPointDollars:
       type: string
       description: >-
-        US dollar amount as a fixed-point decimal string with up to 4 decimal
+        US dollar amount as a fixed-point decimal string with up to 6 decimal
         places of precision. This is the maximum supported precision; valid
         quote intervals for a given market are constrained by that market's
         price level structure.

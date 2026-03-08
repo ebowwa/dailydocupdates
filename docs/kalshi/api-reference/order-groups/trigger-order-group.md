@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/api-reference/order-groups/trigger-order-group.md
-Downloaded: 2026-02-28T20:07:14.974Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
