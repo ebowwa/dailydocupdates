@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-03-08T20:07:09.343Z
+Downloaded: 2026-03-09T20:11:24.923Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,21 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Mar 8, 2026"
+  tags={["Breaking Change", "Upcoming"]}
+  rss={{
+title: "Legacy fields removed March 12; fractional trading and subpenny pricing on new markets",
+description: "Legacy integer count and price fields will be removed March 12. Fractional trading enabled on 10 new markets March 12. Subpenny pricing on 2 markets March 9."
+}}
+>
+  * Legacy integer count fields (with `_fp` equivalents) and integer cents price fields (with `_dollars` equivalents) will be **removed** from all REST and WebSocket response payloads on **March 12, 2026**
+  * Fractional trading will be enabled on 10 additional markets on **March 12**
+  * Subpenny pricing goes live on 2 markets on **March 9**: `KXGREENLAND-29` (deci\_cent) and `KXGDPNOM-RUS26` (tapered\_deci\_cent)
+
+  See [Fixed-Point Migration](/getting_started/fixed_point_migration) for details.
+</Update>
 
 <Update
   label="Mar 7, 2026"

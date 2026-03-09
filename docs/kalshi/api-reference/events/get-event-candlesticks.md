@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-event-candlesticks.md
-Downloaded: 2026-03-08T20:07:09.332Z
+Downloaded: 2026-03-09T20:11:24.910Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-03-08T20:07:09.332Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.8.0
+  version: 3.9.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -161,9 +161,7 @@ components:
         - yes_bid
         - yes_ask
         - price
-        - volume
         - volume_fp
-        - open_interest
         - open_interest_fp
       properties:
         end_period_ts:
@@ -185,23 +183,11 @@ components:
           description: >-
             Open, high, low, close (OHLC) and more data for trade YES contract
             prices on the market during the candlestick period.
-        volume:
-          type: integer
-          format: int64
-          description: >-
-            Number of contracts bought on the market during the candlestick
-            period.
         volume_fp:
           $ref: '#/components/schemas/FixedPointCount'
           description: >-
             String representation of the number of contracts bought on the
             market during the candlestick period.
-        open_interest:
-          type: integer
-          format: int64
-          description: >-
-            Number of contracts bought on the market by end of the candlestick
-            period (end_period_ts).
         open_interest_fp:
           $ref: '#/components/schemas/FixedPointCount'
           description: >-
@@ -210,50 +196,26 @@ components:
     BidAskDistribution:
       type: object
       required:
-        - open
         - open_dollars
-        - low
         - low_dollars
-        - high
         - high_dollars
-        - close
         - close_dollars
       properties:
-        open:
-          type: integer
-          description: >-
-            Offer price on the market at the start of the candlestick period (in
-            cents).
         open_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           description: >-
             Offer price on the market at the start of the candlestick period (in
             dollars).
-        low:
-          type: integer
-          description: >-
-            Lowest offer price on the market during the candlestick period (in
-            cents).
         low_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           description: >-
             Lowest offer price on the market during the candlestick period (in
             dollars).
-        high:
-          type: integer
-          description: >-
-            Highest offer price on the market during the candlestick period (in
-            cents).
         high_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           description: >-
             Highest offer price on the market during the candlestick period (in
             dollars).
-        close:
-          type: integer
-          description: >-
-            Offer price on the market at the end of the candlestick period (in
-            cents).
         close_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           description: >-
@@ -262,13 +224,6 @@ components:
     PriceDistribution:
       type: object
       properties:
-        open:
-          type: integer
-          nullable: true
-          description: >-
-            First traded YES contract price on the market during the candlestick
-            period (in cents). May be null if there was no trade during the
-            period.
         open_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           nullable: true
@@ -276,26 +231,12 @@ components:
             First traded YES contract price on the market during the candlestick
             period (in dollars). May be null if there was no trade during the
             period.
-        low:
-          type: integer
-          nullable: true
-          description: >-
-            Lowest traded YES contract price on the market during the
-            candlestick period (in cents). May be null if there was no trade
-            during the period.
         low_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           nullable: true
           description: >-
             Lowest traded YES contract price on the market during the
             candlestick period (in dollars). May be null if there was no trade
-            during the period.
-        high:
-          type: integer
-          nullable: true
-          description: >-
-            Highest traded YES contract price on the market during the
-            candlestick period (in cents). May be null if there was no trade
             during the period.
         high_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
@@ -304,26 +245,12 @@ components:
             Highest traded YES contract price on the market during the
             candlestick period (in dollars). May be null if there was no trade
             during the period.
-        close:
-          type: integer
-          nullable: true
-          description: >-
-            Last traded YES contract price on the market during the candlestick
-            period (in cents). May be null if there was no trade during the
-            period.
         close_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           nullable: true
           description: >-
             Last traded YES contract price on the market during the candlestick
             period (in dollars). May be null if there was no trade during the
-            period.
-        mean:
-          type: integer
-          nullable: true
-          description: >-
-            Mean traded YES contract price on the market during the candlestick
-            period (in cents). May be null if there was no trade during the
             period.
         mean_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
@@ -332,13 +259,6 @@ components:
             Mean traded YES contract price on the market during the candlestick
             period (in dollars). May be null if there was no trade during the
             period.
-        previous:
-          type: integer
-          nullable: true
-          description: >-
-            Last traded YES contract price on the market before the candlestick
-            period (in cents). May be null if there were no trades before the
-            period.
         previous_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           nullable: true
@@ -346,24 +266,12 @@ components:
             Last traded YES contract price on the market before the candlestick
             period (in dollars). May be null if there were no trades before the
             period.
-        min:
-          type: integer
-          nullable: true
-          description: >-
-            Minimum close price of any market during the candlestick period (in
-            cents).
         min_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           nullable: true
           description: >-
             Minimum close price of any market during the candlestick period (in
             dollars).
-        max:
-          type: integer
-          nullable: true
-          description: >-
-            Maximum close price of any market during the candlestick period (in
-            cents).
         max_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           nullable: true

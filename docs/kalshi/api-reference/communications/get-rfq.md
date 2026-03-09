@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/get-rfq.md
-Downloaded: 2026-03-08T20:07:09.331Z
+Downloaded: 2026-03-09T20:11:24.909Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-03-08T20:07:09.331Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.8.0
+  version: 3.9.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -108,7 +108,6 @@ components:
       required:
         - id
         - creator_id
-        - contracts
         - contracts_fp
         - market_ticker
         - status
@@ -125,21 +124,11 @@ components:
         market_ticker:
           type: string
           description: The ticker of the market this RFQ is for
-        contracts:
-          type: integer
-          description: Number of contracts requested in the RFQ
         contracts_fp:
           $ref: '#/components/schemas/FixedPointCount'
           description: >-
             String representation of the number of contracts requested in the
             RFQ
-        target_cost_centi_cents:
-          type: integer
-          format: int64
-          description: >-
-            DEPRECATED: Total value of the RFQ in centi-cents. Use
-            target_cost_dollars instead.
-          deprecated: true
         target_cost_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           description: Total value of the RFQ in dollars

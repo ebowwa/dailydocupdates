@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/plugins.md
+Downloaded: 2026-03-09T20:10:53.091Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -24,7 +29,7 @@ Claude Code supports two ways to add custom skills, agents, and hooks:
 * You're customizing Claude Code for a single project
 * The configuration is personal and doesn't need to be shared
 * You're experimenting with skills or hooks before packaging them
-* You want short skill names like `/hello` or `/review`
+* You want short skill names like `/hello` or `/deploy`
 
 **Use plugins when**:
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/public-trades.md
-Downloaded: 2026-03-03T20:11:28.688Z
+Downloaded: 2026-03-09T20:11:24.929Z
 -->
 
 > ## Documentation Index
@@ -81,25 +81,13 @@ operations:
                     type: string
                     description: Unique market identifier
                     required: false
-                  - name: yes_price
-                    type: integer
-                    description: Yes side price (1-99)
-                    required: false
                   - name: yes_price_dollars
                     type: string
                     description: Yes side price in dollars
                     required: false
-                  - name: no_price
-                    type: integer
-                    description: No side price (1-99)
-                    required: false
                   - name: no_price_dollars
                     type: string
                     description: No side price in dollars
-                    required: false
-                  - name: count
-                    type: integer
-                    description: Number of contracts traded
                     required: false
                   - name: count_fp
                     type: string
@@ -124,7 +112,7 @@ operations:
             type:
               type: string
               const: trade
-              x-parser-schema-id: <anonymous-schema-97>
+              x-parser-schema-id: <anonymous-schema-74>
             sid:
               type: integer
               description: >-
@@ -137,11 +125,8 @@ operations:
               required:
                 - trade_id
                 - market_ticker
-                - yes_price
                 - yes_price_dollars
-                - no_price
                 - no_price_dollars
-                - count
                 - count_fp
                 - taker_side
                 - ts
@@ -150,7 +135,7 @@ operations:
                   type: string
                   description: Unique identifier for the trade
                   format: uuid
-                  x-parser-schema-id: <anonymous-schema-99>
+                  x-parser-schema-id: <anonymous-schema-76>
                 market_ticker:
                   type: string
                   description: Unique market identifier
@@ -159,35 +144,18 @@ operations:
                     - FED-23DEC-T3.00
                     - HIGHNY-22DEC23-B53.5
                   x-parser-schema-id: marketTicker
-                yes_price:
-                  type: integer
-                  description: Yes side price (1-99)
-                  minimum: 1
-                  maximum: 99
-                  x-parser-schema-id: <anonymous-schema-100>
                 yes_price_dollars:
                   type: string
                   description: Yes side price in dollars
-                  x-parser-schema-id: <anonymous-schema-101>
-                no_price:
-                  type: integer
-                  description: No side price (1-99)
-                  minimum: 1
-                  maximum: 99
-                  x-parser-schema-id: <anonymous-schema-102>
+                  x-parser-schema-id: <anonymous-schema-77>
                 no_price_dollars:
                   type: string
                   description: No side price in dollars
-                  x-parser-schema-id: <anonymous-schema-103>
-                count:
-                  type: integer
-                  description: Number of contracts traded
-                  minimum: 1
-                  x-parser-schema-id: <anonymous-schema-104>
+                  x-parser-schema-id: <anonymous-schema-78>
                 count_fp:
                   type: string
                   description: Fixed-point contracts traded (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-105>
+                  x-parser-schema-id: <anonymous-schema-79>
                 taker_side:
                   type: string
                   description: Market side
@@ -199,8 +167,8 @@ operations:
                   type: integer
                   description: Unix timestamp in seconds
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-106>
-              x-parser-schema-id: <anonymous-schema-98>
+                  x-parser-schema-id: <anonymous-schema-80>
+              x-parser-schema-id: <anonymous-schema-75>
           x-parser-schema-id: tradePayload
         title: Trade Update
         description: Public trade information
@@ -211,11 +179,8 @@ operations:
             "msg": {
               "trade_id": "d91bc706-ee49-470d-82d8-11418bda6fed",
               "market_ticker": "HIGHNY-22DEC23-B53.5",
-              "yes_price": 36,
               "yes_price_dollars": "0.360",
-              "no_price": 64,
               "no_price_dollars": "0.640",
-              "count": 136,
               "count_fp": "136.00",
               "taker_side": "no",
               "ts": 1669149841

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/market-ticker.md
-Downloaded: 2026-03-03T20:11:28.687Z
+Downloaded: 2026-03-09T20:11:24.929Z
 -->
 
 > ## Documentation Index
@@ -83,18 +83,6 @@ operations:
                     type: string
                     description: Unique market UUID
                     required: false
-                  - name: price
-                    type: integer
-                    description: Last traded price in cents (1-99)
-                    required: false
-                  - name: yes_bid
-                    type: integer
-                    description: Best bid price for yes side
-                    required: false
-                  - name: yes_ask
-                    type: integer
-                    description: Best ask price for yes side
-                    required: false
                   - name: price_dollars
                     type: string
                     description: Last traded price in dollars
@@ -107,19 +95,9 @@ operations:
                     type: string
                     description: Best ask price for yes side in dollars
                     required: false
-                  - name: volume
-                    type: integer
-                    description: >-
-                      Number of individual contracts traded on the market so
-                      far. YES and NO count separately
-                    required: false
                   - name: volume_fp
                     type: string
                     description: Fixed-point total contracts traded (2 decimals)
-                    required: false
-                  - name: open_interest
-                    type: integer
-                    description: Number of active contracts in the market currently
                     required: false
                   - name: open_interest_fp
                     type: string
@@ -152,7 +130,7 @@ operations:
             type:
               type: string
               const: ticker
-              x-parser-schema-id: <anonymous-schema-81>
+              x-parser-schema-id: <anonymous-schema-63>
             sid:
               type: integer
               description: >-
@@ -165,15 +143,10 @@ operations:
               required:
                 - market_ticker
                 - market_id
-                - price
-                - yes_bid
-                - yes_ask
                 - price_dollars
                 - yes_bid_dollars
                 - yes_ask_dollars
-                - volume
                 - volume_fp
-                - open_interest
                 - open_interest_fp
                 - dollar_volume
                 - dollar_open_interest
@@ -193,77 +166,47 @@ operations:
                   description: Unique market UUID
                   format: uuid
                   x-parser-schema-id: marketId
-                price:
-                  type: integer
-                  description: Last traded price in cents (1-99)
-                  minimum: 1
-                  maximum: 99
-                  x-parser-schema-id: <anonymous-schema-83>
-                yes_bid:
-                  type: integer
-                  description: Best bid price for yes side
-                  minimum: 1
-                  maximum: 99
-                  x-parser-schema-id: <anonymous-schema-84>
-                yes_ask:
-                  type: integer
-                  description: Best ask price for yes side
-                  minimum: 1
-                  maximum: 99
-                  x-parser-schema-id: <anonymous-schema-85>
                 price_dollars:
                   type: string
                   description: Last traded price in dollars
-                  x-parser-schema-id: <anonymous-schema-86>
+                  x-parser-schema-id: <anonymous-schema-65>
                 yes_bid_dollars:
                   type: string
                   description: Best bid price for yes side in dollars
-                  x-parser-schema-id: <anonymous-schema-87>
+                  x-parser-schema-id: <anonymous-schema-66>
                 yes_ask_dollars:
                   type: string
                   description: Best ask price for yes side in dollars
-                  x-parser-schema-id: <anonymous-schema-88>
-                volume:
-                  type: integer
-                  description: >-
-                    Number of individual contracts traded on the market so far.
-                    YES and NO count separately
-                  minimum: 0
-                  x-parser-schema-id: <anonymous-schema-89>
+                  x-parser-schema-id: <anonymous-schema-67>
                 volume_fp:
                   type: string
                   description: Fixed-point total contracts traded (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-90>
-                open_interest:
-                  type: integer
-                  description: Number of active contracts in the market currently
-                  minimum: 0
-                  x-parser-schema-id: <anonymous-schema-91>
+                  x-parser-schema-id: <anonymous-schema-68>
                 open_interest_fp:
                   type: string
                   description: Fixed-point open interest (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-92>
+                  x-parser-schema-id: <anonymous-schema-69>
                 dollar_volume:
                   type: integer
                   description: Number of dollars traded in the market so far
                   minimum: 0
-                  x-parser-schema-id: <anonymous-schema-93>
+                  x-parser-schema-id: <anonymous-schema-70>
                 dollar_open_interest:
                   type: integer
                   description: Number of dollars positioned in the market currently
                   minimum: 0
-                  x-parser-schema-id: <anonymous-schema-94>
+                  x-parser-schema-id: <anonymous-schema-71>
                 ts:
                   type: integer
                   description: Unix timestamp for when the update happened (in seconds)
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-95>
+                  x-parser-schema-id: <anonymous-schema-72>
                 time:
                   type: string
                   description: Timestamp for when the update happened (RFC3339)
                   format: date-time
-                  x-parser-schema-id: <anonymous-schema-96>
-              x-parser-schema-id: <anonymous-schema-82>
+                  x-parser-schema-id: <anonymous-schema-73>
+              x-parser-schema-id: <anonymous-schema-64>
           x-parser-schema-id: tickerPayload
         title: Ticker Update
         description: Market price ticker information
@@ -274,15 +217,10 @@ operations:
             "msg": {
               "market_ticker": "FED-23DEC-T3.00",
               "market_id": "9b0f6b43-5b68-4f9f-9f02-9a2d1b8ac1a1",
-              "price": 48,
-              "yes_bid": 45,
-              "yes_ask": 53,
               "price_dollars": "0.480",
               "yes_bid_dollars": "0.450",
               "yes_ask_dollars": "0.530",
-              "volume": 33896,
               "volume_fp": "33896.00",
-              "open_interest": 20422,
               "open_interest_fp": "20422.00",
               "dollar_volume": 16948,
               "dollar_open_interest": 10211,

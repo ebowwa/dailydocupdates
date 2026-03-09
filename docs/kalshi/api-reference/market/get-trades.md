@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-trades.md
-Downloaded: 2026-03-08T20:07:09.337Z
+Downloaded: 2026-03-09T20:11:24.915Z
 -->
 
 > ## Documentation Index
@@ -20,7 +20,7 @@ Downloaded: 2026-03-08T20:07:09.337Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.8.0
+  version: 3.9.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -156,10 +156,7 @@ components:
         - trade_id
         - ticker
         - price
-        - count
         - count_fp
-        - yes_price
-        - no_price
         - yes_price_dollars
         - no_price_dollars
         - taker_side
@@ -170,23 +167,11 @@ components:
         ticker:
           type: string
           description: Unique identifier for the market
-        price:
-          type: number
-          description: Trade price (deprecated - use yes_price or no_price)
-        count:
-          type: integer
-          description: Number of contracts bought or sold in this trade
         count_fp:
           $ref: '#/components/schemas/FixedPointCount'
           description: >-
             String representation of the number of contracts bought or sold in
             this trade
-        yes_price:
-          type: integer
-          description: Yes price for this trade in cents
-        no_price:
-          type: integer
-          description: No price for this trade in cents
         yes_price_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           description: Yes price for this trade in dollars

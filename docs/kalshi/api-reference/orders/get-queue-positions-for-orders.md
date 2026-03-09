@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/orders/get-queue-positions-for-orders.md
+Downloaded: 2026-03-09T20:11:24.920Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,7 +19,7 @@
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.8.0
+  version: 3.9.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -114,7 +119,7 @@ components:
       required:
         - order_id
         - market_ticker
-        - queue_position
+        - queue_position_fp
       properties:
         order_id:
           type: string
@@ -122,10 +127,6 @@ components:
         market_ticker:
           type: string
           description: The market ticker
-        queue_position:
-          type: integer
-          format: int32
-          description: The position of the order in the queue
         queue_position_fp:
           $ref: '#/components/schemas/FixedPointCount'
           description: The number of preceding shares before the order in the queue.
