@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/builders/tiers.md
+Downloaded: 2026-03-10T20:11:17.465Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -181,3 +186,6 @@ Ready to upgrade or have questions?
     Configure your client to credit trades to your account.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

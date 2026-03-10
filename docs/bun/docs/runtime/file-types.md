@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/file-types.md
+Downloaded: 2026-03-10T20:11:19.133Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -467,3 +472,6 @@ This loader is copied into the `outdir` as-is. The name of the copied file is de
 
   This tells TypeScript that any default imports from `.svg` should be treated as a string.
 </Accordion>
+
+
+Built with [Mintlify](https://mintlify.com).

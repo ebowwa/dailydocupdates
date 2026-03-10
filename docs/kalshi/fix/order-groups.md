@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix/order-groups.md
+Downloaded: 2026-03-10T20:11:18.497Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -112,3 +117,6 @@ Response to order group management requests.
 <Note>
   Errors are returned as BusinessMessageReject (35=j) messages, not in the OrderGroupResponse.
 </Note>
+
+
+Built with [Mintlify](https://mintlify.com).

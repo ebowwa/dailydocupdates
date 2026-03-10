@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix/connectivity.md
+Downloaded: 2026-03-10T20:11:18.496Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -148,3 +153,6 @@ The drop copy session endpoint provides an alternative way for clients to query 
     * Verify signature generation uses the exact SendingTime from field 52
   </Accordion>
 </AccordionGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

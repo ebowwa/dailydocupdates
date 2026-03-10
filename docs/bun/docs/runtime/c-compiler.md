@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/c-compiler.md
+Downloaded: 2026-03-10T20:11:19.132Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -205,3 +210,6 @@ cc({
 ```
 
 These are preprocessor definitions passed to the TinyCC compiler.
+
+
+Built with [Mintlify](https://mintlify.com).

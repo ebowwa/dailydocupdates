@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-event-candlesticks.md
-Downloaded: 2026-03-09T20:11:24.910Z
+Downloaded: 2026-03-10T20:11:18.482Z
 -->
 
 > ## Documentation Index
@@ -299,3 +299,5 @@ components:
       example: '0.5600'
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

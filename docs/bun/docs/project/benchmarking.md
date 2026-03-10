@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/project/benchmarking.md
+Downloaded: 2026-03-10T20:11:19.129Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -288,3 +293,6 @@ bun --heap-prof --heap-prof-dir ./profiles script.js
 | `--heap-prof-md`              | Generate a markdown heap profile on exit   |
 | `--heap-prof-name <filename>` | Set output filename                        |
 | `--heap-prof-dir <dir>`       | Set output directory                       |
+
+
+Built with [Mintlify](https://mintlify.com).

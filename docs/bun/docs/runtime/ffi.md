@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/ffi.md
+Downloaded: 2026-03-10T20:11:19.133Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -562,3 +567,6 @@ let png = new Uint8Array(toArrayBuffer(out));
 // save it to disk:
 await Bun.write("out.png", png);
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

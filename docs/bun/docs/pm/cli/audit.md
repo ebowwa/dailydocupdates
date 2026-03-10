@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/audit.md
+Downloaded: 2026-03-10T20:11:19.126Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -61,3 +66,6 @@ bun audit --json
 ### Exit code
 
 `bun audit` will exit with code `0` if no vulnerabilities are found and `1` if the report lists any vulnerabilities. This will still happen even if `--json` is passed.
+
+
+Built with [Mintlify](https://mintlify.com).

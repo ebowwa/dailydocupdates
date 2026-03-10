@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/milestone/get-milestone.md
-Downloaded: 2026-03-09T20:11:24.916Z
+Downloaded: 2026-03-10T20:11:18.488Z
 -->
 
 > ## Documentation Index
@@ -167,3 +167,5 @@ components:
           description: Last time this structured target was updated.
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

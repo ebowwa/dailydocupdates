@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/install/git-diff-bun-lockfile.md
+Downloaded: 2026-03-10T20:11:19.106Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -46,3 +51,6 @@ Why this works:
 * `binary` tells git to treat the file as binary (so it doesn't try to diff it line-by-line)
 
 In Bun, you can execute Bun's lockfile (`bun ./bun.lockb`) to generate a human-readable version of the lockfile and `git diff` can then use that to generate a human-readable diff.
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/repl.md
+Downloaded: 2026-03-10T20:11:19.138Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -177,3 +182,6 @@ bun repl -p "{ a: 1, b: 2 }"
 ```
 
 This uses the same transforms as the interactive REPL, so a bare object literal like `{ a: 1 }` is treated as an object expression instead of a block statement. The process exits after the event loop drains (pending timers and I/O complete first). On error, the process exits with code `1`.
+
+
+Built with [Mintlify](https://mintlify.com).

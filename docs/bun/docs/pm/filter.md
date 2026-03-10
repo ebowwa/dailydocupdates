@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/filter.md
+Downloaded: 2026-03-10T20:11:19.128Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -128,3 +133,6 @@ Use `--if-present` with `--workspaces` to skip packages that don't have the requ
 ### Dependency Order
 
 Bun will respect package dependency order when running scripts. Say you have a package `foo` that depends on another package `bar` in your workspace, and both packages have a `build` script. When you run `bun --filter '*' build`, you will notice that `foo` will only start running once `bar` is done.
+
+
+Built with [Mintlify](https://mintlify.com).

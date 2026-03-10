@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/import-html.md
+Downloaded: 2026-03-10T20:11:19.111Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -13,3 +18,6 @@ console.log(html); // <!DOCTYPE html><html><head>...
 ```
 
 This can also be used with hot module reloading and/or watch mode to force Bun to reload whenever the `./file.html` file changes.
+
+
+Built with [Mintlify](https://mintlify.com).

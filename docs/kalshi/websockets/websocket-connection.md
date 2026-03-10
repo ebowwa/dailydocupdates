@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/websocket-connection.md
-Downloaded: 2026-03-03T20:11:28.688Z
+Downloaded: 2026-03-10T20:11:18.506Z
 -->
 
 > ## Documentation Index
@@ -1393,3 +1393,5 @@ securitySchemes:
     extensions: []
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

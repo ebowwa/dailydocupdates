@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/why.md
+Downloaded: 2026-03-10T20:11:19.128Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -85,3 +90,6 @@ The output shows:
 * The version requirement specified in each package's dependencies
 
 For nested dependencies, the command shows the complete dependency tree by default, with indentation indicating the relationship hierarchy.
+
+
+Built with [Mintlify](https://mintlify.com).

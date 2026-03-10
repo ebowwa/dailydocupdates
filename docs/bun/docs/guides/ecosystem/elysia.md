@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/elysia.md
+Downloaded: 2026-03-10T20:11:19.097Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -29,3 +34,6 @@ console.log(`🦊 Elysia is running at on port ${app.server?.port}...`);
 Elysia is a full-featured server framework with Express-like syntax, type inference, middleware, file uploads, and plugins for JWT authentication, tRPC, and more. It's also is one of the [fastest Bun web frameworks](https://github.com/SaltyAom/bun-http-framework-benchmark).
 
 Refer to the Elysia [documentation](https://elysiajs.com/quick-start.html) for more information.
+
+
+Built with [Mintlify](https://mintlify.com).

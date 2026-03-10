@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/concepts/positions-tokens.md
+Downloaded: 2026-03-10T20:11:17.465Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -114,3 +119,6 @@ You can lock in profits or cut losses by selling before the market resolves:
 * Bought Yes at `$0.40`
 * Price rises to `$0.70`
 * Sell at `$0.70` → Profit of `$0.30` per token (75%)
+
+
+Built with [Mintlify](https://mintlify.com).

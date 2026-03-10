@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/clients/builder.md
+Downloaded: 2026-03-10T20:11:17.470Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -368,3 +373,6 @@ async revokeBuilderApiKey(): Promise<any>
     Execute onchain operations without paying gas.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

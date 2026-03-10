@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/exchange/get-series-fee-changes.md
-Downloaded: 2026-03-09T20:11:24.911Z
+Downloaded: 2026-03-10T20:11:18.484Z
 -->
 
 > ## Documentation Index
@@ -159,3 +159,5 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

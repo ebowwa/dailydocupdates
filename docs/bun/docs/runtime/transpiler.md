@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/transpiler.md
+Downloaded: 2026-03-10T20:11:19.140Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -280,3 +285,6 @@ type Import = {
 
 const transpiler = new Bun.Transpiler({ loader: "jsx" });
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

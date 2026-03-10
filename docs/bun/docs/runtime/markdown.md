@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/markdown.md
-Downloaded: 2026-03-02T20:12:05.079Z
+Downloaded: 2026-03-10T20:11:19.137Z
 -->
 
 > ## Documentation Index
@@ -387,3 +387,6 @@ const el = Bun.markdown.react("## Hello World", undefined, {
   autolinks: true,
 });
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/fee_rounding.md
-Downloaded: 2026-03-04T20:12:07.863Z
+Downloaded: 2026-03-10T20:11:18.499Z
 -->
 
 > ## Documentation Index
@@ -134,3 +134,6 @@ When both apply simultaneously, intermediate values can reach up to 6 decimal pl
     </Note>
   </Accordion>
 </AccordionGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

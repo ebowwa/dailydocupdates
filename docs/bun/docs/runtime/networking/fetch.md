@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/networking/fetch.md
+Downloaded: 2026-03-10T20:11:19.137Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -485,3 +490,6 @@ await write("output.txt", response);
 * S3 operations automatically handle signing requests and merging authentication headers
 
 Note: Many of these features are Bun-specific extensions to the standard fetch API.
+
+
+Built with [Mintlify](https://mintlify.com).

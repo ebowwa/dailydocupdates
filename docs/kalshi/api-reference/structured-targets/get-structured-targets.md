@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/structured-targets/get-structured-targets.md
-Downloaded: 2026-03-09T20:11:24.922Z
+Downloaded: 2026-03-10T20:11:18.495Z
 -->
 
 > ## Documentation Index
@@ -153,3 +153,5 @@ components:
           description: Timestamp when this structured target was last updated.
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

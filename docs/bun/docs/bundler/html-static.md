@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/html-static.md
+Downloaded: 2026-03-10T20:11:19.090Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -492,3 +497,6 @@ Learn more in the [Standalone HTML docs](/bundler/standalone-html).
 To add a backend to your frontend, you can use the "routes" option in `Bun.serve`.
 
 Learn more in the full-stack docs.
+
+
+Built with [Mintlify](https://mintlify.com).

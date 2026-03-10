@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/bun-apis.md
+Downloaded: 2026-03-10T20:11:19.131Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -59,3 +64,6 @@ Click the link in the right column to jump to the associated documentation.
 | Module Resolution                | [`Bun.resolveSync()`](/runtime/utils#bun-resolvesync)                                                                                                                                                                                                                                                                  |
 | Parsing & Formatting             | [`Bun.semver`](/runtime/semver), `Bun.TOML.parse`, [`Bun.markdown`](/runtime/markdown), [`Bun.color`](/runtime/color)                                                                                                                                                                                                  |
 | Low-level / Internals            | `Bun.mmap`, `Bun.gc`, `Bun.generateHeapSnapshot`, [`bun:jsc`](https://bun.com/reference/bun/jsc)                                                                                                                                                                                                                       |
+
+
+Built with [Mintlify](https://mintlify.com).

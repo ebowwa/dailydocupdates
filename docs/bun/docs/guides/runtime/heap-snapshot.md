@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/heap-snapshot.md
+Downloaded: 2026-03-10T20:11:19.111Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -26,3 +31,6 @@ To view V8 heap snapshots in Chrome DevTools:
 4. Select your `.heapsnapshot` file
 
 <Frame><img src="https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=8f11aeea8ad1f70974bb963f83c4decf" alt="Chrome DevTools Memory Tab" data-og-width="1770" width="1770" data-og-height="1201" height="1201" data-path="images/chrome-devtools-memory.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?w=280&fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=e6e1a5ebf8ad30c43544a41f085dbdfe 280w, https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?w=560&fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=303daf97c88002cd3765b80df8e64543 560w, https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?w=840&fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=84c80aef8460adb98de500d4bc7c8c4e 840w, https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?w=1100&fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=6b7e5032419ac91bc5711d87d0588e70 1100w, https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?w=1650&fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=dd9e20c03c566243048aae4d59999aa4 1650w, https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?w=2500&fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=ed77a018c5bd2a2ca06905dd96198c6a 2500w" /></Frame>
+
+
+Built with [Mintlify](https://mintlify.com).

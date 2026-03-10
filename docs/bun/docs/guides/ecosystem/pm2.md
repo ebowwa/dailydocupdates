@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/pm2.md
+Downloaded: 2026-03-10T20:11:19.099Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -53,3 +58,6 @@ pm2 start pm2.config.js
 ***
 
 That’s it! Your JavaScript/TypeScript web server is now running as a daemon with PM2 using Bun as the interpreter.
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/deployment/render.md
+Downloaded: 2026-03-10T20:11:19.096Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -79,3 +84,6 @@ As an example, let's deploy a simple Express HTTP server to Render.
 That's it! Your web service will be live at its assigned `onrender.com` URL as soon as the build finishes.
 
 You can view the [deploy logs](https://docs.render.com/logging#logs-for-an-individual-deploy-or-job) for details. Refer to [Render's documentation](https://docs.render.com/deploys) for a complete overview of deploying on Render.
+
+
+Built with [Mintlify](https://mintlify.com).

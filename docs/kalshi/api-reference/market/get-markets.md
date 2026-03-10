@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-markets.md
-Downloaded: 2026-03-09T20:11:24.915Z
+Downloaded: 2026-03-10T20:11:18.487Z
 -->
 
 > ## Documentation Index
@@ -604,3 +604,5 @@ components:
           description: Price step/tick size for this range in dollars
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

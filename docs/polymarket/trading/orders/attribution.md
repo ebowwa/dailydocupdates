@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/orders/attribution.md
+Downloaded: 2026-03-10T20:11:17.472Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -337,3 +342,6 @@ After revoking, generate new credentials from your [Builder Profile](https://pol
     Build, sign, and submit orders
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

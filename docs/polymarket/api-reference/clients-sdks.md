@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/clients-sdks.md
+Downloaded: 2026-03-10T20:11:17.448Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -95,3 +100,6 @@ For [gasless transactions](/trading/gasless) using proxy wallets, the relayer cl
     Understand L1/L2 auth and API credentials.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/maker-rebates.md
-Downloaded: 2026-03-05T20:15:09.937Z
+Downloaded: 2026-03-10T20:11:17.468Z
 -->
 
 > ## Documentation Index
@@ -227,3 +227,6 @@ All other markets remain fee-free.
     Start placing orders on Polymarket.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

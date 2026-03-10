@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix/index.md
+Downloaded: 2026-03-10T20:11:18.497Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -76,3 +81,6 @@ Need a machine-readable view of the Kalshi-specific FIX tags and messages? Downl
 ## Support
 
 For technical support or questions about the FIX API, please contact the Kalshi trading support team.
+
+
+Built with [Mintlify](https://mintlify.com).

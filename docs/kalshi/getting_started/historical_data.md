@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/historical_data.md
-Downloaded: 2026-03-07T20:07:10.227Z
+Downloaded: 2026-03-10T20:11:18.499Z
 -->
 
 > ## Documentation Index
@@ -77,3 +77,6 @@ The following live endpoints will no longer return data older than the correspon
 
   The initial cutoff timestamps are initially intended to be the same across **markets**, **trades**, and **orders**, and to start with a 1 year lookback. Over time, the cutoff timestamps are intended to move up to approximately 2-3 months.
 </Warning>
+
+
+Built with [Mintlify](https://mintlify.com).

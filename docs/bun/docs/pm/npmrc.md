@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/npmrc.md
+Downloaded: 2026-03-10T20:11:19.129Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -244,3 +249,6 @@ public-hoist-pattern[]=*prettier*
 # control general hoisting behavior
 hoist-pattern=*
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

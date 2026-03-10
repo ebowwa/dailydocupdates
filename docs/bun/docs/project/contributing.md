@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/project/contributing.md
+Downloaded: 2026-03-10T20:11:19.130Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -359,3 +364,6 @@ The built version of Bun may not work on other systems if compiled this way.
 * Disable logging: `BUN_DEBUG_QUIET_LOGS=1 bun-debug ...` (to disable all debug logging)
 * Enable logging for a specific zig scope: `BUN_DEBUG_EventLoop=1 bun-debug ...` (to allow `std.log.scoped(.EventLoop)`)
 * Bun transpiles every file it runs, to see the actual executed source in a debug build find it in `/tmp/bun-debug-src/...path/to/file`, for example the transpiled version of `/home/bun/index.ts` would be in `/tmp/bun-debug-src/home/bun/index.ts`
+
+
+Built with [Mintlify](https://mintlify.com).

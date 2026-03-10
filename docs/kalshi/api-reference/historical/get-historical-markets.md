@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-markets.md
-Downloaded: 2026-03-09T20:11:24.913Z
+Downloaded: 2026-03-10T20:11:18.485Z
 -->
 
 > ## Documentation Index
@@ -530,3 +530,5 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

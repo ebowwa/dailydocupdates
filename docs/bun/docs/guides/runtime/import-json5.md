@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/import-json5.md
+Downloaded: 2026-03-10T20:11:19.111Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -72,3 +77,6 @@ console.log(data.hobbies); // => ["reading", "coding"]
 ***
 
 See [Docs > API > JSON5](/runtime/json5) for complete documentation on JSON5 support in Bun.
+
+
+Built with [Mintlify](https://mintlify.com).

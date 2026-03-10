@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/fees.md
-Downloaded: 2026-03-05T20:15:09.939Z
+Downloaded: 2026-03-10T20:11:17.471Z
 -->
 
 > ## Documentation Index
@@ -220,3 +220,6 @@ See the [fee-rate API Reference](/api-reference/introduction) for full response 
     Start placing orders on Polymarket.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

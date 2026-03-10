@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/svelte-test.md
+Downloaded: 2026-03-10T20:11:19.117Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -111,3 +116,6 @@ Use `bun test` to run your tests.
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

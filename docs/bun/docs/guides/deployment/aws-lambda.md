@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/deployment/aws-lambda.md
+Downloaded: 2026-03-10T20:11:19.095Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -210,3 +215,6 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     ```
   </Step>
 </Steps>
+
+
+Built with [Mintlify](https://mintlify.com).

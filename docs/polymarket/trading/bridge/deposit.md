@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/bridge/deposit.md
+Downloaded: 2026-03-10T20:11:17.469Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -103,3 +108,6 @@ If you deposited the wrong token on Ethereum or Polygon, use these tools to reco
     Track your deposit progress through completion.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

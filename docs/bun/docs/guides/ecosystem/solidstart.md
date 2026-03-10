@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/solidstart.md
+Downloaded: 2026-03-10T20:11:19.100Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -60,3 +65,6 @@ Open [localhost:3000](http://localhost:3000). Any changes you make to `src/route
 ***
 
 Refer to the [SolidStart website](https://docs.solidjs.com/solid-start) for complete framework documentation.
+
+
+Built with [Mintlify](https://mintlify.com).

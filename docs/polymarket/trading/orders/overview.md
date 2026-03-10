@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/orders/overview.md
+Downloaded: 2026-03-10T20:11:17.473Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -461,3 +466,6 @@ The operator's privileges are limited to order matching and ensuring correct ord
     Cancel single, multiple, or all orders
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

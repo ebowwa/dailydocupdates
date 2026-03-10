@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/define-constant.md
+Downloaded: 2026-03-10T20:11:19.110Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -145,3 +150,6 @@ You can also set `process.env.NODE_ENV` to `"production"` in your code, but that
 The `--define` flag operates on the AST (Abstract Syntax Tree) level, not on the text level. It happens during the transpilation process, which means it can be used in optimizations like dead code elimination.
 
 String replacement tools tend to have escaping issues and replace unintended parts of the code.
+
+
+Built with [Mintlify](https://mintlify.com).

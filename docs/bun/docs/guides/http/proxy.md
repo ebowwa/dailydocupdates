@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/http/proxy.md
+Downloaded: 2026-03-10T20:11:19.103Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -48,3 +53,6 @@ You can also set the `$HTTP_PROXY` or `$HTTPS_PROXY` environment variable to the
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 HTTPS_PROXY=https://username:password@proxy.example.com:8080 bun run index.ts
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

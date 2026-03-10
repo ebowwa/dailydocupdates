@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/bundler/fullstack.md
-Downloaded: 2026-03-05T20:15:31.341Z
+Downloaded: 2026-03-10T20:11:19.089Z
 -->
 
 > ## Documentation Index
@@ -1091,3 +1091,6 @@ export default function handler(req, res) {
 * Enhanced plugin ecosystem
 
 <Note>This is a work in progress. Features and APIs may change as Bun continues to evolve.</Note>
+
+
+Built with [Mintlify](https://mintlify.com).

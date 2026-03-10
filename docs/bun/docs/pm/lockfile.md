@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/lockfile.md
+Downloaded: 2026-03-10T20:11:19.128Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -63,3 +68,6 @@ When running `bun install` in a project without a `bun.lock`, Bun automatically 
 * `pnpm-lock.yaml` (pnpm)
 
 The original lockfile is preserved and can be removed manually after verification.
+
+
+Built with [Mintlify](https://mintlify.com).

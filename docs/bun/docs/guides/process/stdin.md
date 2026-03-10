@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/process/stdin.md
+Downloaded: 2026-03-10T20:11:19.108Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -60,3 +65,6 @@ Chunk: hello
 ***
 
 See [Docs > API > Utils](/runtime/utils) for more useful utilities.
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/gasless.md
+Downloaded: 2026-03-10T20:11:17.472Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -19,8 +24,7 @@ The relayer acts as a transaction sponsor:
 5. The transaction executes from the user's wallet
 
 <Note>
-  Gasless transactions require **Builder Program** membership. You'll need
-  Builder API credentials to authenticate with the relayer.
+  Gasless transactions require authentication with **Builder API Keys** or **Relayer API Keys**.
 </Note>
 
 ## What Is Covered
@@ -34,15 +38,51 @@ Polymarket pays gas for all operations routed through the relayer:
 | **CTF operations**    | Split, merge, and redeem positions                  |
 | **Transfers**         | Move tokens between addresses                       |
 
+## Authentication
+
+The relayer supports two authentication methods. Choose the one that fits your use case.
+
+### Using Builder API Keys
+
+Builder API Keys are for [Builder Program](/builders/overview) members. They authenticate via HMAC-SHA256 signed headers and are required to use the relayer SDKs.
+
+All requests must include these headers:
+
+| Header                    | Description             |
+| ------------------------- | ----------------------- |
+| `POLY_BUILDER_API_KEY`    | Your Builder API key    |
+| `POLY_BUILDER_TIMESTAMP`  | Unix timestamp          |
+| `POLY_BUILDER_PASSPHRASE` | Your Builder passphrase |
+| `POLY_BUILDER_SIGNATURE`  | HMAC-SHA256 signature   |
+
+The SDKs handle header generation automatically when you provide your credentials via `BuilderConfig`.
+
+### Using Relayer API Keys
+
+Relayer API Keys are for market makers and anyone who needs a simpler alternative. You can create them from [Settings > API Keys](https://polymarket.com/settings?tab=api-keys) on the Polymarket website.
+
+Include these headers with your requests:
+
+| Header                    | Description                   |
+| ------------------------- | ----------------------------- |
+| `RELAYER_API_KEY`         | Your Relayer API key          |
+| `RELAYER_API_KEY_ADDRESS` | The address that owns the key |
+
+<Info>
+  If you want to use the Relayer API Key directly without the SDK, see the [Relayer API Reference](/api-reference/relayer).
+</Info>
+
 ## Prerequisites
 
 Before using the relayer, you need:
 
-| Requirement                  | Source                                                         |
-| ---------------------------- | -------------------------------------------------------------- |
-| Builder API credentials      | [Builder Profile](https://polymarket.com/settings?tab=builder) |
-| User's private key or signer | Your wallet integration                                        |
-| USDC.e balance               | For trading (not for gas)                                      |
+| Requirement                                    | Source                                                                                                                                |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Builder API credentials **or** Relayer API key | [Builder Profile](https://polymarket.com/settings?tab=builder) or [Settings > API Keys](https://polymarket.com/settings?tab=api-keys) |
+| User's private key or signer                   | Your wallet integration                                                                                                               |
+| USDC.e balance                                 | For trading (not for gas)                                                                                                             |
+
+> The below section is for the Builder SDKs only. If you want to use the Relayer API Key directly without the SDK, see the [Relayer API Reference](/api-reference/relayer).
 
 ## Installation
 
@@ -237,19 +277,6 @@ Initialize the relayer client with your signing configuration:
   Never expose Builder API credentials in client-side code. Use environment
   variables or a secrets manager.
 </Warning>
-
-### Relayer Authentication Headers
-
-All requests to the relayer must include these authentication headers:
-
-| Header                    | Description             |
-| ------------------------- | ----------------------- |
-| `POLY_BUILDER_API_KEY`    | Your Builder API key    |
-| `POLY_BUILDER_TIMESTAMP`  | Unix timestamp          |
-| `POLY_BUILDER_PASSPHRASE` | Your Builder passphrase |
-| `POLY_BUILDER_SIGNATURE`  | HMAC-SHA256 signature   |
-
-The SDKs handle header generation automatically when you provide your credentials via `BuilderConfig`.
 
 ## Wallet Types
 
@@ -553,3 +580,6 @@ See [Contract Addresses](/resources/contract-addresses) for all Polymarket smart
     Understand token operations like split, merge, and redeem.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

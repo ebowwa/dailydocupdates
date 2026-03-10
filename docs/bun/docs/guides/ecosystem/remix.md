@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/remix.md
+Downloaded: 2026-03-10T20:11:19.100Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -95,3 +100,6 @@ $ remix-serve ./build/index.js
 ***
 
 Read the [Remix docs](https://remix.run/) for more information on how to build apps with Remix.
+
+
+Built with [Mintlify](https://mintlify.com).

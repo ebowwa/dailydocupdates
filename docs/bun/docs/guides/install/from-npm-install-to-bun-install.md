@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/install/from-npm-install-to-bun-install.md
+Downloaded: 2026-03-10T20:11:19.105Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -228,3 +233,6 @@ bun i -g eslint
 # Run a globally-installed package without the `bun run` prefix
 eslint --init
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

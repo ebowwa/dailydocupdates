@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/market-settlement.md
-Downloaded: 2026-03-09T20:11:24.923Z
+Downloaded: 2026-03-10T20:11:18.497Z
 -->
 
 > ## Documentation Index
@@ -261,3 +261,6 @@ Position mismatches may indicate:
 * Late trades near expiration
 
 Always maintain independent position tracking for verification.
+
+
+Built with [Mintlify](https://mintlify.com).

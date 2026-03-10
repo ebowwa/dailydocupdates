@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/spy-on.md
+Downloaded: 2026-03-10T20:11:19.117Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -46,3 +51,6 @@ test("turtles", () => { // [!code ++]
 ***
 
 See [Docs > Test Runner > Mocks](/test/mocks) for complete documentation on mocking with the Bun test runner.
+
+
+Built with [Mintlify](https://mintlify.com).

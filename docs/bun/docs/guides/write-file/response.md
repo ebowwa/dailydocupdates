@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/write-file/response.md
+Downloaded: 2026-03-10T20:11:19.124Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -17,3 +22,6 @@ await Bun.write(path, result);
 ***
 
 See [Docs > API > File I/O](/runtime/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/process/argv.md
+Downloaded: 2026-03-10T20:11:19.107Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -64,3 +69,6 @@ bun run cli.ts --flag1 --flag2 value
 }
 [ "/path/to/bun", "/path/to/cli.ts" ]
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

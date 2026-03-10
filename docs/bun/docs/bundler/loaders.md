@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/loaders.md
+Downloaded: 2026-03-10T20:11:19.091Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -439,3 +444,6 @@ If a value is specified for `publicPath`, the import will use value as a prefix 
 
   This loader is copied into the `outdir` as-is. The name of the copied file is determined using the value of `naming.asset`.
 </Note>
+
+
+Built with [Mintlify](https://mintlify.com).

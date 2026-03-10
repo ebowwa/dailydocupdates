@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/vite.md
+Downloaded: 2026-03-10T20:11:19.101Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -75,3 +80,6 @@ bunx --bun vite build
 ***
 
 This is a stripped down guide to get you started with Vite + Bun. For more information, see the [Vite documentation](https://vite.dev/guide/).
+
+
+Built with [Mintlify](https://mintlify.com).

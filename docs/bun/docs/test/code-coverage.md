@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/code-coverage.md
+Downloaded: 2026-03-10T20:11:19.141Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -410,3 +415,6 @@ coveragePathIgnorePatterns = [
 ```
 
 Consider running coverage only on CI or specific branches rather than every test run during development.
+
+
+Built with [Mintlify](https://mintlify.com).

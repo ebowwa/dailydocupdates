@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/typescript-sdk/api/PortfolioApi.md
-Downloaded: 2026-03-03T20:11:28.686Z
+Downloaded: 2026-03-10T20:11:18.504Z
 -->
 
 > ## Documentation Index
@@ -405,3 +405,6 @@ void (empty response body)
 | **400**     | Bad request - invalid input            | -                |
 | **401**     | Unauthorized - authentication required | -                |
 | **500**     | Internal server error                  | -                |
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/shell.md
+Downloaded: 2026-03-10T20:11:19.139Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -636,3 +641,6 @@ await $`git ls-remote origin ${branch}`;
 ## Credits
 
 Large parts of this API were inspired by [zx](https://github.com/google/zx), [dax](https://github.com/dsherret/dax), and [bnx](https://github.com/wobsoriano/bnx). Thank you to the authors of those projects.
+
+
+Built with [Mintlify](https://mintlify.com).

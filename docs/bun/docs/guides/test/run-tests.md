@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/run-tests.md
+Downloaded: 2026-03-10T20:11:19.116Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -114,3 +119,6 @@ Ran 6 tests across 3 files. [59.00ms]
 ***
 
 See [Docs > Test Runner](/test) for complete documentation on the test runner.
+
+
+Built with [Mintlify](https://mintlify.com).

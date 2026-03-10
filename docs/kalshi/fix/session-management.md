@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/session-management.md
-Downloaded: 2026-03-09T20:11:24.924Z
+Downloaded: 2026-03-10T20:11:18.498Z
 -->
 
 > ## Documentation Index
@@ -276,3 +276,6 @@ All messages must include standard FIX headers:
    * Rotate API keys periodically
    * Monitor for unauthorized access
    * Use secure storage for private keys
+
+
+Built with [Mintlify](https://mintlify.com).

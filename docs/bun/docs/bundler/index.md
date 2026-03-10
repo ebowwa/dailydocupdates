@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/index.md
+Downloaded: 2026-03-10T20:11:19.090Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -2046,3 +2051,6 @@ bun build <entry points>
 <ParamField path="--debug-no-minify" type="boolean">
   When <code>--app</code> is set, disable all minification
 </ParamField>
+
+
+Built with [Mintlify](https://mintlify.com).

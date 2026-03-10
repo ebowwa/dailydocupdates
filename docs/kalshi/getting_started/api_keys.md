@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/api_keys.md
+Downloaded: 2026-03-10T20:11:18.498Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -191,3 +196,6 @@ axios.get(baseUrl + path, { headers })
         console.error('Error:', error);
     });
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

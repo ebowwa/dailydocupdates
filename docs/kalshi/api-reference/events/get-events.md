@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-events.md
-Downloaded: 2026-03-09T20:11:24.910Z
+Downloaded: 2026-03-10T20:11:18.483Z
 -->
 
 > ## Documentation Index
@@ -688,3 +688,5 @@ components:
           description: Price step/tick size for this range in dollars
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

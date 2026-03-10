@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/web-apis.md
+Downloaded: 2026-03-10T20:11:19.141Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -29,3 +34,6 @@ The following Web APIs are partially or completely supported.
 | User interaction      | [`alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert), [`confirm`](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm), [`prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt) (intended for interactive CLIs)                                                                                                                                                                                                                                                                     |
 | Realms                | [`ShadowRealm`](https://github.com/tc39/proposal-shadowrealm)                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | Events                | [`EventTarget`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget), [`Event`](https://developer.mozilla.org/en-US/docs/Web/API/Event), [`ErrorEvent`](https://developer.mozilla.org/en-US/docs/Web/API/ErrorEvent), [`CloseEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent), [`MessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent)                                                                                                                                            |
+
+
+Built with [Mintlify](https://mintlify.com).

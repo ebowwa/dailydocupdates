@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/resources/contract-addresses.md
+Downloaded: 2026-03-10T20:11:17.469Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -90,3 +95,6 @@ All Polymarket contracts are deployed on **Polygon mainnet** (Chain ID: 137). Th
   }
   ```
 </CodeGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

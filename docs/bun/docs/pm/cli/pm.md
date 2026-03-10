@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/pm.md
+Downloaded: 2026-03-10T20:11:19.127Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -324,3 +329,6 @@ bun pm pkg delete scripts.test contributors[0]    # multiple/nested
 # fix
 bun pm pkg fix                                    # auto-fix common issues
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

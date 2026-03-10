@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/typescript-sdk/api/ExchangeApi.md
+Downloaded: 2026-03-10T20:11:18.503Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -169,3 +174,6 @@ No authorization required
 | ----------- | ------------------------------------------ | ---------------- |
 | **200**     | User data timestamp retrieved successfully | -                |
 | **500**     | Internal server error                      | -                |
+
+
+Built with [Mintlify](https://mintlify.com).

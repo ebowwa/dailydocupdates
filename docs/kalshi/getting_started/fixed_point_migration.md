@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/fixed_point_migration.md
-Downloaded: 2026-03-09T20:11:24.924Z
+Downloaded: 2026-03-10T20:11:18.499Z
 -->
 
 > ## Documentation Index
@@ -306,3 +306,6 @@ The following legacy integer fields are removed from outgoing REST and WebSocket
 | `no_contracts_offered`  | `no_contracts_offered_fp`  |
 | `rfq_target_cost`       | `rfq_target_cost_dollars`  |
 | `contracts_accepted`    | `contracts_accepted_fp`    |
+
+
+Built with [Mintlify](https://mintlify.com).

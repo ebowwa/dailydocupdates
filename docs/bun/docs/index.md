@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/index.md
+Downloaded: 2026-03-10T20:11:19.125Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -137,3 +142,6 @@ Bun is designed from the ground-up with today's JavaScript ecosystem in mind.
 * **Node.js compatibility**. In addition to supporting Node-style module resolution, Bun aims for full compatibility with built-in Node.js globals (`process`, `Buffer`) and modules (`path`, `fs`, `http`, etc.) *This is an ongoing effort that is not complete.* Refer to the [compatibility page](/runtime/nodejs-compat) for the current status.
 
 Bun is more than a runtime. The long-term goal is to be a cohesive, infrastructural toolkit for building apps with JavaScript/TypeScript, including a package manager, transpiler, bundler, script runner, test runner, and more.
+
+
+Built with [Mintlify](https://mintlify.com).

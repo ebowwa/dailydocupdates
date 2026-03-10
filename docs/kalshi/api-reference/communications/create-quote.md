@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/create-quote.md
-Downloaded: 2026-03-09T20:11:24.908Z
+Downloaded: 2026-03-10T20:11:18.479Z
 -->
 
 > ## Documentation Index
@@ -186,3 +186,5 @@ components:
       description: Request timestamp in milliseconds
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

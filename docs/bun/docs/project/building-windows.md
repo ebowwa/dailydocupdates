@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/project/building-windows.md
+Downloaded: 2026-03-10T20:11:19.130Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -144,3 +149,6 @@ bun-debug test "C:\bun\test\js\bun\resolve\import-meta.test.js"
 ### failed to write output 'bun-debug.exe': permission denied
 
 you cannot overwrite `bun-debug.exe` if it is already open. you likely have a running instance, maybe in the vscode debugger?
+
+
+Built with [Mintlify](https://mintlify.com).

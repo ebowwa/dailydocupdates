@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/minifier.md
+Downloaded: 2026-03-10T20:11:19.091Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -1287,3 +1292,6 @@ const a=42,b=()=>{const c=!0,d=void 0;return c?a:d},e=b();
 * Development builds (harder to debug)
 * When you need readable error messages
 * Libraries where consumers may read the source
+
+
+Built with [Mintlify](https://mintlify.com).

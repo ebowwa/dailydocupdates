@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/write-file/unlink.md
+Downloaded: 2026-03-10T20:11:19.125Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -16,3 +21,6 @@ await file.delete();
 ***
 
 See [Docs > API > File I/O](/runtime/file-io#reading-files-bun-file) for complete documentation of `Bun.file()`.
+
+
+Built with [Mintlify](https://mintlify.com).

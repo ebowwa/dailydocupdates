@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/timezone.md
+Downloaded: 2026-03-10T20:11:19.112Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -35,3 +40,6 @@ process.env.TZ = "America/New_York";
 
 new Date().getHours(); // => 21
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

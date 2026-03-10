@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/outdated.md
+Downloaded: 2026-03-10T20:11:19.127Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -335,3 +340,6 @@ bun outdated <filter>
 <ParamField path="--concurrent-scripts" type="number" default="5">
   Maximum number of concurrent jobs for lifecycle scripts (default 5)
 </ParamField>
+
+
+Built with [Mintlify](https://mintlify.com).

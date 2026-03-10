@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/search/get-filters-for-sports.md
-Downloaded: 2026-03-09T20:11:24.922Z
+Downloaded: 2026-03-10T20:11:18.494Z
 -->
 
 > ## Documentation Index
@@ -132,3 +132,5 @@ components:
             type: string
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/exchange/get-user-data-timestamp.md
-Downloaded: 2026-03-09T20:11:24.911Z
+Downloaded: 2026-03-10T20:11:18.484Z
 -->
 
 > ## Documentation Index
@@ -88,3 +88,5 @@ components:
           description: Timestamp when user data was last updated.
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/templating/create.md
+Downloaded: 2026-03-10T20:11:19.140Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -265,3 +270,6 @@ After cloning a template, `bun create` will automatically remove the `"bun-creat
      * If there are dependencies, this runs in a separate thread concurrently while node\_modules are being installed
      * Using libgit2 if available was tested and performed 3x slower in microbenchmarks
 </Accordion>
+
+
+Built with [Mintlify](https://mintlify.com).

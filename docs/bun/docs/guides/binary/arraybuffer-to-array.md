@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/binary/arraybuffer-to-array.md
+Downloaded: 2026-03-10T20:11:19.092Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -27,3 +32,6 @@ const regularArr = Array.from(uintArr);
 ***
 
 See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+
+
+Built with [Mintlify](https://mintlify.com).

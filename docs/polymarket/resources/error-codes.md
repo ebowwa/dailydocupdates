@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/resources/error-codes.md
+Downloaded: 2026-03-10T20:11:17.469Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -545,3 +550,6 @@ Errors from order query endpoints.
 <Note>
   The CLOB API has an internal override: any error message containing `"not found"` returns `404`, `"unauthorized"` returns `401`, and `"context canceled"` returns `400`, regardless of the original status code.
 </Note>
+
+
+Built with [Mintlify](https://mintlify.com).

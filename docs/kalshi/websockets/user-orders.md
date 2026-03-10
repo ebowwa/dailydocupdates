@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/user-orders.md
-Downloaded: 2026-03-09T20:11:24.930Z
+Downloaded: 2026-03-10T20:11:18.506Z
 -->
 
 > ## Documentation Index
@@ -371,3 +371,5 @@ securitySchemes:
     extensions: []
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/multivariate-lookups.md
-Downloaded: 2026-03-09T20:11:24.929Z
+Downloaded: 2026-03-10T20:11:18.505Z
 -->
 
 > ## Documentation Index
@@ -197,3 +197,5 @@ securitySchemes:
     extensions: []
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

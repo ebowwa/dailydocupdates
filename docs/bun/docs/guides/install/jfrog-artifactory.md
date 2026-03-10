@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/install/jfrog-artifactory.md
+Downloaded: 2026-03-10T20:11:19.106Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -26,3 +31,6 @@ url = "https://MY_SUBDOMAIN.jfrog.io/artifactory/api/npm/npm/_auth=MY_TOKEN"
 ### Configure with `$NPM_CONFIG_REGISTRY`
 
 Like with npm, you can use the `NPM_CONFIG_REGISTRY` environment variable to configure JFrog Artifactory with bun install.
+
+
+Built with [Mintlify](https://mintlify.com).

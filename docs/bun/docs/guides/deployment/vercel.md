@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/deployment/vercel.md
+Downloaded: 2026-03-10T20:11:19.096Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -95,3 +100,6 @@
 ```ts middleware.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
 export const config = { runtime: "nodejs" }; // [!code ++]
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

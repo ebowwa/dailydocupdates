@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix/error-handling.md
+Downloaded: 2026-03-10T20:11:18.496Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -221,3 +226,6 @@ Delayed errors during processing:
 ```
 Request → Initial Accept → Processing → Later Error Report
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

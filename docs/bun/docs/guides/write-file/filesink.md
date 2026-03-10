@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/write-file/filesink.md
+Downloaded: 2026-03-10T20:11:19.124Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -52,3 +57,6 @@ writer.end();
 ***
 
 Full documentation: [FileSink](/runtime/file-io#incremental-writing-with-filesink).
+
+
+Built with [Mintlify](https://mintlify.com).

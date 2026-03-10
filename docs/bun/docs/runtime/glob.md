@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/glob.md
+Downloaded: 2026-03-10T20:11:19.134Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -182,3 +187,6 @@ All three functions (`fs.glob()`, `fs.globSync()`, `fs.promises.glob()`) support
 
 * Array of patterns as the first argument
 * `exclude` option to filter results
+
+
+Built with [Mintlify](https://mintlify.com).

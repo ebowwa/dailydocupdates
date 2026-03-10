@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/typescript-sdk/api/SeriesApi.md
+Downloaded: 2026-03-10T20:11:18.504Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -125,3 +130,6 @@ const { status, data } = await apiInstance.getSeriesByTicker(
 | **500**     | Internal server error                  | -                |
 
 [\[Back to top\]](#) [\[Back to API list\]](../README.md#documentation-for-api-endpoints) [\[Back to Model list\]](../README.md#documentation-for-models) [\[Back to README\]](../README.md)
+
+
+Built with [Mintlify](https://mintlify.com).

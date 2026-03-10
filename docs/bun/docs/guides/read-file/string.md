@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/read-file/string.md
+Downloaded: 2026-03-10T20:11:19.109Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -22,3 +27,6 @@ Any relative paths will be resolved relative to the project root (the nearest di
 const path = "./file.txt";
 const file = Bun.file(path);
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

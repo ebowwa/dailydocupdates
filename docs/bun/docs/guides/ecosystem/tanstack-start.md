@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/tanstack-start.md
+Downloaded: 2026-03-10T20:11:19.101Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -775,3 +780,6 @@ To host your TanStack Start app, you can use [Nitro](https://nitro.build/) or a 
 ***
 
 [→ See TanStack Start's official documentation](https://tanstack.com/start/latest/docs/framework/react/guide/hosting) for more information on hosting.
+
+
+Built with [Mintlify](https://mintlify.com).

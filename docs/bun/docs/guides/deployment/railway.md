@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/deployment/railway.md
+Downloaded: 2026-03-10T20:11:19.096Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -139,3 +144,6 @@ To enable Railpack in a custom project, add the following to your `railway.json`
 ```
 
 For more build configuration settings, check out the [Railway documentation](https://docs.railway.com/guides/build-configuration).
+
+
+Built with [Mintlify](https://mintlify.com).

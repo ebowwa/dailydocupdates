@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/polymarket-101.md
+Downloaded: 2026-03-10T20:11:17.468Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -117,3 +122,6 @@ Ready to start trading?
     Browse active prediction markets on Polymarket.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

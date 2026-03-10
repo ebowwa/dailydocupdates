@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/builders/api-keys.md
+Downloaded: 2026-03-10T20:11:17.464Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -145,3 +150,6 @@ Store your credentials as environment variables:
     Learn about rate limits and how to upgrade.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

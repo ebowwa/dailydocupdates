@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/hot-reloading.md
+Downloaded: 2026-03-10T20:11:19.090Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -229,3 +234,6 @@ When a file is replaced, all of its event listeners are automatically removed.
 | `bun:ws:connect`       | when the HMR WebSocket connects or re-connects.                                                 |
 
 <Note>For compatibility with Vite, the above events are also available via `vite:*` prefix instead of `bun:*`.</Note>
+
+
+Built with [Mintlify](https://mintlify.com).

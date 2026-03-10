@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/vscode-debugger.md
+Downloaded: 2026-03-10T20:11:19.113Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -45,3 +50,6 @@ The `Bun: Debug File` command will execute your code and print the output to the
 When you run the file with `Bun: Debug File`, execution will pause at the breakpoint. You can inspect the variables in scope and step through the code line-by-line using the VS Code controls.
 
 <Frame>![VS Code extension](https://github.com/oven-sh/bun/assets/3084745/c579a36c-eb21-4a58-bc9c-74612aad82af)</Frame>
+
+
+Built with [Mintlify](https://mintlify.com).

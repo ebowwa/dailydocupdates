@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/dates-times.md
+Downloaded: 2026-03-10T20:11:19.142Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -130,3 +135,6 @@ test("Welcome to New York!", () => {
 ```
 
 <Info>Unlike in Jest, you can set the timezone multiple times at runtime and it will work.</Info>
+
+
+Built with [Mintlify](https://mintlify.com).

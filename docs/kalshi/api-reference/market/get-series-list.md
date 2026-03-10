@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-series-list.md
-Downloaded: 2026-03-09T20:11:24.915Z
+Downloaded: 2026-03-10T20:11:18.488Z
 -->
 
 > ## Documentation Index
@@ -278,3 +278,5 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/jsonl.md
+Downloaded: 2026-03-10T20:11:19.136Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -189,3 +194,6 @@ const values = Bun.JSONL.parse(input);
 * **UTF-8 support**: Non-ASCII `Uint8Array` input is decoded to UTF-16 using SIMD-accelerated conversion.
 * **BOM handling**: UTF-8 BOM (`0xEF 0xBB 0xBF`) at the start of a `Uint8Array` is automatically skipped.
 * **Pre-built object shape**: The result object from `parseChunk` uses a cached structure for fast property access.
+
+
+Built with [Mintlify](https://mintlify.com).

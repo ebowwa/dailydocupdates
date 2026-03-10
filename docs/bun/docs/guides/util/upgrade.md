@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/util/upgrade.md
+Downloaded: 2026-03-10T20:11:19.122Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -91,3 +96,6 @@ If you installed Bun via a package manager, use that package manager to upgrade 
 
 * [Installation](/installation) — Install Bun for the first time
 * [Update packages](/pm/cli/update) — Update dependencies to latest versions
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/wss/market.md
-Downloaded: 2026-03-03T20:11:25.539Z
+Downloaded: 2026-03-10T20:11:17.463Z
 -->
 
 > ## Documentation Index
@@ -1150,3 +1150,5 @@ extensions:
 securitySchemes: []
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

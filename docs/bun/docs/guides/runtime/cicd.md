@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/cicd.md
+Downloaded: 2026-03-10T20:11:19.110Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -43,3 +48,6 @@ jobs:
 ***
 
 Refer to the [README.md](https://github.com/oven-sh/setup-bun) for complete documentation of the `setup-bun` GitHub Action.
+
+
+Built with [Mintlify](https://mintlify.com).

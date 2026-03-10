@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/macros.md
+Downloaded: 2026-03-10T20:11:19.091Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -325,3 +330,6 @@ The `extractMetaTags` function is erased at bundle-time and replaced with the re
   };
   ```
 </CodeGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

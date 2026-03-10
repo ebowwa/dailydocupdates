@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-market-candlesticks.md
-Downloaded: 2026-03-09T20:11:24.913Z
+Downloaded: 2026-03-10T20:11:18.485Z
 -->
 
 > ## Documentation Index
@@ -274,3 +274,5 @@ components:
       example: '0.5600'
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

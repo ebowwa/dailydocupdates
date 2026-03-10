@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/http/file-uploads.md
+Downloaded: 2026-03-10T20:11:19.102Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -94,3 +99,6 @@ const server = Bun.serve({
   },
 });
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

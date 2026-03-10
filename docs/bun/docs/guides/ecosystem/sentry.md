@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/sentry.md
+Downloaded: 2026-03-10T20:11:19.100Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -52,3 +57,6 @@ To view and resolve the recorded error, log into [sentry.io](https://sentry.io/)
 ***
 
 To learn more about Sentry and using the Sentry Bun SDK, view the [Sentry documentation](https://docs.sentry.io/platforms/javascript/guides/bun).
+
+
+Built with [Mintlify](https://mintlify.com).

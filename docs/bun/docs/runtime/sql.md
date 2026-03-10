@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/sql.md
+Downloaded: 2026-03-10T20:11:19.139Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -1393,3 +1398,6 @@ Two reasons why:
 ## Credits
 
 Huge thanks to [@porsager](https://github.com/porsager)'s [postgres.js](https://github.com/porsager/postgres) for the inspiration for the API interface.
+
+
+Built with [Mintlify](https://mintlify.com).

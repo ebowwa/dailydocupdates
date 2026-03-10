@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-03-09T20:11:24.923Z
+Downloaded: 2026-03-10T20:11:18.495Z
 -->
 
 > ## Documentation Index
@@ -2009,3 +2009,6 @@ description: "The GetApiVersion endpoint has been removed. API versioning will n
 >
   The GetApiVersion endpoint has been removed. API versioning will not be available for the time being.
 </Update>
+
+
+Built with [Mintlify](https://mintlify.com).

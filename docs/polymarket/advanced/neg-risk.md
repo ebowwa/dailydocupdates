@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/advanced/neg-risk.md
+Downloaded: 2026-03-10T20:11:17.446Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -143,3 +148,6 @@ The conversion operation is atomic and happens through the Neg Risk Adapter:
     Learn about token operations like split, merge, and redeem.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

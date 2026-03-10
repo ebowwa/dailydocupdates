@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/streams/to-typedarray.md
+Downloaded: 2026-03-10T20:11:19.114Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -22,3 +27,6 @@ const uint8 = await Bun.readableStreamToBytes(stream);
 ***
 
 See [Docs > API > Utils](/runtime/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
+
+
+Built with [Mintlify](https://mintlify.com).

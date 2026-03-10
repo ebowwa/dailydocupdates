@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/authentication.md
+Downloaded: 2026-03-10T20:11:17.447Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -375,3 +380,6 @@ When initializing the L2 client, you must specify your wallet **signatureType** 
     Check trading availability by region.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

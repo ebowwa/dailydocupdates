@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/bytecode.md
+Downloaded: 2026-03-10T20:11:19.088Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -448,3 +453,6 @@ This linked representation is created fresh every time you run your code. This a
 Bytecode caching moves expensive work (parsing and compiling to bytecode) from runtime to build time. For applications that start frequently, this can halve your startup time at the cost of larger files on disk.
 
 For production CLIs and serverless deployments, the combination of `--bytecode --minify --sourcemap` gives you the best performance while maintaining debuggability.
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/subpenny-pricing.md
-Downloaded: 2026-03-04T20:12:07.862Z
+Downloaded: 2026-03-10T20:11:18.498Z
 -->
 
 > ## Documentation Index
@@ -70,3 +70,6 @@ Affected Tags:
   ^^ avgPx        ^^ lastPx                        ^^ price
   ```
 </CodeGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

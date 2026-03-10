@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/happy-dom.md
+Downloaded: 2026-03-10T20:11:19.115Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -71,3 +76,6 @@ Ran 1 tests across 1 files. 1 total [125.00ms]
 ***
 
 Refer to the [Happy DOM repo](https://github.com/capricorn86/happy-dom) and [Docs > Test runner > DOM](/test/dom) for complete documentation on writing browser tests with Bun.
+
+
+Built with [Mintlify](https://mintlify.com).

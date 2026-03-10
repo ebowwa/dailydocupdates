@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/concurrent-test-glob.md
+Downloaded: 2026-03-10T20:11:19.115Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -145,3 +150,6 @@ This configuration will run tests concurrently if they match any of these patter
 * All tests in `integration/` directories
 * All tests in `e2e/` directories
 * All tests with `concurrent-` prefix anywhere in the project
+
+
+Built with [Mintlify](https://mintlify.com).

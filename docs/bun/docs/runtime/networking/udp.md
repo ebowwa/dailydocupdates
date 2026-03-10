@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/networking/udp.md
+Downloaded: 2026-03-10T20:11:19.138Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -181,3 +186,6 @@ For source-specific multicast (SSM), use `addSourceSpecificMembership` and `drop
 socket.addSourceSpecificMembership("10.0.0.1", "232.0.0.1");
 socket.dropSourceSpecificMembership("10.0.0.1", "232.0.0.1");
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

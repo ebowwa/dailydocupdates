@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/liquidity-rewards.md
-Downloaded: 2026-03-02T20:11:47.804Z
+Downloaded: 2026-03-10T20:11:17.468Z
 -->
 
 > ## Documentation Index
@@ -169,3 +169,6 @@ Q<sub>no</sub> is calculated every minute using random sampling.
     Earn USDC rebates on eligible crypto and sports markets
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

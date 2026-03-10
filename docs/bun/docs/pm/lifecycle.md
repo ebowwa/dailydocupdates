@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/lifecycle.md
+Downloaded: 2026-03-10T20:11:19.128Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -65,3 +70,6 @@ To disable lifecycle scripts for all packages, use the `--ignore-scripts` flag.
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun install --ignore-scripts
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

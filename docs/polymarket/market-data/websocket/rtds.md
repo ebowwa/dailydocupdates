@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-data/websocket/rtds.md
+Downloaded: 2026-03-10T20:11:17.467Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -359,3 +364,6 @@ Comments support nested threading:
 <Accordion title="Authentication failures">
   If subscribing to user-specific streams, ensure your `gamma_auth` object includes a valid wallet `address`. Authentication failures will prevent subscription to protected topics.
 </Accordion>
+
+
+Built with [Mintlify](https://mintlify.com).

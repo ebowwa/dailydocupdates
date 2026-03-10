@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/util/detect-bun.md
+Downloaded: 2026-03-10T20:11:19.119Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -26,3 +31,6 @@ if (typeof Bun !== "undefined") {
   // this code will only run when the file is run with Bun
 }
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

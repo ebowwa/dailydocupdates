@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/python-sdk/api/EventsApi.md
+Downloaded: 2026-03-10T20:11:18.501Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -200,3 +205,6 @@ Retrieve multivariate (combo) events. These are dynamically created events from 
 | **400**     | Bad request - invalid parameters           |
 | **401**     | Unauthorized                               |
 | **500**     | Internal server error                      |
+
+
+Built with [Mintlify](https://mintlify.com).

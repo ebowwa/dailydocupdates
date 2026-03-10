@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/install/add-peer.md
+Downloaded: 2026-03-10T20:11:19.105Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -42,3 +47,6 @@ Running `bun install` will install peer dependencies by default, unless marked o
 ***
 
 See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
+
+
+Built with [Mintlify](https://mintlify.com).

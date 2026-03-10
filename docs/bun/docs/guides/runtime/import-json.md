@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/import-json.md
+Downloaded: 2026-03-10T20:11:19.111Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -44,3 +49,6 @@ data.author.name; // => "John Dough"
 ***
 
 See [Docs > Runtime > TypeScript](/runtime/typescript) for more information on using TypeScript with Bun.
+
+
+Built with [Mintlify](https://mintlify.com).

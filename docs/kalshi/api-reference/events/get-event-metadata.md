@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-event-metadata.md
-Downloaded: 2026-03-09T20:11:24.910Z
+Downloaded: 2026-03-10T20:11:18.482Z
 -->
 
 > ## Documentation Index
@@ -154,3 +154,5 @@ components:
           x-go-type-skip-optional-pointer: true
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

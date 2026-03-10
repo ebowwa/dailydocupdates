@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/discordjs.md
+Downloaded: 2026-03-10T20:11:19.097Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -78,3 +83,6 @@ Ready! Logged in as my-bot#1234
 ***
 
 You're up and running with a bare-bones Discord.js bot! This is a basic guide to setting up your bot with Bun; we recommend the [official discord.js docs](https://discordjs.guide/) for complete information on the `discord.js` API.
+
+
+Built with [Mintlify](https://mintlify.com).

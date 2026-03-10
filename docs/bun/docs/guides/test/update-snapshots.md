@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/update-snapshots.md
+Downloaded: 2026-03-10T20:11:19.118Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -47,3 +52,6 @@ Ran 1 tests across 1 files. [102.00ms]
 ***
 
 See [Docs > Test Runner > Snapshots](/test/snapshots) for complete documentation on snapshots with the Bun test runner.
+
+
+Built with [Mintlify](https://mintlify.com).

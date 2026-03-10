@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/standalone-html.md
+Downloaded: 2026-03-10T20:11:19.092Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -309,3 +314,6 @@ References to `process.env.API_URL` in your JavaScript are replaced with the lit
 * **Code splitting** is not supported — `--splitting` cannot be used with `--compile --target=browser`
 * **Large assets** increase file size since they're base64-encoded (33% overhead vs the raw binary)
 * **External URLs** (CDN links, absolute URLs) are left as-is — only relative paths are inlined
+
+
+Built with [Mintlify](https://mintlify.com).

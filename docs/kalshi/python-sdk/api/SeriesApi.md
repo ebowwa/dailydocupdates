@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/python-sdk/api/SeriesApi.md
+Downloaded: 2026-03-10T20:11:18.502Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -141,3 +146,6 @@ except Exception as e:
 | **500**     | Internal server error                  |
 
 [\[Back to top\]](#) [\[Back to API list\]](https://docs.kalshi.com/python-sdk/api) [\[Back to Model list\]](https://docs.kalshi.com/python-sdk/models) [\[Back to README\]](https://docs.kalshi.com/python-sdk)
+
+
+Built with [Mintlify](https://mintlify.com).

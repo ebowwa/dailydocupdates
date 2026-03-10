@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/order-entry.md
-Downloaded: 2026-03-04T20:12:07.862Z
+Downloaded: 2026-03-10T20:11:18.497Z
 -->
 
 > ## Documentation Index
@@ -263,3 +263,6 @@ Response to mass cancel request.
 <Note>
   Individual ExecutionReports will follow for each canceled order.
 </Note>
+
+
+Built with [Mintlify](https://mintlify.com).

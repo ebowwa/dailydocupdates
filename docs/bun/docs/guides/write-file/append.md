@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/write-file/append.md
+Downloaded: 2026-03-10T20:11:19.123Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -52,3 +57,6 @@ appendFileSync("message.txt", "data to append", "utf8");
 ***
 
 See the [Node.js documentation](https://nodejs.org/api/fs.html#fspromisesappendfilepath-data-options) for more information.
+
+
+Built with [Mintlify](https://mintlify.com).

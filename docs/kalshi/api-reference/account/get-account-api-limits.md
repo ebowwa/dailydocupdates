@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/account/get-account-api-limits.md
-Downloaded: 2026-03-09T20:11:24.906Z
+Downloaded: 2026-03-10T20:11:18.478Z
 -->
 
 > ## Documentation Index
@@ -117,3 +117,5 @@ components:
       description: Request timestamp in milliseconds
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

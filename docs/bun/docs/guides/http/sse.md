@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/http/sse.md
-Downloaded: 2026-03-02T20:12:05.049Z
+Downloaded: 2026-03-10T20:11:19.103Z
 -->
 
 > ## Documentation Index
@@ -94,3 +94,6 @@ Bun.serve({
   },
 });
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

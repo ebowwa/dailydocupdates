@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/batch-get-market-candlesticks.md
-Downloaded: 2026-03-09T20:11:24.914Z
+Downloaded: 2026-03-10T20:11:18.486Z
 -->
 
 > ## Documentation Index
@@ -315,3 +315,5 @@ components:
       example: '0.5600'
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

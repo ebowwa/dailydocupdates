@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/hashing.md
+Downloaded: 2026-03-10T20:11:19.134Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -316,3 +321,6 @@ console.log(copy.digest("hex"));
 console.log(hasher.digest("hex"));
 // => "095d5a21fe6d0646db223fdf3de6436bb8dfb2fab0b51677ecf6441fcf5f2a67"
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

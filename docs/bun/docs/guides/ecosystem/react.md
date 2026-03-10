@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/react.md
+Downloaded: 2026-03-10T20:11:19.100Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -50,3 +55,6 @@ Run `bun run build` to build the app as a static site. This will create a `dist`
 ├── bunfig.toml         # Bun configuration
 └── bun.lock            # Lock file
 ```
+
+
+Built with [Mintlify](https://mintlify.com).

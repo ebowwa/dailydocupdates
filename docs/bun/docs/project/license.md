@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/project/license.md
+Downloaded: 2026-03-10T20:11:19.130Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -79,3 +84,6 @@ For compatibility reasons, the following packages are embedded into Bun's binary
 
 * Bun's JS transpiler, CSS lexer, and Node.js module resolver source code is a Zig port of [@evanw](https://github.com/evanw)’s [esbuild](https://github.com/evanw/esbuild) project.
 * Credit to [@kipply](https://github.com/kipply) for the name "Bun"!
+
+
+Built with [Mintlify](https://mintlify.com).

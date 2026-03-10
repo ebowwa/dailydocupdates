@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-data/fetching-markets.md
+Downloaded: 2026-03-10T20:11:17.466Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -158,3 +163,6 @@ curl "https://gamma-api.polymarket.com/events?active=true&closed=false&limit=50&
     Query onchain data directly from the Polymarket subgraph.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

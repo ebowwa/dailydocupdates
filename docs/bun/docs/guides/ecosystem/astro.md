@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/astro.md
+Downloaded: 2026-03-10T20:11:19.097Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -80,3 +85,6 @@ Open [http://localhost:4321](http://localhost:4321) with your browser to see the
 ***
 
 Refer to the [Astro docs](https://docs.astro.build/en/getting-started/) for complete documentation.
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/nextjs.md
+Downloaded: 2026-03-10T20:11:19.098Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -94,3 +99,6 @@ Next.js applications on Bun can be deployed to various platforms.
 ***
 
 [→ See Next.js's official documentation](https://nextjs.org/docs) for more information on building and deploying Next.js applications.
+
+
+Built with [Mintlify](https://mintlify.com).

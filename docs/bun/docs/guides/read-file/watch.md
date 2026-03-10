@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/read-file/watch.md
+Downloaded: 2026-03-10T20:11:19.109Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -64,3 +69,6 @@ process.on("SIGINT", () => {
 ***
 
 Refer to [API > Binary data > Typed arrays](/runtime/binary-data#typedarray) for more information on working with `Uint8Array` and other binary data formats in Bun.
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/index.md
-Downloaded: 2026-03-02T20:12:05.050Z
+Downloaded: 2026-03-10T20:11:19.104Z
 -->
 
 > ## Documentation Index
@@ -694,3 +694,6 @@ export const GuidesList = () => {
 };
 
 <GuidesList />
+
+
+Built with [Mintlify](https://mintlify.com).

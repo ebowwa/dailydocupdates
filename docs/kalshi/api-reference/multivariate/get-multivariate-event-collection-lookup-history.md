@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/multivariate/get-multivariate-event-collection-lookup-history.md
-Downloaded: 2026-03-09T20:11:24.916Z
+Downloaded: 2026-03-10T20:11:18.489Z
 -->
 
 > ## Documentation Index
@@ -183,3 +183,5 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

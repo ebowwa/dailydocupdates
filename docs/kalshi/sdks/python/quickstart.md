@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/sdks/python/quickstart.md
+Downloaded: 2026-03-10T20:11:18.503Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -52,3 +57,6 @@ print(f"Balance: ${balance.balance / 100:.2f}")
 
 * PyPI (sync): [https://pypi.org/project/kalshi\_python\_sync/](https://pypi.org/project/kalshi_python_sync/)
 * PyPI (async): [https://pypi.org/project/kalshi\_python\_async/](https://pypi.org/project/kalshi_python_async/)
+
+
+Built with [Mintlify](https://mintlify.com).

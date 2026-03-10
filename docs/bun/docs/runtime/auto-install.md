@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/auto-install.md
+Downloaded: 2026-03-10T20:11:19.131Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -93,3 +98,6 @@ This auto-installation approach is useful for a few reasons:
     Deno requires an `npm:` specifier before each npm `import`, lacks support for import maps via `compilerOptions.paths` in `tsconfig.json`, and has incomplete support for `package.json` settings. Unlike Deno, Bun does not currently support URL imports.
   </Accordion>
 </AccordionGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

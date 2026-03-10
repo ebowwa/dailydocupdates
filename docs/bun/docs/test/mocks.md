@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/mocks.md
+Downloaded: 2026-03-10T20:11:19.142Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -638,3 +643,6 @@ test("service calls API correctly", async () => {
 ### ESM vs CommonJS
 
 Module mocks have different implementations for ESM and CommonJS modules. For ES Modules, Bun has added patches to JavaScriptCore that allow Bun to override export values at runtime and update live bindings recursively.
+
+
+Built with [Mintlify](https://mintlify.com).

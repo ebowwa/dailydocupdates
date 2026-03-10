@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/web-debugger.md
+Downloaded: 2026-03-10T20:11:19.113Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -101,3 +106,6 @@ Here's a cheat sheet explaining the functions of the control flow buttons.
   ![Debugger control buttons cheat
   sheet](https://github-production-user-asset-6210df.s3.amazonaws.com/3084745/261510346-6a94441c-75d3-413a-99a7-efa62365f83d.png)
 </Frame>
+
+
+Built with [Mintlify](https://mintlify.com).

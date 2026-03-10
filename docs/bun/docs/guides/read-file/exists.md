@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/read-file/exists.md
+Downloaded: 2026-03-10T20:11:19.109Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -16,3 +21,6 @@ await file.exists(); // boolean;
 ***
 
 Refer to [API > File I/O](/runtime/file-io) for more information on working with `BunFile`.
+
+
+Built with [Mintlify](https://mintlify.com).

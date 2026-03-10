@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/watch-mode.md
+Downloaded: 2026-03-10T20:11:19.141Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -157,3 +162,6 @@ Bun.serve({
 
   This implementation isn't particularly optimized. It re-transpiles files that haven't changed. It makes no attempt at incremental compilation. It's a starting point.
 </Accordion>
+
+
+Built with [Mintlify](https://mintlify.com).

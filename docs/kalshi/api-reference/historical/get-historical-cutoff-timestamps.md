@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-cutoff-timestamps.md
-Downloaded: 2026-03-09T20:11:24.912Z
+Downloaded: 2026-03-10T20:11:18.484Z
 -->
 
 > ## Documentation Index
@@ -130,3 +130,5 @@ components:
             available in `GET /portfolio/orders`.
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

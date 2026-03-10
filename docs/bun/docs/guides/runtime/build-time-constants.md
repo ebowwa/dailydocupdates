@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/build-time-constants.md
+Downloaded: 2026-03-10T20:11:19.110Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -291,3 +296,6 @@ bun build --compile --target=bun-windows-x64 --define PLATFORM='"windows"' src/a
 * [Define constants at runtime](/guides/runtime/define-constant) - Using `--define` with `bun run`
 * [Building executables](/bundler/executables) - Complete guide to `bun build --compile`
 * [Bundler API](/bundler) - Full bundler documentation including `define` option
+
+
+Built with [Mintlify](https://mintlify.com).

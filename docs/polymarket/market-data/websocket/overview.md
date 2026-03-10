@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-data/websocket/overview.md
+Downloaded: 2026-03-10T20:11:17.466Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -179,3 +184,6 @@ pong
 <Accordion title="Authentication failed - user channel">
   Verify your API credentials are correct and haven't expired.
 </Accordion>
+
+
+Built with [Mintlify](https://mintlify.com).

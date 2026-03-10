@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/quick_start_authenticated_requests.md
-Downloaded: 2026-03-02T20:11:57.899Z
+Downloaded: 2026-03-10T20:11:18.500Z
 -->
 
 > ## Documentation Index
@@ -180,3 +180,6 @@ Now you can make authenticated requests! Try these endpoints (relative to `BASE_
 * `/markets` - Browse available markets
 
 For more details, see the [Complete Order Lifecycle](/getting_started/quick_start_create_order) guide or explore the [API Reference](/api-reference).
+
+
+Built with [Mintlify](https://mintlify.com).

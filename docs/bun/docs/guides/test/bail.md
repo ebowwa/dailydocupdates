@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/bail.md
+Downloaded: 2026-03-10T20:11:19.115Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -22,3 +27,6 @@ bun test --bail=10
 ***
 
 See [Docs > Test runner](/test) for complete documentation of `bun test`.
+
+
+Built with [Mintlify](https://mintlify.com).

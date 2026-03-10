@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/upstash.md
+Downloaded: 2026-03-10T20:11:19.101Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -86,3 +91,6 @@
     The Redis client automatically handles connections in the background. No need to manually connect or disconnect for basic operations.
   </Step>
 </Steps>
+
+
+Built with [Mintlify](https://mintlify.com).

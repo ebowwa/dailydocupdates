@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/trading.md
-Downloaded: 2026-03-05T20:15:09.937Z
+Downloaded: 2026-03-10T20:11:17.468Z
 -->
 
 > ## Documentation Index
@@ -302,3 +302,6 @@ See [Fees](/trading/fees) for the full fee schedule and calculation details.
     Full order creation reference with all options
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

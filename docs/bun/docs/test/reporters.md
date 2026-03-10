@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/reporters.md
+Downloaded: 2026-03-10T20:11:19.143Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -125,3 +130,6 @@ Custom reporters can listen for these key events:
 * `TestReporter.end`: Emitted when a test completes
 * `Console.messageAdded`: Emitted when console output occurs during a test
 * `LifecycleReporter.error`: Emitted when an error or exception occurs
+
+
+Built with [Mintlify](https://mintlify.com).

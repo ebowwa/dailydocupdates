@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/html-rewriter/extract-links.md
+Downloaded: 2026-03-10T20:11:19.102Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -68,3 +73,6 @@ const websiteLinks = await extractLinksFromURL("https://example.com");
 ***
 
 See [Docs > API > HTMLRewriter](/runtime/html-rewriter) for complete documentation on HTML transformation with Bun.
+
+
+Built with [Mintlify](https://mintlify.com).

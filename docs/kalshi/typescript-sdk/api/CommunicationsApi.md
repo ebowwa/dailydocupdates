@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/typescript-sdk/api/CommunicationsApi.md
-Downloaded: 2026-03-03T20:11:28.686Z
+Downloaded: 2026-03-10T20:11:18.503Z
 -->
 
 > ## Documentation Index
@@ -413,3 +413,6 @@ Endpoint for getting RFQs
 | **200**     | RFQs retrieved successfully            | -                |
 | **401**     | Unauthorized - authentication required | -                |
 | **500**     | Internal server error                  | -                |
+
+
+Built with [Mintlify](https://mintlify.com).

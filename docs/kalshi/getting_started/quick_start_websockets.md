@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/quick_start_websockets.md
+Downloaded: 2026-03-10T20:11:18.500Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -419,3 +424,6 @@ To run this example:
 * Review the [WebSocket API Reference](/websockets) for detailed message specifications
 * Explore [Market Data Quick Start](/getting_started/quick_start_market_data) for REST API integration
 * Check out our [Demo Environment](/getting_started/demo_env) for testing
+
+
+Built with [Mintlify](https://mintlify.com).

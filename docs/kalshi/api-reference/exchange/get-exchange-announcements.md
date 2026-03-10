@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/exchange/get-exchange-announcements.md
-Downloaded: 2026-03-09T20:11:24.911Z
+Downloaded: 2026-03-10T20:11:18.483Z
 -->
 
 > ## Documentation Index
@@ -117,3 +117,5 @@ components:
           description: The current status of this announcement.
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

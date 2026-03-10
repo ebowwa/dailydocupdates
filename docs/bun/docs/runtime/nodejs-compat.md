@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/nodejs-compat.md
+Downloaded: 2026-03-10T20:11:19.138Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -469,3 +474,6 @@ The table below lists all globals implemented by Node.js and Bun's current compa
 ### [`WritableStreamDefaultWriter`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultWriter)
 
 🟢 Fully implemented.
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-data/overview.md
+Downloaded: 2026-03-10T20:11:17.466Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -109,3 +114,6 @@ Endpoints are split across three APIs. See the [API Reference](/api-reference/in
     Full endpoint documentation with parameters and response schemas.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

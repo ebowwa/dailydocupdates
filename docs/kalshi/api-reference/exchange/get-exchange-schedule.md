@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/exchange/get-exchange-schedule.md
-Downloaded: 2026-03-09T20:11:24.911Z
+Downloaded: 2026-03-10T20:11:18.483Z
 -->
 
 > ## Documentation Index
@@ -190,3 +190,5 @@ components:
           description: Closing time in ET (Eastern Time) format HH:MM.
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/plugins.md
+Downloaded: 2026-03-10T20:11:19.138Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -420,3 +425,6 @@ This lifecycle callback is run immediately before a file is parsed by Bun's bund
 As input, it receives the file's contents and can optionally return new source code.
 
 This callback can be called from any thread and so the napi module implementation must be thread-safe.
+
+
+Built with [Mintlify](https://mintlify.com).

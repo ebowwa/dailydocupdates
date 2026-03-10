@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/connection-keep-alive.md
-Downloaded: 2026-03-03T20:11:28.687Z
+Downloaded: 2026-03-10T20:11:18.505Z
 -->
 
 > ## Documentation Index
@@ -189,3 +189,5 @@ securitySchemes:
     extensions: []
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/sports/get-valid-sports-market-types.md
+Downloaded: 2026-03-10T20:11:17.460Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -63,3 +68,5 @@ components:
             type: string
 
 ````
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/workspaces.md
+Downloaded: 2026-03-10T20:11:19.129Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -116,3 +121,6 @@ updates every package that references it. See
 
   <Image src="https://user-images.githubusercontent.com/709451/212829600-77df9544-7c9f-4d8d-a984-b2cd0fd2aa52.png" />
 </Note>
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/bridge/supported-assets.md
+Downloaded: 2026-03-10T20:11:17.470Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -60,3 +65,6 @@ Most L2 chains (Polygon, Arbitrum, Base, Optimism) have low minimums of $2, whil
     Track your deposit progress.
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

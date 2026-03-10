@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/isolated-installs.md
+Downloaded: 2026-03-10T20:11:19.128Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -221,3 +226,6 @@ The main difference is that Bun uses symlinks in `node_modules` while pnpm uses 
 * [Package manager > Workspaces](/pm/workspaces) — Monorepo workspace management
 * [Package manager > Lockfile](/pm/lockfile) — Understanding Bun's lockfile format
 * [CLI > install](/pm/cli/install) — Complete `bun install` command reference
+
+
+Built with [Mintlify](https://mintlify.com).

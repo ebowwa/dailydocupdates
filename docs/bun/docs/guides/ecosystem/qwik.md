@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/qwik.md
+Downloaded: 2026-03-10T20:11:19.099Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -112,3 +117,6 @@ Open [http://localhost:5173](http://localhost:5173) with your browser to see the
 ***
 
 Refer to the [Qwik docs](https://qwik.dev/docs/getting-started/) for complete documentation.
+
+
+Built with [Mintlify](https://mintlify.com).

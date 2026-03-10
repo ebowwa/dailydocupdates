@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/sdks/overview.md
+Downloaded: 2026-03-10T20:11:18.502Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -65,3 +70,6 @@ All SDKs use the same authentication mechanism with API keys and RSA-PSS signing
 2. A private key file for signing requests
 
 See the quickstart guide for your chosen SDK for detailed setup instructions.
+
+
+Built with [Mintlify](https://mintlify.com).
