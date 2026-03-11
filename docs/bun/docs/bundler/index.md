@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/bundler/index.md
-Downloaded: 2026-03-10T20:11:19.090Z
+Downloaded: 2026-03-11T20:12:37.393Z
 -->
 
 > ## Documentation Index
@@ -43,7 +43,7 @@ Bun's fast native bundler can be used via the `bun build` CLI command or the `Bu
 It's fast. The numbers below represent performance on esbuild's [three.js benchmark](https://github.com/oven-sh/bun/tree/main/bench/bundle).
 
 <Frame>
-  <img src="https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=0a549e542fceb7d51f84976fe1d151e4" caption="Bundling 10 copies of three.js from scratch, with sourcemaps and minification" data-og-width="2690" width="2690" data-og-height="1072" height="1072" data-path="images/bundler-speed.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?w=280&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=c92e84677eb9da86699582482f7d0752 280w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?w=560&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=de00bc18218a9e7e4a710f88ab82d6f7 560w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?w=840&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=07d97d8810d903fe052476caddbc2646 840w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?w=1100&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=6ad21a681255af55a711bbceccfef746 1100w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?w=1650&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=8decffe83aa2e455b19b1c389214994e 1650w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?w=2500&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=5db3e9a0ef08d32d43b64d35c7626895 2500w" />
+  <img src="https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=0a549e542fceb7d51f84976fe1d151e4" caption="Bundling 10 copies of three.js from scratch, with sourcemaps and minification" width="2690" height="1072" data-path="images/bundler-speed.png" />
 </Frame>
 
 ## Why bundle?

@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/deployment/aws-lambda.md
-Downloaded: 2026-03-10T20:11:19.095Z
+Downloaded: 2026-03-11T20:12:37.396Z
 -->
 
 > ## Documentation Index
@@ -157,7 +157,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     <Warning>Make sure you've selected the right region, this URL defaults to `us-east-1`.</Warning>
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=56e8b0e323726544e2a88c7e39cb2d50" alt="Create Function" data-og-width="3116" width="3116" data-og-height="2084" height="2084" data-path="images/guides/lambda1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=be1e07dd83ac2428f922dce05b7a5db7 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=2607219192945f0cce23b991c07a4ff2 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=930cc066927af65f4b1caadca36ab593 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=27a4464f1a0a967fbe1d306cd7b24b66 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=2dfb69e43527bdff02c695f2bf023d5f 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=8588dcf38cd7ef5d005378006a00486d 2500w" />
+            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=56e8b0e323726544e2a88c7e39cb2d50" alt="Create Function" width="3116" height="2084" data-path="images/guides/lambda1.png" />
     </Frame>
 
     Give the function a name, like `my-bun-function`.
@@ -167,13 +167,13 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     Then, go to the **Container image URI** section, click on **Browse images**. Select the image we just pushed to the ECR repository.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=89ab4c81547ef562733fb29b704a9e24" alt="Select Container Repository" data-og-width="4128" width="4128" data-og-height="2412" height="2412" data-path="images/guides/lambda2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=98f4649bd66f1c04f9216c8afdb774b8 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=ad4049426f74687b865836ffd9bd1564 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=4904d76d040f22f19e81674fe93b6d66 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=006add82aa6d8d4d21a8e179d745d6dd 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=d513fab958cf6dcbd8491d7a17186e2c 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=2596c0352f274ed0a4eafdee8b6176a4 2500w" />
+            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=89ab4c81547ef562733fb29b704a9e24" alt="Select Container Repository" width="4128" height="2412" data-path="images/guides/lambda2.png" />
     </Frame>
 
     Then, select the `latest` image, and click on **Select image**.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=70906fbda8b366e972615bd297335e9d" alt="Select Container Image" data-og-width="4128" width="4128" data-og-height="2172" height="2172" data-path="images/guides/lambda3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=68027906d7eb4435bceb62ec4f1f9ea6 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=9a19378b316cf21766664902b25a6a6f 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=3daaba5b53626005d85940151a538b87 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=d156a64e32e812c97c70e090bbeeae5b 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=bb7f5d83ac193b2736205ef35cf924e0 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=8a41f19e3674fed9542bf9b33294d89d 2500w" />
+            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=70906fbda8b366e972615bd297335e9d" alt="Select Container Image" width="4128" height="2172" data-path="images/guides/lambda3.png" />
     </Frame>
   </Step>
 
@@ -183,7 +183,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     Set this to **Enable**, with Auth Type **NONE**.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=48620c8aeb9326875d97a9a17edc8b1e" alt="Set the Function URL" data-og-width="3116" width="3116" data-og-height="1524" height="1524" data-path="images/guides/lambda4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=3b2ce96581a8b1db46c298fe20b87aad 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=3b40b8a5e6a637e54b2f788063d561be 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f392229622e663bb861333911b98d8fe 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=8df1357cff6f0feaf38f3bd5e66c028e 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=6d4efed01b67c45288faca8c2c894889 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=96e2978d02762571bac5b56ef6dcd561 2500w" />
+            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=48620c8aeb9326875d97a9a17edc8b1e" alt="Set the Function URL" width="3116" height="1524" data-path="images/guides/lambda4.png" />
     </Frame>
   </Step>
 
@@ -191,7 +191,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     Click on **Create function** at the bottom of the page, this will create the function.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f615eda922b34ac37bc5e39a8f08ef25" alt="Create Function" data-og-width="4836" width="4836" data-og-height="2516" height="2516" data-path="images/guides/lambda6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=330d7faad768b412e7d3868d7fa16b39 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=5479e1d1678c19a0739780e4dccaf95b 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=1f22688a1a937310024250ded4c93406 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=cb57546fc313d0877e569b173de4df2b 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f2e97207b160d7872ff00ad741fdb632 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=0523b6501d4eb45b25483006d8918930 2500w" />
+            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f615eda922b34ac37bc5e39a8f08ef25" alt="Create Function" width="4836" height="2516" data-path="images/guides/lambda6.png" />
     </Frame>
   </Step>
 
@@ -199,7 +199,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     Once the function has been created you'll be redirected to the function's page, where you can see the function URL in the **"Function URL"** section.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=5bc860978a6c636d49c1a73603d0655a" alt="Function URL" data-og-width="4792" width="4792" data-og-height="2500" height="2500" data-path="images/guides/lambda5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=63fb11ed81703c7053832992716e33c5 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=e9a2e94b129f3cbb5d18511390dfd230 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=d93a2029078a2a31d95532d194d24d59 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=99e2cfdeafd8f41414bf514da188dc6e 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=a53bb52b56a34858f23b773191c346d5 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=9cc350917ff0977838f83099edbdbdc5 2500w" />
+            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=5bc860978a6c636d49c1a73603d0655a" alt="Function URL" width="4792" height="2500" data-path="images/guides/lambda5.png" />
     </Frame>
   </Step>
 

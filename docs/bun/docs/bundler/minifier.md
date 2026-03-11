@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/bundler/minifier.md
-Downloaded: 2026-03-10T20:11:19.091Z
+Downloaded: 2026-03-11T20:12:37.394Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,7 @@ Downloaded: 2026-03-10T20:11:19.091Z
 
 > Reduce bundle sizes with Bun's JavaScript and TypeScript minifier
 
-# null
+# Minifier
 
 Bun includes a fast JavaScript and TypeScript minifier that can reduce bundle sizes by 80% or more (depending on the codebase) and make output code run faster. The minifier performs dozens of optimizations including constant folding, dead code elimination, and syntax transformations. Unlike other minifiers, Bun's minifier makes `bun build` run faster since there's less code to print.
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-fills.md
-Downloaded: 2026-03-10T20:11:18.485Z
+Downloaded: 2026-03-11T20:12:06.422Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-03-10T20:11:18.485Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.9.0
+  version: 3.10.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -152,6 +152,8 @@ components:
         - side
         - action
         - count_fp
+        - yes_price_dollars
+        - no_price_dollars
         - yes_price_fixed
         - no_price_fixed
         - is_taker
@@ -192,12 +194,26 @@ components:
           description: >-
             String representation of the number of contracts bought or sold in
             this fill
+        yes_price_dollars:
+          $ref: '#/components/schemas/FixedPointDollars'
+          description: Fill price for the yes side in fixed-point dollars
         yes_price_fixed:
           type: string
-          description: Fill price for the yes side in fixed point dollars
+          description: >-
+            DEPRECATED: Use yes_price_dollars. This alias remains available for
+            now for compatibility. Fill price for the yes side in fixed point
+            dollars.
+          deprecated: true
+        no_price_dollars:
+          $ref: '#/components/schemas/FixedPointDollars'
+          description: Fill price for the no side in fixed-point dollars
         no_price_fixed:
           type: string
-          description: Fill price for the no side in fixed point dollars
+          description: >-
+            DEPRECATED: Use no_price_dollars. This alias remains available for
+            now for compatibility. Fill price for the no side in fixed point
+            dollars.
+          deprecated: true
         is_taker:
           type: boolean
           description: >-

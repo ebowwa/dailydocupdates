@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/market-&-event-lifecycle.md
-Downloaded: 2026-03-10T20:11:18.505Z
+Downloaded: 2026-03-11T20:12:06.439Z
 -->
 
 > ## Documentation Index
@@ -211,7 +211,7 @@ operations:
             type:
               type: string
               const: market_lifecycle_v2
-              x-parser-schema-id: <anonymous-schema-103>
+              x-parser-schema-id: <anonymous-schema-107>
             sid: &ref_0
               type: integer
               description: >-
@@ -242,7 +242,7 @@ operations:
                     - close_date_updated
                     - determined
                     - settled
-                  x-parser-schema-id: <anonymous-schema-105>
+                  x-parser-schema-id: <anonymous-schema-109>
                 market_ticker:
                   type: string
                   description: Unique market identifier
@@ -258,7 +258,7 @@ operations:
                     created. Unix timestamp for when the market opened (in
                     seconds)
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-106>
+                  x-parser-schema-id: <anonymous-schema-110>
                 close_ts:
                   type: integer
                   description: >-
@@ -267,13 +267,13 @@ operations:
                     for when the market is scheduled to close (in seconds). Will
                     be updated in case of early determination markets
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-107>
+                  x-parser-schema-id: <anonymous-schema-111>
                 result:
                   type: string
                   description: >-
                     Optional - This key will ONLY exist when the market is
                     determined. Result of the market
-                  x-parser-schema-id: <anonymous-schema-108>
+                  x-parser-schema-id: <anonymous-schema-112>
                 determination_ts:
                   type: integer
                   description: >-
@@ -281,14 +281,14 @@ operations:
                     determined. Unix timestamp for when the market is determined
                     (in seconds)
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-109>
+                  x-parser-schema-id: <anonymous-schema-113>
                 settlement_value:
                   type: string
                   description: >-
                     Optional - This key will ONLY exist when the market is
                     determined. Settlement value of the market in fixed-point
                     dollars (e.g. "0.5000")
-                  x-parser-schema-id: <anonymous-schema-110>
+                  x-parser-schema-id: <anonymous-schema-114>
                 settled_ts:
                   type: integer
                   description: >-
@@ -296,7 +296,7 @@ operations:
                     settled. Unix timestamp for when the market is settled (in
                     seconds)
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-111>
+                  x-parser-schema-id: <anonymous-schema-115>
                 is_deactivated:
                   type: boolean
                   description: >-
@@ -304,7 +304,7 @@ operations:
                     paused/unpaused. Boolean flag to indicate if trading is
                     paused on an open market. This should only be interpreted
                     for an open market
-                  x-parser-schema-id: <anonymous-schema-112>
+                  x-parser-schema-id: <anonymous-schema-116>
                 additional_metadata:
                   type: object
                   description: >-
@@ -313,46 +313,46 @@ operations:
                   properties:
                     name:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-114>
+                      x-parser-schema-id: <anonymous-schema-118>
                     title:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-115>
+                      x-parser-schema-id: <anonymous-schema-119>
                     yes_sub_title:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-116>
+                      x-parser-schema-id: <anonymous-schema-120>
                     no_sub_title:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-117>
+                      x-parser-schema-id: <anonymous-schema-121>
                     rules_primary:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-118>
+                      x-parser-schema-id: <anonymous-schema-122>
                     rules_secondary:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-119>
+                      x-parser-schema-id: <anonymous-schema-123>
                     can_close_early:
                       type: boolean
-                      x-parser-schema-id: <anonymous-schema-120>
+                      x-parser-schema-id: <anonymous-schema-124>
                     event_ticker:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-121>
+                      x-parser-schema-id: <anonymous-schema-125>
                     expected_expiration_ts:
                       type: integer
                       format: int64
-                      x-parser-schema-id: <anonymous-schema-122>
+                      x-parser-schema-id: <anonymous-schema-126>
                     strike_type:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-123>
+                      x-parser-schema-id: <anonymous-schema-127>
                     floor_strike:
                       type: number
-                      x-parser-schema-id: <anonymous-schema-124>
+                      x-parser-schema-id: <anonymous-schema-128>
                     cap_strike:
                       type: number
-                      x-parser-schema-id: <anonymous-schema-125>
+                      x-parser-schema-id: <anonymous-schema-129>
                     custom_strike:
                       type: object
-                      x-parser-schema-id: <anonymous-schema-126>
-                  x-parser-schema-id: <anonymous-schema-113>
-              x-parser-schema-id: <anonymous-schema-104>
+                      x-parser-schema-id: <anonymous-schema-130>
+                  x-parser-schema-id: <anonymous-schema-117>
+              x-parser-schema-id: <anonymous-schema-108>
           x-parser-schema-id: marketLifecycleV2Payload
         title: Market Lifecycle V2
         description: >-
@@ -464,7 +464,7 @@ operations:
             type:
               type: string
               const: event_lifecycle
-              x-parser-schema-id: <anonymous-schema-127>
+              x-parser-schema-id: <anonymous-schema-131>
             sid: *ref_0
             msg:
               type: object
@@ -478,15 +478,15 @@ operations:
                 event_ticker:
                   type: string
                   description: Unique identifier for the event being created
-                  x-parser-schema-id: <anonymous-schema-129>
+                  x-parser-schema-id: <anonymous-schema-133>
                 title:
                   type: string
                   description: Title of event
-                  x-parser-schema-id: <anonymous-schema-130>
+                  x-parser-schema-id: <anonymous-schema-134>
                 subtitle:
                   type: string
                   description: Subtitle of event
-                  x-parser-schema-id: <anonymous-schema-131>
+                  x-parser-schema-id: <anonymous-schema-135>
                 collateral_return_type:
                   type: string
                   description: >-
@@ -496,25 +496,25 @@ operations:
                     - MECNET
                     - DIRECNET
                     - ''
-                  x-parser-schema-id: <anonymous-schema-132>
+                  x-parser-schema-id: <anonymous-schema-136>
                 series_ticker:
                   type: string
                   description: Series ticker for the event
-                  x-parser-schema-id: <anonymous-schema-133>
+                  x-parser-schema-id: <anonymous-schema-137>
                 strike_date:
                   type: integer
                   description: >-
                     Optional - Unix timestamp to indicate the strike date of the
                     event if there is one
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-134>
+                  x-parser-schema-id: <anonymous-schema-138>
                 strike_period:
                   type: string
                   description: >-
                     Optional - String to indicate the strike period of the event
                     if there is one
-                  x-parser-schema-id: <anonymous-schema-135>
-              x-parser-schema-id: <anonymous-schema-128>
+                  x-parser-schema-id: <anonymous-schema-139>
+              x-parser-schema-id: <anonymous-schema-132>
           x-parser-schema-id: eventLifecyclePayload
         title: Event Lifecycle
         description: Event creation notification

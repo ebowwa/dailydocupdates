@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/order-group-updates.md
-Downloaded: 2026-03-10T20:11:18.506Z
+Downloaded: 2026-03-11T20:12:06.440Z
 -->
 
 > ## Documentation Index
@@ -112,7 +112,7 @@ operations:
             type:
               type: string
               const: order_group_updates
-              x-parser-schema-id: <anonymous-schema-222>
+              x-parser-schema-id: <anonymous-schema-226>
             sid:
               type: integer
               description: >-
@@ -143,18 +143,18 @@ operations:
                     - reset
                     - deleted
                     - limit_updated
-                  x-parser-schema-id: <anonymous-schema-224>
+                  x-parser-schema-id: <anonymous-schema-228>
                 order_group_id:
                   type: string
                   description: Order group identifier
-                  x-parser-schema-id: <anonymous-schema-225>
+                  x-parser-schema-id: <anonymous-schema-229>
                 contracts_limit_fp:
                   type: string
                   description: >-
                     Updated contracts limit in fixed-point (2 decimals). Present
                     for "created" and "limit_updated" events only.
-                  x-parser-schema-id: <anonymous-schema-226>
-              x-parser-schema-id: <anonymous-schema-223>
+                  x-parser-schema-id: <anonymous-schema-230>
+              x-parser-schema-id: <anonymous-schema-227>
           x-parser-schema-id: orderGroupUpdatesPayload
         title: Order Group Updates
         description: Order group lifecycle and limit updates for authenticated user

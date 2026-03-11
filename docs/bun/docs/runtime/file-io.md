@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/file-io.md
-Downloaded: 2026-03-10T20:11:19.133Z
+Downloaded: 2026-03-11T20:12:37.419Z
 -->
 
 > ## Documentation Index
@@ -267,7 +267,7 @@ bun ./cat.ts ./path-to-file
 
 It runs 2x faster than GNU `cat` for large files on Linux.
 
-<Frame><img src="https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=cc26ce0444c5a5953dd346ee52deb3aa" alt="Cat screenshot" data-og-width="1194" width="1194" data-og-height="1143" height="1143" data-path="images/cat.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?w=280&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=b5eef4c3932d3ce4fe4d9d26d38796b2 280w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?w=560&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=56e438048342311306dac624b12f1531 560w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?w=840&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=2ddd508c4e72b7900ea6da3dc6f3b4b6 840w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?w=1100&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=018d1cb81b368954b4757487ffc8e749 1100w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?w=1650&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=17fdac76d0d63ad0facc20aa7f50230d 1650w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?w=2500&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=278f195f295bb5fbcd2ef04689d294c1 2500w" /></Frame>
+<Frame><img src="https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=cc26ce0444c5a5953dd346ee52deb3aa" alt="Cat screenshot" width="1194" height="1143" data-path="images/cat.jpg" /></Frame>
 
 ***
 

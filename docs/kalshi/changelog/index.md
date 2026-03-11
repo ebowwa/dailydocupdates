@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-03-10T20:11:18.495Z
+Downloaded: 2026-03-11T20:12:06.433Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,35 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Mar 11, 2026"
+  tags={["Change", "Upcoming"]}
+  rss={{
+title: "Legacy fields temporarily restored; nested market bid sizes fixed",
+description: "Legacy fields temporarily restored on market_positions WebSocket and GetSettlements to allow additional migration time. yes_bid_size_fp and yes_ask_size_fp now populated on nested market responses."
+}}
+>
+  * The following legacy fields are temporarily restored to allow additional migration time. Their `_dollars` equivalents remain the recommended fields:
+    * `market_positions` WebSocket: `position_cost`, `realized_pnl`, `fees_paid`, `position_fee_cost`
+    * `GET /portfolio/settlements`: `yes_total_cost`, `no_total_cost`
+  * `yes_bid_size_fp` and `yes_ask_size_fp` are now correctly populated on nested market responses (`GET /events/{ticker}`).
+</Update>
+
+<Update
+  label="Mar 10, 2026"
+  tags={["Change", "Upcoming"]}
+  rss={{
+title: "Fill prices adopt _dollars aliases; settlements add dollar cost fields",
+description: "Fill responses now expose yes_price_dollars and no_price_dollars, and settlements now expose yes_total_cost_dollars and no_total_cost_dollars. Legacy aliases remain available for now but are deprecated."
+}}
+>
+  * `Fill` responses now expose `yes_price_dollars` and `no_price_dollars` to align with the API-wide `_dollars` naming convention. Legacy `yes_price_fixed` and `no_price_fixed` remain available for now but are deprecated.
+  * `GET /portfolio/settlements` now exposes `yes_total_cost_dollars` and `no_total_cost_dollars` in fixed-point dollars.
+  * Legacy settlement cent fields `yes_total_cost` and `no_total_cost` remain available for now because these `_dollars` fields were added late in the fixed-point migration, but clients are recommended to migrate now.
+
+  See [Fixed-Point Migration](/getting_started/fixed_point_migration) for the recommended field mappings.
+</Update>
 
 <Update
   label="Mar 8, 2026"

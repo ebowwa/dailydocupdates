@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-settlements.md
-Downloaded: 2026-03-10T20:11:18.493Z
+Downloaded: 2026-03-11T20:12:06.431Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-03-10T20:11:18.493Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.9.0
+  version: 3.10.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -171,8 +171,10 @@ components:
         - market_result
         - yes_count_fp
         - yes_total_cost
+        - yes_total_cost_dollars
         - no_count_fp
         - no_total_cost
+        - no_total_cost_dollars
         - revenue
         - settled_time
         - fee_cost
@@ -202,7 +204,14 @@ components:
             time of settlement.
         yes_total_cost:
           type: integer
-          description: Total cost basis of all YES contracts in cents.
+          description: >-
+            DEPRECATED: Use yes_total_cost_dollars. This cents field remains
+            available for now for compatibility. Total cost basis of all YES
+            contracts in cents.
+          deprecated: true
+        yes_total_cost_dollars:
+          $ref: '#/components/schemas/FixedPointDollars'
+          description: Total cost basis of all YES contracts in fixed-point dollars.
         no_count_fp:
           $ref: '#/components/schemas/FixedPointCount'
           description: >-
@@ -210,7 +219,14 @@ components:
             time of settlement.
         no_total_cost:
           type: integer
-          description: Total cost basis of all NO contracts in cents.
+          description: >-
+            DEPRECATED: Use no_total_cost_dollars. This cents field remains
+            available for now for compatibility. Total cost basis of all NO
+            contracts in cents.
+          deprecated: true
+        no_total_cost_dollars:
+          $ref: '#/components/schemas/FixedPointDollars'
+          description: Total cost basis of all NO contracts in fixed-point dollars.
         revenue:
           type: integer
           description: >-

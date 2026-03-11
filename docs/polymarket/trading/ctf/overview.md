@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/ctf/overview.md
-Downloaded: 2026-03-10T20:11:17.471Z
+Downloaded: 2026-03-11T20:11:59.898Z
 -->
 
 > ## Documentation Index
@@ -45,9 +45,9 @@ CTF provides three fundamental operations:
 ## Token Flow
 
 <Frame>
-  <img src="https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/core-concepts/token-flow.png?fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=36f5a57946ac2b83136e17b6c06b358c" alt="" className="dark:hidden" data-og-width="1596" width="1596" data-og-height="952" height="952" data-path="images/core-concepts/token-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/core-concepts/token-flow.png?w=280&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=abc92640ec62d9e02f2097f1c67231cb 280w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/core-concepts/token-flow.png?w=560&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=0f3f010e10a5cf39e78e594cdf8e579d 560w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/core-concepts/token-flow.png?w=840&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=e26855cc3aeac4b609657690df3d0086 840w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/core-concepts/token-flow.png?w=1100&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=78547971ce2f750cb824d2cfdc705171 1100w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/core-concepts/token-flow.png?w=1650&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=bfdcab4d02ad6fe37e0549b33b940869 1650w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/core-concepts/token-flow.png?w=2500&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=78ec4b0dae7b6dc701e180fbb2e755e4 2500w" />
+  <img src="https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/core-concepts/token-flow.png?fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=36f5a57946ac2b83136e17b6c06b358c" alt="" className="dark:hidden" width="1596" height="952" data-path="images/core-concepts/token-flow.png" />
 
-  <img src="https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/dark/core-concepts/token-flow.png?fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=69d150ea49ffa18cd7f24689342b1bec" alt="" className="hidden dark:block" data-og-width="1596" width="1596" data-og-height="952" height="952" data-path="images/dark/core-concepts/token-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/dark/core-concepts/token-flow.png?w=280&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=0ef33ff2c0ab77156745d8b381dafe00 280w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/dark/core-concepts/token-flow.png?w=560&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=8ab82e34078a6811fc929d3bb15ee448 560w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/dark/core-concepts/token-flow.png?w=840&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=750c6e303bc8df05bbb335dd79edd2d6 840w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/dark/core-concepts/token-flow.png?w=1100&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=4d5553bef579cd8b50f5be39e8e91e61 1100w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/dark/core-concepts/token-flow.png?w=1650&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=d69588b8286d2a561101ffbd55364ebd 1650w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/dark/core-concepts/token-flow.png?w=2500&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=633d6ce55594e89381b81b30f5f0ad45 2500w" />
+  <img src="https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/dark/core-concepts/token-flow.png?fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=69d150ea49ffa18cd7f24689342b1bec" alt="" className="hidden dark:block" width="1596" height="952" data-path="images/dark/core-concepts/token-flow.png" />
 </Frame>
 
 ## Token Identifiers

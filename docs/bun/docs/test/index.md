@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/test/index.md
-Downloaded: 2026-03-10T20:11:19.142Z
+Downloaded: 2026-03-11T20:12:37.425Z
 -->
 
 > ## Documentation Index
@@ -379,7 +379,7 @@ See [Test > DOM Testing](/test/dom) for complete documentation.
 
 Bun's test runner is fast.
 
-<Frame><img src="https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=385ddc5e64d35dd0534663d0f70ab116" alt="Running 266 React SSR tests faster than Jest can print its version number." data-og-width="2112" width="2112" data-og-height="716" height="716" data-path="images/buntest.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?w=280&fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=3521449d084de759182add8a38c60c3d 280w, https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?w=560&fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=37c3031df9eea4fef6f01f5ed3d5619b 560w, https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?w=840&fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=0b4986c07b5afc3fd75f5b0da4151b56 840w, https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?w=1100&fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=780b91c86953d3c5ec6bd4d6c7fd90d4 1100w, https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?w=1650&fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=14077e0b0e1766552cd69981352275bc 1650w, https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?w=2500&fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=a29453d4a392600e61619bc16ee3e6a3 2500w" /></Frame>
+<Frame><img src="https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=385ddc5e64d35dd0534663d0f70ab116" alt="Running 266 React SSR tests faster than Jest can print its version number." width="2112" height="716" data-path="images/buntest.jpeg" /></Frame>
 
 ## AI Agent Integration
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/market-positions.md
-Downloaded: 2026-03-10T20:11:18.505Z
+Downloaded: 2026-03-11T20:12:06.439Z
 -->
 
 > ## Documentation Index
@@ -106,19 +106,37 @@ operations:
                     type: string
                     description: Fixed-point net position (2 decimals)
                     required: false
+                  - name: position_cost
+                    type: integer
+                    description: >-
+                      Current cost basis of the position in centi-cents
+                      (1/10,000th of a dollar)
+                    required: false
                   - name: position_cost_dollars
                     type: string
                     description: >-
                       Current cost basis of the position as a fixed-point dollar
                       string
                     required: false
+                  - name: realized_pnl
+                    type: integer
+                    description: Realized profit/loss in centi-cents
+                    required: false
                   - name: realized_pnl_dollars
                     type: string
                     description: Realized profit/loss as a fixed-point dollar string
                     required: false
+                  - name: fees_paid
+                    type: integer
+                    description: Total fees paid in centi-cents
+                    required: false
                   - name: fees_paid_dollars
                     type: string
                     description: Total fees paid as a fixed-point dollar string
+                    required: false
+                  - name: position_fee_cost
+                    type: integer
+                    description: Total position fee cost in centi-cents
                     required: false
                   - name: position_fee_cost_dollars
                     type: string
@@ -157,9 +175,13 @@ operations:
                 - user_id
                 - market_ticker
                 - position_fp
+                - position_cost
                 - position_cost_dollars
+                - realized_pnl
                 - realized_pnl_dollars
+                - fees_paid
                 - fees_paid_dollars
+                - position_fee_cost
                 - position_fee_cost_dollars
                 - volume_fp
               properties:
@@ -179,32 +201,50 @@ operations:
                   type: string
                   description: Fixed-point net position (2 decimals)
                   x-parser-schema-id: <anonymous-schema-96>
+                position_cost:
+                  type: integer
+                  description: >-
+                    Current cost basis of the position in centi-cents
+                    (1/10,000th of a dollar)
+                  x-parser-schema-id: <anonymous-schema-97>
                 position_cost_dollars:
                   type: string
                   description: >-
                     Current cost basis of the position as a fixed-point dollar
                     string
-                  x-parser-schema-id: <anonymous-schema-97>
+                  x-parser-schema-id: <anonymous-schema-98>
+                realized_pnl:
+                  type: integer
+                  description: Realized profit/loss in centi-cents
+                  x-parser-schema-id: <anonymous-schema-99>
                 realized_pnl_dollars:
                   type: string
                   description: Realized profit/loss as a fixed-point dollar string
-                  x-parser-schema-id: <anonymous-schema-98>
+                  x-parser-schema-id: <anonymous-schema-100>
+                fees_paid:
+                  type: integer
+                  description: Total fees paid in centi-cents
+                  x-parser-schema-id: <anonymous-schema-101>
                 fees_paid_dollars:
                   type: string
                   description: Total fees paid as a fixed-point dollar string
-                  x-parser-schema-id: <anonymous-schema-99>
+                  x-parser-schema-id: <anonymous-schema-102>
+                position_fee_cost:
+                  type: integer
+                  description: Total position fee cost in centi-cents
+                  x-parser-schema-id: <anonymous-schema-103>
                 position_fee_cost_dollars:
                   type: string
                   description: Total position fee cost as a fixed-point dollar string
-                  x-parser-schema-id: <anonymous-schema-100>
+                  x-parser-schema-id: <anonymous-schema-104>
                 volume_fp:
                   type: string
                   description: Fixed-point total volume traded (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-101>
+                  x-parser-schema-id: <anonymous-schema-105>
                 subaccount:
                   type: integer
                   description: Optional subaccount number for the position
-                  x-parser-schema-id: <anonymous-schema-102>
+                  x-parser-schema-id: <anonymous-schema-106>
               x-parser-schema-id: <anonymous-schema-94>
           x-parser-schema-id: marketPositionPayload
         title: Market Position Update
@@ -217,9 +257,13 @@ operations:
               "user_id": "user123",
               "market_ticker": "FED-23DEC-T3.00",
               "position_fp": "100.00",
+              "position_cost": 500000,
               "position_cost_dollars": "50.0000",
+              "realized_pnl": 100000,
               "realized_pnl_dollars": "10.0000",
+              "fees_paid": 10000,
               "fees_paid_dollars": "1.0000",
+              "position_fee_cost": 5000,
               "position_fee_cost_dollars": "0.5000",
               "volume_fp": "15.00"
             }

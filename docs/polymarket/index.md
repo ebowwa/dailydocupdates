@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/index.md
-Downloaded: 2026-03-10T20:11:17.466Z
+Downloaded: 2026-03-11T20:11:59.895Z
 -->
 
 > ## Documentation Index
@@ -121,7 +121,7 @@ export const IconCard = ({ icon, title, description, href, color }) => {
 
     <div className="my-12 ">
       <a href="https://builders.polymarket.com" target="_blank">
-        <img src="https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/banner.png?fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=d83f2f21e8474e998d8ba0f45810d978" alt="Banner" className="w-full rounded-2xl" data-og-width="2394" width="2394" data-og-height="549" height="549" data-path="images/banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/banner.png?w=280&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=bc33dd55b9c23cf14b4cb5c838ddbf8b 280w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/banner.png?w=560&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=1634a07f9d318c56ae22ab36469884e4 560w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/banner.png?w=840&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=42cd26eac1512fb6cb9a5e4246005127 840w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/banner.png?w=1100&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=c9b7ad82701e702fd6636108235ab493 1100w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/banner.png?w=1650&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=121075a6d26595fafb3e82922810fbff 1650w, https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/banner.png?w=2500&fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=8eb05e436df24b1078610fa69510ec35 2500w" />
+        <img src="https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/banner.png?fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=d83f2f21e8474e998d8ba0f45810d978" alt="Banner" className="w-full rounded-2xl" width="2394" height="549" data-path="images/banner.png" />
       </a>
     </div>
   </div>

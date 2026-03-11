@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/market-settlement.md
-Downloaded: 2026-03-10T20:11:18.497Z
+Downloaded: 2026-03-11T20:12:06.434Z
 -->
 
 > ## Documentation Index
@@ -49,8 +49,8 @@ Provides settlement details for a specific market.
 | 20108 | NoMarketSettlementPartyIDs | Number of parties                     |
 | 20109 | MarketSettlementPartyID    | Unique identifier for party           |
 | 20110 | MarketSettlementPartyRole  | Type of party (Customer Account\<24>) |
-| 704   | LongQty                    | Number of YES contracts held          |
-| 705   | ShortQty                   | Number of NO contracts held           |
+| 704   | LongQty                    | Decimal quantity of YES position held |
+| 705   | ShortQty                   | Decimal quantity of NO position held  |
 
 #### Collateral Changes (NoCollateralAmountChanges)
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/rfq-messages.md
-Downloaded: 2026-03-10T20:11:18.497Z
+Downloaded: 2026-03-11T20:12:06.435Z
 -->
 
 > ## Documentation Index
@@ -54,7 +54,7 @@ This message is sent by Kalshi Exchange back to clients to inform of new quote r
 | ----- | -------------------------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------- |
 | 131   | QuoteReqId                       | UUID    | Y        | Unique quote request ID                                                                              |
 | 146   | NoRelatedSym                     | Integer | Y        | Number of symbols. Currently, only 1 is supported.                                                   |
-| 38    | OrderQty                         | Integer | Y        | Number of contracts                                                                                  |
+| 38    | OrderQty                         | Decimal | Y        | Quantity of contracts                                                                                |
 | 152   | CashOrderQty                     | Decimal | N        | Target cost of the quote in dollars.                                                                 |
 | 55    | Symbol                           | String  | Y        | Market ticker                                                                                        |
 | 453   | NoPartyIDs                       | Integer | N        | Number of parties. Currently, only 1 is supported.                                                   |
@@ -97,7 +97,7 @@ A QuoteStatusReport is sent by the exchange:
 | 131 | QuoteReqId   | String  | Y        | Request reference                                                           |
 | 79  | AllocAccount | Integer | C        | Subaccount number (0-32). Present if the quote was created for a subaccount |
 | 297 | QuoteStatus  | Integer | Y        | Current status                                                              |
-| 38  | OrderQty     | Integer | C        | Number of contracts. Not present if REJECTED                                |
+| 38  | OrderQty     | Decimal | C        | Quantity of contracts. Not present if REJECTED                              |
 | 132 | BidPx        | Integer | C        | Yes price in cents. Only integer part considered. Not present if REJECTED   |
 | 133 | OfferPx      | Integer | C        | No price in cents. Only integer part considered. Not present if REJECTED    |
 | 54  | AcceptedSide | Char    | C        | Side accepted (1=Yes, 2=No). Only present if ACCEPTED                       |
