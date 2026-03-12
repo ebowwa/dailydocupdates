@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/get-quote.md
-Downloaded: 2026-03-11T20:12:06.418Z
+Downloaded: 2026-03-12T20:11:56.090Z
 -->
 
 > ## Documentation Index
@@ -208,6 +208,12 @@ components:
           type: string
           description: Order ID for the quote creator (private field)
           x-go-type-skip-optional-pointer: true
+        yes_contracts_fp:
+          $ref: '#/components/schemas/FixedPointCount'
+          description: Number of YES contracts offered in the quote (fixed-point)
+        no_contracts_fp:
+          $ref: '#/components/schemas/FixedPointCount'
+          description: Number of NO contracts offered in the quote (fixed-point)
     ErrorResponse:
       type: object
       properties:

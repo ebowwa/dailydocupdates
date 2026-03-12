@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/quick_start_market_data.md
-Downloaded: 2026-03-10T20:11:18.500Z
+Downloaded: 2026-03-12T20:11:56.101Z
 -->
 
 > ## Documentation Index
@@ -74,7 +74,7 @@ Now that we have the series information, let's get the markets for this series. 
   for market in markets_data['markets']:
       print(f"- {market['ticker']}: {market['title']}")
       print(f"  Event: {market['event_ticker']}")
-      print(f"  Yes Price: {market['yes_price']}¢ | Volume: {market['volume']}")
+      print(f"  Yes Price: ${market['yes_bid_dollars']} | Volume: {market['volume_fp']}")
       print()
 
   # Get details for a specific event if you have its ticker
@@ -101,7 +101,7 @@ Now that we have the series information, let's get the markets for this series. 
     marketsData.markets.forEach(market => {
       console.log(`- ${market.ticker}: ${market.title}`);
       console.log(`  Event: ${market.event_ticker}`);
-      console.log(`  Yes Price: ${market.yes_price}¢ | Volume: ${market.volume}`);
+      console.log(`  Yes Price: $${market.yes_bid_dollars} | Volume: ${market.volume_fp}`);
       console.log();
     });
 
@@ -144,12 +144,12 @@ Now let's fetch the orderbook for a specific market to see the current bids and 
 
   print(f"\nOrderbook for {market_ticker}:")
   print("YES BIDS:")
-  for bid in orderbook_data['orderbook']['yes'][:5]:  # Show top 5
-      print(f"  Price: {bid[0]}¢, Quantity: {bid[1]}")
+  for price_dollars, count_fp in orderbook_data['orderbook_fp']['yes_dollars'][:5]:  # Show top 5
+      print(f"  Price: ${price_dollars}, Quantity: {count_fp}")
 
   print("\nNO BIDS:")
-  for bid in orderbook_data['orderbook']['no'][:5]:  # Show top 5
-      print(f"  Price: {bid[0]}¢, Quantity: {bid[1]}")
+  for price_dollars, count_fp in orderbook_data['orderbook_fp']['no_dollars'][:5]:  # Show top 5
+      print(f"  Price: ${price_dollars}, Quantity: {count_fp}")
   ```
 
   ```javascript JavaScript theme={null}
@@ -160,13 +160,13 @@ Now let's fetch the orderbook for a specific market to see the current bids and 
 
     console.log(`\nOrderbook for ${marketTicker}:`);
     console.log('YES BIDS:');
-    data.orderbook.yes.slice(0, 5).forEach(([price, quantity]) => {
-      console.log(`  Price: ${price}¢, Quantity: ${quantity}`);
+    data.orderbook_fp.yes_dollars.slice(0, 5).forEach(([priceDollars, countFp]) => {
+      console.log(`  Price: $${priceDollars}, Quantity: ${countFp}`);
     });
 
     console.log('\nNO BIDS:');
-    data.orderbook.no.slice(0, 5).forEach(([price, quantity]) => {
-      console.log(`  Price: ${price}¢, Quantity: ${quantity}`);
+    data.orderbook_fp.no_dollars.slice(0, 5).forEach(([priceDollars, countFp]) => {
+      console.log(`  Price: $${priceDollars}, Quantity: ${countFp}`);
     });
   }
   ```

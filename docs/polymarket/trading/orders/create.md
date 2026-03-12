@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/orders/create.md
-Downloaded: 2026-03-10T20:11:17.473Z
+Downloaded: 2026-03-12T20:11:52.068Z
 -->
 
 > ## Documentation Index
@@ -85,6 +85,26 @@ The simplest way to place a limit order — create, sign, and submit in one call
   print("Order ID:", response["orderID"])
   print("Status:", response["status"])
   ```
+
+  ```rust Rust theme={null}
+  use polymarket_client_sdk::clob::types::Side;
+  use polymarket_client_sdk::types::dec;
+
+  let token_id = "TOKEN_ID".parse()?;
+  let order = client
+      .limit_order()
+      .token_id(token_id)
+      .price(dec!(0.50))
+      .size(dec!(10))
+      .side(Side::Buy)
+      .build()
+      .await?;
+  let signed = client.sign(&signer, order).await?;
+  let response = client.post_order(signed).await?;
+
+  println!("Order ID: {}", response.order_id);
+  println!("Status: {:?}", response.status);
+  ```
 </CodeGroup>
 
 ### Two-Step Sign Then Submit
@@ -125,6 +145,22 @@ For more control, you can separate signing from submission. This is useful for b
 
   # Step 2: Submit to the CLOB
   response = client.post_order(signed_order, OrderType.GTC)
+  ```
+
+  ```rust Rust theme={null}
+  // Step 1: Create order (auto-fetches tick size, neg risk, fee rate)
+  let order = client
+      .limit_order()
+      .token_id("TOKEN_ID".parse()?)
+      .price(dec!(0.50))
+      .size(dec!(10))
+      .side(Side::Buy)
+      .build()
+      .await?;
+
+  // Step 2: Sign and submit separately
+  let signed = client.sign(&signer, order).await?;
+  let response = client.post_order(signed).await?;
   ```
 </CodeGroup>
 
@@ -172,6 +208,24 @@ GTD orders auto-expire at a specified time. Useful for quoting around known even
       },
       order_type=OrderType.GTD
   )
+  ```
+
+  ```rust Rust theme={null}
+  use chrono::{TimeDelta, Utc};
+  use polymarket_client_sdk::clob::types::OrderType;
+
+  let order = client
+      .limit_order()
+      .token_id("TOKEN_ID".parse()?)
+      .price(dec!(0.50))
+      .size(dec!(10))
+      .side(Side::Buy)
+      .order_type(OrderType::GTD)
+      .expiration(Utc::now() + TimeDelta::hours(1))
+      .build()
+      .await?;
+  let signed = client.sign(&signer, order).await?;
+  let response = client.post_order(signed).await?;
   ```
 </CodeGroup>
 
@@ -240,6 +294,38 @@ Market orders execute immediately against resting liquidity using FOK or FAK typ
   )
   client.post_order(sell_order, OrderType.FOK)
   ```
+
+  ```rust Rust theme={null}
+  use polymarket_client_sdk::clob::types::{Amount, OrderType, Side};
+
+  let token_id = "TOKEN_ID".parse()?;
+
+  // FOK BUY: spend exactly $100 or cancel entirely
+  let buy = client
+      .market_order()
+      .token_id(token_id)
+      .amount(Amount::usdc(dec!(100))?)
+      .price(dec!(0.50)) // worst-price limit (slippage protection)
+      .side(Side::Buy)
+      .order_type(OrderType::FOK)
+      .build()
+      .await?;
+  let signed = client.sign(&signer, buy).await?;
+  client.post_order(signed).await?;
+
+  // FOK SELL: sell exactly 200 shares or cancel entirely
+  let sell = client
+      .market_order()
+      .token_id(token_id)
+      .amount(Amount::shares(dec!(200))?)
+      .price(dec!(0.45)) // worst-price limit (slippage protection)
+      .side(Side::Sell)
+      .order_type(OrderType::FOK)
+      .build()
+      .await?;
+  let signed = client.sign(&signer, sell).await?;
+  client.post_order(signed).await?;
+  ```
 </CodeGroup>
 
 * **FOK** — fill entirely or cancel the whole order
@@ -275,6 +361,20 @@ For convenience, `createAndPostMarketOrder` handles creation, signing, and submi
       order_type=OrderType.FOK,
   )
   ```
+
+  ```rust Rust theme={null}
+  let order = client
+      .market_order()
+      .token_id("TOKEN_ID".parse()?)
+      .amount(Amount::usdc(dec!(100))?)
+      .price(dec!(0.50))
+      .side(Side::Buy)
+      .order_type(OrderType::FOK)
+      .build()
+      .await?;
+  let signed = client.sign(&signer, order).await?;
+  let response = client.post_order(signed).await?;
+  ```
 </CodeGroup>
 
 ***
@@ -290,6 +390,20 @@ Post-only orders guarantee you're always the maker. If the order would match imm
 
   ```python Python theme={null}
   response = client.post_order(signed_order, OrderType.GTC, post_only=True)
+  ```
+
+  ```rust Rust theme={null}
+  let order = client
+      .limit_order()
+      .token_id("TOKEN_ID".parse()?)
+      .price(dec!(0.50))
+      .size(dec!(10))
+      .side(Side::Buy)
+      .post_only(true)
+      .build()
+      .await?;
+  let signed = client.sign(&signer, order).await?;
+  let response = client.post_order(signed).await?;
   ```
 </CodeGroup>
 
@@ -361,6 +475,31 @@ Place up to **15 orders** in a single request:
       ),
   ])
   ```
+
+  ```rust Rust theme={null}
+  let token_id = "TOKEN_ID".parse()?;
+
+  let bid = client
+      .limit_order()
+      .token_id(token_id)
+      .price(dec!(0.48))
+      .size(dec!(500))
+      .side(Side::Buy)
+      .build()
+      .await?;
+  let ask = client
+      .limit_order()
+      .token_id(token_id)
+      .price(dec!(0.52))
+      .size(dec!(500))
+      .side(Side::Sell)
+      .build()
+      .await?;
+
+  let signed_bid = client.sign(&signer, bid).await?;
+  let signed_ask = client.sign(&signer, ask).await?;
+  let response = client.post_orders(vec![signed_bid, signed_ask]).await?;
+  ```
 </CodeGroup>
 
 ***
@@ -388,6 +527,11 @@ Your order price must conform to the market's tick size, or the order is rejecte
   ```python Python theme={null}
   tick_size = client.get_tick_size("TOKEN_ID")
   ```
+
+  ```rust Rust theme={null}
+  let token_id = "TOKEN_ID".parse()?;
+  let tick_size = client.tick_size(token_id).await?;
+  ```
 </CodeGroup>
 
 ### Negative Risk
@@ -402,11 +546,16 @@ Multi-outcome events (3+ outcomes) use the Neg Risk CTF Exchange. Pass `negRisk:
   ```python Python theme={null}
   is_neg_risk = client.get_neg_risk("TOKEN_ID")
   ```
+
+  ```rust Rust theme={null}
+  let token_id = "TOKEN_ID".parse()?;
+  let is_neg_risk = client.neg_risk(token_id).await?;
+  ```
 </CodeGroup>
 
 <Tip>
   Both values are also available on the market object: `minimum_tick_size` and
-  `neg_risk`.
+  `neg_risk`. In Rust, the order builder auto-fetches both — you don't need to look them up manually.
 </Tip>
 
 ***
@@ -517,6 +666,18 @@ The heartbeat endpoint maintains session liveness. If a valid heartbeat is not r
       resp = client.post_heartbeat(heartbeat_id)
       heartbeat_id = resp["heartbeat_id"]
       time.sleep(5)
+  ```
+
+  ```rust Rust theme={null}
+  // With the `heartbeats` feature, the Rust SDK can auto-send heartbeats
+  // in a background task — no manual loop needed:
+  Client::start_heartbeats(&mut client)?;
+  // ... your trading logic ...
+  client.stop_heartbeats().await?;
+
+  // Or send manually:
+  let resp = client.post_heartbeat(None).await?; // None for first call
+  let resp = client.post_heartbeat(Some(resp.heartbeat_id)).await?;
   ```
 </CodeGroup>
 

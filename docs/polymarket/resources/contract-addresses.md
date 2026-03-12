@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/resources/contract-addresses.md
-Downloaded: 2026-03-10T20:11:17.469Z
+Downloaded: 2026-03-12T20:11:52.065Z
 -->
 
 > ## Documentation Index
@@ -93,6 +93,20 @@ All Polymarket contracts are deployed on **Polygon mainnet** (Chain ID: 137). Th
       "CTF_EXCHANGE": "0x4bFb41d5B3570DeFd03C39a9A4D8dE6Bd8B8982E",
       "NEG_RISK_CTF_EXCHANGE": "0xC5d563A36AE78145C45a50134d48A1215220f80a",
   }
+  ```
+
+  ```rust Rust theme={null}
+  use polymarket_client_sdk::{POLYGON, contract_config};
+
+  // Addresses are built into the SDK — no hardcoding needed
+  let config = contract_config(POLYGON, false).expect("polygon config");
+  // config.exchange:           0x4bFb41d5B3570DeFd03C39a9A4D8dE6Bd8B8982E
+  // config.collateral:         0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174
+  // config.conditional_tokens: 0x4D97DCd97eC945f40cF65F87097ACe5EA0476045
+
+  let neg_config = contract_config(POLYGON, true).expect("polygon neg risk config");
+  // neg_config.exchange:       0xC5d563A36AE78145C45a50134d48A1215220f80a
+  // neg_config.neg_risk_adapter: Some(0xd91E80cF2E7be2e162c6513ceD06f1dD0dA35296)
   ```
 </CodeGroup>
 

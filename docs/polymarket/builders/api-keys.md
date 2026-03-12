@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/builders/api-keys.md
-Downloaded: 2026-03-10T20:11:17.464Z
+Downloaded: 2026-03-12T20:11:52.061Z
 -->
 
 > ## Documentation Index
@@ -101,6 +101,18 @@ Store your credentials as environment variables:
         secret=os.environ["POLY_BUILDER_SECRET"],
         passphrase=os.environ["POLY_BUILDER_PASSPHRASE"],
     )
+    ```
+  </Tab>
+
+  <Tab title="Rust">
+    ```rust  theme={null}
+    use polymarket_client_sdk::auth::Credentials;
+
+    let builder_creds = Credentials::new(
+        std::env::var("POLY_BUILDER_API_KEY")?.parse()?,
+        std::env::var("POLY_BUILDER_SECRET")?,
+        std::env::var("POLY_BUILDER_PASSPHRASE")?,
+    );
     ```
   </Tab>
 </Tabs>

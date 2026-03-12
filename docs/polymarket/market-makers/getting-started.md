@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/getting-started.md
-Downloaded: 2026-03-10T20:11:17.467Z
+Downloaded: 2026-03-12T20:11:52.063Z
 -->
 
 > ## Documentation Index
@@ -194,27 +194,22 @@ Before you can start market making, you need to complete these one-time setup st
       temp_client = ClobClient("https://clob.polymarket.com", key=private_key, chain_id=137)
       credentials = temp_client.create_or_derive_api_creds()
       ```
-    </CodeGroup>
 
-    Once you have credentials, initialize the client for authenticated operations:
+      ```rust Rust theme={null}
+      use std::str::FromStr;
+      use polymarket_client_sdk::POLYGON;
+      use polymarket_client_sdk::auth::{LocalSigner, Signer};
+      use polymarket_client_sdk::clob::{Client, Config};
 
-    <CodeGroup>
-      ```typescript TypeScript theme={null}
-      const tradingClient = new ClobClient(
-        "https://clob.polymarket.com",
-        137,
-        wallet,
-        credentials,
-      );
-      ```
+      let private_key = std::env::var("POLYMARKET_PRIVATE_KEY")?;
+      let signer = LocalSigner::from_str(&private_key)?
+          .with_chain_id(Some(POLYGON));
 
-      ```python Python theme={null}
-      client = ClobClient(
-          "https://clob.polymarket.com",
-          key=private_key,
-          chain_id=137,
-          creds=credentials,
-      )
+      // The Rust SDK derives credentials and initializes in one step
+      let client = Client::new("https://clob.polymarket.com", Config::default())?
+          .authentication_builder(&signer)
+          .authenticate()
+          .await?;
       ```
     </CodeGroup>
 

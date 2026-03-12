@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-teams.md
-Downloaded: 2026-03-11T20:11:56.605Z
+Downloaded: 2026-03-12T20:11:46.069Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,10 @@ Downloaded: 2026-03-11T20:11:56.605Z
 Agent teams let you coordinate multiple Claude Code instances working together. One session acts as the team lead, coordinating work, assigning tasks, and synthesizing results. Teammates work independently, each in its own context window, and communicate directly with each other.
 
 Unlike [subagents](/en/sub-agents), which run within a single session and can only report back to the main agent, you can also interact with individual teammates directly without going through the lead.
+
+<Note>
+  Agent teams require Claude Code v2.1.32 or later. Check your version with `claude --version`.
+</Note>
 
 This page covers:
 

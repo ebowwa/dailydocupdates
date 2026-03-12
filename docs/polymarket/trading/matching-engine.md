@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/matching-engine.md
-Downloaded: 2026-03-10T20:11:17.472Z
+Downloaded: 2026-03-12T20:11:52.067Z
 -->
 
 > ## Documentation Index
@@ -127,6 +127,37 @@ Check the HTTP status code on responses to the CLOB API and retry on `425`:
           return response
 
       raise Exception("Engine restart exceeded maximum retry attempts")
+  ```
+
+  ```rust Rust theme={null}
+  use polymarket_client_sdk::error::{Kind, StatusCode};
+
+  // Wrap SDK calls with retry logic for HTTP 425.
+  // Re-build and re-sign the order each attempt since SignedOrder is consumed.
+  let mut delay = std::time::Duration::from_secs(1);
+
+  for _ in 0..10 {
+      let order = client.limit_order()
+          .token_id(token_id).price(price).size(size).side(side)
+          .build().await?;
+      let signed = client.sign(&signer, order).await?;
+
+      match client.post_order(signed).await {
+          Ok(response) => return Ok(response),
+          Err(err) if err.kind() == Kind::Status => {
+              if let Some(status) = err.downcast_ref::<polymarket_client_sdk::error::Status>() {
+                  if status.status_code == StatusCode::from_u16(425).unwrap() {
+                      eprintln!("Engine restarting, retrying in {delay:?}...");
+                      tokio::time::sleep(delay).await;
+                      delay = (delay * 2).min(std::time::Duration::from_secs(30));
+                      continue;
+                  }
+              }
+              return Err(err);
+          }
+          Err(err) => return Err(err),
+      }
+  }
   ```
 </CodeGroup>
 

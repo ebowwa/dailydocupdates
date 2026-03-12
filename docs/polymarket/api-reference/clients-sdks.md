@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/clients-sdks.md
-Downloaded: 2026-03-10T20:11:17.448Z
+Downloaded: 2026-03-12T20:11:52.051Z
 -->
 
 > ## Documentation Index
@@ -56,6 +56,17 @@ Polymarket provides official open-source clients in TypeScript, Python, and Rust
   )
 
   markets = client.get_markets()
+  ```
+
+  ```rust Rust theme={null}
+  use polymarket_client_sdk::clob::{Client, Config};
+
+  let client = Client::new("https://clob.polymarket.com", Config::default())?
+      .authentication_builder(&signer)
+      .authenticate()
+      .await?;
+
+  let markets = client.markets(None).await?;
   ```
 </CodeGroup>
 

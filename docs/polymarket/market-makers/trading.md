@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/trading.md
-Downloaded: 2026-03-10T20:11:17.468Z
+Downloaded: 2026-03-12T20:11:52.064Z
 -->
 
 > ## Documentation Index
@@ -75,6 +75,27 @@ The core market making workflow is posting a bid and ask around your fair value.
       order_type=OrderType.GTC,
   )
   ```
+
+  ```rust Rust theme={null}
+  use polymarket_client_sdk::clob::types::Side;
+  use polymarket_client_sdk::types::dec;
+
+  let token_id = "3409705850427531082723332342151729...".parse()?;
+
+  // Bid at 0.48
+  let bid = client.limit_order()
+      .token_id(token_id).price(dec!(0.48)).size(dec!(1000)).side(Side::Buy)
+      .build().await?;
+  let signed = client.sign(&signer, bid).await?;
+  client.post_order(signed).await?;
+
+  // Ask at 0.52
+  let ask = client.limit_order()
+      .token_id(token_id).price(dec!(0.52)).size(dec!(1000)).side(Side::Sell)
+      .build().await?;
+  let signed = client.sign(&signer, ask).await?;
+  client.post_order(signed).await?;
+  ```
 </CodeGroup>
 
 ### Batch Orders
@@ -125,6 +146,20 @@ For tighter spreads across multiple levels, use `postOrders` to submit up to 15 
           order_type=OrderType.GTC,
       ),
   ])
+  ```
+
+  ```rust Rust theme={null}
+  let mut signed_orders = Vec::new();
+  for (price, side) in [
+      (dec!(0.48), Side::Buy), (dec!(0.47), Side::Buy),
+      (dec!(0.52), Side::Sell), (dec!(0.53), Side::Sell),
+  ] {
+      let order = client.limit_order()
+          .token_id(token_id).price(price).size(dec!(500)).side(side)
+          .build().await?;
+      signed_orders.push(client.sign(&signer, order).await?);
+  }
+  let response = client.post_orders(signed_orders).await?;
   ```
 </CodeGroup>
 
@@ -179,6 +214,23 @@ Auto-expire quotes before known events like market close or resolution:
       order_type=OrderType.GTD,
   )
   ```
+
+  ```rust Rust theme={null}
+  use chrono::{TimeDelta, Utc};
+  use polymarket_client_sdk::clob::types::OrderType;
+
+  // Expire in 1 hour
+  let order = client.limit_order()
+      .token_id(token_id)
+      .price(dec!(0.50))
+      .size(dec!(1000))
+      .side(Side::Buy)
+      .order_type(OrderType::GTD)
+      .expiration(Utc::now() + TimeDelta::hours(1))
+      .build().await?;
+  let signed = client.sign(&signer, order).await?;
+  client.post_order(signed).await?;
+  ```
 </CodeGroup>
 
 ***
@@ -201,6 +253,12 @@ Cancel individual orders, by market, or everything at once:
   client.cancel(order_id=order_id)                  # Single order
   client.cancel_market_orders(market=condition_id)  # All orders in a market
   client.cancel_all()                               # Everything
+  ```
+
+  ```rust Rust theme={null}
+  client.cancel_order(order_id).await?;           // Single order
+  client.cancel_market_orders(&request).await?;   // All orders in a market
+  client.cancel_all_orders().await?;              // Everything
   ```
 </CodeGroup>
 
@@ -227,6 +285,17 @@ See [Cancel Orders](/trading/orders/cancel) for full details including onchain c
       OpenOrderParams(market="0xbd31dc8a...")
   )
   ```
+
+  ```rust Rust theme={null}
+  use polymarket_client_sdk::clob::types::request::OrdersRequest;
+
+  let order = client.order(order_id).await?;
+
+  let request = OrdersRequest::builder()
+      .market("0xbd31dc8a...".parse()?)
+      .build();
+  let orders = client.orders(&request, None).await?;
+  ```
 </CodeGroup>
 
 ***
@@ -244,6 +313,11 @@ Your order price must conform to the market's tick size, or it will be rejected.
   ```python Python theme={null}
   tick_size = client.get_tick_size(token_id)
   # Returns: "0.1" | "0.01" | "0.001" | "0.0001"
+  ```
+
+  ```rust Rust theme={null}
+  let resp = client.tick_size(token_id).await?;
+  // resp.minimum_tick_size: TickSize::Tenth | Hundredth | Thousandth | TenThousandth
   ```
 </CodeGroup>
 

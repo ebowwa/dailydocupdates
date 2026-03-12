@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/inventory.md
-Downloaded: 2026-03-10T20:11:17.467Z
+Downloaded: 2026-03-12T20:11:52.063Z
 -->
 
 > ## Documentation Index
@@ -100,6 +100,24 @@ Split converts USDC.e into equal amounts of YES and NO tokens — creating the i
   response = client.execute([split_tx], "Split USDCe into tokens")
   response.wait()
   ```
+
+  ```rust Rust theme={null}
+  use polymarket_client_sdk::ctf::Client as CtfClient;
+  use polymarket_client_sdk::ctf::types::SplitPositionRequest;
+  use polymarket_client_sdk::types::{U256, address};
+
+  let ctf_client = CtfClient::new(provider, 137)?;
+
+  // Split $1000 USDCe into YES/NO tokens
+  let request = SplitPositionRequest::builder()
+      .collateral_token(address!("0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"))
+      .condition_id(condition_id)
+      .partition(vec![U256::from(1), U256::from(2)])
+      .amount(U256::from(1000_000_000u64)) // 1000 USDCe (6 decimals)
+      .build();
+  let result = ctf_client.split_position(&request).await?;
+  println!("Split tx: {:?}", result.transaction_hash);
+  ```
 </CodeGroup>
 
 After splitting 1000 USDC.e, you receive 1000 YES tokens and 1000 NO tokens. Your USDC.e balance decreases by 1000.
@@ -166,6 +184,19 @@ Merge converts equal amounts of YES and NO tokens back into USDC.e — useful fo
   response = client.execute([merge_tx], "Merge tokens to USDCe")
   response.wait()
   ```
+
+  ```rust Rust theme={null}
+  use polymarket_client_sdk::ctf::types::MergePositionsRequest;
+
+  // Merge 500 YES + 500 NO back to 500 USDCe
+  let request = MergePositionsRequest::builder()
+      .collateral_token(address!("0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"))
+      .condition_id(condition_id)
+      .partition(vec![U256::from(1), U256::from(2)])
+      .amount(U256::from(500_000_000u64)) // 500 USDCe (6 decimals)
+      .build();
+  let result = ctf_client.merge_positions(&request).await?;
+  ```
 </CodeGroup>
 
 After merging 500 of each, your YES and NO balances decrease by 500 and your USDC.e balance increases by 500.
@@ -192,6 +223,15 @@ Once a market resolves, redeem winning tokens for USDC.e. Each winning token is 
   if market.get("closed"):
       winning = next(t for t in market["tokens"] if t.get("winner"))
       print("Winning outcome:", winning["outcome"])
+  ```
+
+  ```rust Rust theme={null}
+  let market = clob_client.market(condition_id).await?;
+  if market.closed {
+      if let Some(winner) = market.tokens.iter().find(|t| t.winner) {
+          println!("Winning outcome: {}", winner.outcome);
+      }
+  }
   ```
 </CodeGroup>
 
@@ -244,6 +284,17 @@ Once a market resolves, redeem winning tokens for USDC.e. Each winning token is 
 
   response = client.execute([redeem_tx], "Redeem winning tokens")
   response.wait()
+  ```
+
+  ```rust Rust theme={null}
+  use polymarket_client_sdk::ctf::types::RedeemPositionsRequest;
+
+  let request = RedeemPositionsRequest::builder()
+      .collateral_token(address!("0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"))
+      .condition_id(condition_id)
+      .index_sets(vec![U256::from(1), U256::from(2)]) // Redeem both (only winners pay)
+      .build();
+  let result = ctf_client.redeem_positions(&request).await?;
   ```
 </CodeGroup>
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/quick_start_websockets.md
-Downloaded: 2026-03-10T20:11:18.500Z
+Downloaded: 2026-03-12T20:11:56.101Z
 -->
 
 > ## Documentation Index
@@ -154,9 +154,9 @@ async def process_message(message):
     if msg_type == "ticker":
         # Handle ticker update
         market = data["msg"]["market_ticker"]
-        bid = data["msg"]["yes_bid"]
-        ask = data["msg"]["yes_ask"]
-        print(f"{market}: Yes Bid {bid}¢, Yes Ask {ask}¢")
+        bid = data["msg"]["yes_bid_dollars"]
+        ask = data["msg"]["yes_ask_dollars"]
+        print(f"{market}: Yes Bid ${bid}, Yes Ask ${ask}")
 
     elif msg_type == "orderbook_snapshot":
         # Handle full orderbook state

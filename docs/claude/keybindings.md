@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/keybindings.md
+Downloaded: 2026-03-12T20:11:46.080Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -5,6 +10,10 @@
 # Customize keyboard shortcuts
 
 > Customize keyboard shortcuts in Claude Code with a keybindings configuration file.
+
+<Note>
+  Customizable keyboard shortcuts require Claude Code v2.1.18 or later. Check your version with `claude --version`.
+</Note>
 
 Claude Code supports customizable keyboard shortcuts. Run `/keybindings` to create or open your configuration file at `~/.claude/keybindings.json`.
 
@@ -221,8 +230,8 @@ Actions available in the `MessageSelector` context:
 
 | Action                   | Default                                   | Description       |
 | :----------------------- | :---------------------------------------- | :---------------- |
-| `messageSelector:up`     | Up, K                                     | Move up in list   |
-| `messageSelector:down`   | Down, J                                   | Move down in list |
+| `messageSelector:up`     | Up, K, Ctrl+P                             | Move up in list   |
+| `messageSelector:down`   | Down, J, Ctrl+N                           | Move down in list |
 | `messageSelector:top`    | Ctrl+Up, Shift+Up, Meta+Up, Shift+K       | Jump to top       |
 | `messageSelector:bottom` | Ctrl+Down, Shift+Down, Meta+Down, Shift+J | Jump to bottom    |
 | `messageSelector:select` | Enter                                     | Select message    |

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-03-11T20:12:06.433Z
+Downloaded: 2026-03-12T20:11:56.099Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,17 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Mar 11, 2026"
+  tags={["Released", "Change"]}
+  rss={{
+title: "Yes no count in quotes",
+description: "Quotes now communicate the computes yes/no count based on the defined prices."
+}}
+>
+  When pulling quotes, two new fields return the computed quote size (measured in contracts) derived from the specified prices and the requested notional size in the RFQ.
+</Update>
 
 <Update
   label="Mar 11, 2026"

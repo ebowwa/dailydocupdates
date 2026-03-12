@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/authentication.md
-Downloaded: 2026-03-10T20:11:17.447Z
+Downloaded: 2026-03-12T20:11:52.050Z
 -->
 
 > ## Documentation Index
@@ -108,6 +108,29 @@ Before making authenticated requests, you need to obtain API credentials using L
     #     "secret": "base64EncodedSecretString",
     #     "passphrase": "randomPassphraseString"
     # }
+    ```
+  </Tab>
+
+  <Tab title="Rust">
+    ```rust  theme={null}
+    use std::str::FromStr;
+    use polymarket_client_sdk::POLYGON;
+    use polymarket_client_sdk::auth::{LocalSigner, Signer};
+    use polymarket_client_sdk::clob::{Client, Config};
+
+    let private_key = std::env::var("POLYMARKET_PRIVATE_KEY")?;
+    let signer = LocalSigner::from_str(&private_key)?
+        .with_chain_id(Some(POLYGON));
+
+    // Creates new credentials or derives existing ones,
+    // then initializes the authenticated client — all in one step
+    let client = Client::new("https://clob.polymarket.com", Config::default())?
+        .authentication_builder(&signer)
+        .authenticate()
+        .await?;
+
+    let credentials = client.credentials();
+    println!("API Key: {}", credentials.key());
     ```
   </Tab>
 </Tabs>
@@ -277,6 +300,30 @@ The `POLY_SIGNATURE` for L2 is an HMAC-SHA256 signature created using the user's
         {"token_id": "123456", "price": 0.65, "size": 100, "side": "BUY"},
         {"tick_size": "0.01", "neg_risk": False}
     )
+    ```
+  </Tab>
+
+  <Tab title="Rust">
+    ```rust  theme={null}
+    use polymarket_client_sdk::clob::types::{Side, SignatureType};
+    use polymarket_client_sdk::types::dec;
+
+    let client = Client::new("https://clob.polymarket.com", Config::default())?
+        .authentication_builder(&signer)
+        .signature_type(SignatureType::Proxy) // signatureType explained below
+        // Funder auto-derived via CREATE2 for Proxy/GnosisSafe
+        .authenticate()
+        .await?;
+
+    // Now you can trade!
+    let order = client.limit_order()
+        .token_id("123456".parse()?)
+        .price(dec!(0.65))
+        .size(dec!(100))
+        .side(Side::Buy)
+        .build().await?;
+    let signed = client.sign(&signer, order).await?;
+    let response = client.post_order(signed).await?;
     ```
   </Tab>
 </Tabs>

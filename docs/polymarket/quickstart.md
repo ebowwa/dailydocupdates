@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/quickstart.md
-Downloaded: 2026-03-10T20:11:17.468Z
+Downloaded: 2026-03-12T20:11:52.064Z
 -->
 
 > ## Documentation Index
@@ -54,6 +54,26 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
         # ["123456...", "789012..."]  — [Yes token ID, No token ID]
         ```
       </Tab>
+
+      <Tab title="Rust">
+        ```rust  theme={null}
+        use polymarket_client_sdk::gamma::Client;
+        use polymarket_client_sdk::gamma::types::request::MarketsRequest;
+
+        let client = Client::default();
+
+        let request = MarketsRequest::builder()
+            .closed(false)
+            .limit(1)
+            .build();
+        let markets = client.markets(&request).await?;
+
+        let market = &markets[0];
+        println!("{:?}", market.question);
+        println!("{:?}", market.clob_token_ids);
+        // Some(["123456...", "789012..."])  — [Yes token ID, No token ID]
+        ```
+      </Tab>
     </Tabs>
 
     Save a token ID from `clobTokenIds` — you'll need it to place an order. The first ID is the Yes token, the second is the No token. See [Fetching Markets](/market-data/fetching-markets) for more strategies like fetching by slug, tag, or event.
@@ -67,6 +87,10 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
 
       ```bash Python theme={null}
       pip install py-clob-client
+      ```
+
+      ```bash Rust theme={null}
+      cargo add polymarket-client-sdk
       ```
     </CodeGroup>
   </Step>
@@ -122,6 +146,26 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
             signature_type=0,  # Signature type: 0 = EOA
             funder="YOUR_WALLET_ADDRESS",  # Funder address
         )
+        ```
+      </Tab>
+
+      <Tab title="Rust">
+        ```rust  theme={null}
+        use std::str::FromStr;
+        use polymarket_client_sdk::POLYGON;
+        use polymarket_client_sdk::auth::{LocalSigner, Signer};
+        use polymarket_client_sdk::clob::{Client, Config};
+
+        let private_key = std::env::var("POLYMARKET_PRIVATE_KEY")?;
+        let signer = LocalSigner::from_str(&private_key)?
+            .with_chain_id(Some(POLYGON));
+
+        // Derive API credentials and initialize trading client (L1 → L2 auth)
+        // Signature type defaults to EOA (0)
+        let client = Client::new("https://clob.polymarket.com", Config::default())?
+            .authentication_builder(&signer)
+            .authenticate()
+            .await?;
         ```
       </Tab>
     </Tabs>
@@ -197,6 +241,32 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
 
         print("Order ID:", response["orderID"])
         print("Status:", response["status"])
+        ```
+      </Tab>
+
+      <Tab title="Rust">
+        ```rust  theme={null}
+        use polymarket_client_sdk::clob::types::Side;
+        use polymarket_client_sdk::types::dec;
+
+        // token_id is a U256 — parse from the string returned in Step 1
+        let token_id = "YOUR_TOKEN_ID".parse()?;
+
+        // The Rust SDK auto-fetches tick size, neg risk, and fee rate
+        // No need to manually look them up — the order builder handles it
+        let order = client
+            .limit_order()
+            .token_id(token_id)
+            .price(dec!(0.50))
+            .size(dec!(10))
+            .side(Side::Buy)
+            .build()
+            .await?;
+        let signed_order = client.sign(&signer, order).await?;
+        let response = client.post_order(signed_order).await?;
+
+        println!("Order ID: {}", response.order_id);
+        println!("Status: {:?}", response.status);
         ```
       </Tab>
     </Tabs>
