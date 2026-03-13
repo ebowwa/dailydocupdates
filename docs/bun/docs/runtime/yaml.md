@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/yaml.md
-Downloaded: 2026-03-10T20:11:19.141Z
+Downloaded: 2026-03-13T20:11:27.116Z
 -->
 
 > ## Documentation Index
@@ -155,7 +155,7 @@ features:
 
 #### Default Import
 
-```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import config from "./config.yaml";
 
 console.log(config.database.host); // "localhost"
@@ -166,7 +166,7 @@ console.log(config.redis.port); // 6379
 
 You can destructure top-level YAML properties as named imports:
 
-```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { database, redis, features } from "./config.yaml";
 
 console.log(database.host); // "localhost"
@@ -176,7 +176,7 @@ console.log(features.auth); // true
 
 Or combine both:
 
-```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import config, { database, features } from "./config.yaml";
 
 // Use the full config object
@@ -192,7 +192,7 @@ if (features.rateLimit) {
 
 YAML files can also be required in CommonJS:
 
-```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const config = require("./config.yaml");
 console.log(config.database.name); // "myapp"
 
@@ -219,7 +219,7 @@ features:
   verbose: false
 ```
 
-```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { server, features } from "./config.yaml";
 
 console.log(`Starting server on ${server.host}:${server.port}`);
@@ -301,7 +301,7 @@ production:
     pretty: false
 ```
 
-```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import configs from "./config.yaml";
 
 const env = process.env.NODE_ENV || "development";
@@ -345,7 +345,7 @@ features:
     default: auto # auto, light, dark
 ```
 
-```ts feature-flags.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts feature-flags.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { features } from "./features.yaml";
 
 export function isFeatureEnabled(featureName: string, userEmail?: string): boolean {
@@ -417,7 +417,7 @@ seeds:
   directory: ./seeds
 ```
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { connections, migrations } from "./database.yaml";
 import { createConnection } from "./database-driver";
 
@@ -463,7 +463,7 @@ YAML files can be dynamically imported, useful for loading configuration on dema
 
 ```ts Load configuration based on environment theme={"theme":{"light":"github-light","dark":"dracula"}}
 const env = process.env.NODE_ENV || "development";
-const config = await import(`./configs/${env}.yaml`);
+const { default: config } = await import(`./configs/${env}.yaml`);
 
 // Load user-specific settings
 async function loadUserSettings(userId: string) {
@@ -471,7 +471,8 @@ async function loadUserSettings(userId: string) {
     const settings = await import(`./users/${userId}/settings.yaml`);
     return settings.default;
   } catch {
-    return await import("./users/default-settings.yaml");
+    const { default: defaults } = await import("./users/default-settings.yaml");
+    return defaults;
   }
 }
 ```

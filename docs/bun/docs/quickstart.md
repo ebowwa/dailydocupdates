@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/quickstart.md
-Downloaded: 2026-03-10T20:11:19.131Z
+Downloaded: 2026-03-13T20:11:27.108Z
 -->
 
 > ## Documentation Index
@@ -65,7 +65,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
   <Step title="Step 3">
     Replace the contents of `index.ts` with the following code:
 
-    ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
     const server = Bun.serve({
       port: 3000,
       routes: {
@@ -126,7 +126,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
 
     Update `index.ts` to use `figlet` in `routes`.
 
-    ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
     import figlet from 'figlet'; // [!code ++]
 
     const server = Bun.serve({
@@ -183,7 +183,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
 
     Then, import this file in `index.ts` and serve it from the root `/` route.
 
-    ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
     import figlet from 'figlet';
     import index from './index.html'; // [!code ++]
 

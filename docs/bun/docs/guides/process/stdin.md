@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/process/stdin.md
-Downloaded: 2026-03-10T20:11:19.108Z
+Downloaded: 2026-03-13T20:11:27.096Z
 -->
 
 > ## Documentation Index
@@ -11,7 +11,7 @@ Downloaded: 2026-03-10T20:11:19.108Z
 
 For CLI tools, it's often useful to read from `stdin`. In Bun, the `console` object is an `AsyncIterable` that yields lines from `stdin`.
 
-```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const prompt = "Type something: ";
 process.stdout.write(prompt);
 for await (const line of console) {
@@ -41,7 +41,7 @@ Bun also exposes stdin as a `BunFile` via `Bun.stdin`. This is useful for increm
 
 There is no guarantee that the chunks will be split line-by-line.
 
-```ts stdin.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts stdin.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 for await (const chunk of Bun.stdin.stream()) {
   // chunk is Uint8Array
   // this converts it to text (assumes ASCII encoding)

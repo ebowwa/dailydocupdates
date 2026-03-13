@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/http/cluster.md
-Downloaded: 2026-03-10T20:11:19.102Z
+Downloaded: 2026-03-13T20:11:27.092Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ To run multiple HTTP servers concurrently, use the `reusePort` option in `Bun.se
 
 This automatically load balances incoming requests across multiple instances of Bun.
 
-```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { serve } from "bun";
 
 const id = Math.random().toString(36).slice(2);
@@ -45,7 +45,7 @@ After saving the file, start your servers on the same port.
 
 Under the hood, this uses the Linux `SO_REUSEPORT` and `SO_REUSEADDR` socket options to ensure fair load balancing across multiple processes. [Learn more about `SO_REUSEPORT` and `SO_REUSEADDR`](https://lwn.net/Articles/542629/)
 
-```ts cluster.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts cluster.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { spawn } from "bun";
 
 const cpus = navigator.hardwareConcurrency; // Number of CPU cores

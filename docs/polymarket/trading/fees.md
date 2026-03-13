@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/fees.md
-Downloaded: 2026-03-10T20:11:17.471Z
+Downloaded: 2026-03-13T20:11:16.265Z
 -->
 
 > ## Documentation Index
@@ -28,7 +28,7 @@ The vast majority of Polymarket markets have **no trading fees**:
 
 The following market types charge a small taker fee on each trade. These fees are collected and redistributed daily to market makers as rebates, incentivizing deeper liquidity and tighter spreads.
 
-* **All crypto markets** (starting March 6, 2026)
+* **All crypto markets**
 * **NCAAB (college basketball) markets**
 * **Serie A markets**
 

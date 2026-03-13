@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/relayer/get-recent-transactions-for-a-user.md
-Downloaded: 2026-03-10T20:11:17.458Z
+Downloaded: 2026-03-13T20:11:15.962Z
 -->
 
 > ## Documentation Index
@@ -10,6 +10,16 @@ Downloaded: 2026-03-10T20:11:17.458Z
 # Get recent transactions for a user
 
 > Gets the most recent transactions submitted to the Relayer, owned by a specific user. Authenticated using Builder API Keys or Relayer API Keys.
+
+**Builder API Key auth headers:**
+- `POLY_BUILDER_API_KEY`
+- `POLY_BUILDER_TIMESTAMP`
+- `POLY_BUILDER_PASSPHRASE`
+- `POLY_BUILDER_SIGNATURE`
+
+**Relayer API Key auth headers:**
+- `RELAYER_API_KEY`
+- `RELAYER_API_KEY_ADDRESS`
 
 
 
@@ -55,6 +65,61 @@ paths:
       description: >
         Gets the most recent transactions submitted to the Relayer, owned by a
         specific user. Authenticated using Builder API Keys or Relayer API Keys.
+
+
+        **Builder API Key auth headers:**
+
+        - `POLY_BUILDER_API_KEY`
+
+        - `POLY_BUILDER_TIMESTAMP`
+
+        - `POLY_BUILDER_PASSPHRASE`
+
+        - `POLY_BUILDER_SIGNATURE`
+
+
+        **Relayer API Key auth headers:**
+
+        - `RELAYER_API_KEY`
+
+        - `RELAYER_API_KEY_ADDRESS`
+      parameters:
+        - name: POLY_BUILDER_API_KEY
+          in: header
+          required: false
+          description: Builder API key (when using Builder API Key auth)
+          schema:
+            type: string
+        - name: POLY_BUILDER_TIMESTAMP
+          in: header
+          required: false
+          description: Unix timestamp (when using Builder API Key auth)
+          schema:
+            type: string
+        - name: POLY_BUILDER_PASSPHRASE
+          in: header
+          required: false
+          description: Builder passphrase (when using Builder API Key auth)
+          schema:
+            type: string
+        - name: POLY_BUILDER_SIGNATURE
+          in: header
+          required: false
+          description: HMAC-SHA256 signature (when using Builder API Key auth)
+          schema:
+            type: string
+        - name: RELAYER_API_KEY
+          in: header
+          required: false
+          description: Relayer API key (when using Relayer API Key auth)
+          schema:
+            type: string
+        - name: RELAYER_API_KEY_ADDRESS
+          in: header
+          required: false
+          description: Address that owns the key (when using Relayer API Key auth)
+          schema:
+            $ref: '#/components/schemas/Address'
       responses:
         '200':
           description: Transactions retrieved successfully
@@ -117,6 +182,11 @@ paths:
                 error: internal server error
 components:
   schemas:
+    Address:
+      type: string
+      description: Ethereum address (0x-prefixed, 40 hex chars)
+      pattern: ^0x[a-fA-F0-9]{40}$
+      example: '0x6e0c80c90ea6c15917308F820Eac91Ce2724B5b5'
     RelayerTransaction:
       type: object
       properties:
@@ -200,11 +270,6 @@ components:
           type: string
       required:
         - error
-    Address:
-      type: string
-      description: Ethereum address (0x-prefixed, 40 hex chars)
-      pattern: ^0x[a-fA-F0-9]{40}$
-      example: '0x6e0c80c90ea6c15917308F820Eac91Ce2724B5b5'
 
 ````
 

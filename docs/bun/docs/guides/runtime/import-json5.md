@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/runtime/import-json5.md
-Downloaded: 2026-03-10T20:11:19.111Z
+Downloaded: 2026-03-13T20:11:27.098Z
 -->
 
 > ## Documentation Index
@@ -36,7 +36,7 @@ Bun natively supports `.json5` imports.
 
 Import the file like any other source file.
 
-```ts config.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts config.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import config from "./config.json5";
 
 config.database.host; // => "localhost"
@@ -48,7 +48,7 @@ config.features.auth; // => true
 
 You can also use named imports to destructure top-level properties:
 
-```ts config.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts config.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { database, server, features } from "./config.json5";
 
 console.log(database.name); // => "myapp"
@@ -60,7 +60,7 @@ console.log(features.rateLimit); // => true
 
 For parsing JSON5 strings at runtime, use `Bun.JSON5.parse()`:
 
-```ts config.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts config.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const data = JSON5.parse(`{
   name: 'John Doe',
   age: 30,

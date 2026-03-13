@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/ecosystem/prisma.md
-Downloaded: 2026-03-10T20:11:19.099Z
+Downloaded: 2026-03-13T20:11:27.091Z
 -->
 
 > ## Documentation Index
@@ -106,7 +106,7 @@ Downloaded: 2026-03-10T20:11:19.099Z
   <Step title="Initialize Prisma Client with LibSQL">
     Now we need to create a Prisma client instance. Create a new file `prisma/db.ts` to initialize the PrismaClient with the LibSQL adapter.
 
-    ```ts prisma/db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```ts prisma/db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
     import { PrismaClient } from "./generated/client";
     import { PrismaLibSQL } from "@prisma/adapter-libsql";
 
@@ -118,7 +118,7 @@ Downloaded: 2026-03-10T20:11:19.099Z
   <Step title="Create a test script">
     Let's write a simple script to create a new user, then count the number of users in the database.
 
-    ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
     import { prisma } from "./prisma/db";
 
     // create a new user

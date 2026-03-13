@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/runtime/import-toml.md
-Downloaded: 2026-03-10T20:11:19.111Z
+Downloaded: 2026-03-13T20:11:27.098Z
 -->
 
 > ## Documentation Index
@@ -24,7 +24,7 @@ email = "john@dough.com"
 
 Import the file like any other source file.
 
-```ts data.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts data.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import data from "./data.toml";
 
 data.name; // => "bun"

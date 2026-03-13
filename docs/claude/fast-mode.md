@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/fast-mode.md
-Downloaded: 2026-03-12T20:11:46.077Z
+Downloaded: 2026-03-13T20:11:11.171Z
 -->
 
 > ## Documentation Index
@@ -114,7 +114,7 @@ Admins can enable fast mode in:
 * **Console** (API customers): [Claude Code preferences](https://platform.claude.com/claude-code/preferences)
 * **Claude AI** (Teams and Enterprise): [Admin Settings > Claude Code](https://claude.ai/admin-settings/claude-code)
 
-Another option to disable fast mode entirely is to set `CLAUDE_CODE_DISABLE_FAST_MODE=1`. See [Environment variables](/en/settings#environment-variables).
+Another option to disable fast mode entirely is to set `CLAUDE_CODE_DISABLE_FAST_MODE=1`. See [Environment variables](/en/env-vars).
 
 ### Require per-session opt-in
 

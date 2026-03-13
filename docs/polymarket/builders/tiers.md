@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/builders/tiers.md
-Downloaded: 2026-03-10T20:11:17.465Z
+Downloaded: 2026-03-13T20:11:16.261Z
 -->
 
 > ## Documentation Index
@@ -19,44 +19,41 @@ The Builder Program uses a tiered system to manage rate limits while rewarding h
 | --------------------------- | -------------------------------------------------------------------------- |
 | **Daily Relayer Txn Limit** | Maximum Relayer transactions per day for Safe/Proxy wallet operations      |
 | **API Rate Limits**         | Rate limits for non-relayer endpoints (CLOB, Gamma, etc.)                  |
-| **Subsidized Transactions** | Gas fees subsidized for Relayer and CLOB operations via Safe/Proxy wallets |
+| **Gasless Trading**         | Gas fees subsidized for trading via Safe/Proxy wallets                     |
 | **Order Attribution**       | Orders tracked and attributed to your Builder profile                      |
-| **RevShare Protocol**       | Infrastructure allowing Builders to charge fees                            |
+| **Builder Fees**            | Builders who route orders can charge fees and monetize on flow             |
 | **Leaderboard Visibility**  | Visibility on the [Builder Leaderboard](https://builders.polymarket.com/)  |
 | **Weekly Rewards**          | Weekly USDC rewards program for visible builders based on volume           |
 | **Grants**                  | Builder grants subject to approval, awarded based on innovation and impact |
 | **Telegram Channel**        | Private Builders channel for announcements and support                     |
-| **Badge**                   | Verified Builder affiliate badge on your Builder profile                   |
 | **Engineering Support**     | Direct access to engineering team                                          |
 | **Marketing Support**       | Promotion via official Polymarket social accounts                          |
-| **Weekly Reward Boosts**    | Multiplier on the weekly USDC rewards program for visible builders         |
 | **Priority Access**         | Early access to new features and products                                  |
 
 ***
 
 ## Tier Comparison
 
-| Feature                     |      Unverified     |       Verified      |       Partner       |
-| --------------------------- | :-----------------: | :-----------------: | :-----------------: |
-| **Daily Relayer Txn Limit** |       100/day       |      3,000/day      |      Unlimited      |
-| **API Rate Limits**         |       Standard      |       Standard      |       Highest       |
-| **Subsidized Transactions** |         Yes         |         Yes         |         Yes         |
-| **Order Attribution**       |         Yes         |         Yes         |         Yes         |
-| **RevShare Protocol**       |          —          |         Yes         |         Yes         |
-| **Leaderboard Visibility**  |          —          |         Yes         |         Yes         |
-| **Weekly Rewards**          |          —          | Subject to approval | Subject to approval |
-| **Grants**                  | Subject to approval | Subject to approval | Subject to approval |
-| **Telegram Channel**        |          —          |         Yes         |         Yes         |
-| **Badge**                   |          —          |         Yes         |         Yes         |
-| **Engineering Support**     |          —          |       Standard      |       Elevated      |
-| **Marketing Support**       |          —          |       Standard      |       Elevated      |
-| **Priority Access**         |          —          |          —          |         Yes         |
+| Feature                     | Unverified |       Verified      |       Partner       |
+| --------------------------- | :--------: | :-----------------: | :-----------------: |
+| **Daily Relayer Txn Limit** |   100/day  |      3,000/day      |      Unlimited      |
+| **API Rate Limits**         |  Standard  |       Standard      |       Highest       |
+| **Gasless Trading**\*       |     Yes    |         Yes         |         Yes         |
+| **Order Attribution**       |     Yes    |         Yes         |         Yes         |
+| **Builder Fees**            |      —     |         Yes         |         Yes         |
+| **Leaderboard Visibility**  |      —     |         Yes         |         Yes         |
+| **Weekly Rewards**          |      —     | Subject to approval | Subject to approval |
+| **Grants**                  |      —     | Subject to approval | Subject to approval |
+| **Telegram Channel**        |      —     |         Yes         |         Yes         |
+| **Engineering Support**     |      —     |       Standard      |       Elevated      |
+| **Marketing Support**       |      —     |       Standard      |       Elevated      |
+| **Priority Access**         |      —     |          —          |         Yes         |
 
 ***
 
 ## Unverified
 
-<Card title="100 transactions/day" icon="seedling">
+<Card title="100 Relay transactions/day" icon="seedling">
   The default tier for all new builders. Start immediately with no approval
   required.
 </Card>
@@ -72,47 +69,41 @@ The Builder Program uses a tiered system to manage rate limits while rewarding h
 
 * Gasless trading on all CLOB orders through Safe/Proxy wallets
 * Gas subsidized on all Relayer transactions up to daily limit (through Safe/Proxy wallets)
-* Order attribution to your builder profile
 * Access to all client libraries and documentation
 
 ***
 
 ## Verified
 
-<Card title="3,000 transactions/day" icon="badge-check">
+<Card title="3,000 Relay transactions/day" icon="badge-check">
   For builders who need higher throughput. Requires manual approval.
 </Card>
 
 **How to upgrade:**
 
-Contact us with:
+Contact us at [builder@polymarket.com](mailto:builder@polymarket.com) with:
 
 * Your Builder API Key
 * Use case description
 * Expected volume
-* Links to your app, docs, or X profile
+* Other relevant information (links, docs, decks, etc.)
 
 **Unlocks over Unverified:**
 
 * 30x daily Relayer transaction limit
-* RevShare Protocol access
+* Monetize with Builder fees
 * Leaderboard visibility at [builders.polymarket.com](https://builders.polymarket.com)
-* Weekly USDC rewards based on volume
 * Private Telegram channel for announcements and support
-* Verified affiliate badge and promotion from [@PolymarketBuild](https://x.com/PolymarketBuild)
+* Weekly USDC rewards based on volume (subject to approval)
 * Grants (subject to approval)
 
 ***
 
 ## Partner
 
-<Card title="Unlimited transactions/day" icon="handshake">
+<Card title="Unlimited Relay transactions/day" icon="handshake">
   Enterprise tier for high-volume integrations and strategic partners.
 </Card>
-
-**How to apply:**
-
-Reach out to [builder@polymarket.com](mailto:builder@polymarket.com) to discuss partnership opportunities.
 
 **Unlocks over Verified:**
 
@@ -168,8 +159,9 @@ Ready to upgrade or have questions?
     limits.
   </Accordion>
 
-  <Accordion title="Can I get a temporary limit increase">
-    For special events or product launches, contact [builder@polymarket.com](mailto:builder@polymarket.com).
+  <Accordion title="What if I just need more daily Relay transaction limits for my own wallet">
+    If you're not routing orders for other users (wallets), you can get unlimited
+    daily Relay transactions by obtaining a [Relayer API key](https://polymarket.com/settings?tab=api-keys).
   </Accordion>
 </AccordionGroup>
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/sqlite.md
-Downloaded: 2026-03-10T20:11:19.140Z
+Downloaded: 2026-03-13T20:11:27.114Z
 -->
 
 > ## Documentation Index
@@ -13,7 +13,7 @@ Downloaded: 2026-03-10T20:11:19.140Z
 
 Bun natively implements a high-performance [SQLite3](https://www.sqlite.org/) driver. To use it import from the built-in `bun:sqlite` module.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 
 const db = new Database(":memory:");
@@ -51,7 +51,7 @@ The `bun:sqlite` module is roughly 3-6x faster than `better-sqlite3` and 8-9x fa
 
 To open or create a SQLite3 database:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 
 const db = new Database("mydb.sqlite");
@@ -59,7 +59,7 @@ const db = new Database("mydb.sqlite");
 
 To open an in-memory database:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 
 // all of these do the same thing
@@ -70,14 +70,14 @@ const db = new Database("");
 
 To open in `readonly` mode:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 const db = new Database("mydb.sqlite", { readonly: true });
 ```
 
 To create the database if the file doesn't exist:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 const db = new Database("mydb.sqlite", { create: true });
 ```
@@ -88,7 +88,7 @@ By default, `bun:sqlite` requires binding parameters to include the `$`, `:`, or
 
 To instead throw an error when a parameter is missing and allow binding without a prefix, set `strict: true` on the `Database` constructor:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 
 const strict = new Database(":memory:", { strict: true });
@@ -105,7 +105,7 @@ notStrict.query("SELECT $message;").all({ messag: "Hello world" });
 
 You can also use an import attribute to load a database.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={1} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={1} theme={"theme":{"light":"github-light","dark":"dracula"}}
 import db from "./mydb.sqlite" with { type: "sqlite" };
 
 console.log(db.query("select * from users LIMIT 1").get());
@@ -113,7 +113,7 @@ console.log(db.query("select * from users LIMIT 1").get());
 
 This is equivalent to the following:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 const db = new Database("./mydb.sqlite");
 ```
@@ -122,7 +122,7 @@ const db = new Database("./mydb.sqlite");
 
 To close a database connection, but allow existing queries to finish, call `.close(false)`:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const db = new Database();
 // ... do stuff
 db.close(false);
@@ -130,7 +130,7 @@ db.close(false);
 
 To close the database and throw an error if there are any pending queries, call `.close(true)`:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const db = new Database();
 // ... do stuff
 db.close(true);
@@ -145,7 +145,7 @@ db.close(true);
 
 You can use the `using` statement to ensure that a database connection is closed when the `using` block is exited.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={4, 5} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={4, 5} theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 
 {
@@ -163,7 +163,7 @@ import { Database } from "bun:sqlite";
 
 `bun:sqlite` supports SQLite's built-in mechanism for [serializing](https://www.sqlite.org/c3ref/serialize.html) and [deserializing](https://www.sqlite.org/c3ref/deserialize.html) databases to and from memory.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const olddb = new Database("mydb.sqlite");
 const contents = olddb.serialize(); // => Uint8Array
 const newdb = Database.deserialize(contents);
@@ -175,7 +175,7 @@ Internally, `.serialize()` calls [`sqlite3_serialize`](https://www.sqlite.org/c3
 
 Use the `db.query()` method on your `Database` instance to [prepare](https://www.sqlite.org/c3ref/prepare.html) a SQL query. The result is a `Statement` instance that will be cached on the `Database` instance. *The query will not be executed.*
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query(`select "Hello world" as message`);
 ```
 
@@ -209,7 +209,7 @@ SQLite supports [write-ahead log mode](https://www.sqlite.org/wal.html) (WAL) wh
 
 To enable WAL mode, run this pragma query at the beginning of your application:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 db.run("PRAGMA journal_mode = WAL;");
 ```
 
@@ -227,13 +227,13 @@ A `Statement` is a *prepared query*, which means it's been parsed and compiled i
 
 Create a statement with the `.query` method on your `Database` instance.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query(`select "Hello world" as message`);
 ```
 
 Queries can contain parameters. These can be numerical (`?1`) or named (`$param` or `:param` or `@param`).
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query(`SELECT ?1, ?2;`);
 const query = db.query(`SELECT $param1, $param2;`);
 ```
@@ -244,14 +244,14 @@ Values are bound to these parameters when the query is executed. A `Statement` c
 
 To bind values to a statement, pass an object to the `.all()`, `.get()`, `.run()`, or `.values()` method.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query(`select $message;`);
 query.all({ $message: "Hello world" });
 ```
 
 You can bind using positional parameters too:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query(`select ?1;`);
 query.all("Hello world");
 ```
@@ -260,7 +260,7 @@ query.all("Hello world");
 
 By default, the `$`, `:`, and `@` prefixes are **included** when binding values to named parameters. To bind without these prefixes, use the `strict` option in the `Database` constructor.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 
 const db = new Database(":memory:", {
@@ -281,7 +281,7 @@ query.all({ message: "Hello world" });
 
 Use `.all()` to run a query and get back the results as an array of objects.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query(`select $message;`);
 query.all({ $message: "Hello world" });
 ```
@@ -296,7 +296,7 @@ Internally, this calls [`sqlite3_reset`](https://www.sqlite.org/capi3ref.html#sq
 
 Use `.get()` to run a query and get back the first result as an object.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query(`select $message;`);
 query.get({ $message: "Hello world" });
 ```
@@ -311,7 +311,7 @@ Internally, this calls [`sqlite3_reset`](https://www.sqlite.org/capi3ref.html#sq
 
 Use `.run()` to run a query and get back an object with execution metadata. This is useful for schema-modifying queries (e.g. `CREATE TABLE`) or bulk write operations.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query(`create table foo;`);
 query.run();
 ```
@@ -331,7 +331,7 @@ The `lastInsertRowid` property returns the ID of the last row inserted into the 
 
 Use `.as(Class)` to run a query and get back the results as instances of a class. This lets you attach methods & getters/setters to results.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={10} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={10} theme={"theme":{"light":"github-light","dark":"dracula"}}
 class Movie {
   title: string;
   year: number;
@@ -362,7 +362,7 @@ The database columns are set as properties on the class instance.
 
 Use `.iterate()` to run a query and incrementally return results. This is useful for large result sets that you want to process one row at a time without loading all the results into memory.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query("SELECT * FROM foo");
 for (const row of query.iterate()) {
   console.log(row);
@@ -371,7 +371,7 @@ for (const row of query.iterate()) {
 
 You can also use the `@@iterator` protocol:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query("SELECT * FROM foo");
 for (const row of query) {
   console.log(row);
@@ -382,7 +382,7 @@ for (const row of query) {
 
 Use `values()` to run a query and get back all results as an array of arrays.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={3, 4} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={3, 4} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query(`select $message;`);
 
 query.values({ $message: "Hello world" });
@@ -403,7 +403,7 @@ Internally, this calls [`sqlite3_reset`](https://www.sqlite.org/capi3ref.html#sq
 
 Use `.finalize()` to destroy a `Statement` and free any resources associated with it. Once finalized, a `Statement` cannot be executed again. Typically, the garbage collector will do this for you, but explicit finalization may be useful in performance-sensitive applications.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query("SELECT title, year FROM movies");
 const movies = query.all();
 query.finalize();
@@ -413,7 +413,7 @@ query.finalize();
 
 Calling `toString()` on a `Statement` instance prints the expanded SQL query. This is useful for debugging.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={6, 9, 12} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={6, 9, 12} theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 
 // setup
@@ -434,7 +434,7 @@ Internally, this calls [`sqlite3_expanded_sql`](https://www.sqlite.org/capi3ref.
 
 Queries can contain parameters. These can be numerical (`?1`) or named (`$param` or `:param` or `@param`). Bind values to these parameters when executing the query:
 
-```ts title="query.ts" icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="query.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query("SELECT * FROM foo WHERE bar = $bar");
 const results = query.all({
   $bar: "bar",
@@ -447,7 +447,7 @@ const results = query.all({
 
 Numbered (positional) parameters work too:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query("SELECT ?1, ?2");
 const results = query.all("hello", "goodbye");
 ```
@@ -475,7 +475,7 @@ By default, `bun:sqlite` returns integers as `number` types. If you need to hand
 
 When `safeIntegers` is `true`, `bun:sqlite` will return integers as `bigint` types:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 
 const db = new Database(":memory:", { safeIntegers: true });
@@ -491,7 +491,7 @@ console.log(result.max_int);
 
 When `safeIntegers` is `true`, `bun:sqlite` will throw an error if a `bigint` value in a bound parameter exceeds 64 bits:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 
 const db = new Database(":memory:", { safeIntegers: true });
@@ -514,7 +514,7 @@ BigInt value '81129638414606663681390495662081' is out of range
 
 When `safeIntegers` is `false`, `bun:sqlite` will return integers as `number` types and truncate any bits beyond 53:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 
 const db = new Database(":memory:", { safeIntegers: false });
@@ -533,7 +533,7 @@ console.log(result.max_int);
 
 Transactions are a mechanism for executing multiple queries in an *atomic* way; that is, either all of the queries succeed or none of them do. Create a transaction with the `db.transaction()` method:
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const insertCat = db.prepare("INSERT INTO cats (name) VALUES ($name)");
 const insertCats = db.transaction(cats => {
   for (const cat of cats) insertCat.run(cat);
@@ -544,7 +544,7 @@ At this stage, we haven't inserted any cats! The call to `db.transaction()` retu
 
 To execute the transaction, call this function. All arguments will be passed through to the wrapped function; the return value of the wrapped function will be returned by the transaction function. The wrapped function also has access to the `this` context as defined where the transaction is executed.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const insert = db.prepare("INSERT INTO cats (name) VALUES ($name)");
 const insertCats = db.transaction(cats => {
   for (const cat of cats) insert.run(cat);
@@ -562,7 +562,7 @@ The driver will automatically [`begin`](https://www.sqlite.org/lang_transaction.
   **Nested transactions** — Transaction functions can be called from inside other transaction functions. When doing so, the inner transaction becomes a [savepoint](https://www.sqlite.org/lang_savepoint.html).
 
   <Accordion title="View nested transaction example">
-    ```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
     // setup
     import { Database } from "bun:sqlite";
     const db = Database.open(":memory:");
@@ -601,7 +601,7 @@ insertCats.exclusive(cats); // uses "BEGIN EXCLUSIVE"
 
 To load a [SQLite extension](https://www.sqlite.org/loadext.html), call `.loadExtension(name)` on your `Database` instance
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={4} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={4} theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database } from "bun:sqlite";
 
 const db = new Database();
@@ -618,7 +618,7 @@ db.loadExtension("myext");
 
   To point `bun:sqlite` to the new build, call `Database.setCustomSQLite(path)` before creating any `Database` instances. (On other operating systems, this is a no-op.) Pass a path to the SQLite `.dylib` file, *not* the executable. With recent versions of Homebrew this is something like `/opt/homebrew/Cellar/sqlite/<version>/libsqlite3.dylib`.
 
-  ```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={3} theme={"theme":{"light":"github-light","dark":"dracula"}}
   import { Database } from "bun:sqlite";
 
   Database.setCustomSQLite("/path/to/libsqlite.dylib");
@@ -632,7 +632,7 @@ db.loadExtension("myext");
 
 To use the advanced `sqlite3_file_control` API, call `.fileControl(cmd, value)` on your `Database` instance.
 
-```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" highlight={6} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={6} theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database, constants } from "bun:sqlite";
 
 const db = new Database();
@@ -651,7 +651,7 @@ db.fileControl(constants.SQLITE_FCNTL_PERSIST_WAL, 0);
 
 ## Reference
 
-```ts Type Reference icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" expandable theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts Type Reference icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" expandable theme={"theme":{"light":"github-light","dark":"dracula"}}
 class Database {
   constructor(
     filename: string,

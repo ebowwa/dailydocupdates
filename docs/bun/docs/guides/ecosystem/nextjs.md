@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/ecosystem/nextjs.md
-Downloaded: 2026-03-11T20:12:37.398Z
+Downloaded: 2026-03-13T20:11:27.090Z
 -->
 
 > ## Documentation Index
@@ -57,19 +57,19 @@ Downloaded: 2026-03-11T20:12:37.398Z
 Next.js applications on Bun can be deployed to various platforms.
 
 <Columns cols={3}>
-  <Card title="Vercel" href="/guides/deployment/vercel" icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/ecosystem/vercel.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=0119630345a5bb2be83f4a3078be0839" width="24" height="24" data-path="icons/ecosystem/vercel.svg">
+  <Card title="Vercel" href="/guides/deployment/vercel" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/ecosystem/vercel.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=165bc9841eef2a62f3951be494dbc89a" width="24" height="24" data-path="icons/ecosystem/vercel.svg">
     Deploy on Vercel
   </Card>
 
-  <Card title="Railway" href="/guides/deployment/railway" icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/ecosystem/railway.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=4553ea0f84b066a50753461143fd2824" width="24" height="24" data-path="icons/ecosystem/railway.svg">
+  <Card title="Railway" href="/guides/deployment/railway" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/ecosystem/railway.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=029a2b4b7c3a9f8dfab8d1bebbbfa054" width="24" height="24" data-path="icons/ecosystem/railway.svg">
     Deploy on Railway
   </Card>
 
-  <Card title="DigitalOcean" href="/guides/deployment/digital-ocean" icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/ecosystem/digitalocean.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=76100ce98a846b41e66d11c3c0dd5a37" width="24" height="24" data-path="icons/ecosystem/digitalocean.svg">
+  <Card title="DigitalOcean" href="/guides/deployment/digital-ocean" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/ecosystem/digitalocean.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=aead95e8fef32d0ec83e63292f21f80c" width="24" height="24" data-path="icons/ecosystem/digitalocean.svg">
     Deploy on DigitalOcean
   </Card>
 
-  <Card title="AWS Lambda" href="/guides/deployment/aws-lambda" icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/ecosystem/aws.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=2249c35058c03bf3646a117a36bb8a77" width="24" height="24" data-path="icons/ecosystem/aws.svg">
+  <Card title="AWS Lambda" href="/guides/deployment/aws-lambda" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/ecosystem/aws.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=f747e7b59435e87b2e379be04eabda8f" width="24" height="24" data-path="icons/ecosystem/aws.svg">
     Deploy on AWS Lambda
   </Card>
 
@@ -77,7 +77,7 @@ Next.js applications on Bun can be deployed to various platforms.
     Deploy on Google Cloud Run
   </Card>
 
-  <Card title="Render" href="/guides/deployment/render" icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/ecosystem/render.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=b7fd7095e654b99d8ef8b7eca930a2be" width="24" height="24" data-path="icons/ecosystem/render.svg">
+  <Card title="Render" href="/guides/deployment/render" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/ecosystem/render.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=b632a0b982a579fa5a2d0b96f33bace8" width="24" height="24" data-path="icons/ecosystem/render.svg">
     Deploy on Render
   </Card>
 </Columns>

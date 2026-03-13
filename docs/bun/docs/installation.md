@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/installation.md
-Downloaded: 2026-03-11T20:12:37.414Z
+Downloaded: 2026-03-13T20:11:27.105Z
 -->
 
 > ## Documentation Index
@@ -52,7 +52,7 @@ Bun ships as a single, dependency-free executable. You can install it via script
       npm install -g bun # the last `npm` command you'll ever need
       ```
 
-      ```bash Homebrew icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/homebrew.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5c6dc69e5e0d20fb807fba0a9cd45023" theme={"theme":{"light":"github-light","dark":"dracula"}}
+      ```bash Homebrew icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/homebrew.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=72e2bae1e891694752fa3352050dc96f" theme={"theme":{"light":"github-light","dark":"dracula"}}
       brew install oven-sh/bun/bun
       ```
 
@@ -232,35 +232,35 @@ To download Bun binaries directly, visit the [releases page on GitHub](https://g
 ### Latest Version Downloads
 
 <CardGroup cols={2}>
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/linux.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=dd592a34657ecfae61ac4f30614fdce7" title="Linux x64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64.zip" width="216" height="256" data-path="icons/linux.svg">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/linux.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=f45928d13c067bfd53a41fb7c0860fff" title="Linux x64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64.zip" width="216" height="256" data-path="icons/linux.svg">
     Standard Linux x64 binary
   </Card>
 
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/linux.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=dd592a34657ecfae61ac4f30614fdce7" title="Linux x64 Baseline" href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64-baseline.zip" width="216" height="256" data-path="icons/linux.svg">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/linux.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=f45928d13c067bfd53a41fb7c0860fff" title="Linux x64 Baseline" href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64-baseline.zip" width="216" height="256" data-path="icons/linux.svg">
     For older CPUs without AVX2
   </Card>
 
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/windows.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=b5c6194cb0ee60e6bc5726f4df48b4a5" title="Windows x64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-windows-x64.zip" width="88" height="88" data-path="icons/windows.svg">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/windows.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=c1e6c9fd5641fcc457e95413202af191" title="Windows x64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-windows-x64.zip" width="88" height="88" data-path="icons/windows.svg">
     Standard Windows binary
   </Card>
 
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/windows.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=b5c6194cb0ee60e6bc5726f4df48b4a5" title="Windows x64 Baseline" href="https://github.com/oven-sh/bun/releases/latest/download/bun-windows-x64-baseline.zip" width="88" height="88" data-path="icons/windows.svg">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/windows.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=c1e6c9fd5641fcc457e95413202af191" title="Windows x64 Baseline" href="https://github.com/oven-sh/bun/releases/latest/download/bun-windows-x64-baseline.zip" width="88" height="88" data-path="icons/windows.svg">
     For older CPUs without AVX2
   </Card>
 
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/windows.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=b5c6194cb0ee60e6bc5726f4df48b4a5" title="Windows ARM64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-windows-aarch64.zip" width="88" height="88" data-path="icons/windows.svg">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/windows.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=c1e6c9fd5641fcc457e95413202af191" title="Windows ARM64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-windows-aarch64.zip" width="88" height="88" data-path="icons/windows.svg">
     Windows on ARM (Snapdragon, etc.)
   </Card>
 
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/apple.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=be745b4256bdcc762c03ec2d442e3045" title="macOS ARM64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-aarch64.zip" width="842" height="1000" data-path="icons/apple.svg">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/apple.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=eeb6d9360a2dc50a9df88bdb002fd768" title="macOS ARM64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-aarch64.zip" width="842" height="1000" data-path="icons/apple.svg">
     Apple Silicon (M1/M2/M3)
   </Card>
 
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/apple.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=be745b4256bdcc762c03ec2d442e3045" title="macOS x64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-x64.zip" width="842" height="1000" data-path="icons/apple.svg">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/apple.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=eeb6d9360a2dc50a9df88bdb002fd768" title="macOS x64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-x64.zip" width="842" height="1000" data-path="icons/apple.svg">
     Intel Macs
   </Card>
 
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/linux.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=dd592a34657ecfae61ac4f30614fdce7" title="Linux ARM64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-aarch64.zip" width="216" height="256" data-path="icons/linux.svg">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/linux.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=f45928d13c067bfd53a41fb7c0860fff" title="Linux ARM64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-aarch64.zip" width="216" height="256" data-path="icons/linux.svg">
     ARM64 Linux systems
   </Card>
 </CardGroup>
@@ -337,7 +337,7 @@ To remove Bun from your system:
       npm uninstall -g bun
       ```
 
-      ```bash Homebrew icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/homebrew.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5c6dc69e5e0d20fb807fba0a9cd45023" theme={"theme":{"light":"github-light","dark":"dracula"}}
+      ```bash Homebrew icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/homebrew.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=72e2bae1e891694752fa3352050dc96f" theme={"theme":{"light":"github-light","dark":"dracula"}}
       brew uninstall bun
       ```
 

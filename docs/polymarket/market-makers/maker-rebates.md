@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/maker-rebates.md
-Downloaded: 2026-03-10T20:11:17.468Z
+Downloaded: 2026-03-13T20:11:16.263Z
 -->
 
 > ## Documentation Index
@@ -169,7 +169,7 @@ Fees are rounded to 4 decimal places. The smallest fee charged is 0.0001 USDC. A
 
 The following market types have taker fees enabled and are eligible for maker rebates:
 
-* **All crypto markets** (starting March 6, 2026)
+* **All crypto markets**
 * **NCAAB (college basketball) markets**
 * **Serie A markets**
 
@@ -203,8 +203,7 @@ All other markets remain fee-free.
   </Accordion>
 
   <Accordion title="Which markets have fees enabled">
-    All crypto markets, NCAAB, and Serie A markets. Crypto market fees start
-    March 6, 2026. Fees only apply to markets deployed on or after the
+    All crypto markets, NCAAB, and Serie A markets. Fees only apply to markets deployed on or after the
     activation date.
   </Accordion>
 

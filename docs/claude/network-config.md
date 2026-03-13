@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/network-config.md
+Downloaded: 2026-03-13T20:11:11.174Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -89,5 +94,5 @@ Ensure these URLs are allowlisted in your proxy configuration and firewall rules
 ## Additional resources
 
 * [Claude Code settings](/en/settings)
-* [Environment variables reference](/en/settings#environment-variables)
+* [Environment variables reference](/en/env-vars)
 * [Troubleshooting guide](/en/troubleshooting)

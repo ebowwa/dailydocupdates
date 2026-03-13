@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/http/proxy.md
-Downloaded: 2026-03-10T20:11:19.103Z
+Downloaded: 2026-03-13T20:11:27.093Z
 -->
 
 > ## Documentation Index
@@ -11,7 +11,7 @@ Downloaded: 2026-03-10T20:11:19.103Z
 
 In Bun, `fetch` supports sending requests through an HTTP or HTTPS proxy. This is useful on corporate networks or when you need to ensure a request is sent through a specific IP address.
 
-```ts proxy.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts proxy.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 await fetch("https://example.com", {
   // The URL of the proxy server
   proxy: "https://username:password@proxy.example.com:8080",
@@ -28,7 +28,7 @@ The `proxy` option can be a URL string or an object with `url` and optional `hea
 
 To send custom headers to the proxy server (useful for proxy authentication tokens, custom routing, etc.), use the object format:
 
-```ts proxy-headers.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts proxy-headers.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 await fetch("https://example.com", {
   proxy: {
     url: "https://proxy.example.com:8080",

@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/http/stream-node-streams-in-bun.md
-Downloaded: 2026-03-10T20:11:19.104Z
+Downloaded: 2026-03-13T20:11:27.094Z
 -->
 
 > ## Documentation Index
@@ -13,7 +13,7 @@ In Bun, [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) 
 
 This works because Bun's `Response` object allows any async iterable as its body. Node.js streams are async iterables, so you can pass them directly to `Response`.
 
-```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Readable } from "stream";
 import { serve } from "bun";
 serve({

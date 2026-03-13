@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/test/configuration.md
-Downloaded: 2026-03-10T20:11:19.141Z
+Downloaded: 2026-03-13T20:11:27.116Z
 -->
 
 > ## Documentation Index
@@ -70,7 +70,7 @@ bun test --preload ./test-setup.ts --preload ./global-mocks.ts
 
 #### Common Preload Use Cases
 
-```ts title="test-setup.ts" icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="test-setup.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Global test setup
 import { beforeAll, afterAll } from "bun:test";
 
@@ -85,7 +85,7 @@ afterAll(() => {
 });
 ```
 
-```ts title="global-mocks.ts" icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="global-mocks.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Global mocks
 import { mock } from "bun:test";
 
@@ -112,7 +112,7 @@ timeout = 10000  # 10 seconds (default is 5000ms)
 
 This applies to all tests unless overridden by individual test timeouts:
 
-```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // This test will use the default timeout from bunfig.toml
 test("uses default timeout", () => {
   // test implementation

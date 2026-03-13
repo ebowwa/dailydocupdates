@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/troubleshooting.md
-Downloaded: 2026-03-06T20:10:35.418Z
+Downloaded: 2026-03-13T20:11:11.178Z
 -->
 
 > ## Documentation Index
@@ -738,7 +738,7 @@ apk add ripgrep
 pacman -S ripgrep
 ```
 
-Then set `USE_BUILTIN_RIPGREP=0` in your [environment](/en/settings#environment-variables).
+Then set `USE_BUILTIN_RIPGREP=0` in your [environment](/en/env-vars).
 
 ### Slow or incomplete search results on WSL
 

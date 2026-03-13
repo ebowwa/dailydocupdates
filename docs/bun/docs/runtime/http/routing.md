@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/http/routing.md
-Downloaded: 2026-03-10T20:11:19.135Z
+Downloaded: 2026-03-13T20:11:27.111Z
 -->
 
 > ## Documentation Index
@@ -17,7 +17,7 @@ You can add routes to `Bun.serve()` by using the `routes` property (for static p
 
 ## Basic Setup
 
-```ts title="server.ts" icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="server.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   routes: {
     "/": () => new Response("Home"),
@@ -110,7 +110,7 @@ Bun.serve({
 
 TypeScript parses route parameters when passed as a string literal, so that your editor will show autocomplete when accessing `request.params`.
 
-```ts title="index.ts" icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="index.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import type { BunRequest } from "bun";
 
 Bun.serve({

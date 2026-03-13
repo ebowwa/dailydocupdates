@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/series/list-series.md
-Downloaded: 2026-03-10T20:11:17.459Z
+Downloaded: 2026-03-13T20:11:15.963Z
 -->
 
 > ## Documentation Index
@@ -84,6 +84,10 @@ paths:
           in: query
           schema:
             type: string
+        - name: exclude_events
+          in: query
+          schema:
+            type: boolean
       responses:
         '200':
           description: List of series

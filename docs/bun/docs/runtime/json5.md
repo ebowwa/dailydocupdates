@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/json5.md
-Downloaded: 2026-03-10T20:11:19.136Z
+Downloaded: 2026-03-13T20:11:27.112Z
 -->
 
 > ## Documentation Index
@@ -184,7 +184,7 @@ You can import JSON5 files directly as ES modules:
 
 #### Default Import
 
-```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import config from "./config.json5";
 
 console.log(config.database.host); // "localhost"
@@ -195,7 +195,7 @@ console.log(config.features.auth); // true
 
 You can destructure top-level properties as named imports:
 
-```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { database, features } from "./config.json5";
 
 console.log(database.host); // "localhost"
@@ -206,7 +206,7 @@ console.log(features.rateLimit); // true
 
 JSON5 files can also be required in CommonJS:
 
-```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const config = require("./config.json5");
 console.log(config.database.name); // "myapp"
 
@@ -233,7 +233,7 @@ When you run your application with `bun --hot`, changes to JSON5 files are autom
 }
 ```
 
-```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/typescript.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=5d73d76daf7eb7b158469d8c30d349b0" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { server, features } from "./config.json5";
 
 Bun.serve({
@@ -275,7 +275,7 @@ This means:
 JSON5 files can be dynamically imported:
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-const config = await import("./config.json5");
+const { default: config } = await import("./config.json5");
 ```
 
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-03-12T20:11:56.099Z
+Downloaded: 2026-03-13T20:11:23.563Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,26 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Mar 12, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "New market_lifecycle_v2 event types for fractional trading and price level structure changes",
+description: "The market_lifecycle_v2 WebSocket channel now emits events when a market's fractional trading setting or price level structure is changed."
+}}
+>
+  Two new event types added to the `market_lifecycle_v2` WebSocket channel:
+
+  * **`fractional_trading_updated`**: emitted when a market's fractional trading setting is changed. Includes `fractional_trading_enabled` (boolean).
+  * **`price_level_structure_updated`**: emitted when a market's price level structure is changed. Includes `price_level_structure` (string, e.g. `"linear_cent"`, `"deci_cent"`, `"tapered_deci_cent"`).
+
+  Additionally, the `created` event now includes `fractional_trading_enabled` and `price_level_structure` fields.
+
+  **Affected channel:**
+
+  * `market_lifecycle_v2`
+</Update>
 
 <Update
   label="Mar 11, 2026"
