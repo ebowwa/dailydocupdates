@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/legal-and-compliance.md
+Downloaded: 2026-03-14T20:08:23.584Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -40,7 +45,7 @@ Claude Code authenticates with Anthropic's servers using OAuth tokens or API key
 
 Anthropic reserves the right to take measures to enforce these restrictions and may do so without prior notice.
 
-For questions about permitted authentication methods for your use case, please [contact sales](https://www.anthropic.com/contact-sales).
+For questions about permitted authentication methods for your use case, please [contact sales](https://www.anthropic.com/contact-sales?utm_source=claude_code\&utm_medium=docs\&utm_content=legal_compliance_contact_sales).
 
 ## Security and trust
 
