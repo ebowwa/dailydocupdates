@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/server-managed-settings.md
-Downloaded: 2026-03-14T20:08:23.588Z
+Downloaded: 2026-03-16T20:14:30.972Z
 -->
 
 > ## Documentation Index
@@ -58,9 +58,9 @@ If your devices are enrolled in an MDM or endpoint management solution, endpoint
           "Read(./.env)",
           "Read(./.env.*)",
           "Read(./secrets/**)"
-        ]
-      },
-      "disableBypassPermissionsMode": "disable"
+        ],
+        "disableBypassPermissionsMode": "disable"
+      }
     }
     ```
   </Step>
