@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/fix/drop-copy.md
-Downloaded: 2026-03-10T20:11:18.496Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

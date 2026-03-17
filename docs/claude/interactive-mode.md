@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/interactive-mode.md
-Downloaded: 2026-03-13T20:11:11.172Z
+Downloaded: 2026-03-17T20:14:33.401Z
 -->
 
 > ## Documentation Index
@@ -88,6 +88,12 @@ Downloaded: 2026-03-13T20:11:11.172Z
 | `/` at start | Command or skill  | See [built-in commands](#built-in-commands) and [skills](/en/skills) |
 | `!` at start | Bash mode         | Run commands directly and add execution output to the session        |
 | `@`          | File path mention | Trigger file path autocomplete                                       |
+
+### Voice input
+
+| Shortcut     | Description            | Notes                                                                                                                                                      |
+| :----------- | :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Hold `Space` | Push-to-talk dictation | Requires [voice dictation](/en/voice-dictation) to be enabled. Transcript inserts at cursor. [Rebindable](/en/voice-dictation#rebind-the-push-to-talk-key) |
 
 ## Built-in commands
 
@@ -212,6 +218,7 @@ To run commands in the background, you can either:
 * Output is buffered and Claude can retrieve it using the TaskOutput tool
 * Background tasks have unique IDs for tracking and output retrieval
 * Background tasks are automatically cleaned up when Claude Code exits
+* Background tasks are automatically terminated if output exceeds 5GB, with a note in stderr explaining why
 
 To disable all background task functionality, set the `CLAUDE_CODE_DISABLE_BACKGROUND_TASKS` environment variable to `1`. See [Environment variables](/en/env-vars) for details.
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/plugins-reference.md
+Downloaded: 2026-03-17T20:14:33.403Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -591,14 +596,14 @@ This shows:
 
 ### Common issues
 
-| Issue                               | Cause                           | Solution                                                                          |
-| :---------------------------------- | :------------------------------ | :-------------------------------------------------------------------------------- |
-| Plugin not loading                  | Invalid `plugin.json`           | Validate JSON syntax with `claude plugin validate` or `/plugin validate`          |
-| Commands not appearing              | Wrong directory structure       | Ensure `commands/` at root, not in `.claude-plugin/`                              |
-| Hooks not firing                    | Script not executable           | Run `chmod +x script.sh`                                                          |
-| MCP server fails                    | Missing `${CLAUDE_PLUGIN_ROOT}` | Use variable for all plugin paths                                                 |
-| Path errors                         | Absolute paths used             | All paths must be relative and start with `./`                                    |
-| LSP `Executable not found in $PATH` | Language server not installed   | Install the binary (e.g., `npm install -g typescript-language-server typescript`) |
+| Issue                               | Cause                           | Solution                                                                                                                                                        |
+| :---------------------------------- | :------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Plugin not loading                  | Invalid `plugin.json`           | Run `claude plugin validate` or `/plugin validate` to check `plugin.json`, skill/agent/command frontmatter, and `hooks/hooks.json` for syntax and schema errors |
+| Commands not appearing              | Wrong directory structure       | Ensure `commands/` at root, not in `.claude-plugin/`                                                                                                            |
+| Hooks not firing                    | Script not executable           | Run `chmod +x script.sh`                                                                                                                                        |
+| MCP server fails                    | Missing `${CLAUDE_PLUGIN_ROOT}` | Use variable for all plugin paths                                                                                                                               |
+| Path errors                         | Absolute paths used             | All paths must be relative and start with `./`                                                                                                                  |
+| LSP `Executable not found in $PATH` | Language server not installed   | Install the binary (e.g., `npm install -g typescript-language-server typescript`)                                                                               |
 
 ### Example error messages
 

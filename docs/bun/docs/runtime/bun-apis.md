@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/bun-apis.md
-Downloaded: 2026-03-13T20:11:27.109Z
+Downloaded: 2026-03-17T20:15:05.087Z
 -->
 
 > ## Documentation Index
@@ -39,6 +39,7 @@ Click the link in the right column to jump to the associated documentation.
 | Routing                          | [`Bun.FileSystemRouter`](/runtime/file-system-router)                                                                                                                                                                                                                                                                  |
 | Streaming HTML                   | [`HTMLRewriter`](/runtime/html-rewriter)                                                                                                                                                                                                                                                                               |
 | Hashing                          | [`Bun.password`](/runtime/hashing#bun-password), [`Bun.hash`](/runtime/hashing#bun-hash), [`Bun.CryptoHasher`](/runtime/hashing#bun-cryptohasher), `Bun.sha`                                                                                                                                                           |
+| CSRF Protection                  | [`Bun.CSRF.generate`](/runtime/csrf), [`Bun.CSRF.verify`](/runtime/csrf)                                                                                                                                                                                                                                               |
 | SQLite                           | [`bun:sqlite`](/runtime/sqlite)                                                                                                                                                                                                                                                                                        |
 | PostgreSQL Client                | [`Bun.SQL`](/runtime/sql), `Bun.sql`                                                                                                                                                                                                                                                                                   |
 | Redis (Valkey) Client            | [`Bun.RedisClient`](/runtime/redis), `Bun.redis`                                                                                                                                                                                                                                                                       |

@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/guides/binary/arraybuffer-to-string.md
-Downloaded: 2026-03-10T20:11:19.093Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

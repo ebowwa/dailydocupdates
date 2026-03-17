@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/keybindings.md
-Downloaded: 2026-03-12T20:11:46.080Z
+Downloaded: 2026-03-17T20:14:33.401Z
 -->
 
 > ## Documentation Index
@@ -287,6 +287,14 @@ Actions available in the `Settings` context:
 | :---------------- | :------ | :---------------------------------- |
 | `settings:search` | /       | Enter search mode                   |
 | `settings:retry`  | R       | Retry loading usage data (on error) |
+
+### Voice actions
+
+Actions available in the `Chat` context when [voice dictation](/en/voice-dictation) is enabled:
+
+| Action             | Default | Description              |
+| :----------------- | :------ | :----------------------- |
+| `voice:pushToTalk` | Space   | Hold to dictate a prompt |
 
 ## Keystroke syntax
 
