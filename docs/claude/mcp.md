@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/mcp.md
-Downloaded: 2026-03-16T20:14:30.970Z
+Downloaded: 2026-03-18T20:14:55.477Z
 -->
 
 > ## Documentation Index
@@ -401,7 +401,7 @@ Or inline in `plugin.json`:
 **Plugin MCP features**:
 
 * **Automatic lifecycle**: At session startup, servers for enabled plugins connect automatically. If you enable or disable a plugin during a session, run `/reload-plugins` to connect or disconnect its MCP servers
-* **Environment variables**: Use `${CLAUDE_PLUGIN_ROOT}` for plugin-relative paths
+* **Environment variables**: use `${CLAUDE_PLUGIN_ROOT}` for bundled plugin files and `${CLAUDE_PLUGIN_DATA}` for [persistent state](/en/plugins-reference#persistent-data-directory) that survives plugin updates
 * **User environment access**: Access to same environment variables as manually configured servers
 * **Multiple transport types**: Support stdio, SSE, and HTTP transports (transport support may vary by server)
 

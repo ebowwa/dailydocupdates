@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/milestone/get-milestone.md
-Downloaded: 2026-03-11T20:12:06.425Z
+Downloaded: 2026-03-18T20:14:58.239Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-03-11T20:12:06.425Z
 
 ## OpenAPI
 
-````yaml openapi.yaml get /milestones/{milestone_id}
+````yaml /openapi.yaml get /milestones/{milestone_id}
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

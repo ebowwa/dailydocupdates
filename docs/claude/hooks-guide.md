@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/hooks-guide.md
-Downloaded: 2026-03-17T20:14:33.401Z
+Downloaded: 2026-03-18T20:14:55.476Z
 -->
 
 > ## Documentation Index
@@ -474,7 +474,7 @@ Each event type matches on a specific field. Matchers support exact strings and 
 | `SessionEnd`                                                                                    | why the session ended     | `clear`, `logout`, `prompt_input_exit`, `bypass_permissions_disabled`, `other`     |
 | `Notification`                                                                                  | notification type         | `permission_prompt`, `idle_prompt`, `auth_success`, `elicitation_dialog`           |
 | `SubagentStart`                                                                                 | agent type                | `Bash`, `Explore`, `Plan`, or custom agent names                                   |
-| `PreCompact`                                                                                    | what triggered compaction | `manual`, `auto`                                                                   |
+| `PreCompact`, `PostCompact`                                                                     | what triggered compaction | `manual`, `auto`                                                                   |
 | `SubagentStop`                                                                                  | agent type                | same values as `SubagentStart`                                                     |
 | `ConfigChange`                                                                                  | configuration source      | `user_settings`, `project_settings`, `local_settings`, `policy_settings`, `skills` |
 | `UserPromptSubmit`, `Stop`, `TeammateIdle`, `TaskCompleted`, `WorktreeCreate`, `WorktreeRemove` | no matcher support        | always fires on every occurrence                                                   |

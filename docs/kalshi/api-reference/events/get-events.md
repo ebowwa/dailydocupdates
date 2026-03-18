@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-events.md
-Downloaded: 2026-03-11T20:12:06.420Z
+Downloaded: 2026-03-18T20:14:58.234Z
 -->
 
 > ## Documentation Index
@@ -18,7 +18,7 @@ All events are accessible through this endpoint, even if their associated market
 
 ## OpenAPI
 
-````yaml openapi.yaml get /events
+````yaml /openapi.yaml get /events
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -122,11 +122,12 @@ paths:
           in: query
           required: false
           description: >-
-            Filter by event status. Possible values are 'open', 'closed',
-            'settled'. Leave empty to return events with any status.
+            Filter by event status. Possible values are 'unopened', 'open',
+            'closed', 'settled'. Leave empty to return events with any status.
           schema:
             type: string
             enum:
+              - unopened
               - open
               - closed
               - settled

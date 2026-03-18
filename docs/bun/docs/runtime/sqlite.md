@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/sqlite.md
-Downloaded: 2026-03-13T20:11:27.114Z
+Downloaded: 2026-03-18T20:15:11.657Z
 -->
 
 > ## Documentation Index
@@ -214,10 +214,36 @@ db.run("PRAGMA journal_mode = WAL;");
 ```
 
 <Accordion title="What is WAL mode?">
-  In WAL mode, writes to the database are written directly to a separate file called the "WAL file" (write-ahead log). This file will be later integrated into the main database file. Think of it as a buffer for pending writes. Refer to the [SQLite docs](https://www.sqlite.org/wal.html) for a more detailed overview.
-
-  On macOS, WAL files may be persistent by default. This is not a bug, it is how macOS configured the system version of SQLite.
+  In WAL mode, writes to the database are written directly to a separate file called the "WAL file" (`-wal`). A
+  shared-memory index file (`-shm`) is also created for read coordination. The WAL file will be later integrated into
+  the main database file. Think of it as a buffer for pending writes. Refer to the [SQLite
+  docs](https://www.sqlite.org/wal.html) for a more detailed overview.
 </Accordion>
+
+### WAL sidecar file cleanup
+
+When using WAL mode with a file-based database, SQLite creates two sidecar files alongside your database: a write-ahead log (`-wal`) and a shared-memory index (`-shm`). Whether these files are automatically removed after `.close()` depends on your platform:
+
+* **macOS**: Bun uses the system-provided SQLite, which Apple builds with persistent WAL enabled. The `-wal` and `-shm` files **will persist** after close. This is not a bug — it is how Apple configured the system SQLite.
+* **Linux** and **Windows**: Bun statically links its own SQLite build, which follows upstream defaults. The sidecar files are **typically removed** after close when no other connections are open.
+
+To ensure sidecar files are cleaned up on all platforms, disable WAL persistence and run a truncating checkpoint before closing:
+
+```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { Database, constants } from "bun:sqlite";
+
+const db = new Database("mydb.sqlite");
+db.run("PRAGMA journal_mode = WAL;");
+
+// ... use the database ...
+
+// Disable persistent WAL (needed on macOS)
+db.fileControl(constants.SQLITE_FCNTL_PERSIST_WAL, 0);
+// Checkpoint and truncate the WAL file
+db.run("PRAGMA wal_checkpoint(TRUNCATE);");
+db.close();
+// Only mydb.sqlite remains — no -wal or -shm files
+```
 
 ***
 
@@ -630,14 +656,14 @@ db.loadExtension("myext");
 
 ### `.fileControl(cmd: number, value: any)`
 
-To use the advanced `sqlite3_file_control` API, call `.fileControl(cmd, value)` on your `Database` instance.
+To use the advanced `sqlite3_file_control` API, call `.fileControl(cmd, value)` on your `Database` instance. See [WAL sidecar file cleanup](#wal-sidecar-file-cleanup) for a practical example.
 
 ```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" highlight={6} theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Database, constants } from "bun:sqlite";
 
 const db = new Database();
 // Ensure WAL mode is NOT persistent
-// this prevents wal files from lingering after the database is closed
+// this prevents WAL files from lingering after the database is closed
 db.fileControl(constants.SQLITE_FCNTL_PERSIST_WAL, 0);
 ```
 

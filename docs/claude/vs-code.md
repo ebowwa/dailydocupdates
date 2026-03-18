@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/vs-code.md
-Downloaded: 2026-03-13T20:11:11.178Z
+Downloaded: 2026-03-18T20:14:55.483Z
 -->
 
 > ## Documentation Index
@@ -252,21 +252,21 @@ The extension has two types of settings:
 
 ### Extension settings
 
-| Setting                           | Default   | Description                                                                                           |
-| --------------------------------- | --------- | ----------------------------------------------------------------------------------------------------- |
-| `selectedModel`                   | `default` | Model for new conversations. Change per-session with `/model`.                                        |
-| `useTerminal`                     | `false`   | Launch Claude in terminal mode instead of graphical panel                                             |
-| `initialPermissionMode`           | `default` | Controls approval prompts: `default` (ask each time), `plan`, `acceptEdits`, or `bypassPermissions`   |
-| `preferredLocation`               | `panel`   | Where Claude opens: `sidebar` (right) or `panel` (new tab)                                            |
-| `autosave`                        | `true`    | Auto-save files before Claude reads or writes them                                                    |
-| `useCtrlEnterToSend`              | `false`   | Use Ctrl/Cmd+Enter instead of Enter to send prompts                                                   |
-| `enableNewConversationShortcut`   | `true`    | Enable Cmd/Ctrl+N to start a new conversation                                                         |
-| `hideOnboarding`                  | `false`   | Hide the onboarding checklist (graduation cap icon)                                                   |
-| `respectGitIgnore`                | `true`    | Exclude .gitignore patterns from file searches                                                        |
-| `environmentVariables`            | `[]`      | Set environment variables for the Claude process. Use Claude Code settings instead for shared config. |
-| `disableLoginPrompt`              | `false`   | Skip authentication prompts (for third-party provider setups)                                         |
-| `allowDangerouslySkipPermissions` | `false`   | Bypass all permission prompts. **Use with extreme caution.**                                          |
-| `claudeProcessWrapper`            | -         | Executable path used to launch the Claude process                                                     |
+| Setting                           | Default   | Description                                                                                                       |
+| --------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------- |
+| `selectedModel`                   | `default` | Model for new conversations. Change per-session with `/model`.                                                    |
+| `useTerminal`                     | `false`   | Launch Claude in terminal mode instead of graphical panel                                                         |
+| `initialPermissionMode`           | `default` | Controls approval prompts: `default` (ask each time), `plan`, `acceptEdits`, or `bypassPermissions`               |
+| `preferredLocation`               | `panel`   | Where Claude opens: `sidebar` (right) or `panel` (new tab)                                                        |
+| `autosave`                        | `true`    | Auto-save files before Claude reads or writes them                                                                |
+| `useCtrlEnterToSend`              | `false`   | Use Ctrl/Cmd+Enter instead of Enter to send prompts                                                               |
+| `enableNewConversationShortcut`   | `true`    | Enable Cmd/Ctrl+N to start a new conversation                                                                     |
+| `hideOnboarding`                  | `false`   | Hide the onboarding checklist (graduation cap icon)                                                               |
+| `respectGitIgnore`                | `true`    | Exclude .gitignore patterns from file searches                                                                    |
+| `environmentVariables`            | `[]`      | Set environment variables for the Claude process. Use Claude Code settings instead for shared config.             |
+| `disableLoginPrompt`              | `false`   | Skip authentication prompts (for third-party provider setups)                                                     |
+| `allowDangerouslySkipPermissions` | `false`   | Bypass permission prompts. **Use with extreme caution.** See [permission modes](/en/permissions#permission-modes) |
+| `claudeProcessWrapper`            | -         | Executable path used to launch the Claude process                                                                 |
 
 ## VS Code extension vs. Claude Code CLI
 

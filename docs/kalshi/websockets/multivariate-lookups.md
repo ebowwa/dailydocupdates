@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/websockets/multivariate-lookups.md
-Downloaded: 2026-03-11T20:12:06.439Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

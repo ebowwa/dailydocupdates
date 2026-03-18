@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-settlements.md
-Downloaded: 2026-03-11T20:12:06.431Z
+Downloaded: 2026-03-18T20:14:58.244Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-03-11T20:12:06.431Z
 
 ## OpenAPI
 
-````yaml openapi.yaml get /portfolio/settlements
+````yaml /openapi.yaml get /portfolio/settlements
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

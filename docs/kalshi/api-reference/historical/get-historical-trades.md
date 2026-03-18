@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-trades.md
-Downloaded: 2026-03-11T20:12:06.423Z
+Downloaded: 2026-03-18T20:14:58.236Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-03-11T20:12:06.423Z
 
 ## OpenAPI
 
-````yaml openapi.yaml get /historical/trades
+````yaml /openapi.yaml get /historical/trades
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

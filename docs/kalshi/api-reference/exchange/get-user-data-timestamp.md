@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/exchange/get-user-data-timestamp.md
-Downloaded: 2026-03-11T20:12:06.421Z
+Downloaded: 2026-03-18T20:14:58.235Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-03-11T20:12:06.421Z
 
 ## OpenAPI
 
-````yaml openapi.yaml get /exchange/user_data_timestamp
+````yaml /openapi.yaml get /exchange/user_data_timestamp
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

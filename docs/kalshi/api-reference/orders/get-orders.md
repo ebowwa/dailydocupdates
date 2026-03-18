@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/get-orders.md
-Downloaded: 2026-03-11T20:12:06.430Z
+Downloaded: 2026-03-18T20:14:58.243Z
 -->
 
 > ## Documentation Index
@@ -17,7 +17,7 @@ Orders that have been canceled or fully executed before the historical cutoff ar
 
 ## OpenAPI
 
-````yaml openapi.yaml get /portfolio/orders
+````yaml /openapi.yaml get /portfolio/orders
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

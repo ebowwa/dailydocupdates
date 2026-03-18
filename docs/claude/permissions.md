@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/permissions.md
-Downloaded: 2026-03-17T20:14:33.402Z
+Downloaded: 2026-03-18T20:14:55.479Z
 -->
 
 > ## Documentation Index
@@ -37,16 +37,16 @@ Rules are evaluated in order: **deny -> ask -> allow**. The first matching rule 
 
 Claude Code supports several permission modes that control how tools are approved. Set the `defaultMode` in your [settings files](/en/settings#settings-files):
 
-| Mode                | Description                                                                           |
-| :------------------ | :------------------------------------------------------------------------------------ |
-| `default`           | Standard behavior: prompts for permission on first use of each tool                   |
-| `acceptEdits`       | Automatically accepts file edit permissions for the session                           |
-| `plan`              | Plan Mode: Claude can analyze but not modify files or execute commands                |
-| `dontAsk`           | Auto-denies tools unless pre-approved via `/permissions` or `permissions.allow` rules |
-| `bypassPermissions` | Skips all permission prompts (requires safe environment, see warning below)           |
+| Mode                | Description                                                                             |
+| :------------------ | :-------------------------------------------------------------------------------------- |
+| `default`           | Standard behavior: prompts for permission on first use of each tool                     |
+| `acceptEdits`       | Automatically accepts file edit permissions for the session                             |
+| `plan`              | Plan Mode: Claude can analyze but not modify files or execute commands                  |
+| `dontAsk`           | Auto-denies tools unless pre-approved via `/permissions` or `permissions.allow` rules   |
+| `bypassPermissions` | Skips permission prompts except for writes to protected directories (see warning below) |
 
 <Warning>
-  `bypassPermissions` mode disables all permission checks. Only use this in isolated environments like containers or VMs where Claude Code cannot cause damage. Administrators can prevent this mode by setting `disableBypassPermissionsMode` to `"disable"` in [managed settings](#managed-settings).
+  `bypassPermissions` mode skips permission prompts. Writes to `.git`, `.claude`, `.vscode`, and `.idea` directories still prompt for confirmation to prevent accidental corruption of repository state and local configuration. Writes to `.claude/commands`, `.claude/agents`, and `.claude/skills` are exempt and do not prompt, because Claude routinely writes there when creating skills, subagents, and commands. Only use this mode in isolated environments like containers or VMs where Claude Code cannot cause damage. Administrators can prevent this mode by setting `disableBypassPermissionsMode` to `"disable"` in [managed settings](#managed-settings).
 </Warning>
 
 ## Permission rule syntax
@@ -140,6 +140,10 @@ When you approve a compound command with "Yes, don't ask again", Claude Code sav
 
 `Edit` rules apply to all built-in tools that edit files. Claude makes a best-effort attempt to apply `Read` rules to all built-in tools that read files like Grep and Glob.
 
+<Warning>
+  Read and Edit deny rules apply to Claude's built-in file tools, not to Bash subprocesses. A `Read(./.env)` deny rule blocks the Read tool but does not prevent `cat .env` in Bash. For OS-level enforcement that blocks all processes from accessing a path, [enable the sandbox](/en/sandboxing).
+</Warning>
+
 Read and Edit rules both follow the [gitignore](https://git-scm.com/docs/gitignore) specification with four distinct pattern types:
 
 | Pattern            | Meaning                                | Example                          | Matches                        |
@@ -152,6 +156,8 @@ Read and Edit rules both follow the [gitignore](https://git-scm.com/docs/gitigno
 <Warning>
   A pattern like `/Users/alice/file` is NOT an absolute path. It's relative to the project root. Use `//Users/alice/file` for absolute paths.
 </Warning>
+
+On Windows, paths are normalized to POSIX form before matching. `C:\Users\alice` becomes `/c/Users/alice`, so use `//c/**/.env` to match `.env` files anywhere on that drive. To match across all drives, use `//**/.env`.
 
 Examples:
 

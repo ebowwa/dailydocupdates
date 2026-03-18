@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-total-resting-order-value.md
-Downloaded: 2026-03-11T20:12:06.432Z
+Downloaded: 2026-03-18T20:14:58.244Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-03-11T20:12:06.432Z
 
 ## OpenAPI
 
-````yaml openapi.yaml get /portfolio/summary/total_resting_order_value
+````yaml /openapi.yaml get /portfolio/summary/total_resting_order_value
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-multivariate-events.md
-Downloaded: 2026-03-11T20:12:06.420Z
+Downloaded: 2026-03-18T20:14:58.234Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-03-11T20:12:06.420Z
 
 ## OpenAPI
 
-````yaml openapi.yaml get /events/multivariate
+````yaml /openapi.yaml get /events/multivariate
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

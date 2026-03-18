@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/batch-cancel-orders.md
-Downloaded: 2026-03-11T20:12:06.428Z
+Downloaded: 2026-03-18T20:14:58.241Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-03-11T20:12:06.428Z
 
 ## OpenAPI
 
-````yaml openapi.yaml delete /portfolio/orders/batched
+````yaml /openapi.yaml delete /portfolio/orders/batched
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

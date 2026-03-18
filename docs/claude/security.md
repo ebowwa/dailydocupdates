@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/security.md
+Downloaded: 2026-03-18T20:14:55.480Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -75,7 +80,7 @@ For full details, please review our [Commercial Terms of Service](https://www.an
 2. Avoid piping untrusted content directly to Claude
 3. Verify proposed changes to critical files
 4. Use virtual machines (VMs) to run scripts and make tool calls, especially when interacting with external web services
-5. Report suspicious behavior with `/bug`
+5. Report suspicious behavior with `/feedback`
 
 <Warning>
   While these protections significantly reduce risk, no system is completely

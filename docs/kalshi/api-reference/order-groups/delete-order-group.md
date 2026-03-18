@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/order-groups/delete-order-group.md
-Downloaded: 2026-03-11T20:12:06.427Z
+Downloaded: 2026-03-18T20:14:58.240Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-03-11T20:12:06.427Z
 
 ## OpenAPI
 
-````yaml openapi.yaml delete /portfolio/order_groups/{order_group_id}
+````yaml /openapi.yaml delete /portfolio/order_groups/{order_group_id}
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

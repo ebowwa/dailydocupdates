@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/get-rfqs.md
-Downloaded: 2026-03-11T20:12:06.419Z
+Downloaded: 2026-03-18T20:14:58.233Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-03-11T20:12:06.419Z
 
 ## OpenAPI
 
-````yaml openapi.yaml get /communications/rfqs
+````yaml /openapi.yaml get /communications/rfqs
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

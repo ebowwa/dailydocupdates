@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/order-groups/get-order-groups.md
-Downloaded: 2026-03-11T20:12:06.427Z
+Downloaded: 2026-03-18T20:14:58.240Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-03-11T20:12:06.427Z
 
 ## OpenAPI
 
-````yaml openapi.yaml get /portfolio/order_groups
+````yaml /openapi.yaml get /portfolio/order_groups
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

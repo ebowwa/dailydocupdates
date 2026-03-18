@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/hooks.md
-Downloaded: 2026-03-17T20:14:33.400Z
+Downloaded: 2026-03-18T20:14:55.476Z
 -->
 
 > ## Documentation Index
@@ -177,7 +177,7 @@ The `matcher` field is a regex string that filters when hooks fire. Use `"*"`, `
 | `SessionEnd`                                                                                                          | why the session ended     | `clear`, `logout`, `prompt_input_exit`, `bypass_permissions_disabled`, `other`     |
 | `Notification`                                                                                                        | notification type         | `permission_prompt`, `idle_prompt`, `auth_success`, `elicitation_dialog`           |
 | `SubagentStart`                                                                                                       | agent type                | `Bash`, `Explore`, `Plan`, or custom agent names                                   |
-| `PreCompact`                                                                                                          | what triggered compaction | `manual`, `auto`                                                                   |
+| `PreCompact`, `PostCompact`                                                                                           | what triggered compaction | `manual`, `auto`                                                                   |
 | `SubagentStop`                                                                                                        | agent type                | same values as `SubagentStart`                                                     |
 | `ConfigChange`                                                                                                        | configuration source      | `user_settings`, `project_settings`, `local_settings`, `policy_settings`, `skills` |
 | `UserPromptSubmit`, `Stop`, `TeammateIdle`, `TaskCompleted`, `WorktreeCreate`, `WorktreeRemove`, `InstructionsLoaded` | no matcher support        | always fires on every occurrence                                                   |
@@ -334,7 +334,8 @@ All matching hooks run in parallel, and identical handlers are deduplicated auto
 Use environment variables to reference hook scripts relative to the project or plugin root, regardless of the working directory when the hook runs:
 
 * `$CLAUDE_PROJECT_DIR`: the project root. Wrap in quotes to handle paths with spaces.
-* `${CLAUDE_PLUGIN_ROOT}`: the plugin's root directory, for scripts bundled with a [plugin](/en/plugins).
+* `${CLAUDE_PLUGIN_ROOT}`: the plugin's installation directory, for scripts bundled with a [plugin](/en/plugins). Changes on each plugin update.
+* `${CLAUDE_PLUGIN_DATA}`: the plugin's [persistent data directory](/en/plugins-reference#persistent-data-directory), for dependencies and state that should survive plugin updates.
 
 <Tabs>
   <Tab title="Project scripts">

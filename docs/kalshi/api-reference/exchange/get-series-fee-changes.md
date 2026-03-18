@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/exchange/get-series-fee-changes.md
-Downloaded: 2026-03-11T20:12:06.421Z
+Downloaded: 2026-03-18T20:14:58.235Z
 -->
 
 > ## Documentation Index
@@ -13,7 +13,7 @@ Downloaded: 2026-03-11T20:12:06.421Z
 
 ## OpenAPI
 
-````yaml openapi.yaml get /series/fee_changes
+````yaml /openapi.yaml get /series/fee_changes
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

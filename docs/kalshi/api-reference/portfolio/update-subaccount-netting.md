@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/update-subaccount-netting.md
-Downloaded: 2026-03-11T20:12:06.432Z
+Downloaded: 2026-03-18T20:14:58.245Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-03-11T20:12:06.432Z
 
 ## OpenAPI
 
-````yaml openapi.yaml put /portfolio/subaccounts/netting
+````yaml /openapi.yaml put /portfolio/subaccounts/netting
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

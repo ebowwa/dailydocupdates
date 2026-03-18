@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/api-keys/delete-api-key.md
-Downloaded: 2026-03-11T20:12:06.417Z
+Downloaded: 2026-03-18T20:14:58.231Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-03-11T20:12:06.417Z
 
 ## OpenAPI
 
-````yaml openapi.yaml delete /api_keys/{api_key}
+````yaml /openapi.yaml delete /api_keys/{api_key}
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

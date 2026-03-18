@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-fills.md
-Downloaded: 2026-03-11T20:12:06.431Z
+Downloaded: 2026-03-18T20:14:58.243Z
 -->
 
 > ## Documentation Index
@@ -17,7 +17,7 @@ Fills that occurred before the historical cutoff are only available via `GET /hi
 
 ## OpenAPI
 
-````yaml openapi.yaml get /portfolio/fills
+````yaml /openapi.yaml get /portfolio/fills
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

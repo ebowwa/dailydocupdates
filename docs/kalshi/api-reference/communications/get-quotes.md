@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/get-quotes.md
-Downloaded: 2026-03-12T20:11:56.091Z
+Downloaded: 2026-03-18T20:14:58.232Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-03-12T20:11:56.091Z
 
 ## OpenAPI
 
-````yaml openapi.yaml get /communications/quotes
+````yaml /openapi.yaml get /communications/quotes
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints

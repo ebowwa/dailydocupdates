@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/fcm/get-fcm-orders.md
-Downloaded: 2026-03-11T20:12:06.421Z
+Downloaded: 2026-03-18T20:14:58.235Z
 -->
 
 > ## Documentation Index
@@ -17,7 +17,7 @@ This endpoint requires FCM member access level and allows filtering orders by su
 
 ## OpenAPI
 
-````yaml openapi.yaml get /fcm/orders
+````yaml /openapi.yaml get /fcm/orders
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
