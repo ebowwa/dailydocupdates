@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix/session-management.md
+Downloaded: 2026-03-19T20:14:19.697Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -65,6 +70,7 @@ The initiator must send a Logon message to establish a session. The acceptor wil
 | 20126 | ListenerSession          | Listen-only session (KalshiNR/RT only, requires SkipPendingExecReports=Y)                                                   | N       |
 | 20127 | ReceiveSettlementReports | Receive settlement reports (KalshiRT only)                                                                                  | N       |
 | 20200 | MessageRetentionPeriod   | How long session messages will be store for retransmission (KalshiRT and KalshiRFQ only), max of 72.                        | 24      |
+| 21005 | UseDollars               | Enable dollar-based price format for prices, including subpenny precision                                                   | N       |
 | 21011 | SkipPendingExecReports   | Skip PENDING\_\{NEW\|REPLACE\|CANCEL} execution reports                                                                     | N       |
 | 21012 | UseExpiredOrdStatus      | Emit Expired\<C> (150/39) for expiry-style system cancellations (CloseCancel and OrderExpiryCancel) instead of Canceled\<4> | N       |
 | 21007 | EnableIocCancelReport    | Partially filled IOC orders produce a cancel report                                                                         | N       |

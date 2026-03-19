@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/orderbook-updates.md
+Downloaded: 2026-03-19T20:14:19.702Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -297,6 +302,9 @@ operations:
                   - name: side
                     type: string
                     description: Market side
+                    enumValues:
+                      - 'yes'
+                      - 'no'
                     required: false
                   - name: client_order_id
                     type: string

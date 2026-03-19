@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/wss/user.md
+Downloaded: 2026-03-19T20:14:08.284Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -147,6 +152,9 @@ operations:
             properties:
               - name: operation
                 type: string
+                enumValues:
+                  - subscribe
+                  - unsubscribe
                 required: true
               - name: markets
                 type: array
@@ -283,6 +291,9 @@ operations:
                 required: true
               - name: side
                 type: string
+                enumValues:
+                  - BUY
+                  - SELL
                 required: true
               - name: order_owner
                 type: string
@@ -308,6 +319,10 @@ operations:
                 required: false
               - name: type
                 type: string
+                enumValues:
+                  - PLACEMENT
+                  - UPDATE
+                  - CANCELLATION
                 required: true
               - name: created_at
                 type: string
@@ -318,6 +333,10 @@ operations:
                 required: false
               - name: order_type
                 type: string
+                enumValues:
+                  - GTC
+                  - GTD
+                  - FOK
                 required: false
               - name: status
                 type: string
@@ -501,6 +520,9 @@ operations:
               - name: side
                 type: string
                 description: From taker's perspective
+                enumValues:
+                  - BUY
+                  - SELL
                 required: true
               - name: size
                 type: string
@@ -513,6 +535,12 @@ operations:
                 required: false
               - name: status
                 type: string
+                enumValues:
+                  - MATCHED
+                  - MINED
+                  - CONFIRMED
+                  - RETRYING
+                  - FAILED
                 required: true
               - name: matchtime
                 type: string
@@ -545,6 +573,9 @@ operations:
               - name: trader_side
                 type: string
                 description: Whether the receiving user was TAKER or MAKER
+                enumValues:
+                  - TAKER
+                  - MAKER
                 required: false
               - name: timestamp
                 type: string

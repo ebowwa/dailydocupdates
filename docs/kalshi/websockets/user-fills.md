@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/user-fills.md
+Downloaded: 2026-03-19T20:14:19.703Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -100,6 +105,9 @@ operations:
                   - name: side
                     type: string
                     description: Market side
+                    enumValues:
+                      - 'yes'
+                      - 'no'
                     required: false
                   - name: yes_price_dollars
                     type: string
@@ -116,6 +124,9 @@ operations:
                   - name: action
                     type: string
                     description: Order action type
+                    enumValues:
+                      - buy
+                      - sell
                     required: false
                   - name: ts
                     type: integer
@@ -132,6 +143,9 @@ operations:
                   - name: purchased_side
                     type: string
                     description: Market side
+                    enumValues:
+                      - 'yes'
+                      - 'no'
                     required: false
                   - name: subaccount
                     type: integer

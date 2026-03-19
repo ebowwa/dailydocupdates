@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/data/get-server-time.md
+Downloaded: 2026-03-19T20:14:08.270Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ This can be used to synchronize client time with server time.
 
 ## OpenAPI
 
-````yaml api-spec/clob-openapi.yaml get /time
+````yaml /api-spec/clob-openapi.yaml get /time
 openapi: 3.1.0
 info:
   title: Polymarket CLOB API

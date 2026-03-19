@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/relayer-api-keys/get-all-relayer-api-keys.md
+Downloaded: 2026-03-19T20:14:08.277Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -11,7 +16,7 @@
 
 ## OpenAPI
 
-````yaml api-spec/relayer-openapi.yaml get /relayer/api/keys
+````yaml /api-spec/relayer-openapi.yaml get /relayer/api/keys
 openapi: 3.0.3
 info:
   title: Polymarket Relayer API

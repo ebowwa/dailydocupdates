@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/rewards/get-earnings-for-user-by-date.md
-Downloaded: 2026-03-17T20:14:34.786Z
+Downloaded: 2026-03-19T20:14:08.278Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,7 @@ A next_cursor value of "LTE=" indicates the last page.
 
 ## OpenAPI
 
-````yaml api-spec/clob-openapi.yaml get /rewards/user
+````yaml /api-spec/clob-openapi.yaml get /rewards/user
 openapi: 3.1.0
 info:
   title: Polymarket CLOB API

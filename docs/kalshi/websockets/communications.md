@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/communications.md
+Downloaded: 2026-03-19T20:14:19.701Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -591,6 +596,9 @@ operations:
                   - name: accepted_side
                     type: string
                     description: Which side was accepted (yes/no) (optional)
+                    enumValues:
+                      - 'yes'
+                      - 'no'
                     required: false
                   - name: contracts_accepted_fp
                     type: string

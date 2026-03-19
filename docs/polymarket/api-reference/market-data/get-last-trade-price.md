@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/market-data/get-last-trade-price.md
+Downloaded: 2026-03-19T20:14:08.272Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ Returns default values of "0.5" for price and empty string for side if no trades
 
 ## OpenAPI
 
-````yaml api-spec/clob-openapi.yaml get /last-trade-price
+````yaml /api-spec/clob-openapi.yaml get /last-trade-price
 openapi: 3.1.0
 info:
   title: Polymarket CLOB API

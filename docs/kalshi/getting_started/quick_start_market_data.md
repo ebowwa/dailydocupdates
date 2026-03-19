@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/getting_started/quick_start_market_data.md
-Downloaded: 2026-03-12T20:11:56.101Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

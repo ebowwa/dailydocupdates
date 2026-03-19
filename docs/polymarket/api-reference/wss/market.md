@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/wss/market.md
+Downloaded: 2026-03-19T20:14:08.284Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -58,6 +63,10 @@ operations:
               - name: level
                 type: integer
                 description: Subscription level. Defaults to 2.
+                enumValues:
+                  - 1
+                  - 2
+                  - 3
                 required: false
               - name: custom_feature_enabled
                 type: boolean
@@ -139,12 +148,19 @@ operations:
             properties:
               - name: operation
                 type: string
+                enumValues:
+                  - subscribe
+                  - unsubscribe
                 required: true
               - name: assets_ids
                 type: array
                 required: true
               - name: level
                 type: integer
+                enumValues:
+                  - 1
+                  - 2
+                  - 3
                 required: false
               - name: custom_feature_enabled
                 type: boolean
@@ -557,6 +573,9 @@ operations:
               - name: side
                 type: string
                 description: From taker's perspective
+                enumValues:
+                  - BUY
+                  - SELL
                 required: true
               - name: timestamp
                 type: string

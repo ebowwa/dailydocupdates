@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/misc/download-an-accounting-snapshot-zip-of-csvs.md
+Downloaded: 2026-03-19T20:14:08.276Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,7 +13,7 @@
 
 ## OpenAPI
 
-````yaml api-spec/data-openapi.yaml get /v1/accounting/snapshot
+````yaml /api-spec/data-openapi.yaml get /v1/accounting/snapshot
 openapi: 3.0.3
 info:
   title: Polymarket Data API

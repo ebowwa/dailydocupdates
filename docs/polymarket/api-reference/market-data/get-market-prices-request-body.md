@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/market-data/get-market-prices-request-body.md
+Downloaded: 2026-03-19T20:14:08.273Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ Each request must include both token_id and side.
 
 ## OpenAPI
 
-````yaml api-spec/clob-openapi.yaml post /prices
+````yaml /api-spec/clob-openapi.yaml post /prices
 openapi: 3.1.0
 info:
   title: Polymarket CLOB API

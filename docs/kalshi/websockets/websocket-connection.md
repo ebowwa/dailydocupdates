@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/websocket-connection.md
+Downloaded: 2026-03-19T20:14:19.704Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -497,6 +502,9 @@ operations:
                     required: false
                   - name: action
                     type: string
+                    enumValues:
+                      - add_markets
+                      - delete_markets
                     required: false
         headers: []
         jsonPayloadSchema: &ref_5
@@ -653,6 +661,9 @@ operations:
                     required: false
                   - name: action
                     type: string
+                    enumValues:
+                      - add_markets
+                      - delete_markets
                     required: false
         headers: []
         jsonPayloadSchema: *ref_5
@@ -749,6 +760,9 @@ operations:
                     required: false
                   - name: action
                     type: string
+                    enumValues:
+                      - add_markets
+                      - delete_markets
                     required: false
         headers: []
         jsonPayloadSchema: *ref_5

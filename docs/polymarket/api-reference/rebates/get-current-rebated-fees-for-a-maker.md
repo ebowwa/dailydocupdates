@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/rebates/get-current-rebated-fees-for-a-maker.md
+Downloaded: 2026-03-19T20:14:08.276Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -15,7 +20,7 @@ This endpoint does not require authentication.
 
 ## OpenAPI
 
-````yaml api-spec/clob-openapi.yaml get /rebates/current
+````yaml /api-spec/clob-openapi.yaml get /rebates/current
 openapi: 3.1.0
 info:
   title: Polymarket CLOB API

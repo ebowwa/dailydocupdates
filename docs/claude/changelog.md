@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/changelog.md
-Downloaded: 2026-03-18T20:14:55.471Z
+Downloaded: 2026-03-19T20:14:10.155Z
 -->
 
 > ## Documentation Index
@@ -14,6 +14,27 @@ Downloaded: 2026-03-18T20:14:55.471Z
 This page is generated from the [CHANGELOG.md on GitHub](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md).
 
 Run `claude --version` to check your installed version.
+
+<Update label="2.1.79" description="March 18, 2026">
+  * Added `--console` flag to `claude auth login` for Anthropic Console (API billing) authentication
+  * Added "Show turn duration" toggle to the `/config` menu
+  * Fixed `claude -p` hanging when spawned as a subprocess without explicit stdin (e.g. Python `subprocess.run`)
+  * Fixed Ctrl+C not working in `-p` (print) mode
+  * Fixed `/btw` returning the main agent's output instead of answering the side question when triggered during streaming
+  * Fixed voice mode not activating correctly on startup when `voiceEnabled: true` is set
+  * Fixed left/right arrow tab navigation in `/permissions`
+  * Fixed `CLAUDE_CODE_DISABLE_TERMINAL_TITLE` not preventing terminal title from being set on startup
+  * Fixed custom status line showing nothing when workspace trust is blocking it
+  * Fixed enterprise users being unable to retry on rate limit (429) errors
+  * Fixed `SessionEnd` hooks not firing when using interactive `/resume` to switch sessions
+  * Improved startup memory usage by \~18MB across all scenarios
+  * Improved non-streaming API fallback with a 2-minute per-attempt timeout, preventing sessions from hanging indefinitely
+  * `CLAUDE_CODE_PLUGIN_SEED_DIR` now supports multiple seed directories separated by the platform path delimiter (`:` on Unix, `;` on Windows)
+  * \[VSCode] Added `/remote-control` — bridge your session to claude.ai/code to continue from a browser or phone
+  * \[VSCode] Session tabs now get AI-generated titles based on your first message
+  * \[VSCode] Fixed the thinking pill showing "Thinking" instead of "Thought for Ns" after a response completes
+  * \[VSCode] Fixed missing session diff button when opening sessions from the left sidebar
+</Update>
 
 <Update label="2.1.78" description="March 17, 2026">
   * Added `StopFailure` hook event that fires when the turn ends due to an API error (rate limit, auth failure, etc.)

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/relayer/get-recent-transactions-for-a-user.md
-Downloaded: 2026-03-13T20:11:15.962Z
+Downloaded: 2026-03-19T20:14:08.277Z
 -->
 
 > ## Documentation Index
@@ -26,7 +26,7 @@ Downloaded: 2026-03-13T20:11:15.962Z
 
 ## OpenAPI
 
-````yaml api-spec/relayer-openapi.yaml get /transactions
+````yaml /api-spec/relayer-openapi.yaml get /transactions
 openapi: 3.0.3
 info:
   title: Polymarket Relayer API

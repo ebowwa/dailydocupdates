@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/rewards/get-reward-percentages-for-user.md
-Downloaded: 2026-03-17T20:14:34.786Z
+Downloaded: 2026-03-19T20:14:08.279Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,7 @@ Requires CLOB L2 Auth headers.
 
 ## OpenAPI
 
-````yaml api-spec/clob-openapi.yaml get /rewards/user/percentages
+````yaml /api-spec/clob-openapi.yaml get /rewards/user/percentages
 openapi: 3.1.0
 info:
   title: Polymarket CLOB API

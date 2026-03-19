@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/series/list-series.md
-Downloaded: 2026-03-13T20:11:15.963Z
+Downloaded: 2026-03-19T20:14:08.280Z
 -->
 
 > ## Documentation Index
@@ -13,7 +13,7 @@ Downloaded: 2026-03-13T20:11:15.963Z
 
 ## OpenAPI
 
-````yaml api-spec/gamma-openapi.yaml get /series
+````yaml /api-spec/gamma-openapi.yaml get /series
 openapi: 3.0.3
 info:
   title: Markets API

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/market-&-event-lifecycle.md
+Downloaded: 2026-03-19T20:14:19.702Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -94,6 +99,13 @@ operations:
                       - `determined` - Market determined
 
                       - `settled` - Market settled
+                    enumValues:
+                      - created
+                      - deactivated
+                      - activated
+                      - close_date_updated
+                      - determined
+                      - settled
                     required: false
                   - name: market_ticker
                     type: string
@@ -431,6 +443,10 @@ operations:
                       Collateral return type, MECNET or DIRECNET of the event.
                       Empty if there is no collateral return scheme for the
                       event
+                    enumValues:
+                      - MECNET
+                      - DIRECNET
+                      - ''
                     required: false
                   - name: series_ticker
                     type: string

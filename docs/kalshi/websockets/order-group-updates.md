@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/order-group-updates.md
+Downloaded: 2026-03-19T20:14:19.702Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -84,6 +89,12 @@ operations:
                   - name: event_type
                     type: string
                     description: Order group event type
+                    enumValues:
+                      - created
+                      - triggered
+                      - reset
+                      - deleted
+                      - limit_updated
                     required: false
                   - name: order_group_id
                     type: string

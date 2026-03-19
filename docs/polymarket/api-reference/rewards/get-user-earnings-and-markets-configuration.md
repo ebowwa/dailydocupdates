@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/rewards/get-user-earnings-and-markets-configuration.md
-Downloaded: 2026-03-17T20:14:34.786Z
+Downloaded: 2026-03-19T20:14:08.279Z
 -->
 
 > ## Documentation Index
@@ -28,7 +28,7 @@ Optional features:
 
 ## OpenAPI
 
-````yaml api-spec/clob-openapi.yaml get /rewards/user/markets
+````yaml /api-spec/clob-openapi.yaml get /rewards/user/markets
 openapi: 3.1.0
 info:
   title: Polymarket CLOB API

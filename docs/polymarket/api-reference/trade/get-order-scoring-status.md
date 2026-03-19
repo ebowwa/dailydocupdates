@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/trade/get-order-scoring-status.md
+Downloaded: 2026-03-19T20:14:08.282Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -17,7 +22,7 @@ An order is considered "scoring" if it meets all the criteria for earning maker 
 
 ## OpenAPI
 
-````yaml api-spec/clob-openapi.yaml get /order-scoring
+````yaml /api-spec/clob-openapi.yaml get /order-scoring
 openapi: 3.1.0
 info:
   title: Polymarket CLOB API

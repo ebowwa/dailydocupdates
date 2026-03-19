@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/sports/get-valid-sports-market-types.md
+Downloaded: 2026-03-19T20:14:08.280Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,7 +13,7 @@
 
 ## OpenAPI
 
-````yaml api-spec/gamma-openapi.yaml get /sports/market-types
+````yaml /api-spec/gamma-openapi.yaml get /sports/market-types
 openapi: 3.0.3
 info:
   title: Markets API
