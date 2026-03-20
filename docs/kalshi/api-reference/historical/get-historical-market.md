@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-market.md
-Downloaded: 2026-03-18T20:14:58.236Z
+Downloaded: 2026-03-20T20:10:41.271Z
 -->
 
 > ## Documentation Index
@@ -102,19 +102,15 @@ components:
         - ticker
         - event_ticker
         - market_type
-        - title
-        - subtitle
         - yes_sub_title
         - no_sub_title
         - created_time
         - updated_time
         - open_time
         - close_time
-        - expiration_time
         - latest_expiration_time
         - settlement_timer_seconds
         - status
-        - response_price_units
         - notional_value_dollars
         - yes_bid_dollars
         - yes_ask_dollars
@@ -136,7 +132,6 @@ components:
         - expiration_value
         - rules_primary
         - rules_secondary
-        - tick_size
         - price_level_structure
         - price_ranges
       properties:
@@ -153,9 +148,11 @@ components:
         title:
           type: string
           deprecated: true
+          x-go-type-skip-optional-pointer: true
         subtitle:
           type: string
           deprecated: true
+          x-go-type-skip-optional-pointer: true
         yes_sub_title:
           type: string
           description: Shortened title for the yes side of this market
@@ -185,6 +182,7 @@ components:
           type: string
           format: date-time
           deprecated: true
+          x-go-type-skip-optional-pointer: true
         latest_expiration_time:
           type: string
           format: date-time
@@ -210,6 +208,7 @@ components:
             - usd_cent
           deprecated: true
           description: 'DEPRECATED: Use price_level_structure and price_ranges instead.'
+          x-go-type-skip-optional-pointer: true
         yes_bid_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           description: Price for the highest YES buy offer on this market in dollars
@@ -314,6 +313,7 @@ components:
         tick_size:
           type: integer
           deprecated: true
+          x-go-type-skip-optional-pointer: true
           description: 'DEPRECATED: Use price_level_structure and price_ranges instead.'
         strike_type:
           type: string

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/fcm/get-fcm-positions.md
-Downloaded: 2026-03-18T20:14:58.235Z
+Downloaded: 2026-03-20T20:10:41.270Z
 -->
 
 > ## Documentation Index
@@ -179,6 +179,7 @@ components:
         - realized_pnl_dollars
         - resting_orders_count
         - fees_paid_dollars
+        - last_updated_ts
       properties:
         ticker:
           type: string
@@ -202,6 +203,7 @@ components:
           type: integer
           format: int32
           description: '[DEPRECATED] Aggregate size of resting orders in contract units'
+          deprecated: true
         fees_paid_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           description: Fees paid on fill orders, in dollars
@@ -217,7 +219,6 @@ components:
         - total_cost_shares_fp
         - event_exposure_dollars
         - realized_pnl_dollars
-        - resting_orders_count
         - fees_paid_dollars
       properties:
         event_ticker:

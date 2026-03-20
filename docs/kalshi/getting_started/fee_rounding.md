@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/fee_rounding.md
+Downloaded: 2026-03-20T20:10:41.280Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -47,6 +52,14 @@ Rounding applies whenever `revenue - trade_fee` has a sub-cent component. This c
 * **Fractional contracts** (e.g., 0.30 contracts) — sub-cent revenue from the fractional quantity
 
 When both apply simultaneously, intermediate values can reach up to 6 decimal places (for example, `$0.3301 * 0.03 = $0.009903`). The worked examples below show each scenario.
+
+## Settlement Rounding
+
+Settlement can also create sub-cent balance changes. When that happens, the exchange rounds the posted payout down to the nearest cent and records the fractional remainder as a settlement fee.
+
+Example: if a user holds 10.60 YES contracts and the market settles at \$0.5970, the raw payout is `10.60 * \$0.5970 = \$6.3282`. Because posted payouts must be whole-cent amounts, the exchange credits \$6.32 and records the remaining \$0.0082 as a settlement fee.
+
+This rounding adjustment is always less than \$0.01 on any posted payout and exists only to keep balances in whole-cent increments.
 
 ***
 

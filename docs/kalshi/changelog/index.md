@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-03-13T20:11:23.563Z
+Downloaded: 2026-03-20T20:10:41.279Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,20 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Mar 20, 2026"
+  tags={["Change", "Upcoming"]}
+  rss={{
+title: "OpenAPI schema cleanup for deprecated compatibility fields",
+description: "Trade and market position timestamps are now required in the spec, deprecated compatibility fields are now optional, and several schema inconsistencies were corrected."
+}}
+>
+  * `Trade.created_time` and `MarketPosition.last_updated_ts` are now required in the OpenAPI contract.
+  * Deprecated compatibility fields on `Market` and `Settlement` remain available, but are no longer marked as required.
+  * Fixed schema inconsistencies where `Trade.price` and `EventPosition.resting_orders_count` were listed as required without defined properties.
+  * Added semantic deprecation markers for deprecated fields such as `EventData.category` and `MarketPosition.resting_orders_count`.
+</Update>
 
 <Update
   label="Mar 12, 2026"

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-trades.md
-Downloaded: 2026-03-18T20:14:58.238Z
+Downloaded: 2026-03-20T20:10:41.273Z
 -->
 
 > ## Documentation Index
@@ -155,11 +155,11 @@ components:
       required:
         - trade_id
         - ticker
-        - price
         - count_fp
         - yes_price_dollars
         - no_price_dollars
         - taker_side
+        - created_time
       properties:
         trade_id:
           type: string

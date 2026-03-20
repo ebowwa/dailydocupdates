@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/hooks-guide.md
-Downloaded: 2026-03-19T20:14:10.159Z
+Downloaded: 2026-03-20T20:10:21.315Z
 -->
 
 > ## Documentation Index
@@ -472,7 +472,7 @@ Each event type matches on a specific field. Matchers support exact strings and 
 | :---------------------------------------------------------------------------------------------- | :------------------------ | :------------------------------------------------------------------------------------------------------------------------ |
 | `PreToolUse`, `PostToolUse`, `PostToolUseFailure`, `PermissionRequest`                          | tool name                 | `Bash`, `Edit\|Write`, `mcp__.*`                                                                                          |
 | `SessionStart`                                                                                  | how the session started   | `startup`, `resume`, `clear`, `compact`                                                                                   |
-| `SessionEnd`                                                                                    | why the session ended     | `clear`, `logout`, `prompt_input_exit`, `bypass_permissions_disabled`, `other`                                            |
+| `SessionEnd`                                                                                    | why the session ended     | `clear`, `resume`, `logout`, `prompt_input_exit`, `bypass_permissions_disabled`, `other`                                  |
 | `Notification`                                                                                  | notification type         | `permission_prompt`, `idle_prompt`, `auth_success`, `elicitation_dialog`                                                  |
 | `SubagentStart`                                                                                 | agent type                | `Bash`, `Explore`, `Plan`, or custom agent names                                                                          |
 | `PreCompact`, `PostCompact`                                                                     | what triggered compaction | `manual`, `auto`                                                                                                          |

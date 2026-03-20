@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/settings.md
-Downloaded: 2026-03-19T20:14:10.163Z
+Downloaded: 2026-03-20T20:10:21.319Z
 -->
 
 > ## Documentation Index
@@ -184,6 +184,7 @@ The `$schema` line in the example above points to the [official JSON schema](htt
 | `enableAllProjectMcpServers`      | Automatically approve all MCP servers defined in project `.mcp.json` files                                                                                                                                                                                                                                                   | `true`                                                                  |
 | `enabledMcpjsonServers`           | List of specific MCP servers from `.mcp.json` files to approve                                                                                                                                                                                                                                                               | `["memory", "github"]`                                                  |
 | `disabledMcpjsonServers`          | List of specific MCP servers from `.mcp.json` files to reject                                                                                                                                                                                                                                                                | `["filesystem"]`                                                        |
+| `channelsEnabled`                 | (Managed settings only) Allow [channels](/en/channels) for Team and Enterprise users. Unset or `false` blocks channel message delivery regardless of what users pass to `--channels`                                                                                                                                         | `true`                                                                  |
 | `allowedMcpServers`               | When set in managed-settings.json, allowlist of MCP servers users can configure. Undefined = no restrictions, empty array = lockdown. Applies to all scopes. Denylist takes precedence. See [Managed MCP configuration](/en/mcp#managed-mcp-configuration)                                                                   | `[{ "serverName": "github" }]`                                          |
 | `deniedMcpServers`                | When set in managed-settings.json, denylist of MCP servers that are explicitly blocked. Applies to all scopes including managed servers. Denylist takes precedence over allowlist. See [Managed MCP configuration](/en/mcp#managed-mcp-configuration)                                                                        | `[{ "serverName": "filesystem" }]`                                      |
 | `strictKnownMarketplaces`         | When set in managed-settings.json, allowlist of plugin marketplaces users can add. Undefined = no restrictions, empty array = lockdown. Applies to marketplace additions only. See [Managed marketplace restrictions](/en/plugin-marketplaces#managed-marketplace-restrictions)                                              | `[{ "source": "github", "repo": "acme-corp/plugins" }]`                 |
@@ -577,6 +578,31 @@ Defines additional marketplaces that should be made available for the repository
 * `git`: Any git URL (uses `url`)
 * `directory`: Local filesystem path (uses `path`, for development only)
 * `hostPattern`: regex pattern to match marketplace hosts (uses `hostPattern`)
+* `settings`: inline marketplace declared directly in settings.json without a separate hosted repository (uses `name` and `plugins`)
+
+Use `source: 'settings'` to declare a small set of plugins inline without setting up a hosted marketplace repository. Plugins listed here must reference external sources such as GitHub or npm. You still need to enable each plugin separately in `enabledPlugins`.
+
+```json  theme={null}
+{
+  "extraKnownMarketplaces": {
+    "team-tools": {
+      "source": {
+        "source": "settings",
+        "name": "team-tools",
+        "plugins": [
+          {
+            "name": "code-formatter",
+            "source": {
+              "source": "github",
+              "repo": "acme-corp/code-formatter"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
+```
 
 #### `strictKnownMarketplaces`
 
@@ -603,7 +629,7 @@ Defines additional marketplaces that should be made available for the repository
 
 **All supported source types**:
 
-The allowlist supports seven marketplace source types. Most sources use exact matching, while `hostPattern` uses regex matching against the marketplace host.
+The allowlist supports multiple marketplace source types. Most sources use exact matching, while `hostPattern` uses regex matching against the marketplace host.
 
 1. **GitHub repositories**:
 
