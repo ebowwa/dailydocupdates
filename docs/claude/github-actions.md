@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/github-actions.md
+Downloaded: 2026-03-21T20:07:30.977Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -650,7 +655,7 @@ Common arguments:
 * `--max-turns`: Maximum conversation turns (default: 10)
 * `--model`: Model to use (for example, `claude-sonnet-4-6`)
 * `--mcp-config`: Path to MCP configuration
-* `--allowed-tools`: Comma-separated list of allowed tools
+* `--allowedTools`: Comma-separated list of allowed tools. The `--allowed-tools` alias also works.
 * `--debug`: Enable debug output
 
 ### Alternative integration methods

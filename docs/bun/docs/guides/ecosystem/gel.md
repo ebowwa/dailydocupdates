@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/guides/ecosystem/gel.md
-Downloaded: 2026-03-13T20:11:27.090Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

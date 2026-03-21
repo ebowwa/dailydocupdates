@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/desktop.md
-Downloaded: 2026-03-18T20:14:55.474Z
+Downloaded: 2026-03-21T20:07:30.975Z
 -->
 
 > ## Documentation Index
@@ -433,9 +433,10 @@ Organizations on Teams or Enterprise plans can manage desktop app behavior throu
 
 These settings are configured through the [admin settings console](https://claude.ai/admin-settings/claude-code):
 
-* **Enable or disable the Code tab**: control whether users in your organization can access Claude Code in the desktop app
+* **Code in the desktop**: control whether users in your organization can access Claude Code in the desktop app
+* **Code in the web**: enable or disable [web sessions](/en/claude-code-on-the-web) for your organization
+* **Remote Control**: enable or disable [Remote Control](/en/remote-control) for your organization
 * **Disable Bypass permissions mode**: prevent users in your organization from enabling bypass permissions mode
-* **Disable Claude Code on the web**: enable or disable remote sessions for your organization
 
 ### Managed settings
 
