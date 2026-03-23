@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/common-workflows.md
-Downloaded: 2026-03-17T20:14:33.398Z
+Downloaded: 2026-03-23T20:16:12.680Z
 -->
 
 > ## Documentation Index
@@ -899,6 +899,25 @@ Suppose you need Claude's output in a specific format, especially when integrati
   * Use `--output-format text` for simple integrations where you just need Claude's response
   * Use `--output-format json` when you need the full conversation log
   * Use `--output-format stream-json` for real-time output of each conversation turn
+</Tip>
+
+***
+
+## Run Claude on a schedule
+
+Suppose you want Claude to handle a task automatically on a recurring basis, like reviewing open PRs every morning, auditing dependencies weekly, or checking for CI failures overnight.
+
+Pick a scheduling option based on where you want the task to run:
+
+| Option                                                          | Where it runs                     | Best for                                                                                                      |
+| :-------------------------------------------------------------- | :-------------------------------- | :------------------------------------------------------------------------------------------------------------ |
+| [Cloud scheduled tasks](/en/web-scheduled-tasks)                | Anthropic-managed infrastructure  | Tasks that should run even when your computer is off. Configure at [claude.ai/code](https://claude.ai/code).  |
+| [Desktop scheduled tasks](/en/desktop#schedule-recurring-tasks) | Your machine, via the desktop app | Tasks that need direct access to local files, tools, or uncommitted changes.                                  |
+| [GitHub Actions](/en/github-actions)                            | Your CI pipeline                  | Tasks tied to repo events like opened PRs, or cron schedules that should live alongside your workflow config. |
+| [`/loop`](/en/scheduled-tasks)                                  | The current CLI session           | Quick polling while a session is open. Tasks are cancelled when you exit.                                     |
+
+<Tip>
+  When writing prompts for scheduled tasks, be explicit about what success looks like and what to do with results. The task runs autonomously, so it can't ask clarifying questions. For example: "Review open PRs labeled `needs-review`, leave inline comments on any issues, and post a summary in the `#eng-reviews` Slack channel."
 </Tip>
 
 ***

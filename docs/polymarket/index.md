@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/index.md
-Downloaded: 2026-03-19T20:14:08.285Z
+Downloaded: 2026-03-23T20:16:15.147Z
 -->
 
 > ## Documentation Index
@@ -11,11 +11,16 @@ Downloaded: 2026-03-19T20:14:08.285Z
 
 > Build on the world's largest prediction market. Trade, integrate, and access real-time market data with the Polymarket API.
 
-export const IconCard = ({icon, title, description, href, color}) => {
-  return <a className="group flex flex-col p-5 border border-gray-200 dark:border-zinc-800 rounded-2xl hover:border-gray-300 dark:hover:border-zinc-700 hover:bg-gray-50 dark:hover:bg-zinc-900/50 transition-all duration-200" href={href}>
-      <div className="flex items-center justify-center w-10 h-10 rounded-lg mb-4" style={{
-    backgroundColor: color ? `${color}1A` : "#2E5CFF15"
-  }}>
+export const IconCard = ({ icon, title, description, href, color }) => {
+  return (
+    <a
+      className="group flex flex-col p-5 border border-gray-200 dark:border-zinc-800 rounded-2xl hover:border-gray-300 dark:hover:border-zinc-700 hover:bg-gray-50 dark:hover:bg-zinc-900/50 transition-all duration-200"
+      href={href}
+    >
+      <div
+        className="flex items-center justify-center w-10 h-10 rounded-lg mb-4"
+        style={{ backgroundColor: color ? `${color}1A` : "#2E5CFF15" }}
+      >
         <img src={"/images/icons/" + icon + ".svg"} />
       </div>
       <h3 className="text-base font-semibold text-gray-900 dark:text-zinc-50">
@@ -24,9 +29,9 @@ export const IconCard = ({icon, title, description, href, color}) => {
       <p className="mt-1.5 text-sm text-gray-500 dark:text-zinc-400">
         {description}
       </p>
-    </a>;
+    </a>
+  );
 };
-
 
 <a href="https://docs.polymarket.us" target="_blank" className="group flex items-center gap-3 mx-4 md:mx-24 mt-6 px-5 py-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-blue-500 transition-all duration-200 no-underline">
   <span className="text-2xl">🇺🇸</span>

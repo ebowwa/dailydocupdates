@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/commands.md
-Downloaded: 2026-03-17T20:14:33.398Z
+Downloaded: 2026-03-23T20:16:12.679Z
 -->
 
 > ## Documentation Index
@@ -69,6 +69,7 @@ In the table below, `<arg>` indicates a required argument and `[arg]` indicates 
 | `/review`                                | Deprecated. Install the [`code-review` plugin](https://github.com/anthropics/claude-code-marketplace/blob/main/code-review/README.md) instead: `claude plugin install code-review@claude-code-marketplace`                                                                                                                                              |
 | `/rewind`                                | Rewind the conversation and/or code to a previous point, or summarize from a selected message. See [checkpointing](/en/checkpointing). Alias: `/checkpoint`                                                                                                                                                                                             |
 | `/sandbox`                               | Toggle [sandbox mode](/en/sandboxing). Available on supported platforms only                                                                                                                                                                                                                                                                            |
+| `/schedule [description]`                | Create, update, list, or run [Cloud scheduled tasks](/en/web-scheduled-tasks). Claude walks you through the setup conversationally                                                                                                                                                                                                                      |
 | `/security-review`                       | Analyze pending changes on the current branch for security vulnerabilities. Reviews the git diff and identifies risks like injection, auth issues, and data exposure                                                                                                                                                                                    |
 | `/skills`                                | List available [skills](/en/skills)                                                                                                                                                                                                                                                                                                                     |
 | `/stats`                                 | Visualize daily usage, session history, streaks, and model preferences                                                                                                                                                                                                                                                                                  |
