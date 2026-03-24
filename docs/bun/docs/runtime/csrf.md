@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/runtime/csrf.md
-Downloaded: 2026-03-17T20:15:05.088Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

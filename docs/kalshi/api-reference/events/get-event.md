@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-event.md
-Downloaded: 2026-03-20T20:10:41.268Z
+Downloaded: 2026-03-24T20:18:06.942Z
 -->
 
 > ## Documentation Index
@@ -201,8 +201,6 @@ components:
           description: Whether this event is available to trade on brokers.
         product_metadata:
           type: object
-          nullable: true
-          x-omitempty: true
           description: Additional metadata for the event.
           x-go-type-skip-optional-pointer: true
         last_updated_ts:

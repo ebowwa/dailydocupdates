@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/voice-dictation.md
-Downloaded: 2026-03-17T20:14:33.406Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

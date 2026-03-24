@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/sandboxing.md
-Downloaded: 2026-03-21T20:07:30.981Z
+Downloaded: 2026-03-24T20:17:54.948Z
 -->
 
 > ## Documentation Index
@@ -311,6 +311,13 @@ For implementation details and source code, visit the [GitHub repository](https:
 * **Performance overhead**: Minimal, but some filesystem operations may be slightly slower
 * **Compatibility**: Some tools that require specific system access patterns may need configuration adjustments, or may even need to be run outside of the sandbox
 * **Platform support**: Supports macOS, Linux, and WSL2. WSL1 is not supported. Native Windows support is planned.
+
+## What sandboxing does not cover
+
+The sandbox isolates Bash subprocesses. Other tools operate under different boundaries:
+
+* **Built-in file tools**: Read, Edit, and Write use the permission system directly rather than running through the sandbox. See [permissions](/en/permissions).
+* **Computer use on Desktop**: when Claude opens apps and controls your screen on macOS, it runs on your actual desktop rather than in an isolated environment. Per-app permission prompts gate each application. See [computer use](/en/desktop#let-claude-use-your-computer).
 
 ## See also
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/plugin-marketplaces.md
-Downloaded: 2026-03-20T20:10:21.317Z
+Downloaded: 2026-03-24T20:17:54.947Z
 -->
 
 > ## Documentation Index
@@ -103,7 +103,7 @@ This example creates a marketplace with one plugin: a `/quality-review` skill fo
     Select some code in your editor and run your new command.
 
     ```shell  theme={null}
-    /review
+    /quality-review
     ```
   </Step>
 </Steps>

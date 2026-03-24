@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/websocket-connection.md
-Downloaded: 2026-03-19T20:14:19.704Z
+Downloaded: 2026-03-24T20:18:06.954Z
 -->
 
 > ## Documentation Index
@@ -186,6 +186,7 @@ operations:
                       - fill
                       - market_positions
                       - market_lifecycle_v2
+                      - multivariate_market_lifecycle
                       - multivariate
                       - communications
                       - order_group_updates

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/wss/market.md
-Downloaded: 2026-03-19T20:14:08.284Z
+Downloaded: 2026-03-24T20:18:07.973Z
 -->
 
 > ## Documentation Index
@@ -895,6 +895,40 @@ operations:
               - name: tags
                 type: array
                 required: false
+              - name: condition_id
+                type: string
+                description: Condition ID
+                required: false
+              - name: active
+                type: boolean
+                description: Whether the market is active
+                required: false
+              - name: clob_token_ids
+                type: array
+                description: CLOB token IDs for the market
+                required: false
+              - name: sports_market_type
+                type: string
+                description: Sports market type such as spread or moneyline
+                required: false
+              - name: line
+                type: string
+                description: Betting line value, or an empty string when not applicable
+                required: false
+              - name: game_start_time
+                type: string
+                description: >-
+                  Game start time in RFC3339 format, or an empty string when not
+                  applicable
+                required: false
+              - name: order_price_min_tick_size
+                type: string
+                description: Minimum tick size for order prices
+                required: false
+              - name: group_item_title
+                type: string
+                description: Display title for the group item
+                required: false
         headers: []
         jsonPayloadSchema:
           type: object
@@ -971,6 +1005,43 @@ operations:
                 type: string
                 x-parser-schema-id: <anonymous-schema-73>
               x-parser-schema-id: <anonymous-schema-72>
+            condition_id:
+              type: string
+              description: Condition ID
+              x-parser-schema-id: <anonymous-schema-74>
+            active:
+              type: boolean
+              description: Whether the market is active
+              x-parser-schema-id: <anonymous-schema-75>
+            clob_token_ids:
+              type: array
+              description: CLOB token IDs for the market
+              items:
+                type: string
+                x-parser-schema-id: <anonymous-schema-77>
+              x-parser-schema-id: <anonymous-schema-76>
+            sports_market_type:
+              type: string
+              description: Sports market type such as spread or moneyline
+              x-parser-schema-id: <anonymous-schema-78>
+            line:
+              type: string
+              description: Betting line value, or an empty string when not applicable
+              x-parser-schema-id: <anonymous-schema-79>
+            game_start_time:
+              type: string
+              description: >-
+                Game start time in RFC3339 format, or an empty string when not
+                applicable
+              x-parser-schema-id: <anonymous-schema-80>
+            order_price_min_tick_size:
+              type: string
+              description: Minimum tick size for order prices
+              x-parser-schema-id: <anonymous-schema-81>
+            group_item_title:
+              type: string
+              description: Display title for the group item
+              x-parser-schema-id: <anonymous-schema-82>
           x-parser-schema-id: NewMarketEvent
         title: New Market
         description: 'New market creation event — requires custom_feature_enabled: true'
@@ -981,6 +1052,7 @@ operations:
             "question": "Will NVIDIA (NVDA) close above $240 end of January?",
             "market": "0x311d0c4b6671ab54af4970c06fcf58662516f5168997bdda209ec3db5aa6b0c1",
             "slug": "nvda-above-240-on-january-30-2026",
+            "description": "This market will resolve to \"Yes\" if the official closing price for NVIDIA (NVDA) on the final trading day of January 2026 is higher than the listed price. Otherwise, this market will resolve to \"No\".",
             "assets_ids": [
               "76043073756653678226373981964075571318267289248134717369284518995922789326425",
               "31690934263385727664202099278545688007799199447969475608906331829650099442770"
@@ -989,11 +1061,28 @@ operations:
               "Yes",
               "No"
             ],
+            "event_message": {
+              "id": "125819",
+              "ticker": "nvda-above-in-january-2026",
+              "slug": "nvda-above-in-january-2026",
+              "title": "Will NVIDIA (NVDA) close above ___ end of January?",
+              "description": "This market will resolve to \"Yes\" if the official closing price for NVIDIA (NVDA) on the final trading day of January 2026 is higher than the listed price. Otherwise, this market will resolve to \"No\"."
+            },
             "timestamp": "1766790415550",
             "tags": [
-              "stocks",
-              "indices"
-            ]
+              "stocks"
+            ],
+            "condition_id": "0x311d0c4b6671ab54af4970c06fcf58662516f5168997bdda209ec3db5aa6b0c1",
+            "active": true,
+            "clob_token_ids": [
+              "76043073756653678226373981964075571318267289248134717369284518995922789326425",
+              "31690934263385727664202099278545688007799199447969475608906331829650099442770"
+            ],
+            "sports_market_type": "",
+            "line": "",
+            "game_start_time": "",
+            "order_price_min_tick_size": "0.01",
+            "group_item_title": "NVDA above $240"
           }
         bindings: []
         extensions:
@@ -1077,36 +1166,36 @@ operations:
             event_type:
               type: string
               const: market_resolved
-              x-parser-schema-id: <anonymous-schema-74>
+              x-parser-schema-id: <anonymous-schema-83>
             id:
               type: string
-              x-parser-schema-id: <anonymous-schema-75>
+              x-parser-schema-id: <anonymous-schema-84>
             market:
               type: string
               description: Condition ID
-              x-parser-schema-id: <anonymous-schema-76>
+              x-parser-schema-id: <anonymous-schema-85>
             assets_ids:
               type: array
               items:
                 type: string
-                x-parser-schema-id: <anonymous-schema-78>
-              x-parser-schema-id: <anonymous-schema-77>
+                x-parser-schema-id: <anonymous-schema-87>
+              x-parser-schema-id: <anonymous-schema-86>
             winning_asset_id:
               type: string
-              x-parser-schema-id: <anonymous-schema-79>
+              x-parser-schema-id: <anonymous-schema-88>
             winning_outcome:
               type: string
-              x-parser-schema-id: <anonymous-schema-80>
+              x-parser-schema-id: <anonymous-schema-89>
             event_message: *ref_2
             timestamp:
               type: string
-              x-parser-schema-id: <anonymous-schema-81>
+              x-parser-schema-id: <anonymous-schema-90>
             tags:
               type: array
               items:
                 type: string
-                x-parser-schema-id: <anonymous-schema-83>
-              x-parser-schema-id: <anonymous-schema-82>
+                x-parser-schema-id: <anonymous-schema-92>
+              x-parser-schema-id: <anonymous-schema-91>
           x-parser-schema-id: MarketResolvedEvent
         title: Market Resolved
         description: 'Market resolution event — requires custom_feature_enabled: true'

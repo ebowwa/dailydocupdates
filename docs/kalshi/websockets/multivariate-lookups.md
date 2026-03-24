@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/multivariate-lookups.md
+Downloaded: 2026-03-24T20:18:06.953Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -7,7 +12,7 @@
 > Multivariate collection lookup notifications.
 
 **Requirements:**
-- Authentication required (authenticated WebSocket connection)
+- No additional channel-level authentication beyond the authenticated WebSocket connection
 - No filtering parameters; subscription is global
 
 **Use case:** Tracking multivariate market relationships
@@ -20,12 +25,17 @@
 ````yaml asyncapi.yaml multivariate
 id: multivariate
 title: Multivariate Lookups
-description: |
+description: >
   Multivariate collection lookup notifications.
 
+
   **Requirements:**
-  - Authentication required (authenticated WebSocket connection)
+
+  - No additional channel-level authentication beyond the authenticated
+  WebSocket connection
+
   - No filtering parameters; subscription is global
+
 
   **Use case:** Tracking multivariate market relationships
 servers:
@@ -89,7 +99,7 @@ operations:
             type:
               type: string
               const: multivariate_lookup
-              x-parser-schema-id: <anonymous-schema-140>
+              x-parser-schema-id: <anonymous-schema-144>
             sid:
               type: integer
               description: >-
@@ -107,13 +117,13 @@ operations:
               properties:
                 collection_ticker:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-142>
+                  x-parser-schema-id: <anonymous-schema-146>
                 event_ticker:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-143>
+                  x-parser-schema-id: <anonymous-schema-147>
                 market_ticker:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-144>
+                  x-parser-schema-id: <anonymous-schema-148>
                 selected_markets:
                   type: array
                   items:
@@ -125,10 +135,10 @@ operations:
                     properties:
                       event_ticker:
                         type: string
-                        x-parser-schema-id: <anonymous-schema-147>
+                        x-parser-schema-id: <anonymous-schema-151>
                       market_ticker:
                         type: string
-                        x-parser-schema-id: <anonymous-schema-148>
+                        x-parser-schema-id: <anonymous-schema-152>
                       side:
                         type: string
                         description: Market side
@@ -136,9 +146,9 @@ operations:
                           - 'yes'
                           - 'no'
                         x-parser-schema-id: marketSide
-                    x-parser-schema-id: <anonymous-schema-146>
-                  x-parser-schema-id: <anonymous-schema-145>
-              x-parser-schema-id: <anonymous-schema-141>
+                    x-parser-schema-id: <anonymous-schema-150>
+                  x-parser-schema-id: <anonymous-schema-149>
+              x-parser-schema-id: <anonymous-schema-145>
           x-parser-schema-id: multivariateLookupPayload
         title: Multivariate Lookup
         description: Multivariate collection lookup notification

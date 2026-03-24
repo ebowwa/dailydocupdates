@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/how-claude-code-works.md
-Downloaded: 2026-03-22T20:07:41.175Z
+Downloaded: 2026-03-24T20:17:54.944Z
 -->
 
 > ## Documentation Index
@@ -166,6 +166,7 @@ Press `Shift+Tab` to cycle through permission modes:
 * **Default**: Claude asks before file edits and shell commands
 * **Auto-accept edits**: Claude edits files without asking, still asks for commands
 * **Plan mode**: Claude uses read-only tools only, creating a plan you can approve before execution
+* **Auto mode**: Claude evaluates all actions with background safety checks. Currently a research preview
 
 You can also allow specific commands in `.claude/settings.json` so Claude doesn't ask each time. This is useful for trusted commands like `npm test` or `git status`. Settings can be scoped from organization-wide policies down to personal preferences. See [Permissions](/en/permissions) for details.
 
