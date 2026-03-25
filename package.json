@@ -9,7 +9,7 @@
     "notify:dry": "bun run scripts/notify.ts --dry-run"
   },
   "dependencies": {
-    "@ebowwa/ai": "^0.3.9",
+    "@ebowwa/ai": "^0.3.16",
     "@ebowwa/channel-telegram": "^1.14.7",
     "@ebowwa/codespaces-types": "^1.6.3",
     "@ebowwa/cron-notifier": "^0.6.0",
