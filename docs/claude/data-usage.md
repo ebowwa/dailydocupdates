@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/data-usage.md
-Downloaded: 2026-03-18T20:14:55.474Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

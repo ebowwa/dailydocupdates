@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/core/get-user-activity.md
-Downloaded: 2026-03-19T20:14:08.270Z
+Downloaded: 2026-03-25T20:15:06.150Z
 -->
 
 > ## Documentation Index
@@ -94,6 +94,7 @@ paths:
                 - REWARD
                 - CONVERSION
                 - MAKER_REBATE
+                - REFERRAL_REWARD
         - in: query
           name: start
           schema:
@@ -187,6 +188,7 @@ components:
             - REWARD
             - CONVERSION
             - MAKER_REBATE
+            - REFERRAL_REWARD
         size:
           type: number
         usdcSize:

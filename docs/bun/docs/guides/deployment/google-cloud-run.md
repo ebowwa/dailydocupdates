@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/deployment/google-cloud-run.md
+Downloaded: 2026-03-25T20:15:13.806Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -115,7 +120,6 @@ In this guide, we will deploy a Bun HTTP server to Google Cloud Run using a `Doc
     # Copy the package.json and bun.lock into the container
     COPY package.json bun.lock ./
 
-    # Install the dependencies
     # Install the dependencies
     RUN bun install --production --frozen-lockfile
 

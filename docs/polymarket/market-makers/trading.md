@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-makers/trading.md
+Downloaded: 2026-03-25T20:15:06.161Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -320,16 +325,15 @@ Your order price must conform to the market's tick size, or it will be rejected.
 
 ## Fees
 
-Most markets have **zero fees** for both makers and takers. However, the following market types have taker fees:
+Most markets charge a small taker fee. Makers are never charged fees. **Geopolitical and world events markets are fee-free.**
 
-* **All crypto markets**
-* **Select sports markets** (e.g., NCAAB, Serie A)
+Taker fees fund the [Maker Rebates Program](/market-makers/maker-rebates), which pays daily USDC rebates to liquidity providers.
 
 <Note>
   Fees apply only to markets deployed on or after the activation date. Pre-existing markets are unaffected. Markets with fees enabled have `feesEnabled` set to `true` on the market object.
 </Note>
 
-See [Fees](/trading/fees) for the full fee schedule and calculation details.
+See [Fees](/trading/fees) for the full fee schedule, rates by category, and calculation details.
 
 ***
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/typescript.md
+Downloaded: 2026-03-25T20:15:13.815Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -24,6 +29,7 @@ Below is the full set of recommended `compilerOptions` for a Bun project. With t
     "moduleDetection": "force",
     "jsx": "react-jsx",
     "allowJs": true,
+    "types": ["bun"],
 
     // Bundler mode
     "moduleResolution": "bundler",

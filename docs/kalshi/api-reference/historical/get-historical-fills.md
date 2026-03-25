@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-fills.md
-Downloaded: 2026-03-18T20:14:58.235Z
+Downloaded: 2026-03-25T20:15:21.260Z
 -->
 
 > ## Documentation Index
@@ -154,8 +154,6 @@ components:
         - count_fp
         - yes_price_dollars
         - no_price_dollars
-        - yes_price_fixed
-        - no_price_fixed
         - is_taker
         - fee_cost
       properties:
@@ -197,23 +195,9 @@ components:
         yes_price_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           description: Fill price for the yes side in fixed-point dollars
-        yes_price_fixed:
-          type: string
-          description: >-
-            DEPRECATED: Use yes_price_dollars. This alias remains available for
-            now for compatibility. Fill price for the yes side in fixed point
-            dollars.
-          deprecated: true
         no_price_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           description: Fill price for the no side in fixed-point dollars
-        no_price_fixed:
-          type: string
-          description: >-
-            DEPRECATED: Use no_price_dollars. This alias remains available for
-            now for compatibility. Fill price for the no side in fixed point
-            dollars.
-          deprecated: true
         is_taker:
           type: boolean
           description: >-
@@ -225,7 +209,7 @@ components:
           description: Timestamp when this fill was executed
         fee_cost:
           $ref: '#/components/schemas/FixedPointDollars'
-          description: Fee cost in centi-cents
+          description: Fee cost in fixed-point dollars
         subaccount_number:
           type: integer
           nullable: true

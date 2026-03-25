@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-03-24T20:18:06.948Z
+Downloaded: 2026-03-25T20:15:21.269Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,21 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Apr 2, 2026"
+  tags={["Breaking Change", "Upcoming"]}
+  rss={{
+title: "Fixed-point migration cleanup: remove last legacy fields",
+description: "Removed the last legacy fields from Settlement, Fill, and market_positions responses."
+}}
+>
+  This release removes the last remaining legacy fields:
+
+  * Removed `yes_total_cost` and `no_total_cost` (integer cents) from `GET /portfolio/settlements`. Use `yes_total_cost_dollars` and `no_total_cost_dollars`.
+  * Removed `yes_price_fixed` and `no_price_fixed` (string aliases) from `GET /portfolio/fills`. Use `yes_price_dollars` and `no_price_dollars`.
+  * Removed `position_cost`, `realized_pnl`, `fees_paid`, and `position_fee_cost` (integer centi-cents) from the `market_positions` WebSocket channel. Use the `_dollars` equivalents.
+</Update>
 
 <Update
   label="Mar 23, 2026"

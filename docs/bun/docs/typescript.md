@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/typescript.md
+Downloaded: 2026-03-25T20:15:13.832Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -28,6 +33,7 @@ Bun supports things like top-level await, JSX, and extensioned `.ts` imports, wh
     "moduleDetection": "force",
     "jsx": "react-jsx",
     "allowJs": true,
+    "types": ["bun"],
 
     // Bundler mode
     "moduleResolution": "bundler",
