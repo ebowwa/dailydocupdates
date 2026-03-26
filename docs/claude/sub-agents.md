@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/sub-agents.md
-Downloaded: 2026-03-25T20:14:59.932Z
+Downloaded: 2026-03-26T20:12:46.350Z
 -->
 
 > ## Documentation Index
@@ -249,6 +249,13 @@ The `model` field controls which [AI model](/en/model-config) the subagent uses:
 * **Full model ID**: Use a full model ID such as `claude-opus-4-6` or `claude-sonnet-4-6`. Accepts the same values as the `--model` flag
 * **inherit**: Use the same model as the main conversation
 * **Omitted**: If not specified, defaults to `inherit` (uses the same model as the main conversation)
+
+When Claude invokes a subagent, it can also pass a `model` parameter for that specific invocation. Claude Code resolves the subagent's model in this order:
+
+1. The [`CLAUDE_CODE_SUBAGENT_MODEL`](/en/model-config#environment-variables) environment variable, if set
+2. The per-invocation `model` parameter
+3. The subagent definition's `model` frontmatter
+4. The main conversation's model
 
 ### Control subagent capabilities
 

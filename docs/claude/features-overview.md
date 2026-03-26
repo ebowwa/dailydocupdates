@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/features-overview.md
-Downloaded: 2026-03-20T20:10:21.313Z
+Downloaded: 2026-03-26T20:12:46.342Z
 -->
 
 > ## Documentation Index
@@ -86,7 +86,7 @@ Some features can seem similar. Here's how to tell them apart.
 
     **Put it in a skill** if it's reference material Claude needs sometimes (API docs, style guides) or a workflow you trigger with `/<name>` (deploy, review, release).
 
-    **Rule of thumb:** Keep CLAUDE.md under 200 lines. If it's growing, move reference content to skills or split into [`.claude/rules/`](/en/memory#organize-rules-with-clauderules) files.
+    **Rule of thumb:** Keep CLAUDE.md under 200 lines. If it's growing, move reference content to skills or split into [`.claude/rules/`](/en/memory#organize-rules-with-claude/rules/) files.
   </Tab>
 
   <Tab title="CLAUDE.md vs Rules vs Skills">

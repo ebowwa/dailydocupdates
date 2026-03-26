@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/remote-control.md
-Downloaded: 2026-03-24T20:17:54.948Z
+Downloaded: 2026-03-26T20:12:46.348Z
 -->
 
 > ## Documentation Index
@@ -141,6 +141,18 @@ Use Remote Control when you're in the middle of local work and want to keep goin
 * **Extended network outage**: if your machine is awake but unable to reach the network for more than roughly 10 minutes, the session times out and the process exits. Run `claude remote-control` again to start a new session.
 
 ## Troubleshooting
+
+### "Remote Control requires a claude.ai subscription"
+
+You're not authenticated with a claude.ai account. Run `claude auth login` and choose the claude.ai option. If `ANTHROPIC_API_KEY` is set in your environment, unset it first.
+
+### "Remote Control requires a full-scope login token"
+
+You're authenticated with a long-lived token from `claude setup-token` or the `CLAUDE_CODE_OAUTH_TOKEN` environment variable. These tokens are limited to inference-only and cannot establish Remote Control sessions. Run `claude auth login` to authenticate with a full-scope session token instead.
+
+### "Unable to determine your organization for Remote Control eligibility"
+
+Your cached account information is stale or incomplete. Run `claude auth login` to refresh it.
 
 ### "Remote Control is not yet enabled for your account"
 

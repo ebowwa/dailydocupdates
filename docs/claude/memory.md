@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/memory.md
-Downloaded: 2026-03-20T20:10:21.316Z
+Downloaded: 2026-03-26T20:12:46.345Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Each Claude Code session begins with a fresh context window. Two mechanisms carr
 This page covers how to:
 
 * [Write and organize CLAUDE.md files](#claude-md-files)
-* [Scope rules to specific file types](#organize-rules-with-clauderules) with `.claude/rules/`
+* [Scope rules to specific file types](#organize-rules-with-claude/rules/) with `.claude/rules/`
 * [Configure auto memory](#auto-memory) so Claude takes notes automatically
 * [Troubleshoot](#troubleshoot-memory-issues) when instructions aren't being followed
 
@@ -32,7 +32,7 @@ Claude Code has two complementary memory systems. Both are loaded at the start o
 | **Who writes it**    | You                                               | Claude                                                           |
 | **What it contains** | Instructions and rules                            | Learnings and patterns                                           |
 | **Scope**            | Project, user, or org                             | Per working tree                                                 |
-| **Loaded into**      | Every session                                     | Every session (first 200 lines)                                  |
+| **Loaded into**      | Every session                                     | Every session (first 200 lines or 25KB)                          |
 | **Use for**          | Coding standards, workflows, project architecture | Build commands, debugging insights, preferences Claude discovers |
 
 Use CLAUDE.md files when you want to guide Claude's behavior. Auto memory lets Claude learn from your corrections without manual effort.
@@ -55,7 +55,7 @@ CLAUDE.md files can live in several locations, each with a different scope. More
 
 CLAUDE.md files in the directory hierarchy above the working directory are loaded in full at launch. CLAUDE.md files in subdirectories load on demand when Claude reads files in those directories. See [How CLAUDE.md files load](#how-claude-md-files-load) for the full resolution order.
 
-For large projects, you can break instructions into topic-specific files using [project rules](#organize-rules-with-clauderules). Rules let you scope instructions to specific file types or subdirectories.
+For large projects, you can break instructions into topic-specific files using [project rules](#organize-rules-with-claude/rules/). Rules let you scope instructions to specific file types or subdirectories.
 
 ### Set up a project CLAUDE.md
 
@@ -71,7 +71,7 @@ A project CLAUDE.md can be stored in either `./CLAUDE.md` or `./.claude/CLAUDE.m
 
 CLAUDE.md files are loaded into the context window at the start of every session, consuming tokens alongside your conversation. Because they're context rather than enforced configuration, how you write instructions affects how reliably Claude follows them. Specific, concise, well-structured instructions work best.
 
-**Size**: target under 200 lines per CLAUDE.md file. Longer files consume more context and reduce adherence. If your instructions are growing large, split them using [imports](#import-additional-files) or [`.claude/rules/`](#organize-rules-with-clauderules) files.
+**Size**: target under 200 lines per CLAUDE.md file. Longer files consume more context and reduce adherence. If your instructions are growing large, split them using [imports](#import-additional-files) or [`.claude/rules/`](#organize-rules-with-claude/rules/) files.
 
 **Structure**: use markdown headers and bullets to group related instructions. Claude scans structure the same way readers do: organized sections are easier to follow than dense paragraphs.
 
@@ -81,7 +81,7 @@ CLAUDE.md files are loaded into the context window at the start of every session
 * "Run `npm test` before committing" instead of "Test your changes"
 * "API handlers live in `src/api/handlers/`" instead of "Keep files organized"
 
-**Consistency**: if two rules contradict each other, Claude may pick one arbitrarily. Review your CLAUDE.md files, nested CLAUDE.md files in subdirectories, and [`.claude/rules/`](#organize-rules-with-clauderules) periodically to remove outdated or conflicting instructions. In monorepos, use [`claudeMdExcludes`](#exclude-specific-claude-md-files) to skip CLAUDE.md files from other teams that aren't relevant to your work.
+**Consistency**: if two rules contradict each other, Claude may pick one arbitrarily. Review your CLAUDE.md files, nested CLAUDE.md files in subdirectories, and [`.claude/rules/`](#organize-rules-with-claude/rules/) periodically to remove outdated or conflicting instructions. In monorepos, use [`claudeMdExcludes`](#exclude-specific-claude-md-files) to skip CLAUDE.md files from other teams that aren't relevant to your work.
 
 ### Import additional files
 
@@ -109,7 +109,19 @@ For personal preferences you don't want to check in, import a file from your hom
   The first time Claude Code encounters external imports in a project, it shows an approval dialog listing the files. If you decline, the imports stay disabled and the dialog does not appear again.
 </Warning>
 
-For a more structured approach to organizing instructions, see [`.claude/rules/`](#organize-rules-with-clauderules).
+For a more structured approach to organizing instructions, see [`.claude/rules/`](#organize-rules-with-claude/rules/).
+
+### AGENTS.md
+
+Claude Code reads `CLAUDE.md`, not `AGENTS.md`. If your repository already uses `AGENTS.md` for other coding agents, create a `CLAUDE.md` that imports it so both tools read the same instructions without duplicating them. You can also add Claude-specific instructions below the import. Claude loads the imported file at session start, then appends the rest:
+
+```markdown CLAUDE.md theme={null}
+@AGENTS.md
+
+## Claude Code
+
+Use plan mode for changes under `src/billing/`.
+```
 
 ### How CLAUDE.md files load
 
@@ -118,6 +130,8 @@ Claude Code reads CLAUDE.md files by walking up the directory tree from your cur
 Claude also discovers CLAUDE.md files in subdirectories under your current working directory. Instead of loading them at launch, they are included when Claude reads files in those subdirectories.
 
 If you work in a large monorepo where other teams' CLAUDE.md files get picked up, use [`claudeMdExcludes`](#exclude-specific-claude-md-files) to skip them.
+
+Block-level HTML comments (`<!-- maintainer notes -->`) in CLAUDE.md files are stripped before the content is injected into Claude's context. Use them to leave notes for human maintainers without spending context tokens on them. Comments inside code blocks are preserved. When you open a CLAUDE.md file directly with the Read tool, comments remain visible.
 
 #### Load from additional directories
 
@@ -318,9 +332,9 @@ Auto memory is machine-local. All worktrees and subdirectories within the same g
 
 ### How it works
 
-The first 200 lines of `MEMORY.md` are loaded at the start of every conversation. Content beyond line 200 is not loaded at session start. Claude keeps `MEMORY.md` concise by moving detailed notes into separate topic files.
+The first 200 lines of `MEMORY.md`, or the first 25KB, whichever comes first, are loaded at the start of every conversation. Content beyond that threshold is not loaded at session start. Claude keeps `MEMORY.md` concise by moving detailed notes into separate topic files.
 
-This 200-line limit applies only to `MEMORY.md`. CLAUDE.md files are loaded in full regardless of length, though shorter files produce better adherence.
+This limit applies only to `MEMORY.md`. CLAUDE.md files are loaded in full regardless of length, though shorter files produce better adherence.
 
 Topic files like `debugging.md` or `patterns.md` are not loaded at startup. Claude reads them on demand using its standard file tools when it needs the information.
 

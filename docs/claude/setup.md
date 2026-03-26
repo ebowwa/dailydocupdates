@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/setup.md
+Downloaded: 2026-03-26T20:12:46.349Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -110,6 +115,8 @@ If Claude Code can't find your Git Bash installation, set the path in your [sett
   }
 }
 ```
+
+Claude Code can also run PowerShell natively on Windows as an opt-in preview. See [PowerShell tool](/en/tools-reference#powershell-tool) for setup and limitations.
 
 **Option 2: WSL**
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/mcp.md
-Downloaded: 2026-03-25T20:14:59.927Z
+Downloaded: 2026-03-26T20:12:46.345Z
 -->
 
 > ## Documentation Index
@@ -502,6 +502,8 @@ Select your scope based on:
 ### Scope hierarchy and precedence
 
 MCP server configurations follow a clear precedence hierarchy. When servers with the same name exist at multiple scopes, the system resolves conflicts by prioritizing local-scoped servers first, followed by project-scoped servers, and finally user-scoped servers. This design ensures that personal configurations can override shared ones when needed.
+
+If a server is configured both locally and through a [claude.ai connector](#use-mcp-servers-from-claude-ai), the local configuration takes precedence and the connector entry is skipped.
 
 ### Environment variable expansion in `.mcp.json`
 
@@ -1074,6 +1076,8 @@ Add clear, descriptive server instructions that explain:
 * What category of tasks your tools handle
 * When Claude should search for your tools
 * Key capabilities your server provides
+
+Claude Code truncates tool descriptions and server instructions at 2KB each. Keep them concise to avoid truncation, and put critical details near the start.
 
 ### Configure tool search
 

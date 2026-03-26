@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/typescript.md
-Downloaded: 2026-03-25T20:15:13.832Z
+Downloaded: 2026-03-26T20:13:13.150Z
 -->
 
 > ## Documentation Index
@@ -61,6 +61,10 @@ If you run `bun init` in a new directory, this `tsconfig.json` will be generated
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun init
 ```
+
+## TypeScript 6 and 7
+
+If you're using TypeScript 6.0 or later, you'll also need to add `"types": ["bun"]` to your `compilerOptions`. See [TypeScript 6 and 7](/typescript-6) for details.
 
 
 Built with [Mintlify](https://mintlify.com).

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/keybindings.md
-Downloaded: 2026-03-25T20:14:59.927Z
+Downloaded: 2026-03-26T20:12:46.344Z
 -->
 
 > ## Documentation Index
@@ -101,19 +101,20 @@ Actions for navigating command history:
 
 Actions available in the `Chat` context:
 
-| Action                | Default                   | Description                |
-| :-------------------- | :------------------------ | :------------------------- |
-| `chat:cancel`         | Escape                    | Cancel current input       |
-| `chat:killAgents`     | Ctrl+X Ctrl+K             | Kill all background agents |
-| `chat:cycleMode`      | Shift+Tab\*               | Cycle permission modes     |
-| `chat:modelPicker`    | Cmd+P / Meta+P            | Open model picker          |
-| `chat:fastMode`       | Meta+O                    | Toggle fast mode           |
-| `chat:thinkingToggle` | Cmd+T / Meta+T            | Toggle extended thinking   |
-| `chat:submit`         | Enter                     | Submit message             |
-| `chat:undo`           | Ctrl+\_                   | Undo last action           |
-| `chat:externalEditor` | Ctrl+G, Ctrl+X Ctrl+E     | Open in external editor    |
-| `chat:stash`          | Ctrl+S                    | Stash current prompt       |
-| `chat:imagePaste`     | Ctrl+V (Alt+V on Windows) | Paste image                |
+| Action                | Default                   | Description                         |
+| :-------------------- | :------------------------ | :---------------------------------- |
+| `chat:cancel`         | Escape                    | Cancel current input                |
+| `chat:killAgents`     | Ctrl+X Ctrl+K             | Kill all background agents          |
+| `chat:cycleMode`      | Shift+Tab\*               | Cycle permission modes              |
+| `chat:modelPicker`    | Cmd+P / Meta+P            | Open model picker                   |
+| `chat:fastMode`       | Meta+O                    | Toggle fast mode                    |
+| `chat:thinkingToggle` | Cmd+T / Meta+T            | Toggle extended thinking            |
+| `chat:submit`         | Enter                     | Submit message                      |
+| `chat:newline`        | (unbound)                 | Insert a newline without submitting |
+| `chat:undo`           | Ctrl+\_                   | Undo last action                    |
+| `chat:externalEditor` | Ctrl+G, Ctrl+X Ctrl+E     | Open in external editor             |
+| `chat:stash`          | Ctrl+S                    | Stash current prompt                |
+| `chat:imagePaste`     | Ctrl+V (Alt+V on Windows) | Paste image                         |
 
 \*On Windows without VT mode (Node \<24.2.0/\<22.17.0, Bun \<1.2.23), defaults to Meta+M.
 
@@ -219,12 +220,14 @@ Actions available in the `Attachments` context:
 
 Actions available in the `Footer` context:
 
-| Action                  | Default | Description               |
-| :---------------------- | :------ | :------------------------ |
-| `footer:next`           | Right   | Next footer item          |
-| `footer:previous`       | Left    | Previous footer item      |
-| `footer:openSelected`   | Enter   | Open selected footer item |
-| `footer:clearSelection` | Escape  | Clear footer selection    |
+| Action                  | Default | Description                              |
+| :---------------------- | :------ | :--------------------------------------- |
+| `footer:next`           | Right   | Next footer item                         |
+| `footer:previous`       | Left    | Previous footer item                     |
+| `footer:up`             | Up      | Navigate up in footer (deselects at top) |
+| `footer:down`           | Down    | Navigate down in footer                  |
+| `footer:openSelected`   | Enter   | Open selected footer item                |
+| `footer:clearSelection` | Escape  | Clear footer selection                   |
 
 ### Message selector actions
 
@@ -322,7 +325,7 @@ ctrl+shift+c    Multiple modifiers
 
 A standalone uppercase letter implies Shift. For example, `K` is equivalent to `shift+k`. This is useful for vim-style bindings where uppercase and lowercase keys have different meanings.
 
-Uppercase letters with modifiers (e.g., `ctrl+K`) are treated as stylistic and do **not** imply Shift — `ctrl+K` is the same as `ctrl+k`.
+Uppercase letters with modifiers (e.g., `ctrl+K`) are treated as stylistic and do **not** imply Shift: `ctrl+K` is the same as `ctrl+k`.
 
 ### Chords
 
@@ -357,6 +360,25 @@ Set an action to `null` to unbind a default shortcut:
   ]
 }
 ```
+
+This also works for chord bindings. Unbinding every chord that shares a prefix frees that prefix for use as a single-key binding:
+
+```json  theme={null}
+{
+  "bindings": [
+    {
+      "context": "Chat",
+      "bindings": {
+        "ctrl+x ctrl+k": null,
+        "ctrl+x ctrl+e": null,
+        "ctrl+x": "chat:newline"
+      }
+    }
+  ]
+}
+```
+
+If you unbind some but not all chords on a prefix, pressing the prefix still enters chord-wait mode for the remaining bindings.
 
 ## Reserved shortcuts
 

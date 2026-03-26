@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/runtime/typescript.md
-Downloaded: 2026-03-25T20:15:13.815Z
+Downloaded: 2026-03-26T20:13:13.133Z
 -->
 
 > ## Documentation Index
@@ -51,6 +51,10 @@ Below is the full set of recommended `compilerOptions` for a Bun project. With t
   }
 }
 ```
+
+***
+
+If you're using TypeScript 6.0 or later, you'll also need to add `"types": ["bun"]` to your `compilerOptions`. See [TypeScript 6 and 7](/typescript-6) for details.
 
 ***
 
