@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/api-reference/rewards/get-reward-percentages-for-user.md
-Downloaded: 2026-03-19T20:14:08.279Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

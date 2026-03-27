@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/api-reference/historical/get-historical-trades.md
-Downloaded: 2026-03-20T20:10:41.271Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

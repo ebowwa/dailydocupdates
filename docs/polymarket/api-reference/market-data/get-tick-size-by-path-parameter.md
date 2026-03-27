@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/api-reference/market-data/get-tick-size-by-path-parameter.md
-Downloaded: 2026-03-19T20:14:08.274Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/desktop.md
-Downloaded: 2026-03-25T20:14:59.923Z
+Downloaded: 2026-03-27T20:13:24.045Z
 -->
 
 > ## Documentation Index
@@ -191,6 +191,8 @@ Each session is an independent conversation with its own context and changes. Yo
 Click **+ New session** in the sidebar to work on multiple tasks in parallel. For Git repositories, each session gets its own isolated copy of your project using [Git worktrees](/en/common-workflows#run-parallel-claude-code-sessions-with-git-worktrees), so changes in one session don't affect other sessions until you commit them.
 
 Worktrees are stored in `<project-root>/.claude/worktrees/` by default. You can change this to a custom directory in Settings → Claude Code under "Worktree location". You can also set a branch prefix that gets prepended to every worktree branch name, which is useful for keeping Claude-created branches organized. To remove a worktree when you're done, hover over the session in the sidebar and click the archive icon.
+
+To include gitignored files like `.env` in new worktrees, create a [`.worktreeinclude` file](/en/common-workflows#copy-gitignored-files-to-worktrees) in your project root.
 
 <Note>
   Session isolation requires [Git](https://git-scm.com/downloads). Most Macs include Git by default. Run `git --version` in Terminal to check. On Windows, Git is required for the Code tab to work: [download Git for Windows](https://git-scm.com/downloads/win), install it, and restart the app. If you run into Git errors, try a Cowork session to help troubleshoot your setup.

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-data/websocket/rtds.md
-Downloaded: 2026-03-25T20:15:06.160Z
+Downloaded: 2026-03-27T20:13:24.803Z
 -->
 
 > ## Documentation Index
@@ -233,6 +233,10 @@ Symbols use slash-separated format (e.g., `eth/usd`, `btc/usd`).
 ## Equity Prices
 
 Real-time price data for stocks, ETFs, forex pairs, precious metals, and commodities sourced from **Pyth Network**. No authentication required.
+
+<Tip>
+  **Trading Equity Markets?** Get a Pyth Network data feed - first 30 days free, then \$99/month. [Subscribe here](https://buy.stripe.com/cNi8wPeiq76FgQrbsD4ZG09).
+</Tip>
 
 All asset classes stream through a single `equity_prices` topic. When you subscribe with a symbol filter, the server sends a historical snapshot (last 2 minutes of data), then continues streaming live updates.
 

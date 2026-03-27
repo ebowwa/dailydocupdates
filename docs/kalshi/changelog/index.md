@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-03-25T20:15:21.269Z
+Downloaded: 2026-03-27T20:13:36.372Z
 -->
 
 > ## Documentation Index
@@ -20,13 +20,15 @@ This changelog is a work in progress. As always, we welcome any feedback in our 
 ## Recent Updates
 
 <Update
-  label="Apr 2, 2026"
+  label="Mar 25, 2026"
   tags={["Breaking Change", "Upcoming"]}
   rss={{
-title: "Fixed-point migration cleanup: remove last legacy fields",
-description: "Removed the last legacy fields from Settlement, Fill, and market_positions responses."
+title: "Fixed-point migration cleanup: remove last legacy fields (effective Apr 2)",
+description: "Removed the last legacy fields from Settlement, Fill, and market_positions responses. Effective April 2, 2026."
 }}
 >
+  **Effective April 2, 2026**
+
   This release removes the last remaining legacy fields:
 
   * Removed `yes_total_cost` and `no_total_cost` (integer cents) from `GET /portfolio/settlements`. Use `yes_total_cost_dollars` and `no_total_cost_dollars`.

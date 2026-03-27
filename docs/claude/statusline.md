@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/statusline.md
-Downloaded: 2026-03-20T20:10:21.320Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
