@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/runtime/cron.md
-Downloaded: 2026-03-21T20:07:38.111Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
