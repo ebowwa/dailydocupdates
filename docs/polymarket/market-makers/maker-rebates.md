@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/maker-rebates.md
-Downloaded: 2026-03-24T20:18:07.975Z
+Downloaded: 2026-03-30T20:17:11.839Z
 -->
 
 > ## Documentation Index
@@ -74,19 +74,19 @@ fee_equivalent = C × p × feeRate × (p × (1 - p))^exponent
 
 Where **C** = number of shares traded and **p** = price of the shares. The fee parameters differ by market type:
 
-| Category        | Fee Rate | Exponent |
-| --------------- | -------- | -------- |
-| Crypto          | 0.072    | 1        |
-| Sports          | 0.03     | 1        |
-| Finance         | 0.04     | 1        |
-| Politics        | 0.04     | 1        |
-| Economics       | 0.03     | 0.5      |
-| Culture         | 0.05     | 1        |
-| Weather         | 0.025    | 0.5      |
-| Other / General | 0.2      | 2        |
-| Mentions        | 0.25     | 2        |
-| Tech            | 0.04     | 1        |
-| Geopolitics     | 0        | —        |
+| Category        | Taker Fee Rate | Maker Fee Rate | Exponent |
+| --------------- | -------------- | -------------- | -------- |
+| Crypto          | 0.072          | 0              | 1        |
+| Sports          | 0.03           | 0              | 1        |
+| Finance         | 0.04           | 0              | 1        |
+| Politics        | 0.04           | 0              | 1        |
+| Economics       | 0.03           | 0              | 0.5      |
+| Culture         | 0.05           | 0              | 1        |
+| Weather         | 0.025          | 0              | 0.5      |
+| Other / General | 0.2            | 0              | 2        |
+| Mentions        | 0.25           | 0              | 2        |
+| Tech            | 0.04           | 0              | 1        |
+| Geopolitics     | 0              | 0              | —        |
 
 Your daily rebate:
 

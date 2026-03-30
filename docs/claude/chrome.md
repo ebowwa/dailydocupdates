@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/chrome.md
+Downloaded: 2026-03-30T20:16:42.683Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -224,6 +229,7 @@ These are the most frequently encountered errors and how to resolve them:
 
 ## See also
 
+* [Computer use](/en/computer-use): control native macOS apps when a task can't be done in a browser
 * [Use Claude Code in VS Code](/en/vs-code#automate-browser-tasks-with-chrome): browser automation in the VS Code extension
 * [CLI reference](/en/cli-reference): command-line flags including `--chrome`
 * [Common workflows](/en/common-workflows): more ways to use Claude Code

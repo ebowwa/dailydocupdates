@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/claude-code-on-the-web.md
-Downloaded: 2026-03-26T20:12:46.340Z
+Downloaded: 2026-03-30T20:16:42.683Z
 -->
 
 > ## Documentation Index
@@ -690,7 +690,7 @@ Claude Code on the web shares rate limits with all other Claude and Claude Code 
 ## Limitations
 
 * **Repository authentication**: You can only move sessions from web to local when you are authenticated to the same account
-* **Platform restrictions**: Claude Code on the web only works with code hosted in GitHub. GitLab and other non-GitHub repositories cannot be used with cloud sessions
+* **Platform restrictions**: Claude Code on the web only works with code hosted in GitHub. Self-hosted [GitHub Enterprise Server](/en/github-enterprise-server) instances are supported for Teams and Enterprise plans. GitLab and other non-GitHub repositories cannot be used with cloud sessions
 
 ## Best practices
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/code-review.md
-Downloaded: 2026-03-27T20:13:24.043Z
+Downloaded: 2026-03-30T20:16:42.684Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Code Review analyzes your GitHub pull requests and posts findings as inline comm
 
 Findings are tagged by severity and don't approve or block your PR, so existing review workflows stay intact. You can tune what Claude flags by adding a `CLAUDE.md` or `REVIEW.md` file to your repository.
 
-To run Claude in your own CI infrastructure instead of this managed service, see [GitHub Actions](/en/github-actions) or [GitLab CI/CD](/en/gitlab-ci-cd).
+To run Claude in your own CI infrastructure instead of this managed service, see [GitHub Actions](/en/github-actions) or [GitLab CI/CD](/en/gitlab-ci-cd). For repositories on a self-hosted GitHub instance, see [GitHub Enterprise Server](/en/github-enterprise-server).
 
 This page covers:
 

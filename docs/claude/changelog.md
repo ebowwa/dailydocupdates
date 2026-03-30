@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/changelog.md
-Downloaded: 2026-03-28T20:09:38.796Z
+Downloaded: 2026-03-30T20:16:42.682Z
 -->
 
 > ## Documentation Index
@@ -14,6 +14,10 @@ Downloaded: 2026-03-28T20:09:38.796Z
 This page is generated from the [CHANGELOG.md on GitHub](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md).
 
 Run `claude --version` to check your installed version.
+
+<Update label="2.1.87" description="March 29, 2026">
+  * Fixed messages in Cowork Dispatch not getting delivered
+</Update>
 
 <Update label="2.1.86" description="March 27, 2026">
   * Added `X-Claude-Code-Session-Id` header to API requests so proxies can aggregate requests by session without parsing the body

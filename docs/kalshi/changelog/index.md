@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-03-27T20:13:36.372Z
+Downloaded: 2026-03-30T20:17:12.208Z
 -->
 
 > ## Documentation Index
@@ -20,6 +20,24 @@ This changelog is a work in progress. As always, we welcome any feedback in our 
 ## Recent Updates
 
 <Update
+  label="Mar 30, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "GET /markets/orderbooks: fetch multiple orderbooks in one request",
+description: "New endpoint to retrieve orderbooks for multiple market tickers in a single API call."
+}}
+>
+  Added `GET /trade-api/v2/markets/orderbooks` endpoint.
+
+  * Accepts a list of market tickers via `tickers` query parameter (up to 100)
+  * Returns one orderbook per requested ticker
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/markets/orderbooks`
+</Update>
+
+<Update
   label="Mar 25, 2026"
   tags={["Breaking Change", "Upcoming"]}
   rss={{
@@ -34,6 +52,17 @@ description: "Removed the last legacy fields from Settlement, Fill, and market_p
   * Removed `yes_total_cost` and `no_total_cost` (integer cents) from `GET /portfolio/settlements`. Use `yes_total_cost_dollars` and `no_total_cost_dollars`.
   * Removed `yes_price_fixed` and `no_price_fixed` (string aliases) from `GET /portfolio/fills`. Use `yes_price_dollars` and `no_price_dollars`.
   * Removed `position_cost`, `realized_pnl`, `fees_paid`, and `position_fee_cost` (integer centi-cents) from the `market_positions` WebSocket channel. Use the `_dollars` equivalents.
+</Update>
+
+<Update
+  label="Mar 25, 2026"
+  tags={["Bug Fix", "Upcoming"]}
+  rss={{
+title: "Correct multivariate event ticker on market custom strike responses",
+description: "Market responses now return the actual multivariate event ticker for the custom_strike field labeled Multivariate Event Ticker."
+}}
+>
+  Fixed `GET /markets` and `GET /markets/{ticker}` so `custom_strike["Multivariate Event Ticker"]` returns the actual multivariate event ticker instead of the MVE collection ticker.
 </Update>
 
 <Update

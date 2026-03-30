@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/devcontainer.md
+Downloaded: 2026-03-30T20:16:42.686Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -28,10 +33,10 @@ The container's enhanced security measures (isolation and firewall rules) allow 
 
 ## Getting started in 4 steps
 
-1. Install VS Code and the Remote - Containers extension
+1. Install VS Code and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 2. Clone the [Claude Code reference implementation](https://github.com/anthropics/claude-code/tree/main/.devcontainer) repository
 3. Open the repository in VS Code
-4. When prompted, click "Reopen in Container" (or use Command Palette: Cmd+Shift+P → "Remote-Containers: Reopen in Container")
+4. When prompted, click "Reopen in Container" (or use Command Palette: Cmd+Shift+P → "Dev Containers: Reopen in Container")
 
 ## Configuration breakdown
 

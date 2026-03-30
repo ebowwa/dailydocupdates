@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/plugin-marketplaces.md
-Downloaded: 2026-03-24T20:17:54.947Z
+Downloaded: 2026-03-30T20:16:42.691Z
 -->
 
 > ## Documentation Index
@@ -632,7 +632,7 @@ Allow specific marketplaces only:
 }
 ```
 
-Allow all marketplaces from an internal git server using regex pattern matching on the host:
+Allow all marketplaces from an internal git server using regex pattern matching on the host. This is the recommended approach for [GitHub Enterprise Server](/en/github-enterprise-server#plugin-marketplaces-on-ghes) or self-hosted GitLab instances:
 
 ```json  theme={null}
 {

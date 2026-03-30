@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/builders/tiers.md
+Downloaded: 2026-03-30T20:17:11.837Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,39 +15,35 @@ The Builder Program uses a tiered system to manage rate limits while rewarding h
 
 ## Feature Definitions
 
-| Feature                     | Description                                                                |
-| --------------------------- | -------------------------------------------------------------------------- |
-| **Daily Relayer Txn Limit** | Maximum Relayer transactions per day for Safe/Proxy wallet operations      |
-| **API Rate Limits**         | Rate limits for non-relayer endpoints (CLOB, Gamma, etc.)                  |
-| **Gasless Trading**         | Gas fees subsidized for trading via Safe/Proxy wallets                     |
-| **Order Attribution**       | Orders tracked and attributed to your Builder profile                      |
-| **Builder Fees**            | Builders who route orders can charge fees and monetize on flow             |
-| **Leaderboard Visibility**  | Visibility on the [Builder Leaderboard](https://builders.polymarket.com/)  |
-| **Weekly Rewards**          | Weekly USDC rewards program for visible builders based on volume           |
-| **Grants**                  | Builder grants subject to approval, awarded based on innovation and impact |
-| **Telegram Channel**        | Private Builders channel for announcements and support                     |
-| **Engineering Support**     | Direct access to engineering team                                          |
-| **Marketing Support**       | Promotion via official Polymarket social accounts                          |
-| **Priority Access**         | Early access to new features and products                                  |
+| Feature                     | Description                                                               |
+| --------------------------- | ------------------------------------------------------------------------- |
+| **Daily Relayer Txn Limit** | Maximum Relayer transactions per day for Safe/Proxy wallet operations     |
+| **API Rate Limits**         | Rate limits for non-relayer endpoints (CLOB, Gamma, etc.)                 |
+| **Gasless Trading**         | Gas fees subsidized for trading via Safe/Proxy wallets                    |
+| **Order Attribution**       | Orders tracked and attributed to your Builder profile                     |
+| **Builder Fees**            | Builders who route orders can charge fees and monetize on flow            |
+| **Leaderboard Visibility**  | Visibility on the [Builder Leaderboard](https://builders.polymarket.com/) |
+| **Telegram Channel**        | Private Builders channel for announcements and support                    |
+| **Engineering Support**     | Direct access to engineering team                                         |
+| **Marketing Support**       | Promotion via official Polymarket social accounts                         |
+| **Priority Access**         | Early access to new features and products                                 |
 
 ***
 
 ## Tier Comparison
 
-| Feature                     | Unverified |       Verified      |       Partner       |
-| --------------------------- | :--------: | :-----------------: | :-----------------: |
-| **Daily Relayer Txn Limit** |   100/day  |      3,000/day      |      Unlimited      |
-| **API Rate Limits**         |  Standard  |       Standard      |       Highest       |
-| **Gasless Trading**\*       |     Yes    |         Yes         |         Yes         |
-| **Order Attribution**       |     Yes    |         Yes         |         Yes         |
-| **Builder Fees**            |      —     |         Yes         |         Yes         |
-| **Leaderboard Visibility**  |      —     |         Yes         |         Yes         |
-| **Weekly Rewards**          |      —     | Subject to approval | Subject to approval |
-| **Grants**                  |      —     | Subject to approval | Subject to approval |
-| **Telegram Channel**        |      —     |         Yes         |         Yes         |
-| **Engineering Support**     |      —     |       Standard      |       Elevated      |
-| **Marketing Support**       |      —     |       Standard      |       Elevated      |
-| **Priority Access**         |      —     |          —          |         Yes         |
+| Feature                     | Unverified |  Verified |  Partner  |
+| --------------------------- | :--------: | :-------: | :-------: |
+| **Daily Relayer Txn Limit** |   100/day  | 3,000/day | Unlimited |
+| **API Rate Limits**         |  Standard  |  Standard |  Highest  |
+| **Gasless Trading**\*       |     Yes    |    Yes    |    Yes    |
+| **Order Attribution**       |     Yes    |    Yes    |    Yes    |
+| **Builder Fees**            |     Yes    |    Yes    |    Yes    |
+| **Leaderboard Visibility**  |      —     |    Yes    |    Yes    |
+| **Telegram Channel**        |      —     |    Yes    |    Yes    |
+| **Engineering Support**     |      —     |  Standard |  Elevated |
+| **Marketing Support**       |      —     |  Standard |  Elevated |
+| **Priority Access**         |      —     |     —     |    Yes    |
 
 ***
 
@@ -107,7 +108,6 @@ Contact us at [builder@polymarket.com](mailto:builder@polymarket.com) with:
 * Elevated engineering support
 * Elevated and coordinated marketing support
 * Priority access to new features and products
-* Multiplier on the Weekly Rewards Program
 
 ***
 
