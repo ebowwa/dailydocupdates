@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/maker-rebates.md
-Downloaded: 2026-03-30T20:17:11.839Z
+Downloaded: 2026-03-31T20:16:49.123Z
 -->
 
 > ## Documentation Index
@@ -69,7 +69,7 @@ Rebates are distributed using the **same formula as taker fees**. This ensures m
 For each filled maker order:
 
 ```text  theme={null}
-fee_equivalent = C × p × feeRate × (p × (1 - p))^exponent
+fee_equivalent = C × feeRate × (p × (1 - p))^exponent
 ```
 
 Where **C** = number of shares traded and **p** = price of the shares. The fee parameters differ by market type:
@@ -100,7 +100,7 @@ Totals are calculated per market, so you only compete with other makers in the s
 
 ## Taker Fee Structure
 
-Taker fees are calculated in USDC and vary based on the share price. However, fees are collected in shares on buy orders and USDC on sell orders. Fees are highest at 50% probability and lowest at the extremes (near 0% or 100%).
+Taker fees are calculated in USDC and vary based on the share price. However, fees are collected in shares on buy orders and USDC on sell orders. The fee amount in USDC is symmetric around 50% probability — a trade at 30¢ incurs the same dollar fee as a trade at 70¢.
 
 <Frame>
   <div className="p-3 bg-white rounded-xl">
@@ -114,7 +114,7 @@ For detailed fee tables for each market category, see the [Fees](/trading/fees) 
 
 ### Fee Precision
 
-Fees are rounded to 4 decimal places. The smallest fee charged is 0.0001 USDC. Anything smaller rounds to zero, so very small trades near the extremes may incur no fee at all.
+Fees are rounded to 5 decimal places. The smallest fee charged is 0.00001 USDC. Anything smaller rounds to zero, so very small trades near the extremes may incur no fee at all.
 
 ***
 

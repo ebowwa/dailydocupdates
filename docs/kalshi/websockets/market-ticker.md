@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/market-ticker.md
-Downloaded: 2026-03-24T20:18:06.953Z
+Downloaded: 2026-03-31T20:16:46.471Z
 -->
 
 > ## Documentation Index
@@ -118,6 +118,18 @@ operations:
                     type: integer
                     description: Number of dollars positioned in the market currently
                     required: false
+                  - name: yes_bid_size_fp
+                    type: string
+                    description: Fixed-point contracts at best bid (2 decimals)
+                    required: false
+                  - name: yes_ask_size_fp
+                    type: string
+                    description: Fixed-point contracts at best ask (2 decimals)
+                    required: false
+                  - name: last_trade_size_fp
+                    type: string
+                    description: Fixed-point contracts in last trade (2 decimals)
+                    required: false
                   - name: ts
                     type: integer
                     description: Unix timestamp for when the update happened (in seconds)
@@ -153,6 +165,9 @@ operations:
                 - price_dollars
                 - yes_bid_dollars
                 - yes_ask_dollars
+                - yes_bid_size_fp
+                - yes_ask_size_fp
+                - last_trade_size_fp
                 - volume_fp
                 - open_interest_fp
                 - dollar_volume
@@ -203,16 +218,28 @@ operations:
                   description: Number of dollars positioned in the market currently
                   minimum: 0
                   x-parser-schema-id: <anonymous-schema-71>
+                yes_bid_size_fp:
+                  type: string
+                  description: Fixed-point contracts at best bid (2 decimals)
+                  x-parser-schema-id: <anonymous-schema-72>
+                yes_ask_size_fp:
+                  type: string
+                  description: Fixed-point contracts at best ask (2 decimals)
+                  x-parser-schema-id: <anonymous-schema-73>
+                last_trade_size_fp:
+                  type: string
+                  description: Fixed-point contracts in last trade (2 decimals)
+                  x-parser-schema-id: <anonymous-schema-74>
                 ts:
                   type: integer
                   description: Unix timestamp for when the update happened (in seconds)
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-72>
+                  x-parser-schema-id: <anonymous-schema-75>
                 time:
                   type: string
                   description: Timestamp for when the update happened (RFC3339)
                   format: date-time
-                  x-parser-schema-id: <anonymous-schema-73>
+                  x-parser-schema-id: <anonymous-schema-76>
               x-parser-schema-id: <anonymous-schema-64>
           x-parser-schema-id: tickerPayload
         title: Ticker Update
@@ -231,6 +258,9 @@ operations:
               "open_interest_fp": "20422.00",
               "dollar_volume": 16948,
               "dollar_open_interest": 10211,
+              "yes_bid_size_fp": "300.00",
+              "yes_ask_size_fp": "150.00",
+              "last_trade_size_fp": "25.00",
               "ts": 1669149841,
               "time": "2022-11-22T20:44:01Z"
             }

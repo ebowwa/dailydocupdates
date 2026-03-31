@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/milestone/get-milestone.md
+Downloaded: 2026-03-31T20:16:46.461Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -112,10 +117,15 @@ components:
           description: Unique identifier for the milestone.
         category:
           type: string
-          description: Category of the milestone.
+          description: Category of the milestone. E.g. Sports, Elections, Esports, Crypto.
+          example: Sports
         type:
           type: string
-          description: Type of the milestone.
+          description: >-
+            Type of the milestone. E.g. football_game, basketball_game,
+            soccer_tournament_multi_leg, baseball_game, hockey_match,
+            golf_tournament, political_race.
+          example: football_game
         start_date:
           type: string
           format: date-time

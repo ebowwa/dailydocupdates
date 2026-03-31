@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-events.md
-Downloaded: 2026-03-24T20:18:06.942Z
+Downloaded: 2026-03-31T20:16:46.456Z
 -->
 
 > ## Documentation Index
@@ -288,10 +288,15 @@ components:
           description: Unique identifier for the milestone.
         category:
           type: string
-          description: Category of the milestone.
+          description: Category of the milestone. E.g. Sports, Elections, Esports, Crypto.
+          example: Sports
         type:
           type: string
-          description: Type of the milestone.
+          description: >-
+            Type of the milestone. E.g. football_game, basketball_game,
+            soccer_tournament_multi_leg, baseball_game, hockey_match,
+            golf_tournament, political_race.
+          example: football_game
         start_date:
           type: string
           format: date-time

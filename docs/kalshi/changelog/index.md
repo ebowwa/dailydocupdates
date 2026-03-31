@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-03-30T20:17:12.208Z
+Downloaded: 2026-03-31T20:16:46.465Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,22 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Mar 30, 2026"
+  tags={["Breaking Change", "Upcoming"]}
+  rss={{
+title: "GET /portfolio/fills: removed client_order_id field",
+description: "Removed the client_order_id field from the Fill response object."
+}}
+>
+  Removed `client_order_id` from `GET /portfolio/fills` and `GET /portfolio/fills/historical` responses.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/portfolio/fills`
+  * `GET /trade-api/v2/portfolio/fills/historical`
+</Update>
 
 <Update
   label="Mar 30, 2026"

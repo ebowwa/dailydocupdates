@@ -1,21 +1,21 @@
 <!--
-Source: https://docs.kalshi.com/api-reference/live-data/get-live-data.md
-Downloaded: 2026-03-31T20:16:46.459Z
+Source: https://docs.kalshi.com/api-reference/live-data/get-game-stats.md
+Downloaded: 2026-03-31T20:16:46.458Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Get Live Data
+# Get Game Stats
 
-> Get live data for a specific milestone.
+> Get play-by-play game statistics for a specific milestone. Supported sports: Pro Football, College Football, Pro Basketball, College Men's Basketball, College Women's Basketball, WNBA, Soccer, Pro Hockey, and Pro Baseball. Returns null for unsupported milestone types or milestones without a Sportradar ID.
 
 
 
 ## OpenAPI
 
-````yaml /openapi.yaml get /live_data/milestone/{milestone_id}
+````yaml /openapi.yaml get /live_data/milestone/{milestone_id}/game_stats
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -59,13 +59,18 @@ tags:
   - name: structured-targets
     description: Structured targets endpoints
 paths:
-  /live_data/milestone/{milestone_id}:
+  /live_data/milestone/{milestone_id}/game_stats:
     get:
       tags:
         - live-data
-      summary: Get Live Data
-      description: Get live data for a specific milestone.
-      operationId: GetLiveDataByMilestone
+      summary: Get Game Stats
+      description: >-
+        Get play-by-play game statistics for a specific milestone. Supported
+        sports: Pro Football, College Football, Pro Basketball, College Men's
+        Basketball, College Women's Basketball, WNBA, Soccer, Pro Hockey, and
+        Pro Baseball. Returns null for unsupported milestone types or milestones
+        without a Sportradar ID.
+      operationId: GetGameStats
       parameters:
         - name: milestone_id
           in: path
@@ -73,55 +78,38 @@ paths:
           description: Milestone ID
           schema:
             type: string
-        - name: include_player_stats
-          in: query
-          required: false
-          description: >-
-            When true, includes player-level statistics in the live data
-            response. Supported for Pro Football, Pro Basketball, and College
-            Men's Basketball milestones that have player ID mappings configured.
-            Has no effect for other sports or milestones without player
-            mappings.
-          schema:
-            type: boolean
-            default: false
       responses:
         '200':
-          description: Live data retrieved successfully
+          description: Game stats retrieved successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetLiveDataResponse'
+                $ref: '#/components/schemas/GetGameStatsResponse'
         '404':
-          description: Live data not found
+          description: Game stats not found
         '500':
           description: Internal server error
 components:
   schemas:
-    GetLiveDataResponse:
+    GetGameStatsResponse:
       type: object
-      required:
-        - live_data
       properties:
-        live_data:
-          $ref: '#/components/schemas/LiveData'
-    LiveData:
+        pbp:
+          $ref: '#/components/schemas/PlayByPlay'
+    PlayByPlay:
       type: object
-      required:
-        - type
-        - details
-        - milestone_id
+      description: Play-by-play data organized by period.
       properties:
-        type:
-          type: string
-          description: Type of live data
-        details:
-          type: object
-          additionalProperties: true
-          description: Live data details as a flexible object
-        milestone_id:
-          type: string
-          description: Milestone ID
+        periods:
+          type: array
+          items:
+            type: object
+            properties:
+              events:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
 
 ````
 

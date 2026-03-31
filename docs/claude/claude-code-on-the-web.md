@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/claude-code-on-the-web.md
-Downloaded: 2026-03-30T20:16:42.683Z
+Downloaded: 2026-03-31T20:16:43.942Z
 -->
 
 > ## Documentation Index
@@ -40,12 +40,28 @@ Claude Code on the web is available in research preview to:
 
 ## Getting started
 
+Set up Claude Code on the web from the browser or from your terminal.
+
+### From the browser
+
 1. Visit [claude.ai/code](https://claude.ai/code)
 2. Connect your GitHub account
 3. Install the Claude GitHub App in your repositories
 4. Select your default environment
 5. Submit your coding task
 6. Review changes in diff view, iterate with comments, then create a pull request
+
+### From the terminal
+
+Run `/web-setup` inside Claude Code to connect GitHub using your local `gh` CLI credentials. The command syncs your `gh auth token` to Claude Code on the web, creates a default cloud environment, and opens claude.ai/code in your browser when it finishes.
+
+This path requires the `gh` CLI to be installed and authenticated with `gh auth login`. If `gh` is not available, `/web-setup` opens claude.ai/code so you can connect GitHub from the browser instead.
+
+Your `gh` credentials give Claude access to clone and push, so you can skip the GitHub App for basic sessions. Install the App later if you want [Auto-fix](#auto-fix-pull-requests), which uses the App to receive PR webhooks.
+
+<Note>
+  Team and Enterprise admins can disable terminal setup with the Quick web setup toggle at [claude.ai/admin-settings/claude-code](https://claude.ai/admin-settings/claude-code).
+</Note>
 
 ## How it works
 
@@ -95,6 +111,10 @@ When auto-fix is active, Claude receives GitHub events for the PR including new 
 * **Duplicate or no-action events**: if an event is a duplicate or requires no change, Claude notes it in the session and moves on
 
 Claude may reply to review comment threads on GitHub as part of resolving them. These replies are posted using your GitHub account, so they appear under your username, but each reply is labeled as coming from Claude Code so reviewers know it was written by the agent and not by you directly.
+
+<Warning>
+  If your repository uses comment-triggered automation such as Atlantis, Terraform Cloud, or custom GitHub Actions that run on `issue_comment` events, be aware that Claude's replies can trigger those workflows. Review your repository's automation before enabling auto-fix, and consider disabling auto-fix for repositories where a PR comment can deploy infrastructure or run privileged operations.
+</Warning>
 
 ## Moving tasks between web and terminal
 

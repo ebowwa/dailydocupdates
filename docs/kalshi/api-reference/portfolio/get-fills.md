@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-fills.md
-Downloaded: 2026-03-25T20:15:21.267Z
+Downloaded: 2026-03-31T20:16:46.463Z
 -->
 
 > ## Documentation Index
@@ -198,9 +198,6 @@ components:
         order_id:
           type: string
           description: Unique identifier for the order that resulted in this fill
-        client_order_id:
-          type: string
-          description: Client-provided identifier for the order that resulted in this fill
         ticker:
           type: string
           description: Unique identifier for the market

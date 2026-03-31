@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/structured-targets/get-structured-targets.md
+Downloaded: 2026-03-31T20:16:46.464Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -62,18 +67,34 @@ paths:
       description: 'Page size (min: 1, max: 2000)'
       operationId: GetStructuredTargets
       parameters:
+        - name: ids
+          in: query
+          description: >-
+            Filter by specific structured target IDs. Pass multiple IDs by
+            repeating the parameter (e.g. `?ids=uuid1&ids=uuid2`).
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          style: form
+          explode: true
         - name: type
           in: query
           description: Filter by structured target type
           required: false
           schema:
             type: string
+            example: basketball_player
         - name: competition
           in: query
-          description: Filter by competition
+          description: >-
+            Filter by competition. Matches against the league, conference,
+            division, or tour in the structured target details.
           required: false
           schema:
             type: string
+            example: NBA
         - name: page_size
           in: query
           description: Number of items per page (min 1, max 2000, default 100)

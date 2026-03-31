@@ -1,5 +1,5 @@
 <!--
-Source: https://docs.kalshi.com/api-reference/live-data/get-live-data.md
+Source: https://docs.kalshi.com/api-reference/live-data/get-live-data-with-type.md
 Downloaded: 2026-03-31T20:16:46.459Z
 -->
 
@@ -7,15 +7,15 @@ Downloaded: 2026-03-31T20:16:46.459Z
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Get Live Data
+# Get Live Data (with type)
 
-> Get live data for a specific milestone.
+> Get live data for a specific milestone. This is the legacy endpoint that requires a type path parameter. Prefer using `/live_data/milestone/{milestone_id}` instead.
 
 
 
 ## OpenAPI
 
-````yaml /openapi.yaml get /live_data/milestone/{milestone_id}
+````yaml /openapi.yaml get /live_data/{type}/milestone/{milestone_id}
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -59,14 +59,23 @@ tags:
   - name: structured-targets
     description: Structured targets endpoints
 paths:
-  /live_data/milestone/{milestone_id}:
+  /live_data/{type}/milestone/{milestone_id}:
     get:
       tags:
         - live-data
-      summary: Get Live Data
-      description: Get live data for a specific milestone.
-      operationId: GetLiveDataByMilestone
+      summary: Get Live Data (with type)
+      description: >-
+        Get live data for a specific milestone. This is the legacy endpoint that
+        requires a type path parameter. Prefer using
+        `/live_data/milestone/{milestone_id}` instead.
+      operationId: GetLiveData
       parameters:
+        - name: type
+          in: path
+          required: true
+          description: Type of live data
+          schema:
+            type: string
         - name: milestone_id
           in: path
           required: true
