@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/plugin-marketplaces.md
-Downloaded: 2026-03-30T20:16:42.691Z
+Downloaded: 2026-04-01T20:17:26.478Z
 -->
 
 > ## Documentation Index
@@ -561,6 +561,10 @@ You can also specify which plugins should be enabled by default:
 ```
 
 For full configuration options, see [Plugin settings](/en/settings#plugin-settings).
+
+<Note>
+  If you use a local `directory` or `file` source with a relative path, the path resolves against your repository's main checkout. When you run Claude Code from a git worktree, the path still points at the main checkout, so all worktrees share the same marketplace location. Marketplace state is stored once per user in `~/.claude/plugins/known_marketplaces.json`, not per project.
+</Note>
 
 ### Pre-populate plugins for containers
 

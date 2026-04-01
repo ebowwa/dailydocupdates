@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/setup.md
-Downloaded: 2026-03-26T20:12:46.349Z
+Downloaded: 2026-04-01T20:17:26.481Z
 -->
 
 > ## Documentation Index
@@ -61,6 +61,8 @@ To install Claude Code, use one of the following methods:
     ```batch  theme={null}
     curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
     ```
+
+    If you see `The token '&&' is not a valid statement separator`, you're in PowerShell, not CMD. Use the PowerShell command above instead. Your prompt shows `PS C:\` when you're in PowerShell.
 
     **Windows requires [Git for Windows](https://git-scm.com/downloads/win).** Install it first if you don't have it.
 

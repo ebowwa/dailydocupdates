@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/market-data/websocket/market-channel.md
-Downloaded: 2026-03-24T20:18:07.974Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

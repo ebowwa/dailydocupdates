@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/structured-targets/get-structured-targets.md
-Downloaded: 2026-03-31T20:16:46.464Z
+Downloaded: 2026-04-01T20:17:45.064Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-03-31T20:16:46.464Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.10.0
+  version: 3.11.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach

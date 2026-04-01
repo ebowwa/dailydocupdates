@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/fees.md
-Downloaded: 2026-03-31T20:16:49.125Z
+Downloaded: 2026-04-01T20:17:32.429Z
 -->
 
 > ## Documentation Index
@@ -26,32 +26,32 @@ Polymarket charges a small taker fee on certain markets. These fees fund the [Ma
 Fees are calculated using the following formula:
 
 ```text  theme={null}
-fee = C × feeRate × (p × (1 - p))^exponent
+fee = C × feeRate × p × (1 - p)
 ```
 
 Where **C** = number of shares traded and **p** = price of the shares.
 
 **Makers are never charged fees.** Only takers pay fees. The fee parameters differ by market category:
 
-| Category        | Taker Fee Rate | Maker Fee Rate | Exponent | Maker Rebate |
-| --------------- | -------------- | -------------- | -------- | ------------ |
-| Crypto          | 0.072          | 0              | 1        | 20%          |
-| Sports          | 0.03           | 0              | 1        | 25%          |
-| Finance         | 0.04           | 0              | 1        | 50%          |
-| Politics        | 0.04           | 0              | 1        | 25%          |
-| Economics       | 0.03           | 0              | 0.5      | 25%          |
-| Culture         | 0.05           | 0              | 1        | 25%          |
-| Weather         | 0.025          | 0              | 0.5      | 25%          |
-| Other / General | 0.2            | 0              | 2        | 25%          |
-| Mentions        | 0.25           | 0              | 2        | 25%          |
-| Tech            | 0.04           | 0              | 1        | 25%          |
-| Geopolitics     | 0              | 0              | —        | —            |
+| Category        | Taker Fee Rate | Maker Fee Rate | Maker Rebate |
+| --------------- | -------------- | -------------- | ------------ |
+| Crypto          | 0.072          | 0              | 20%          |
+| Sports          | 0.03           | 0              | 25%          |
+| Finance         | 0.04           | 0              | 25%          |
+| Politics        | 0.04           | 0              | 25%          |
+| Economics       | 0.05           | 0              | 25%          |
+| Culture         | 0.05           | 0              | 25%          |
+| Weather         | 0.05           | 0              | 25%          |
+| Other / General | 0.05           | 0              | 25%          |
+| Mentions        | 0.04           | 0              | 25%          |
+| Tech            | 0.04           | 0              | 25%          |
+| Geopolitics     | 0              | 0              | —            |
 
 Taker fees are calculated in USDC and vary based on the share price. However, fees are collected in shares on buy orders and USDC on sell orders. The fee amount in USDC is symmetric around 50% probability — a trade at 30¢ incurs the same dollar fee as a trade at 70¢.
 
 <Frame>
   <div className="p-3 bg-white rounded-xl">
-    <iframe title="Fee Curves" aria-label="Line chart" id="datawrapper-chart-qTzMH" src="https://datawrapper.dwcdn.net/qTzMH/1/" scrolling="no" frameborder="0" width={700} style={{ width: "0", minWidth: "100% !important", border: "none" }} height="450" data-external="1" />
+    <iframe title="Fee Curves" aria-label="Line chart" id="datawrapper-chart-cY9H4" src="https://datawrapper.dwcdn.net/cY9H4/" scrolling="no" frameborder="0" width={700} style={{ width: "0", minWidth: "100% !important", border: "none" }} height="450" data-external="1" />
   </div>
 </Frame>
 
@@ -114,7 +114,7 @@ Taker fees are calculated in USDC and vary based on the share price. However, fe
     The fee in USDC **peaks at 50%** probability (\$0.75) and decreases symmetrically toward both extremes.
   </Tab>
 
-  <Tab title="Finance / Politics / Tech">
+  <Tab title="Finance / Politics / Mentions / Tech">
     | Price  | Trade Value | Taker Fee (USDC) |
     | ------ | ----------- | ---------------- |
     | \$0.01 | \$1         | \$0.04           |
@@ -142,7 +142,7 @@ Taker fees are calculated in USDC and vary based on the share price. However, fe
     The fee in USDC **peaks at 50%** probability (\$1.00) and decreases symmetrically toward both extremes.
   </Tab>
 
-  <Tab title="Culture">
+  <Tab title="Economics / Culture / Weather / Other">
     | Price  | Trade Value | Taker Fee (USDC) |
     | ------ | ----------- | ---------------- |
     | \$0.01 | \$1         | \$0.05           |
@@ -168,118 +168,6 @@ Taker fees are calculated in USDC and vary based on the share price. However, fe
     | \$0.99 | \$99        | \$0.05           |
 
     The fee in USDC **peaks at 50%** probability (\$1.25) and decreases symmetrically toward both extremes.
-  </Tab>
-
-  <Tab title="Economics">
-    | Price  | Trade Value | Taker Fee (USDC) |
-    | ------ | ----------- | ---------------- |
-    | \$0.01 | \$1         | \$0.30           |
-    | \$0.05 | \$5         | \$0.65           |
-    | \$0.10 | \$10        | \$0.90           |
-    | \$0.15 | \$15        | \$1.07           |
-    | \$0.20 | \$20        | \$1.20           |
-    | \$0.25 | \$25        | \$1.30           |
-    | \$0.30 | \$30        | \$1.37           |
-    | \$0.35 | \$35        | \$1.43           |
-    | \$0.40 | \$40        | \$1.47           |
-    | \$0.45 | \$45        | \$1.49           |
-    | \$0.50 | \$50        | \$1.50           |
-    | \$0.55 | \$55        | \$1.49           |
-    | \$0.60 | \$60        | \$1.47           |
-    | \$0.65 | \$65        | \$1.43           |
-    | \$0.70 | \$70        | \$1.37           |
-    | \$0.75 | \$75        | \$1.30           |
-    | \$0.80 | \$80        | \$1.20           |
-    | \$0.85 | \$85        | \$1.07           |
-    | \$0.90 | \$90        | \$0.90           |
-    | \$0.95 | \$95        | \$0.65           |
-    | \$0.99 | \$99        | \$0.30           |
-
-    The fee in USDC **peaks at 50%** probability (\$1.50) and decreases symmetrically toward both extremes.
-  </Tab>
-
-  <Tab title="Weather">
-    | Price  | Trade Value | Taker Fee (USDC) |
-    | ------ | ----------- | ---------------- |
-    | \$0.01 | \$1         | \$0.25           |
-    | \$0.05 | \$5         | \$0.54           |
-    | \$0.10 | \$10        | \$0.75           |
-    | \$0.15 | \$15        | \$0.89           |
-    | \$0.20 | \$20        | \$1.00           |
-    | \$0.25 | \$25        | \$1.08           |
-    | \$0.30 | \$30        | \$1.15           |
-    | \$0.35 | \$35        | \$1.19           |
-    | \$0.40 | \$40        | \$1.22           |
-    | \$0.45 | \$45        | \$1.24           |
-    | \$0.50 | \$50        | \$1.25           |
-    | \$0.55 | \$55        | \$1.24           |
-    | \$0.60 | \$60        | \$1.22           |
-    | \$0.65 | \$65        | \$1.19           |
-    | \$0.70 | \$70        | \$1.15           |
-    | \$0.75 | \$75        | \$1.08           |
-    | \$0.80 | \$80        | \$1.00           |
-    | \$0.85 | \$85        | \$0.89           |
-    | \$0.90 | \$90        | \$0.75           |
-    | \$0.95 | \$95        | \$0.54           |
-    | \$0.99 | \$99        | \$0.25           |
-
-    The fee in USDC **peaks at 50%** probability (\$1.25) and decreases symmetrically toward both extremes.
-  </Tab>
-
-  <Tab title="Other / General">
-    | Price  | Trade Value | Taker Fee (USDC) |
-    | ------ | ----------- | ---------------- |
-    | \$0.01 | \$1         | \$0.00           |
-    | \$0.05 | \$5         | \$0.05           |
-    | \$0.10 | \$10        | \$0.16           |
-    | \$0.15 | \$15        | \$0.33           |
-    | \$0.20 | \$20        | \$0.51           |
-    | \$0.25 | \$25        | \$0.70           |
-    | \$0.30 | \$30        | \$0.88           |
-    | \$0.35 | \$35        | \$1.04           |
-    | \$0.40 | \$40        | \$1.15           |
-    | \$0.45 | \$45        | \$1.23           |
-    | \$0.50 | \$50        | \$1.25           |
-    | \$0.55 | \$55        | \$1.23           |
-    | \$0.60 | \$60        | \$1.15           |
-    | \$0.65 | \$65        | \$1.04           |
-    | \$0.70 | \$70        | \$0.88           |
-    | \$0.75 | \$75        | \$0.70           |
-    | \$0.80 | \$80        | \$0.51           |
-    | \$0.85 | \$85        | \$0.33           |
-    | \$0.90 | \$90        | \$0.16           |
-    | \$0.95 | \$95        | \$0.05           |
-    | \$0.99 | \$99        | \$0.00           |
-
-    The fee in USDC **peaks at 50%** probability (\$1.25) and decreases symmetrically toward both extremes.
-  </Tab>
-
-  <Tab title="Mentions">
-    | Price  | Trade Value | Taker Fee (USDC) |
-    | ------ | ----------- | ---------------- |
-    | \$0.01 | \$1         | \$0.00           |
-    | \$0.05 | \$5         | \$0.06           |
-    | \$0.10 | \$10        | \$0.20           |
-    | \$0.15 | \$15        | \$0.41           |
-    | \$0.20 | \$20        | \$0.64           |
-    | \$0.25 | \$25        | \$0.88           |
-    | \$0.30 | \$30        | \$1.10           |
-    | \$0.35 | \$35        | \$1.29           |
-    | \$0.40 | \$40        | \$1.44           |
-    | \$0.45 | \$45        | \$1.53           |
-    | \$0.50 | \$50        | \$1.56           |
-    | \$0.55 | \$55        | \$1.53           |
-    | \$0.60 | \$60        | \$1.44           |
-    | \$0.65 | \$65        | \$1.29           |
-    | \$0.70 | \$70        | \$1.10           |
-    | \$0.75 | \$75        | \$0.88           |
-    | \$0.80 | \$80        | \$0.64           |
-    | \$0.85 | \$85        | \$0.41           |
-    | \$0.90 | \$90        | \$0.20           |
-    | \$0.95 | \$95        | \$0.06           |
-    | \$0.99 | \$99        | \$0.00           |
-
-    The fee in USDC **peaks at 50%** probability (\$1.56) and decreases symmetrically toward both extremes.
   </Tab>
 </Tabs>
 

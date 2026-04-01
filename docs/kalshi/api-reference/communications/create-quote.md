@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/communications/create-quote.md
+Downloaded: 2026-04-01T20:17:45.051Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,7 +19,7 @@
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.10.0
+  version: 3.11.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -113,6 +118,13 @@ components:
           description: >-
             Optional subaccount number to place the quote under (0 for primary,
             1-32 for subaccounts)
+        expiration_ts:
+          type: integer
+          format: int64
+          description: >-
+            Optional Unix timestamp (seconds) after which this quote should no
+            longer be accepted. Must be in the future; past timestamps are
+            rejected with a 400 error.
     CreateQuoteResponse:
       type: object
       required:

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-03-31T20:16:46.465Z
+Downloaded: 2026-04-01T20:17:45.064Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,27 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Mar 30, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "POST /communications/quotes: added optional expiration_ts field",
+description: "Market makers can now set a TTL on quotes to prevent them from being accepted after a specified time."
+}}
+>
+  Added optional `expiration_ts` field to `POST /trade-api/v2/communications/quotes`.
+
+  * Accepts a Unix timestamp in seconds
+  * Quotes past their `expiration_ts` will be automatically cancelled and will no longer be accepted
+  * `expiration_ts` is returned on `GET /trade-api/v2/communications/quotes/:quote_id`
+  * Market makers subscribed to the communications WebSocket channel will receive a `quote_cancelled` message when a quote expires
+
+  **Affected endpoints:**
+
+  * `POST /trade-api/v2/communications/quotes`
+  * `GET /trade-api/v2/communications/quotes/:quote_id`
+</Update>
 
 <Update
   label="Mar 30, 2026"
@@ -1036,20 +1057,6 @@ description: "New _fp string fields for precise contract quantity representation
   See [Fixed-Point Contracts](/getting_started/fixed_point_contracts) for migration details.
 
   Release date: `Jan 22, 2026`
-</Update>
-
-<Update
-  label="Jan 13, 2025"
-  tags={["Breaking", "Upcoming"]}
-  rss={{
-title: "Anonymize RFQ creator IDs when open",
-description: "By default RFQ creator IDs will be anonymized while the RFQ is open"
-}}
->
-  RFQ creator IDs will be exposed only after the RFQ is closed/executes. Accordingly the RFQ creator ID is removed
-  entirely from related websocket messages that are created before this point (RFQCreated, QuoteCreated).
-
-  Release date: `Jan 15, 2025`
 </Update>
 
 <Update
