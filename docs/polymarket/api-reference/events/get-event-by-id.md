@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/events/get-event-by-id.md
+Downloaded: 2026-04-02T20:14:16.831Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -818,6 +823,11 @@ components:
           type: string
           format: date-time
           nullable: true
+        feesEnabled:
+          type: boolean
+          nullable: true
+        feeSchedule:
+          $ref: '#/components/schemas/FeeSchedule'
     Series:
       type: object
       properties:
@@ -1188,6 +1198,21 @@ components:
           nullable: true
         outcomes:
           type: string
+          nullable: true
+    FeeSchedule:
+      type: object
+      properties:
+        exponent:
+          type: number
+          nullable: true
+        rate:
+          type: number
+          nullable: true
+        takerOnly:
+          type: boolean
+          nullable: true
+        rebateRate:
+          type: number
           nullable: true
 
 ````

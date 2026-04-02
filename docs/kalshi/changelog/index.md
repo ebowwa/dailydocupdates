@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-04-01T20:17:45.064Z
+Downloaded: 2026-04-02T20:14:20.317Z
 -->
 
 > ## Documentation Index
@@ -18,109 +18,6 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
-
-<Update
-  label="Mar 30, 2026"
-  tags={["New Feature", "Upcoming"]}
-  rss={{
-title: "POST /communications/quotes: added optional expiration_ts field",
-description: "Market makers can now set a TTL on quotes to prevent them from being accepted after a specified time."
-}}
->
-  Added optional `expiration_ts` field to `POST /trade-api/v2/communications/quotes`.
-
-  * Accepts a Unix timestamp in seconds
-  * Quotes past their `expiration_ts` will be automatically cancelled and will no longer be accepted
-  * `expiration_ts` is returned on `GET /trade-api/v2/communications/quotes/:quote_id`
-  * Market makers subscribed to the communications WebSocket channel will receive a `quote_cancelled` message when a quote expires
-
-  **Affected endpoints:**
-
-  * `POST /trade-api/v2/communications/quotes`
-  * `GET /trade-api/v2/communications/quotes/:quote_id`
-</Update>
-
-<Update
-  label="Mar 30, 2026"
-  tags={["Breaking Change", "Upcoming"]}
-  rss={{
-title: "GET /portfolio/fills: removed client_order_id field",
-description: "Removed the client_order_id field from the Fill response object."
-}}
->
-  Removed `client_order_id` from `GET /portfolio/fills` and `GET /portfolio/fills/historical` responses.
-
-  **Affected endpoints:**
-
-  * `GET /trade-api/v2/portfolio/fills`
-  * `GET /trade-api/v2/portfolio/fills/historical`
-</Update>
-
-<Update
-  label="Mar 30, 2026"
-  tags={["New Feature", "Upcoming"]}
-  rss={{
-title: "GET /markets/orderbooks: fetch multiple orderbooks in one request",
-description: "New endpoint to retrieve orderbooks for multiple market tickers in a single API call."
-}}
->
-  Added `GET /trade-api/v2/markets/orderbooks` endpoint.
-
-  * Accepts a list of market tickers via `tickers` query parameter (up to 100)
-  * Returns one orderbook per requested ticker
-
-  **Affected endpoints:**
-
-  * `GET /trade-api/v2/markets/orderbooks`
-</Update>
-
-<Update
-  label="Mar 25, 2026"
-  tags={["Breaking Change", "Upcoming"]}
-  rss={{
-title: "Fixed-point migration cleanup: remove last legacy fields (effective Apr 2)",
-description: "Removed the last legacy fields from Settlement, Fill, and market_positions responses. Effective April 2, 2026."
-}}
->
-  **Effective April 2, 2026**
-
-  This release removes the last remaining legacy fields:
-
-  * Removed `yes_total_cost` and `no_total_cost` (integer cents) from `GET /portfolio/settlements`. Use `yes_total_cost_dollars` and `no_total_cost_dollars`.
-  * Removed `yes_price_fixed` and `no_price_fixed` (string aliases) from `GET /portfolio/fills`. Use `yes_price_dollars` and `no_price_dollars`.
-  * Removed `position_cost`, `realized_pnl`, `fees_paid`, and `position_fee_cost` (integer centi-cents) from the `market_positions` WebSocket channel. Use the `_dollars` equivalents.
-</Update>
-
-<Update
-  label="Mar 25, 2026"
-  tags={["Bug Fix", "Upcoming"]}
-  rss={{
-title: "Correct multivariate event ticker on market custom strike responses",
-description: "Market responses now return the actual multivariate event ticker for the custom_strike field labeled Multivariate Event Ticker."
-}}
->
-  Fixed `GET /markets` and `GET /markets/{ticker}` so `custom_strike["Multivariate Event Ticker"]` returns the actual multivariate event ticker instead of the MVE collection ticker.
-</Update>
-
-<Update
-  label="Mar 23, 2026"
-  tags={["Change", "Upcoming"]}
-  rss={{
-title: "Event and market response normalization",
-description: "Event responses now consistently include product_metadata, strike_date and strike_period are mutually exclusive, and contradictory custom_strike payloads are no longer emitted with non-custom strike types."
-}}
->
-  * `EventData.product_metadata` is now always present on event responses, including cases where it is empty.
-  * `EventData.strike_date` and `EventData.strike_period` are now emitted as mutually exclusive fields.
-  * `Market.custom_strike` is no longer emitted alongside non-custom scalar `strike_type` values such as `greater` or `less`.
-
-  **Affected endpoints:**
-
-  * `GET /events`
-  * `GET /events/{ticker}`
-  * `GET /markets`
-  * `GET /markets/{ticker}`
-</Update>
 
 <Update
   label="Mar 19, 2026"

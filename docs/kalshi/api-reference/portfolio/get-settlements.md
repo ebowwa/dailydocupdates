@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-settlements.md
-Downloaded: 2026-04-01T20:17:45.062Z
+Downloaded: 2026-04-02T20:14:20.315Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-04-01T20:17:45.062Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.11.0
+  version: 3.12.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -96,15 +96,15 @@ components:
     LimitQuery:
       name: limit
       in: query
-      description: Number of results per page. Defaults to 100. Maximum value is 200.
+      description: Number of results per page. Defaults to 100.
       schema:
         type: integer
         format: int64
         minimum: 1
-        maximum: 200
+        maximum: 1000
         default: 100
         x-oapi-codegen-extra-tags:
-          validate: omitempty,min=1,max=200
+          validate: omitempty,min=1,max=1000
     CursorQuery:
       name: cursor
       in: query

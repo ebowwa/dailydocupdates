@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/plugins.md
-Downloaded: 2026-03-26T20:12:46.347Z
+Downloaded: 2026-04-02T20:14:15.497Z
 -->
 
 > ## Documentation Index
@@ -50,7 +50,6 @@ This quickstart walks you through creating a plugin with a custom skill. You'll 
 ### Prerequisites
 
 * Claude Code [installed and authenticated](/en/quickstart#step-1-install-claude-code)
-* Claude Code version 1.0.33 or later (run `claude --version` to check)
 
 <Note>
   If you don't see the `/plugin` command, update Claude Code to the latest version. See [Troubleshooting](/en/troubleshooting) for upgrade instructions.

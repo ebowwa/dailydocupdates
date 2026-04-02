@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-multivariate-events.md
-Downloaded: 2026-04-01T20:17:45.053Z
+Downloaded: 2026-04-02T20:14:20.305Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-04-01T20:17:45.053Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.11.0
+  version: 3.12.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -215,6 +215,8 @@ components:
           description: Whether this event is available to trade on brokers.
         product_metadata:
           type: object
+          nullable: true
+          x-omitempty: true
           description: Additional metadata for the event.
           x-go-type-skip-optional-pointer: true
         last_updated_ts:

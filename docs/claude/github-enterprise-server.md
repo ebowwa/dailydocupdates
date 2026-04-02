@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/github-enterprise-server.md
-Downloaded: 2026-03-30T20:16:42.687Z
+Downloaded: 2026-04-02T20:14:15.493Z
 -->
 
 > ## Documentation Index
@@ -12,7 +12,7 @@ Downloaded: 2026-03-30T20:16:42.687Z
 > Connect Claude Code to your self-hosted GitHub Enterprise Server instance for web sessions, code review, and plugin marketplaces.
 
 <Note>
-  GitHub Enterprise Server support is available for Teams and Enterprise plans.
+  GitHub Enterprise Server support is available for Team and Enterprise plans.
 </Note>
 
 GitHub Enterprise Server (GHES) support lets your organization use Claude Code with repositories hosted on your self-managed GitHub instance instead of github.com. Once an admin connects your GHES instance, developers can run web sessions, get automated code reviews, and install plugins from internal marketplaces without any per-repository configuration.

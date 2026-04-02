@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/builders/tiers.md
-Downloaded: 2026-03-30T20:17:11.837Z
+Downloaded: 2026-04-02T20:14:16.838Z
 -->
 
 > ## Documentation Index
@@ -32,18 +32,18 @@ The Builder Program uses a tiered system to manage rate limits while rewarding h
 
 ## Tier Comparison
 
-| Feature                     | Unverified |  Verified |  Partner  |
-| --------------------------- | :--------: | :-------: | :-------: |
-| **Daily Relayer Txn Limit** |   100/day  | 3,000/day | Unlimited |
-| **API Rate Limits**         |  Standard  |  Standard |  Highest  |
-| **Gasless Trading**\*       |     Yes    |    Yes    |    Yes    |
-| **Order Attribution**       |     Yes    |    Yes    |    Yes    |
-| **Builder Fees**            |     Yes    |    Yes    |    Yes    |
-| **Leaderboard Visibility**  |      —     |    Yes    |    Yes    |
-| **Telegram Channel**        |      —     |    Yes    |    Yes    |
-| **Engineering Support**     |      —     |  Standard |  Elevated |
-| **Marketing Support**       |      —     |  Standard |  Elevated |
-| **Priority Access**         |      —     |     —     |    Yes    |
+| Feature                     | Unverified |  Verified  |  Partner  |
+| --------------------------- | :--------: | :--------: | :-------: |
+| **Daily Relayer Txn Limit** |   100/day  | 10,000/day | Unlimited |
+| **API Rate Limits**         |  Standard  |  Standard  |  Highest  |
+| **Gasless Trading**\*       |     Yes    |     Yes    |    Yes    |
+| **Order Attribution**       |     Yes    |     Yes    |    Yes    |
+| **Builder Fees**            |     Yes    |     Yes    |    Yes    |
+| **Leaderboard Visibility**  |      —     |     Yes    |    Yes    |
+| **Telegram Channel**        |      —     |     Yes    |    Yes    |
+| **Engineering Support**     |      —     |  Standard  |  Elevated |
+| **Marketing Support**       |      —     |  Standard  |  Elevated |
+| **Priority Access**         |      —     |      —     |    Yes    |
 
 ***
 
@@ -71,7 +71,7 @@ The Builder Program uses a tiered system to manage rate limits while rewarding h
 
 ## Verified
 
-<Card title="3,000 Relay transactions/day" icon="badge-check">
+<Card title="10,000 Relay transactions/day" icon="badge-check">
   For builders who need higher throughput. Requires manual approval.
 </Card>
 
@@ -86,7 +86,7 @@ Contact us at [builder@polymarket.com](mailto:builder@polymarket.com) with:
 
 **Unlocks over Unverified:**
 
-* 30x daily Relayer transaction limit
+* 100x daily Relayer transaction limit
 * Monetize with Builder fees
 * Leaderboard visibility at [builders.polymarket.com](https://builders.polymarket.com)
 * Private Telegram channel for announcements and support
