@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/pm2.md
+Downloaded: 2026-04-03T20:12:34.753Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,12 +11,12 @@
 
 [PM2](https://pm2.keymetrics.io/) is a popular process manager that manages and runs your applications as daemons (background processes).
 
-It offers features like process monitoring, automatic restarts, and easy scaling. Using a process manager is common when deploying a Bun application on a cloud-hosted virtual private server (VPS), as it:
+It offers features like process monitoring, automatic restarts, and scaling. Using a process manager is common when deploying a Bun application on a cloud-hosted virtual private server (VPS), as it:
 
-* Keeps your Node.js application running continuously.
-* Ensure high availability and reliability of your application.
-* Monitor and manage multiple processes with ease.
-* Simplify the deployment process.
+* Keeps your application running continuously.
+* Ensures high availability and reliability of your application.
+* Monitors and manages multiple processes.
+* Simplifies the deployment process.
 
 ***
 

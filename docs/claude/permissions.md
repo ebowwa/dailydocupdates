@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/permissions.md
-Downloaded: 2026-04-02T20:14:15.497Z
+Downloaded: 2026-04-03T20:12:03.783Z
 -->
 
 > ## Documentation Index
@@ -250,6 +250,8 @@ Use both for defense-in-depth:
 * Sandbox restrictions prevent Bash commands from reaching resources outside defined boundaries, even if a prompt injection bypasses Claude's decision-making
 * Filesystem restrictions in the sandbox use Read and Edit deny rules, not separate sandbox configuration
 * Network restrictions combine WebFetch permission rules with the sandbox's `allowedDomains` list
+
+When sandboxing is enabled with `autoAllowBashIfSandboxed: true`, which is the default, sandboxed Bash commands run without prompting even if your permissions include `ask: Bash(*)`. The sandbox boundary substitutes for the per-command prompt. See [sandbox modes](/en/sandboxing#sandbox-modes) to change this behavior.
 
 ## Managed settings
 

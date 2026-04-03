@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/templating/init.md
+Downloaded: 2026-04-03T20:12:34.778Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -32,7 +37,7 @@ Press `enter` to accept the default answer for each prompt, or pass the `-y` fla
 
 ***
 
-`bun init` is a quick way to start a blank project with Bun. It guesses with sane defaults and is non-destructive when run multiple times.
+`bun init` scaffolds a new project with Bun. It infers settings with sane defaults and is non-destructive when run multiple times.
 
 <Frame>
   ![Demo](https://user-images.githubusercontent.com/709451/183006613-271960a3-ff22-4f7c-83f5-5e18f684c836.gif)
@@ -58,7 +63,7 @@ At the end, it runs `bun install` to install `@types/bun`.
 
 ## CLI Usage
 
-```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun init <folder?>
 ```
 
@@ -140,24 +145,24 @@ bun init <folder?>
 
 * Accept all defaults
 
-  ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}}
   bun init -y
   ```
 
 * React
 
-  ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}}
   bun init --react
   ```
 
 * React + Tailwind CSS
 
-  ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}}
   bun init --react=tailwind
   ```
 
 * React + @shadcn/ui
-  ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}}
   bun init --react=shadcn
   ```
 

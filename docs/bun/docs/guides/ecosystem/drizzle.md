@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/drizzle.md
+Downloaded: 2026-04-03T20:12:34.751Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -91,7 +96,7 @@ drizzle
 
 ***
 
-We can execute these migrations with a simple `migrate.ts` script.
+We can execute these migrations with a `migrate.ts` script.
 
 This script creates a new connection to a SQLite database that writes to `sqlite.db`, then executes all unexecuted migrations in the `drizzle` directory.
 

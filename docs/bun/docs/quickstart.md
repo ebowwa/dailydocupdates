@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/quickstart.md
+Downloaded: 2026-04-03T20:12:34.771Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -81,7 +86,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     Listening on http://localhost:3000
     ```
 
-    Visit [`http://localhost:3000`](http://localhost:3000) to test the server. You should see a simple page that says `"Bun!"`.
+    Visit [`http://localhost:3000`](http://localhost:3000) to test the server. You should see a page that says `"Bun!"`.
 
     <Accordion title="Seeing TypeScript errors on Bun?">
       If you used `bun init`, Bun will have automatically installed Bun's TypeScript declarations and configured your `tsconfig.json`. If you're trying out Bun in an existing project, you may see a type error on the `Bun` global.
@@ -148,7 +153,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     Listening on http://localhost:3000
     ```
 
-    Visit [`http://localhost:3000/figlet`](http://localhost:3000/figlet) to test the server. You should see a simple page that says `"Bun!"` in ASCII art.
+    Visit [`http://localhost:3000/figlet`](http://localhost:3000/figlet) to test the server. You should see a page that says `"Bun!"` in ASCII art.
 
     ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
     ____              _
@@ -210,7 +215,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
   </Step>
 </Steps>
 
-🎉 Congratulations! You've built a simple HTTP server with Bun and installed a package.
+🎉 Congratulations! You've built an HTTP server with Bun and installed a package.
 
 ***
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/prisma-postgres.md
+Downloaded: 2026-04-03T20:12:34.753Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -36,7 +41,7 @@
     bunx --bun prisma init --db
     ```
 
-    This creates a basic schema. We need to update it to use the new Rust-free client with Bun optimization. Open `prisma/schema.prisma` and modify the generator block, then add a simple `User` model.
+    This creates a basic schema. We need to update it to use the new Rust-free client with Bun optimization. Open `prisma/schema.prisma` and modify the generator block, then add a `User` model.
 
     ```prisma prisma/schema.prisma icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/ecosystem/prisma.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=c37203455320f85a20a7b29ce374661c" theme={"theme":{"light":"github-light","dark":"dracula"}}
     generator client {
@@ -115,7 +120,7 @@
   </Step>
 
   <Step title="Create a test script">
-    Let's write a simple script to create a new user, then count the number of users in the database.
+    Let's write a script to create a new user, then count the number of users in the database.
 
     ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
     import { prisma } from "./prisma/db";

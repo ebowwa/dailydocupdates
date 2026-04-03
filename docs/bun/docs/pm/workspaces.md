@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/workspaces.md
+Downloaded: 2026-04-03T20:12:34.770Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Develop complex monorepos with multiple independent packages
 
-Bun supports [`workspaces`](https://docs.npmjs.com/cli/v9/using-npm/workspaces?v=true#description) in `package.json`. Workspaces make it easy to develop complex software as a *monorepo* consisting of several independent packages.
+Bun supports [`workspaces`](https://docs.npmjs.com/cli/v9/using-npm/workspaces?v=true#description) in `package.json`. Workspaces let you develop complex software as a *monorepo* consisting of several independent packages.
 
 It's common for a monorepo to have the following structure:
 
@@ -95,9 +100,9 @@ Setting a specific version takes precedence over the package's `package.json` ve
 
 Workspaces have a couple major benefits.
 
-* **Code can be split into logical parts.** If one package relies on another, you can simply add it as a dependency in `package.json`. If package `b` depends on `a`, `bun install` will install your local `packages/a` directory into `node_modules` instead of downloading it from the npm registry.
+* **Code can be split into logical parts.** If one package relies on another, add it as a dependency in `package.json`. If package `b` depends on `a`, `bun install` will install your local `packages/a` directory into `node_modules` instead of downloading it from the npm registry.
 * **Dependencies can be de-duplicated.** If `a` and `b` share a common dependency, it will be *hoisted* to the root `node_modules` directory. This reduces redundant disk usage and minimizes "dependency hell" issues associated with having multiple versions of a package installed simultaneously.
-* **Run scripts in multiple packages.** You can use the [`--filter` flag](/pm/filter) to easily run `package.json` scripts in multiple packages in your workspace, , or `--workspaces` to run scripts across all workspaces.
+* **Run scripts in multiple packages.** You can use the [`--filter` flag](/pm/filter) to run `package.json` scripts in multiple packages in your workspace, or `--workspaces` to run scripts across all workspaces.
 
 ## Share versions with Catalogs
 

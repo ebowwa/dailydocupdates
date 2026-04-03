@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/networking/udp.md
+Downloaded: 2026-04-03T20:12:34.776Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -97,7 +102,7 @@ const socket = await Bun.udpSocket({});
 socket.sendMany(["Hello", 41234, "127.0.0.1", "foo", 53, "1.1.1.1"]);
 ```
 
-With a connected socket, `sendMany` simply takes an array, where each element represents the data to be sent to the peer.
+With a connected socket, `sendMany` takes an array, where each element represents the data to be sent to the peer.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const socket = await Bun.udpSocket({

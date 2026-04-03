@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/repl.md
+Downloaded: 2026-04-03T20:12:34.777Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > An interactive JavaScript and TypeScript REPL with syntax highlighting, history, and tab completion
 
-`bun repl` starts an interactive Read-Eval-Print Loop (REPL) for evaluating JavaScript and TypeScript expressions. It's useful for quickly testing code snippets, exploring APIs, and debugging.
+`bun repl` starts an interactive Read-Eval-Print Loop (REPL) for evaluating JavaScript and TypeScript expressions. Use it to test code snippets, explore APIs, and debug.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun repl

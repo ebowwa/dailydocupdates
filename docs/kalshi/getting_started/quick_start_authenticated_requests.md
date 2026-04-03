@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/quick_start_authenticated_requests.md
+Downloaded: 2026-04-03T20:12:21.927Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,7 +15,7 @@ This guide shows you how to make authenticated requests to the Kalshi API in thr
 
 ## Step 1: Get Your API Keys
 
-1. Log in to your Kalshi account ([demo](https://demo.kalshi.com) or [production](https://kalshi.com))
+1. Log in to your Kalshi account ([demo](https://demo.kalshi.co) or [production](https://kalshi.com))
 2. Navigate to **Account & security** → **API Keys**
 3. Click **Create Key**
 4. Save both:

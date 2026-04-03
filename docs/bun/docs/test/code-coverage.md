@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/code-coverage.md
+Downloaded: 2026-04-03T20:12:34.779Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Learn how to use Bun's built-in code coverage reporting to track test coverage and find untested areas in your codebase
 
-Bun's test runner now supports built-in code coverage reporting. This makes it easy to see how much of the codebase is covered by tests, and find areas that are not currently well-tested.
+Bun's test runner supports built-in code coverage reporting. Use it to see how much of your codebase is covered by tests and find areas that are not currently well-tested.
 
 ## Enabling Coverage
 

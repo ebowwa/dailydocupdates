@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/templating/create.md
+Downloaded: 2026-04-03T20:12:34.778Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -7,8 +12,7 @@
 > Create a new Bun project from a React component, a `create-<template>` npm package, a GitHub repo, or a local template
 
 <Note>
-  You don't need `bun create` to use Bun. You don't need any configuration at all. This command exists to make getting
-  started a bit quicker and easier.
+  `bun create` is optional — Bun works without any configuration. This command exists to make getting started faster.
 </Note>
 
 ***

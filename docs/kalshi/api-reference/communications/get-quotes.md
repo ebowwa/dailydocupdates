@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/get-quotes.md
-Downloaded: 2026-04-02T20:14:20.304Z
+Downloaded: 2026-04-03T20:12:21.916Z
 -->
 
 > ## Documentation Index
@@ -246,12 +246,6 @@ components:
           type: string
           format: date-time
           description: Timestamp when the quote was cancelled
-        expiration_ts:
-          type: string
-          format: date-time
-          description: >-
-            Optional timestamp after which this quote should no longer be
-            accepted
         rest_remainder:
           type: boolean
           description: Whether to rest the remainder of the quote after execution

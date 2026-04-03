@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/c-compiler.md
+Downloaded: 2026-04-03T20:12:34.771Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -137,7 +142,7 @@ napi_value hello(napi_env env) {
 
 #### `library: string[]`
 
-The `library` array is used to specify the libraries that should be linked with the C code.
+Use the `library` array to specify the libraries to link with the C code.
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 type Library = string[];
@@ -150,7 +155,7 @@ cc({
 
 #### `symbols`
 
-The `symbols` object is used to specify the functions and variables that should be exposed to JavaScript.
+Use the `symbols` object to specify the functions and variables to expose to JavaScript.
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 type Symbols = {

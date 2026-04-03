@@ -1,12 +1,17 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/react.md
+Downloaded: 2026-04-03T20:12:34.754Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Build a React app with Bun
 
-Bun supports `.jsx` and `.tsx` files out of the box. React just works with Bun.
+Bun supports `.jsx` and `.tsx` files out of the box. React works with Bun.
 
-Create a new React app with `bun init --react`. This gives you a template with a simple React app and a simple API server together in one full-stack app.
+Create a new React app with `bun init --react`. This gives you a template with a React app and an API server together in one full-stack app.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Create a new React app

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/writing-tests.md
+Downloaded: 2026-04-03T20:12:34.781Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,7 +15,7 @@ Define tests with a Jest-like API imported from the built-in `bun:test` module. 
 
 ## Basic Usage
 
-To define a simple test:
+To define a test:
 
 ```ts title="math.test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { expect, test } from "bun:test";
@@ -357,7 +362,7 @@ test.each([
 
 ### Format Specifiers
 
-There are a number of options available for formatting the test title:
+The following options are available for formatting the test title:
 
 | Specifier | Description             |
 | --------- | ----------------------- |

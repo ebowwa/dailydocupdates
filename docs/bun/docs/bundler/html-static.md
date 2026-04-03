@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/html-static.md
+Downloaded: 2026-04-03T20:12:34.747Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -461,7 +466,7 @@ Bun automatically handles all common web assets:
 * **Media** (`<video>`, `<audio>`, `<source>`) are copied and hashed
 * Any `<link>` tag with an `href` attribute pointing to a local file is rewritten to the new path, and hashed
 
-All paths are resolved relative to your HTML file, making it easy to organize your project however you want.
+All paths are resolved relative to your HTML file, so you can organize your project however you want.
 
 <Warning>
   **This is a work in progress**

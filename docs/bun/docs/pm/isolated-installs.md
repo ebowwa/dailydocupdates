@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/isolated-installs.md
+Downloaded: 2026-04-03T20:12:34.769Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -188,7 +193,7 @@ bun install --linker isolated
 
 ### From pnpm
 
-Isolated installs are conceptually similar to pnpm, so migration should be straightforward:
+Isolated installs are conceptually similar to pnpm, so migration is direct:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Remove pnpm files

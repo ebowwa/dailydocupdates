@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/standalone-html.md
+Downloaded: 2026-04-03T20:12:34.748Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,11 +19,11 @@ bun build --compile --target=browser ./index.html --outdir=dist
 
 The output is a completely self-contained HTML document. No relative paths. No external files. No server required. Just one `.html` file that works anywhere a browser can open it.
 
-## One file. Upload anywhere. It just works.
+## One file. Upload anywhere.
 
 The output is a single `.html` file you can put anywhere:
 
-* **Upload it to S3** or any static file host — no directory structure to maintain, just one file
+* **Upload it to S3** or any static file host — no directory structure to maintain, one file
 * **Double-click it from your desktop** — it opens in the browser and works offline, no localhost server needed
 * **Embed it in your webview** — No need to deal with relative files
 * **Insert it in an `<iframe>`** — embed interactive content in another page with a single file URL

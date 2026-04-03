@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/patch.md
+Downloaded: 2026-04-03T20:12:34.768Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,7 +13,7 @@
 
 `bun patch` lets you persistently patch node\_modules in a maintainable, git-friendly way.
 
-Sometimes, you need to make a small change to a package in `node_modules/` to fix a bug or add a feature. `bun patch` makes it easy to do this without vendoring the entire package and reuse the patch across multiple installs, multiple projects, and multiple machines.
+Sometimes, you need to make a small change to a package in `node_modules/` to fix a bug or add a feature. `bun patch` lets you do this without vendoring the entire package and reuse the patch across multiple installs, multiple projects, and multiple machines.
 
 Features:
 
@@ -68,7 +73,7 @@ bun patch-commit react
 
 # CLI Usage
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun patch <package>@<version>
 ```
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/sqlite.md
+Downloaded: 2026-04-03T20:12:34.778Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -20,7 +25,7 @@ query.get();
 { message: "Hello world" }
 ```
 
-The API is simple, synchronous, and fast. Credit to [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3) and its contributors for inspiring the API of `bun:sqlite`.
+The API is synchronous and fast. Credit to [better-sqlite3](https://github.com/JoshuaWise/better-sqlite3) and its contributors for inspiring the API of `bun:sqlite`.
 
 Features include:
 

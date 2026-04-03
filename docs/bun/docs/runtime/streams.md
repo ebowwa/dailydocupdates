@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/streams.md
+Downloaded: 2026-04-03T20:12:34.778Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -18,7 +23,7 @@ Bun implements the Web APIs [`ReadableStream`](https://developer.mozilla.org/en-
   to the [Node.js docs](https://nodejs.org/api/stream.html).
 </Note>
 
-To create a simple `ReadableStream`:
+To create a `ReadableStream`:
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream({
@@ -71,13 +76,13 @@ const stream = new ReadableStream({
 });
 ```
 
-When using a direct `ReadableStream`, all chunk queueing is handled by the destination. The consumer of the stream receives exactly what is passed to `controller.write()`, without any encoding or modification.
+When using a direct `ReadableStream`, the destination handles all chunk queueing. The consumer of the stream receives exactly what is passed to `controller.write()`, without any encoding or modification.
 
 ***
 
 ## Async generator streams
 
-Bun also supports async generator functions as a source for `Response` and `Request`. This is an easy way to create a `ReadableStream` that fetches data from an asynchronous source.
+Bun also supports async generator functions as a source for `Response` and `Request`. Use async generators to create a `ReadableStream` that fetches data from an asynchronous source.
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = new Response(

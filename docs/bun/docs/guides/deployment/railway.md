@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/deployment/railway.md
+Downloaded: 2026-04-03T20:12:34.751Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,7 +15,7 @@ Railway is an infrastructure platform where you can provision infrastructure, de
 
 This guide walks through deploying a Bun application with a PostgreSQL database (optional), which is exactly what the template below provides.
 
-You can either follow this guide step-by-step or simply deploy the pre-configured template with one click:
+You can either follow this guide step-by-step or deploy the pre-configured template with one click:
 
 <a href="https://railway.com/deploy/bun-react-postgres?referralCode=Bun&utm_medium=integration&utm_source=template&utm_campaign=bun" target="_blank">
   <img src="https://railway.com/button.svg" alt="Deploy on Railway" />

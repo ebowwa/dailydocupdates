@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/mongoose.md
+Downloaded: 2026-04-03T20:12:34.753Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -26,7 +31,7 @@ bun add mongoose
 
 ***
 
-In `schema.ts` we'll declare and export a simple `Animal` model.
+In `schema.ts` we'll declare and export an `Animal` model.
 
 ```ts schema.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import * as mongoose from "mongoose";
@@ -89,7 +94,7 @@ Moo!
 
 ***
 
-This is a simple introduction to using Mongoose with TypeScript and Bun. As you build your application, refer to the official [MongoDB](https://www.mongodb.com/docs) and [Mongoose](https://mongoosejs.com/docs/) sites for complete documentation.
+This is an introduction to using Mongoose with TypeScript and Bun. As you build your application, refer to the official [MongoDB](https://www.mongodb.com/docs) and [Mongoose](https://mongoosejs.com/docs/) sites for complete documentation.
 
 
 Built with [Mintlify](https://mintlify.com).

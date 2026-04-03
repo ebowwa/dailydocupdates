@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/ssr-react.md
+Downloaded: 2026-04-03T20:12:34.754Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -31,7 +36,7 @@ const stream = await renderToReadableStream(<Component message="Hello from serve
 
 ***
 
-Combining this with `Bun.serve()`, we get a simple SSR HTTP server:
+Combining this with `Bun.serve()`, we get an SSR HTTP server:
 
 ```tsx server.tsx icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({

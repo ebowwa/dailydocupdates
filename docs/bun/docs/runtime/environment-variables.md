@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/environment-variables.md
+Downloaded: 2026-04-03T20:12:34.772Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -136,7 +141,7 @@ process.env.BAR; // => "hello$FOO"
 
 ### `dotenv`
 
-Generally speaking, you won't need `dotenv` or `dotenv-expand` anymore, because Bun reads `.env` files automatically.
+Bun reads `.env` files automatically, so `dotenv` and `dotenv-expand` are unnecessary.
 
 ## Reading environment variables
 
@@ -146,7 +151,7 @@ The current environment variables can be accessed via `process.env`.
 process.env.API_TOKEN; // => "secret"
 ```
 
-Bun also exposes these variables via `Bun.env` and `import.meta.env`, which is a simple alias of `process.env`.
+Bun also exposes these variables via `Bun.env` and `import.meta.env`, which are aliases of `process.env`.
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.env.API_TOKEN; // => "secret"

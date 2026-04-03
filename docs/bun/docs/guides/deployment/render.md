@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/deployment/render.md
+Downloaded: 2026-04-03T20:12:34.751Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ Render supports Bun natively. You can deploy Bun apps as web services, backgroun
 
 ***
 
-As an example, let's deploy a simple Express HTTP server to Render.
+As an example, let's deploy an Express HTTP server to Render.
 
 <Steps>
   <Step title="Step 1">
@@ -33,7 +38,7 @@ As an example, let's deploy a simple Express HTTP server to Render.
   </Step>
 
   <Step title="Step 3">
-    Define a simple server with Express:
+    Define a server with Express:
 
     ```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
     import express from "express";

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/http/server.md
+Downloaded: 2026-04-03T20:12:34.774Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -402,7 +407,7 @@ const server = Bun.serve({
 
 ## Benchmarks
 
-Below are Bun and Node.js implementations of a simple HTTP server that responds `Bun!` to each incoming `Request`.
+Below are Bun and Node.js implementations of an HTTP server that responds `Bun!` to each incoming `Request`.
 
 ```ts Bun theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({

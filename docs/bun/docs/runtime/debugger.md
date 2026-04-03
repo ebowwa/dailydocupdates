@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/debugger.md
+Downloaded: 2026-04-03T20:12:34.772Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Debug your Bun code with an interactive debugger using WebKit Inspector Protocol
 
-Bun speaks the [WebKit Inspector Protocol](https://github.com/oven-sh/bun/blob/main/packages/bun-inspector-protocol/src/protocol/jsc/index.d.ts), so you can debug your code with an interactive debugger. For demonstration purposes, consider the following simple web server.
+Bun speaks the [WebKit Inspector Protocol](https://github.com/oven-sh/bun/blob/main/packages/bun-inspector-protocol/src/protocol/jsc/index.d.ts), so you can debug your code with an interactive debugger. For demonstration purposes, consider the following web server.
 
 ## Debugging JavaScript and TypeScript
 
@@ -173,7 +178,7 @@ await fetch("https://example.com", {
 
 The lines with `[fetch] >` are the request from your local code, and the lines with `[fetch] <` are the response from the remote server.
 
-The `BUN_CONFIG_VERBOSE_FETCH` environment variable is supported in both `fetch()` and `node:http` requests, so it should just work.
+The `BUN_CONFIG_VERBOSE_FETCH` environment variable is supported in both `fetch()` and `node:http` requests, so it works in both cases.
 
 To print without the `curl` command, set `BUN_CONFIG_VERBOSE_FETCH` to `true`.
 

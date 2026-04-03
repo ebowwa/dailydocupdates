@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/install/from-npm-install-to-bun-install.md
+Downloaded: 2026-04-03T20:12:34.757Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 `bun install` is a Node.js compatible npm client designed to be an incredibly fast successor to npm.
 
-We've put a lot of work into making sure that the migration path from `npm install` to `bun install` is as easy as running `bun install` instead of `npm install`.
+To migrate from `npm install` to `bun install`, run `bun install` instead of `npm install`.
 
 * **Designed for Node.js & Bun**: `bun install` installs a Node.js compatible `node_modules` folder. You can use it in place of `npm install` for Node.js projects without any code changes and without using Bun's runtime.
 * **Automatically converts `package-lock.json`** to bun's `bun.lock` lockfile format, preserving your existing resolved dependency versions without any manual work on your part. You can secretly use `bun install` in place of `npm install` at work without anyone noticing.
@@ -31,7 +36,7 @@ bun rm @types/bun
 
 ## Run package.json scripts faster
 
-Run scripts from package.json, executables from `node_modules/.bin` (sort of like `npx`), and JavaScript/TypeScript files (just like `node`) - all from a single simple command.
+Run scripts from package.json, executables from `node_modules/.bin` (sort of like `npx`), and JavaScript/TypeScript files (like `node`) — all from a single command.
 
 | NPM                | Bun              |
 | ------------------ | ---------------- |

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/stric.md
+Downloaded: 2026-04-03T20:12:34.754Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -23,7 +28,7 @@ bun add @stricjs/router @stricjs/utils
 
 ***
 
-To implement a simple HTTP server with StricJS:
+To implement an HTTP server with StricJS:
 
 ```ts index.ts icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Router } from "@stricjs/router";

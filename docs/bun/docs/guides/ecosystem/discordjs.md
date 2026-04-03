@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/discordjs.md
+Downloaded: 2026-04-03T20:12:34.751Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Create a Discord bot
 
-Discord.js works out of the box with Bun. Let's write a simple bot. First create a directory and initialize it with `bun init`.
+Discord.js works out of the box with Bun. Let's write a bot. First create a directory and initialize it with `bun init`.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 mkdir my-bot

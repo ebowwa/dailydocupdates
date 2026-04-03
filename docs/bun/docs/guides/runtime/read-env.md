@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/read-env.md
+Downloaded: 2026-04-03T20:12:34.760Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ process.env.API_TOKEN; // => "secret"
 
 ***
 
-Bun also exposes these variables via `Bun.env`, which is a simple alias of `process.env`.
+Bun also exposes these variables via `Bun.env`, which is an alias of `process.env`.
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.env.API_TOKEN; // => "secret"

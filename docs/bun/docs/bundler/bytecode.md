@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/bytecode.md
+Downloaded: 2026-04-03T20:12:34.745Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -117,7 +122,7 @@ When you update Bun, you must regenerate bytecode:
 bun build --bytecode ./index.ts --outdir=./dist
 ```
 
-If bytecode doesn't match the current Bun version, it's automatically ignored and your code falls back to parsing the JavaScript source. Your app still runs - you just lose the performance optimization.
+If bytecode doesn't match the current Bun version, it's automatically ignored and your code falls back to parsing the JavaScript source. Your app still runs — the performance optimization is skipped.
 
 **Best practice**: Generate bytecode as part of your CI/CD build process. Don't commit `.jsc` files to git. Regenerate them whenever you update Bun.
 
@@ -403,7 +408,7 @@ The cache version in the `.jsc` file header is a hash of the JavaScriptCore fram
 3. If they don't match, the bytecode is **silently rejected**
 4. Bun falls back to parsing the `.js` source code
 
-Your application still runs - you just lose the performance optimization.
+Your application still runs — the performance optimization is skipped.
 
 **Graceful degradation**:
 This design means bytecode caching "fails open" - if anything goes wrong (version mismatch, corrupted file, missing file), your code still runs normally. You might see slower startup, but you won't see errors.

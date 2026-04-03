@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/watch-mode.md
+Downloaded: 2026-04-03T20:12:34.779Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -34,7 +39,7 @@ In `--watch` mode, Bun keeps track of all imported files and watches them for ch
 <Note>
   **⚡️ Reloads are fast.** The filesystem watchers you're probably used to have several layers of libraries wrapping the native APIs or worse, rely on polling.
 
-  Instead, Bun uses operating system native filesystem watcher APIs like kqueue or inotify to detect changes to files. Bun also does a number of optimizations to enable it scale to larger projects (such as setting a high rlimit for file descriptors, statically allocated file path buffers, reuse file descriptors when possible, etc).
+  Instead, Bun uses operating system native filesystem watcher APIs like kqueue or inotify to detect changes to files. Bun also applies several optimizations to scale to larger projects (such as setting a high rlimit for file descriptors, statically allocated file path buffers, reuse file descriptors when possible, etc).
 </Note>
 
 The following examples show Bun live-reloading a file as it is edited, with VSCode configured to save the file [on each keystroke](https://code.visualstudio.com/docs/editor/codebasics#_save-auto-save).

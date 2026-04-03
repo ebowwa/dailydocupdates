@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/file-io.md
+Downloaded: 2026-04-03T20:12:34.773Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -204,7 +209,7 @@ writer.ref();
 
 ## Directories
 
-Bun's implementation of `node:fs` is fast, and we haven't implemented a Bun-specific API for reading directories just yet. For now, you should use `node:fs` for working with directories in Bun.
+Bun's implementation of `node:fs` is fast. Use `node:fs` for working with directories in Bun.
 
 ### Reading directories (readdir)
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/hot-reloading.md
+Downloaded: 2026-04-03T20:12:34.747Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -73,7 +78,7 @@ import.meta.hot.dispose(() => {
 
 ## import.meta.hot.accept()
 
-The `accept()` method indicates that a module can be hot-replaced. When called without arguments, it indicates that this module can be replaced simply by re-evaluating the file. After a hot update, importers of this module will be automatically patched.
+The `accept()` method indicates that a module can be hot-replaced. When called without arguments, it indicates that this module can be replaced by re-evaluating the file. After a hot update, importers of this module will be automatically patched.
 
 ```ts title="index.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // index.ts

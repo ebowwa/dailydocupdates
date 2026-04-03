@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/fullstack.md
+Downloaded: 2026-04-03T20:12:34.746Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -422,7 +427,7 @@ bun add tailwindcss bun-plugin-tailwind
 plugins = ["bun-plugin-tailwind"]
 ```
 
-This will allow you to use TailwindCSS utility classes in your HTML and CSS files. All you need to do is import `tailwindcss` somewhere:
+This will allow you to use TailwindCSS utility classes in your HTML and CSS files. Import `tailwindcss` somewhere in your project:
 
 ```html title="index.html" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 <!doctype html>

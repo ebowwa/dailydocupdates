@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/esbuild.md
+Downloaded: 2026-04-03T20:12:34.746Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -16,9 +21,9 @@ There are a few behavioral differences to note.
 </Note>
 
 <Note>
-  **It's just a bundler.** Unlike esbuild, Bun's bundler does not include a built-in development server or file watcher.
-  It's just a bundler. The bundler is intended for use in conjunction with `Bun.serve` and other runtime APIs to achieve
-  the same effect. As such, all options relating to HTTP/file watching are not applicable.
+  **Bundler only.** Unlike esbuild, Bun's bundler does not include a built-in development server or file watcher. The
+  bundler is intended for use in conjunction with `Bun.serve` and other runtime APIs to achieve the same effect. As
+  such, all options relating to HTTP/file watching are not applicable.
 </Note>
 
 ## Performance

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/runtime-behavior.md
+Downloaded: 2026-04-03T20:12:34.781Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Learn about Bun test's runtime integration, environment variables, timeouts, and error handling
 
-`bun test` is deeply integrated with Bun's runtime. This is part of what makes `bun test` fast and simple to use.
+`bun test` is deeply integrated with Bun's runtime. This integration is part of what makes `bun test` fast.
 
 ## Environment Variables
 

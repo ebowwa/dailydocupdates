@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/create-quote.md
-Downloaded: 2026-04-02T20:14:20.303Z
+Downloaded: 2026-04-03T20:12:21.916Z
 -->
 
 > ## Documentation Index
@@ -118,13 +118,6 @@ components:
           description: >-
             Optional subaccount number to place the quote under (0 for primary,
             1-32 for subaccounts)
-        expiration_ts:
-          type: integer
-          format: int64
-          description: >-
-            Optional Unix timestamp (seconds) after which this quote should no
-            longer be accepted. Must be in the future; past timestamps are
-            rejected with a 400 error.
     CreateQuoteResponse:
       type: object
       required:

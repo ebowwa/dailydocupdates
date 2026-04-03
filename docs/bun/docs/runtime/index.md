@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/index.md
+Downloaded: 2026-04-03T20:12:34.775Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -15,7 +20,7 @@ Under the hood, Bun uses the [JavaScriptCore engine](https://developer.apple.com
 | `bun hello.js`  | `5.2ms`  |
 | `node hello.js` | `25.1ms` |
 
-This benchmark is based on running a simple Hello World script on Linux
+This benchmark is based on running a Hello World script on Linux
 
 ## Run a file
 
@@ -222,7 +227,7 @@ When there is a package.json script and a file with the same name, `bun run` pri
 
 # CLI Usage
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run <file or script>
 ```
 
@@ -514,14 +519,14 @@ bun run <file or script>
 
 Run a JavaScript or TypeScript file:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run ./index.js
 bun run ./index.tsx
 ```
 
 Run a package.json script:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run dev
 bun run lint
 ```

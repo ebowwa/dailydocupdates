@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-makers/liquidity-rewards.md
+Downloaded: 2026-04-03T20:12:15.174Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -23,6 +28,19 @@ The program is designed to:
   binary contract markets — distinct books, no staking mechanic, a modified
   order utility-relative depth function, and reward amounts isolated per market.
 </Info>
+
+***
+
+<Note>
+  The minimum reward payout is **\$1**; amounts below this will not be paid.
+</Note>
+
+<Tip>
+  Both `min_incentive_size` and `max_incentive_spread` can be fetched alongside
+  full market objects via the CLOB API and [Markets
+  API](/market-data/fetching-markets). Reward allocations for an epoch can also
+  be fetched via the Markets API.
+</Tip>
 
 ***
 
@@ -142,16 +160,204 @@ Q<sub>no</sub> is calculated every minute using random sampling.
 
 ***
 
+## April 2026 — Liquidity Incentive Program
+
+Polymarket is distributing over **\$5M** in liquidity incentives for April 2026 across sports and esports markets. The reward pool is split into **Pre** (pre-game) and **Live** (in-play) periods per game. Rewards are distributed pro-rata across all eligible markets within each game.
+
 <Note>
-  The minimum reward payout is **\$1**; amounts below this will not be paid.
+  This covers April 2026 sports markets. Additional categories will be added soon.
 </Note>
 
-<Tip>
-  Both `min_incentive_size` and `max_incentive_spread` can be fetched alongside
-  full market objects via the CLOB API and [Markets
-  API](/market-data/fetching-markets). Reward allocations for an epoch can also
-  be fetched via the Markets API.
-</Tip>
+### Soccer — Top 5 Leagues + UEFA
+
+Every game in these leagues has liquidity rewards split across pre-game and live periods.
+
+| League                  | Pre \$/Game | Live \$/Game | Total \$/Game |
+| ----------------------- | ----------- | ------------ | ------------- |
+| English Premier League  | \$2,800     | \$7,200      | \$10,000      |
+| La Liga                 | \$900       | \$2,400      | \$3,300       |
+| Serie A                 | \$900       | \$2,400      | \$3,300       |
+| Bundesliga              | \$850       | \$2,150      | \$3,000       |
+| Ligue 1                 | \$600       | \$1,500      | \$2,100       |
+| Champions League (QFs)  | \$6,750     | \$17,250     | \$24,000      |
+| Europa League (QFs)     | \$1,350     | \$3,400      | \$4,750       |
+| Conference League (QFs) | \$400       | \$1,100      | \$1,500       |
+
+### Soccer — Americas
+
+| League                     | Pre \$/Game | Live \$/Game | Total \$/Game |
+| -------------------------- | ----------- | ------------ | ------------- |
+| MLS                        | \$450       | \$1,200      | \$1,650       |
+| Liga MX                    | \$450       | \$1,200      | \$1,650       |
+| Copa Libertadores (Groups) | \$750       | \$1,900      | \$2,650       |
+| Copa Sudamericana (Groups) | \$225       | \$575        | \$800         |
+| Argentine Primera Division | \$150       | \$400        | \$550         |
+| Brasileirao Serie A        | \$150       | \$400        | \$550         |
+| Colombian Primera A        | \$100       | \$200        | \$300         |
+| Chilean Primera Division   | \$75        | \$175        | \$250         |
+| Peruvian Primera Division  | \$75        | \$175        | \$250         |
+| Bolivian Primera           | \$25        | \$50         | \$75          |
+| Brasileirao Serie B        | \$25        | \$50         | \$75          |
+
+### Soccer — Other Europe
+
+| League                   | Pre \$/Game | Live \$/Game | Total \$/Game |
+| ------------------------ | ----------- | ------------ | ------------- |
+| Turkish Super Lig        | \$550       | \$1,450      | \$2,000       |
+| Eredivisie               | \$250       | \$650        | \$900         |
+| Liga Portugal            | \$200       | \$550        | \$750         |
+| EFL Championship         | \$150       | \$350        | \$500         |
+| Russian Premier League   | \$100       | \$275        | \$375         |
+| Danish Superliga         | \$75        | \$150        | \$225         |
+| Czech First League       | \$25        | \$75         | \$100         |
+| Romanian Liga I          | \$25        | \$75         | \$100         |
+| Ukrainian Premier League | \$25        | \$75         | \$100         |
+
+### Soccer — Asia / Middle East / Africa
+
+| League                  | Pre \$/Game | Live \$/Game | Total \$/Game |
+| ----------------------- | ----------- | ------------ | ------------- |
+| Saudi Pro League        | \$450       | \$1,200      | \$1,650       |
+| J1 League (Japan)       | \$300       | \$800        | \$1,100       |
+| K League 1 (Korea)      | \$200       | \$550        | \$750         |
+| Chinese Super League    | \$100       | \$250        | \$350         |
+| A-League (Australia)    | \$100       | \$250        | \$350         |
+| Indian Super League     | \$75        | \$175        | \$250         |
+| J2 League (Japan)       | \$25        | \$75         | \$100         |
+| Egyptian Premier League | \$25        | \$75         | \$100         |
+| Moroccan League         | \$25        | \$75         | \$100         |
+| Norwegian Eliteserien   | \$25        | \$75         | \$100         |
+
+### Soccer — Domestic Cups
+
+| League                        | Pre \$/Game | Live \$/Game | Total \$/Game |
+| ----------------------------- | ----------- | ------------ | ------------- |
+| FA Cup (Semi-Finals)          | \$850       | \$2,000      | \$2,850       |
+| DFB-Pokal (Semi-Finals)       | \$450       | \$950        | \$1,400       |
+| Coppa Italia (Semi-Finals)    | \$450       | \$950        | \$1,400       |
+| Coupe de France (Semi-Finals) | \$275       | \$675        | \$950         |
+
+### Esports — CS2
+
+| Tier                                | Pre \$/Game | Live \$/Game | Total \$/Game |
+| ----------------------------------- | ----------- | ------------ | ------------- |
+| A Tier (ESL Pro League, BLAST)      | \$1,550     | \$3,950      | \$5,500       |
+| B Tier (RMRs, Large Regional)       | \$1,550     | \$3,950      | \$5,500       |
+| C Tier (Small Regional, Qualifiers) | \$150       | \$350        | \$500         |
+
+### Esports — League of Legends
+
+| Tier                            | Pre \$/Game | Live \$/Game | Total \$/Game |
+| ------------------------------- | ----------- | ------------ | ------------- |
+| A Tier (LCK, LPL, LEC Playoffs) | \$1,550     | \$3,950      | \$5,500       |
+| B Tier (LCS, Other Regional)    | \$1,550     | \$3,950      | \$5,500       |
+| C Tier (ERLs, National Leagues) | \$150       | \$350        | \$500         |
+
+### Esports — Dota 2
+
+| Tier                       | Pre \$/Game | Live \$/Game | Total \$/Game |
+| -------------------------- | ----------- | ------------ | ------------- |
+| A/B Tier (DPC, Qualifiers) | \$1,000     | \$2,500      | \$3,500       |
+| C Tier (Regional)          | \$150       | \$350        | \$500         |
+
+### Esports — Valorant
+
+| Tier                  | Pre \$/Game | Live \$/Game | Total \$/Game |
+| --------------------- | ----------- | ------------ | ------------- |
+| A/B Tier (VCT Stages) | \$1,000     | \$2,500      | \$3,500       |
+| C Tier (Regional)     | \$150       | \$350        | \$500         |
+
+### Esports — Other Titles
+
+| Game                      | Pre \$/Game | Live \$/Game | Total \$/Game |
+| ------------------------- | ----------- | ------------ | ------------- |
+| Call of Duty (CDL)        | \$50        | \$100        | \$150         |
+| Rocket League (RLCS)      | \$50        | \$100        | \$150         |
+| Mobile Legends: Bang Bang | \$50        | \$100        | \$150         |
+| Honor of Kings            | \$50        | \$100        | \$150         |
+
+### Basketball
+
+| League                                | Pre \$/Game | Live \$/Game | Total \$/Game |
+| ------------------------------------- | ----------- | ------------ | ------------- |
+| NBA (Reg Season + Play-In + Playoffs) | \$2,150     | \$5,550      | \$7,700       |
+| EuroLeague (Playoffs)                 | \$150       | \$350        | \$500         |
+| ACB Spain                             | \$75        | \$200        | \$275         |
+| Lega Basket Serie A (Italy)           | \$75        | \$200        | \$275         |
+| Basketball Champions League           | \$75        | \$200        | \$275         |
+| CBA (China)                           | \$50        | \$150        | \$200         |
+| LNB Pro A (France)                    | \$50        | \$150        | \$200         |
+| KBL (Korea)                           | \$25        | \$50         | \$75          |
+| NBL (Australia)                       | \$25        | \$50         | \$75          |
+| B.League (Japan)                      | \$25        | \$50         | \$75          |
+| BBL (Germany)                         | \$25        | \$50         | \$75          |
+| ABA League                            | \$25        | \$50         | \$75          |
+| BSL (Turkey)                          | \$25        | \$50         | \$75          |
+| Greek A1                              | \$25        | \$50         | \$75          |
+| LNB Argentina                         | \$0         | \$25         | \$25          |
+| VTB United League                     | \$0         | \$25         | \$25          |
+
+### Baseball
+
+| League      | Pre \$/Game | Live \$/Game | Total \$/Game |
+| ----------- | ----------- | ------------ | ------------- |
+| MLB         | \$465       | \$1,185      | \$1,650       |
+| KBO (Korea) | \$75        | \$225        | \$300         |
+
+### Hockey
+
+| League                      | Pre \$/Game | Live \$/Game | Total \$/Game |
+| --------------------------- | ----------- | ------------ | ------------- |
+| NHL (Reg Season + Playoffs) | \$400       | \$1,100      | \$1,500       |
+| KHL (Playoffs)              | \$75        | \$200        | \$275         |
+| SHL (Playoffs)              | \$25        | \$150        | \$175         |
+| AHL                         | \$0         | \$25         | \$25          |
+| Czech Extraliga (Playoffs)  | \$0         | \$25         | \$25          |
+| DEL Germany (Playoffs)      | \$0         | \$25         | \$25          |
+
+### Tennis
+
+| Tour     | Pre \$/Game | Live \$/Game | Total \$/Game |
+| -------- | ----------- | ------------ | ------------- |
+| ATP Tour | \$450       | \$1,000      | \$1,450       |
+| WTA Tour | \$300       | \$750        | \$1,050       |
+
+### UFC / MMA
+
+| Event Type    | Pre \$/Game | Live \$/Game | Total \$/Game |
+| ------------- | ----------- | ------------ | ------------- |
+| UFC Main Card | \$1,200     | \$3,050      | \$4,250       |
+| UFC Prelims   | \$250       | \$700        | \$950         |
+
+### Cricket
+
+| League                       | Pre \$/Game | Live \$/Game | Total \$/Game |
+| ---------------------------- | ----------- | ------------ | ------------- |
+| IPL (Indian Premier League)  | \$1,250     | \$3,250      | \$4,500       |
+| ICC ODI Internationals       | \$0         | \$50         | \$50          |
+| ICC T20 Internationals       | \$0         | \$50         | \$50          |
+| Other Cricket Internationals | \$0         | \$25         | \$25          |
+| Test Cricket                 | \$0         | \$25         | \$25          |
+
+### Rugby
+
+| League                       | Pre \$/Game | Live \$/Game | Total \$/Game |
+| ---------------------------- | ----------- | ------------ | ------------- |
+| Top 14 (France)              | \$75        | \$175        | \$250         |
+| Premiership Rugby (England)  | \$75        | \$175        | \$250         |
+| Super Rugby Pacific          | \$75        | \$175        | \$250         |
+| United Rugby Championship    | \$50        | \$125        | \$175         |
+| European Champions Cup (QFs) | \$100       | \$300        | \$400         |
+
+### Other
+
+| Event            | Pre \$/Game | Live \$/Game | Total \$/Game |
+| ---------------- | ----------- | ------------ | ------------- |
+| WTT Table Tennis | \$0         | \$25         | \$25          |
+| Chess            | \$25        | \$75         | \$100         |
+| PLL Lacrosse     | \$25        | \$75         | \$100         |
+
+***
 
 ## Next Steps
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/project/building-windows.md
+Downloaded: 2026-04-03T20:12:34.770Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -48,7 +53,7 @@ After Visual Studio, you need the following:
 
 <Note>The Zig compiler is automatically downloaded, installed, and updated by the building process.</Note>
 
-[Scoop](https://scoop.sh) can be used to install these remaining tools easily.
+Use [Scoop](https://scoop.sh) to install these remaining tools.
 
 ```ps1 Scoop (x64) theme={"theme":{"light":"github-light","dark":"dracula"}}
 irm https://get.scoop.sh | iex

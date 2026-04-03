@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/http/cluster.md
+Downloaded: 2026-04-03T20:12:34.755Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -67,7 +72,7 @@ process.on("exit", kill);
 
 ***
 
-Bun has also implemented the `node:cluster` module, but this is a faster, simple, and limited alternative.
+Bun has also implemented the `node:cluster` module, but this is a faster and more limited alternative.
 
 
 Built with [Mintlify](https://mintlify.com).

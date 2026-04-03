@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/redis.md
+Downloaded: 2026-04-03T20:12:34.776Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,7 +13,7 @@
 
 <Note>Bun's Redis client supports Redis server versions 7.2 and up.</Note>
 
-Bun provides native bindings for working with Redis databases with a modern, Promise-based API. The interface is designed to be simple and performant, with built-in connection management, fully typed responses, and TLS support.
+Bun provides native bindings for working with Redis databases with a modern, Promise-based API. The interface is designed to be performant, with built-in connection management, fully typed responses, and TLS support.
 
 ```ts redis.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { redis } from "bun";

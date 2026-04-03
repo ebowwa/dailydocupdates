@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/nodejs-compat.md
+Downloaded: 2026-04-03T20:12:34.776Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Bun's compatibility status with Node.js APIs, modules, and globals
 
-Every day, Bun gets closer to 100% Node.js API compatibility. Today, popular frameworks like Next.js, Express, and millions of `npm` packages intended for Node just work with Bun. To ensure compatibility, we run thousands of tests from Node.js' test suite before every release of Bun.
+Every day, Bun gets closer to 100% Node.js API compatibility. Today, popular frameworks like Next.js, Express, and millions of `npm` packages intended for Node work with Bun. To ensure compatibility, we run thousands of tests from Node.js' test suite before every release of Bun.
 
 **If a package works in Node.js but doesn't work in Bun, we consider it a bug in Bun.** Please [open an issue](https://bun.com/issues) and we'll fix it.
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/testing-library.md
+Downloaded: 2026-04-03T20:12:34.764Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -60,7 +65,7 @@ preload = ["./happydom.ts", "./testing-library.ts"]
 
 ***
 
-If you are using TypeScript you will also need to make use of declaration merging in order to get the new matcher types to show up in your editor. To do this, create a type declaration file that extends `Matchers` like this.
+If you are using TypeScript, you will also need to use declaration merging to get the new matcher types to show up in your editor. To do this, create a type declaration file that extends `Matchers` like this.
 
 ```ts matchers.d.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";

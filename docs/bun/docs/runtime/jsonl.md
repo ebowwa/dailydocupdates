@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/jsonl.md
+Downloaded: 2026-04-03T20:12:34.775Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -131,7 +136,7 @@ const partial = Bun.JSONL.parseChunk(buf, 0, 8);
 console.log(partial.values); // [{ a: 1 }]
 ```
 
-The `read` value is always a byte offset into the original buffer, making it easy to use with `TypedArray.subarray()` for zero-copy streaming:
+The `read` value is always a byte offset into the original buffer. Use it with `TypedArray.subarray()` for zero-copy streaming:
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 let buf = new Uint8Array(0);

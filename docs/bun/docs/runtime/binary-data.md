@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/binary-data.md
+Downloaded: 2026-04-03T20:12:34.771Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,9 +11,9 @@
 
 > Working with binary data in JavaScript
 
-This page is intended as an introduction to working with binary data in JavaScript. Bun implements a number of data types and utilities for working with binary data, most of which are Web-standard. Any Bun-specific APIs will be noted as such.
+This page is intended as an introduction to working with binary data in JavaScript. Bun implements several data types and utilities for working with binary data, most of which are Web-standard. Any Bun-specific APIs will be noted as such.
 
-Below is a quick "cheat sheet" that doubles as a table of contents. Click an item in the left column to jump to that section.
+Below is a cheat sheet that doubles as a table of contents. Click an item in the left column to jump to that section.
 
 | Class                       | Description                                                                                                                                                                                             |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -23,7 +28,7 @@ Below is a quick "cheat sheet" that doubles as a table of contents. Click an ite
 
 ## `ArrayBuffer` and views
 
-Until 2009, there was no language-native way to store and manipulate binary data in JavaScript. ECMAScript v5 introduced a range of new mechanisms for this. The most fundamental building block is `ArrayBuffer`, a simple data structure that represents a sequence of bytes in memory.
+Until 2009, there was no language-native way to store and manipulate binary data in JavaScript. ECMAScript v5 introduced a range of new mechanisms for this. The most fundamental building block is `ArrayBuffer`, a data structure that represents a sequence of bytes in memory.
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 // this buffer can store 8 bytes
@@ -358,7 +363,7 @@ Bun implements the Web APIs [`ReadableStream`](https://developer.mozilla.org/en-
   to the Node.js docs.
 </Note>
 
-To create a simple readable stream:
+To create a readable stream:
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream({

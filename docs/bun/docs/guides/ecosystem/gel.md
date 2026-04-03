@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/gel.md
+Downloaded: 2026-04-03T20:12:34.752Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -69,7 +74,7 @@ To connect to my_gel_app, run `gel`
 
 ***
 
-To see if the database is running, let's open a REPL and run a simple query.
+To see if the database is running, let's open a REPL and run a query.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 gel
@@ -212,7 +217,7 @@ the query builder directory? The following line will be added:
 
 ***
 
-In `index.ts`, we can import the generated query builder from `./dbschema/edgeql-js` and write a simple select query.
+In `index.ts`, we can import the generated query builder from `./dbschema/edgeql-js` and write a select query.
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { createClient } from "gel";
