@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/keybindings.md
-Downloaded: 2026-04-02T20:14:15.495Z
+Downloaded: 2026-04-04T20:09:48.705Z
 -->
 
 > ## Documentation Index
@@ -405,7 +405,7 @@ Some shortcuts may conflict with terminal multiplexers:
 
 ## Vim mode interaction
 
-When vim mode is enabled (`/vim`), keybindings and vim mode operate independently:
+When vim mode is enabled via `/config` → Editor mode, keybindings and vim mode operate independently:
 
 * **Vim mode** handles input at the text input level (cursor movement, modes, motions)
 * **Keybindings** handle actions at the component level (toggle todos, submit, etc.)

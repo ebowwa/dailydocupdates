@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/typescript-sdk/api/PortfolioApi.md
+Downloaded: 2026-04-04T20:09:50.127Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -135,7 +140,7 @@ Endpoint for getting all fills for the member. A fill is when a trade you have i
 | **orderId**    | \[**string**] | Filter by order ID                                                                                                                           | (optional) defaults to undefined |
 | **minTs**      | \[**number**] | Filter items after this Unix timestamp                                                                                                       | (optional) defaults to undefined |
 | **maxTs**      | \[**number**] | Filter items before this Unix timestamp                                                                                                      | (optional) defaults to undefined |
-| **limit**      | \[**number**] | Number of results per page. Defaults to 100. Maximum value is 200.                                                                           | (optional) defaults to 100       |
+| **limit**      | \[**number**] | Number of results per page. Defaults to 100.                                                                                                 | (optional) defaults to 100       |
 | **cursor**     | \[**string**] | Pagination cursor. Use the cursor value returned from the previous response to get the next page of results. Leave empty for the first page. | (optional) defaults to undefined |
 | **subaccount** | \[**number**] | Subaccount number (0 for primary, 1-32 for subaccounts). If omitted, defaults to all subaccounts.                                            | (optional) defaults to undefined |
 
@@ -241,7 +246,7 @@ Endpoint for getting the member's settlements historical track.
 
 | Name            | Type          | Description                                                                                                                                  | Notes                            |
 | --------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| **limit**       | \[**number**] | Number of results per page. Defaults to 100. Maximum value is 200.                                                                           | (optional) defaults to 100       |
+| **limit**       | \[**number**] | Number of results per page. Defaults to 100.                                                                                                 | (optional) defaults to 100       |
 | **cursor**      | \[**string**] | Pagination cursor. Use the cursor value returned from the previous response to get the next page of results. Leave empty for the first page. | (optional) defaults to undefined |
 | **ticker**      | \[**string**] | Filter by market ticker                                                                                                                      | (optional) defaults to undefined |
 | **eventTicker** | \[**string**] | Event ticker to filter by. Only a single event ticker is supported.                                                                          | (optional) defaults to undefined |
@@ -343,7 +348,7 @@ Gets a paginated list of all transfers between subaccounts for the authenticated
 
 | Name       | Type          | Description                                                                                                                                  | Notes                            |
 | ---------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| **limit**  | \[**number**] | Number of results per page. Defaults to 100. Maximum value is 200.                                                                           | (optional) defaults to 100       |
+| **limit**  | \[**number**] | Number of results per page. Defaults to 100.                                                                                                 | (optional) defaults to 100       |
 | **cursor** | \[**string**] | Pagination cursor. Use the cursor value returned from the previous response to get the next page of results. Leave empty for the first page. | (optional) defaults to undefined |
 
 ### Return type
