@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/project/contributing.md
-Downloaded: 2026-03-30T20:16:51.393Z
+Downloaded: 2026-04-05T20:10:40.364Z
 -->
 
 > ## Documentation Index
@@ -242,6 +242,20 @@ bun-1234566 --version
 ```
 
 This works by downloading the release build from the GitHub Actions artifacts on the linked pull request. You may need the `gh` CLI installed to authenticate with GitHub.
+
+### Viewing CI failures from the terminal
+
+Bun's CI runs on BuildKite. Install the [BuildKite CLI](https://github.com/buildkite/cli) (`brew install buildkite/buildkite/bk`) and set `BUILDKITE_API_TOKEN` to a read-scoped [API token](https://buildkite.com/user/api-access-tokens). The repo includes a `.bk.yaml` so `bk` commands default to the `bun` pipeline.
+
+```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun run ci:status         # progress summary for the current branch's latest build
+bun run ci:errors         # rendered test-failure output, tagged [new] vs [also on main]
+bun run ci:logs           # save full logs for each failed job to ./tmp/ci-<build>/
+bun run ci:watch          # watch until the build finishes
+bun run ci:find           # print the build number (compose with raw `bk`)
+```
+
+All of these accept a target: `#1234` (PR number), a PR URL, a branch name, or a build number. Without one they use the current git branch.
 
 ## AddressSanitizer
 
