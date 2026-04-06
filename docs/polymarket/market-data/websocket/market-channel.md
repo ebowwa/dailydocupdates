@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-data/websocket/market-channel.md
+Downloaded: 2026-04-06T20:16:18.604Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -146,7 +151,17 @@ Emitted when a new market is created.
 
 The payload also includes market metadata fields such as `tags`,
 `condition_id`, `active`, `clob_token_ids`, `sports_market_type`, `line`,
-`game_start_time`, `order_price_min_tick_size`, and `group_item_title`.
+`game_start_time`, `order_price_min_tick_size`, `group_item_title`,
+`taker_base_fee`, `fees_enabled`, and `fee_schedule`.
+
+Where a `FeeSchedule` object is of the form:
+
+| Name         | Type    | Description                       |
+| ------------ | ------- | --------------------------------- |
+| exponent     | string  | fee curve exponent                |
+| rate         | string  | fee rate                          |
+| taker\_only  | boolean | whether fee applies to taker only |
+| rebate\_rate | string  | maker rebate rate                 |
 
 ```json  theme={null}
 {
@@ -180,7 +195,15 @@ The payload also includes market metadata fields such as `tags`,
   "line": "",
   "game_start_time": "",
   "order_price_min_tick_size": "0.01",
-  "group_item_title": "NVDA above $240"
+  "group_item_title": "NVDA above $240",
+  "taker_base_fee": "0",
+  "fees_enabled": true,
+  "fee_schedule": {
+    "exponent": "2",
+    "rate": "0.02",
+    "taker_only": true,
+    "rebate_rate": "0"
+  }
 }
 ```
 
