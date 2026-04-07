@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/getting_started/targets_and_milestones.md
-Downloaded: 2026-03-30T20:17:12.211Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

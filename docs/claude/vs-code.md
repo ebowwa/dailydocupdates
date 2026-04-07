@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/vs-code.md
-Downloaded: 2026-04-03T20:12:03.787Z
+Downloaded: 2026-04-07T20:15:54.765Z
 -->
 
 > ## Documentation Index
@@ -425,6 +425,8 @@ The server is named `ide` and is hidden from `/mcp` because there's nothing to c
 <Note>
   The Quick Pick confirmation is separate from `PreToolUse` hooks. An allowlist entry for `mcp__ide__executeCode` lets Claude *propose* running a cell; the Quick Pick inside VS Code is what lets it *actually* run.
 </Note>
+
+<a id="troubleshooting" />
 
 ## Fix common issues
 

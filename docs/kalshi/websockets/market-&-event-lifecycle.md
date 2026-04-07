@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/market-&-event-lifecycle.md
-Downloaded: 2026-03-31T20:16:46.470Z
+Downloaded: 2026-04-07T20:16:30.054Z
 -->
 
 > ## Documentation Index
@@ -189,7 +189,6 @@ operations:
                       - linear_cent
                       - deci_cent
                       - tapered_deci_cent
-                      - banded_centi_cent
                     required: false
                   - name: additional_metadata
                     type: object
@@ -373,7 +372,6 @@ operations:
                     - linear_cent
                     - deci_cent
                     - tapered_deci_cent
-                    - banded_centi_cent
                   x-parser-schema-id: <anonymous-schema-117>
                 additional_metadata:
                   type: object

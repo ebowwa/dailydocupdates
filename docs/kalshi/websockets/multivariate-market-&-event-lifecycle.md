@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/multivariate-market-&-event-lifecycle.md
-Downloaded: 2026-03-31T20:16:46.471Z
+Downloaded: 2026-04-07T20:16:30.055Z
 -->
 
 > ## Documentation Index
@@ -206,7 +206,6 @@ operations:
                           - linear_cent
                           - deci_cent
                           - tapered_deci_cent
-                          - banded_centi_cent
                         x-parser-schema-id: <anonymous-schema-117>
                       additional_metadata:
                         type: object

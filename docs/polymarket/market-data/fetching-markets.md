@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-data/fetching-markets.md
+Downloaded: 2026-04-07T20:15:55.316Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -152,10 +157,6 @@ curl "https://gamma-api.polymarket.com/events?active=true&closed=false&limit=50&
 <CardGroup cols={2}>
   <Card title="API Reference" icon="code" href="/api-reference/introduction">
     Full endpoint documentation with parameters and response schemas.
-  </Card>
-
-  <Card title="Subgraph" icon="share-nodes" href="/market-data/subgraph">
-    Query onchain data directly from the Polymarket subgraph.
   </Card>
 </CardGroup>
 
