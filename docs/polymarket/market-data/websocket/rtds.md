@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-data/websocket/rtds.md
+Downloaded: 2026-04-08T20:17:15.284Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -282,6 +287,14 @@ Use `type: "*"` to receive all message types (live updates and snapshots):
 ```
 
 Filter values are case-insensitive on subscribe, but the `symbol` field in payloads is always returned lowercase.
+
+<Tip>
+  **Need the price-to-beat value?** Pass the market slug to the price-to-beat endpoint:
+
+  `GET https://polymarket.com/api/equity/price-to-beat/{slug}`
+
+  Example: `https://polymarket.com/api/equity/price-to-beat/wti-up-or-down-on-april-7-2026`
+</Tip>
 
 ### Live Price Update
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix/session-management.md
+Downloaded: 2026-04-08T20:17:19.968Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -266,7 +271,7 @@ All messages must include standard FIX headers:
 2. **Error Recovery**
    * Implement automatic reconnection logic
    * Store order state locally for recovery
-   * Use drop copy session for missed messages
+   * Use a [listener session](/fix/listener-sessions) for real-time backup feeds, or the [drop copy session](/fix/drop-copy) to query missed messages
 
 3. **Security**
    * Rotate API keys periodically

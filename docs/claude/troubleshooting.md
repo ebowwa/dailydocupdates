@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/troubleshooting.md
-Downloaded: 2026-04-07T20:15:54.765Z
+Downloaded: 2026-04-08T20:17:02.013Z
 -->
 
 > ## Documentation Index
@@ -701,6 +701,8 @@ If Claude Code prompts you to log in again after a session, your OAuth token may
 
 Run `/login` to re-authenticate. If this happens frequently, check that your system clock is accurate, as token validation depends on correct timestamps.
 
+On macOS, login can also fail when the Keychain is locked or its password is out of sync with your account password, which prevents Claude Code from saving credentials. Run `claude doctor` to check Keychain access. To unlock the Keychain manually, run `security unlock-keychain ~/Library/Keychains/login.keychain-db`. If unlocking doesn't help, open Keychain Access, select the `login` keychain, and choose Edit > Change Password for Keychain "login" to resync it with your account password.
+
 ## Configuration file locations
 
 Claude Code stores configuration in several locations:
@@ -748,6 +750,17 @@ Claude Code is designed to work with most development environments, but may cons
 1. Use `/compact` regularly to reduce context size
 2. Close and restart Claude Code between major tasks
 3. Consider adding large build directories to your `.gitignore` file
+
+### Auto-compaction stops with a thrashing error
+
+If you see `Autocompact is thrashing: the context refilled to the limit...`, automatic compaction succeeded but a file or tool output immediately refilled the context window several times in a row. Claude Code stops retrying to avoid wasting API calls on a loop that isn't making progress.
+
+To recover:
+
+1. Ask Claude to read the oversized file in smaller chunks, such as a specific line range or function, instead of the whole file
+2. Run `/compact` with a focus that drops the large output, for example `/compact keep only the plan and the diff`
+3. Move the large-file work to a [subagent](/en/sub-agents) so it runs in a separate context window
+4. Run `/clear` if the earlier conversation is no longer needed
 
 ### Command hangs or freezes
 

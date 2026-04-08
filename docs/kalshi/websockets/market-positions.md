@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/websockets/market-positions.md
-Downloaded: 2026-03-31T20:16:46.470Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

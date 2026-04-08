@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/plugins.md
-Downloaded: 2026-04-03T20:12:03.783Z
+Downloaded: 2026-04-08T20:17:02.010Z
 -->
 
 > ## Documentation Index
@@ -79,12 +79,12 @@ This quickstart walks you through creating a plugin with a custom skill. You'll 
 
     ```json my-first-plugin/.claude-plugin/plugin.json theme={null}
     {
-    "name": "my-first-plugin",
-    "description": "A greeting plugin to learn the basics",
-    "version": "1.0.0",
-    "author": {
-    "name": "Your Name"
-    }
+      "name": "my-first-plugin",
+      "description": "A greeting plugin to learn the basics",
+      "version": "1.0.0",
+      "author": {
+        "name": "Your Name"
+      }
     }
     ```
 
