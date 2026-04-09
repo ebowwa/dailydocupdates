@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/create-rfq.md
-Downloaded: 2026-04-02T20:14:20.303Z
+Downloaded: 2026-04-09T20:21:14.166Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-04-02T20:14:20.303Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.12.0
+  version: 3.13.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach

@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/chrome.md
-Downloaded: 2026-04-02T20:14:15.489Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

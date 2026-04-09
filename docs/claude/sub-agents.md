@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/sub-agents.md
-Downloaded: 2026-04-04T20:09:48.712Z
+Downloaded: 2026-04-09T20:21:13.905Z
 -->
 
 > ## Documentation Index
@@ -352,7 +352,7 @@ The `permissionMode` field controls how the subagent handles permission prompts.
 | Mode                | Behavior                                                                                                                                    |
 | :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------ |
 | `default`           | Standard permission checking with prompts                                                                                                   |
-| `acceptEdits`       | Auto-accept file edits except in protected directories                                                                                      |
+| `acceptEdits`       | Auto-accept file edits and common filesystem commands for paths in the working directory or `additionalDirectories`                         |
 | `auto`              | [Auto mode](/en/permission-modes#eliminate-prompts-with-auto-mode): a background classifier reviews commands and protected-directory writes |
 | `dontAsk`           | Auto-deny permission prompts (explicitly allowed tools still work)                                                                          |
 | `bypassPermissions` | Skip permission prompts                                                                                                                     |

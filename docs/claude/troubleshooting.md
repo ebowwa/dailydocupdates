@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/troubleshooting.md
-Downloaded: 2026-04-08T20:17:02.013Z
+Downloaded: 2026-04-09T20:21:13.906Z
 -->
 
 > ## Documentation Index
@@ -332,6 +332,12 @@ Errors like `curl: (35) TLS connect error`, `schannel: next InitializeSecurityCo
    export NODE_EXTRA_CA_CERTS=/path/to/corporate-ca.pem
    ```
    Ask your IT team for the certificate file if you don't have it. You can also try on a direct connection to confirm the proxy is the cause.
+
+4. **On Windows, bypass certificate revocation checks** if you see `CRYPT_E_REVOCATION_OFFLINE (0x80092013)`. This means curl reached the server but your network blocks the certificate revocation lookup, which is common behind corporate firewalls. Add `--ssl-revoke-best-effort` to the install command:
+   ```bat  theme={null}
+   curl --ssl-revoke-best-effort -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
+   ```
+   Alternatively, install with `winget install Anthropic.ClaudeCode`, which avoids curl entirely.
 
 ### `Failed to fetch version from storage.googleapis.com`
 

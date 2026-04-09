@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-data/fetching-markets.md
-Downloaded: 2026-04-07T20:15:55.316Z
+Downloaded: 2026-04-09T20:21:13.815Z
 -->
 
 > ## Documentation Index
@@ -114,7 +114,7 @@ curl "https://gamma-api.polymarket.com/events?active=true&closed=false&limit=100
 | `order`     | Field to order by (`volume_24hr`, `volume`, `liquidity`, `start_date`, `end_date`, `competitive`, `closed_time`) |
 | `ascending` | Sort direction (`true` for ascending, `false` for descending). Default: `false`                                  |
 | `active`    | Filter by active status (`true` for live tradable events)                                                        |
-| `closed`    | Filter by closed status                                                                                          |
+| `closed`    | Filter by closed status. Default: `false`                                                                        |
 | `limit`     | Results per page                                                                                                 |
 | `offset`    | Number of results to skip for pagination                                                                         |
 
@@ -147,7 +147,7 @@ curl "https://gamma-api.polymarket.com/events?active=true&closed=false&limit=50&
 1. **For individual markets:** Use the slug method for direct lookups
 2. **For category browsing:** Use tag filtering to reduce API calls
 3. **For complete market discovery:** Use the events endpoint with pagination
-4. **Always include `active=true&closed=false`** unless you specifically need historical data
+4. **Always include `active=true`** when fetching live markets. The `closed` parameter now defaults to `false`, so closed markets are excluded automatically — pass `closed=true` only if you need historical data
 5. **Use the events endpoint** and work backwards — events contain their associated markets, reducing the number of API calls needed
 
 ***

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/markets/list-markets.md
-Downloaded: 2026-04-02T20:14:16.834Z
+Downloaded: 2026-04-09T20:21:13.808Z
 -->
 
 > ## Documentation Index
@@ -164,6 +164,7 @@ paths:
           in: query
           schema:
             type: boolean
+            default: false
       responses:
         '200':
           description: List of markets

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/settings.md
-Downloaded: 2026-04-08T20:17:02.011Z
+Downloaded: 2026-04-09T20:21:13.904Z
 -->
 
 > ## Documentation Index
@@ -92,7 +92,7 @@ Code through hierarchical settings:
 
   * **Server-managed settings**: delivered from Anthropic's servers via the Claude.ai admin console. See [server-managed settings](/en/server-managed-settings).
   * **MDM/OS-level policies**: delivered through native device management on macOS and Windows:
-    * macOS: `com.anthropic.claudecode` managed preferences domain (deployed via configuration profiles in Jamf, Kandji, or other MDM tools)
+    * macOS: `com.anthropic.claudecode` managed preferences domain (deployed via configuration profiles in Jamf, Iru (Kandji), or other MDM tools)
     * Windows: `HKLM\SOFTWARE\Policies\ClaudeCode` registry key with a `Settings` value (REG\_SZ or REG\_EXPAND\_SZ) containing JSON (deployed via Group Policy or Intune)
     * Windows (user-level): `HKCU\SOFTWARE\Policies\ClaudeCode` (lowest policy priority, only used when no admin-level source exists)
   * **File-based**: `managed-settings.json` and `managed-mcp.json` deployed to system directories:
@@ -112,6 +112,8 @@ Code through hierarchical settings:
     Use numeric prefixes to control merge order, for example `10-telemetry.json` and `20-security.json`.
 
   See [managed settings](/en/permissions#managed-only-settings) and [Managed MCP configuration](/en/mcp#managed-mcp-configuration) for details.
+
+  This [repository](https://github.com/anthropics/claude-code/tree/main/examples/mdm) includes starter deployment templates for Jamf, Iru (Kandji), Intune, and Group Policy. Use these as starting points and adjust them to fit your needs.
 
   <Note>
     Managed deployments can also restrict **plugin marketplace additions** using
@@ -290,6 +292,7 @@ Configure advanced sandboxing behavior. Sandboxing isolates bash commands from y
 | `network.allowUnixSockets`             | Unix socket paths accessible in sandbox (for SSH agents, etc.)                                                                                                                                                                                                                                                                                  | `["~/.ssh/agent-socket"]`       |
 | `network.allowAllUnixSockets`          | Allow all Unix socket connections in sandbox. Default: false                                                                                                                                                                                                                                                                                    | `true`                          |
 | `network.allowLocalBinding`            | Allow binding to localhost ports (macOS only). Default: false                                                                                                                                                                                                                                                                                   | `true`                          |
+| `network.allowMachLookup`              | Additional XPC/Mach service names the sandbox may look up (macOS only). Supports a single trailing `*` for prefix matching. Needed for tools that communicate via XPC such as the iOS Simulator or Playwright.                                                                                                                                  | `["com.apple.coresimulator.*"]` |
 | `network.allowedDomains`               | Array of domains to allow for outbound network traffic. Supports wildcards (e.g., `*.example.com`).                                                                                                                                                                                                                                             | `["github.com", "*.npmjs.org"]` |
 | `network.allowManagedDomainsOnly`      | (Managed settings only) Only `allowedDomains` and `WebFetch(domain:...)` allow rules from managed settings are respected. Domains from user, project, and local settings are ignored. Non-allowed domains are blocked automatically without prompting the user. Denied domains are still respected from all sources. Default: false             | `true`                          |
 | `network.httpProxyPort`                | HTTP proxy port used if you wish to bring your own proxy. If not specified, Claude will run its own proxy.                                                                                                                                                                                                                                      | `8080`                          |
@@ -873,7 +876,7 @@ Use the `/plugin` command to manage plugins interactively:
 * Browse available plugins from marketplaces
 * Install/uninstall plugins
 * Enable/disable plugins
-* View plugin details (commands, agents, hooks provided)
+* View plugin details (skills, agents, hooks provided)
 * Add/remove marketplaces
 
 Learn more about the plugin system in the [plugins documentation](/en/plugins).

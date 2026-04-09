@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/api-reference/events/get-event-by-id.md
-Downloaded: 2026-04-02T20:14:16.831Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

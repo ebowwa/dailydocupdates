@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/voice-dictation.md
+Downloaded: 2026-04-09T20:21:13.906Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -135,4 +140,4 @@ Common issues when voice dictation does not activate or record:
 * [Customize keyboard shortcuts](/en/keybindings): rebind `voice:pushToTalk` and other CLI keyboard actions
 * [Configure settings](/en/settings): full reference for `voiceEnabled`, `language`, and other settings keys
 * [Interactive mode](/en/interactive-mode): keyboard shortcuts, input modes, and session controls
-* [Built-in commands](/en/commands): reference for `/voice`, `/config`, and all other commands
+* [Commands](/en/commands): reference for `/voice`, `/config`, and all other commands

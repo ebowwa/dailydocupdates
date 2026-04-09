@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/how-claude-code-works.md
-Downloaded: 2026-04-08T20:17:02.007Z
+Downloaded: 2026-04-09T20:21:13.899Z
 -->
 
 > ## Documentation Index
@@ -168,7 +168,7 @@ Checkpoints are local to your session, separate from git. They only cover file c
 Press `Shift+Tab` to cycle through permission modes:
 
 * **Default**: Claude asks before file edits and shell commands
-* **Auto-accept edits**: Claude edits files without asking, still asks for commands
+* **Auto-accept edits**: Claude edits files and runs common filesystem commands like `mkdir` and `mv` without asking, still asks for other commands
 * **Plan mode**: Claude uses read-only tools only, creating a plan you can approve before execution
 * **Auto mode**: Claude evaluates all actions with background safety checks. Currently a research preview
 

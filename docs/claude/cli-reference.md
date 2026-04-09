@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/cli-reference.md
-Downloaded: 2026-04-08T20:17:02.001Z
+Downloaded: 2026-04-09T20:21:13.894Z
 -->
 
 > ## Documentation Index
@@ -33,6 +33,7 @@ You can start sessions, pipe content, resume conversations, and manage updates w
 | `claude mcp`                    | Configure Model Context Protocol (MCP) servers                                                                                                                                                                                              | See the [Claude Code MCP documentation](/en/mcp).           |
 | `claude plugin`                 | Manage Claude Code [plugins](/en/plugins). Alias: `claude plugins`. See [plugin reference](/en/plugins-reference#cli-commands-reference) for subcommands                                                                                    | `claude plugin install code-review@claude-plugins-official` |
 | `claude remote-control`         | Start a [Remote Control](/en/remote-control) server to control Claude Code from Claude.ai or the Claude app. Runs in server mode (no local interactive session). See [Server mode flags](/en/remote-control#start-a-remote-control-session) | `claude remote-control --name "My Project"`                 |
+| `claude setup-token`            | Generate a long-lived OAuth token for CI and scripts. Prints the token to the terminal without saving it. Requires a Claude subscription. See [Generate a long-lived token](/en/authentication#generate-a-long-lived-token)                 | `claude setup-token`                                        |
 
 ## CLI flags
 
