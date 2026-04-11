@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-04-10T20:13:56.793Z
+Downloaded: 2026-04-11T20:09:46.794Z
 -->
 
 > ## Documentation Index
@@ -28,6 +28,23 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Apr 10, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Historical markets support series_ticker filtering",
+description: "GET /historical/markets now accepts a series_ticker query parameter."
+}}
+>
+  Added `series_ticker` filtering to `GET /trade-api/v2/historical/markets`.
+
+  This filter follows the existing historical markets behavior and is mutually exclusive with the other primary historical filters (`tickers`, `event_ticker`, and `mve_filter`).
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/historical/markets`
+</Update>
 
 <Update
   label="Mar 30, 2026"

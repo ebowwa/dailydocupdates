@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/memory.md
-Downloaded: 2026-04-10T20:13:43.718Z
+Downloaded: 2026-04-11T20:09:46.544Z
 -->
 
 > ## Documentation Index
@@ -419,5 +419,4 @@ See [Write effective instructions](#write-effective-instructions) for guidance o
 
 * [Skills](/en/skills): package repeatable workflows that load on demand
 * [Settings](/en/settings): configure Claude Code behavior with settings files
-* [Manage sessions](/en/sessions): manage context, resume conversations, and run parallel sessions
 * [Subagent memory](/en/sub-agents#enable-persistent-memory): let subagents maintain their own auto memory

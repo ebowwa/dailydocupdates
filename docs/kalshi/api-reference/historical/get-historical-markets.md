@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-markets.md
-Downloaded: 2026-04-10T20:13:56.783Z
+Downloaded: 2026-04-11T20:09:46.789Z
 -->
 
 > ## Documentation Index
@@ -84,6 +84,7 @@ paths:
         - $ref: '#/components/parameters/CursorQuery'
         - $ref: '#/components/parameters/TickersQuery'
         - $ref: '#/components/parameters/SingleEventTickerQuery'
+        - $ref: '#/components/parameters/SeriesTickerQuery'
         - $ref: '#/components/parameters/MveHistoricalFilterQuery'
       responses:
         '200':
@@ -132,6 +133,13 @@ components:
       name: event_ticker
       in: query
       description: Event ticker to filter by. Only a single event ticker is supported.
+      schema:
+        type: string
+        x-go-type-skip-optional-pointer: true
+    SeriesTickerQuery:
+      name: series_ticker
+      in: query
+      description: Filter by series ticker
       schema:
         type: string
         x-go-type-skip-optional-pointer: true

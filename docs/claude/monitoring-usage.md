@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/monitoring-usage.md
-Downloaded: 2026-04-10T20:13:43.719Z
+Downloaded: 2026-04-11T20:09:46.544Z
 -->
 
 > ## Documentation Index
@@ -133,7 +133,7 @@ Tracing is off by default. To enable it, set both `CLAUDE_CODE_ENABLE_TELEMETRY=
 
 Spans redact user prompt text and tool content by default. Set `OTEL_LOG_USER_PROMPTS=1` and `OTEL_LOG_TOOL_CONTENT=1` to include them.
 
-When tracing is active, Bash subprocesses automatically inherit a `TRACEPARENT` environment variable containing the W3C trace context of the active tool execution span. This lets any subprocess that reads `TRACEPARENT` parent its own spans under the same trace, enabling end-to-end distributed tracing through scripts and commands that Claude runs.
+When tracing is active, Bash and PowerShell subprocesses automatically inherit a `TRACEPARENT` environment variable containing the W3C trace context of the active tool execution span. This lets any subprocess that reads `TRACEPARENT` parent its own spans under the same trace, enabling end-to-end distributed tracing through scripts and commands that Claude runs.
 
 ### Dynamic headers
 
@@ -481,42 +481,6 @@ Logged when a tool permission decision is made (accept/reject).
 * `tool_name`: Name of the tool (for example, "Read", "Edit", "Write", "NotebookEdit")
 * `decision`: Either `"accept"` or `"reject"`
 * `source`: Decision source - `"config"`, `"hook"`, `"user_permanent"`, `"user_temporary"`, `"user_abort"`, or `"user_reject"`
-
-#### Plugin installed event
-
-Logged when a plugin finishes installing, from both the `claude plugin install` CLI command and the interactive `/plugin` UI.
-
-**Event Name**: `claude_code.plugin_installed`
-
-**Attributes**:
-
-* All [standard attributes](#standard-attributes)
-* `event.name`: `"plugin_installed"`
-* `event.timestamp`: ISO 8601 timestamp
-* `event.sequence`: monotonically increasing counter for ordering events within a session
-* `plugin.name`: Name of the installed plugin
-* `plugin.version`: Plugin version (when declared in the marketplace entry)
-* `marketplace.name`: Marketplace the plugin was installed from
-* `marketplace.is_official`: `"true"` if the marketplace is an official Anthropic marketplace, `"false"` otherwise
-* `install.trigger`: `"cli"` or `"ui"`
-
-#### Skill activated event
-
-Logged when a skill is invoked.
-
-**Event Name**: `claude_code.skill_activated`
-
-**Attributes**:
-
-* All [standard attributes](#standard-attributes)
-* `event.name`: `"skill_activated"`
-* `event.timestamp`: ISO 8601 timestamp
-* `event.sequence`: monotonically increasing counter for ordering events within a session
-* `skill.name`: Name of the skill
-* `skill.source`: Where the skill was loaded from (for example, `"bundled"`, `"user"`, `"project"`, `"plugin"`)
-* `skill.kind`: Skill kind when declared in the skill manifest
-* `plugin.name`: Name of the owning plugin when the skill is provided by a plugin
-* `marketplace.name`: Marketplace the owning plugin was installed from
 
 ## Interpret metrics and events data
 
