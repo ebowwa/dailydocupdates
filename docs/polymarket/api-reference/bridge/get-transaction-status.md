@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/bridge/get-transaction-status.md
-Downloaded: 2026-04-10T20:13:46.378Z
+Downloaded: 2026-04-13T20:23:37.722Z
 -->
 
 > ## Documentation Index
@@ -141,7 +141,11 @@ components:
           example: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
         status:
           type: string
-          description: Current status of the transaction
+          description: >
+            Current status of the transaction. If a transaction fails, remains
+            stuck, or funds are held due to a compliance check, direct users to
+            our Bridge API provider's support
+            (https://intercom.help/funxyz/en/articles/10732578-contact-us).
           enum:
             - DEPOSIT_DETECTED
             - PROCESSING

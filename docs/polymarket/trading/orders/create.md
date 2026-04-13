@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/orders/create.md
-Downloaded: 2026-04-10T20:13:46.405Z
+Downloaded: 2026-04-13T20:23:37.738Z
 -->
 
 > ## Documentation Index
@@ -604,7 +604,7 @@ These optional fields can be passed in the `UserOrder` object for fine-grained c
 Sports markets have additional behaviors:
 
 * Outstanding limit orders are **automatically cancelled** once the game begins, clearing the entire order book at the official start time
-* Marketable orders have a **3-second placement delay** before matching
+* Marketable orders have a **1-second placement delay** before matching
 * Game start times can shift — monitor your orders closely, as they may not be cleared if the start time changes unexpectedly
 
 ***

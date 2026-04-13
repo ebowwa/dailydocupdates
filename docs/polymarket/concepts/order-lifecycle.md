@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/concepts/order-lifecycle.md
-Downloaded: 2026-04-10T20:13:46.398Z
+Downloaded: 2026-04-13T20:23:37.733Z
 -->
 
 > ## Documentation Index
@@ -108,7 +108,7 @@ When you place an order, it receives one of these statuses:
 | ----------- | --------------------------------------------------------------------------- |
 | `live`      | Order is resting on the book                                                |
 | `matched`   | Order matched immediately                                                   |
-| `delayed`   | Marketable order subject to a 3-second matching delay (sports markets)      |
+| `delayed`   | Marketable order subject to a 1-second matching delay (sports markets)      |
 | `unmatched` | Marketable order placed on the book after the delay expired without a match |
 
 ## Trade Statuses

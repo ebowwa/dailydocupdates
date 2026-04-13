@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/sub-agents.md
-Downloaded: 2026-04-11T20:09:46.548Z
+Downloaded: 2026-04-13T20:23:37.448Z
 -->
 
 > ## Documentation Index
@@ -513,6 +513,10 @@ Subagents can define [hooks](/en/hooks) that run during the subagent's lifecycle
 #### Hooks in subagent frontmatter
 
 Define hooks directly in the subagent's markdown file. These hooks only run while that specific subagent is active and are cleaned up when it finishes.
+
+<Note>
+  Frontmatter hooks fire when the agent is spawned as a subagent through the Agent tool or an @-mention. They do not fire when the agent runs as the main session via [`--agent`](#invoke-subagents-explicitly) or the `agent` setting. For session-wide hooks, configure them in [`settings.json`](/en/hooks).
+</Note>
 
 All [hook events](/en/hooks#hook-events) are supported. The most common events for subagents are:
 

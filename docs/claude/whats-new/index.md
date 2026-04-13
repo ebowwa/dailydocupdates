@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/whats-new/index.md
-Downloaded: 2026-04-10T20:13:43.726Z
+Downloaded: 2026-04-13T20:23:37.450Z
 -->
 
 > ## Documentation Index
@@ -22,6 +22,14 @@ Downloaded: 2026-04-10T20:13:43.726Z
 > A weekly digest of notable Claude Code features, with code snippets, demos, and context on why they matter.
 
 The weekly dev digest highlights the features most likely to change how you work. Each entry includes runnable code, a short demo, and a link to the full docs. For every bug fix and minor improvement, see the [changelog](/en/changelog).
+
+<Update label="Week 15" description="April 6–10, 2026" tags={["v2.1.92–v2.1.101"]}>
+  **Ultraplan** enters early preview: draft a plan in the cloud from your CLI, review and comment on it in a web editor, then run it remotely or pull it back local. The first run now auto-creates a cloud environment for you.
+
+  Also this week: the **Monitor** tool streams background events into the conversation so Claude can tail logs and react live, `/loop` self-paces when you omit the interval, `/team-onboarding` packages your setup into a replayable guide, and `/autofix-pr` turns on PR auto-fix from your terminal.
+
+  [Read the Week 15 digest →](/en/whats-new/2026-w15)
+</Update>
 
 <Update label="Week 14" description="March 30 – April 3, 2026" tags={["v2.1.86–v2.1.91"]}>
   **Computer use** comes to the CLI in research preview: Claude can open native apps, click through UI, and verify changes from your terminal. Best for closing the loop on things only a GUI can verify.

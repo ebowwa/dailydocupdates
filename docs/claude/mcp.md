@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/mcp.md
-Downloaded: 2026-04-11T20:09:46.544Z
+Downloaded: 2026-04-13T20:23:37.443Z
 -->
 
 > ## Documentation Index
@@ -113,7 +113,7 @@ export const MCPServersTable = ({platform = "all"}) => {
   }, []);
   const generateClaudeCodeCommand = server => {
     if (server.customCommands && server.customCommands.claudeCode) {
-      return server.customCommands.claudeCode;
+      return server.customCommands.claudeCode.replace('--transport streamable-http', '--transport http');
     }
     const serverSlug = server.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
     if (server.urls.http) {

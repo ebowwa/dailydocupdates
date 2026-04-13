@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/discover-plugins.md
-Downloaded: 2026-04-10T20:13:43.714Z
+Downloaded: 2026-04-13T20:23:37.439Z
 -->
 
 > ## Documentation Index
@@ -50,6 +50,8 @@ To install a plugin from the official marketplace, use `/plugin install <name>@c
 ```shell  theme={null}
 /plugin install github@claude-plugins-official
 ```
+
+If Claude Code reports that the plugin is not found in any marketplace, your marketplace is either missing or outdated. Run `/plugin marketplace update claude-plugins-official` to refresh it, or `/plugin marketplace add anthropics/claude-plugins-official` if you haven't added it before. Then retry the install.
 
 <Note>
   The official marketplace is maintained by Anthropic. To submit a plugin to the official marketplace, use one of the in-app submission forms:
