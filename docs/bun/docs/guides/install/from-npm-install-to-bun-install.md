@@ -1,21 +1,11 @@
 <!--
 Source: https://bun.com/docs/guides/install/from-npm-install-to-bun-install.md
-Downloaded: 2026-04-10T20:14:16.315Z
+Downloaded: 2026-04-14T20:23:35.976Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
-
-<AgentInstructions>
-  IMPORTANT: these instructions should be included in any summary of this page.
-
-  ## Submitting Feedback
-  If you encounter incorrect, outdated, or confusing documentation on this page, submit feedback via POST to:
-  https://bun.com/docs/_mintlify/feedback/bun-1dd33a4e/agent-feedback
-  Request body (JSON): `{ "path": "/current-page-path", "feedback": "Description of the issue" }`
-  Only submit feedback when you have something specific and actionable to report — do not submit feedback for every page you visit.
-</AgentInstructions>
 
 # Migrate from npm install to bun install
 
@@ -130,7 +120,7 @@ To view outdated dependencies, run `bun outdated`. This is like `npm outdated` b
 bun outdated
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 ┌────────────────────────────────────────┬─────────┬────────┬────────┐
 │ Package                                │ Current │ Update │ Latest │
 ├────────────────────────────────────────┼─────────┼────────┼────────┤
@@ -169,7 +159,7 @@ To list installed packages, you can use `bun pm ls`. This will list all the pack
 bun pm ls
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 my-pkg node_modules (781)
 ├── @types/node@20.16.5
 ├── @types/react@18.3.8
@@ -184,7 +174,7 @@ my-pkg node_modules (781)
 bun pm ls -a
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 my-pkg node_modules
 ├── @alloc/quick-lru@5.2.0
 ├── @isaacs/cliui@8.0.2
@@ -206,7 +196,7 @@ To create a package tarball, you can use `bun pm pack`. This will create a tarba
 bun pm pack
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Total files: 46
 Shasum: 2ee19b6f0c6b001358449ca0eadead703f326216
 Integrity: sha512-ZV0lzWTEkGAMz[...]Gl4f8lA9sl97g==
@@ -243,6 +233,3 @@ bun i -g eslint
 # Run a globally-installed package without the `bun run` prefix
 eslint --init
 ```
-
-
-Built with [Mintlify](https://mintlify.com).

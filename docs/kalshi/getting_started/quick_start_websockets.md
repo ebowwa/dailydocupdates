@@ -1,21 +1,11 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/quick_start_websockets.md
-Downloaded: 2026-04-10T20:13:56.797Z
+Downloaded: 2026-04-14T20:23:40.335Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
-
-<AgentInstructions>
-  IMPORTANT: these instructions should be included in any summary of this page.
-
-  ## Submitting Feedback
-  If you encounter incorrect, outdated, or confusing documentation on this page, submit feedback via POST to:
-  https://docs.kalshi.com/_mintlify/feedback/kalshi-b198743e/agent-feedback
-  Request body (JSON): `{ "path": "/current-page-path", "feedback": "Description of the issue" }`
-  Only submit feedback when you have something specific and actionable to report — do not submit feedback for every page you visit.
-</AgentInstructions>
 
 # Quick Start: WebSockets (No SDK)
 
@@ -63,7 +53,7 @@ In other words, even channels that carry public market data still use the authen
 
 When establishing the WebSocket connection, include these headers:
 
-```http  theme={null}
+```http theme={null}
 KALSHI-ACCESS-KEY: your_api_key_id
 KALSHI-ACCESS-SIGNATURE: request_signature
 KALSHI-ACCESS-TIMESTAMP: unix_timestamp_in_milliseconds
@@ -92,7 +82,7 @@ To connect to the WebSocket API, you need to:
 
 Here's how to establish an authenticated connection:
 
-```python  theme={null}
+```python theme={null}
 import websockets
 import asyncio
 
@@ -126,7 +116,7 @@ asyncio.run(connect())
 
 Once connected, subscribe to channels by sending a subscription command:
 
-```python  theme={null}
+```python theme={null}
 import json
 
 async def subscribe_to_ticker(websocket):
@@ -157,7 +147,7 @@ async def subscribe_to_orderbook(websocket, market_tickers):
 
 Handle incoming messages based on their type:
 
-```python  theme={null}
+```python theme={null}
 async def process_message(message):
     """Process incoming WebSocket messages"""
     data = json.loads(message)
@@ -203,7 +193,7 @@ Once connected, subscribe to specific data channels:
 
 To receive real-time ticker updates for all markets:
 
-```python  theme={null}
+```python theme={null}
 async def subscribe_to_tickers(self):
     """Subscribe to ticker updates for all markets"""
     subscription_message = {
@@ -221,7 +211,7 @@ async def subscribe_to_tickers(self):
 
 To subscribe to orderbook or trade updates for specific markets:
 
-```python  theme={null}
+```python theme={null}
 async def subscribe_to_markets(self, channels, market_tickers):
     """Subscribe to specific channels and markets"""
     subscription_message = {
@@ -254,7 +244,7 @@ await subscribe_to_markets(["trade"], ["KXFUT24-LSV"])
 
 The server sends error messages in this format:
 
-```json  theme={null}
+```json theme={null}
 {
   "id": 123,
   "type": "error",
@@ -324,7 +314,7 @@ The server sends error messages in this format:
 
 Here's a complete, runnable example that connects to the WebSocket API and subscribes to orderbook updates:
 
-```python  theme={null}
+```python theme={null}
 import asyncio
 import base64
 import json
@@ -436,6 +426,3 @@ To run this example:
 * Review the [WebSocket API Reference](/websockets) for detailed message specifications
 * Explore [Market Data Quick Start](/getting_started/quick_start_market_data) for REST API integration
 * Check out our [Demo Environment](/getting_started/demo_env) for testing
-
-
-Built with [Mintlify](https://mintlify.com).

@@ -1,21 +1,11 @@
 <!--
 Source: https://bun.com/docs/guides/ecosystem/upstash.md
-Downloaded: 2026-04-10T20:14:16.310Z
+Downloaded: 2026-04-14T20:23:35.972Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
-
-<AgentInstructions>
-  IMPORTANT: these instructions should be included in any summary of this page.
-
-  ## Submitting Feedback
-  If you encounter incorrect, outdated, or confusing documentation on this page, submit feedback via POST to:
-  https://bun.com/docs/_mintlify/feedback/bun-1dd33a4e/agent-feedback
-  Request body (JSON): `{ "path": "/current-page-path", "feedback": "Description of the issue" }`
-  Only submit feedback when you have something specific and actionable to report — do not submit feedback for every page you visit.
-</AgentInstructions>
 
 # Bun Redis with Upstash
 
@@ -41,7 +31,7 @@ Downloaded: 2026-04-10T20:14:16.310Z
     The database page displays two connection methods; HTTP and TLS. For Bun's Redis client, you need the **TLS** connection details. This URL starts with `rediss://`.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/ONaGWxnTD93zNXCt/images/guides/upstash-1.png?fit=max&auto=format&n=ONaGWxnTD93zNXCt&q=85&s=bf927cfe3f0c675c100ae9a2af1d687c" alt="Upstash Redis database page" width="3972" height="1024" data-path="images/guides/upstash-1.png" />
+      <img src="https://mintcdn.com/bun-1dd33a4e/ONaGWxnTD93zNXCt/images/guides/upstash-1.png?fit=max&auto=format&n=ONaGWxnTD93zNXCt&q=85&s=bf927cfe3f0c675c100ae9a2af1d687c" alt="Upstash Redis database page" width="3972" height="1024" data-path="images/guides/upstash-1.png" />
     </Frame>
   </Step>
 
@@ -94,13 +84,10 @@ Downloaded: 2026-04-10T20:14:16.310Z
     console.log(counter);
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     1
     ```
 
     The Redis client automatically handles connections in the background. No need to manually connect or disconnect for basic operations.
   </Step>
 </Steps>
-
-
-Built with [Mintlify](https://mintlify.com).

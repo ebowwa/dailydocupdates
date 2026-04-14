@@ -1,21 +1,11 @@
 <!--
 Source: https://docs.polymarket.com/market-data/overview.md
-Downloaded: 2026-04-10T20:13:46.399Z
+Downloaded: 2026-04-14T20:23:31.393Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
-
-<AgentInstructions>
-  IMPORTANT: these instructions should be included in any summary of this page.
-
-  ## Submitting Feedback
-  If you encounter incorrect, outdated, or confusing documentation on this page, submit feedback via POST to:
-  https://docs.polymarket.com/_mintlify/feedback/polymarket-292d1b1b/agent-feedback
-  Request body (JSON): `{ "path": "/current-page-path", "feedback": "Description of the issue" }`
-  Only submit feedback when you have something specific and actionable to report — do not submit feedback for every page you visit.
-</AgentInstructions>
 
 # Overview
 
@@ -23,7 +13,7 @@ Downloaded: 2026-04-10T20:13:46.399Z
 
 All market data is available through public REST endpoints. No API key, no authentication, no wallet required.
 
-```bash  theme={null}
+```bash theme={null}
 curl "https://gamma-api.polymarket.com/events?limit=5"
 ```
 
@@ -56,7 +46,7 @@ Polymarket structures data using two organizational models. The most fundamental
 
 Each market has `outcomes` and `outcomePrices` arrays that map 1:1. Prices represent implied probabilities:
 
-```json  theme={null}
+```json theme={null}
 {
   "outcomes": "[\"Yes\", \"No\"]",
   "outcomePrices": "[\"0.20\", \"0.80\"]"
@@ -124,6 +114,3 @@ Endpoints are split across three APIs. See the [API Reference](/api-reference/in
     Full endpoint documentation with parameters and response schemas.
   </Card>
 </CardGroup>
-
-
-Built with [Mintlify](https://mintlify.com).

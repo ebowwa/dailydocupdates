@@ -1,21 +1,11 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-04-11T20:09:46.794Z
+Downloaded: 2026-04-14T20:23:40.331Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
-
-<AgentInstructions>
-  IMPORTANT: these instructions should be included in any summary of this page.
-
-  ## Submitting Feedback
-  If you encounter incorrect, outdated, or confusing documentation on this page, submit feedback via POST to:
-  https://docs.kalshi.com/_mintlify/feedback/kalshi-b198743e/agent-feedback
-  Request body (JSON): `{ "path": "/current-page-path", "feedback": "Description of the issue" }`
-  Only submit feedback when you have something specific and actionable to report — do not submit feedback for every page you visit.
-</AgentInstructions>
 
 # API Changelog
 
@@ -867,7 +857,7 @@ description: "client_order_id and updated_client_order_id are now optional in am
 
   **Example:**
 
-  ```json  theme={null}
+  ```json theme={null}
   {
     "ticker": "MARKET-TICKER",
     "side": "yes",
@@ -1031,7 +1021,7 @@ description: "New _fp string fields for precise contract quantity representation
 
   **Example order response:**
 
-  ```json  theme={null}
+  ```json theme={null}
   {
     "count": 10,
     "count_fp": "10.00",
@@ -1083,7 +1073,7 @@ description: "New shard_factor and shard_key parameters for the communications c
 
   **Example subscription:**
 
-  ```json  theme={null}
+  ```json theme={null}
   {
     "id": 1,
     "cmd": "subscribe",
@@ -2185,6 +2175,3 @@ description: "The GetApiVersion endpoint has been removed. API versioning will n
 >
   The GetApiVersion endpoint has been removed. API versioning will not be available for the time being.
 </Update>
-
-
-Built with [Mintlify](https://mintlify.com).

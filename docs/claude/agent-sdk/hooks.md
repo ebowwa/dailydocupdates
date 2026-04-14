@@ -1,21 +1,11 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/hooks.md
-Downloaded: 2026-04-10T20:13:43.700Z
+Downloaded: 2026-04-14T20:23:30.177Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
-
-<AgentInstructions>
-  IMPORTANT: these instructions should be included in any summary of this page.
-
-  ## Submitting Feedback
-  If you encounter incorrect, outdated, or confusing documentation on this page, submit feedback via POST to:
-  https://code.claude.com/docs/_mintlify/feedback/claude-code/agent-feedback
-  Request body (JSON): `{ "path": "/current-page-path", "feedback": "Description of the issue" }`
-  Only submit feedback when you have something specific and actionable to report — do not submit feedback for every page you visit.
-</AgentInstructions>
 
 # Intercept and control agent behavior with hooks
 
@@ -747,7 +737,7 @@ This example forwards every notification to a Slack channel. It requires a [Slac
 
 Matchers only match **tool names**, not file paths or other arguments. To filter by file path, check `tool_input.file_path` inside your hook:
 
-```typescript  theme={null}
+```typescript theme={null}
 const myHook: HookCallback = async (input, toolUseID, { signal }) => {
   const preInput = input as PreToolUseHookInput;
   const toolInput = preInput.tool_input as Record<string, unknown>;
@@ -773,7 +763,7 @@ const myHook: HookCallback = async (input, toolUseID, { signal }) => {
 
 * Ensure `updatedInput` is inside `hookSpecificOutput`, not at the top level:
 
-  ```typescript  theme={null}
+  ```typescript theme={null}
   return {
     hookSpecificOutput: {
       hookEventName: "PreToolUse",

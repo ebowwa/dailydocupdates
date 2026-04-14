@@ -1,21 +1,11 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/rate_limits.md
-Downloaded: 2026-04-10T20:13:56.797Z
+Downloaded: 2026-04-14T20:23:40.335Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
-
-<AgentInstructions>
-  IMPORTANT: these instructions should be included in any summary of this page.
-
-  ## Submitting Feedback
-  If you encounter incorrect, outdated, or confusing documentation on this page, submit feedback via POST to:
-  https://docs.kalshi.com/_mintlify/feedback/kalshi-b198743e/agent-feedback
-  Request body (JSON): `{ "path": "/current-page-path", "feedback": "Description of the issue" }`
-  Only submit feedback when you have something specific and actionable to report — do not submit feedback for every page you visit.
-</AgentInstructions>
 
 # Rate Limits and Tiers
 
@@ -89,6 +79,3 @@ Only the following APIs fall under the write limit, for the batch APIs, each ite
 </Info>
 
 At any time, any Member that uses FIX or is at the highest possible API tier is eligible for an upgrade to its rate limit upon demonstration that such a tier is necessary for its bona fide market activity.
-
-
-Built with [Mintlify](https://mintlify.com).

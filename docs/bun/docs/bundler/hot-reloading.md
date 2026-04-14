@@ -1,21 +1,11 @@
 <!--
 Source: https://bun.com/docs/bundler/hot-reloading.md
-Downloaded: 2026-04-10T20:14:16.300Z
+Downloaded: 2026-04-14T20:23:35.961Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
-
-<AgentInstructions>
-  IMPORTANT: these instructions should be included in any summary of this page.
-
-  ## Submitting Feedback
-  If you encounter incorrect, outdated, or confusing documentation on this page, submit feedback via POST to:
-  https://bun.com/docs/_mintlify/feedback/bun-1dd33a4e/agent-feedback
-  Request body (JSON): `{ "path": "/current-page-path", "feedback": "Description of the issue" }`
-  Only submit feedback when you have something specific and actionable to report — do not submit feedback for every page you visit.
-</AgentInstructions>
 
 # Hot reloading
 
@@ -244,6 +234,3 @@ When a file is replaced, all of its event listeners are automatically removed.
 | `bun:ws:connect`       | when the HMR WebSocket connects or re-connects.                                                 |
 
 <Note>For compatibility with Vite, the above events are also available via `vite:*` prefix instead of `bun:*`.</Note>
-
-
-Built with [Mintlify](https://mintlify.com).
