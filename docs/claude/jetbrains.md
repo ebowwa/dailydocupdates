@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/jetbrains.md
-Downloaded: 2026-04-14T20:23:30.193Z
+Downloaded: 2026-04-15T20:21:28.654Z
 -->
 
 > ## Documentation Index
@@ -72,7 +72,7 @@ Configure IDE integration through Claude Code's settings:
 
 1. Run `claude`
 2. Enter the `/config` command
-3. Set the diff tool to `auto` for automatic IDE detection
+3. Set the diff tool to `auto` to show diffs in the IDE, or `terminal` to keep them in the terminal
 
 ### Plugin Settings
 

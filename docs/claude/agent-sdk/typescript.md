@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/typescript.md
-Downloaded: 2026-04-14T20:23:30.183Z
+Downloaded: 2026-04-15T20:21:28.646Z
 -->
 
 > ## Documentation Index
@@ -2078,7 +2078,7 @@ type EnterWorktreeOutput = {
 };
 ```
 
-Returns information about the created git worktree.
+Returns information about the git worktree.
 
 ## Permission Types
 

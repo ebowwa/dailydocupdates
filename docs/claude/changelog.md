@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/changelog.md
-Downloaded: 2026-04-14T20:23:30.185Z
+Downloaded: 2026-04-15T20:21:28.648Z
 -->
 
 > ## Documentation Index
@@ -14,6 +14,10 @@ Downloaded: 2026-04-14T20:23:30.185Z
 This page is generated from the [CHANGELOG.md on GitHub](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md).
 
 Run `claude --version` to check your installed version.
+
+<Update label="2.1.109" description="April 15, 2026">
+  * Improved the extended-thinking indicator with a rotating progress hint
+</Update>
 
 <Update label="2.1.108" description="April 14, 2026">
   * Added `ENABLE_PROMPT_CACHING_1H` env var to opt into 1-hour prompt cache TTL on API key, Bedrock, Vertex, and Foundry (`ENABLE_PROMPT_CACHING_1H_BEDROCK` is deprecated but still honored), and `FORCE_PROMPT_CACHING_5M` to force 5-minute TTL
