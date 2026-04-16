@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/slash-commands.md
-Downloaded: 2026-04-14T20:23:30.181Z
+Downloaded: 2026-04-16T20:19:30.146Z
 -->
 
 > ## Documentation Index
@@ -201,7 +201,7 @@ Create `.claude/commands/security-check.md`:
 ---
 allowed-tools: Read, Grep, Glob
 description: Run security vulnerability scan
-model: claude-opus-4-6
+model: claude-opus-4-7
 ---
 
 Analyze the codebase for security vulnerabilities including:

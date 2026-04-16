@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-market.md
-Downloaded: 2026-04-14T20:23:40.322Z
+Downloaded: 2026-04-16T20:19:44.476Z
 -->
 
 > ## Documentation Index
@@ -300,6 +300,13 @@ components:
         expiration_value:
           type: string
           description: The value that was considered for the settlement
+        occurrence_datetime:
+          type: string
+          format: date-time
+          nullable: true
+          description: >-
+            The recorded datetime when the underlying event occurred, if
+            available
         fee_waiver_expiration_time:
           type: string
           format: date-time
