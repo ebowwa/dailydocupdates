@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/getting-started.md
-Downloaded: 2026-04-14T20:23:31.394Z
+Downloaded: 2026-04-17T20:17:34.851Z
 -->
 
 > ## Documentation Index
@@ -11,16 +11,16 @@ Downloaded: 2026-04-14T20:23:31.394Z
 
 > One-time setup for market making on Polymarket
 
-Before you can start market making, you need to complete these one-time setup steps — deposit USDC.e to Polygon, deploy a wallet, approve tokens for trading, and generate API credentials.
+Before you can start market making, you need to complete these one-time setup steps — deposit pUSD to Polygon, deploy a wallet, approve tokens for trading, and generate API credentials.
 
 <Steps>
-  <Step title="Deposit USDC.e">
-    Market makers need USDC.e on Polygon to fund their trading operations.
+  <Step title="Deposit pUSD">
+    Market makers need pUSD on Polygon to fund their trading operations.
 
     | Method                  | Best For                             | Documentation                                        |
     | ----------------------- | ------------------------------------ | ---------------------------------------------------- |
     | Bridge API              | Automated deposits from other chains | [Bridge Deposit](/trading/bridge/deposit)            |
-    | Direct Polygon transfer | Already have USDC.e on Polygon       | N/A                                                  |
+    | Direct Polygon transfer | Already have pUSD on Polygon         | N/A                                                  |
     | Cross-chain bridge      | Large deposits from Ethereum         | [Supported Assets](/trading/bridge/supported-assets) |
 
     ### Using the Bridge API
@@ -59,13 +59,14 @@ Before you can start market making, you need to complete these one-time setup st
       ```typescript TypeScript theme={null}
       import { RelayClient, RelayerTxType } from "@polymarket/builder-relayer-client";
 
-      const client = new RelayClient(
-        "https://relayer-v2.polymarket.com/",
-        137, // Polygon mainnet
+      const client = new RelayClient({
+        host: "https://relayer-v2.polymarket.com/",
+        chain: 137,
         signer,
-        builderConfig,
-        RelayerTxType.SAFE,
-      );
+        relayerApiKey: process.env.RELAYER_API_KEY!,
+        relayerApiKeyAddress: process.env.RELAYER_API_KEY_ADDRESS!,
+        txType: RelayerTxType.SAFE,
+      });
 
       // Deploy the Safe wallet
       const response = await client.deploy();
@@ -76,7 +77,7 @@ Before you can start market making, you need to complete these one-time setup st
       ```python Python theme={null}
       from py_builder_relayer_client.client import RelayClient
 
-      # client initialized with builder_config
+      # client initialized with Relayer API Key credentials (see Gasless Transactions)
 
       # Deploy the Safe wallet
       response = client.deploy()
@@ -96,20 +97,20 @@ Before you can start market making, you need to complete these one-time setup st
 
     ### Required Approvals
 
-    | Token                | Spender               | Purpose                          |
-    | -------------------- | --------------------- | -------------------------------- |
-    | USDC.e               | CTF Contract          | Split USDC.e into outcome tokens |
-    | CTF (outcome tokens) | CTF Exchange          | Trade outcome tokens             |
-    | CTF (outcome tokens) | Neg Risk CTF Exchange | Trade neg-risk market tokens     |
+    | Token                | Spender               | Purpose                        |
+    | -------------------- | --------------------- | ------------------------------ |
+    | pUSD                 | CTF Contract          | Split pUSD into outcome tokens |
+    | CTF (outcome tokens) | CTF Exchange          | Trade outcome tokens           |
+    | CTF (outcome tokens) | Neg Risk CTF Exchange | Trade neg-risk market tokens   |
 
     ### Contract Addresses
 
     ```typescript theme={null}
     const ADDRESSES = {
-      USDCe: "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+      pUSD: "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB",
       CTF: "0x4D97DCd97eC945f40cF65F87097ACe5EA0476045",
-      CTF_EXCHANGE: "0x4bFb41d5B3570DeFd03C39a9A4D8dE6Bd8B8982E",
-      NEG_RISK_CTF_EXCHANGE: "0xC5d563A36AE78145C45a50134d48A1215220f80a",
+      CTF_EXCHANGE: "0xE111180000d2663C0091e4f400237545B87B996B",
+      NEG_RISK_CTF_EXCHANGE: "0xe2222d279d744050d28e00520010520000310F59",
       NEG_RISK_ADAPTER: "0xd91E80cF2E7be2e162c6513ceD06f1dD0dA35296",
     };
     ```
@@ -125,9 +126,9 @@ Before you can start market making, you need to complete these one-time setup st
         "function approve(address spender, uint256 amount) returns (bool)",
       ]);
 
-      // Approve USDCe for CTF contract
+      // Approve pUSD for CTF contract
       const approveTx = {
-        to: ADDRESSES.USDCe,
+        to: ADDRESSES.pUSD,
         data: erc20Interface.encodeFunctionData("approve", [
           ADDRESSES.CTF,
           ethers.constants.MaxUint256,
@@ -135,21 +136,21 @@ Before you can start market making, you need to complete these one-time setup st
         value: "0",
       };
 
-      const response = await client.execute([approveTx], "Approve USDCe for CTF");
+      const response = await client.execute([approveTx], "Approve pUSD for CTF");
       await response.wait();
       ```
 
       ```python Python theme={null}
       from web3 import Web3
 
-      USDC = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
+      pUSD = "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB"
       CTF = "0x4D97DCd97eC945f40cF65F87097ACe5EA0476045"
       MAX_UINT256 = 2**256 - 1
 
       approve_tx = {
-          "to": USDC,
+          "to": pUSD,
           "data": Web3().eth.contract(
-              address=USDC,
+              address=pUSD,
               abi=[{
                   "name": "approve",
                   "type": "function",
@@ -163,7 +164,7 @@ Before you can start market making, you need to complete these one-time setup st
           "value": "0"
       }
 
-      response = client.execute([approve_tx], "Approve USDC for CTF")
+      response = client.execute([approve_tx], "Approve pUSD for CTF")
       response.wait()
       ```
     </CodeGroup>
@@ -174,9 +175,9 @@ Before you can start market making, you need to complete these one-time setup st
 
     <CodeGroup>
       ```typescript TypeScript theme={null}
-      import { ClobClient } from "@polymarket/clob-client";
+      import { ClobClient } from "@polymarket/clob-client-v2";
 
-      const client = new ClobClient("https://clob.polymarket.com", 137, signer);
+      const client = new ClobClient({ host: "https://clob.polymarket.com", chain: 137, signer });
 
       // Derive API credentials from your wallet
       const credentials = await client.createOrDeriveApiKey();
@@ -191,7 +192,7 @@ Before you can start market making, you need to complete these one-time setup st
 
       private_key = os.getenv("PRIVATE_KEY")
 
-      temp_client = ClobClient("https://clob.polymarket.com", key=private_key, chain_id=137)
+      temp_client = ClobClient("https://clob.polymarket.com", key=private_key, chain=137)
       credentials = temp_client.create_or_derive_api_creds()
       ```
 

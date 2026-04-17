@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/typescript-v2-preview.md
-Downloaded: 2026-04-16T20:19:30.148Z
+Downloaded: 2026-04-17T20:17:30.107Z
 -->
 
 > ## Documentation Index
@@ -28,6 +28,10 @@ The V2 interface is included in the existing SDK package:
 ```bash theme={null}
 npm install @anthropic-ai/claude-agent-sdk
 ```
+
+<Note>
+  The SDK bundles a native Claude Code binary for your platform as an optional dependency, so you don't need to install Claude Code separately.
+</Note>
 
 ## Quick start
 

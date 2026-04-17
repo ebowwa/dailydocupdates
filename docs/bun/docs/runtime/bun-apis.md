@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/bun-apis.md
-Downloaded: 2026-04-14T20:23:36.000Z
+Downloaded: 2026-04-17T20:17:38.021Z
 -->
 
 > ## Documentation Index
@@ -38,6 +38,7 @@ Click the link in the right column to jump to the associated documentation.
 | Transpiler                       | [`Bun.Transpiler`](/runtime/transpiler)                                                                                                                                                                                                                                                                                |
 | Routing                          | [`Bun.FileSystemRouter`](/runtime/file-system-router)                                                                                                                                                                                                                                                                  |
 | Streaming HTML                   | [`HTMLRewriter`](/runtime/html-rewriter)                                                                                                                                                                                                                                                                               |
+| Headless Browser                 | [`Bun.WebView`](/runtime/webview)                                                                                                                                                                                                                                                                                      |
 | Hashing                          | [`Bun.password`](/runtime/hashing#bun-password), [`Bun.hash`](/runtime/hashing#bun-hash), [`Bun.CryptoHasher`](/runtime/hashing#bun-cryptohasher), `Bun.sha`                                                                                                                                                           |
 | CSRF Protection                  | [`Bun.CSRF.generate`](/runtime/csrf), [`Bun.CSRF.verify`](/runtime/csrf)                                                                                                                                                                                                                                               |
 | SQLite                           | [`bun:sqlite`](/runtime/sqlite)                                                                                                                                                                                                                                                                                        |

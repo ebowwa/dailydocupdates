@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/bridge/get-transaction-status.md
-Downloaded: 2026-04-14T20:23:31.373Z
+Downloaded: 2026-04-17T20:17:34.837Z
 -->
 
 > ## Documentation Index
@@ -55,20 +55,20 @@ paths:
                     fromTokenAddress: '11111111111111111111111111111111'
                     fromAmountBaseUnit: '13566635'
                     toChainId: '137'
-                    toTokenAddress: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
+                    toTokenAddress: '0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB'
                     status: DEPOSIT_DETECTED
                   - fromChainId: '1151111081099710'
                     fromTokenAddress: '11111111111111111111111111111111'
                     fromAmountBaseUnit: '13400000'
                     toChainId: '137'
-                    toTokenAddress: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
+                    toTokenAddress: '0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB'
                     createdTimeMs: 1757646914535
                     status: PROCESSING
                   - fromChainId: '1151111081099710'
                     fromTokenAddress: '11111111111111111111111111111111'
                     fromAmountBaseUnit: '13500152'
                     toChainId: '137'
-                    toTokenAddress: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
+                    toTokenAddress: '0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB'
                     txHash: >-
                       3atr19NAiNCYt24RHM1WnzZp47RXskpTDzspJoCBBaMFwUB8fk37hFkxz35P5UEnnmWz21rb2t5wJ8pq3EE2XnxU
                     createdTimeMs: 1757531217339
@@ -128,7 +128,7 @@ components:
         toTokenAddress:
           type: string
           description: Destination token contract address
-          example: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
+          example: '0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB'
         status:
           type: string
           description: >

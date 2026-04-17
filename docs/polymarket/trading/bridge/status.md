@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/bridge/status.md
-Downloaded: 2026-04-14T20:23:31.397Z
+Downloaded: 2026-04-17T20:17:34.853Z
 -->
 
 > ## Documentation Index
@@ -58,7 +58,7 @@ A response with active deposits:
       "fromTokenAddress": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
       "fromAmountBaseUnit": "1000000000",
       "toChainId": "137",
-      "toTokenAddress": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+      "toTokenAddress": "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB",
       "status": "COMPLETED",
       "txHash": "0xabc123...",
       "createdTimeMs": 1697875200000

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/rewards/get-raw-rewards-for-a-specific-market.md
-Downloaded: 2026-04-14T20:23:31.385Z
+Downloaded: 2026-04-17T20:17:34.845Z
 -->
 
 > ## Documentation Index
@@ -74,8 +74,8 @@ paths:
       parameters:
         - name: condition_id
           in: path
-          description: The condition ID of the market
           required: true
+          description: The condition ID of the market
           schema:
             type: string
           example: '0xbd31dc8a20211944f6b70f31557f1001557b59905b7738480ca09bd4532f84af'

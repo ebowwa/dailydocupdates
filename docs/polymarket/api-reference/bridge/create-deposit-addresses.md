@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/bridge/create-deposit-addresses.md
-Downloaded: 2026-04-14T20:23:31.372Z
+Downloaded: 2026-04-17T20:17:34.837Z
 -->
 
 > ## Documentation Index
@@ -70,7 +70,7 @@ components:
           $ref: '#/components/schemas/Address'
           description: >-
             Your Polymarket wallet address where deposited funds will be
-            credited as USDC.e
+            credited as pUSD
     DepositResponse:
       type: object
       properties:

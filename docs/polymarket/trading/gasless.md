@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/gasless.md
-Downloaded: 2026-04-14T20:23:31.399Z
+Downloaded: 2026-04-17T20:17:34.856Z
 -->
 
 > ## Documentation Index
@@ -11,7 +11,7 @@ Downloaded: 2026-04-14T20:23:31.399Z
 
 > Execute onchain operations without paying gas fees
 
-Polymarket's **Relayer Client** enables gasless transactions for your users. Instead of requiring users to hold POL for gas, Polymarket's infrastructure pays all transaction fees. This creates a seamless experience where users only need USDC.e to trade.
+Polymarket's **Relayer Client** enables gasless transactions for your users. Instead of requiring users to hold POL for gas, Polymarket's infrastructure pays all transaction fees. This creates a seamless experience where users only need pUSD to trade.
 
 ## How It Works
 
@@ -23,43 +23,20 @@ The relayer acts as a transaction sponsor:
 4. The relayer submits it onchain and pays the gas fee
 5. The transaction executes from the user's wallet
 
-<Note>
-  Gasless transactions require authentication with **Builder API Keys** or **Relayer API Keys**.
-</Note>
-
 ## What Is Covered
 
 Polymarket pays gas for all operations routed through the relayer:
 
-| Operation             | Description                                         |
-| --------------------- | --------------------------------------------------- |
-| **Wallet deployment** | Deploy Safe or Proxy wallets for new users          |
-| **Token approvals**   | Approve contracts to spend USDC.e or outcome tokens |
-| **CTF operations**    | Split, merge, and redeem positions                  |
-| **Transfers**         | Move tokens between addresses                       |
+| Operation             | Description                                       |
+| --------------------- | ------------------------------------------------- |
+| **Wallet deployment** | Deploy Safe or Proxy wallets for new users        |
+| **Token approvals**   | Approve contracts to spend pUSD or outcome tokens |
+| **CTF operations**    | Split, merge, and redeem positions                |
+| **Transfers**         | Move tokens between addresses                     |
 
 ## Authentication
 
-The relayer supports two authentication methods. Choose the one that fits your use case.
-
-### Using Builder API Keys
-
-Builder API Keys are for [Builder Program](/builders/overview) members. They authenticate via HMAC-SHA256 signed headers and are required to use the relayer SDKs.
-
-All requests must include these headers:
-
-| Header                    | Description             |
-| ------------------------- | ----------------------- |
-| `POLY_BUILDER_API_KEY`    | Your Builder API key    |
-| `POLY_BUILDER_TIMESTAMP`  | Unix timestamp          |
-| `POLY_BUILDER_PASSPHRASE` | Your Builder passphrase |
-| `POLY_BUILDER_SIGNATURE`  | HMAC-SHA256 signature   |
-
-The SDKs handle header generation automatically when you provide your credentials via `BuilderConfig`.
-
-### Using Relayer API Keys
-
-Relayer API Keys are for market makers and anyone who needs a simpler alternative. You can create them from [Settings > API Keys](https://polymarket.com/settings?tab=api-keys) on the Polymarket website.
+The relayer uses **Relayer API Keys**. You can create one from [Settings > API Keys](https://polymarket.com/settings?tab=api-keys) on the Polymarket website.
 
 Include these headers with your requests:
 
@@ -76,205 +53,67 @@ Include these headers with your requests:
 
 Before using the relayer, you need:
 
-| Requirement                                    | Source                                                                                                                                |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Builder API credentials **or** Relayer API key | [Builder Profile](https://polymarket.com/settings?tab=builder) or [Settings > API Keys](https://polymarket.com/settings?tab=api-keys) |
-| User's private key or signer                   | Your wallet integration                                                                                                               |
-| USDC.e balance                                 | For trading (not for gas)                                                                                                             |
-
-> The below section is for the Builder SDKs only. If you want to use the Relayer API Key directly without the SDK, see the [Relayer API Reference](/api-reference/relayer).
+| Requirement                  | Source                                                              |
+| ---------------------------- | ------------------------------------------------------------------- |
+| Relayer API Key              | [Settings > API Keys](https://polymarket.com/settings?tab=api-keys) |
+| User's private key or signer | Your wallet integration                                             |
+| pUSD balance                 | For trading (not for gas)                                           |
 
 ## Installation
 
 <CodeGroup>
   ```bash npm theme={null}
-  npm install @polymarket/builder-relayer-client @polymarket/builder-signing-sdk
+  npm install @polymarket/builder-relayer-client
   ```
 
   ```bash pip theme={null}
-  pip install py-builder-relayer-client py-builder-signing-sdk
+  pip install py-builder-relayer-client
   ```
 </CodeGroup>
 
 ## Client Setup
 
-Initialize the relayer client with your signing configuration:
+Initialize the relayer client with your Relayer API Key:
 
-<Tabs>
-  <Tab title="Local Signing">
-    Use local signing when your backend handles all transactions securely.
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  import { createWalletClient, http, Hex } from "viem";
+  import { privateKeyToAccount } from "viem/accounts";
+  import { polygon } from "viem/chains";
+  import { RelayClient } from "@polymarket/builder-relayer-client";
 
-    <CodeGroup>
-      ```typescript TypeScript theme={null}
-      import { createWalletClient, http, Hex } from "viem";
-      import { privateKeyToAccount } from "viem/accounts";
-      import { polygon } from "viem/chains";
-      import { RelayClient } from "@polymarket/builder-relayer-client";
-      import { BuilderConfig } from "@polymarket/builder-signing-sdk";
+  const account = privateKeyToAccount(process.env.PRIVATE_KEY as Hex);
+  const wallet = createWalletClient({
+    account,
+    chain: polygon,
+    transport: http(process.env.RPC_URL),
+  });
 
-      const account = privateKeyToAccount(process.env.PRIVATE_KEY as Hex);
-      const wallet = createWalletClient({
-        account,
-        chain: polygon,
-        transport: http(process.env.RPC_URL),
-      });
+  const client = new RelayClient({
+    host: "https://relayer-v2.polymarket.com/",
+    chain: 137,
+    signer: wallet,
+    relayerApiKey: process.env.RELAYER_API_KEY!,
+    relayerApiKeyAddress: process.env.RELAYER_API_KEY_ADDRESS!,
+  });
+  ```
 
-      const builderConfig = new BuilderConfig({
-        localBuilderCreds: {
-          key: process.env.POLY_BUILDER_API_KEY!,
-          secret: process.env.POLY_BUILDER_SECRET!,
-          passphrase: process.env.POLY_BUILDER_PASSPHRASE!,
-        },
-      });
+  ```python Python theme={null}
+  import os
+  from py_builder_relayer_client.client import RelayClient
 
-      const client = new RelayClient(
-        "https://relayer-v2.polymarket.com/",
-        137,
-        wallet,
-        builderConfig,
-      );
-      ```
-
-      ```python Python theme={null}
-      import os
-      from py_builder_relayer_client.client import RelayClient
-      from py_builder_signing_sdk import BuilderConfig, BuilderApiKeyCreds
-
-      builder_config = BuilderConfig(
-          local_builder_creds=BuilderApiKeyCreds(
-              key=os.getenv("POLY_BUILDER_API_KEY"),
-              secret=os.getenv("POLY_BUILDER_SECRET"),
-              passphrase=os.getenv("POLY_BUILDER_PASSPHRASE"),
-          )
-      )
-
-      client = RelayClient(
-          "https://relayer-v2.polymarket.com",
-          137,
-          os.getenv("PRIVATE_KEY"),
-          builder_config
-      )
-      ```
-    </CodeGroup>
-  </Tab>
-
-  <Tab title="Remote Signing">
-    Use remote signing to keep credentials on a secure server you control.
-
-    **Your signing server** receives request details and returns authentication headers:
-
-    <CodeGroup>
-      ```typescript Server (TypeScript) theme={null}
-      import {
-        buildHmacSignature,
-        BuilderApiKeyCreds,
-      } from "@polymarket/builder-signing-sdk";
-
-      const BUILDER_CREDENTIALS: BuilderApiKeyCreds = {
-        key: process.env.POLY_BUILDER_API_KEY!,
-        secret: process.env.POLY_BUILDER_SECRET!,
-        passphrase: process.env.POLY_BUILDER_PASSPHRASE!,
-      };
-
-      // POST /sign endpoint
-      export async function handleSignRequest(request) {
-        const { method, path, body } = await request.json();
-        const timestamp = Date.now().toString();
-
-        const signature = buildHmacSignature(
-          BUILDER_CREDENTIALS.secret,
-          parseInt(timestamp),
-          method,
-          path,
-          body,
-        );
-
-        return {
-          POLY_BUILDER_SIGNATURE: signature,
-          POLY_BUILDER_TIMESTAMP: timestamp,
-          POLY_BUILDER_API_KEY: BUILDER_CREDENTIALS.key,
-          POLY_BUILDER_PASSPHRASE: BUILDER_CREDENTIALS.passphrase,
-        };
-      }
-      ```
-
-      ```python Server (Python) theme={null}
-      import os
-      import time
-      from py_builder_signing_sdk.signing.hmac import build_hmac_signature
-      from py_builder_signing_sdk import BuilderApiKeyCreds
-
-      BUILDER_CREDENTIALS = BuilderApiKeyCreds(
-          key=os.environ["POLY_BUILDER_API_KEY"],
-          secret=os.environ["POLY_BUILDER_SECRET"],
-          passphrase=os.environ["POLY_BUILDER_PASSPHRASE"],
-      )
-
-      # POST /sign endpoint
-      def handle_sign_request(method: str, path: str, body: str):
-          timestamp = str(int(time.time()))
-
-          signature = build_hmac_signature(
-              BUILDER_CREDENTIALS.secret,
-              timestamp,
-              method,
-              path,
-              body
-          )
-
-          return {
-              "POLY_BUILDER_SIGNATURE": signature,
-              "POLY_BUILDER_TIMESTAMP": timestamp,
-              "POLY_BUILDER_API_KEY": BUILDER_CREDENTIALS.key,
-              "POLY_BUILDER_PASSPHRASE": BUILDER_CREDENTIALS.passphrase,
-          }
-      ```
-    </CodeGroup>
-
-    **Your client** points to your signing server:
-
-    <CodeGroup>
-      ```typescript Client (TypeScript) theme={null}
-      import { RelayClient } from "@polymarket/builder-relayer-client";
-      import { BuilderConfig } from "@polymarket/builder-signing-sdk";
-
-      const builderConfig = new BuilderConfig({
-        remoteBuilderConfig: {
-          url: "https://your-server.com/sign",
-        },
-      });
-
-      const client = new RelayClient(
-        "https://relayer-v2.polymarket.com/",
-        137,
-        wallet,
-        builderConfig,
-      );
-      ```
-
-      ```python Client (Python) theme={null}
-      from py_builder_relayer_client.client import RelayClient
-      from py_builder_signing_sdk import BuilderConfig, RemoteBuilderConfig
-
-      builder_config = BuilderConfig(
-          remote_builder_config=RemoteBuilderConfig(
-              url="https://your-server.com/sign"
-          )
-      )
-
-      client = RelayClient(
-          "https://relayer-v2.polymarket.com",
-          137,
-          private_key,
-          builder_config
-      )
-      ```
-    </CodeGroup>
-  </Tab>
-</Tabs>
+  client = RelayClient(
+      host="https://relayer-v2.polymarket.com",
+      chain=137,
+      signer=os.getenv("PRIVATE_KEY"),
+      relayer_api_key=os.environ["RELAYER_API_KEY"],
+      relayer_api_key_address=os.environ["RELAYER_API_KEY_ADDRESS"],
+  )
+  ```
+</CodeGroup>
 
 <Warning>
-  Never expose Builder API credentials in client-side code. Use environment
+  Never expose your Relayer API Key in client-side code. Use environment
   variables or a secrets manager.
 </Warning>
 
@@ -291,13 +130,14 @@ Choose a wallet type when initializing the client:
   ```typescript Safe Wallet (TypeScript) theme={null}
   import { RelayClient, RelayerTxType } from "@polymarket/builder-relayer-client";
 
-  const client = new RelayClient(
-    "https://relayer-v2.polymarket.com/",
-    137,
-    wallet,
-    builderConfig,
-    RelayerTxType.SAFE,
-  );
+  const client = new RelayClient({
+    host: "https://relayer-v2.polymarket.com/",
+    chain: 137,
+    signer: wallet,
+    relayerApiKey: process.env.RELAYER_API_KEY!,
+    relayerApiKeyAddress: process.env.RELAYER_API_KEY_ADDRESS!,
+    txType: RelayerTxType.SAFE,
+  });
 
   // Deploy before first transaction
   const response = await client.deploy();
@@ -308,7 +148,7 @@ Choose a wallet type when initializing the client:
   ```python Safe Wallet (Python) theme={null}
   from py_builder_relayer_client.client import RelayClient
 
-  # client initialized with builder_config (see Client Setup above)
+  # client initialized with relayer credentials (see Client Setup above)
 
   # Deploy before first transaction
   response = client.deploy()
@@ -319,13 +159,14 @@ Choose a wallet type when initializing the client:
   ```typescript Proxy Wallet (TypeScript) theme={null}
   import { RelayClient, RelayerTxType } from "@polymarket/builder-relayer-client";
 
-  const client = new RelayClient(
-    "https://relayer-v2.polymarket.com/",
-    137,
-    wallet,
-    builderConfig,
-    RelayerTxType.PROXY,
-  );
+  const client = new RelayClient({
+    host: "https://relayer-v2.polymarket.com/",
+    chain: 137,
+    signer: wallet,
+    relayerApiKey: process.env.RELAYER_API_KEY!,
+    relayerApiKeyAddress: process.env.RELAYER_API_KEY_ADDRESS!,
+    txType: RelayerTxType.PROXY,
+  });
 
   // No deploy needed - auto-deploys on first transaction
   ```
@@ -333,7 +174,7 @@ Choose a wallet type when initializing the client:
   ```python Proxy Wallet (Python) theme={null}
   from py_builder_relayer_client.client import RelayClient
 
-  # client initialized with builder_config (see Client Setup above)
+  # client initialized with relayer credentials (see Client Setup above)
   # No deploy needed - auto-deploys on first transaction
   ```
 </CodeGroup>
@@ -361,11 +202,11 @@ Approve contracts to spend tokens:
   ```typescript TypeScript theme={null}
   import { encodeFunctionData, maxUint256 } from "viem";
 
-  const USDC = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
+  const pUSD = "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB";
   const CTF = "0x4D97DCd97eC945f40cF65F87097ACe5EA0476045";
 
   const approveTx = {
-    to: USDC,
+    to: pUSD,
     data: encodeFunctionData({
       abi: [
         {
@@ -384,21 +225,21 @@ Approve contracts to spend tokens:
     value: "0",
   };
 
-  const response = await client.execute([approveTx], "Approve USDC.e for CTF");
+  const response = await client.execute([approveTx], "Approve pUSD for CTF");
   await response.wait();
   ```
 
   ```python Python theme={null}
   from web3 import Web3
 
-  USDC = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
+  pUSD = "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB"
   CTF = "0x4D97DCd97eC945f40cF65F87097ACe5EA0476045"
   MAX_UINT256 = 2**256 - 1
 
   approve_tx = {
-      "to": USDC,
+      "to": pUSD,
       "data": Web3().eth.contract(
-          address=USDC,
+          address=pUSD,
           abi=[{
               "name": "approve",
               "type": "function",
@@ -412,14 +253,14 @@ Approve contracts to spend tokens:
       "value": "0"
   }
 
-  response = client.execute([approve_tx], "Approve USDC.e for CTF")
+  response = client.execute([approve_tx], "Approve pUSD for CTF")
   response.wait()
   ```
 </CodeGroup>
 
 ### Redeem Positions
 
-Exchange winning tokens for USDC.e after market resolution:
+Exchange winning tokens for pUSD after market resolution:
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -488,7 +329,7 @@ Execute multiple operations atomically in a single call:
 <CodeGroup>
   ```typescript TypeScript theme={null}
   const approveTx = {
-    to: USDC,
+    to: pUSD,
     data: encodeFunctionData({
       abi: erc20Abi,
       functionName: "approve",
@@ -498,7 +339,7 @@ Execute multiple operations atomically in a single call:
   };
 
   const transferTx = {
-    to: USDC,
+    to: pUSD,
     data: encodeFunctionData({
       abi: erc20Abi,
       functionName: "transfer",
@@ -517,7 +358,7 @@ Execute multiple operations atomically in a single call:
 
   ```python Python theme={null}
   approve_tx = {
-      "to": USDC,
+      "to": pUSD,
       "data": contract.encode_abi(
           abi_element_identifier="approve",
           args=[CTF, MAX_UINT256]
@@ -526,7 +367,7 @@ Execute multiple operations atomically in a single call:
   }
 
   transfer_tx = {
-      "to": USDC,
+      "to": pUSD,
       "data": contract.encode_abi(
           abi_element_identifier="transfer",
           args=[recipient_address, 50 * 10**6]
@@ -560,14 +401,12 @@ Track transaction progress through these states:
 
 ## Contract Addresses
 
-See [Contract Addresses](/resources/contract-addresses) for all Polymarket smart contract addresses on Polygon.
+See [Contracts](/resources/contracts) for all Polymarket smart contract addresses on Polygon.
 
 ## Resources
 
 * [Builder Relayer Client (TypeScript)](https://github.com/Polymarket/builder-relayer-client)
 * [Builder Relayer Client (Python)](https://github.com/Polymarket/py-builder-relayer-client)
-* [Builder Signing SDK (TypeScript)](https://github.com/Polymarket/builder-signing-sdk)
-* [Builder Signing SDK (Python)](https://github.com/Polymarket/py-builder-signing-sdk)
 
 ## Next Steps
 

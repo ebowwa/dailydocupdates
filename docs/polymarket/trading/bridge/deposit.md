@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/bridge/deposit.md
-Downloaded: 2026-04-14T20:23:31.396Z
+Downloaded: 2026-04-17T20:17:34.853Z
 -->
 
 > ## Documentation Index
@@ -11,14 +11,14 @@ Downloaded: 2026-04-14T20:23:31.396Z
 
 > Bridge assets from any supported chain to fund your Polymarket account
 
-Polymarket uses **USDC.e** (Bridged USDC) on Polygon as collateral for all trading. The Bridge API lets you deposit assets from Ethereum, Solana, Bitcoin, and other chains—they're automatically converted to USDC.e on Polygon.
+Polymarket uses **pUSD** (Polymarket USD) on Polygon as collateral for all trading. The Bridge API lets you deposit assets from Ethereum, Solana, Bitcoin, and other chains—they're automatically converted to pUSD on Polygon.
 
 ## How It Works
 
 1. Request deposit addresses for your Polymarket wallet
 2. Send assets to the appropriate address for your source chain
-3. Assets are bridged and swapped to USDC.e automatically
-4. USDC.e is credited to your wallet for trading
+3. Assets are bridged and swapped to pUSD automatically
+4. pUSD is credited to your wallet for trading
 
 ## Create Deposit Addresses
 
@@ -66,9 +66,9 @@ curl -X POST https://bridge.polymarket.com/deposit \
   </Step>
 </Steps>
 
-## USDC vs USDC.e
+## USDC vs pUSD
 
-You can deposit either USDC (native) or USDC.e (bridged) to your Polymarket wallet. If you deposit native USDC, you will be prompted to "activate funds," which swaps it to USDC.e via the lowest-fee Uniswap pool (less than 10bp slippage).
+You can deposit either USDC (native) or USDC.e (bridged) as the source asset to your Polymarket wallet. Either way, the incoming USDC or USDC.e is wrapped into pUSD via the Collateral Onramp, and pUSD is what you hold and trade with on Polymarket.
 
 ## Large Deposits
 

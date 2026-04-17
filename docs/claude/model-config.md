@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/model-config.md
-Downloaded: 2026-04-16T20:19:30.157Z
+Downloaded: 2026-04-17T20:17:30.117Z
 -->
 
 > ## Documentation Index
@@ -50,7 +50,7 @@ Aliases point to the recommended version for your provider and update over time.
 
 You can configure your model in several ways, listed in order of priority:
 
-1. **During session** - Use `/model <alias|name>` to switch models mid-session
+1. **During session** - Use `/model <alias|name>` to switch immediately, or run `/model` with no argument to open the picker. The picker asks for confirmation when the conversation has prior output, since the next response re-reads the full history without cached context
 2. **At startup** - Launch with `claude --model <alias|name>`
 3. **Environment variable** - Set `ANTHROPIC_MODEL=<alias|name>`
 4. **Settings** - Configure permanently in your settings file using the `model`
@@ -155,6 +155,8 @@ The `opusplan` model alias provides an automated hybrid approach:
 This gives you the best of both worlds: Opus's superior reasoning for planning,
 and Sonnet's efficiency for execution.
 
+The plan-mode Opus phase runs with the standard 200K context window. The automatic 1M upgrade described in [Extended context](#extended-context) applies to the `opus` model setting and does not extend to `opusplan`.
+
 ### Adjust effort level
 
 [Effort levels](https://platform.claude.com/docs/en/build-with-claude/effort) control adaptive reasoning, which lets the model decide whether and how much to think on each step based on task complexity. Lower effort is faster and cheaper for straightforward tasks, while higher effort provides deeper reasoning for complex problems.
@@ -194,7 +196,7 @@ For one-off deep reasoning without changing your session setting, include "ultra
 
 You can change effort through any of the following:
 
-* **`/effort`**: run `/effort` followed by a level name to change it, or `/effort auto` to reset to the model default
+* **`/effort`**: run `/effort` with no arguments to open an interactive slider, `/effort` followed by a level name to set it directly, or `/effort auto` to reset to the model default
 * **In `/model`**: use left/right arrow keys to adjust the effort slider when selecting a model
 * **`--effort` flag**: pass a level name to set it for a single session when launching Claude Code
 * **Environment variable**: set `CLAUDE_CODE_EFFORT_LEVEL` to a level name or `auto`

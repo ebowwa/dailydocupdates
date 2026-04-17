@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/ctf/split.md
-Downloaded: 2026-04-14T20:23:31.398Z
+Downloaded: 2026-04-17T20:17:34.855Z
 -->
 
 > ## Documentation Index
@@ -9,20 +9,20 @@ Downloaded: 2026-04-14T20:23:31.398Z
 
 # Split Tokens
 
-> Convert USDC.e into outcome token pairs
+> Convert pUSD into outcome token pairs
 
-**Splitting** converts USDC.e collateral into a full (position) set of outcome tokens. For every \$1 USDC.e you split, you receive 1 Yes token and 1 No token.
+**Splitting** converts pUSD collateral into a full (position) set of outcome tokens. For every \$1 pUSD you split, you receive 1 Yes token and 1 No token.
 
 ```
-$100 USDC.e → 100 Yes tokens + 100 No tokens
+$100 pUSD → 100 Yes tokens + 100 No tokens
 ```
 
 ## Prerequisites
 
 Before splitting, ensure you have:
 
-1. **USDC.e balance** on Polygon
-2. **USDC.e approval** for the CTF contract to spend your tokens
+1. **pUSD balance** on Polygon
+2. **pUSD approval** for the CTF contract to spend your tokens
 3. **Condition ID** of the market — the condition must already be prepared on the CTF contract (via `prepareCondition`)
 
 <Note>
@@ -32,16 +32,16 @@ Before splitting, ensure you have:
 
 ## How It Works
 
-1. You approve the CTF contract to spend your USDC.e
+1. You approve the CTF contract to spend your pUSD
 2. You call `splitPosition()` with the amount and market details
-3. The CTF contract transfers USDC.e from your wallet and mints both outcome tokens
+3. The CTF contract transfers pUSD from your wallet and mints both outcome tokens
 
 The operation is atomic — if any step fails, the entire transaction reverts.
 
 ## Function Parameters
 
 <ResponseField name="collateralToken" type="IERC20">
-  USDC.e (Bridged USDC) contract address: `0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174`
+  pUSD (Polymarket USD) contract address: `0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB`
 </ResponseField>
 
 <ResponseField name="parentCollectionId" type="bytes32">
@@ -65,7 +65,7 @@ The operation is atomic — if any step fails, the entire transaction reverts.
 
 <CardGroup cols={2}>
   <Card title="Merge Tokens" icon="merge" href="/trading/ctf/merge">
-    Convert token pairs back to USDC.e
+    Convert token pairs back to pUSD
   </Card>
 
   <Card title="Trade on Orderbook" icon="chart-line" href="/trading/orders/create">

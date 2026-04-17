@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/setup.md
-Downloaded: 2026-04-16T20:19:30.161Z
+Downloaded: 2026-04-17T20:17:30.121Z
 -->
 
 > ## Documentation Index
@@ -46,19 +46,19 @@ To install Claude Code, use one of the following methods:
   <Tab title="Native Install (Recommended)">
     **macOS, Linux, WSL:**
 
-    ```bash theme={null} theme={null}
+    ```bash theme={null} theme={null} theme={null} theme={null}
     curl -fsSL https://claude.ai/install.sh | bash
     ```
 
     **Windows PowerShell:**
 
-    ```powershell theme={null} theme={null}
+    ```powershell theme={null} theme={null} theme={null} theme={null}
     irm https://claude.ai/install.ps1 | iex
     ```
 
     **Windows CMD:**
 
-    ```batch theme={null} theme={null}
+    ```batch theme={null} theme={null} theme={null} theme={null}
     curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
     ```
 
@@ -72,7 +72,7 @@ To install Claude Code, use one of the following methods:
   </Tab>
 
   <Tab title="Homebrew">
-    ```bash theme={null} theme={null}
+    ```bash theme={null} theme={null} theme={null} theme={null}
     brew install --cask claude-code
     ```
 
@@ -84,7 +84,7 @@ To install Claude Code, use one of the following methods:
   </Tab>
 
   <Tab title="WinGet">
-    ```powershell theme={null} theme={null}
+    ```powershell theme={null} theme={null} theme={null} theme={null}
     winget install Anthropic.ClaudeCode
     ```
 
@@ -128,7 +128,7 @@ After installation, launch `claude` from PowerShell, CMD, or Git Bash. Claude Co
 }
 ```
 
-Claude Code can also run PowerShell natively on Windows as an opt-in preview. See [PowerShell tool](/en/tools-reference#powershell-tool) for setup and limitations.
+Claude Code can also run PowerShell natively on Windows. The PowerShell tool is rolling out progressively; set `CLAUDE_CODE_USE_POWERSHELL_TOOL=1` to opt in or `0` to opt out. See [PowerShell tool](/en/tools-reference#powershell-tool) for setup and limitations.
 
 **Option 2: WSL**
 
@@ -208,6 +208,23 @@ Configure this via `/config` → **Auto-update channel**, or add it to your [set
 For enterprise deployments, you can enforce a consistent release channel across your organization using [managed settings](/en/permissions#managed-settings).
 
 Homebrew installations choose a channel by cask name instead of this setting: `claude-code` tracks stable and `claude-code@latest` tracks latest.
+
+### Pin a minimum version
+
+The `minimumVersion` setting establishes a floor. Background auto-updates and `claude update` refuse to install any version below this value, so moving to the `"stable"` channel does not downgrade you if you are already on a newer `"latest"` build.
+
+Switching from `"latest"` to `"stable"` via `/config` prompts you to either stay on the current version or allow the downgrade. Choosing to stay sets `minimumVersion` to that version. Switching back to `"latest"` clears it.
+
+Add it to your [settings.json file](/en/settings) to pin a floor explicitly:
+
+```json theme={null}
+{
+  "autoUpdatesChannel": "stable",
+  "minimumVersion": "2.1.100"
+}
+```
+
+In [managed settings](/en/permissions#managed-settings), this enforces an organization-wide minimum that user and project settings cannot override.
 
 ### Disable auto-updates
 
@@ -303,31 +320,17 @@ To install a specific version number:
   </Tab>
 </Tabs>
 
-### Deprecated npm installation
+### Install with npm
 
-npm installation is deprecated. The native installer is faster, requires no dependencies, and auto-updates in the background. Use the [native installation](#install-claude-code) method when possible.
-
-#### Migrate from npm to native
-
-If you previously installed Claude Code with npm, switch to the native installer:
-
-```bash theme={null}
-# Install the native binary
-curl -fsSL https://claude.ai/install.sh | bash
-
-# Remove the old npm installation
-npm uninstall -g @anthropic-ai/claude-code
-```
-
-You can also run `claude install` from an existing npm installation to install the native binary alongside it, then remove the npm version.
-
-#### Install with npm
-
-If you need npm installation for compatibility reasons, you must have [Node.js 18+](https://nodejs.org/en/download) installed. Install the package globally:
+You can also install Claude Code as a global npm package. The package requires [Node.js 18 or later](https://nodejs.org/en/download).
 
 ```bash theme={null}
 npm install -g @anthropic-ai/claude-code
 ```
+
+The npm package installs the same native binary as the standalone installer. npm pulls the binary in through a per-platform optional dependency such as `@anthropic-ai/claude-code-darwin-arm64`, and a postinstall step links it into place. The installed `claude` binary does not itself invoke Node.
+
+Supported npm install platforms are `darwin-arm64`, `darwin-x64`, `linux-x64`, `linux-arm64`, `linux-x64-musl`, `linux-arm64-musl`, `win32-x64`, and `win32-arm64`. Your package manager must allow optional dependencies. See [troubleshooting](/en/troubleshooting#native-binary-not-found-after-npm-install) if the binary is missing after install.
 
 <Warning>
   Do NOT use `sudo npm install -g` as this can lead to permission issues and security risks. If you encounter permission errors, see [troubleshooting permission errors](/en/troubleshooting#permission-errors-during-installation).

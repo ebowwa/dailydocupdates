@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/orders/create.md
-Downloaded: 2026-04-14T20:23:31.400Z
+Downloaded: 2026-04-17T20:17:34.856Z
 -->
 
 > ## Documentation Index
@@ -44,7 +44,7 @@ The simplest way to place a limit order — create, sign, and submit in one call
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  import { ClobClient, Side, OrderType } from "@polymarket/clob-client";
+  import { ClobClient, Side, OrderType } from "@polymarket/clob-client-v2";
 
   const response = await client.createAndPostOrder(
     {
@@ -243,7 +243,7 @@ Market orders execute immediately against resting liquidity using FOK or FAK typ
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  import { Side, OrderType } from "@polymarket/clob-client";
+  import { Side, OrderType } from "@polymarket/clob-client-v2";
 
   // FOK BUY: spend exactly $100 or cancel entirely
   const buyOrder = await client.createMarketOrder(
@@ -418,7 +418,7 @@ Place up to **15 orders** in a single request:
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  import { OrderType, Side, PostOrdersArgs } from "@polymarket/clob-client";
+  import { OrderType, Side, PostOrdersArgs } from "@polymarket/clob-client-v2";
 
   const orders: PostOrdersArgs[] = [
     {
@@ -564,7 +564,7 @@ Multi-outcome events (3+ outcomes) use the Neg Risk CTF Exchange. Pass `negRisk:
 
 Before placing an order, your funder address must have approved the Exchange contract to spend the relevant tokens:
 
-* **BUY orders**: USDC.e allowance >= spending amount
+* **BUY orders**: pUSD allowance >= spending amount
 * **SELL orders**: conditional token allowance >= selling amount
 
 Order size is limited by your available balance minus amounts reserved by existing open orders:
@@ -574,20 +574,10 @@ $$
 $$
 
 <Warning>
-  Orders are continuously monitored for validity — balances, allowances, and
-  onchain cancellations are tracked in real time. Any maker caught intentionally
-  abusing these checks will be blacklisted.
+  Orders are continuously monitored for validity — balances and allowances are
+  tracked in real time. Any maker caught intentionally abusing these checks
+  will be blacklisted.
 </Warning>
-
-### Advanced Parameters
-
-These optional fields can be passed in the `UserOrder` object for fine-grained control:
-
-| Parameter    | Type   | Description                                     |
-| ------------ | ------ | ----------------------------------------------- |
-| `feeRateBps` | number | Fee rate in basis points (default: market rate) |
-| `nonce`      | number | Custom nonce for order uniqueness               |
-| `taker`      | string | Restrict the order to a specific taker address  |
 
 ### Sports Markets
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/typescript.md
-Downloaded: 2026-04-16T20:19:30.147Z
+Downloaded: 2026-04-17T20:17:30.107Z
 -->
 
 > ## Documentation Index
@@ -22,6 +22,10 @@ Downloaded: 2026-04-16T20:19:30.147Z
 ```bash theme={null}
 npm install @anthropic-ai/claude-agent-sdk
 ```
+
+<Note>
+  The SDK bundles a native Claude Code binary for your platform as an optional dependency such as `@anthropic-ai/claude-agent-sdk-darwin-arm64`. You don't need to install Claude Code separately. If your package manager skips optional dependencies, the SDK throws `Native CLI binary for <platform> not found`; set [`pathToClaudeCodeExecutable`](#options) to a separately installed `claude` binary instead.
+</Note>
 
 ## Functions
 
@@ -49,6 +53,44 @@ function query({
 #### Returns
 
 Returns a [`Query`](#query-object) object that extends `AsyncGenerator<`[`SDKMessage`](#sdk-message)`, void>` with additional methods.
+
+### `startup()`
+
+Pre-warms the CLI subprocess by spawning it and completing the initialize handshake before a prompt is available. The returned [`WarmQuery`](#warm-query) handle accepts a prompt later and writes it to an already-ready process, so the first `query()` call resolves without paying subprocess spawn and initialization cost inline.
+
+```typescript theme={null}
+function startup(params?: {
+  options?: Options;
+  initializeTimeoutMs?: number;
+}): Promise<WarmQuery>;
+```
+
+#### Parameters
+
+| Parameter             | Type                  | Description                                                                                                                                                                    |
+| :-------------------- | :-------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `options`             | [`Options`](#options) | Optional configuration object. Same as the `options` parameter to `query()`                                                                                                    |
+| `initializeTimeoutMs` | `number`              | Maximum time in milliseconds to wait for subprocess initialization. Defaults to `60000`. If initialization does not complete in time, the promise rejects with a timeout error |
+
+#### Returns
+
+Returns a `Promise<`[`WarmQuery`](#warm-query)`>` that resolves once the subprocess has spawned and completed its initialize handshake.
+
+#### Example
+
+Call `startup()` early, for example on application boot, then call `.query()` on the returned handle once a prompt is ready. This moves subprocess spawn and initialization out of the critical path.
+
+```typescript theme={null}
+import { startup } from "@anthropic-ai/claude-agent-sdk";
+
+// Pay startup cost upfront
+const warm = await startup({ options: { maxTurns: 3 } });
+
+// Later, when a prompt is ready, this is immediate
+for await (const message of warm.query("What files are here?")) {
+  console.log(message);
+}
+```
 
 ### `tool()`
 
@@ -312,7 +354,7 @@ Configuration object for the `query()` function.
 | `mcpServers`                      | `Record<string, [`McpServerConfig`](#mcp-server-config)>`                                                | `{}`                                        | MCP server configurations                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `model`                           | `string`                                                                                                 | Default from CLI                            | Claude model to use                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | `outputFormat`                    | `{ type: 'json_schema', schema: JSONSchema }`                                                            | `undefined`                                 | Define output format for agent results. See [Structured outputs](/en/agent-sdk/structured-outputs) for details                                                                                                                                                                                                                                                                                                                                                                      |
-| `pathToClaudeCodeExecutable`      | `string`                                                                                                 | Uses built-in executable                    | Path to Claude Code executable                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `pathToClaudeCodeExecutable`      | `string`                                                                                                 | Auto-resolved from bundled native binary    | Path to Claude Code executable. Only needed if optional dependencies were skipped during install or your platform isn't in the supported set                                                                                                                                                                                                                                                                                                                                        |
 | `permissionMode`                  | [`PermissionMode`](#permission-mode)                                                                     | `'default'`                                 | Permission mode for the session                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | `permissionPromptToolName`        | `string`                                                                                                 | `undefined`                                 | MCP tool name for permission prompts                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `persistSession`                  | `boolean`                                                                                                | `true`                                      | When `false`, disables session persistence to disk. Sessions cannot be resumed later                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -381,6 +423,26 @@ interface Query extends AsyncGenerator<SDKMessage, void> {
 | `streamInput(stream)`                  | Stream input messages to the query for multi-turn conversations                                                                                                                                               |
 | `stopTask(taskId)`                     | Stop a running background task by ID                                                                                                                                                                          |
 | `close()`                              | Close the query and terminate the underlying process. Forcefully ends the query and cleans up all resources                                                                                                   |
+
+### `WarmQuery`
+
+Handle returned by [`startup()`](#startup). The subprocess is already spawned and initialized, so calling `query()` on this handle writes the prompt directly to a ready process with no startup latency.
+
+```typescript theme={null}
+interface WarmQuery extends AsyncDisposable {
+  query(prompt: string | AsyncIterable<SDKUserMessage>): Query;
+  close(): void;
+}
+```
+
+#### Methods
+
+| Method          | Description                                                                                                               |
+| :-------------- | :------------------------------------------------------------------------------------------------------------------------ |
+| `query(prompt)` | Send a prompt to the pre-warmed subprocess and return a [`Query`](#query-object). Can only be called once per `WarmQuery` |
+| `close()`       | Close the subprocess without sending a prompt. Use this to discard a warm query that is no longer needed                  |
+
+`WarmQuery` implements `AsyncDisposable`, so it can be used with `await using` for automatic cleanup.
 
 ### `SDKControlInitializeResponse`
 
@@ -737,6 +799,7 @@ type SDKMessage =
   | SDKHookStartedMessage
   | SDKHookProgressMessage
   | SDKHookResponseMessage
+  | SDKPluginInstallMessage
   | SDKToolProgressMessage
   | SDKAuthStatusMessage
   | SDKTaskNotificationMessage
@@ -779,9 +842,12 @@ type SDKUserMessage = {
   message: MessageParam; // From Anthropic SDK
   parent_tool_use_id: string | null;
   isSynthetic?: boolean;
+  shouldQuery?: boolean;
   tool_use_result?: unknown;
 };
 ```
+
+Set `shouldQuery` to `false` to append the message to the transcript without triggering an assistant turn. The message is held and merged into the next user message that does trigger a turn. Use this to inject context, such as the output of a command you ran out of band, without spending a model call on it.
 
 ### `SDKUserMessageReplay`
 
@@ -902,6 +968,22 @@ type SDKCompactBoundaryMessage = {
     trigger: "manual" | "auto";
     pre_tokens: number;
   };
+};
+```
+
+### `SDKPluginInstallMessage`
+
+Plugin installation progress event. Emitted when [`CLAUDE_CODE_SYNC_PLUGIN_INSTALL`](/en/env-vars) is set, so your Agent SDK application can track marketplace plugin installation before the first turn. The `started` and `completed` statuses bracket the overall install. The `installed` and `failed` statuses report individual marketplaces and include `name`.
+
+```typescript theme={null}
+type SDKPluginInstallMessage = {
+  type: "system";
+  subtype: "plugin_install";
+  status: "started" | "installed" | "failed" | "completed";
+  name?: string;
+  error?: string;
+  uuid: UUID;
+  session_id: string;
 };
 ```
 

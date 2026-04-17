@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-04-16T20:19:44.480Z
+Downloaded: 2026-04-17T20:17:47.432Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,26 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Apr 16, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Market responses now include occurrence_datetime",
+description: "Added occurrence_datetime to API v2 market responses, including nested event-child markets."
+}}
+>
+  Added `occurrence_datetime` to API v2 market responses.
+
+  This field returns the recorded datetime when the underlying event occurred, when that value is available.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/markets`
+  * `GET /trade-api/v2/markets/:ticker`
+  * `GET /trade-api/v2/events`
+  * `GET /trade-api/v2/events/:event_ticker`
+</Update>
 
 <Update
   label="Apr 15, 2026"

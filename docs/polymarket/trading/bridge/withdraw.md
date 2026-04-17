@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/bridge/withdraw.md
-Downloaded: 2026-04-14T20:23:31.397Z
+Downloaded: 2026-04-17T20:17:34.853Z
 -->
 
 > ## Documentation Index
@@ -9,15 +9,15 @@ Downloaded: 2026-04-14T20:23:31.397Z
 
 # Withdraw
 
-> Bridge USDC.e from Polymarket to any supported chain
+> Bridge pUSD from Polymarket to any supported chain
 
-Withdraw USDC.e from your Polymarket wallet to any supported chain and token. Funds are automatically bridged and swapped to your desired token on the destination chain.
+Withdraw pUSD from your Polymarket wallet to any supported chain and token. Funds are automatically bridged and swapped to your desired token on the destination chain.
 
 ## How It Works
 
 1. Specify your destination chain, token, and recipient address
 2. Receive deposit addresses for each destination chain (EVM, Solana, Bitcoin)
-3. Send USDC.e from your Polymarket wallet to the appropriate deposit address
+3. Send pUSD from your Polymarket wallet to the appropriate deposit address
 4. Funds are automatically bridged and swapped to your desired token
 5. Funds arrive at your destination wallet
 
@@ -28,14 +28,14 @@ Withdraw USDC.e from your Polymarket wallet to any supported chain and token. Fu
 </Warning>
 
 <Warning>
-  When withdrawing, USDC.e (bridged USDC) is swapped through the
+  When withdrawing, pUSD is unwrapped to USDC via the Collateral Offramp and swapped through the
   [Uniswap v3 pool](https://polygonscan.com/address/0xd36ec33c8bed5a9f7b6630855f1533455b98a418)
   for USDC (native). The UI enforces less than 10bp difference in output amount.
   At times, this pool may be exhausted. If you are having withdraw issues, try
   breaking your withdraw into smaller amounts or waiting for the pool to be
-  rebalanced. Alternatively, you can withdraw USDC.e directly, which does not
+  rebalanced. Alternatively, you can withdraw pUSD directly, which does not
   require Uniswap liquidity — just be aware that some exchanges no longer accept
-  USDC.e deposits directly.
+  pUSD deposits directly.
 </Warning>
 
 <Tip>
@@ -86,8 +86,8 @@ Withdrawals are **instant** and **free** — Polymarket does not charge withdraw
     and recipient.
   </Step>
 
-  <Step title="Send USDC.e">
-    Transfer USDC.e from your Polymarket wallet to the appropriate deposit
+  <Step title="Send pUSD">
+    Transfer pUSD from your Polymarket wallet to the appropriate deposit
     address.
   </Step>
 

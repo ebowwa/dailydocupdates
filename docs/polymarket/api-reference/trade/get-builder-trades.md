@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/trade/get-builder-trades.md
-Downloaded: 2026-04-14T20:23:31.389Z
+Downloaded: 2026-04-17T20:17:34.847Z
 -->
 
 > ## Documentation Index
@@ -176,10 +176,11 @@ paths:
               example:
                 error: could not fetch builder trades
       security:
-        - polyBuilderApiKey: []
-          polyBuilderPassphrase: []
-          polyBuilderSignature: []
-          polyBuilderTimestamp: []
+        - polyApiKey: []
+          polyAddress: []
+          polySignature: []
+          polyPassphrase: []
+          polyTimestamp: []
 components:
   schemas:
     BuilderTradesResponse:
@@ -347,25 +348,30 @@ components:
           description: Last update timestamp
           example: '2024-01-01T00:00:00Z'
   securitySchemes:
-    polyBuilderApiKey:
+    polyApiKey:
       type: apiKey
       in: header
-      name: POLY_BUILDER_API_KEY
-      description: Builder API key for authentication
-    polyBuilderPassphrase:
+      name: POLY_API_KEY
+      description: Your API key
+    polyAddress:
       type: apiKey
       in: header
-      name: POLY_BUILDER_PASSPHRASE
-      description: Passphrase for builder authentication
-    polyBuilderSignature:
+      name: POLY_ADDRESS
+      description: Ethereum address associated with the API key
+    polySignature:
       type: apiKey
       in: header
-      name: POLY_BUILDER_SIGNATURE
-      description: HMAC signature for builder authentication
-    polyBuilderTimestamp:
+      name: POLY_SIGNATURE
+      description: HMAC signature of the request
+    polyPassphrase:
       type: apiKey
       in: header
-      name: POLY_BUILDER_TIMESTAMP
-      description: Unix timestamp for builder authentication
+      name: POLY_PASSPHRASE
+      description: API key passphrase
+    polyTimestamp:
+      type: apiKey
+      in: header
+      name: POLY_TIMESTAMP
+      description: Unix timestamp of the request
 
 ````

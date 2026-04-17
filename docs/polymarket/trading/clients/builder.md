@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/clients/builder.md
-Downloaded: 2026-04-14T20:23:31.397Z
+Downloaded: 2026-04-17T20:17:34.853Z
 -->
 
 > ## Documentation Index
@@ -9,116 +9,69 @@ Downloaded: 2026-04-14T20:23:31.397Z
 
 # Builder Methods
 
-> Methods for querying orders and trades using builder API credentials.
+> Methods for querying orders and trades attributed to your builder code.
 
-## Client Initialization
+## Overview
 
-Builder methods require the client to initialize with a separate builder config using credentials acquired from [Polymarket.com](https://polymarket.com/settings?tab=builder) and the `@polymarket/builder-signing-sdk` package.
+Builder attribution in V2 is handled natively through the order struct — you attach your **builder code** (a `bytes32` identifier from your [Builder Profile](https://polymarket.com/settings?tab=builder)) to every order you submit. No separate client configuration is required.
 
-<Tabs>
-  <Tab title="Local Builder Credentials">
-    <CodeGroup>
-      ```typescript TypeScript theme={null}
-      import { ClobClient } from "@polymarket/clob-client";
-      import { BuilderConfig, BuilderApiKeyCreds } from "@polymarket/builder-signing-sdk";
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  import { ClobClient } from "@polymarket/clob-client-v2";
 
-      const builderConfig = new BuilderConfig({
-        localBuilderCreds: new BuilderApiKeyCreds({
-          key: process.env.BUILDER_API_KEY,
-          secret: process.env.BUILDER_SECRET,
-          passphrase: process.env.BUILDER_PASS_PHRASE,
-        }),
-      });
+  const client = new ClobClient({
+    host: "https://clob.polymarket.com",
+    chain: 137,
+    signer,
+    creds: apiCreds,
+    signatureType,
+    funderAddress,
+  });
 
-      const clobClient = new ClobClient(
-        "https://clob.polymarket.com",
-        137,
-        signer,
-        apiCreds, // User's API credentials from L1 authentication
-        signatureType,
-        funderAddress,
-        undefined,
-        false,
-        builderConfig
-      );
-      ```
+  // Attach your builder code on every order
+  const response = await client.createAndPostOrder(
+    {
+      tokenID: "0x...",
+      price: 0.55,
+      size: 100,
+      side: Side.BUY,
+      builderCode: process.env.POLY_BUILDER_CODE!,
+    },
+    { tickSize: "0.01", negRisk: false },
+  );
+  ```
 
-      ```python Python theme={null}
-      from py_clob_client.client import ClobClient
-      from py_builder_signing_sdk.config import BuilderConfig, BuilderApiKeyCreds
-      import os
+  ```python Python theme={null}
+  from py_clob_client.client import ClobClient
+  from py_clob_client.clob_types import OrderArgs
+  from py_clob_client.order_builder.constants import BUY
+  import os
 
-      builder_config = BuilderConfig(
-          local_builder_creds=BuilderApiKeyCreds(
-              key=os.getenv("BUILDER_API_KEY"),
-              secret=os.getenv("BUILDER_SECRET"),
-              passphrase=os.getenv("BUILDER_PASS_PHRASE"),
-          )
-      )
+  client = ClobClient(
+      host="https://clob.polymarket.com",
+      chain=137,
+      key=os.getenv("PRIVATE_KEY"),
+      creds=creds,
+      signature_type=signature_type,
+      funder=funder,
+  )
 
-      clob_client = ClobClient(
-          host="https://clob.polymarket.com",
-          chain_id=137,
-          key=os.getenv("PRIVATE_KEY"),
-          creds=creds, # User's API credentials from L1 authentication
-          signature_type=signature_type,
-          funder=funder,
-          builder_config=builder_config
-      )
-      ```
-    </CodeGroup>
-  </Tab>
-
-  <Tab title="Remote Builder Signing">
-    <CodeGroup>
-      ```typescript TypeScript theme={null}
-      import { ClobClient } from "@polymarket/clob-client";
-      import { BuilderConfig } from "@polymarket/builder-signing-sdk";
-
-      const builderConfig = new BuilderConfig({
-        remoteBuilderConfig: { url: "http://localhost:3000/sign" }
-      });
-
-      const clobClient = new ClobClient(
-        "https://clob.polymarket.com",
-        137,
-        signer,
-        apiCreds, // User's API credentials from L1 authentication
-        signatureType,
-        funder,
-        undefined,
-        false,
-        builderConfig
-      );
-      ```
-
-      ```python Python theme={null}
-      from py_clob_client.client import ClobClient
-      from py_builder_signing_sdk.config import BuilderConfig, RemoteBuilderConfig
-      import os
-
-      builder_config = BuilderConfig(
-          remote_builder_config=RemoteBuilderConfig(
-              url="http://localhost:3000/sign"
-          )
-      )
-
-      clob_client = ClobClient(
-          host="https://clob.polymarket.com",
-          chain_id=137,
-          key=os.getenv("PRIVATE_KEY"),
-          creds=creds, # User's API credentials from L1 authentication
-          signature_type=signature_type,
-          funder=funder,
-          builder_config=builder_config
-      )
-      ```
-    </CodeGroup>
-  </Tab>
-</Tabs>
+  # Attach your builder code on every order
+  response = client.create_and_post_order(
+      OrderArgs(
+          token_id="0x...",
+          price=0.55,
+          size=100,
+          side=BUY,
+          builder_code=os.environ["POLY_BUILDER_CODE"],
+      ),
+      options={"tick_size": "0.01", "neg_risk": False},
+  )
+  ```
+</CodeGroup>
 
 <Info>
-  See [Order Attribution](/trading/orders/attribution) for more information on builder signing.
+  See [Order Attribution](/trading/orders/attribution) for the full attribution flow.
 </Info>
 
 ***
@@ -129,24 +82,20 @@ Builder methods require the client to initialize with a separate builder config 
 
 ### getOrder
 
-Get details for a specific order by ID using builder authentication. When called from a builder-configured client, the request authenticates with builder headers and returns orders attributed to the builder.
+Get details for a specific order by ID.
 
 ```typescript Signature theme={null}
 async getOrder(orderID: string): Promise<OpenOrder>
 ```
 
-<Info>
-  When a `BuilderConfig` is present, the client automatically sends builder headers. If builder auth is unavailable, it falls back to standard L2 headers.
-</Info>
-
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  const order = await clobClient.getOrder("0xb816482a...");
+  const order = await client.getOrder("0xb816482a...");
   console.log(order);
   ```
 
   ```python Python theme={null}
-  order = clob_client.get_order("0xb816482a...")
+  order = client.get_order("0xb816482a...")
   print(order)
   ```
 </CodeGroup>
@@ -155,7 +104,7 @@ async getOrder(orderID: string): Promise<OpenOrder>
 
 ### getOpenOrders
 
-Get all open orders attributed to the builder. When called from a builder-configured client, returns orders placed through the builder rather than orders owned by the authenticated user.
+Get all open orders attributed to your builder code.
 
 ```typescript Signature theme={null}
 async getOpenOrders(
@@ -180,10 +129,10 @@ async getOpenOrders(
 
 ```typescript TypeScript theme={null}
 // All open orders for this builder
-const orders = await clobClient.getOpenOrders();
+const orders = await client.getOpenOrders();
 
 // Filtered by market
-const marketOrders = await clobClient.getOpenOrders({
+const marketOrders = await client.getOpenOrders({
   market: "0xbd31dc8a...",
 });
 ```
@@ -192,7 +141,7 @@ const marketOrders = await clobClient.getOpenOrders({
 
 ### getBuilderTrades
 
-Retrieves all trades attributed to your builder account. Use this to track which trades were routed through your platform.
+Retrieves all trades attributed to your builder code. Use this to track which trades were routed through your platform.
 
 ```typescript Signature theme={null}
 async getBuilderTrades(
@@ -259,7 +208,7 @@ async getBuilderTrades(
 </ResponseField>
 
 <ResponseField name="builder" type="string">
-  Address of the builder who attributed this trade.
+  Builder code attributed to this trade.
 </ResponseField>
 
 <ResponseField name="market" type="string">
@@ -340,20 +289,6 @@ async getBuilderTrades(
 
 ***
 
-### revokeBuilderApiKey
-
-Revokes the builder API key used to authenticate the current request. After revocation, the key can no longer be used for builder-authenticated requests.
-
-```typescript Signature theme={null}
-async revokeBuilderApiKey(): Promise<any>
-```
-
-<ResponseField name="returns" type="any">
-  Response from the revocation request.
-</ResponseField>
-
-***
-
 ## See Also
 
 <CardGroup cols={2}>
@@ -362,7 +297,7 @@ async revokeBuilderApiKey(): Promise<any>
   </Card>
 
   <Card title="Order Attribution" icon="key" href="/trading/orders/attribution">
-    Attribute orders to your builder account.
+    Attach your builder code to orders for volume credit.
   </Card>
 
   <Card title="L2 Methods" icon="lock" href="/trading/clients/l2">

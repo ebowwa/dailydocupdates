@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/concepts/positions-tokens.md
-Downloaded: 2026-04-14T20:23:31.392Z
+Downloaded: 2026-04-17T20:17:34.849Z
 -->
 
 > ## Documentation Index
@@ -32,15 +32,15 @@ Tokens are **ERC1155** assets on Polygon, using the [Gnosis Conditional Token Fr
 
 <Note>
   Outcome tokens are always fully backed. Every Yes/No pair in existence is
-  backed by exactly `$1` of USDC.e collateral locked in the CTF contract.
+  backed by exactly `$1` of pUSD collateral locked in the CTF contract.
 </Note>
 
 ### Split
 
-Convert USDC.e into outcome tokens. Splitting \$1 creates 1 Yes token and 1 No token.
+Convert pUSD into outcome tokens. Splitting \$1 creates 1 Yes token and 1 No token.
 
 ```
-$100 USDC.e → 100 Yes tokens + 100 No tokens
+$100 pUSD → 100 Yes tokens + 100 No tokens
 ```
 
 Use this when you want to:
@@ -59,10 +59,10 @@ You can sell your position at any time before resolution.
 
 ### Merge
 
-Convert a complete set of tokens back into USDC.e. Merging requires equal amounts of Yes and No tokens.
+Convert a complete set of tokens back into pUSD. Merging requires equal amounts of Yes and No tokens.
 
 ```
-100 Yes tokens + 100 No tokens → $100 USDC.e
+100 Yes tokens + 100 No tokens → $100 pUSD
 ```
 
 Use this when you want to:
@@ -72,7 +72,7 @@ Use this when you want to:
 
 ### Redeem
 
-After a market resolves, exchange winning tokens for USDC.e.
+After a market resolves, exchange winning tokens for pUSD.
 
 | Outcome             | Yes tokens     | No tokens      |
 | ------------------- | -------------- | -------------- |
@@ -80,7 +80,7 @@ After a market resolves, exchange winning tokens for USDC.e.
 | Event doesn't occur | Worth \$0      | Worth \$1 each |
 
 ```
-100 winning tokens → $100 USDC.e
+100 winning tokens → $100 pUSD
 ```
 
 ### Position Value

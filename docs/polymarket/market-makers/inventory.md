@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/inventory.md
-Downloaded: 2026-04-14T20:23:31.394Z
+Downloaded: 2026-04-17T20:17:34.851Z
 -->
 
 > ## Documentation Index
@@ -11,7 +11,7 @@ Downloaded: 2026-04-14T20:23:31.394Z
 
 > Managing outcome token inventory for market making
 
-Market makers need outcome tokens on both sides to quote a market. The three core inventory operations are **splitting** USDC.e into YES/NO token pairs, **merging** pairs back into USDC.e, and **redeeming** winning tokens after resolution — all executed gaslessly through the Relayer Client.
+Market makers need outcome tokens on both sides to quote a market. The three core inventory operations are **splitting** pUSD into YES/NO token pairs, **merging** pairs back into pUSD, and **redeeming** winning tokens after resolution — all executed gaslessly through the Relayer Client.
 
 <Info>
   For a full breakdown of how the Conditional Token Framework works, see [CTF
@@ -21,9 +21,9 @@ Market makers need outcome tokens on both sides to quote a market. The three cor
 
 ***
 
-## Splitting USDC.e into Tokens
+## Splitting pUSD into Tokens
 
-Split converts USDC.e into equal amounts of YES and NO tokens — creating the inventory you need to quote both sides of a market.
+Split converts pUSD into equal amounts of YES and NO tokens — creating the inventory you need to quote both sides of a market.
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -32,19 +32,19 @@ Split converts USDC.e into equal amounts of YES and NO tokens — creating the i
   import { RelayClient, Transaction } from "@polymarket/builder-relayer-client";
 
   const CTF_ADDRESS = "0x4D97DCd97eC945f40cF65F87097ACe5EA0476045";
-  const USDCe_ADDRESS = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174";
+  const pUSD_ADDRESS = "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB";
 
   const ctfInterface = new Interface([
     "function splitPosition(address collateralToken, bytes32 parentCollectionId, bytes32 conditionId, uint[] partition, uint amount)",
   ]);
 
-  // Split $1000 USDCe into YES/NO tokens
-  const amount = ethers.utils.parseUnits("1000", 6); // USDCe has 6 decimals
+  // Split $1000 pUSD into YES/NO tokens
+  const amount = ethers.utils.parseUnits("1000", 6); // pUSD has 6 decimals
 
   const splitTx: Transaction = {
     to: CTF_ADDRESS,
     data: ctfInterface.encodeFunctionData("splitPosition", [
-      USDCe_ADDRESS, // collateralToken
+      pUSD_ADDRESS, // collateralToken
       ethers.constants.HashZero, // parentCollectionId (always zero for Polymarket)
       conditionId, // conditionId from market
       [1, 2], // partition: [YES, NO]
@@ -53,7 +53,7 @@ Split converts USDC.e into equal amounts of YES and NO tokens — creating the i
     value: "0",
   };
 
-  const response = await client.execute([splitTx], "Split USDCe into tokens");
+  const response = await client.execute([splitTx], "Split pUSD into tokens");
   const result = await response.wait();
   console.log("Split completed:", result?.transactionHash);
   ```
@@ -62,7 +62,7 @@ Split converts USDC.e into equal amounts of YES and NO tokens — creating the i
   from web3 import Web3
 
   CTF_ADDRESS = "0x4D97DCd97eC945f40cF65F87097ACe5EA0476045"
-  USDCe_ADDRESS = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
+  pUSD_ADDRESS = "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB"
 
   ctf_abi = [{
       "name": "splitPosition",
@@ -77,8 +77,8 @@ Split converts USDC.e into equal amounts of YES and NO tokens — creating the i
       "outputs": []
   }]
 
-  # Split $1000 USDCe into YES/NO tokens
-  amount = 1000 * 10**6  # USDCe has 6 decimals
+  # Split $1000 pUSD into YES/NO tokens
+  amount = 1000 * 10**6  # pUSD has 6 decimals
 
   split_tx = {
       "to": CTF_ADDRESS,
@@ -87,7 +87,7 @@ Split converts USDC.e into equal amounts of YES and NO tokens — creating the i
       ).encode_abi(
           abi_element_identifier="splitPosition",
           args=[
-              USDCe_ADDRESS,
+              pUSD_ADDRESS,
               bytes(32),          # parentCollectionId (always zero)
               condition_id,       # conditionId from market
               [1, 2],             # partition: [YES, NO]
@@ -97,7 +97,7 @@ Split converts USDC.e into equal amounts of YES and NO tokens — creating the i
       "value": "0"
   }
 
-  response = client.execute([split_tx], "Split USDCe into tokens")
+  response = client.execute([split_tx], "Split pUSD into tokens")
   response.wait()
   ```
 
@@ -108,25 +108,25 @@ Split converts USDC.e into equal amounts of YES and NO tokens — creating the i
 
   let ctf_client = CtfClient::new(provider, 137)?;
 
-  // Split $1000 USDCe into YES/NO tokens
+  // Split $1000 pUSD into YES/NO tokens
   let request = SplitPositionRequest::builder()
-      .collateral_token(address!("0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"))
+      .collateral_token(address!("0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB"))
       .condition_id(condition_id)
       .partition(vec![U256::from(1), U256::from(2)])
-      .amount(U256::from(1000_000_000u64)) // 1000 USDCe (6 decimals)
+      .amount(U256::from(1000_000_000u64)) // 1000 pUSD (6 decimals)
       .build();
   let result = ctf_client.split_position(&request).await?;
   println!("Split tx: {:?}", result.transaction_hash);
   ```
 </CodeGroup>
 
-After splitting 1000 USDC.e, you receive 1000 YES tokens and 1000 NO tokens. Your USDC.e balance decreases by 1000.
+After splitting 1000 pUSD, you receive 1000 YES tokens and 1000 NO tokens. Your pUSD balance decreases by 1000.
 
 ***
 
-## Merging Tokens to USDC.e
+## Merging Tokens to pUSD
 
-Merge converts equal amounts of YES and NO tokens back into USDC.e — useful for reducing exposure, exiting a market, or freeing up capital.
+Merge converts equal amounts of YES and NO tokens back into pUSD — useful for reducing exposure, exiting a market, or freeing up capital.
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -134,13 +134,13 @@ Merge converts equal amounts of YES and NO tokens back into USDC.e — useful fo
     "function mergePositions(address collateralToken, bytes32 parentCollectionId, bytes32 conditionId, uint[] partition, uint amount)",
   ]);
 
-  // Merge 500 YES + 500 NO back to 500 USDCe
+  // Merge 500 YES + 500 NO back to 500 pUSD
   const amount = ethers.utils.parseUnits("500", 6);
 
   const mergeTx: Transaction = {
     to: CTF_ADDRESS,
     data: ctfInterface.encodeFunctionData("mergePositions", [
-      USDCe_ADDRESS,
+      pUSD_ADDRESS,
       ethers.constants.HashZero,
       conditionId,
       [1, 2],
@@ -149,7 +149,7 @@ Merge converts equal amounts of YES and NO tokens back into USDC.e — useful fo
     value: "0",
   };
 
-  const response = await client.execute([mergeTx], "Merge tokens to USDCe");
+  const response = await client.execute([mergeTx], "Merge tokens to pUSD");
   await response.wait();
   ```
 
@@ -167,7 +167,7 @@ Merge converts equal amounts of YES and NO tokens back into USDC.e — useful fo
       "outputs": []
   }]
 
-  # Merge 500 YES + 500 NO back to 500 USDCe
+  # Merge 500 YES + 500 NO back to 500 pUSD
   amount = 500 * 10**6
 
   merge_tx = {
@@ -176,36 +176,36 @@ Merge converts equal amounts of YES and NO tokens back into USDC.e — useful fo
           address=CTF_ADDRESS, abi=merge_abi
       ).encode_abi(
           abi_element_identifier="mergePositions",
-          args=[USDCe_ADDRESS, bytes(32), condition_id, [1, 2], amount]
+          args=[pUSD_ADDRESS, bytes(32), condition_id, [1, 2], amount]
       ),
       "value": "0"
   }
 
-  response = client.execute([merge_tx], "Merge tokens to USDCe")
+  response = client.execute([merge_tx], "Merge tokens to pUSD")
   response.wait()
   ```
 
   ```rust Rust theme={null}
   use polymarket_client_sdk::ctf::types::MergePositionsRequest;
 
-  // Merge 500 YES + 500 NO back to 500 USDCe
+  // Merge 500 YES + 500 NO back to 500 pUSD
   let request = MergePositionsRequest::builder()
-      .collateral_token(address!("0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"))
+      .collateral_token(address!("0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB"))
       .condition_id(condition_id)
       .partition(vec![U256::from(1), U256::from(2)])
-      .amount(U256::from(500_000_000u64)) // 500 USDCe (6 decimals)
+      .amount(U256::from(500_000_000u64)) // 500 pUSD (6 decimals)
       .build();
   let result = ctf_client.merge_positions(&request).await?;
   ```
 </CodeGroup>
 
-After merging 500 of each, your YES and NO balances decrease by 500 and your USDC.e balance increases by 500.
+After merging 500 of each, your YES and NO balances decrease by 500 and your pUSD balance increases by 500.
 
 ***
 
 ## Redeeming After Resolution
 
-Once a market resolves, redeem winning tokens for USDC.e. Each winning token is worth $1 — losing tokens redeem for $0.
+Once a market resolves, redeem winning tokens for pUSD. Each winning token is worth $1 — losing tokens redeem for $0.
 
 ### Check Resolution Status
 
@@ -246,7 +246,7 @@ Once a market resolves, redeem winning tokens for USDC.e. Each winning token is 
   const redeemTx: Transaction = {
     to: CTF_ADDRESS,
     data: ctfInterface.encodeFunctionData("redeemPositions", [
-      USDCe_ADDRESS,
+      pUSD_ADDRESS,
       ethers.constants.HashZero,
       conditionId,
       [1, 2], // Redeem both YES and NO (only winners pay out)
@@ -277,7 +277,7 @@ Once a market resolves, redeem winning tokens for USDC.e. Each winning token is 
           address=CTF_ADDRESS, abi=redeem_abi
       ).encode_abi(
           abi_element_identifier="redeemPositions",
-          args=[USDCe_ADDRESS, bytes(32), condition_id, [1, 2]]
+          args=[pUSD_ADDRESS, bytes(32), condition_id, [1, 2]]
       ),
       "value": "0"
   }
@@ -290,7 +290,7 @@ Once a market resolves, redeem winning tokens for USDC.e. Each winning token is 
   use polymarket_client_sdk::ctf::types::RedeemPositionsRequest;
 
   let request = RedeemPositionsRequest::builder()
-      .collateral_token(address!("0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"))
+      .collateral_token(address!("0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB"))
       .condition_id(condition_id)
       .index_sets(vec![U256::from(1), U256::from(2)]) // Redeem both (only winners pay)
       .build();
@@ -302,11 +302,11 @@ Once a market resolves, redeem winning tokens for USDC.e. Each winning token is 
 
 ## Negative Risk Markets
 
-Multi-outcome markets use the Neg Risk CTF Exchange. Split and merge work the same way, but use different contract addresses:
+Multi-outcome markets use the Neg Risk CTF Exchange and Neg Risk Adapter. Split and merge work the same way, but use different contract addresses:
 
 ```typescript theme={null}
+const NEG_RISK_CTF_EXCHANGE = "0xe2222d279d744050d28e00520010520000310F59";
 const NEG_RISK_ADAPTER = "0xd91E80cF2E7be2e162c6513ceD06f1dD0dA35296";
-const NEG_RISK_CTF_EXCHANGE = "0xC5d563A36AE78145C45a50134d48A1215220f80a";
 ```
 
 See [Negative Risk Markets](/advanced/neg-risk) for details on how multi-outcome token mechanics differ.
@@ -318,7 +318,7 @@ See [Negative Risk Markets](/advanced/neg-risk) for details on how multi-outcome
 ### Before Quoting
 
 1. Check market metadata via the [Gamma API](/market-data/fetching-markets)
-2. Split sufficient USDC.e to cover your expected quoting size
+2. Split sufficient pUSD to cover your expected quoting size
 3. Set token approvals if not already done (see [Getting Started](/market-makers/getting-started))
 
 ### During Trading
@@ -346,7 +346,7 @@ const transactions: Transaction[] = [
   {
     to: CTF_ADDRESS,
     data: ctfInterface.encodeFunctionData("splitPosition", [
-      USDCe_ADDRESS,
+      pUSD_ADDRESS,
       ethers.constants.HashZero,
       conditionIdA,
       [1, 2],
@@ -358,7 +358,7 @@ const transactions: Transaction[] = [
   {
     to: CTF_ADDRESS,
     data: ctfInterface.encodeFunctionData("splitPosition", [
-      USDCe_ADDRESS,
+      pUSD_ADDRESS,
       ethers.constants.HashZero,
       conditionIdB,
       [1, 2],

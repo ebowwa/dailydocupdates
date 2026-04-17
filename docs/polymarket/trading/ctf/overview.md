@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/ctf/overview.md
-Downloaded: 2026-04-14T20:23:31.398Z
+Downloaded: 2026-04-17T20:17:34.855Z
 -->
 
 > ## Documentation Index
@@ -17,12 +17,12 @@ All outcomes on Polymarket are tokenized using the **Conditional Token Framework
 
 The Conditional Token Framework creates **ERC1155 tokens** representing outcomes of prediction markets. Each binary market has two tokens:
 
-| Token   | Redeems for   | Condition            |
-| ------- | ------------- | -------------------- |
-| **Yes** | \$1.00 USDC.e | Event occurs         |
-| **No**  | \$1.00 USDC.e | Event does not occur |
+| Token   | Redeems for | Condition            |
+| ------- | ----------- | -------------------- |
+| **Yes** | \$1.00 pUSD | Event occurs         |
+| **No**  | \$1.00 pUSD | Event does not occur |
 
-These tokens are always **fully collateralized** — every Yes/No pair is backed by exactly \$1.00 USDC.e locked in the CTF contract.
+These tokens are always **fully collateralized** — every Yes/No pair is backed by exactly \$1.00 pUSD locked in the CTF contract.
 
 ## Core Operations
 
@@ -30,15 +30,15 @@ CTF provides three fundamental operations:
 
 <CardGroup cols={3}>
   <Card title="Split" icon="scissors" href="/trading/ctf/split">
-    Convert USDC.e into Yes + No token pairs
+    Convert pUSD into Yes + No token pairs
   </Card>
 
   <Card title="Merge" icon="merge" href="/trading/ctf/merge">
-    Convert Yes + No pairs back to USDC.e
+    Convert Yes + No pairs back to pUSD
   </Card>
 
   <Card title="Redeem" icon="hand-holding-dollar" href="/trading/ctf/redeem">
-    Exchange winning tokens for USDC.e after resolution
+    Exchange winning tokens for pUSD after resolution
   </Card>
 </CardGroup>
 
@@ -88,7 +88,7 @@ getPositionId(collateralToken, collectionId)
 
 | Parameter         | Type      | Value                                     |
 | ----------------- | --------- | ----------------------------------------- |
-| `collateralToken` | `IERC20`  | USDC.e contract address on Polygon        |
+| `collateralToken` | `IERC20`  | pUSD contract address on Polygon          |
 | `collectionId`    | `bytes32` | One of the two collection IDs from step 2 |
 
 The two resulting position IDs are the ERC1155 token IDs for the Yes and No outcomes of the market.
@@ -114,7 +114,7 @@ For neg risk markets, an additional **conversion** operation allows exchanging a
 
 ## Contract Addresses
 
-See [Contract Addresses](/resources/contract-addresses) for all Polymarket smart contract addresses on Polygon.
+See [Contracts](/resources/contracts) for all Polymarket smart contract addresses on Polygon.
 
 ## Resources
 
@@ -132,11 +132,11 @@ See [Contract Addresses](/resources/contract-addresses) for all Polymarket smart
 
 <CardGroup cols={3}>
   <Card title="Split Tokens" icon="scissors" href="/trading/ctf/split">
-    Create outcome token pairs from USDC.e
+    Create outcome token pairs from pUSD
   </Card>
 
   <Card title="Merge Tokens" icon="merge" href="/trading/ctf/merge">
-    Convert token pairs back to USDC.e
+    Convert token pairs back to pUSD
   </Card>
 
   <Card title="Redeem Tokens" icon="hand-holding-dollar" href="/trading/ctf/redeem">

@@ -1,17 +1,17 @@
 <!--
 Source: https://docs.polymarket.com/builders/api-keys.md
-Downloaded: 2026-04-14T20:23:31.391Z
+Downloaded: 2026-04-17T20:17:34.848Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# API Keys
+# Builder Code
 
-> Create and manage your Builder API credentials
+> Your builder code for order attribution
 
-Builder API keys authenticate your application with Polymarket's relayer and enable order attribution. You'll need these credentials to access gasless transactions and track volume.
+Your **Builder Code** is a `bytes32` identifier that attributes orders routed through your application to your builder profile. Attach it to every order you submit — no additional authentication is required.
 
 ## Accessing Your Builder Profile
 
@@ -24,36 +24,21 @@ Builder API keys authenticate your application with Polymarket's relayer and ena
   <Step title="From Menu">Click your profile image → Select "Builders"</Step>
 </Steps>
 
-## Creating API Keys
+## Getting Your Builder Code
 
-In the **Builder Keys** section of your profile:
+In the **Builder Code** section of your profile, copy the `bytes32` value. It looks like:
 
-1. Click **"+ Create New"** to generate a new API key
-2. **Copy all three values immediately** — the secret and passphrase are only shown once
-3. Store them securely in your secrets manager or environment variables
+```
+0x0000000000000000000000000000000000000000000000000000000000000001
+```
 
-Each API key includes three components:
+Store it in your environment variables or a secrets manager.
 
-| Component    | Description                                | Example                 |
-| ------------ | ------------------------------------------ | ----------------------- |
-| `key`        | Public identifier for your builder account | `abc123-def456-...`     |
-| `secret`     | Secret key for signing requests            | `base64-encoded-secret` |
-| `passphrase` | Additional authentication value            | `your-passphrase`       |
-
-<Warning>
-  The `secret` and `passphrase` are only displayed once when created. If you
-  lose them, you'll need to generate a new key.
-</Warning>
-
-## Managing Keys
-
-Create separate keys for different environments:
-
-| Environment | Purpose                       |
-| ----------- | ----------------------------- |
-| Development | Testing and local development |
-| Staging     | Pre-production testing        |
-| Production  | Live trading                  |
+<Note>
+  Builder codes are public identifiers — they appear onchain in the `builder`
+  field of every order you attribute. Only you control which orders include
+  your code, so keep it scoped to the apps you own.
+</Note>
 
 ## Profile Settings
 
@@ -64,73 +49,68 @@ Your builder profile includes customizable settings:
 | **Profile Picture** | Displayed on the [Builder Leaderboard](https://builders.polymarket.com) |
 | **Builder Name**    | Public name shown on the leaderboard                                    |
 | **Builder Address** | Your unique builder identifier (read-only)                              |
+| **Builder Code**    | The `bytes32` code you attach to orders                                 |
 | **Current Tier**    | Your rate limit tier: Unverified, Verified, or Partner                  |
 
 ## Environment Variables
 
-Store your credentials as environment variables:
+Store your builder code as an environment variable:
 
 <Tabs>
   <Tab title="Bash">
     ```bash .env theme={null}
-    POLY_BUILDER_API_KEY=your-api-key
-    POLY_BUILDER_SECRET=your-secret
-    POLY_BUILDER_PASSPHRASE=your-passphrase
+    POLY_BUILDER_CODE=0x0000000000000000000000000000000000000000000000000000000000000001
     ```
   </Tab>
 
   <Tab title="TypeScript">
     ```typescript theme={null}
-    import { BuilderApiKeyCreds } from "@polymarket/builder-signing-sdk";
-
-    const builderCreds: BuilderApiKeyCreds = {
-      key: process.env.POLY_BUILDER_API_KEY!,
-      secret: process.env.POLY_BUILDER_SECRET!,
-      passphrase: process.env.POLY_BUILDER_PASSPHRASE!,
-    };
+    const builderCode = process.env.POLY_BUILDER_CODE!;
     ```
   </Tab>
 
   <Tab title="Python">
     ```python theme={null}
     import os
-    from py_builder_signing_sdk import BuilderApiKeyCreds
 
-    builder_creds = BuilderApiKeyCreds(
-        key=os.environ["POLY_BUILDER_API_KEY"],
-        secret=os.environ["POLY_BUILDER_SECRET"],
-        passphrase=os.environ["POLY_BUILDER_PASSPHRASE"],
-    )
-    ```
-  </Tab>
-
-  <Tab title="Rust">
-    ```rust theme={null}
-    use polymarket_client_sdk::auth::Credentials;
-
-    let builder_creds = Credentials::new(
-        std::env::var("POLY_BUILDER_API_KEY")?.parse()?,
-        std::env::var("POLY_BUILDER_SECRET")?,
-        std::env::var("POLY_BUILDER_PASSPHRASE")?,
-    );
+    builder_code = os.environ["POLY_BUILDER_CODE"]
     ```
   </Tab>
 </Tabs>
 
-## Security Best Practices
+## Using Your Builder Code
 
-| Practice                      | Description                                               |
-| ----------------------------- | --------------------------------------------------------- |
-| **Never commit credentials**  | Use `.gitignore` to exclude `.env` files                  |
-| **Use environment variables** | Load credentials from env vars, not hardcoded strings     |
-| **Use a secrets manager**     | AWS Secrets Manager, HashiCorp Vault, etc. for production |
-| **Separate environments**     | Use different keys for dev, staging, and production       |
-| **Monitor usage**             | Check the leaderboard for unexpected volume changes       |
+Pass `builderCode` on every order to attribute it to your builder profile:
 
-<Warning>
-  **Never expose Builder API credentials in client-side code.** Your secret and
-  passphrase must stay on your server.
-</Warning>
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  const response = await client.createAndPostOrder(
+    {
+      tokenID: "0x...",
+      price: 0.55,
+      size: 100,
+      side: Side.BUY,
+      builderCode: process.env.POLY_BUILDER_CODE!,
+    },
+    { tickSize: "0.01", negRisk: false },
+  );
+  ```
+
+  ```python Python theme={null}
+  response = client.create_and_post_order(
+      OrderArgs(
+          token_id="0x...",
+          price=0.55,
+          size=100,
+          side=BUY,
+          builder_code=os.environ["POLY_BUILDER_CODE"],
+      ),
+      options={"tick_size": "0.01", "neg_risk": False},
+  )
+  ```
+</CodeGroup>
+
+See [Order Attribution](/trading/orders/attribution) for full details.
 
 ## Troubleshooting
 
@@ -144,10 +124,12 @@ Store your credentials as environment variables:
     * [Contact Polymarket](/builders/tiers#contact) to upgrade your tier
   </Accordion>
 
-  <Accordion title="Lost secret or passphrase">
-    **Cause:** The secret and passphrase are only shown once when created.
+  <Accordion title="Builder code not found">
+    **Cause:** You haven't created a builder profile yet.
 
-    **Solution:** Create a new API key. You cannot recover the original values.
+    **Solution:** Go to
+    [polymarket.com/settings?tab=builder](https://polymarket.com/settings?tab=builder)
+    and set up your profile to get a builder code.
   </Accordion>
 </AccordionGroup>
 
@@ -155,7 +137,7 @@ Store your credentials as environment variables:
 
 <CardGroup cols={2}>
   <Card title="Attribute Orders" icon="tag" href="/trading/orders/attribution">
-    Configure your client to credit trades to your account.
+    Attach your builder code to orders for volume credit.
   </Card>
 
   <Card title="Understand Tiers" icon="layer-group" href="/builders/tiers">

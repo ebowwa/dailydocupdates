@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/rebates/get-current-rebated-fees-for-a-maker.md
-Downloaded: 2026-04-14T20:23:31.383Z
+Downloaded: 2026-04-17T20:17:34.844Z
 -->
 
 > ## Documentation Index
@@ -93,7 +93,7 @@ paths:
                 - date: '2026-02-27'
                   condition_id: >-
                     0xbd31dc8a20211944f6b70f31557f1001557b59905b7738480ca09bd4532f84af
-                  asset_address: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
+                  asset_address: '0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB'
                   maker_address: '0xFeA4cB3dD4ca7CefD3368653B7D6FF9BcDFca604'
                   rebated_fees_usdc: '0.237519'
         '400':
@@ -142,7 +142,7 @@ components:
         asset_address:
           type: string
           description: Asset address (e.g. USDC contract)
-          example: '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
+          example: '0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB'
         maker_address:
           type: string
           description: Maker's Ethereum address

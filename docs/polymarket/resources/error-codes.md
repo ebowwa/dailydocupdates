@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/resources/error-codes.md
-Downloaded: 2026-04-14T20:23:31.396Z
+Downloaded: 2026-04-17T20:17:34.852Z
 -->
 
 > ## Documentation Index
@@ -210,11 +210,7 @@ These errors are returned when an order passes initial validation but fails duri
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `not enough balance / allowance` — Insufficient USDC.e balance or token allowance. Check your balance with [`GET /balance-allowance`](/api-reference/clob#get-balance-allowance) and approve the exchange contract if needed.
-</ResponseField>
-
-<ResponseField name="400" type="Bad Request">
-  `invalid nonce` — The order nonce has already been used or is invalid.
+  `not enough balance / allowance` — Insufficient pUSD balance or token allowance. Check your balance with [`GET /balance-allowance`](/api-reference/clob#get-balance-allowance) and approve the exchange contract if needed.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">

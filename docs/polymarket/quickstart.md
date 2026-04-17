@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/quickstart.md
-Downloaded: 2026-04-14T20:23:31.395Z
+Downloaded: 2026-04-17T20:17:34.852Z
 -->
 
 > ## Documentation Index
@@ -82,11 +82,11 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
   <Step title="Install the SDK">
     <CodeGroup>
       ```bash TypeScript theme={null}
-      npm install @polymarket/clob-client ethers@5
+      npm install @polymarket/clob-client-v2 ethers@5
       ```
 
       ```bash Python theme={null}
-      pip install py-clob-client
+      pip install py-clob-client-v2
       ```
 
       ```bash Rust theme={null}
@@ -101,7 +101,7 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
     <Tabs>
       <Tab title="TypeScript">
         ```typescript theme={null}
-        import { ClobClient } from "@polymarket/clob-client";
+        import { ClobClient } from "@polymarket/clob-client-v2";
         import { Wallet } from "ethers"; // v5.8.0
 
         const HOST = "https://clob.polymarket.com";
@@ -109,18 +109,18 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
         const signer = new Wallet(process.env.PRIVATE_KEY);
 
         // Derive API credentials (L1 → L2 auth)
-        const tempClient = new ClobClient(HOST, CHAIN_ID, signer);
+        const tempClient = new ClobClient({ host: HOST, chain: CHAIN_ID, signer });
         const apiCreds = await tempClient.createOrDeriveApiKey();
 
         // Initialize trading client
-        const client = new ClobClient(
-          HOST,
-          CHAIN_ID,
+        const client = new ClobClient({
+          host: HOST,
+          chain: CHAIN_ID,
           signer,
-          apiCreds,
-          0, // Signature type: 0 = EOA
-          signer.address, // Funder address
-        );
+          creds: apiCreds,
+          signatureType: 0, // Signature type: 0 = EOA
+          funderAddress: signer.address, // Funder address
+        });
         ```
       </Tab>
 
@@ -130,18 +130,18 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
         import os
 
         host = "https://clob.polymarket.com"
-        chain_id = 137  # Polygon mainnet
+        chain = 137  # Polygon mainnet
         private_key = os.getenv("PRIVATE_KEY")
 
         # Derive API credentials (L1 → L2 auth)
-        temp_client = ClobClient(host, key=private_key, chain_id=chain_id)
+        temp_client = ClobClient(host, key=private_key, chain=chain)
         api_creds = temp_client.create_or_derive_api_creds()
 
         # Initialize trading client
         client = ClobClient(
             host,
             key=private_key,
-            chain_id=chain_id,
+            chain=chain,
             creds=api_creds,
             signature_type=0,  # Signature type: 0 = EOA
             funder="YOUR_WALLET_ADDRESS",  # Funder address
@@ -178,7 +178,7 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
     </Note>
 
     <Warning>
-      Before trading, your funder address needs **USDC.e** (for buying outcome
+      Before trading, your funder address needs **pUSD** (for buying outcome
       tokens) and **POL** (for gas, if using EOA type `0`).
     </Warning>
   </Step>
@@ -189,7 +189,7 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
     <Tabs>
       <Tab title="TypeScript">
         ```typescript theme={null}
-        import { Side, OrderType } from "@polymarket/clob-client";
+        import { Side, OrderType } from "@polymarket/clob-client-v2";
 
         // Fetch market details to get tick size and neg risk
         const market = await client.getMarket("YOUR_CONDITION_ID");

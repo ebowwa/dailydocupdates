@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/concepts/order-lifecycle.md
-Downloaded: 2026-04-14T20:23:31.392Z
+Downloaded: 2026-04-17T20:17:34.849Z
 -->
 
 > ## Documentation Index
@@ -51,7 +51,7 @@ Post-only orders will only rest on the book. If a post-only order would match im
     * Side (buy or sell)
     * Price and size
     * Expiration time
-    * Nonce (for replay protection)
+    * Timestamp (in milliseconds, used for order uniqueness)
 
     You sign this order with your private key, creating an EIP712 signature.
   </Step>
@@ -80,7 +80,7 @@ Post-only orders will only rest on the book. If a post-only order would match im
 
     * Verifies both signatures
     * Transfers tokens from seller to buyer
-    * Transfers USDC.e from buyer to seller
+    * Transfers pUSD from buyer to seller
 
     Settlement is **atomic**—either the entire trade succeeds or nothing happens.
   </Step>
@@ -124,10 +124,7 @@ Price improvement always benefits the taker. If you place a buy order at `$0.55`
 
 ## Cancellation
 
-You can cancel orders at any time before they're matched:
-
-* **Via API** — Cancel through the CLOB API (instant)
-* **Onchain** — Cancel directly on the Exchange contract (fallback if API is unavailable)
+You can cancel orders at any time before they're matched via the CLOB API.
 
 Partial fills cannot be cancelled—only the unfilled portion of an order can be cancelled.
 
@@ -137,7 +134,7 @@ Before placing orders, ensure:
 
 | Requirement         | Description                                        |
 | ------------------- | -------------------------------------------------- |
-| **Balance**         | Sufficient USDC.e (for buys) or tokens (for sells) |
+| **Balance**         | Sufficient pUSD (for buys) or tokens (for sells)   |
 | **Allowance**       | Approve the Exchange contract to spend your assets |
 | **API Credentials** | Valid API key for authenticated endpoints          |
 

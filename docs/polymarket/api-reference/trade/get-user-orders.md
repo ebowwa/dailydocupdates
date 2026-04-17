@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/trade/get-user-orders.md
-Downloaded: 2026-04-14T20:23:31.390Z
+Downloaded: 2026-04-17T20:17:34.847Z
 -->
 
 > ## Documentation Index
@@ -165,10 +165,6 @@ paths:
           polySignature: []
           polyPassphrase: []
           polyTimestamp: []
-        - polyBuilderApiKey: []
-          polyBuilderPassphrase: []
-          polyBuilderSignature: []
-          polyBuilderTimestamp: []
 components:
   schemas:
     OrdersResponse:
@@ -326,25 +322,5 @@ components:
       in: header
       name: POLY_TIMESTAMP
       description: Unix timestamp of the request
-    polyBuilderApiKey:
-      type: apiKey
-      in: header
-      name: POLY_BUILDER_API_KEY
-      description: Builder API key for authentication
-    polyBuilderPassphrase:
-      type: apiKey
-      in: header
-      name: POLY_BUILDER_PASSPHRASE
-      description: Passphrase for builder authentication
-    polyBuilderSignature:
-      type: apiKey
-      in: header
-      name: POLY_BUILDER_SIGNATURE
-      description: HMAC signature for builder authentication
-    polyBuilderTimestamp:
-      type: apiKey
-      in: header
-      name: POLY_BUILDER_TIMESTAMP
-      description: Unix timestamp for builder authentication
 
 ````

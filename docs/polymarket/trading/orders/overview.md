@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/orders/overview.md
-Downloaded: 2026-04-14T20:23:31.400Z
+Downloaded: 2026-04-17T20:17:34.857Z
 -->
 
 > ## Documentation Index
@@ -13,7 +13,7 @@ Downloaded: 2026-04-14T20:23:31.400Z
 
 All orders on Polymarket are expressed as **limit orders**. Market orders are supported by submitting a limit order with a marketable price — your order executes immediately at the best available price on the book.
 
-The underlying order primitive is structured, hashed, and signed using the [EIP-712](https://eips.ethereum.org/EIPS/eip-712) standard, then executed onchain via the Exchange contract. Preparing orders manually is involved, so we recommend using the open-source [TypeScript](https://github.com/Polymarket/clob-client) or [Python](https://github.com/Polymarket/py-clob-client) SDK clients, which handle signing and submission for you.
+The underlying order primitive is structured, hashed, and signed using the [EIP-712](https://eips.ethereum.org/EIPS/eip-712) standard, then executed onchain via the Exchange contract. Preparing orders manually is involved, so we recommend using the open-source [TypeScript](https://github.com/Polymarket/clob-client-v2) or [Python](https://github.com/Polymarket/py-clob-client-v2) SDK clients, which handle signing and submission for you.
 
 <Info>
   If you prefer to use the REST API directly, you'll need to manage order
@@ -163,7 +163,7 @@ You can check whether a market uses negative risk via the SDK or the market obje
 
 Before placing an order, your funder address must have approved the Exchange contract to spend the relevant tokens:
 
-* **Buying**: the funder must have set a **USDC.e** allowance greater than or equal to the spending amount.
+* **Buying**: the funder must have set a **pUSD** allowance greater than or equal to the spending amount.
 * **Selling**: the funder must have set a **conditional token** allowance greater than or equal to the selling amount.
 
 This allows the Exchange contract to execute settlement according to your signed order instructions.
@@ -176,13 +176,12 @@ Orders are continually monitored to make sure they remain valid. This includes t
 
 * Underlying balances
 * Allowances
-* Onchain order cancellations
 
 <Warning>
   Any maker caught intentionally abusing these checks will be blacklisted.
 </Warning>
 
-There are also limits on order placement per market. You can only place orders that sum to less than or equal to your available balance for each market. For example, if you have 500 USDC.e in your funding wallet, you can place one order to buy 1000 YES at \$0.50 — but any additional buy orders in that market will be rejected since your entire balance is reserved for the first order.
+There are also limits on order placement per market. You can only place orders that sum to less than or equal to your available balance for each market. For example, if you have 500 pUSD in your funding wallet, you can place one order to buy 1000 YES at \$0.50 — but any additional buy orders in that market will be rejected since your entire balance is reserved for the first order.
 
 The max size you can place for an order is:
 
@@ -480,16 +479,16 @@ Check if your resting orders are eligible for [maker rebates](/market-makers/mak
 
 When a trade is settled onchain, the Exchange contract emits an `OrderFilled` event with the following fields:
 
-| Field               | Description                                                                                     |
-| ------------------- | ----------------------------------------------------------------------------------------------- |
-| `orderHash`         | Unique hash for the filled order                                                                |
-| `maker`             | The user who generated the order and source of funds                                            |
-| `taker`             | The user filling the order, or the Exchange contract if multiple limit orders are filled        |
-| `makerAssetId`      | ID of the asset given out. If `0`, the order is a **BUY** (giving USDC.e for outcome tokens)    |
-| `takerAssetId`      | ID of the asset received. If `0`, the order is a **SELL** (receiving USDC.e for outcome tokens) |
-| `makerAmountFilled` | Amount of the asset given out                                                                   |
-| `takerAmountFilled` | Amount of the asset received                                                                    |
-| `fee`               | Fees paid by the order maker                                                                    |
+| Field               | Description                                                                                   |
+| ------------------- | --------------------------------------------------------------------------------------------- |
+| `orderHash`         | Unique hash for the filled order                                                              |
+| `maker`             | The user who generated the order and source of funds                                          |
+| `taker`             | The user filling the order, or the Exchange contract if multiple limit orders are filled      |
+| `makerAssetId`      | ID of the asset given out. If `0`, the order is a **BUY** (giving pUSD for outcome tokens)    |
+| `takerAssetId`      | ID of the asset received. If `0`, the order is a **SELL** (receiving pUSD for outcome tokens) |
+| `makerAmountFilled` | Amount of the asset given out                                                                 |
+| `takerAmountFilled` | Amount of the asset received                                                                  |
+| `fee`               | Fees paid by the order maker                                                                  |
 
 ***
 
@@ -530,7 +529,7 @@ When an order is successfully placed, the response includes a `status` field:
 
 Polymarket's Exchange contract has been audited by Chainsecurity ([View Audit](https://github.com/Polymarket/ctf-exchange/blob/main/audit/ChainSecurity_Polymarket_Exchange_audit.pdf)).
 
-The operator's privileges are limited to order matching and ensuring correct ordering. Operators cannot set prices or execute unauthorized trades. Users can cancel orders onchain independently if trust issues arise.
+The operator's privileges are limited to order matching and ensuring correct ordering. Operators cannot set prices or execute unauthorized trades.
 
 ***
 

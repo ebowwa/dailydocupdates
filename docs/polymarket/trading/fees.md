@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/fees.md
-Downloaded: 2026-04-14T20:23:31.399Z
+Downloaded: 2026-04-17T20:17:34.855Z
 -->
 
 > ## Documentation Index
@@ -11,12 +11,14 @@ Downloaded: 2026-04-14T20:23:31.399Z
 
 > Understanding trading fees on Polymarket
 
-Polymarket charges a small taker fee on certain markets. These fees fund the [Maker Rebates Program](/market-makers/maker-rebates), which redistributes fees daily to market makers to incentivize deeper liquidity and tighter spreads.
+Polymarket charges a small taker fee on certain markets. Fees are set by the protocol and applied at match time — you don't include fee information in your orders. These fees fund the [Maker Rebates Program](/market-makers/maker-rebates), which redistributes fees daily to market makers to incentivize deeper liquidity and tighter spreads.
 
 **Geopolitical and world events markets are fee-free.** Polymarket does not charge fees or profit from trading activity on these markets. There are also no Polymarket fees to deposit or withdraw USDC (though intermediaries like Coinbase or MoonPay may charge their own fees).
 
 <Note>
-  Fees apply only to markets deployed on or after the activation date. Pre-existing markets are unaffected. Markets with fees enabled have `feesEnabled` set to `true` on the market object.
+  Fees are determined per-market at match time. Markets with fees enabled have
+  `feesEnabled` set to `true` on the market object. Query fee parameters for
+  any market with `getClobMarketInfo(conditionID)`.
 </Note>
 
 ***
@@ -47,7 +49,7 @@ Where **C** = number of shares traded and **p** = price of the shares.
 | Tech            | 0.04           | 0              | 25%          |
 | Geopolitics     | 0              | 0              | —            |
 
-Taker fees are calculated in USDC and vary based on the share price. However, fees are collected in shares on buy orders and USDC on sell orders. The fee amount in USDC is symmetric around 50% probability — a trade at 30¢ incurs the same dollar fee as a trade at 70¢.
+Taker fees are calculated in USDC and vary based on the share price. The fee amount in USDC is symmetric around 50% probability — a trade at 30¢ incurs the same dollar fee as a trade at 70¢.
 
 <Frame>
   <div className="p-3 bg-white rounded-xl">
@@ -177,86 +179,23 @@ Fees are rounded to 5 decimal places. The smallest fee charged is **0.00001 USDC
 
 ***
 
-## Identifying Fee-Enabled Markets
+## Fee Handling
 
-Markets with fees have `feesEnabled` set to `true` on the market object. You can also query the fee-rate endpoint to check any specific market. See the [API Reference](/api-reference/introduction) for full endpoint documentation.
+Fees are calculated and applied at match time by the protocol — you do not need to include fee information in your orders. The SDK handles everything automatically.
 
-```bash theme={null}
-GET https://clob.polymarket.com/fee-rate?token_id={token_id}
-```
+To query fee parameters for a specific market, use `getClobMarketInfo(conditionID)`:
 
-***
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  const info = await client.getClobMarketInfo(conditionID);
+  // info.fd = { r: feeRate, e: exponent, to: takerOnly }
+  ```
 
-## Fee Handling for API Users
-
-### Using the SDK
-
-The official CLOB clients **automatically handle fees** for you — they fetch the fee rate and include it in the signed order payload.
-
-<CardGroup cols={3}>
-  <Card title="TypeScript" icon="js" href="https://github.com/Polymarket/clob-client">
-    npm install @polymarket/clob-client\@latest
-  </Card>
-
-  <Card title="Python" icon="python" href="https://github.com/Polymarket/py-clob-client">
-    pip install --upgrade py-clob-client
-  </Card>
-
-  <Card title="Rust" icon="rust" href="https://github.com/Polymarket/rs-clob-client">
-    cargo add polymarket-client-sdk
-  </Card>
-</CardGroup>
-
-**What the client does automatically:**
-
-1. Fetches the fee rate for the market's token ID
-2. Includes `feeRateBps` in the order structure
-3. Signs the order with the fee rate included
-
-**You don't need to do anything extra.** Your orders will work on fee-enabled markets.
-
-### Using the REST API
-
-If you're calling the REST API directly or building your own order signing, you must manually include the fee rate in your signed order payload.
-
-**Step 1:** Fetch the fee rate for the token ID before creating your order:
-
-```bash theme={null}
-GET https://clob.polymarket.com/fee-rate?token_id={token_id}
-```
-
-See the [fee-rate API Reference](/api-reference/introduction) for full response details. Fee-enabled markets return a non-zero value; fee-free markets return `0`.
-
-**Step 2:** Add the `feeRateBps` field to your order object. This value is part of the signed payload — the CLOB validates your signature against it.
-
-```json theme={null}
-{
-  "salt": "12345",
-  "maker": "0x...",
-  "signer": "0x...",
-  "taker": "0x...",
-  "tokenId": "71321045679252212594626385532706912750332728571942532289631379312455583992563",
-  "makerAmount": "50000000",
-  "takerAmount": "100000000",
-  "expiration": "0",
-  "nonce": "0",
-  "feeRateBps": "1000",
-  "side": "0",
-  "signatureType": 2,
-  "signature": "0x..."
-}
-```
-
-**Step 3:** Sign and submit:
-
-1. Include `feeRateBps` in the order object **before signing**
-2. Sign the complete order
-3. POST to the order endpoint
-
-<Note>
-  Always fetch `fee_rate_bps` dynamically — do not hardcode. The fee rate varies
-  by market type and may change over time. You only need to pass `feeRateBps`.
-</Note>
+  ```python Python theme={null}
+  info = client.get_clob_market_info(condition_id)
+  # info["fd"] = { "r": fee_rate, "e": exponent, "to": taker_only }
+  ```
+</CodeGroup>
 
 ***
 

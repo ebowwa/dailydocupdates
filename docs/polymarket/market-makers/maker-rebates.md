@@ -1,17 +1,21 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/maker-rebates.md
-Downloaded: 2026-04-14T20:23:31.395Z
+Downloaded: 2026-04-17T20:17:34.851Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Maker Rebates Program
+# Maker rebates
 
-> Earn daily USDC rebates by providing liquidity on Polymarket
+***
 
-Polymarket has enabled taker fees across multiple market categories. These fees fund a **Maker Rebates** program that pays daily USDC rebates to liquidity providers.
+title: "Maker Rebates Program"
+description: "Earn daily USDC rebates by providing liquidity on Polymarket"
+---------------------------------------------------------------------------
+
+Polymarket charges taker fees across multiple market categories. Fees are determined by the protocol at match time and fund a **Maker Rebates** program that pays daily USDC rebates to liquidity providers.
 
 ***
 
@@ -32,7 +36,7 @@ Place orders that add liquidity to the book and get filled (i.e., your liquidity
 
 ### Payment
 
-Rebates are paid daily in USDC, directly to your wallet.
+Rebates are paid daily in USDC, directly to your wallet. A minimum accrued rebate of **\$1 USDC** is required for a payout.
 
 ***
 
@@ -100,7 +104,7 @@ Totals are calculated per market, so you only compete with other makers in the s
 
 ## Taker Fee Structure
 
-Taker fees are calculated in USDC and vary based on the share price. However, fees are collected in shares on buy orders and USDC on sell orders. The fee amount in USDC is symmetric around 50% probability — a trade at 30¢ incurs the same dollar fee as a trade at 70¢.
+Taker fees are calculated in USDC and vary based on the share price. The fee amount in USDC is symmetric around 50% probability — a trade at 30¢ incurs the same dollar fee as a trade at 70¢.
 
 <Frame>
   <div className="p-3 bg-white rounded-xl">
@@ -123,7 +127,8 @@ Fees are rounded to 5 decimal places. The smallest fee charged is 0.00001 USDC. 
 The following market categories have taker fees enabled and are eligible for maker rebates: Crypto, Sports, Finance, Politics, Economics, Culture, Weather, Tech, Mentions, and Other / General.
 
 <Note>
-  Fees apply only to markets deployed on or after the activation date. Pre-existing markets are unaffected. Markets with fees enabled have `feesEnabled` set to `true` on the market object.
+  Markets with fees enabled have `feesEnabled` set to `true` on the market
+  object. Query per-market fee parameters via `getClobMarketInfo(conditionID)`.
 </Note>
 
 ***
@@ -136,7 +141,7 @@ The following market categories have taker fees enabled and are eligible for mak
     liquidity is taken by another trader).
   </Accordion>
 
-  <Accordion title="When are rebates paid">Daily, in USDC.</Accordion>
+  <Accordion title="When are rebates paid">Daily, in USDC. You must accrue at least \$1 in rebates before a payout is issued.</Accordion>
 
   <Accordion title="How are rebates calculated">
     Rebates are proportional to your share of executed maker liquidity in each
@@ -150,11 +155,11 @@ The following market categories have taker fees enabled and are eligible for mak
   </Accordion>
 
   <Accordion title="Which markets have fees enabled">
-    Crypto, Sports, Finance, Politics, Economics, Culture, Weather, Tech, Mentions, and Other / General markets. Fees only apply to markets deployed on or after the activation date.
+    Crypto, Sports, Finance, Politics, Economics, Culture, Weather, Tech, Mentions, and Other / General markets.
   </Accordion>
 
   <Accordion title="Is Polymarket charging fees on all markets">
-    Fees apply to markets in fee-enabled categories. Markets with fees enabled have `feesEnabled` set to `true` on the market object.
+    Fees apply to markets in fee-enabled categories. Markets with fees enabled have `feesEnabled` set to `true` on the market object — check it per-market via `getClobMarketInfo(conditionID)`.
   </Accordion>
 </AccordionGroup>
 

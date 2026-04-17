@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/overview.md
-Downloaded: 2026-04-14T20:23:31.400Z
+Downloaded: 2026-04-17T20:17:34.857Z
 -->
 
 > ## Documentation Index
@@ -11,22 +11,22 @@ Downloaded: 2026-04-14T20:23:31.400Z
 
 > Trading on the Polymarket CLOB
 
-Polymarket's CLOB (Central Limit Order Book) is a hybrid-decentralized trading system — offchain order matching with onchain settlement via the [Exchange contract](https://github.com/Polymarket/ctf-exchange/tree/main/src) ([audited by Chainsecurity](https://github.com/Polymarket/ctf-exchange/blob/main/audit/ChainSecurity_Polymarket_Exchange_audit.pdf)). All trading is non-custodial. Orders are [EIP-712](https://eips.ethereum.org/EIPS/eip-712) signed messages, and matched trades settle atomically on Polygon. The operator cannot set prices or execute unauthorized trades — users can always cancel orders onchain independently.
+Polymarket's CLOB (Central Limit Order Book) is a hybrid-decentralized trading system — offchain order matching with onchain settlement via the [Exchange contract](https://github.com/Polymarket/ctf-exchange/tree/main/src) ([audited by Chainsecurity](https://github.com/Polymarket/ctf-exchange/blob/main/audit/ChainSecurity_Polymarket_Exchange_audit.pdf)). All trading is non-custodial. Orders are [EIP-712](https://eips.ethereum.org/EIPS/eip-712) signed messages, and matched trades settle atomically on Polygon. The operator cannot set prices or execute unauthorized trades.
 
 We recommend using the open-source SDK clients, which handle order signing, authentication, and submission:
 
 <CardGroup cols={3}>
-  <Card title="TypeScript Client" icon="github" href="https://github.com/Polymarket/clob-client">
+  <Card title="TypeScript Client" icon="github" href="https://github.com/Polymarket/clob-client-v2">
     <p className="font-mono text-[0.8rem]">
-      npm install @polymarket/clob-client
+      npm install @polymarket/clob-client-v2
     </p>
   </Card>
 
-  <Card title="Python Client" icon="github" href="https://github.com/Polymarket/py-clob-client">
-    <p className="font-mono text-[0.8rem]">pip install py-clob-client</p>
+  <Card title="Python Client" icon="github" href="https://github.com/Polymarket/py-clob-client-v2">
+    <p className="font-mono text-[0.8rem]">pip install py-clob-client-v2</p>
   </Card>
 
-  <Card title="Rust Client" icon="github" href="https://github.com/Polymarket/rs-clob-client">
+  <Card title="Rust Client" icon="github" href="https://github.com/Polymarket/rs-clob-client-v2">
     <p className="font-mono text-[0.8rem]">cargo add polymarket-client-sdk</p>
   </Card>
 </CardGroup>
@@ -34,9 +34,9 @@ We recommend using the open-source SDK clients, which handle order signing, auth
 <Info>
   You can also use the REST API directly, but you'll need to manage [EIP-712
   order
-  signing](https://github.com/Polymarket/clob-client/blob/main/src/signing/eip712.ts)
+  signing](https://github.com/Polymarket/clob-client-v2/blob/main/src/signing/eip712.ts)
   and [HMAC authentication
-  headers](https://github.com/Polymarket/clob-client/blob/main/src/signing/hmac.ts)
+  headers](https://github.com/Polymarket/clob-client-v2/blob/main/src/signing/hmac.ts)
   yourself. See [REST API Headers](#rest-api-headers) below.
 </Info>
 
@@ -55,13 +55,13 @@ You use your private key once to derive **L2 credentials** (API key, secret, pas
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  import { ClobClient } from "@polymarket/clob-client";
+  import { ClobClient } from "@polymarket/clob-client-v2";
   import { Wallet } from "ethers"; // v5.8.0
 
   const signer = new Wallet(process.env.PRIVATE_KEY);
 
   // Derive L2 API credentials
-  const tempClient = new ClobClient("https://clob.polymarket.com", 137, signer);
+  const tempClient = new ClobClient({ host: "https://clob.polymarket.com", chain: 137, signer });
   const apiCreds = await tempClient.createOrDeriveApiKey();
   ```
 
@@ -72,7 +72,7 @@ You use your private key once to derive **L2 credentials** (API key, secret, pas
   private_key = os.getenv("PRIVATE_KEY")
 
   # Derive L2 API credentials
-  temp_client = ClobClient("https://clob.polymarket.com", key=private_key, chain_id=137)
+  temp_client = ClobClient("https://clob.polymarket.com", key=private_key, chain=137)
   api_creds = temp_client.create_or_derive_api_creds()
   ```
 
@@ -116,21 +116,21 @@ When initializing the trading client, you must specify your wallet's **signature
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  const client = new ClobClient(
-    "https://clob.polymarket.com",
-    137,
+  const client = new ClobClient({
+    host: "https://clob.polymarket.com",
+    chain: 137,
     signer,
-    apiCreds,
-    2, // GNOSIS_SAFE
-    "0x...", // Your proxy wallet address
-  );
+    creds: apiCreds,
+    signatureType: 2, // GNOSIS_SAFE
+    funderAddress: "0x...", // Your proxy wallet address
+  });
   ```
 
   ```python Python theme={null}
   client = ClobClient(
       "https://clob.polymarket.com",
       key=private_key,
-      chain_id=137,
+      chain=137,
       creds=api_creds,
       signature_type=2,  # GNOSIS_SAFE
       funder="0x..."  # Your proxy wallet address

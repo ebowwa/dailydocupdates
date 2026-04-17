@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/clients/public.md
-Downloaded: 2026-04-14T20:23:31.398Z
+Downloaded: 2026-04-17T20:17:34.854Z
 -->
 
 > ## Documentation Index
@@ -18,12 +18,12 @@ Public methods require the client to initialize with the host URL and Polygon ch
 <Tabs>
   <Tab title="TypeScript">
     ```typescript theme={null}
-    import { ClobClient } from "@polymarket/clob-client";
+    import { ClobClient } from "@polymarket/clob-client-v2";
 
-    const client = new ClobClient(
-      "https://clob.polymarket.com",
-      137
-    );
+    const client = new ClobClient({
+      host: "https://clob.polymarket.com",
+      chain: 137,
+    });
 
     // Ready to call public methods
     const markets = await client.getMarkets();
@@ -36,7 +36,7 @@ Public methods require the client to initialize with the host URL and Polygon ch
 
     client = ClobClient(
         host="https://clob.polymarket.com",
-        chain_id=137
+        chain=137
     )
 
     # Ready to call public methods
@@ -589,6 +589,77 @@ async getMarketTradesEvents(conditionID: string): Promise<MarketTradeEvent[]>
 
 ***
 
+### getClobMarketInfo
+
+Fetch all CLOB-level parameters for a market in a single call — tokens, tick size, base fees, rewards config, RFQ status, and fee details.
+
+```typescript Signature theme={null}
+async getClobMarketInfo(conditionID: string): Promise<ClobMarketDetails>
+```
+
+<ResponseField name="conditionID" type="string">
+  The condition ID of the market.
+</ResponseField>
+
+**Response (`ClobMarketDetails`)**
+
+<ResponseField name="gst" type="string | null">
+  Game start time (used for sports markets), ISO 8601 timestamp or `null`.
+</ResponseField>
+
+<ResponseField name="r" type="object">
+  Rewards configuration for the market.
+</ResponseField>
+
+<ResponseField name="t" type="ClobToken[]">
+  Tokens for this market. Each entry has:
+
+  * `t` (string) — token ID
+  * `o` (string) — outcome label (e.g. `Yes`, `No`)
+</ResponseField>
+
+<ResponseField name="mos" type="number">
+  Minimum order size.
+</ResponseField>
+
+<ResponseField name="mts" type="number">
+  Minimum tick size (price increment).
+</ResponseField>
+
+<ResponseField name="mbf" type="number">
+  Maker base fee in basis points.
+</ResponseField>
+
+<ResponseField name="tbf" type="number">
+  Taker base fee in basis points.
+</ResponseField>
+
+<ResponseField name="rfqe" type="boolean">
+  Whether RFQ (Request for Quote) is enabled for this market.
+</ResponseField>
+
+<ResponseField name="itode" type="boolean">
+  Whether taker order delay is enabled.
+</ResponseField>
+
+<ResponseField name="ibce" type="boolean">
+  Whether Blockaid check is enabled.
+</ResponseField>
+
+<ResponseField name="fd" type="object">
+  Fee curve parameters:
+
+  * `r` (number) — fee rate
+  * `e` (number) — fee curve exponent
+  * `to` (boolean) — whether fees apply to takers only
+</ResponseField>
+
+<ResponseField name="oas" type="number">
+  Minimum order age in seconds.
+</ResponseField>
+
+***
+
 ### getFeeRateBps
 
 Get the fee rate in basis points for a token.
@@ -599,6 +670,20 @@ async getFeeRateBps(tokenID: string): Promise<number>
 
 <ResponseField name="returns" type="number">
   The fee rate in basis points for the specified token.
+</ResponseField>
+
+***
+
+### getFeeExponent
+
+Get the fee curve exponent for a token. The exponent shapes the fee curve used by the protocol when calculating fees at match time.
+
+```typescript Signature theme={null}
+async getFeeExponent(tokenID: string): Promise<number>
+```
+
+<ResponseField name="returns" type="number">
+  The fee curve exponent for the specified token's market.
 </ResponseField>
 
 ***

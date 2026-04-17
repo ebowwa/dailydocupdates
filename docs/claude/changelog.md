@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/changelog.md
-Downloaded: 2026-04-16T20:19:30.149Z
+Downloaded: 2026-04-17T20:17:30.109Z
 -->
 
 > ## Documentation Index
@@ -14,6 +14,10 @@ Downloaded: 2026-04-16T20:19:30.149Z
 This page is generated from the [CHANGELOG.md on GitHub](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md).
 
 Run `claude --version` to check your installed version.
+
+<Update label="2.1.112" description="April 16, 2026">
+  * Fixed "claude-opus-4-7 is temporarily unavailable" for auto mode
+</Update>
 
 <Update label="2.1.111" description="April 16, 2026">
   * Claude Opus 4.7 xhigh is now available! Use /effort to tune speed vs. intelligence

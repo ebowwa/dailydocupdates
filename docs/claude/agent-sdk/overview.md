@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/overview.md
-Downloaded: 2026-04-16T20:19:30.144Z
+Downloaded: 2026-04-17T20:17:30.104Z
 -->
 
 > ## Documentation Index
@@ -79,6 +79,10 @@ The Agent SDK includes built-in tools for reading files, running commands, and e
         ```
       </Tab>
     </Tabs>
+
+    <Note>
+      The TypeScript SDK bundles a native Claude Code binary for your platform as an optional dependency, so you don't need to install Claude Code separately.
+    </Note>
   </Step>
 
   <Step title="Set your API key">

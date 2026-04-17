@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/plugins-reference.md
-Downloaded: 2026-04-16T20:19:30.159Z
+Downloaded: 2026-04-17T20:17:30.119Z
 -->
 
 > ## Documentation Index
@@ -768,6 +768,24 @@ claude plugin update <plugin> [options]
 | :-------------------- | :-------------------------------------------------------- | :------ |
 | `-s, --scope <scope>` | Scope to update: `user`, `project`, `local`, or `managed` | `user`  |
 | `-h, --help`          | Display help for command                                  |         |
+
+***
+
+### plugin list
+
+List installed plugins with their version, source marketplace, and enable status.
+
+```bash theme={null}
+claude plugin list [options]
+```
+
+**Options:**
+
+| Option        | Description                                                    | Default |
+| :------------ | :------------------------------------------------------------- | :------ |
+| `--json`      | Output as JSON                                                 |         |
+| `--available` | Include available plugins from marketplaces. Requires `--json` |         |
+| `-h, --help`  | Display help for command                                       |         |
 
 ***
 

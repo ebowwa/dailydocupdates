@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/orderbook.md
-Downloaded: 2026-04-14T20:23:31.399Z
+Downloaded: 2026-04-17T20:17:34.856Z
 -->
 
 > ## Documentation Index
@@ -15,15 +15,15 @@ The orderbook is a public endpoint — no authentication required. You can read 
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  import { ClobClient } from "@polymarket/clob-client";
+  import { ClobClient } from "@polymarket/clob-client-v2";
 
-  const client = new ClobClient("https://clob.polymarket.com", 137);
+  const client = new ClobClient({ host: "https://clob.polymarket.com", chain: 137 });
   ```
 
   ```python Python theme={null}
   from py_clob_client.client import ClobClient
 
-  client = ClobClient("https://clob.polymarket.com", chain_id=137)
+  client = ClobClient("https://clob.polymarket.com", chain=137)
   ```
 
   ```rust Rust theme={null}
@@ -235,7 +235,7 @@ Fetch historical price data for a token over various time intervals:
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  import { PriceHistoryInterval } from "@polymarket/clob-client";
+  import { PriceHistoryInterval } from "@polymarket/clob-client-v2";
 
   const history = await client.getPricesHistory({
     market: "TOKEN_ID", // Note: this param is named "market" but takes a token ID
@@ -307,7 +307,7 @@ Calculate the effective price you'd pay for a market order of a given size, acco
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  import { Side, OrderType } from "@polymarket/clob-client";
+  import { Side, OrderType } from "@polymarket/clob-client-v2";
 
   // What price would I pay to buy $500 worth?
   const price = await client.calculateMarketPrice(
@@ -371,7 +371,7 @@ All orderbook queries have batch variants for fetching data across multiple toke
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  import { Side } from "@polymarket/clob-client";
+  import { Side } from "@polymarket/clob-client-v2";
 
   // Fetch prices for multiple tokens
   const prices = await client.getPrices([

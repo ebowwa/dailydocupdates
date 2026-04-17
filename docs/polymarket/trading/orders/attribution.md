@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/orders/attribution.md
-Downloaded: 2026-04-14T20:23:31.399Z
+Downloaded: 2026-04-17T20:17:34.856Z
 -->
 
 > ## Documentation Index
@@ -9,301 +9,93 @@ Downloaded: 2026-04-14T20:23:31.399Z
 
 # Order Attribution
 
-> Attribute orders to your builder key for volume credit
+> Attribute orders to your builder code for volume credit and fee rewards
 
-Order attribution adds builder authentication headers when placing orders through the CLOB, enabling Polymarket to credit trades to your builder account. This allows you to:
+Order attribution credits trades to your builder account by attaching your **builder code** to every order. This enables:
 
-* Track volume on the [Builder Leaderboard](https://builders.polymarket.com/)
-* Earn rewards through the [Builder Program](/builders/overview)
-* Monitor performance via the Data API
-
-***
-
-## Builder API Credentials
-
-Each builder receives API credentials from their [Builder Profile](https://polymarket.com/settings?tab=builder):
-
-| Credential   | Description                          |
-| ------------ | ------------------------------------ |
-| `key`        | Your builder API key identifier      |
-| `secret`     | Secret key for signing requests      |
-| `passphrase` | Additional authentication passphrase |
-
-<Warning>
-  Builder API credentials are **not** the same as user API credentials. Builder
-  credentials are for order attribution only — you still need user credentials
-  for authentication. Never expose builder credentials in client-side code or
-  commit them to version control.
-</Warning>
+* Volume tracking on the [Builder Leaderboard](https://builders.polymarket.com/)
+* Fee rewards through the [Builder Program](/builders/overview)
+* Performance monitoring via the Data API
 
 ***
 
-## Remote Signing
+## Builder Code
 
-Remote signing keeps your builder credentials secure on a server you control. The user's client sends order details to your server, which adds the builder headers before forwarding to the CLOB.
+Your **builder code** is a `bytes32` identifier tied to your builder profile. Find it at [polymarket.com/settings?tab=builder](https://polymarket.com/settings?tab=builder).
 
-### Server Implementation
+That's the only credential you need for attribution — no HMAC signing, no separate API key, no special headers.
 
-Your signing server receives request details and returns the authentication headers:
+<Note>
+  Builder codes are public identifiers — they appear onchain in the `builder` field of every order you attribute. Only you control which orders include your code, so keep it scoped to apps you own.
+</Note>
 
-<CodeGroup>
-  ```typescript TypeScript theme={null}
-  import {
-    buildHmacSignature,
-    BuilderApiKeyCreds,
-  } from "@polymarket/builder-signing-sdk";
+***
 
-  const BUILDER_CREDENTIALS: BuilderApiKeyCreds = {
-    key: process.env.POLY_BUILDER_API_KEY!,
-    secret: process.env.POLY_BUILDER_SECRET!,
-    passphrase: process.env.POLY_BUILDER_PASSPHRASE!,
-  };
+## Attaching the Builder Code
 
-  // POST /sign - receives { method, path, body } from the client SDK
-  export async function handleSignRequest(request) {
-    const { method, path, body } = await request.json();
-    const timestamp = Date.now().toString();
-
-    const signature = buildHmacSignature(
-      BUILDER_CREDENTIALS.secret,
-      parseInt(timestamp),
-      method,
-      path,
-      body,
-    );
-
-    return {
-      POLY_BUILDER_SIGNATURE: signature,
-      POLY_BUILDER_TIMESTAMP: timestamp,
-      POLY_BUILDER_API_KEY: BUILDER_CREDENTIALS.key,
-      POLY_BUILDER_PASSPHRASE: BUILDER_CREDENTIALS.passphrase,
-    };
-  }
-  ```
-
-  ```python Python theme={null}
-  import os
-  import time
-  from py_builder_signing_sdk.signing.hmac import build_hmac_signature
-  from py_builder_signing_sdk import BuilderApiKeyCreds
-
-  BUILDER_CREDENTIALS = BuilderApiKeyCreds(
-      key=os.environ["POLY_BUILDER_API_KEY"],
-      secret=os.environ["POLY_BUILDER_SECRET"],
-      passphrase=os.environ["POLY_BUILDER_PASSPHRASE"],
-  )
-
-  # POST /sign - receives { method, path, body } from the client SDK
-  def handle_sign_request(method: str, path: str, body: str):
-      timestamp = str(int(time.time()))
-
-      signature = build_hmac_signature(
-          BUILDER_CREDENTIALS.secret,
-          timestamp,
-          method,
-          path,
-          body
-      )
-
-      return {
-          "POLY_BUILDER_SIGNATURE": signature,
-          "POLY_BUILDER_TIMESTAMP": timestamp,
-          "POLY_BUILDER_API_KEY": BUILDER_CREDENTIALS.key,
-          "POLY_BUILDER_PASSPHRASE": BUILDER_CREDENTIALS.passphrase,
-      }
-  ```
-</CodeGroup>
-
-### Client Configuration
-
-Point the CLOB client to your signing server:
+Pass `builderCode` in the order struct on every order you submit. The SDK serializes it into the onchain order's `builder` field, and the protocol attributes every matched trade to your profile.
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  import { ClobClient } from "@polymarket/clob-client";
-  import { BuilderConfig } from "@polymarket/builder-signing-sdk";
+  import { ClobClient, Side, OrderType } from "@polymarket/clob-client-v2";
 
-  const builderConfig = new BuilderConfig({
-    remoteBuilderConfig: {
-      url: "https://your-server.com/sign",
-      token: "optional-auth-token", // optional
+  const client = new ClobClient({
+    host: "https://clob.polymarket.com",
+    chain: 137,
+    signer,
+    creds: apiCreds,
+    signatureType: 2,
+    funderAddress,
+  });
+
+  const response = await client.createAndPostOrder(
+    {
+      tokenID: "0x...",
+      price: 0.55,
+      size: 100,
+      side: Side.BUY,
+      builderCode: "0xabc123...", // your builder code from polymarket.com/settings?tab=builder
     },
-  });
-
-  const client = new ClobClient(
-    "https://clob.polymarket.com",
-    137,
-    signer,
-    apiCreds,
-    2, // signature type
-    funderAddress,
-    undefined,
-    false,
-    builderConfig,
+    { tickSize: "0.01", negRisk: false },
+    OrderType.GTC,
   );
-
-  // Orders automatically include builder headers
-  const response = await client.createAndPostOrder(/* ... */);
   ```
 
   ```python Python theme={null}
   from py_clob_client.client import ClobClient
-  from py_builder_signing_sdk import BuilderConfig, RemoteBuilderConfig
-
-  builder_config = BuilderConfig(
-      remote_builder_config=RemoteBuilderConfig(
-          url="https://your-server.com/sign",
-          token="optional-auth-token",  # optional
-      )
-  )
+  from py_clob_client.clob_types import OrderArgs, OrderType
+  from py_clob_client.order_builder.constants import BUY
 
   client = ClobClient(
       host="https://clob.polymarket.com",
-      chain_id=137,
+      chain=137,
       key=private_key,
       creds=api_creds,
       signature_type=2,
       funder=funder_address,
-      builder_config=builder_config
   )
 
-  # Orders automatically include builder headers
-  response = client.create_and_post_order(...)
-  ```
-
-  ```rust Rust theme={null}
-  use polymarket_client_sdk::auth::builder::Config as BuilderConfig;
-  use polymarket_client_sdk::clob::types::SignatureType;
-
-  // First, authenticate as a normal user
-  let client = Client::new("https://clob.polymarket.com", Config::default())?
-      .authentication_builder(&signer)
-      .signature_type(SignatureType::GnosisSafe)
-      .authenticate()
-      .await?;
-
-  // Then promote to builder with remote signing
-  let builder_config = BuilderConfig::remote(
-      "https://your-server.com/sign",
-      Some("optional-auth-token".to_owned()),
-  )?;
-  let client = client.promote_to_builder(builder_config).await?;
-
-  // Orders automatically include builder headers
+  response = client.create_and_post_order(
+      OrderArgs(
+          token_id="0x...",
+          price=0.55,
+          size=100,
+          side=BUY,
+          builder_code="0xabc123...",  # your builder code from polymarket.com/settings?tab=builder
+      ),
+      options={"tick_size": "0.01", "neg_risk": False},
+      order_type=OrderType.GTC,
+  )
   ```
 </CodeGroup>
 
-***
-
-## Local Signing
-
-Sign orders locally when you control the entire order placement flow (e.g., your backend places orders on behalf of users):
-
-<CodeGroup>
-  ```typescript TypeScript theme={null}
-  import { ClobClient } from "@polymarket/clob-client";
-  import {
-    BuilderConfig,
-    BuilderApiKeyCreds,
-  } from "@polymarket/builder-signing-sdk";
-
-  const builderCreds: BuilderApiKeyCreds = {
-    key: process.env.POLY_BUILDER_API_KEY!,
-    secret: process.env.POLY_BUILDER_SECRET!,
-    passphrase: process.env.POLY_BUILDER_PASSPHRASE!,
-  };
-
-  const builderConfig = new BuilderConfig({
-    localBuilderCreds: builderCreds,
-  });
-
-  const client = new ClobClient(
-    "https://clob.polymarket.com",
-    137,
-    signer,
-    apiCreds,
-    2,
-    funderAddress,
-    undefined,
-    false,
-    builderConfig,
-  );
-
-  // Orders automatically include builder headers
-  const response = await client.createAndPostOrder(/* ... */);
-  ```
-
-  ```python Python theme={null}
-  import os
-  from py_clob_client.client import ClobClient
-  from py_builder_signing_sdk import BuilderConfig, BuilderApiKeyCreds
-
-  builder_creds = BuilderApiKeyCreds(
-      key=os.environ["POLY_BUILDER_API_KEY"],
-      secret=os.environ["POLY_BUILDER_SECRET"],
-      passphrase=os.environ["POLY_BUILDER_PASSPHRASE"],
-  )
-
-  builder_config = BuilderConfig(
-      local_builder_creds=builder_creds,
-  )
-
-  client = ClobClient(
-      host="https://clob.polymarket.com",
-      chain_id=137,
-      key=private_key,
-      creds=api_creds,
-      signature_type=2,
-      funder=funder_address,
-      builder_config=builder_config
-  )
-
-  # Orders automatically include builder headers
-  response = client.create_and_post_order(...)
-  ```
-
-  ```rust Rust theme={null}
-  use polymarket_client_sdk::auth::{Credentials, builder::Config as BuilderConfig};
-
-  let builder_creds = Credentials::new(
-      std::env::var("POLY_BUILDER_API_KEY")?.parse()?,
-      std::env::var("POLY_BUILDER_SECRET")?,
-      std::env::var("POLY_BUILDER_PASSPHRASE")?,
-  );
-
-  let builder_config = BuilderConfig::local(builder_creds);
-  let client = client.promote_to_builder(builder_config).await?;
-
-  // Orders automatically include builder headers
-  ```
-</CodeGroup>
-
-***
-
-## Authentication Headers
-
-The SDK automatically generates and attaches these headers to each request:
-
-| Header                    | Description                          |
-| ------------------------- | ------------------------------------ |
-| `POLY_BUILDER_API_KEY`    | Your builder API key                 |
-| `POLY_BUILDER_TIMESTAMP`  | Unix timestamp of signature creation |
-| `POLY_BUILDER_PASSPHRASE` | Your builder passphrase              |
-| `POLY_BUILDER_SIGNATURE`  | HMAC signature of the request        |
-
-<Info>
-  With **local signing**, the SDK constructs and attaches these headers
-  automatically. With **remote signing**, your server returns these headers and
-  the SDK attaches them.
-</Info>
+Every order placed with `builderCode` attached is credited to your builder profile — no additional configuration needed.
 
 ***
 
 ## Verifying Attribution
 
-### Get Builder Trades
-
-Query trades attributed to your builder account to verify attribution is working:
+Query trades attributed to your builder code:
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -322,62 +114,23 @@ Query trades attributed to your builder account to verify attribution is working
       market="0xbd31dc8a..."
   )
   ```
-
-  ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::request::TradesRequest;
-
-  let trades = client.builder_trades(&TradesRequest::default(), None).await?;
-
-  // Filtered by market
-  let request = TradesRequest::builder()
-      .market("0xbd31dc8a...".parse()?)
-      .build();
-  let market_trades = client.builder_trades(&request, None).await?;
-  ```
 </CodeGroup>
 
-Each `BuilderTrade` includes: `id`, `market`, `assetId`, `side`, `size`, `price`, `status`, `outcome`, `owner`, `maker`, `transactionHash`, `matchTime`, `fee`, and `feeUsdc`.
-
-### Revoke Builder API Key
-
-If your credentials are compromised, revoke them immediately:
-
-<CodeGroup>
-  ```typescript TypeScript theme={null}
-  await client.revokeBuilderApiKey();
-  ```
-
-  ```python Python theme={null}
-  client.revoke_builder_api_key()
-  ```
-
-  ```rust Rust theme={null}
-  client.revoke_builder_api_key().await?;
-  ```
-</CodeGroup>
-
-After revoking, generate new credentials from your [Builder Profile](https://polymarket.com/settings?tab=builder).
+Each `BuilderTrade` includes: `id`, `market`, `assetId`, `side`, `size`, `price`, `status`, `outcome`, `owner`, `maker`, `builder`, `transactionHash`, `matchTime`, `fee`, and `feeUsdc`.
 
 ***
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Invalid Signature Errors">
-    * Verify the request body is passed correctly as JSON - Check that `path`,
-      `body`, and `method` match what the client sends - Ensure your server and
-      client use the same Builder API credentials
+  <Accordion title="Volume not appearing on the leaderboard">
+    * Confirm your `builderCode` is correctly attached to every order
+    * Check that orders are being matched (not just placed)
+    * Allow up to 24 hours for volume to appear on the leaderboard
   </Accordion>
 
-  <Accordion title="Missing Credentials">
-    Ensure your environment variables are set: - `POLY_BUILDER_API_KEY` -
-    `POLY_BUILDER_SECRET` - `POLY_BUILDER_PASSPHRASE`
-  </Accordion>
-
-  <Accordion title="Volume not appearing on leaderboard">
-    * Confirm your builder credentials are valid and not revoked - Check that
-      orders are being placed with the builder config attached - Allow up to 24
-      hours for volume to appear on the leaderboard
+  <Accordion title="Invalid builder code">
+    Verify the code matches what's shown on [your Builder Profile](https://polymarket.com/settings?tab=builder). Builder codes are `bytes32` hex values starting with `0x`.
   </Accordion>
 </AccordionGroup>
 

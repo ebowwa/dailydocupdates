@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/claude-code-on-the-web.md
-Downloaded: 2026-04-16T20:19:30.151Z
+Downloaded: 2026-04-17T20:17:30.110Z
 -->
 
 > ## Documentation Index
@@ -758,6 +758,32 @@ Each cloud session is separated from your machine and from other sessions throug
 * **Network access controls**: network access is limited by default, and can be disabled. When running with network access disabled, Claude Code can still communicate with the Anthropic API, which may allow data to exit the VM.
 * **Credential protection**: sensitive credentials such as git credentials or signing keys are never inside the sandbox with Claude Code. Authentication is handled through a secure proxy using scoped credentials.
 * **Secure analysis**: code is analyzed and modified within isolated VMs before creating PRs
+
+## Troubleshooting
+
+For runtime API errors that appear in the conversation such as `API Error: 500`, `529 Overloaded`, `429`, or `Prompt is too long`, see the [Error reference](/en/errors). Those errors and their fixes are shared with the CLI and Desktop app. The sections below cover issues specific to cloud sessions.
+
+### Session creation failed
+
+If a new session fails to start with `Session creation failed` or stalls at provisioning, Claude Code could not allocate a cloud environment.
+
+* Check [status.claude.com](https://status.claude.com) for cloud session incidents
+* Retry after a minute, as capacity is provisioned on demand
+* Confirm your repository is reachable. Private repositories require either the GitHub App installed with access to that repository, or a `gh` token synced via `/web-setup`. See [GitHub authentication options](#github-authentication-options).
+
+### Remote Control session expired or access denied
+
+`--teleport` connects through the same Remote Control session infrastructure that cloud sessions use, so authentication and session-expiry errors surface with Remote Control wording. You may see `Remote Control session has expired` or `Access denied`. The connection token is short-lived and scoped to your account.
+
+* Run `/login` locally to refresh your credentials, then reconnect
+* Confirm you are signed in to the same account that owns the session
+* If you see `Remote Control may not be available for this organization`, your admin has not enabled remote sessions for your plan
+
+### Environment expired
+
+Cloud sessions stop after a period of inactivity and the underlying environment is reclaimed. From a local terminal, this surfaces as `Could not resume session ... its environment has expired. Creating a fresh session instead.` On the web, the session is marked expired in the session list.
+
+Reopen the session from [claude.ai/code](https://claude.ai/code) to provision a fresh environment with your conversation history restored.
 
 ## Limitations
 
