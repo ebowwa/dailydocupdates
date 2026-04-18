@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/ultrareview.md
-Downloaded: 2026-04-16T20:19:30.163Z
+Downloaded: 2026-04-18T20:12:44.794Z
 -->
 
 > ## Documentation Index
@@ -47,7 +47,7 @@ In PR mode, the remote sandbox clones the pull request directly from GitHub rath
   If your repository is too large to bundle, Claude Code prompts you to use PR mode instead. Push your branch and open a draft PR, then run `/ultrareview <PR-number>`.
 </Tip>
 
-Before launching, Claude Code shows a confirmation dialog with the review scope, your remaining free runs, and the estimated cost. After you confirm, the review continues in the background and you can keep using your session. The command runs only when you invoke it with `/ultrareview`; Claude does not start an ultrareview on its own.
+Before launching, Claude Code shows a confirmation dialog with the review scope (including the file and line count when reviewing a branch), your remaining free runs, and the estimated cost. After you confirm, the review continues in the background and you can keep using your session. The command runs only when you invoke it with `/ultrareview`; Claude does not start an ultrareview on its own.
 
 ## Pricing and free runs
 
