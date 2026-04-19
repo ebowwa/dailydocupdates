@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/pm/lifecycle.md
-Downloaded: 2026-04-14T20:23:35.997Z
+Downloaded: 2026-04-19T20:13:26.838Z
 -->
 
 > ## Documentation Index
@@ -69,4 +69,17 @@ To disable lifecycle scripts for all packages, use the `--ignore-scripts` flag.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun install --ignore-scripts
+```
+
+To make this the default for a project, set [`install.ignoreScripts`](/runtime/bunfig#install-ignorescripts) in `bunfig.toml`:
+
+```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+[install]
+ignoreScripts = true
+```
+
+Or in `.npmrc`:
+
+```ini .npmrc icon="npm" theme={"theme":{"light":"github-light","dark":"dracula"}}
+ignore-scripts=true
 ```
