@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/statusline.md
-Downloaded: 2026-04-16T20:19:30.162Z
+Downloaded: 2026-04-21T20:21:42.345Z
 -->
 
 > ## Documentation Index
@@ -30,7 +30,7 @@ This page walks through [setting up a basic status line](#set-up-a-status-line),
 
 ## Set up a status line
 
-Use the [`/statusline` command](#use-the-statusline-command) to have Claude Code generate a script for you, or [manually create a script](#manually-configure-a-status-line) and add it to your settings.
+Use the [`/statusline` command](#use-the-%2Fstatusline-command) to have Claude Code generate a script for you, or [manually create a script](#manually-configure-a-status-line) and add it to your settings.
 
 ### Use the /statusline command
 
@@ -77,7 +77,7 @@ Run `/statusline` and ask it to remove or clear your status line (e.g., `/status
 
 This walkthrough shows what's happening under the hood by manually creating a status line that displays the current model, working directory, and context window usage percentage.
 
-<Note>Running [`/statusline`](#use-the-statusline-command) with a description of what you want configures all of this for you automatically.</Note>
+<Note>Running [`/statusline`](#use-the-%2Fstatusline-command) with a description of what you want configures all of this for you automatically.</Note>
 
 These examples use Bash scripts, which work on macOS and Linux. On Windows, see [Windows configuration](#windows-configuration) for PowerShell and Git Bash examples.
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/relayer/get-a-transaction-by-id.md
-Downloaded: 2026-04-14T20:23:31.384Z
+Downloaded: 2026-04-21T20:21:44.221Z
 -->
 
 > ## Documentation Index
@@ -10,6 +10,8 @@ Downloaded: 2026-04-14T20:23:31.384Z
 # Get a transaction by ID
 
 > Gets a transaction submitted to the Relayer. Takes in a required transaction ID as a query parameter.
+
+Poll this endpoint with the `transactionID` returned from `POST /submit` to retrieve the onchain `transactionHash` once the transaction has been broadcast.
 
 
 
@@ -55,6 +57,11 @@ paths:
       description: >
         Gets a transaction submitted to the Relayer. Takes in a required
         transaction ID as a query parameter.
+
+
+        Poll this endpoint with the `transactionID` returned from `POST /submit`
+        to retrieve the onchain `transactionHash` once the transaction has been
+        broadcast.
       parameters:
         - name: id
           in: query

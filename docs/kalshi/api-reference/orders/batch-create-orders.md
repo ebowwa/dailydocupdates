@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/batch-create-orders.md
-Downloaded: 2026-04-14T20:23:40.327Z
+Downloaded: 2026-04-21T20:22:05.077Z
 -->
 
 > ## Documentation Index
@@ -9,8 +9,11 @@ Downloaded: 2026-04-14T20:23:40.327Z
 
 # Batch Create Orders
 
->  Endpoint for submitting a batch of orders. Each order in the batch is counted against the total rate limit for order operations. Consequently, the size of the batch is capped by the current per-second rate-limit configuration applicable to the user. At the moment of writing, the limit is 20 orders per batch.
+> Endpoint for submitting a batch of orders. The maximum batch size scales with your tier's write budget — see [Rate Limits and Tiers](/getting_started/rate_limits).
 
+<Note>
+  **Rate limit:** 10 tokens per order in the batch — billed per item, so total cost for a batch of N orders is N × 10. Other endpoints cost 10 tokens per request (not per item) unless noted on their own page. See [Rate Limits and Tiers](/getting_started/rate_limits).
+</Note>
 
 
 ## OpenAPI
@@ -64,7 +67,10 @@ paths:
       tags:
         - orders
       summary: Batch Create Orders
-      description: ' Endpoint for submitting a batch of orders. Each order in the batch is counted against the total rate limit for order operations. Consequently, the size of the batch is capped by the current per-second rate-limit configuration applicable to the user. At the moment of writing, the limit is 20 orders per batch.'
+      description: >-
+        Endpoint for submitting a batch of orders. The maximum batch size scales
+        with your tier's write budget — see [Rate Limits and
+        Tiers](/getting_started/rate_limits).
       operationId: BatchCreateOrders
       requestBody:
         required: true

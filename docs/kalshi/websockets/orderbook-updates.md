@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/orderbook-updates.md
-Downloaded: 2026-04-16T20:19:44.487Z
+Downloaded: 2026-04-21T20:22:05.087Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,8 @@ Downloaded: 2026-04-16T20:19:44.487Z
   - Use `market_tickers` (array of strings) for multiple markets
   - `market_id`/`market_ids` are not supported for this channel
 - Sends `orderbook_snapshot` first, then incremental `orderbook_delta` updates
+- Supports `update_subscription` with `add_markets` / `delete_markets` / `get_snapshot` actions
+- `get_snapshot` returns an `orderbook_snapshot` for the requested `market_tickers` without modifying the subscription
 
 **Use case:** Building and maintaining a real-time orderbook
 
@@ -43,6 +45,12 @@ description: >
     - Use `market_tickers` (array of strings) for multiple markets
     - `market_id`/`market_ids` are not supported for this channel
   - Sends `orderbook_snapshot` first, then incremental `orderbook_delta` updates
+
+  - Supports `update_subscription` with `add_markets` / `delete_markets` /
+  `get_snapshot` actions
+
+  - `get_snapshot` returns an `orderbook_snapshot` for the requested
+  `market_tickers` without modifying the subscription
 
 
   **Use case:** Building and maintaining a real-time orderbook

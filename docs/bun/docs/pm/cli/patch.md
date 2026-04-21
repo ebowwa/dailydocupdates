@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/pm/cli/patch.md
-Downloaded: 2026-04-14T20:23:35.995Z
+Downloaded: 2026-04-21T20:21:49.443Z
 -->
 
 > ## Documentation Index
@@ -73,7 +73,7 @@ bun patch-commit react
 
 # CLI Usage
 
-```bash theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun patch <package>@<version>
 ```
 

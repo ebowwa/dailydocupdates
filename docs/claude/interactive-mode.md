@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/interactive-mode.md
-Downloaded: 2026-04-18T20:12:44.788Z
+Downloaded: 2026-04-21T20:21:42.339Z
 -->
 
 > ## Documentation Index
@@ -18,8 +18,8 @@ Downloaded: 2026-04-18T20:12:44.788Z
 
   **macOS users**: Option/Alt key shortcuts (`Alt+B`, `Alt+F`, `Alt+Y`, `Alt+M`, `Alt+P`, `Alt+T`) require configuring Option as Meta in your terminal:
 
-  * **iTerm2**: settings → Profiles → Keys → set Left/Right Option key to "Esc+"
-  * **Terminal.app**: settings → Profiles → Keyboard → check "Use Option as Meta Key"
+  * **iTerm2**: Settings → Profiles → Keys → General → set Left/Right Option key to "Esc+"
+  * **Apple Terminal**: Settings → Profiles → Keyboard → check "Use Option as Meta Key"
   * **VS Code**: set `"terminal.integrated.macOptionIsMeta": true` in VS Code settings
 
   See [Terminal configuration](/en/terminal-config) for details.
@@ -69,16 +69,16 @@ Downloaded: 2026-04-18T20:12:44.788Z
 
 ### Multiline input
 
-| Method           | Shortcut       | Context                                                 |
-| :--------------- | :------------- | :------------------------------------------------------ |
-| Quick escape     | `\` + `Enter`  | Works in all terminals                                  |
-| macOS default    | `Option+Enter` | Default on macOS                                        |
-| Shift+Enter      | `Shift+Enter`  | Works out of the box in iTerm2, WezTerm, Ghostty, Kitty |
-| Control sequence | `Ctrl+J`       | Line feed character for multiline                       |
-| Paste mode       | Paste directly | For code blocks, logs                                   |
+| Method           | Shortcut       | Context                                                                                            |
+| :--------------- | :------------- | :------------------------------------------------------------------------------------------------- |
+| Quick escape     | `\` + `Enter`  | Works in all terminals                                                                             |
+| Option key       | `Option+Enter` | After enabling [Option as Meta](/en/terminal-config#enable-option-key-shortcuts-on-macos) on macOS |
+| Shift+Enter      | `Shift+Enter`  | Native in iTerm2, WezTerm, Ghostty, Kitty, Warp, Apple Terminal                                    |
+| Control sequence | `Ctrl+J`       | Works in any terminal without configuration                                                        |
+| Paste mode       | Paste directly | For code blocks, logs                                                                              |
 
 <Tip>
-  Shift+Enter works without configuration in iTerm2, WezTerm, Ghostty, and Kitty. For other terminals (VS Code, Alacritty, Zed, Warp), run `/terminal-setup` to install the binding.
+  Shift+Enter works without configuration in iTerm2, WezTerm, Ghostty, Kitty, Warp, and Apple Terminal. For VS Code, Cursor, Windsurf, Alacritty, and Zed, run `/terminal-setup` to install the binding.
 </Tip>
 
 ### Quick commands
@@ -170,6 +170,7 @@ Enable vim-style editing via `/config` → Editor mode.
 | `>>`           | Indent line             |
 | `<<`           | Dedent line             |
 | `J`            | Join lines              |
+| `u`            | Undo                    |
 | `.`            | Repeat last change      |
 
 ### Text objects (NORMAL mode)
@@ -305,7 +306,7 @@ Press **Space**, **Enter**, or **Escape** to dismiss the answer and return to th
 
 When working on complex, multi-step work, Claude creates a task list to track progress. Tasks appear in the status area of your terminal with indicators showing what's pending, in progress, or complete.
 
-* Press `Ctrl+T` to toggle the task list view. The display shows up to 10 tasks at a time
+* Press `Ctrl+T` to toggle the task list view. The display shows up to 5 tasks at a time
 * To see all tasks or clear them, ask Claude directly: "show me all tasks" or "clear all tasks"
 * Tasks persist across context compactions, helping Claude stay organized on larger projects
 * To share a task list across sessions, set `CLAUDE_CODE_TASK_LIST_ID` to use a named directory in `~/.claude/tasks/`: `CLAUDE_CODE_TASK_LIST_ID=my-project claude`

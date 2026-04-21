@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/multivariate/create-market-in-multivariate-event-collection.md
-Downloaded: 2026-04-16T20:19:44.477Z
+Downloaded: 2026-04-21T20:22:05.075Z
 -->
 
 > ## Documentation Index
@@ -540,7 +540,10 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     RateLimitError:
-      description: Rate limit exceeded
+      description: >-
+        Rate limit exceeded. The default cost is 10 tokens per request;
+        endpoints that deviate show a **Rate limit** callout at the top of their
+        own page. See [Rate Limits and Tiers](/getting_started/rate_limits).
       content:
         application/json:
           schema:

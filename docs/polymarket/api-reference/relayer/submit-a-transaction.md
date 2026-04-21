@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/relayer/submit-a-transaction.md
-Downloaded: 2026-04-17T20:17:34.844Z
+Downloaded: 2026-04-21T20:21:44.221Z
 -->
 
 > ## Documentation Index
@@ -10,6 +10,8 @@ Downloaded: 2026-04-17T20:17:34.844Z
 # Submit a transaction
 
 > Submit a transaction request to the Relayer. Authenticated using Builder API Keys or Relayer API Keys.
+
+Returns immediately with the `transactionID` and a `state` of `STATE_NEW`. The onchain transaction hash is **not** included in this response — poll `GET /transaction` with the returned `transactionID` to retrieve the `transactionHash` once the transaction has been broadcast.
 
 **Builder API Key auth headers:**
 - `POLY_BUILDER_API_KEY`
@@ -65,6 +67,12 @@ paths:
       description: >
         Submit a transaction request to the Relayer. Authenticated using Builder
         API Keys or Relayer API Keys.
+
+
+        Returns immediately with the `transactionID` and a `state` of
+        `STATE_NEW`. The onchain transaction hash is **not** included in this
+        response — poll `GET /transaction` with the returned `transactionID` to
+        retrieve the `transactionHash` once the transaction has been broadcast.
 
 
         **Builder API Key auth headers:**
@@ -151,7 +159,6 @@ paths:
                 $ref: '#/components/schemas/SubmitResponse'
               example:
                 transactionID: 0190b317-a1d3-7bec-9b91-eeb6dcd3a620
-                transactionHash: ''
                 state: STATE_NEW
         '400':
           description: Bad Request - Invalid transaction payload, fields, or signature
@@ -252,10 +259,6 @@ components:
           type: string
           description: Unique identifier for the submitted transaction
           example: 0190b317-a1d3-7bec-9b91-eeb6dcd3a620
-        transactionHash:
-          type: string
-          description: Onchain transaction hash (empty on initial submission)
-          example: ''
         state:
           type: string
           description: Current state of the transaction

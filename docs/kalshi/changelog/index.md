@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-04-17T20:17:47.432Z
+Downloaded: 2026-04-21T20:22:05.079Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,53 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Apr 23, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "New rate-limit system goes live",
+description: "A token-cost rate-limit model replaces the previous per-second scheme. All existing tiers get at least as much headroom as before."
+}}
+>
+  Rolling out a new token-cost rate-limit system with separate read and write
+  budgets and a new **Paragon** tier. All existing tiers get at least as much
+  headroom as before and no client changes are required. See
+  [Rate Limits and Tiers](/getting_started/rate_limits) for full details.
+
+  In the coming weeks, single-query read endpoints will be priced below
+  the default cost.
+</Update>
+
+<Update
+  label="Apr 20, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Orderbook snapshot request via WebSocket",
+description: "New get_snapshot action on the orderbook_delta channel returns an immediate orderbook snapshot without modifying the subscription."
+}}
+>
+  Added `get_snapshot` action to `update_subscription` on the `orderbook_delta` WebSocket channel.
+
+  Sends an `orderbook_snapshot` response for the requested markets without adding them to the subscription or affecting the existing delta stream.
+
+  ```json theme={null}
+  {
+    "cmd": "update_subscription",
+    "params": {
+      "sids": [456],
+      "market_tickers": ["MARKET-1", "MARKET-2"],
+      "action": "get_snapshot"
+    }
+  }
+  ```
+
+  Only `market_tickers` is supported (not `market_ticker`, `market_id`, or `market_ids`).
+
+  **Affected channel:**
+
+  * `orderbook_delta`
+</Update>
 
 <Update
   label="Apr 16, 2026"
