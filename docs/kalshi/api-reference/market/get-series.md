@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-series.md
-Downloaded: 2026-04-14T20:23:40.323Z
+Downloaded: 2026-04-22T20:23:25.105Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-04-14T20:23:40.323Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.13.0
+  version: 3.14.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/network-config.md
-Downloaded: 2026-04-21T20:21:42.341Z
+Downloaded: 2026-04-22T20:23:12.846Z
 -->
 
 > ## Documentation Index
@@ -116,6 +116,8 @@ Claude Code requires access to the following URLs:
 * `platform.claude.com`: authentication for Anthropic Console accounts
 
 Ensure these URLs are allowlisted in your proxy configuration and firewall rules. This is especially important when using Claude Code in containerized or restricted network environments.
+
+When using [Bedrock](/en/amazon-bedrock), [Vertex AI](/en/google-vertex-ai), or [Foundry](/en/microsoft-foundry), model traffic goes to your provider instead of `api.anthropic.com`. The WebFetch tool still calls `api.anthropic.com` for its [domain safety check](/en/data-usage#webfetch-domain-safety-check) unless you set `skipWebFetchPreflight: true` in [settings](/en/settings).
 
 The native installer and update checks also require the following URLs. Allowlist both, since clients running older Claude Code versions fetch from `storage.googleapis.com`. If you install Claude Code through npm or manage your own binary distribution, end users may not need access:
 

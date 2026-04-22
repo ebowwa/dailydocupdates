@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/typescript-sdk/api/SeriesApi.md
-Downloaded: 2026-04-14T20:23:40.340Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

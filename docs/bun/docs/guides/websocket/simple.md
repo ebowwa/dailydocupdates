@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/guides/websocket/simple.md
-Downloaded: 2026-04-14T20:23:35.991Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

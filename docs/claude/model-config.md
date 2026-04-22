@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/model-config.md
-Downloaded: 2026-04-17T20:17:30.117Z
+Downloaded: 2026-04-22T20:23:12.846Z
 -->
 
 > ## Documentation Index
@@ -55,6 +55,10 @@ You can configure your model in several ways, listed in order of priority:
 3. **Environment variable** - Set `ANTHROPIC_MODEL=<alias|name>`
 4. **Settings** - Configure permanently in your settings file using the `model`
    field.
+
+Your `/model` selection is saved to user settings and persists across restarts. As of v2.1.117, if the project's `.claude/settings.json` pins a different model, Claude Code also writes your choice to `.claude/settings.local.json` so it continues to apply in that project after a restart. Managed settings take precedence and reapply on the next launch.
+
+When the active model at startup comes from project or managed settings rather than your own selection, the startup header shows which settings file set it. Run `/model` to override for the current session.
 
 Example usage:
 
@@ -170,7 +174,7 @@ Effort is supported on Opus 4.7, Opus 4.6, and Sonnet 4.6. The available levels 
 
 If you set a level the active model does not support, Claude Code falls back to the highest supported level at or below the one you set. For example, `xhigh` runs as `high` on Opus 4.6.
 
-On Opus 4.7, the default effort is `xhigh` for all plans and providers. On Opus 4.6 and Sonnet 4.6, the default is `high`, or `medium` on Pro and Max.
+As of v2.1.117, the default effort is `xhigh` on Opus 4.7 and `high` on Opus 4.6 and Sonnet 4.6.
 
 When you first run Opus 4.7, Claude Code applies `xhigh` even if you previously set a different effort level for Opus 4.6 or Sonnet 4.6. Run `/effort` again to choose a different level after switching.
 

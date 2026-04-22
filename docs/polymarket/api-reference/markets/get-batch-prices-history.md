@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/api-reference/markets/get-batch-prices-history.md
-Downloaded: 2026-04-14T20:23:31.380Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

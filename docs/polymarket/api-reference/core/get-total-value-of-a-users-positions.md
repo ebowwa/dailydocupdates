@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/api-reference/core/get-total-value-of-a-users-positions.md
-Downloaded: 2026-04-14T20:23:31.375Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

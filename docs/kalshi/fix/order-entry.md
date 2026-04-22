@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/order-entry.md
-Downloaded: 2026-04-14T20:23:40.332Z
+Downloaded: 2026-04-22T20:23:25.114Z
 -->
 
 > ## Documentation Index
@@ -191,6 +191,7 @@ Common values for the Text field in Execution Reports:
 * **TAKER\_CANCEL\_FOR\_SELF\_TRADE\_PREVENTION** - maps to ExecutionType "Canceled"
 * **MAKER\_CANCEL\_FOR\_SELF\_TRADE\_PREVENTION** - maps to ExecutionType "Canceled"
 * **IMMEDIATE\_OR\_CANCELLED** - maps to ExecutionType "Canceled"
+* **EXPIRED** - maps to OrdRejReason "Stale order" (RFQ quote had expired when the order arrived)
 
 ### OrderCancelReject (35=9)
 

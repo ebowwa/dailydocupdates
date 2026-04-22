@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/permissions.md
-Downloaded: 2026-04-21T20:21:42.342Z
+Downloaded: 2026-04-22T20:23:12.847Z
 -->
 
 > ## Documentation Index
@@ -304,7 +304,7 @@ The following settings are only read from managed settings. Placing them in user
 | `pluginTrustMessage`                           | Custom message appended to the plugin trust warning shown before installation                                                                                                                                                               |
 | `sandbox.filesystem.allowManagedReadPathsOnly` | When `true`, only `filesystem.allowRead` paths from managed settings are respected. `denyRead` still merges from all sources                                                                                                                |
 | `sandbox.network.allowManagedDomainsOnly`      | When `true`, only `allowedDomains` and `WebFetch(domain:...)` allow rules from managed settings are respected. Non-allowed domains are blocked automatically without prompting the user. Denied domains still merge from all sources        |
-| `strictKnownMarketplaces`                      | Controls which plugin marketplaces users can add. See [managed marketplace restrictions](/en/plugin-marketplaces#managed-marketplace-restrictions)                                                                                          |
+| `strictKnownMarketplaces`                      | Controls which plugin marketplace sources users can add and install plugins from. See [managed marketplace restrictions](/en/plugin-marketplaces#managed-marketplace-restrictions)                                                          |
 
 `disableBypassPermissionsMode` is typically placed in managed settings to enforce organizational policy, but it works from any scope. A user can set it in their own settings to lock themselves out of bypass mode.
 
@@ -320,9 +320,11 @@ To react to denials programmatically, use the [`PermissionDenied` hook](/en/hook
 
 ## Configure the auto mode classifier
 
-[Auto mode](/en/permission-modes#eliminate-prompts-with-auto-mode) uses a classifier model to decide whether each action is safe to run without prompting. Out of the box it trusts only the working directory and, if present, the current repo's remotes. Actions like pushing to your company's source control org or writing to a team cloud bucket will be blocked as potential data exfiltration. The `autoMode` settings block lets you tell the classifier which infrastructure your organization trusts.
+[Auto mode](/en/permission-modes#eliminate-prompts-with-auto-mode) uses a classifier model to decide whether each action is safe to run without prompting. Out of the box it trusts only the working directory and, if present, the current repo's remotes. Actions like pushing to your company's source control org or writing to a team cloud bucket will be blocked as potential data exfiltration.
 
-The classifier reads `autoMode` from user settings, `.claude/settings.local.json`, and managed settings. It does not read from shared project settings in `.claude/settings.json`, because a checked-in repo could otherwise inject its own allow rules.
+To adjust what the classifier allows or blocks, add instructions to your [CLAUDE.md](/en/memory) file. The classifier reads CLAUDE.md from trusted directories alongside the conversation, so an instruction like "never force push" steers both Claude and the classifier at the same time. Start here for project conventions and behavioral rules.
+
+For rules that apply across projects, such as trusted infrastructure or organization-wide deny rules, use the `autoMode` settings block. The classifier reads `autoMode` from user settings, `.claude/settings.local.json`, and managed settings. It does not read from shared project settings in `.claude/settings.json`, because a checked-in repo could otherwise inject its own allow rules.
 
 | Scope                      | File                          | Use for                                             |
 | :------------------------- | :---------------------------- | :-------------------------------------------------- |

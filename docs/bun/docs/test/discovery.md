@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/test/discovery.md
-Downloaded: 2026-04-14T20:23:36.012Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

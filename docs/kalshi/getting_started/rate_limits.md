@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/rate_limits.md
-Downloaded: 2026-04-21T20:22:05.082Z
+Downloaded: 2026-04-22T20:23:25.118Z
 -->
 
 > ## Documentation Index
@@ -32,8 +32,6 @@ A batch request costs the same as making each call individually — every item i
 
 * [Batch Create Orders](/api-reference/orders/batch-create-orders): submitting 25 orders costs `25 × 10 = 250` tokens.
 * [Batch Cancel Orders](/api-reference/orders/batch-cancel-orders): cancelling 25 orders costs `25 × 2 = 50` tokens.
-
-Use batches for **latency** (one round trip instead of N), not for a budget discount.
 
 ## Tiers and budgets
 
