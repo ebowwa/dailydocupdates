@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/websockets/market-ticker.md
-Downloaded: 2026-04-16T20:19:44.487Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/scheduled-tasks.md
-Downloaded: 2026-04-18T20:12:44.792Z
+Downloaded: 2026-04-23T20:23:59.533Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,7 @@ Tasks are session-scoped: they live in the current conversation and stop when yo
 
 ## Compare scheduling options
 
-Claude Code offers three ways to schedule recurring work:
+Claude Code offers three ways to schedule recurring or one-off work:
 
 |                            | [Cloud](/en/routines)          | [Desktop](/en/desktop-scheduled-tasks) | [`/loop`](/en/scheduled-tasks)      |
 | :------------------------- | :----------------------------- | :------------------------------------- | :---------------------------------- |

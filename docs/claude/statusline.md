@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/statusline.md
-Downloaded: 2026-04-21T20:21:42.345Z
+Downloaded: 2026-04-23T20:23:59.535Z
 -->
 
 > ## Documentation Index
@@ -177,7 +177,7 @@ Claude Code sends the following JSON fields to your script via stdin:
 | `transcript_path`                                                                | Path to conversation transcript file                                                                                                                                                                                                       |
 | `version`                                                                        | Claude Code version                                                                                                                                                                                                                        |
 | `output_style.name`                                                              | Name of the current output style                                                                                                                                                                                                           |
-| `vim.mode`                                                                       | Current vim mode (`NORMAL` or `INSERT`) when [vim mode](/en/interactive-mode#vim-editor-mode) is enabled                                                                                                                                   |
+| `vim.mode`                                                                       | Current vim mode (`NORMAL`, `INSERT`, `VISUAL`, or `VISUAL LINE`) when [vim mode](/en/interactive-mode#vim-editor-mode) is enabled                                                                                                         |
 | `agent.name`                                                                     | Agent name when running with the `--agent` flag or agent settings configured                                                                                                                                                               |
 | `worktree.name`                                                                  | Name of the active worktree. Present only during `--worktree` sessions                                                                                                                                                                     |
 | `worktree.path`                                                                  | Absolute path to the worktree directory                                                                                                                                                                                                    |

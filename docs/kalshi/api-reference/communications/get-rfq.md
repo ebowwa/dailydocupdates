@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/get-rfq.md
-Downloaded: 2026-04-22T20:23:25.099Z
+Downloaded: 2026-04-23T20:24:15.171Z
 -->
 
 > ## Documentation Index
@@ -162,6 +162,11 @@ components:
           type: string
           description: User ID of the RFQ creator (private field)
           x-go-type-skip-optional-pointer: true
+        creator_subaccount:
+          type: integer
+          description: >-
+            Subaccount number of the RFQ creator (visible when the caller is the
+            RFQ creator)
         cancelled_ts:
           type: string
           format: date-time

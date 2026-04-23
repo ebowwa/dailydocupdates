@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/agent-teams.md
+Downloaded: 2026-04-23T20:23:59.517Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -262,11 +267,7 @@ Each teammate has its own context window. When spawned, a teammate loads the sam
 * **Automatic message delivery**: when teammates send messages, they're delivered automatically to recipients. The lead doesn't need to poll for updates.
 * **Idle notifications**: when a teammate finishes and stops, they automatically notify the lead.
 * **Shared task list**: all agents can see task status and claim available work.
-
-**Teammate messaging:**
-
-* **message**: send a message to one specific teammate
-* **broadcast**: send to all teammates simultaneously. Use sparingly, as costs scale with team size.
+* **Teammate messaging**: send a message to one specific teammate by name. To reach everyone, send one message per recipient.
 
 The lead assigns every teammate a name when it spawns them, and any teammate can message any other by that name. To get predictable names you can reference in later prompts, tell the lead what to call each teammate in your spawn instruction.
 

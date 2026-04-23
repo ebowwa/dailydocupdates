@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/get-quotes.md
-Downloaded: 2026-04-22T20:23:25.099Z
+Downloaded: 2026-04-23T20:24:15.171Z
 -->
 
 > ## Documentation Index
@@ -272,6 +272,16 @@ components:
           type: string
           description: Order ID for the quote creator (private field)
           x-go-type-skip-optional-pointer: true
+        creator_subaccount:
+          type: integer
+          description: >-
+            Subaccount number of the quote creator (visible when the caller is
+            the quote creator)
+        rfq_creator_subaccount:
+          type: integer
+          description: >-
+            Subaccount number of the RFQ creator (visible when the caller is the
+            RFQ creator)
         yes_contracts_fp:
           $ref: '#/components/schemas/FixedPointCount'
           description: Number of YES contracts offered in the quote (fixed-point)

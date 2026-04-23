@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/admin-setup.md
-Downloaded: 2026-04-21T20:21:42.325Z
+Downloaded: 2026-04-23T20:23:59.510Z
 -->
 
 > ## Documentation Index
@@ -60,6 +60,8 @@ If your organization mixes providers, configure [server-managed settings](/en/se
 
 The plist and HKLM registry locations work with any provider and resist tampering because they require admin privileges to write. The Windows user registry at HKCU is writable without elevation, so treat it as a convenience default rather than an enforcement channel.
 
+By default WSL reads only the Linux file path at `/etc/claude-code`. To extend your Windows registry and `C:\Program Files\ClaudeCode` policy to WSL on the same machine, set [`wslInheritsWindowsSettings: true`](/en/settings#available-settings) in either of those admin-only Windows sources.
+
 Whichever mechanism you choose, managed values take precedence over user and project settings. Array settings such as `permissions.allow` and `permissions.deny` merge entries from all sources, so developers can extend managed lists but not remove from them.
 
 See [Server-managed settings](/en/server-managed-settings) and [Settings files and precedence](/en/settings#settings-files).
@@ -75,7 +77,7 @@ Managed settings can lock down tools, sandbox execution, restrict MCP servers an
 | [Sandboxing](/en/sandboxing)                                                           | OS-level filesystem and network isolation with domain allowlists              | `sandbox.enabled`, `sandbox.network.allowedDomains`                           |
 | [Managed policy CLAUDE.md](/en/memory#deploy-organization-wide-claude-md)              | Org-wide instructions loaded in every session, cannot be excluded             | File at the managed policy path                                               |
 | [MCP server control](/en/mcp#managed-mcp-configuration)                                | Restrict which MCP servers users can add or connect to                        | `allowedMcpServers`, `deniedMcpServers`, `allowManagedMcpServersOnly`         |
-| [Plugin marketplace control](/en/plugin-marketplaces#managed-marketplace-restrictions) | Restrict which marketplace sources users can add                              | `strictKnownMarketplaces`, `blockedMarketplaces`                              |
+| [Plugin marketplace control](/en/plugin-marketplaces#managed-marketplace-restrictions) | Restrict which marketplace sources users can add and install from             | `strictKnownMarketplaces`, `blockedMarketplaces`                              |
 | [Hook restrictions](/en/settings#hook-configuration)                                   | Only managed hooks load; restrict HTTP hook URLs                              | `allowManagedHooksOnly`, `allowedHttpHookUrls`                                |
 | [Version floor](/en/settings)                                                          | Prevent auto-update from installing below an org-wide minimum                 | `minimumVersion`                                                              |
 

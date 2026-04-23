@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/overview.md
-Downloaded: 2026-04-22T20:23:12.847Z
+Downloaded: 2026-04-23T20:23:59.530Z
 -->
 
 > ## Documentation Index
@@ -708,6 +708,8 @@ Choose your environment to get started. Most surfaces require a [Claude subscrip
         </Info>
       </Tab>
     </Tabs>
+
+    You can also install with [apt, dnf, or apk](/en/setup#install-with-linux-package-managers) on Debian, Fedora, RHEL, and Alpine.
 
     Then start Claude Code in any project:
 
