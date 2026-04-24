@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/agent-sdk/typescript-v2-preview.md
-Downloaded: 2026-04-17T20:17:30.107Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/how-claude-code-works.md
-Downloaded: 2026-04-17T20:17:30.116Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

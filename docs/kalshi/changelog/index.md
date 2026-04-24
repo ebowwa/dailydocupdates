@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-04-23T20:24:15.179Z
+Downloaded: 2026-04-24T20:18:50.688Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,39 @@ You can reference the pending API spec under the "version" dropdown menu at the 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Apr 22, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Endpoint cost introspection",
+description: "Added a public endpoint that lists endpoints whose configured token cost differs from the default 10-token cost."
+}}
+>
+  Added a public endpoint to inspect the routes whose configured token
+  cost differs from the default 10-token cost.
+
+  The response includes `default_cost` for context and lists only the
+  endpoints that do not use that default cost.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/account/endpoint_costs`
+</Update>
+
+<Update
+  label="Apr 23, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Short bursts on Write endpoints",
+description: "Write endpoints now allow brief bursts above your per-second budget."
+}}
+>
+  Write endpoints now allow brief bursts above your per-second budget — when
+  your client is running below its steady rate, the unused capacity
+  accumulates and can be spent in a single pulse. See
+  [Rate Limits and Tiers](/getting_started/rate_limits) for details.
+</Update>
 
 <Update
   label="Apr 23, 2026"

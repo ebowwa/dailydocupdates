@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/typescript.md
-Downloaded: 2026-04-23T20:23:59.516Z
+Downloaded: 2026-04-24T20:18:49.722Z
 -->
 
 > ## Documentation Index
@@ -340,7 +340,7 @@ Configuration object for the `query()` function.
 | `disallowedTools`                 | `string[]`                                                                                               | `[]`                                        | Tools to always deny. Deny rules are checked first and override `allowedTools` and `permissionMode` (including `bypassPermissions`)                                                                                                                                                                                                                                                                                                                                                 |
 | `effort`                          | `'low' \| 'medium' \| 'high' \| 'xhigh' \| 'max'`                                                        | `'high'`                                    | Controls how much effort Claude puts into its response. Works with adaptive thinking to guide thinking depth                                                                                                                                                                                                                                                                                                                                                                        |
 | `enableFileCheckpointing`         | `boolean`                                                                                                | `false`                                     | Enable file change tracking for rewinding. See [File checkpointing](/en/agent-sdk/file-checkpointing)                                                                                                                                                                                                                                                                                                                                                                               |
-| `env`                             | `Record<string, string \| undefined>`                                                                    | `process.env`                               | Environment variables. Set `CLAUDE_AGENT_SDK_CLIENT_APP` to identify your app in the User-Agent header                                                                                                                                                                                                                                                                                                                                                                              |
+| `env`                             | `Record<string, string \| undefined>`                                                                    | `process.env`                               | Environment variables. See [Environment variables](/en/env-vars) for variables the underlying CLI reads. Set `CLAUDE_AGENT_SDK_CLIENT_APP` to identify your app in the User-Agent header                                                                                                                                                                                                                                                                                            |
 | `executable`                      | `'bun' \| 'deno' \| 'node'`                                                                              | Auto-detected                               | JavaScript runtime to use                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `executableArgs`                  | `string[]`                                                                                               | `[]`                                        | Arguments to pass to the executable                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | `extraArgs`                       | `Record<string, string \| null>`                                                                         | `{}`                                        | Additional arguments                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -1131,6 +1131,7 @@ type PostToolUseHookInput = BaseHookInput & {
   tool_input: unknown;
   tool_response: unknown;
   tool_use_id: string;
+  duration_ms?: number;
 };
 ```
 
@@ -1144,6 +1145,7 @@ type PostToolUseFailureHookInput = BaseHookInput & {
   tool_use_id: string;
   error: string;
   is_interrupt?: boolean;
+  duration_ms?: number;
 };
 ```
 
@@ -2275,6 +2277,7 @@ type SlashCommand = {
   name: string;
   description: string;
   argumentHint: string;
+  aliases?: string[];
 };
 ```
 
