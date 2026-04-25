@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/terminal-config.md
-Downloaded: 2026-04-24T20:18:49.738Z
+Downloaded: 2026-04-25T20:15:08.529Z
 -->
 
 > ## Documentation Index
@@ -149,6 +149,92 @@ The following example defines a theme that keeps the dark preset but recolors th
 ```
 
 Claude Code watches `~/.claude/themes/` and reloads when a file changes, so edits made in your editor apply to a running session without a restart.
+
+Below is the full list of customizations you can set in `overrides`. The interactive editor in `/theme` shows the same tokens with a live preview, including a small number of internal tokens not covered here.
+
+<Accordion title="Color token reference">
+  The following example combines tokens from several of the groups below: the brand accent, the plan mode border, the diff backgrounds, and the fullscreen message background.
+
+  ```json ~/.claude/themes/midnight.json theme={null}
+  {
+    "name": "Midnight",
+    "base": "dark",
+    "overrides": {
+      "claude": "#a78bfa",
+      "planMode": "#38bdf8",
+      "diffAdded": "#14532d",
+      "diffRemoved": "#7f1d1d",
+      "userMessageBackground": "#1e1b4b"
+    }
+  }
+  ```
+
+  #### Text and accent colors
+
+  Control the primary brand accent and the foreground text shades used throughout the interface.
+
+  | Token         | Controls                                                         |
+  | :------------ | :--------------------------------------------------------------- |
+  | `claude`      | Primary brand accent, used for the spinner and assistant label   |
+  | `text`        | Default foreground text                                          |
+  | `inverseText` | Text drawn on top of a colored background, such as status badges |
+  | `inactive`    | Secondary text such as hints, timestamps, and disabled items     |
+  | `subtle`      | Faint borders and de-emphasized secondary text                   |
+  | `permission`  | Dialog borders, including permission prompts and pickers         |
+  | `remember`    | Memory and `CLAUDE.md` indicators                                |
+
+  #### Status colors
+
+  Signal success, failure, and warning states across messages and indicators.
+
+  | Token     | Controls                                             |
+  | :-------- | :--------------------------------------------------- |
+  | `success` | Success messages and passing checks                  |
+  | `error`   | Error messages and failures                          |
+  | `warning` | Warnings, caution messages, and the auto mode border |
+  | `merged`  | Merged pull request status                           |
+
+  #### Input box and mode indicators
+
+  Set the input box border color and the accent shown while a permission mode or indicator is active.
+
+  | Token          | Controls                                           |
+  | :------------- | :------------------------------------------------- |
+  | `promptBorder` | Input box border in the default permission mode    |
+  | `planMode`     | Plan mode accent and border                        |
+  | `autoAccept`   | Accept-edits mode accent and border                |
+  | `bashBorder`   | Input box border when entering a `!` shell command |
+  | `ide`          | IDE connection indicator                           |
+  | `fastMode`     | Fast mode indicator                                |
+
+  #### Diff rendering
+
+  Color added and removed code in file edits and reviews.
+
+  | Token               | Controls                                           |
+  | :------------------ | :------------------------------------------------- |
+  | `diffAdded`         | Background of added lines                          |
+  | `diffRemoved`       | Background of removed lines                        |
+  | `diffAddedDimmed`   | Background of unchanged context near added lines   |
+  | `diffRemovedDimmed` | Background of unchanged context near removed lines |
+  | `diffAddedWord`     | Word-level highlight within an added line          |
+  | `diffRemovedWord`   | Word-level highlight within a removed line         |
+
+  #### Fullscreen mode
+
+  Apply only in [fullscreen rendering mode](/en/fullscreen), where messages have a background fill.
+
+  | Token                   | Controls                                          |
+  | :---------------------- | :------------------------------------------------ |
+  | `userMessageBackground` | Background behind your messages in the transcript |
+  | `selectionBg`           | Background of text selected with the mouse        |
+
+  #### Shimmer variants and subagent colors
+
+  Several tokens have a paired `Shimmer` variant, such as `claudeShimmer` and `warningShimmer`, that supplies the lighter color used in the spinner's animated gradient. Override the shimmer alongside its base token if the animation looks mismatched.
+
+  Each [subagent](/en/sub-agents) and parallel task is shown in one of eight named colors so you can tell them apart in the transcript. The token names follow the pattern `<color>_FOR_SUBAGENTS_ONLY`, where `<color>` is `red`, `blue`, `green`, `yellow`, `purple`, `orange`, `pink`, or `cyan`. Override these to change what each named color looks like. For example, a subagent with `color: blue` in its definition is drawn using the `blue_FOR_SUBAGENTS_ONLY` value.
+</Accordion>
 
 ## Switch to fullscreen rendering
 
