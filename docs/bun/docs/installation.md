@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/installation.md
-Downloaded: 2026-04-19T20:13:26.837Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

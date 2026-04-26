@@ -1,8 +1,13 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/quick_start_authenticated_requests.md
+Downloaded: 2026-04-26T20:15:52.539Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Quick Start: Authenticated Requests (No SDK)
+# Quick Start: Authenticated Requests
 
 > Three simple steps to make your first authenticated API request to Kalshi
 

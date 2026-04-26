@@ -1,8 +1,13 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/quick_start_websockets.md
+Downloaded: 2026-04-26T20:15:52.540Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Quick Start: WebSockets (No SDK)
+# Quick Start: WebSockets
 
 > Learn how to establish and maintain a WebSocket connection to stream real-time market data
 
