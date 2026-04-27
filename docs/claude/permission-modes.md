@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/permission-modes.md
-Downloaded: 2026-04-24T20:18:49.735Z
+Downloaded: 2026-04-27T20:28:19.593Z
 -->
 
 > ## Documentation Index
@@ -249,7 +249,7 @@ claude --permission-mode dontAsk
 
 ## Skip all checks with bypassPermissions mode
 
-`bypassPermissions` mode disables permission prompts and safety checks so tool calls execute immediately. Writes to [protected paths](#protected-paths) are the only actions that still prompt. Only use this mode in isolated environments like containers, VMs, or devcontainers without internet access, where Claude Code cannot damage your host system.
+`bypassPermissions` mode disables permission prompts and safety checks so tool calls execute immediately. Writes to [protected paths](#protected-paths) are the only actions that still prompt. Only use this mode in isolated environments like containers, VMs, or dev containers without internet access, where Claude Code cannot damage your host system.
 
 You cannot enter `bypassPermissions` from a session that was started without one of the enabling flags; restart with one to enable it:
 

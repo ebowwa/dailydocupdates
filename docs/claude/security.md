@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/security.md
+Downloaded: 2026-04-27T20:28:19.595Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -114,7 +119,7 @@ For more details on cloud execution, see [Claude Code on the web](/en/claude-cod
 
 * Review all suggested changes before approval
 * Use project-specific permission settings for sensitive repositories
-* Consider using [devcontainers](/en/devcontainer) for additional isolation
+* Consider using [dev containers](/en/devcontainer) for additional isolation
 * Regularly audit your permission settings with `/permissions`
 
 ### Team security

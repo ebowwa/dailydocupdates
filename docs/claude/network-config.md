@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/network-config.md
-Downloaded: 2026-04-23T20:23:59.530Z
+Downloaded: 2026-04-27T20:28:19.593Z
 -->
 
 > ## Documentation Index
@@ -121,6 +121,8 @@ Claude Code requires access to the following URLs. Allowlist these in your proxy
 | `bridge.claudeusercontent.com` | [Claude in Chrome](/en/chrome) extension WebSocket bridge                                         |
 
 If you install Claude Code through npm or manage your own binary distribution, end users may not need access to `downloads.claude.ai` or `storage.googleapis.com`.
+
+Claude Code also sends optional operational telemetry by default, which you can disable with environment variables. See [Telemetry services](/en/data-usage#telemetry-services) for how to disable it before finalizing your allowlist.
 
 When using [Amazon Bedrock](/en/amazon-bedrock), [Google Vertex AI](/en/google-vertex-ai), or [Microsoft Foundry](/en/microsoft-foundry), model traffic and authentication go to your provider instead of `api.anthropic.com`, `claude.ai`, or `platform.claude.com`. The WebFetch tool still calls `api.anthropic.com` for its [domain safety check](/en/data-usage#webfetch-domain-safety-check) unless you set `skipWebFetchPreflight: true` in [settings](/en/settings).
 
