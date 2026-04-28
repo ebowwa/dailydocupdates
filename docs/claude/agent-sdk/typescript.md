@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/typescript.md
-Downloaded: 2026-04-24T20:18:49.722Z
+Downloaded: 2026-04-28T20:32:51.849Z
 -->
 
 > ## Documentation Index
@@ -1380,6 +1380,8 @@ type SyncHookJSONOutput = {
     | {
         hookEventName: "PostToolUse";
         additionalContext?: string;
+        updatedToolOutput?: unknown;
+        /** @deprecated Use `updatedToolOutput`, which works for all tools. */
         updatedMCPToolOutput?: unknown;
       }
     | {

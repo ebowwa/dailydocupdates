@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/orders/cancel.md
+Downloaded: 2026-04-28T20:33:25.685Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -126,7 +131,7 @@ Cancel all orders for a specific market, optionally filtered to a single token. 
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::request::CancelMarketOrderRequest;
+  use polymarket_client_sdk_v2::clob::types::request::CancelMarketOrderRequest;
 
   let request = CancelMarketOrderRequest::builder()
       .market("0xbd31dc8a...".parse()?)
@@ -191,7 +196,7 @@ Retrieve all open orders, optionally filtered by market or token:
   ```
 
   ```python Python theme={null}
-  from py_clob_client.clob_types import OpenOrderParams
+  from py_clob_client_v2 import OpenOrderParams
 
   # All open orders
   orders = client.get_orders()
@@ -203,7 +208,7 @@ Retrieve all open orders, optionally filtered by market or token:
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::request::OrdersRequest;
+  use polymarket_client_sdk_v2::clob::types::request::OrdersRequest;
 
   // All open orders
   let orders = client.orders(&OrdersRequest::default(), None).await?;
@@ -262,7 +267,7 @@ When an order is matched, it creates a trade. Trades progress through these stat
   ```
 
   ```python Python theme={null}
-  from py_clob_client.clob_types import TradeParams
+  from py_clob_client_v2 import TradeParams
 
   trades = client.get_trades()
 
@@ -272,7 +277,7 @@ When an order is matched, it creates a trade. Trades progress through these stat
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::request::TradesRequest;
+  use polymarket_client_sdk_v2::clob::types::request::TradesRequest;
 
   // All trades
   let trades = client.trades(&TradesRequest::default(), None).await?;
@@ -356,7 +361,7 @@ Check if your resting orders are eligible for [maker rebates](/market-makers/mak
   ```
 
   ```python Python theme={null}
-  from py_clob_client.clob_types import OrderScoringParams, OrdersScoringParams
+  from py_clob_client_v2 import OrderScoringParams, OrdersScoringParams
 
   scoring = client.is_order_scoring(
       OrderScoringParams(orderId="0x...")

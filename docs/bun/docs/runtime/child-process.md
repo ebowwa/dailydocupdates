@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/runtime/child-process.md
-Downloaded: 2026-04-21T20:21:49.447Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

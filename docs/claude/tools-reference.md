@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/tools-reference.md
-Downloaded: 2026-04-24T20:18:49.739Z
+Downloaded: 2026-04-28T20:32:51.865Z
 -->
 
 > ## Documentation Index
@@ -134,7 +134,6 @@ The PowerShell tool has the following known limitations during the preview:
 
 * PowerShell profiles are not loaded
 * On Windows, sandboxing is not supported
-* On Windows, Git Bash is still required to start Claude Code
 
 ## Check which tools are available
 

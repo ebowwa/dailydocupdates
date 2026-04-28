@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/quickstart.md
+Downloaded: 2026-04-28T20:33:25.682Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -52,8 +57,8 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
 
       <Tab title="Rust">
         ```rust theme={null}
-        use polymarket_client_sdk::gamma::Client;
-        use polymarket_client_sdk::gamma::types::request::MarketsRequest;
+        use polymarket_client_sdk_v2::gamma::Client;
+        use polymarket_client_sdk_v2::gamma::types::request::MarketsRequest;
 
         let client = Client::default();
 
@@ -77,7 +82,7 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
   <Step title="Install the SDK">
     <CodeGroup>
       ```bash TypeScript theme={null}
-      npm install @polymarket/clob-client-v2 ethers@5
+      npm install @polymarket/clob-client-v2 viem
       ```
 
       ```bash Python theme={null}
@@ -85,7 +90,7 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
       ```
 
       ```bash Rust theme={null}
-      cargo add polymarket-client-sdk
+      cargo add polymarket_client_sdk_v2 --features gamma,clob
       ```
     </CodeGroup>
   </Step>
@@ -97,11 +102,13 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
       <Tab title="TypeScript">
         ```typescript theme={null}
         import { ClobClient } from "@polymarket/clob-client-v2";
-        import { Wallet } from "ethers"; // v5.8.0
+        import { createWalletClient, http } from "viem";
+        import { privateKeyToAccount } from "viem/accounts";
 
         const HOST = "https://clob.polymarket.com";
         const CHAIN_ID = 137; // Polygon mainnet
-        const signer = new Wallet(process.env.PRIVATE_KEY);
+        const account = privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`);
+        const signer = createWalletClient({ account, transport: http() });
 
         // Derive API credentials (L1 → L2 auth)
         const tempClient = new ClobClient({ host: HOST, chain: CHAIN_ID, signer });
@@ -114,14 +121,14 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
           signer,
           creds: apiCreds,
           signatureType: 0, // Signature type: 0 = EOA
-          funderAddress: signer.address, // Funder address
+          funderAddress: account.address, // Funder address
         });
         ```
       </Tab>
 
       <Tab title="Python">
         ```python theme={null}
-        from py_clob_client.client import ClobClient
+        from py_clob_client_v2 import ClobClient
         import os
 
         host = "https://clob.polymarket.com"
@@ -129,14 +136,14 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
         private_key = os.getenv("PRIVATE_KEY")
 
         # Derive API credentials (L1 → L2 auth)
-        temp_client = ClobClient(host, key=private_key, chain=chain)
-        api_creds = temp_client.create_or_derive_api_creds()
+        temp_client = ClobClient(host, key=private_key, chain_id=chain)
+        api_creds = temp_client.create_or_derive_api_key()
 
         # Initialize trading client
         client = ClobClient(
             host,
             key=private_key,
-            chain=chain,
+            chain_id=chain,
             creds=api_creds,
             signature_type=0,  # Signature type: 0 = EOA
             funder="YOUR_WALLET_ADDRESS",  # Funder address
@@ -147,9 +154,9 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
       <Tab title="Rust">
         ```rust theme={null}
         use std::str::FromStr;
-        use polymarket_client_sdk::POLYGON;
-        use polymarket_client_sdk::auth::{LocalSigner, Signer};
-        use polymarket_client_sdk::clob::{Client, Config};
+        use polymarket_client_sdk_v2::POLYGON;
+        use polymarket_client_sdk_v2::auth::{LocalSigner, Signer};
+        use polymarket_client_sdk_v2::clob::{Client, Config};
 
         let private_key = std::env::var("POLYMARKET_PRIVATE_KEY")?;
         let signer = LocalSigner::from_str(&private_key)?
@@ -197,7 +204,6 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
             price: 0.50,
             size: 10,
             side: Side.BUY,
-            orderType: OrderType.GTC,
           },
           {
             tickSize,
@@ -212,8 +218,8 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
 
       <Tab title="Python">
         ```python theme={null}
-        from py_clob_client.clob_types import OrderArgs, OrderType
-        from py_clob_client.order_builder.constants import BUY
+        from py_clob_client_v2 import OrderArgs, OrderType, PartialCreateOrderOptions
+        from py_clob_client_v2.order_builder.constants import BUY
 
         # Fetch market details to get tick size and neg risk
         market = client.get_market("YOUR_CONDITION_ID")
@@ -226,12 +232,9 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
                 price=0.50,
                 size=10,
                 side=BUY,
-                order_type=OrderType.GTC,
             ),
-            options={
-                "tick_size": tick_size,
-                "neg_risk": neg_risk,
-            },
+            options=PartialCreateOrderOptions(tick_size=tick_size, neg_risk=neg_risk),
+            order_type=OrderType.GTC,
         )
 
         print("Order ID:", response["orderID"])
@@ -241,8 +244,8 @@ Get up and running with the Polymarket API in minutes — fetch market data and 
 
       <Tab title="Rust">
         ```rust theme={null}
-        use polymarket_client_sdk::clob::types::Side;
-        use polymarket_client_sdk::types::dec;
+        use polymarket_client_sdk_v2::clob::types::Side;
+        use polymarket_client_sdk_v2::types::dec;
 
         // token_id is a U256 — parse from the string returned in Step 1
         let token_id = "YOUR_TOKEN_ID".parse()?;

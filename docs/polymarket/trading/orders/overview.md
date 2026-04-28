@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/orders/overview.md
+Downloaded: 2026-04-28T20:33:25.686Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -106,6 +111,9 @@ Multi-outcome events (e.g., "Who will win the election?" with 3+ candidates) use
   ```
 
   ```python Python theme={null}
+  from py_clob_client_v2 import OrderArgs, PartialCreateOrderOptions
+  from py_clob_client_v2.order_builder.constants import BUY
+
   response = client.create_and_post_order(
       OrderArgs(
           token_id="TOKEN_ID",
@@ -113,10 +121,10 @@ Multi-outcome events (e.g., "Who will win the election?" with 3+ candidates) use
           size=10,
           side=BUY,
       ),
-      options={
-          "tick_size": "0.01",
-          "neg_risk": True,  # Required for multi-outcome markets
-      }
+      options=PartialCreateOrderOptions(
+          tick_size="0.01",
+          neg_risk=True,  # Required for multi-outcome markets
+      )
   )
   ```
 
@@ -232,7 +240,7 @@ Retrieve your open orders, optionally filtered by market or asset:
   ```
 
   ```python Python theme={null}
-  from py_clob_client.clob_types import OpenOrderParams
+  from py_clob_client_v2 import OpenOrderParams
 
   # All open orders
   orders = client.get_orders()
@@ -246,7 +254,7 @@ Retrieve your open orders, optionally filtered by market or asset:
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::request::OrdersRequest;
+  use polymarket_client_sdk_v2::clob::types::request::OrdersRequest;
 
   // All open orders
   let orders = client.orders(&OrdersRequest::default(), None).await?;
@@ -360,7 +368,7 @@ Retrieve your trades with the SDK:
   ```
 
   ```python Python theme={null}
-  from py_clob_client.clob_types import TradeParams
+  from py_clob_client_v2 import TradeParams
 
   # All trades
   trades = client.get_trades()
@@ -374,7 +382,7 @@ Retrieve your trades with the SDK:
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::request::TradesRequest;
+  use polymarket_client_sdk_v2::clob::types::request::TradesRequest;
 
   // All trades
   let trades = client.trades(&TradesRequest::default(), None).await?;
@@ -445,7 +453,7 @@ Check if your resting orders are eligible for [maker rebates](/market-makers/mak
   ```
 
   ```python Python theme={null}
-  from py_clob_client.clob_types import OrderScoringParams, OrdersScoringParams
+  from py_clob_client_v2 import OrderScoringParams, OrdersScoringParams
 
   # Single order
   scoring = client.is_order_scoring(

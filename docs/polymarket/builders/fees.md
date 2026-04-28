@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/builders/fees.md
+Downloaded: 2026-04-28T20:33:25.680Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -88,11 +93,11 @@ The V2 SDK handles builder codes natively — no separate signing library, no ex
 
 <CodeGroup>
   ```bash TypeScript theme={null}
-  npm install @polymarket/clob-client-v2@1.0.0
+  npm install @polymarket/clob-client-v2 viem
   ```
 
   ```bash Python theme={null}
-  pip install py-clob-client-v2==1.0.0
+  pip install py-clob-client-v2
   ```
 </CodeGroup>
 

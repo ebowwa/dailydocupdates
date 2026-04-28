@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/clients/public.md
+Downloaded: 2026-04-28T20:33:25.684Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -27,11 +32,11 @@ Public methods require the client to initialize with the host URL and Polygon ch
 
   <Tab title="Python">
     ```python theme={null}
-    from py_clob_client.client import ClobClient
+    from py_clob_client_v2 import ClobClient
 
     client = ClobClient(
         host="https://clob.polymarket.com",
-        chain=137
+        chain_id=137
     )
 
     # Ready to call public methods

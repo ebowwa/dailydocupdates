@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/plugin-dependencies.md
-Downloaded: 2026-04-24T20:18:49.735Z
+Downloaded: 2026-04-28T20:32:51.861Z
 -->
 
 > ## Documentation Index
@@ -118,6 +118,24 @@ When several installed plugins constrain the same dependency, Claude Code inters
 Auto-update fetches a constrained dependency at the highest git tag that satisfies every installed plugin's range, rather than at the marketplace's latest version, so the dependency continues to receive updates within its allowed range. If no tag satisfies all ranges, the update is skipped and the skip appears in `/doctor` and the `/plugin` Errors tab, naming the constraining plugin.
 
 When you uninstall the last plugin that constrains a dependency, the dependency is no longer held and resumes tracking its marketplace entry on the next update.
+
+## Remove orphaned auto-installed dependencies
+
+Auto-installed dependencies stay on disk after the plugins that installed them are uninstalled, in case you reinstall a dependent plugin or want to keep using the dependency directly. To clean them up, run `claude plugin prune` to list the auto-installed dependencies that no longer have any installed plugin requiring them and remove them after a confirmation prompt. This requires Claude Code v2.1.121 or later.
+
+```bash theme={null}
+claude plugin prune
+```
+
+By default, prune operates at user scope. Use `--scope project` or `--scope local` to target a different scope. Pass `--dry-run` to list what would be removed without changing anything. Pass `-y` to skip the confirmation prompt. When stdin or stdout is not a terminal, prune lists the orphans and exits without removing them unless `-y` is passed.
+
+To prune as part of an uninstall, pass `--prune` to `claude plugin uninstall`. After removing the named plugin, Claude Code scans for and removes any auto-installed dependencies that are now orphaned. Plugins you installed yourself are never pruned, only those installed automatically through another plugin's `dependencies` array.
+
+For example, to uninstall `deploy-kit` and clean up the dependencies it leaves behind:
+
+```bash theme={null}
+claude plugin uninstall deploy-kit --prune
+```
 
 ## Resolve dependency errors
 

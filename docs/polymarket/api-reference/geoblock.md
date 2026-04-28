@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/geoblock.md
-Downloaded: 2026-04-24T20:19:02.210Z
+Downloaded: 2026-04-28T20:33:25.672Z
 -->
 
 > ## Documentation Index
@@ -172,9 +172,9 @@ The geoblocking system includes:
 
   <Tab title="Rust">
     ```rust theme={null}
-    use polymarket_client_sdk::clob::Client;
+    use polymarket_client_sdk_v2::clob::{Client, Config};
 
-    let client = Client::default();
+    let client = Client::new("https://clob.polymarket.com", Config::default())?;
     let geo = client.check_geoblock().await?;
 
     if geo.blocked {

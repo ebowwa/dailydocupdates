@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/quickstart.md
+Downloaded: 2026-04-28T20:33:25.686Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ This guide walks you through placing an order on Polymarket end-to-end.
   <Step title="Install the SDK">
     <CodeGroup>
       ```bash TypeScript theme={null}
-      npm install @polymarket/clob-client-v2 ethers@5
+      npm install @polymarket/clob-client-v2 viem
       ```
 
       ```bash Python theme={null}
@@ -20,7 +25,7 @@ This guide walks you through placing an order on Polymarket end-to-end.
       ```
 
       ```bash Rust theme={null}
-      cargo add polymarket-client-sdk --features clob
+      cargo add polymarket_client_sdk_v2 --features clob
       ```
     </CodeGroup>
   </Step>
@@ -31,11 +36,13 @@ This guide walks you through placing an order on Polymarket end-to-end.
     <CodeGroup>
       ```typescript TypeScript theme={null}
       import { ClobClient } from "@polymarket/clob-client-v2";
-      import { Wallet } from "ethers"; // v5.8.0
+      import { createWalletClient, http } from "viem";
+      import { privateKeyToAccount } from "viem/accounts";
 
       const HOST = "https://clob.polymarket.com";
       const CHAIN_ID = 137; // Polygon mainnet
-      const signer = new Wallet(process.env.PRIVATE_KEY);
+      const account = privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`);
+      const signer = createWalletClient({ account, transport: http() });
 
       // Derive API credentials
       const tempClient = new ClobClient({ host: HOST, chain: CHAIN_ID, signer });
@@ -48,12 +55,12 @@ This guide walks you through placing an order on Polymarket end-to-end.
         signer,
         creds: apiCreds,
         signatureType: 0, // EOA
-        funderAddress: signer.address,
+        funderAddress: account.address,
       });
       ```
 
       ```python Python theme={null}
-      from py_clob_client.client import ClobClient
+      from py_clob_client_v2 import ClobClient
       import os
 
       host = "https://clob.polymarket.com"
@@ -61,14 +68,14 @@ This guide walks you through placing an order on Polymarket end-to-end.
       private_key = os.getenv("PRIVATE_KEY")
 
       # Derive API credentials
-      temp_client = ClobClient(host, key=private_key, chain=chain)
-      api_creds = temp_client.create_or_derive_api_creds()
+      temp_client = ClobClient(host, key=private_key, chain_id=chain)
+      api_creds = temp_client.create_or_derive_api_key()
 
       # Initialize trading client
       client = ClobClient(
           host,
           key=private_key,
-          chain=chain,
+          chain_id=chain,
           creds=api_creds,
           signature_type=0,  # EOA
           funder="YOUR_WALLET_ADDRESS"
@@ -77,9 +84,9 @@ This guide walks you through placing an order on Polymarket end-to-end.
 
       ```rust Rust theme={null}
       use std::str::FromStr;
-      use polymarket_client_sdk::POLYGON;
-      use polymarket_client_sdk::auth::{LocalSigner, Signer};
-      use polymarket_client_sdk::clob::{Client, Config};
+      use polymarket_client_sdk_v2::POLYGON;
+      use polymarket_client_sdk_v2::auth::{LocalSigner, Signer};
+      use polymarket_client_sdk_v2::clob::{Client, Config};
 
       let private_key = std::env::var("POLYMARKET_PRIVATE_KEY")?;
       let signer = LocalSigner::from_str(&private_key)?
@@ -132,8 +139,8 @@ This guide walks you through placing an order on Polymarket end-to-end.
       ```
 
       ```python Python theme={null}
-      from py_clob_client.clob_types import OrderArgs, OrderType
-      from py_clob_client.order_builder.constants import BUY
+      from py_clob_client_v2 import OrderArgs, OrderType, PartialCreateOrderOptions
+      from py_clob_client_v2.order_builder.constants import BUY
 
       response = client.create_and_post_order(
           OrderArgs(
@@ -142,10 +149,10 @@ This guide walks you through placing an order on Polymarket end-to-end.
               size=10,
               side=BUY,
           ),
-          options={
-              "tick_size": "0.01",
-              "neg_risk": False,  # Set to True for multi-outcome markets
-          },
+          options=PartialCreateOrderOptions(
+              tick_size="0.01",
+              neg_risk=False,  # Set to True for multi-outcome markets
+          ),
           order_type=OrderType.GTC
       )
 
@@ -154,8 +161,8 @@ This guide walks you through placing an order on Polymarket end-to-end.
       ```
 
       ```rust Rust theme={null}
-      use polymarket_client_sdk::clob::types::Side;
-      use polymarket_client_sdk::types::dec;
+      use polymarket_client_sdk_v2::clob::types::Side;
+      use polymarket_client_sdk_v2::types::dec;
 
       let token_id = "YOUR_TOKEN_ID".parse()?;
 
@@ -212,7 +219,7 @@ This guide walks you through placing an order on Polymarket end-to-end.
       ```
 
       ```rust Rust theme={null}
-      use polymarket_client_sdk::clob::types::request::{OrdersRequest, TradesRequest};
+      use polymarket_client_sdk_v2::clob::types::request::{OrdersRequest, TradesRequest};
 
       // View all open orders
       let open_orders = client.orders(&OrdersRequest::default(), None).await?;

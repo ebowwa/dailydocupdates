@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-makers/inventory.md
+Downloaded: 2026-04-28T20:33:25.682Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -97,9 +102,9 @@ Split converts pUSD into equal amounts of YES and NO tokens — creating the inv
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::ctf::Client as CtfClient;
-  use polymarket_client_sdk::ctf::types::SplitPositionRequest;
-  use polymarket_client_sdk::types::{U256, address};
+  use polymarket_client_sdk_v2::ctf::Client as CtfClient;
+  use polymarket_client_sdk_v2::ctf::types::SplitPositionRequest;
+  use polymarket_client_sdk_v2::types::{U256, address};
 
   let ctf_client = CtfClient::new(provider, 137)?;
 
@@ -181,7 +186,7 @@ Merge converts equal amounts of YES and NO tokens back into pUSD — useful for 
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::ctf::types::MergePositionsRequest;
+  use polymarket_client_sdk_v2::ctf::types::MergePositionsRequest;
 
   // Merge 500 YES + 500 NO back to 500 pUSD
   let request = MergePositionsRequest::builder()
@@ -282,7 +287,7 @@ Once a market resolves, redeem winning tokens for pUSD. Each winning token is wo
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::ctf::types::RedeemPositionsRequest;
+  use polymarket_client_sdk_v2::ctf::types::RedeemPositionsRequest;
 
   let request = RedeemPositionsRequest::builder()
       .collateral_token(address!("0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB"))

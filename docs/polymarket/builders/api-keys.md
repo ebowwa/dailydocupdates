@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/builders/api-keys.md
+Downloaded: 2026-04-28T20:33:25.680Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -92,6 +97,9 @@ Pass `builderCode` on every order to attribute it to your builder profile:
   ```
 
   ```python Python theme={null}
+  from py_clob_client_v2 import OrderArgs, PartialCreateOrderOptions
+  from py_clob_client_v2.order_builder.constants import BUY
+
   response = client.create_and_post_order(
       OrderArgs(
           token_id="0x...",
@@ -100,7 +108,7 @@ Pass `builderCode` on every order to attribute it to your builder profile:
           side=BUY,
           builder_code=os.environ["POLY_BUILDER_CODE"],
       ),
-      options={"tick_size": "0.01", "neg_risk": False},
+      options=PartialCreateOrderOptions(tick_size="0.01", neg_risk=False),
   )
   ```
 </CodeGroup>

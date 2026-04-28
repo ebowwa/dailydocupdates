@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-makers/trading.md
+Downloaded: 2026-04-28T20:33:25.682Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -39,7 +44,6 @@ The core market making workflow is posting a bid and ask around your fair value.
     side: Side.BUY,
     price: 0.48,
     size: 1000,
-    orderType: OrderType.GTC,
   });
 
   // Ask at 0.52
@@ -48,13 +52,12 @@ The core market making workflow is posting a bid and ask around your fair value.
     side: Side.SELL,
     price: 0.52,
     size: 1000,
-    orderType: OrderType.GTC,
   });
   ```
 
   ```python Python theme={null}
-  from py_clob_client.clob_types import OrderArgs, OrderType
-  from py_clob_client.order_builder.constants import BUY, SELL
+  from py_clob_client_v2 import OrderArgs, OrderType
+  from py_clob_client_v2.order_builder.constants import BUY, SELL
 
   token_id = "3409705850427531082723332342151729..."
 
@@ -72,8 +75,8 @@ The core market making workflow is posting a bid and ask around your fair value.
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::Side;
-  use polymarket_client_sdk::types::dec;
+  use polymarket_client_sdk_v2::clob::types::Side;
+  use polymarket_client_sdk_v2::types::dec;
 
   let token_id = "3409705850427531082723332342151729...".parse()?;
 
@@ -112,33 +115,33 @@ For tighter spreads across multiple levels, use `postOrders` to submit up to 15 
   ```
 
   ```python Python theme={null}
-  from py_clob_client.clob_types import OrderArgs, OrderType, PostOrdersArgs
-  from py_clob_client.order_builder.constants import BUY, SELL
+  from py_clob_client_v2 import OrderArgs, OrderType, PostOrdersV2Args
+  from py_clob_client_v2.order_builder.constants import BUY, SELL
 
   response = client.post_orders([
-      PostOrdersArgs(
+      PostOrdersV2Args(
           order=client.create_order(OrderArgs(
               price=0.48, size=500, side=BUY, token_id=token_id,
           )),
-          order_type=OrderType.GTC,
+          orderType=OrderType.GTC,
       ),
-      PostOrdersArgs(
+      PostOrdersV2Args(
           order=client.create_order(OrderArgs(
               price=0.47, size=500, side=BUY, token_id=token_id,
           )),
-          order_type=OrderType.GTC,
+          orderType=OrderType.GTC,
       ),
-      PostOrdersArgs(
+      PostOrdersV2Args(
           order=client.create_order(OrderArgs(
               price=0.52, size=500, side=SELL, token_id=token_id,
           )),
-          order_type=OrderType.GTC,
+          orderType=OrderType.GTC,
       ),
-      PostOrdersArgs(
+      PostOrdersV2Args(
           order=client.create_order(OrderArgs(
               price=0.53, size=500, side=SELL, token_id=token_id,
           )),
-          order_type=OrderType.GTC,
+          orderType=OrderType.GTC,
       ),
   ])
   ```
@@ -184,21 +187,26 @@ Auto-expire quotes before known events like market close or resolution:
 <CodeGroup>
   ```typescript TypeScript theme={null}
   // Expire in 1 hour
-  const expiringOrder = await client.createOrder({
-    tokenID,
-    side: Side.BUY,
-    price: 0.5,
-    size: 1000,
-    orderType: OrderType.GTD,
-    expiration: Math.floor(Date.now() / 1000) + 3600,
-  });
+  const expiringOrder = await client.createAndPostOrder(
+    {
+      tokenID,
+      side: Side.BUY,
+      price: 0.5,
+      size: 1000,
+      expiration: Math.floor(Date.now() / 1000) + 3600,
+    },
+    undefined,
+    OrderType.GTD,
+  );
   ```
 
   ```python Python theme={null}
   import time
+  from py_clob_client_v2 import OrderArgs, OrderType
+  from py_clob_client_v2.order_builder.constants import BUY
 
   # Expire in 1 hour
-  expiring_order = client.create_order(
+  expiring_order = client.create_and_post_order(
       OrderArgs(
           token_id=token_id,
           side=BUY,
@@ -212,7 +220,7 @@ Auto-expire quotes before known events like market close or resolution:
 
   ```rust Rust theme={null}
   use chrono::{TimeDelta, Utc};
-  use polymarket_client_sdk::clob::types::OrderType;
+  use polymarket_client_sdk_v2::clob::types::OrderType;
 
   // Expire in 1 hour
   let order = client.limit_order()
@@ -272,7 +280,7 @@ See [Cancel Orders](/trading/orders/cancel) for full details.
   ```
 
   ```python Python theme={null}
-  from py_clob_client.clob_types import OpenOrderParams
+  from py_clob_client_v2 import OpenOrderParams
 
   order = client.get_order(order_id)
 
@@ -282,7 +290,7 @@ See [Cancel Orders](/trading/orders/cancel) for full details.
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::request::OrdersRequest;
+  use polymarket_client_sdk_v2::clob::types::request::OrdersRequest;
 
   let order = client.order(order_id).await?;
 

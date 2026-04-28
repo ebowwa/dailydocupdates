@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/orderbook.md
+Downloaded: 2026-04-28T20:33:25.685Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -16,15 +21,15 @@ The orderbook is a public endpoint — no authentication required. You can read 
   ```
 
   ```python Python theme={null}
-  from py_clob_client.client import ClobClient
+  from py_clob_client_v2 import ClobClient
 
-  client = ClobClient("https://clob.polymarket.com", chain=137)
+  client = ClobClient("https://clob.polymarket.com", chain_id=137)
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::Client;
+  use polymarket_client_sdk_v2::clob::{Client, Config};
 
-  let client = Client::default(); // https://clob.polymarket.com
+  let client = Client::new("https://clob.polymarket.com", Config::default())?;
   ```
 
   ```bash REST theme={null}
@@ -57,7 +62,7 @@ Fetch the full orderbook for a token, including all resting bid and ask levels:
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::request::OrderBookSummaryRequest;
+  use polymarket_client_sdk_v2::clob::types::request::OrderBookSummaryRequest;
 
   let token_id = "TOKEN_ID".parse()?;
   let request = OrderBookSummaryRequest::builder().token_id(token_id).build();
@@ -130,7 +135,7 @@ Get the best available price for buying or selling a token:
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::{Side, request::PriceRequest};
+  use polymarket_client_sdk_v2::clob::types::{Side, request::PriceRequest};
 
   let token_id = "TOKEN_ID".parse()?;
 
@@ -170,7 +175,7 @@ The midpoint is the average of the best bid and best ask. This is the price disp
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::request::MidpointRequest;
+  use polymarket_client_sdk_v2::clob::types::request::MidpointRequest;
 
   let token_id = "TOKEN_ID".parse()?;
   let request = MidpointRequest::builder().token_id(token_id).build();
@@ -206,7 +211,7 @@ The spread is the difference between the best ask and the best bid. Tighter spre
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::request::SpreadRequest;
+  use polymarket_client_sdk_v2::clob::types::request::SpreadRequest;
 
   let token_id = "TOKEN_ID".parse()?;
   let request = SpreadRequest::builder().token_id(token_id).build();
@@ -256,7 +261,7 @@ Fetch historical price data for a token over various time intervals:
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::{Interval, TimeRange, request::PriceHistoryRequest};
+  use polymarket_client_sdk_v2::clob::types::{Interval, TimeRange, request::PriceHistoryRequest};
 
   let token_id = "TOKEN_ID".parse()?;
   let request = PriceHistoryRequest::builder()
@@ -316,7 +321,7 @@ Calculate the effective price you'd pay for a market order of a given size, acco
   ```
 
   ```python Python theme={null}
-  from py_clob_client.clob_types import OrderType
+  from py_clob_client_v2 import OrderType
 
   price = client.calculate_market_price(
       token_id="TOKEN_ID",
@@ -384,7 +389,7 @@ All orderbook queries have batch variants for fetching data across multiple toke
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::{Side, request::PriceRequest};
+  use polymarket_client_sdk_v2::clob::types::{Side, request::PriceRequest};
 
   let token_a = "TOKEN_A".parse()?;
   let token_b = "TOKEN_B".parse()?;
@@ -424,7 +429,7 @@ Get the price and side of the most recent trade for a token:
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::request::LastTradePriceRequest;
+  use polymarket_client_sdk_v2::clob::types::request::LastTradePriceRequest;
 
   let token_id = "TOKEN_ID".parse()?;
   let request = LastTradePriceRequest::builder().token_id(token_id).build();

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/trade/post-multiple-orders.md
+Downloaded: 2026-04-28T20:33:25.679Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -297,6 +302,14 @@ components:
           description: Error message
     Order:
       type: object
+      description: >
+        Order payload submitted to the CLOB API. In CLOB V2, `expiration`
+        remains in
+
+        the POST /order wire body for GTD/order-expiry handling, but it is not
+        part
+
+        of the EIP-712 signed order struct.
       required:
         - maker
         - signer
@@ -342,7 +355,9 @@ components:
           example: BUY
         expiration:
           type: string
-          description: Unix timestamp when the order expires
+          description: >-
+            Unix timestamp when the order expires. Present in the API wire body;
+            not part of the CLOB V2 EIP-712 signed order struct.
           example: '1735689600'
         timestamp:
           type: string

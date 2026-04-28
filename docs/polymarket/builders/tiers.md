@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/builders/tiers.md
+Downloaded: 2026-04-28T20:33:25.680Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -54,7 +59,7 @@ The Builder Program uses a tiered system to manage rate limits while rewarding h
 1. Go to [polymarket.com/settings?tab=builder](https://polymarket.com/settings?tab=builder)
 2. Create a builder profile
 3. Click **"+ Create New"** to generate API keys
-4. Implement [builder signing](/trading/orders/attribution) — required for Relayer access and CLOB order attribution
+4. Attach your [builder code](/trading/orders/attribution) to CLOB orders for attribution; use a Relayer API key for gasless wallet operations
 
 **What's included:**
 

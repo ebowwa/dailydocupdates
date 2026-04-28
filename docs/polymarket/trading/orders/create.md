@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/orders/create.md
+Downloaded: 2026-04-28T20:33:25.685Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -60,8 +65,8 @@ The simplest way to place a limit order — create, sign, and submit in one call
   ```
 
   ```python Python theme={null}
-  from py_clob_client.clob_types import OrderArgs, OrderType
-  from py_clob_client.order_builder.constants import BUY
+  from py_clob_client_v2 import OrderArgs, OrderType, PartialCreateOrderOptions
+  from py_clob_client_v2.order_builder.constants import BUY
 
   response = client.create_and_post_order(
       OrderArgs(
@@ -70,10 +75,7 @@ The simplest way to place a limit order — create, sign, and submit in one call
           size=10,
           side=BUY,
       ),
-      options={
-          "tick_size": "0.01",
-          "neg_risk": False,
-      },
+      options=PartialCreateOrderOptions(tick_size="0.01", neg_risk=False),
       order_type=OrderType.GTC
   )
 
@@ -82,8 +84,8 @@ The simplest way to place a limit order — create, sign, and submit in one call
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::Side;
-  use polymarket_client_sdk::types::dec;
+  use polymarket_client_sdk_v2::clob::types::Side;
+  use polymarket_client_sdk_v2::types::dec;
 
   let token_id = "TOKEN_ID".parse()?;
   let order = client
@@ -132,10 +134,7 @@ For more control, you can separate signing from submission. This is useful for b
           size=10,
           side=BUY,
       ),
-      options={
-          "tick_size": "0.01",
-          "neg_risk": False,
-      }
+      options=PartialCreateOrderOptions(tick_size="0.01", neg_risk=False)
   )
 
   # Step 2: Submit to the CLOB
@@ -197,17 +196,14 @@ GTD orders auto-expire at a specified time. Useful for quoting around known even
           side=BUY,
           expiration=expiration,
       ),
-      options={
-          "tick_size": "0.01",
-          "neg_risk": False,
-      },
+      options=PartialCreateOrderOptions(tick_size="0.01", neg_risk=False),
       order_type=OrderType.GTD
   )
   ```
 
   ```rust Rust theme={null}
   use chrono::{TimeDelta, Utc};
-  use polymarket_client_sdk::clob::types::OrderType;
+  use polymarket_client_sdk_v2::clob::types::OrderType;
 
   let order = client
       .limit_order()
@@ -266,32 +262,36 @@ Market orders execute immediately against resting liquidity using FOK or FAK typ
   ```
 
   ```python Python theme={null}
-  from py_clob_client.order_builder.constants import BUY, SELL
-  from py_clob_client.clob_types import OrderType
+  from py_clob_client_v2.order_builder.constants import BUY, SELL
+  from py_clob_client_v2 import MarketOrderArgs, OrderType, PartialCreateOrderOptions
 
   # FOK BUY: spend exactly $100 or cancel entirely
   buy_order = client.create_market_order(
-      token_id="TOKEN_ID",
-      side=BUY,
-      amount=100,  # dollar amount
-      price=0.50,  # worst-price limit (slippage protection)
-      options={"tick_size": "0.01", "neg_risk": False},
+      order_args=MarketOrderArgs(
+          token_id="TOKEN_ID",
+          side=BUY,
+          amount=100,  # dollar amount
+          price=0.50,  # worst-price limit (slippage protection)
+      ),
+      options=PartialCreateOrderOptions(tick_size="0.01", neg_risk=False),
   )
   client.post_order(buy_order, OrderType.FOK)
 
   # FOK SELL: sell exactly 200 shares or cancel entirely
   sell_order = client.create_market_order(
-      token_id="TOKEN_ID",
-      side=SELL,
-      amount=200,  # number of shares
-      price=0.45,  # worst-price limit (slippage protection)
-      options={"tick_size": "0.01", "neg_risk": False},
+      order_args=MarketOrderArgs(
+          token_id="TOKEN_ID",
+          side=SELL,
+          amount=200,  # number of shares
+          price=0.45,  # worst-price limit (slippage protection)
+      ),
+      options=PartialCreateOrderOptions(tick_size="0.01", neg_risk=False),
   )
   client.post_order(sell_order, OrderType.FOK)
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::{Amount, OrderType, Side};
+  use polymarket_client_sdk_v2::clob::types::{Amount, OrderType, Side};
 
   let token_id = "TOKEN_ID".parse()?;
 
@@ -347,12 +347,17 @@ For convenience, `createAndPostMarketOrder` handles creation, signing, and submi
   ```
 
   ```python Python theme={null}
+  from py_clob_client_v2 import MarketOrderArgs, OrderType, PartialCreateOrderOptions
+  from py_clob_client_v2.order_builder.constants import BUY
+
   response = client.create_and_post_market_order(
-      token_id="TOKEN_ID",
-      side=BUY,
-      amount=100,
-      price=0.50,
-      options={"tick_size": "0.01", "neg_risk": False},
+      order_args=MarketOrderArgs(
+          token_id="TOKEN_ID",
+          side=BUY,
+          amount=100,
+          price=0.50,
+      ),
+      options=PartialCreateOrderOptions(tick_size="0.01", neg_risk=False),
       order_type=OrderType.FOK,
   )
   ```
@@ -446,26 +451,26 @@ Place up to **15 orders** in a single request:
   ```
 
   ```python Python theme={null}
-  from py_clob_client.clob_types import OrderArgs, OrderType, PostOrdersArgs
-  from py_clob_client.order_builder.constants import BUY, SELL
+  from py_clob_client_v2 import OrderArgs, OrderType, PostOrdersV2Args, PartialCreateOrderOptions
+  from py_clob_client_v2.order_builder.constants import BUY, SELL
 
   response = client.post_orders([
-      PostOrdersArgs(
+      PostOrdersV2Args(
           order=client.create_order(OrderArgs(
               price=0.48,
               size=500,
               side=BUY,
               token_id="TOKEN_ID",
-          ), options={"tick_size": "0.01", "neg_risk": False}),
+          ), options=PartialCreateOrderOptions(tick_size="0.01", neg_risk=False)),
           orderType=OrderType.GTC,
       ),
-      PostOrdersArgs(
+      PostOrdersV2Args(
           order=client.create_order(OrderArgs(
               price=0.52,
               size=500,
               side=SELL,
               token_id="TOKEN_ID",
-          ), options={"tick_size": "0.01", "neg_risk": False}),
+          ), options=PartialCreateOrderOptions(tick_size="0.01", neg_risk=False)),
           orderType=OrderType.GTC,
       ),
   ])

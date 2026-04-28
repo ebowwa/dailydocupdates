@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/index.md
+Downloaded: 2026-04-28T20:33:25.681Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -78,20 +83,20 @@ export const IconCard = ({ icon, title, description, href, color }) => {
         ```
 
         ```python Python theme={null}
-        from py_clob_client.client import ClobClient
-        from py_clob_client.order_builder.constants import BUY
+        from py_clob_client_v2 import ClobClient, OrderArgs, PartialCreateOrderOptions
+        from py_clob_client_v2.order_builder.constants import BUY
 
-        client = ClobClient(host, key=key, chain=chain, creds=creds)
+        client = ClobClient(host, key=key, chain_id=chain, creds=creds)
         order = client.create_and_post_order(
             OrderArgs(token_id=token_id, price=0.50, size=10, side=BUY),
-            options={"tick_size": "0.01", "neg_risk": False}
+            options=PartialCreateOrderOptions(tick_size="0.01", neg_risk=False)
         )
         ```
 
         ```rust Rust theme={null}
-        use polymarket_client_sdk::clob::{Client, Config};
-        use polymarket_client_sdk::clob::types::Side;
-        use polymarket_client_sdk::types::dec;
+        use polymarket_client_sdk_v2::clob::{Client, Config};
+        use polymarket_client_sdk_v2::clob::types::Side;
+        use polymarket_client_sdk_v2::types::dec;
 
         let client = Client::new(host, Config::default())?.authentication_builder(&signer).authenticate().await?;
         let order = client.limit_order().token_id(token_id).price(dec!(0.50)).size(dec!(10)).side(Side::Buy).build().await?;

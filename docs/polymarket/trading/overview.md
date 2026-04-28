@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/overview.md
+Downloaded: 2026-04-28T20:33:25.686Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -13,7 +18,7 @@ We recommend using the open-source SDK clients, which handle order signing, auth
 <CardGroup cols={3}>
   <Card title="TypeScript Client" icon="github" href="https://github.com/Polymarket/clob-client-v2">
     <p className="font-mono text-[0.8rem]">
-      npm install @polymarket/clob-client-v2
+      npm install @polymarket/clob-client-v2 viem
     </p>
   </Card>
 
@@ -22,7 +27,7 @@ We recommend using the open-source SDK clients, which handle order signing, auth
   </Card>
 
   <Card title="Rust Client" icon="github" href="https://github.com/Polymarket/rs-clob-client-v2">
-    <p className="font-mono text-[0.8rem]">cargo add polymarket-client-sdk</p>
+    <p className="font-mono text-[0.8rem]">cargo add polymarket\_client\_sdk\_v2 --features clob</p>
   </Card>
 </CardGroup>
 
@@ -51,9 +56,11 @@ You use your private key once to derive **L2 credentials** (API key, secret, pas
 <CodeGroup>
   ```typescript TypeScript theme={null}
   import { ClobClient } from "@polymarket/clob-client-v2";
-  import { Wallet } from "ethers"; // v5.8.0
+  import { createWalletClient, http } from "viem";
+  import { privateKeyToAccount } from "viem/accounts";
 
-  const signer = new Wallet(process.env.PRIVATE_KEY);
+  const account = privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`);
+  const signer = createWalletClient({ account, transport: http() });
 
   // Derive L2 API credentials
   const tempClient = new ClobClient({ host: "https://clob.polymarket.com", chain: 137, signer });
@@ -61,21 +68,21 @@ You use your private key once to derive **L2 credentials** (API key, secret, pas
   ```
 
   ```python Python theme={null}
-  from py_clob_client.client import ClobClient
+  from py_clob_client_v2 import ClobClient
   import os
 
   private_key = os.getenv("PRIVATE_KEY")
 
   # Derive L2 API credentials
-  temp_client = ClobClient("https://clob.polymarket.com", key=private_key, chain=137)
-  api_creds = temp_client.create_or_derive_api_creds()
+  temp_client = ClobClient("https://clob.polymarket.com", key=private_key, chain_id=137)
+  api_creds = temp_client.create_or_derive_api_key()
   ```
 
   ```rust Rust theme={null}
   use std::str::FromStr;
-  use polymarket_client_sdk::POLYGON;
-  use polymarket_client_sdk::auth::{LocalSigner, Signer};
-  use polymarket_client_sdk::clob::{Client, Config};
+  use polymarket_client_sdk_v2::POLYGON;
+  use polymarket_client_sdk_v2::auth::{LocalSigner, Signer};
+  use polymarket_client_sdk_v2::clob::{Client, Config};
 
   let private_key = std::env::var("POLYMARKET_PRIVATE_KEY")?;
   let signer = LocalSigner::from_str(&private_key)?
@@ -125,7 +132,7 @@ When initializing the trading client, you must specify your wallet's **signature
   client = ClobClient(
       "https://clob.polymarket.com",
       key=private_key,
-      chain=137,
+      chain_id=137,
       creds=api_creds,
       signature_type=2,  # GNOSIS_SAFE
       funder="0x..."  # Your proxy wallet address
@@ -133,7 +140,7 @@ When initializing the trading client, you must specify your wallet's **signature
   ```
 
   ```rust Rust theme={null}
-  use polymarket_client_sdk::clob::types::SignatureType;
+  use polymarket_client_sdk_v2::clob::types::SignatureType;
 
   let client = Client::new("https://clob.polymarket.com", Config::default())?
       .authentication_builder(&signer)
@@ -192,7 +199,7 @@ If you're using the REST API directly (without the SDK), you need to attach auth
   </Card>
 
   <Card title="Builder Methods" icon="hammer" href="/trading/clients/builder">
-    Track attributed trades and manage builder credentials.
+    Track orders and trades attributed to your builder code.
   </Card>
 </CardGroup>
 

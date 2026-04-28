@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/orders/attribution.md
+Downloaded: 2026-04-28T20:33:25.685Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -57,13 +62,13 @@ Pass `builderCode` in the order struct on every order you submit. The SDK serial
   ```
 
   ```python Python theme={null}
-  from py_clob_client.client import ClobClient
-  from py_clob_client.clob_types import OrderArgs, OrderType
-  from py_clob_client.order_builder.constants import BUY
+  from py_clob_client_v2 import ClobClient
+  from py_clob_client_v2 import OrderArgs, OrderType, PartialCreateOrderOptions
+  from py_clob_client_v2.order_builder.constants import BUY
 
   client = ClobClient(
       host="https://clob.polymarket.com",
-      chain=137,
+      chain_id=137,
       key=private_key,
       creds=api_creds,
       signature_type=2,
@@ -78,7 +83,7 @@ Pass `builderCode` in the order struct on every order you submit. The SDK serial
           side=BUY,
           builder_code="0xabc123...",  # your builder code from polymarket.com/settings?tab=builder
       ),
-      options={"tick_size": "0.01", "neg_risk": False},
+      options=PartialCreateOrderOptions(tick_size="0.01", neg_risk=False),
       order_type=OrderType.GTC,
   )
   ```

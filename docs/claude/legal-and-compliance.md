@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/legal-and-compliance.md
+Downloaded: 2026-04-28T20:32:51.859Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -50,7 +55,7 @@ You can find more information in the [Anthropic Trust Center](https://trust.anth
 
 ### Security vulnerability reporting
 
-Anthropic manages our security program through HackerOne. [Use this form to report vulnerabilities](https://hackerone.com/anthropic-vdp/reports/new?type=team\&report_type=vulnerability).
+Anthropic manages our security program through HackerOne. [Use this form to report vulnerabilities](https://hackerone.com/4f1f16ba-10d3-4d09-9ecc-c721aad90f24/embedded_submissions/new).
 
 ***
 

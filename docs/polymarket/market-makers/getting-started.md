@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-makers/getting-started.md
+Downloaded: 2026-04-28T20:33:25.682Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -182,20 +187,20 @@ Before you can start market making, you need to complete these one-time setup st
       ```
 
       ```python Python theme={null}
-      from py_clob_client.client import ClobClient
+      from py_clob_client_v2 import ClobClient
       import os
 
       private_key = os.getenv("PRIVATE_KEY")
 
-      temp_client = ClobClient("https://clob.polymarket.com", key=private_key, chain=137)
-      credentials = temp_client.create_or_derive_api_creds()
+      temp_client = ClobClient("https://clob.polymarket.com", key=private_key, chain_id=137)
+      credentials = temp_client.create_or_derive_api_key()
       ```
 
       ```rust Rust theme={null}
       use std::str::FromStr;
-      use polymarket_client_sdk::POLYGON;
-      use polymarket_client_sdk::auth::{LocalSigner, Signer};
-      use polymarket_client_sdk::clob::{Client, Config};
+      use polymarket_client_sdk_v2::POLYGON;
+      use polymarket_client_sdk_v2::auth::{LocalSigner, Signer};
+      use polymarket_client_sdk_v2::clob::{Client, Config};
 
       let private_key = std::env::var("POLYMARKET_PRIVATE_KEY")?;
       let signer = LocalSigner::from_str(&private_key)?
