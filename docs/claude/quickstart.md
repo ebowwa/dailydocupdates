@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/quickstart.md
-Downloaded: 2026-04-28T20:32:51.862Z
+Downloaded: 2026-04-29T20:29:20.931Z
 -->
 
 > ## Documentation Index
@@ -494,17 +494,17 @@ export const InstallConfigurator = ({defaultSurface = 'terminal'}) => {
       {}
       {target === 'terminal' && <div className="cc-ic-below">
           {isWinInstaller && <span>
-              Requires{' '}
               <a href="https://git-scm.com/downloads/win" target="_blank" rel="noopener">
                 Git for Windows
-              </a>.
+              </a>{' '}
+              recommended. PowerShell is used if Git Bash is absent.
             </span>}
           {(pkg === 'brew' || pkg === 'winget') && <span>
               Does not auto-update. Run{' '}
               <code>{pkg === 'brew' ? 'brew upgrade claude-code' : 'winget upgrade Anthropic.ClaudeCode'}</code>{' '}
               periodically.
             </span>}
-          <a href="/en/troubleshooting">Troubleshooting</a>
+          <a href="/en/troubleshoot-install">Installation troubleshooting</a>
         </div>}
 
       {alt && <div className="cc-ic-handoff">

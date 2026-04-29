@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-04-28T20:33:30.699Z
+Downloaded: 2026-04-29T20:29:21.762Z
 -->
 
 > ## Documentation Index
@@ -16,6 +16,36 @@ You can subscribe to the RSS changelog at `/changelog/rss.xml` if you'd like to 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Apr 30, 2026"
+  tags={["Breaking Change", "Upcoming"]}
+  rss={{
+title: "/account/limits exposes per-bucket refill rate and capacity",
+description: "Response restructured to a nested object per bucket with refill_rate and bucket_capacity."
+}}
+>
+  Beginning Apr 30, 2026, `GET /trade-api/v2/account/limits` returns a
+  nested object per bucket with `refill_rate` (tokens added per second)
+  and `bucket_capacity` (max tokens the bucket can hold). When the bucket
+  has no burst headroom, `bucket_capacity` equals `refill_rate` — i.e.
+  one second of budget.
+
+  ```json theme={null}
+  {
+    "usage_tier": "advanced",
+    "read":  {"refill_rate": 200, "bucket_capacity": 200},
+    "write": {"refill_rate": 100, "bucket_capacity": 200}
+  }
+  ```
+
+  See [Rate Limits and Tiers](/getting_started/rate_limits) for budget
+  semantics.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/account/limits`
+</Update>
 
 <Update
   label="Apr 22, 2026"

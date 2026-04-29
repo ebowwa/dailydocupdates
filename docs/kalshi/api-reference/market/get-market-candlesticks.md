@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-market-candlesticks.md
-Downloaded: 2026-04-22T20:23:25.104Z
+Downloaded: 2026-04-29T20:29:21.752Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,7 @@ Candlesticks for markets that settled before the historical cutoff are only avai
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.14.0
+  version: 3.15.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach

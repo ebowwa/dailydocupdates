@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/settings.md
-Downloaded: 2026-04-24T20:18:49.737Z
+Downloaded: 2026-04-29T20:29:20.932Z
 -->
 
 > ## Documentation Index
@@ -918,4 +918,4 @@ See the [tools reference](/en/tools-reference) for the full list and Bash tool b
 * [Permissions](/en/permissions): permission system, rule syntax, tool-specific patterns, and managed policies
 * [Authentication](/en/authentication): set up user access to Claude Code
 * [Debug your configuration](/en/debug-your-config): diagnose why a setting, hook, or MCP server isn't taking effect
-* [Troubleshooting](/en/troubleshooting): installation, authentication, and platform issues
+* [Troubleshoot installation and login](/en/troubleshoot-install): installation, authentication, and platform issues

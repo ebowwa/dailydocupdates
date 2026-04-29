@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/authentication.md
+Downloaded: 2026-04-29T20:29:20.918Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -25,7 +30,7 @@ You can authenticate with any of these account types:
 
 To log out and re-authenticate, type `/logout` at the Claude Code prompt.
 
-If you're having trouble logging in, see [authentication troubleshooting](/en/troubleshooting#authentication-issues).
+If you're having trouble logging in, see [authentication troubleshooting](/en/troubleshoot-install#login-and-authentication).
 
 ## Set up team authentication
 

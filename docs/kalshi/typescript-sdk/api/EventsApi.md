@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/typescript-sdk/api/EventsApi.md
+Downloaded: 2026-04-29T20:29:21.767Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -76,7 +81,7 @@ Endpoint for getting the historical raw and formatted forecast numbers for an ev
 
 ### Authorization
 
-[kalshiAccessSignature](../README.md#kalshiAccessSignature), [kalshiAccessKey](../README.md#kalshiAccessKey), [kalshiAccessTimestamp](../README.md#kalshiAccessTimestamp)
+No authorization required
 
 ### HTTP request headers
 

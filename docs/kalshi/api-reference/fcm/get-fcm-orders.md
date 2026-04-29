@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/fcm/get-fcm-orders.md
-Downloaded: 2026-04-22T20:23:25.102Z
+Downloaded: 2026-04-29T20:29:21.750Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,7 @@ This endpoint requires FCM member access level and allows filtering orders by su
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.14.0
+  version: 3.15.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -316,7 +316,13 @@ components:
       enum:
         - taker_at_cross
         - maker
-      description: The self-trade prevention type for orders
+      description: >
+        The self-trade prevention type for orders. `taker_at_cross` cancels the
+        taker order when it would trade against another order from the same
+        user; execution stops and any partial fills already matched are
+        executed. `maker` cancels the resting maker order and continues
+        matching; after execution, any remaining taker quantity is canceled and
+        any fills are executed.
   securitySchemes:
     kalshiAccessKey:
       type: apiKey

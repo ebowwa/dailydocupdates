@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/tools-reference.md
-Downloaded: 2026-04-28T20:32:51.865Z
+Downloaded: 2026-04-29T20:29:20.935Z
 -->
 
 > ## Documentation Index
@@ -100,7 +100,7 @@ Plugins can declare monitors that start automatically when the plugin is active,
 
 ## PowerShell tool
 
-The PowerShell tool lets Claude run PowerShell commands natively. On Windows, this means commands run in PowerShell instead of routing through Git Bash. The tool is rolling out progressively on Windows and is opt-in on Linux, macOS, and WSL.
+The PowerShell tool lets Claude run PowerShell commands natively. On Windows, this means commands run in PowerShell instead of routing through Git Bash. On Windows without Git Bash, the tool is enabled automatically. On Windows with Git Bash installed, the tool is rolling out progressively. On Linux, macOS, and WSL, the tool is opt-in.
 
 ### Enable the PowerShell tool
 

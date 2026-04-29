@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/typescript.md
-Downloaded: 2026-04-28T20:32:51.849Z
+Downloaded: 2026-04-29T20:29:20.917Z
 -->
 
 > ## Documentation Index
@@ -2866,6 +2866,10 @@ type SandboxNetworkConfig = {
 | `allowAllUnixSockets`     | `boolean`  | `false`     | Allow access to all Unix sockets                                                            |
 | `httpProxyPort`           | `number`   | `undefined` | HTTP proxy port for network requests                                                        |
 | `socksProxyPort`          | `number`   | `undefined` | SOCKS proxy port for network requests                                                       |
+
+<Note>
+  The built-in sandbox proxy enforces `allowedDomains` based on the requested hostname and does not terminate or inspect TLS traffic, so techniques such as [domain fronting](https://en.wikipedia.org/wiki/Domain_fronting) can potentially bypass it. See [Sandboxing security limitations](/en/sandboxing#security-limitations) for details and [Secure deployment](/en/agent-sdk/secure-deployment#traffic-forwarding) for configuring a TLS-terminating proxy.
+</Note>
 
 ### `SandboxFilesystemConfig`
 

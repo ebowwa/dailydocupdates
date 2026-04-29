@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/admin-setup.md
-Downloaded: 2026-04-23T20:23:59.510Z
+Downloaded: 2026-04-29T20:29:20.912Z
 -->
 
 > ## Documentation Index
@@ -119,7 +119,7 @@ Share these resources to help developers get started:
 * [Common workflows](/en/common-workflows): patterns for everyday tasks like code review, refactoring, and debugging
 * [Claude 101](https://anthropic.skilljar.com/claude-101) and [Claude Code in Action](https://anthropic.skilljar.com/claude-code-in-action): self-paced Anthropic Academy courses
 
-For login issues, point developers to [authentication troubleshooting](/en/troubleshooting#authentication-issues). The most common fixes are:
+For login issues, point developers to [authentication troubleshooting](/en/troubleshoot-install#login-and-authentication). The most common fixes are:
 
 * Run `/logout` then `/login` to switch accounts
 * Run `claude update` if the enterprise auth option is missing
