@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/troubleshoot-install.md
-Downloaded: 2026-04-29T20:29:20.935Z
+Downloaded: 2026-04-30T20:28:21.864Z
 -->
 
 > ## Documentation Index
@@ -116,6 +116,8 @@ Check if the install directory is in your PATH by listing your PATH entries and 
     ```
 
     Alternatively, close and reopen your terminal.
+
+    For other shells such as fish or Nushell, add `~/.local/bin` to your PATH using your shell's own configuration syntax, then restart your terminal.
 
     Verify the fix worked:
 

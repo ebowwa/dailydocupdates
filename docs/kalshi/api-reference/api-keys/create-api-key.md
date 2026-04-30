@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/api-keys/create-api-key.md
-Downloaded: 2026-04-29T20:29:21.745Z
+Downloaded: 2026-04-30T20:28:22.478Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,7 @@ Downloaded: 2026-04-29T20:29:21.745Z
 
 # Create API Key
 
->  Endpoint for creating a new API key with a user-provided public key. This endpoint allows users to create API keys by providing their own RSA public key. The platform will use this public key to verify signatures on API requests.
+>  Endpoint for creating a new API key with a user-provided public key.  This endpoint allows users with Premier or Market Maker API usage levels to create API keys by providing their own RSA public key. The platform will use this public key to verify signatures on API requests.
 
 
 
@@ -64,7 +64,7 @@ paths:
       tags:
         - api-keys
       summary: Create API Key
-      description: ' Endpoint for creating a new API key with a user-provided public key. This endpoint allows users to create API keys by providing their own RSA public key. The platform will use this public key to verify signatures on API requests.'
+      description: ' Endpoint for creating a new API key with a user-provided public key.  This endpoint allows users with Premier or Market Maker API usage levels to create API keys by providing their own RSA public key. The platform will use this public key to verify signatures on API requests.'
       operationId: CreateApiKey
       requestBody:
         required: true

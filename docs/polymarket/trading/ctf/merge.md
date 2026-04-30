@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/ctf/merge.md
+Downloaded: 2026-04-30T20:28:22.803Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -20,11 +25,19 @@ Before merging, you need:
 2. **Condition ID** of the market
 3. **Sufficient gas** for the transaction
 
+<Note>
+  Polymarket uses thin collateral adapter contracts for pUSD-native CTF actions.
+  Approve the adapter once, then route split, merge, and redeem actions through
+  it. For merge flows, the adapter calls the underlying CTF contract, receives
+  the released USDC.e collateral, wraps it into pUSD, and returns pUSD to your
+  wallet automatically.
+</Note>
+
 ## How It Works
 
-1. You call `mergePositions()` with the amount and market details
+1. You call the adapter's merge flow with the amount and market details
 2. One unit of each position in a full set is burned in return for 1 collateral unit
-3. The CTF contract releases pUSD back to your wallet
+3. The adapter converts the released collateral into pUSD and returns pUSD to your wallet
 
 The operation is atomic — if you don't have enough of both tokens, the transaction reverts.
 

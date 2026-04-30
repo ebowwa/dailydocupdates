@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/ctf/redeem.md
+Downloaded: 2026-04-30T20:28:22.803Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -41,6 +46,14 @@ Before redeeming:
 2. **Hold winning tokens** — only the winning outcome can be redeemed
 3. **Know the condition ID** — required for the redemption call
 
+<Note>
+  Polymarket uses thin collateral adapter contracts for pUSD-native CTF actions.
+  Approve the adapter once, then route split, merge, and redeem actions through
+  it. On redeem, the adapter burns the ERC1155 outcome tokens through the CTF
+  contract, receives USDC.e collateral, wraps it into pUSD, and returns pUSD to
+  your wallet automatically.
+</Note>
+
 ## Function Parameters
 
 <ResponseField name="collateralToken" type="IERC20">
@@ -74,11 +87,11 @@ The CTF uses a **payout vector** to determine redemption values:
 | Yes wins | `[1, 0]`      | Yes = $1, No = $0 |
 | No wins  | `[0, 1]`      | Yes = $0, No = $1 |
 
-When you call `redeemPositions()`:
+When you redeem through the adapter:
 
 * Your token balance is multiplied by the payout
 * Winning tokens are burned
-* pUSD is transferred to your wallet
+* The released collateral is wrapped into pUSD and transferred to your wallet
 * Losing tokens are burned as well, but produce a \$0 payout
 
 ## Next Steps

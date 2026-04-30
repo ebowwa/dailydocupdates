@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/ctf/split.md
+Downloaded: 2026-04-30T20:28:22.803Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -17,8 +22,15 @@ $100 pUSD → 100 Yes tokens + 100 No tokens
 Before splitting, ensure you have:
 
 1. **pUSD balance** on Polygon
-2. **pUSD approval** for the CTF contract to spend your tokens
+2. **pUSD approval** for the CTF collateral adapter to spend your tokens
 3. **Condition ID** of the market — the condition must already be prepared on the CTF contract (via `prepareCondition`)
+
+<Note>
+  Polymarket uses thin collateral adapter contracts for pUSD-native CTF actions.
+  Approve the adapter once, then route split, merge, and redeem actions through
+  it. The adapter handles the CTF collateral plumbing so user-facing flows stay
+  in pUSD.
+</Note>
 
 <Note>
   If the partition is trivial, invalid, or refers to more slots than the
@@ -27,9 +39,9 @@ Before splitting, ensure you have:
 
 ## How It Works
 
-1. You approve the CTF contract to spend your pUSD
-2. You call `splitPosition()` with the amount and market details
-3. The CTF contract transfers pUSD from your wallet and mints both outcome tokens
+1. You approve the CTF collateral adapter to spend your pUSD
+2. You call the adapter's split flow with the amount and market details
+3. The adapter calls the underlying CTF contract and mints both outcome tokens
 
 The operation is atomic — if any step fails, the entire transaction reverts.
 

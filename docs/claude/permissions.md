@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/permissions.md
-Downloaded: 2026-04-23T20:23:59.531Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
