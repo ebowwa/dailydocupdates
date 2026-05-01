@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/bunfig.md
-Downloaded: 2026-04-29T20:29:24.657Z
+Downloaded: 2026-05-01T20:22:04.457Z
 -->
 
 > ## Documentation Index
@@ -868,13 +868,13 @@ The number of lines of script output shown per script when using `--filter`. Def
 elide-lines = 10
 ```
 
-### `run.dieWithParent` - exit when the parent process dies
+### `run.noOrphans` - don't leave orphan processes behind
 
 When `true`, Bun watches the process that spawned it and exits as soon as that parent goes away — even if the parent was `SIGKILL`ed and never got a chance to forward a signal. On its own exit, Bun also recursively `SIGKILL`s every descendant process so nothing it spawned outlives it. Useful when Bun is launched by a supervisor (Electron, a CI runner, a thin shim) that may be force-killed.
 
-Linux and macOS only (no-op on Windows and other platforms). Equivalent to the `BUN_FEATURE_FLAG_DIE_WITH_PARENT=1` environment variable.
+Linux and macOS only (no-op on Windows and other platforms). Equivalent to the `--no-orphans` CLI flag or the `BUN_FEATURE_FLAG_NO_ORPHANS=1` environment variable.
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [run]
-dieWithParent = true
+noOrphans = true
 ```

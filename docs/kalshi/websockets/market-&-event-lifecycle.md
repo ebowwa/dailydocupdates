@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/market-&-event-lifecycle.md
+Downloaded: 2026-05-01T20:22:09.952Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -63,7 +68,7 @@ operations:
             description: >-
               Market lifecycle events (created, activated, deactivated,
               close_date_updated, determined, settled,
-              fractional_trading_updated, price_level_structure_updated)
+              price_level_structure_updated)
             type: object
             properties:
               - name: type
@@ -98,9 +103,6 @@ operations:
 
                       - `settled` - Market settled
 
-                      - `fractional_trading_updated` - Market fractional trading
-                      setting changed
-
                       - `price_level_structure_updated` - Market price level
                       structure changed
                     enumValues:
@@ -110,7 +112,6 @@ operations:
                       - close_date_updated
                       - determined
                       - settled
-                      - fractional_trading_updated
                       - price_level_structure_updated
                     required: false
                   - name: market_ticker
@@ -166,13 +167,6 @@ operations:
                       paused/unpaused. Boolean flag to indicate if trading is
                       paused on an open market. This should only be interpreted
                       for an open market
-                    required: false
-                  - name: fractional_trading_enabled
-                    type: boolean
-                    description: >-
-                      Optional - This key will exist when the market is created
-                      or when fractional trading is updated. Whether fractional
-                      trading is enabled for the market
                     required: false
                   - name: price_level_structure
                     type: string
@@ -273,9 +267,6 @@ operations:
 
                     - `settled` - Market settled
 
-                    - `fractional_trading_updated` - Market fractional trading
-                    setting changed
-
                     - `price_level_structure_updated` - Market price level
                     structure changed
                   enum:
@@ -285,7 +276,6 @@ operations:
                     - close_date_updated
                     - determined
                     - settled
-                    - fractional_trading_updated
                     - price_level_structure_updated
                   x-parser-schema-id: <anonymous-schema-112>
                 market_ticker:
@@ -350,13 +340,6 @@ operations:
                     paused on an open market. This should only be interpreted
                     for an open market
                   x-parser-schema-id: <anonymous-schema-119>
-                fractional_trading_enabled:
-                  type: boolean
-                  description: >-
-                    Optional - This key will exist when the market is created or
-                    when fractional trading is updated. Whether fractional
-                    trading is enabled for the market
-                  x-parser-schema-id: <anonymous-schema-120>
                 price_level_structure:
                   type: string
                   description: >-
@@ -367,7 +350,7 @@ operations:
                     - linear_cent
                     - deci_cent
                     - tapered_deci_cent
-                  x-parser-schema-id: <anonymous-schema-121>
+                  x-parser-schema-id: <anonymous-schema-120>
                 additional_metadata:
                   type: object
                   description: >-
@@ -376,51 +359,51 @@ operations:
                   properties:
                     name:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-123>
+                      x-parser-schema-id: <anonymous-schema-122>
                     title:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-124>
+                      x-parser-schema-id: <anonymous-schema-123>
                     yes_sub_title:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-125>
+                      x-parser-schema-id: <anonymous-schema-124>
                     no_sub_title:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-126>
+                      x-parser-schema-id: <anonymous-schema-125>
                     rules_primary:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-127>
+                      x-parser-schema-id: <anonymous-schema-126>
                     rules_secondary:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-128>
+                      x-parser-schema-id: <anonymous-schema-127>
                     can_close_early:
                       type: boolean
-                      x-parser-schema-id: <anonymous-schema-129>
+                      x-parser-schema-id: <anonymous-schema-128>
                     event_ticker:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-130>
+                      x-parser-schema-id: <anonymous-schema-129>
                     expected_expiration_ts:
                       type: integer
                       format: int64
-                      x-parser-schema-id: <anonymous-schema-131>
+                      x-parser-schema-id: <anonymous-schema-130>
                     strike_type:
                       type: string
-                      x-parser-schema-id: <anonymous-schema-132>
+                      x-parser-schema-id: <anonymous-schema-131>
                     floor_strike:
                       type: number
-                      x-parser-schema-id: <anonymous-schema-133>
+                      x-parser-schema-id: <anonymous-schema-132>
                     cap_strike:
                       type: number
-                      x-parser-schema-id: <anonymous-schema-134>
+                      x-parser-schema-id: <anonymous-schema-133>
                     custom_strike:
                       type: object
-                      x-parser-schema-id: <anonymous-schema-135>
-                  x-parser-schema-id: <anonymous-schema-122>
+                      x-parser-schema-id: <anonymous-schema-134>
+                  x-parser-schema-id: <anonymous-schema-121>
               x-parser-schema-id: <anonymous-schema-111>
           x-parser-schema-id: marketLifecycleV2Payload
         title: Market Lifecycle V2
         description: >-
           Market lifecycle events (created, activated, deactivated,
-          close_date_updated, determined, settled, fractional_trading_updated,
+          close_date_updated, determined, settled,
           price_level_structure_updated)
         example: |-
           {
@@ -431,7 +414,6 @@ operations:
               "event_type": "created",
               "open_ts": 1694635200,
               "close_ts": 1694721600,
-              "fractional_trading_enabled": false,
               "price_level_structure": "linear_cent",
               "additional_metadata": {
                 "name": "S&P 500 daily return on Sep 14",
@@ -534,7 +516,7 @@ operations:
             type:
               type: string
               const: event_lifecycle
-              x-parser-schema-id: <anonymous-schema-136>
+              x-parser-schema-id: <anonymous-schema-135>
             sid: *ref_0
             msg:
               type: object
@@ -548,15 +530,15 @@ operations:
                 event_ticker:
                   type: string
                   description: Unique identifier for the event being created
-                  x-parser-schema-id: <anonymous-schema-138>
+                  x-parser-schema-id: <anonymous-schema-137>
                 title:
                   type: string
                   description: Title of event
-                  x-parser-schema-id: <anonymous-schema-139>
+                  x-parser-schema-id: <anonymous-schema-138>
                 subtitle:
                   type: string
                   description: Subtitle of event
-                  x-parser-schema-id: <anonymous-schema-140>
+                  x-parser-schema-id: <anonymous-schema-139>
                 collateral_return_type:
                   type: string
                   description: >-
@@ -566,25 +548,25 @@ operations:
                     - MECNET
                     - DIRECNET
                     - ''
-                  x-parser-schema-id: <anonymous-schema-141>
+                  x-parser-schema-id: <anonymous-schema-140>
                 series_ticker:
                   type: string
                   description: Series ticker for the event
-                  x-parser-schema-id: <anonymous-schema-142>
+                  x-parser-schema-id: <anonymous-schema-141>
                 strike_date:
                   type: integer
                   description: >-
                     Optional - Unix timestamp to indicate the strike date of the
                     event if there is one
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-143>
+                  x-parser-schema-id: <anonymous-schema-142>
                 strike_period:
                   type: string
                   description: >-
                     Optional - String to indicate the strike period of the event
                     if there is one
-                  x-parser-schema-id: <anonymous-schema-144>
-              x-parser-schema-id: <anonymous-schema-137>
+                  x-parser-schema-id: <anonymous-schema-143>
+              x-parser-schema-id: <anonymous-schema-136>
           x-parser-schema-id: eventLifecyclePayload
         title: Event Lifecycle
         description: Event creation notification

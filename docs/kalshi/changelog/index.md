@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-04-29T20:29:21.762Z
+Downloaded: 2026-05-01T20:22:09.946Z
 -->
 
 > ## Documentation Index
@@ -16,6 +16,25 @@ You can subscribe to the RSS changelog at `/changelog/rss.xml` if you'd like to 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="Apr 30, 2026"
+  tags={["Breaking Change", "Deprecation", "Upcoming"]}
+  rss={{
+title: "Market tick_size field will be removed May 7",
+description: "The deprecated Market tick_size field has been deprecated since Jan 5, 2026 and will be removed from Market responses on May 7, 2026."
+}}
+>
+  The deprecated `tick_size` field on Market response objects has been
+  deprecated since **Jan 5, 2026** and will be removed on **May 7, 2026**.
+
+  Use `price_level_structure` and `price_ranges[].step` to determine each
+  market's valid tick sizes.
+
+  **Affected responses:**
+
+  * Market response objects returned by REST API v2 endpoints
+</Update>
 
 <Update
   label="Apr 30, 2026"
@@ -145,6 +164,23 @@ description: "New get_snapshot action on the orderbook_delta channel returns an 
   **Affected channel:**
 
   * `orderbook_delta`
+</Update>
+
+<Update
+  label="Apr 17, 2026"
+  tags={["Deprecation", "Upcoming"]}
+  rss={{
+title: "fractional_trading_enabled deprecated",
+description: "The fractional_trading_enabled field on Market and EventChildMarket is deprecated and now always true."
+}}
+>
+  The `fractional_trading_enabled` field on `Market` and `EventChildMarket` responses is deprecated. It no longer carries information:
+
+  * `Market` and `EventChildMarket` responses now support fractional trading unconditionally — the field is always `true`.
+
+  The `fractional_trading_updated` event on the `market_lifecycle_v2` WebSocket channel is removed, since the underlying state can no longer change.
+
+  The `fractional_trading_enabled` field will be removed in a future release after a separate pre-announcement that includes the exact removal date. Clients relying on this field should stop reading it; treat every active market returned by these responses as fractional.
 </Update>
 
 <Update

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-market.md
-Downloaded: 2026-04-29T20:29:21.750Z
+Downloaded: 2026-05-01T20:22:09.940Z
 -->
 
 > ## Documentation Index
@@ -251,6 +251,10 @@ components:
           type: boolean
         fractional_trading_enabled:
           type: boolean
+          deprecated: true
+          description: >-
+            Deprecated. This flag is always `true` and carries no information.
+            Will be removed after a pre-announcement with the removal date.
         open_interest_fp:
           $ref: '#/components/schemas/FixedPointCount'
           description: >-
@@ -317,11 +321,6 @@ components:
           x-omitempty: true
           description: The condition under which the market can close early
           x-go-type-skip-optional-pointer: true
-        tick_size:
-          type: integer
-          deprecated: true
-          x-go-type-skip-optional-pointer: true
-          description: 'DEPRECATED: Use price_level_structure and price_ranges instead.'
         strike_type:
           type: string
           enum:

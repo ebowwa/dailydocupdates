@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/analytics.md
+Downloaded: 2026-05-01T20:21:59.969Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -23,6 +28,8 @@ The Team and Enterprise dashboard includes:
 * **Contribution metrics**: PRs and lines of code shipped with Claude Code assistance, with [GitHub integration](#enable-contribution-metrics)
 * **Leaderboard**: top contributors ranked by Claude Code usage
 * **Data export**: download contribution data as CSV for custom reporting
+
+For per-user token counts and cost estimates, configure [OpenTelemetry export](/en/monitoring-usage).
 
 ### Enable contribution metrics
 

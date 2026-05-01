@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/market-makers/maker-rebates.md
-Downloaded: 2026-04-24T20:19:02.223Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

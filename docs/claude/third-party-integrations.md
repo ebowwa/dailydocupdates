@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/third-party-integrations.md
-Downloaded: 2026-04-24T20:18:49.738Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

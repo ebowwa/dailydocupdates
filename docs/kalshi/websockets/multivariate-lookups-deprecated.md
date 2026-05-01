@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/multivariate-lookups-deprecated.md
-Downloaded: 2026-04-28T20:33:30.706Z
+Downloaded: 2026-05-01T20:22:09.953Z
 -->
 
 > ## Documentation Index
@@ -105,7 +105,7 @@ operations:
             type:
               type: string
               const: multivariate_lookup
-              x-parser-schema-id: <anonymous-schema-147>
+              x-parser-schema-id: <anonymous-schema-146>
             sid:
               type: integer
               description: >-
@@ -123,13 +123,13 @@ operations:
               properties:
                 collection_ticker:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-149>
+                  x-parser-schema-id: <anonymous-schema-148>
                 event_ticker:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-150>
+                  x-parser-schema-id: <anonymous-schema-149>
                 market_ticker:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-151>
+                  x-parser-schema-id: <anonymous-schema-150>
                 selected_markets:
                   type: array
                   items:
@@ -141,10 +141,10 @@ operations:
                     properties:
                       event_ticker:
                         type: string
-                        x-parser-schema-id: <anonymous-schema-154>
+                        x-parser-schema-id: <anonymous-schema-153>
                       market_ticker:
                         type: string
-                        x-parser-schema-id: <anonymous-schema-155>
+                        x-parser-schema-id: <anonymous-schema-154>
                       side:
                         type: string
                         description: Market side
@@ -152,9 +152,9 @@ operations:
                           - 'yes'
                           - 'no'
                         x-parser-schema-id: marketSide
-                    x-parser-schema-id: <anonymous-schema-153>
-                  x-parser-schema-id: <anonymous-schema-152>
-              x-parser-schema-id: <anonymous-schema-148>
+                    x-parser-schema-id: <anonymous-schema-152>
+                  x-parser-schema-id: <anonymous-schema-151>
+              x-parser-schema-id: <anonymous-schema-147>
           x-parser-schema-id: multivariateLookupPayload
         title: Multivariate Lookup (Deprecated)
         description: Deprecated multivariate collection lookup notification

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/fullscreen.md
-Downloaded: 2026-04-29T20:29:20.925Z
+Downloaded: 2026-05-01T20:21:59.976Z
 -->
 
 > ## Documentation Index
@@ -123,7 +123,7 @@ Press `Esc` or `q` to return to the prompt.
 
 ## Clear the conversation
 
-Press `Ctrl+L` twice within two seconds to run `/clear` and start a new conversation. The first press clears the input box and shows a hint; the second press clears the conversation. On macOS, double-pressing `Cmd+K` also runs `/clear`.
+Press `Ctrl+L` twice within two seconds to run `/clear` and start a new conversation. The first press redraws the screen and shows a hint; the second press clears the conversation. On macOS, double-pressing `Cmd+K` also runs `/clear`.
 
 ## Use with tmux
 
