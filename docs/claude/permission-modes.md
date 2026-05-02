@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/permission-modes.md
-Downloaded: 2026-05-01T20:21:59.980Z
+Downloaded: 2026-05-02T20:15:22.121Z
 -->
 
 > ## Documentation Index
@@ -133,6 +133,8 @@ claude --permission-mode plan
 
 Press `Shift+Tab` again to leave plan mode without approving a plan.
 
+### Review and approve a plan
+
 When the plan is ready, Claude presents it and asks how to proceed. From that prompt you can:
 
 * Approve and start in auto mode
@@ -141,7 +143,21 @@ When the plan is ready, Claude presents it and asks how to proceed. From that pr
 * Keep planning with feedback
 * Refine with [Ultraplan](/en/ultraplan) for browser-based review
 
-Each approve option also offers to clear the planning context first.
+Press `Ctrl+G` to open the proposed plan in your default text editor and edit it directly before Claude proceeds. When [`showClearContextOnPlanAccept`](/en/settings#available-settings) is enabled, each approve option also offers to clear the planning context first.
+
+Accepting a plan also names the session from the plan content automatically, unless you've already set a name with `--name` or `/rename`.
+
+### Set plan mode as the default
+
+To make plan mode the default for a project, set `defaultMode` in `.claude/settings.json`:
+
+```json theme={null}
+{
+  "permissions": {
+    "defaultMode": "plan"
+  }
+}
+```
 
 ## Eliminate prompts with auto mode
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/desktop-quickstart.md
-Downloaded: 2026-04-25T20:15:08.522Z
+Downloaded: 2026-05-02T20:15:22.115Z
 -->
 
 > ## Documentation Index
@@ -23,7 +23,7 @@ The desktop app gives you Claude Code with a graphical interface built for runni
   </Card>
 </CardGroup>
 
-For Windows ARM64, download the [ARM64 installer](https://claude.ai/api/desktop/win32/arm64/setup/latest/redirect?utm_source=claude_code\&utm_medium=docs). Linux is not supported.
+For Windows ARM64, download the [ARM64 installer](https://claude.ai/api/desktop/win32/arm64/setup/latest/redirect?utm_source=claude_code\&utm_medium=docs). The desktop app is not available on Linux; use the [CLI](/en/quickstart) instead.
 
 <Note>
   Claude Code requires a [Pro, Max, Team, or Enterprise subscription](https://claude.com/pricing?utm_source=claude_code\&utm_medium=docs\&utm_content=desktop_quickstart_pricing).

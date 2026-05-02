@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/checkpointing.md
+Downloaded: 2026-05-02T20:15:22.111Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -44,7 +49,7 @@ The three restore options revert state: they undo code changes, conversation his
 This is similar to `/compact`, but targeted: instead of summarizing the entire conversation, you keep early context in full detail and only compress the parts that are using up space. You can type optional instructions to guide what the summary focuses on.
 
 <Note>
-  Summarize keeps you in the same session and compresses context. If you want to branch off and try a different approach while preserving the original session intact, use [fork](/en/how-claude-code-works#resume-or-fork-sessions) instead (`claude --continue --fork-session`).
+  Summarize keeps you in the same session and compresses context. If you want to branch off and try a different approach while preserving the original session intact, use [fork](/en/sessions#branch-a-session) instead (`claude --continue --fork-session`).
 </Note>
 
 ## Common use cases

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/get-rfqs.md
-Downloaded: 2026-04-29T20:29:21.747Z
+Downloaded: 2026-05-02T20:15:38.831Z
 -->
 
 > ## Documentation Index
@@ -90,8 +90,17 @@ paths:
         - name: creator_user_id
           in: query
           description: Filter RFQs by creator user ID
+          deprecated: true
           schema:
             type: string
+        - name: user_filter
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/UserFilter'
+            x-go-type-skip-optional-pointer: true
+          x-oapi-codegen-extra-tags:
+            validate: omitempty,oneof=self
       responses:
         '200':
           description: RFQs retrieved successfully
@@ -142,6 +151,15 @@ components:
       schema:
         type: integer
   schemas:
+    UserFilter:
+      type: string
+      enum:
+        - self
+      x-enum-varnames:
+        - UserFilterSelf
+      description: >-
+        Omit or leave empty to return all results. Use `self` to filter by the
+        authenticated user.
     GetRFQsResponse:
       type: object
       required:

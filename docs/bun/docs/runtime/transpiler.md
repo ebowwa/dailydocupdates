@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/transpiler.md
+Downloaded: 2026-05-02T20:15:25.645Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,7 +15,7 @@ Bun exposes its internal transpiler via the `Bun.Transpiler` class. To create an
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const transpiler = new Bun.Transpiler({
-  loader: "tsx", // "js | "jsx" | "ts" | "tsx"
+  loader: "tsx", // "js" | "jsx" | "ts" | "tsx"
 });
 ```
 

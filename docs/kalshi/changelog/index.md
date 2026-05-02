@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-05-01T20:22:09.946Z
+Downloaded: 2026-05-02T20:15:38.839Z
 -->
 
 > ## Documentation Index
@@ -16,6 +16,18 @@ You can subscribe to the RSS changelog at `/changelog/rss.xml` if you'd like to 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="May 1, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "RFQ and quote user filters",
+description: "GET /communications/rfqs and GET /communications/quotes now accept user_filter=self."
+}}
+>
+  Added `user_filter=self` to filter RFQs and quotes by the authenticated user.
+  Existing creator user ID filters remain supported temporarily but are considered deprecated.
+</Update>
 
 <Update
   label="Apr 30, 2026"

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/cli-reference.md
-Downloaded: 2026-05-01T20:21:59.973Z
+Downloaded: 2026-05-02T20:15:22.112Z
 -->
 
 > ## Documentation Index
@@ -107,7 +107,7 @@ Customize Claude Code's behavior with these command-line flags. `claude --help` 
 | `--tools`                                       | Restrict which built-in tools Claude can use. Use `""` to disable all, `"default"` for all, or tool names like `"Bash,Edit,Read"`                                                                                                                                                                                                                                                                   | `claude --tools "Bash,Edit,Read"`                                                                  |
 | `--verbose`                                     | Enable verbose logging, shows full turn-by-turn output                                                                                                                                                                                                                                                                                                                                              | `claude --verbose`                                                                                 |
 | `--version`, `-v`                               | Output the version number                                                                                                                                                                                                                                                                                                                                                                           | `claude -v`                                                                                        |
-| `--worktree`, `-w`                              | Start Claude in an isolated [git worktree](/en/common-workflows#run-parallel-claude-code-sessions-with-git-worktrees) at `<repo>/.claude/worktrees/<name>`. If no name is given, one is auto-generated                                                                                                                                                                                              | `claude -w feature-auth`                                                                           |
+| `--worktree`, `-w`                              | Start Claude in an isolated [git worktree](/en/worktrees) at `<repo>/.claude/worktrees/<name>`. If no name is given, one is auto-generated                                                                                                                                                                                                                                                          | `claude -w feature-auth`                                                                           |
 
 ### System prompt flags
 

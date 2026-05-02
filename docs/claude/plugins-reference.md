@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/plugins-reference.md
-Downloaded: 2026-04-29T20:29:20.931Z
+Downloaded: 2026-05-02T20:15:22.122Z
 -->
 
 > ## Documentation Index
@@ -385,7 +385,7 @@ The manifest is optional. If omitted, Claude Code auto-discovers components in [
   "keywords": ["keyword1", "keyword2"],
   "skills": "./custom/skills/",
   "commands": ["./custom/commands/special.md"],
-  "agents": "./custom/agents/",
+  "agents": ["./custom/agents/reviewer.md"],
   "hooks": "./config/hooks.json",
   "mcpServers": "./mcp-config.json",
   "outputStyles": "./styles/",

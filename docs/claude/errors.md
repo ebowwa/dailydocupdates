@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/errors.md
-Downloaded: 2026-04-29T20:29:20.924Z
+Downloaded: 2026-05-02T20:15:22.116Z
 -->
 
 > ## Documentation Index
@@ -492,7 +492,7 @@ Claude Code adjusts these values automatically on the Anthropic API. You typical
 **What to do:**
 
 * Lower `MAX_THINKING_TOKENS`, or raise [`CLAUDE_CODE_MAX_OUTPUT_TOKENS`](/en/env-vars) above the thinking budget
-* See [Extended thinking](/en/common-workflows#use-extended-thinking-thinking-mode) for how the budget interacts with output length
+* See [Extended thinking](/en/model-config#extended-thinking) for how the budget interacts with output length
 
 ### Tool use or thinking block mismatch
 
