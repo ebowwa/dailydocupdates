@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/hooks.md
-Downloaded: 2026-05-02T20:15:22.118Z
+Downloaded: 2026-05-04T20:33:08.440Z
 -->
 
 > ## Documentation Index
@@ -2417,10 +2417,12 @@ The LLM must respond with JSON containing:
 }
 ```
 
-| Field    | Description                                                |
-| :------- | :--------------------------------------------------------- |
-| `ok`     | `true` allows the action, `false` prevents it              |
-| `reason` | Required when `ok` is `false`. Explanation shown to Claude |
+| Field    | Description                                              |
+| :------- | :------------------------------------------------------- |
+| `ok`     | `true` allows the action, `false` blocks it              |
+| `reason` | Required when `ok` is `false`. Explanation for the block |
+
+For `Stop` and `SubagentStop`, an `ok: false` reason is fed back to Claude as its next instruction and the turn continues. For all other supported events, the turn ends and the reason appears in the chat as a warning line; Claude does not see it. This is equivalent to returning `"continue": false` from a command hook. If you need different blocking semantics on those events, use a [command hook](#command-hook-fields) with the per-event fields described in [Decision control](#decision-control).
 
 ### Example: Multi-criteria Stop hook
 

@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/network-config.md
-Downloaded: 2026-04-27T20:28:19.593Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

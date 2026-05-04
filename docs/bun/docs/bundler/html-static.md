@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/html-static.md
+Downloaded: 2026-05-04T20:33:33.043Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -470,7 +475,7 @@ All paths are resolved relative to your HTML file, so you can organize your proj
   * Need more configuration options for things like asset handling
   * Need a way to configure CORS, headers, etc.
 
-  {/* If you want to submit a PR, most of the code is [here](https://github.com/oven-sh/bun/blob/main/src/bun.js/api/bun/html-rewriter.ts). You could even copy paste that file into your project and use it as a starting point. */}
+  {/* If you want to submit a PR, most of the code is [here](https://github.com/oven-sh/bun/blob/main/src/runtime/api/bun/html-rewriter.ts). You could even copy paste that file into your project and use it as a starting point. */}
 </Warning>
 
 ## How this works

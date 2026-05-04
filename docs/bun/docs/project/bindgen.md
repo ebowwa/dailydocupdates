@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/project/bindgen.md
+Downloaded: 2026-05-04T20:33:33.064Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -23,7 +28,7 @@ this one:
 
 Given a file implementing a simple function, such as `add`
 
-```zig src/bun.js/math.zig theme={"theme":{"light":"github-light","dark":"dracula"}}
+```zig src/jsc/math.zig theme={"theme":{"light":"github-light","dark":"dracula"}}
 pub fn add(global: *jsc.JSGlobalObject, a: i32, b: i32) !i32 {
     return std.math.add(i32, a, b) catch {
         // Binding functions can return `error.OutOfMemory` and `error.JSError`.
@@ -42,7 +47,7 @@ const jsc = bun.jsc;
 
 Then describe the API schema using a `.bind.ts` function. The binding file goes next to the Zig file.
 
-```ts src/bun.js/math.bind.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts src/jsc/math.bind.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { t, fn } from "bindgen";
 
 export const add = fn({
@@ -88,7 +93,7 @@ TLDRs from WebIDL spec:
 
 A `variants` can specify multiple variants (also known as overloads).
 
-```ts src/bun.js/math.bind.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts src/jsc/math.bind.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { t, fn } from "bindgen";
 
 export const action = fn({

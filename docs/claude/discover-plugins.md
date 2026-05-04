@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/discover-plugins.md
+Downloaded: 2026-05-04T20:33:08.439Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -409,7 +414,7 @@ If you see "unknown command" or the `/plugin` command doesn't appear:
 1. **Check your version**: Run `claude --version` to see what's installed.
 2. **Update Claude Code**:
    * **Homebrew**: `brew upgrade claude-code` (or `brew upgrade claude-code@latest` if you installed that cask)
-   * **npm**: `npm update -g @anthropic-ai/claude-code`
+   * **npm**: `npm install -g @anthropic-ai/claude-code@latest`
    * **Native installer**: Re-run the install command from [Setup](/en/setup)
 3. **Restart Claude Code**: After updating, restart your terminal and run `claude` again.
 
