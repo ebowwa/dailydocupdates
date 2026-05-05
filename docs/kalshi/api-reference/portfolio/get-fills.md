@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-fills.md
-Downloaded: 2026-04-29T20:29:21.760Z
+Downloaded: 2026-05-05T20:28:48.128Z
 -->
 
 > ## Documentation Index
@@ -10,7 +10,7 @@ Downloaded: 2026-04-29T20:29:21.760Z
 # Get Fills
 
 > Endpoint for getting all fills for the member. A fill is when a trade you have is matched.
-Fills that occurred before the historical cutoff are only available via `GET /historical/fills`. See [Historical Data](https://kalshi.com/docs/getting_started/historical_data) for details.
+Fills that occurred before the historical cutoff are only available via `GET /historical/fills`. See [Historical Data](https://docs.kalshi.com/getting_started/historical_data) for details.
 
 
 
@@ -72,7 +72,7 @@ paths:
 
         Fills that occurred before the historical cutoff are only available via
         `GET /historical/fills`. See [Historical
-        Data](https://kalshi.com/docs/getting_started/historical_data) for
+        Data](https://docs.kalshi.com/getting_started/historical_data) for
         details.
       operationId: GetFills
       parameters:

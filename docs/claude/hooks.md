@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/hooks.md
-Downloaded: 2026-05-04T20:33:08.440Z
+Downloaded: 2026-05-05T20:28:26.514Z
 -->
 
 > ## Documentation Index
@@ -981,7 +981,7 @@ To block a prompt, return a JSON object with `decision` set to `"block"`:
 | `decision`          | `"block"` prevents the prompt from being processed and erases it from context. Omit to allow the prompt to proceed     |
 | `reason`            | Shown to the user when `decision` is `"block"`. Not added to context                                                   |
 | `additionalContext` | String added to Claude's context alongside the submitted prompt. See [Add context for Claude](#add-context-for-claude) |
-| `sessionTitle`      | Sets the session title, same effect as `/rename`. Use to name sessions automatically based on the prompt content       |
+| `sessionTitle`      | Sets the session title. Use to name sessions automatically based on the prompt content                                 |
 
 ```json theme={null}
 {
@@ -1364,13 +1364,13 @@ Matches on tool name, same values as PreToolUse.
 
 `PostToolUse` hooks can provide feedback to Claude after tool execution. In addition to the [JSON output fields](#json-output) available to all hooks, your hook script can return these event-specific fields:
 
-| Field                  | Description                                                                                                                  |
-| :--------------------- | :--------------------------------------------------------------------------------------------------------------------------- |
-| `decision`             | `"block"` prompts Claude with the `reason`. Omit to allow the action to proceed                                              |
-| `reason`               | Explanation shown to Claude when `decision` is `"block"`                                                                     |
-| `additionalContext`    | String added to Claude's context alongside the tool result. See [Add context for Claude](#add-context-for-claude)            |
-| `updatedToolOutput`    | Replaces the tool's output with the provided value before it is sent to Claude. The value must match the tool's output shape |
-| `updatedMCPToolOutput` | Replaces the output for [MCP tools](#match-mcp-tools) only. Prefer `updatedToolOutput`, which works for all tools            |
+| Field                  | Description                                                                                                                        |
+| :--------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| `decision`             | `"block"` adds the `reason` next to the tool result. Claude still sees the original output; to replace it, use `updatedToolOutput` |
+| `reason`               | Explanation shown to Claude when `decision` is `"block"`                                                                           |
+| `additionalContext`    | String added to Claude's context alongside the tool result. See [Add context for Claude](#add-context-for-claude)                  |
+| `updatedToolOutput`    | Replaces the tool's output with the provided value before it is sent to Claude. The value must match the tool's output shape       |
+| `updatedMCPToolOutput` | Replaces the output for [MCP tools](#match-mcp-tools) only. Prefer `updatedToolOutput`, which works for all tools                  |
 
 The example below replaces the output of a `Bash` call. The replacement value matches the `Bash` tool's output shape:
 
@@ -2422,7 +2422,15 @@ The LLM must respond with JSON containing:
 | `ok`     | `true` allows the action, `false` blocks it              |
 | `reason` | Required when `ok` is `false`. Explanation for the block |
 
-For `Stop` and `SubagentStop`, an `ok: false` reason is fed back to Claude as its next instruction and the turn continues. For all other supported events, the turn ends and the reason appears in the chat as a warning line; Claude does not see it. This is equivalent to returning `"continue": false` from a command hook. If you need different blocking semantics on those events, use a [command hook](#command-hook-fields) with the per-event fields described in [Decision control](#decision-control).
+What happens on `ok: false` depends on the event:
+
+* `Stop` and `SubagentStop`: the reason is fed back to Claude as its next instruction and the turn continues
+* `PreToolUse`: the tool call is denied and the reason is returned to Claude as the tool error, equivalent to a command hook's `permissionDecision: "deny"`
+* `PostToolUse`, `PostToolBatch`, `UserPromptSubmit`, and `UserPromptExpansion`: the turn ends and the reason appears in the chat as a warning line, equivalent to returning `"continue": false` from a command hook
+* `PostToolUseFailure`, `TaskCreated`, and `TaskCompleted`: the reason is returned to Claude as a tool error, similar to `PreToolUse`
+* `PermissionRequest`: `ok: false` has no effect. To deny an approval from a hook, use a [command hook](#command-hook-fields) returning `hookSpecificOutput.decision.behavior: "deny"`
+
+If you need finer control on any event, use a [command hook](#command-hook-fields) with the per-event fields described in [Decision control](#decision-control).
 
 ### Example: Multi-criteria Stop hook
 

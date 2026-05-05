@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/features-overview.md
+Downloaded: 2026-05-05T20:28:26.513Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -70,11 +75,12 @@ Some features can seem similar. Here's how to tell them apart.
     * **Skills** are reusable content you can load into any context
     * **Subagents** are isolated workers that run separately from your main conversation
 
-    | Aspect          | Skill                                          | Subagent                                                         |
-    | --------------- | ---------------------------------------------- | ---------------------------------------------------------------- |
-    | **What it is**  | Reusable instructions, knowledge, or workflows | Isolated worker with its own context                             |
-    | **Key benefit** | Share content across contexts                  | Context isolation. Work happens separately, only summary returns |
-    | **Best for**    | Reference material, invocable workflows        | Tasks that read many files, parallel work, specialized workers   |
+    | Aspect                                          | Skill                                          | Subagent                                                         |
+    | ----------------------------------------------- | ---------------------------------------------- | ---------------------------------------------------------------- |
+    | **What it is**                                  | Reusable instructions, knowledge, or workflows | Isolated worker with its own context                             |
+    | **Key benefit**                                 | Share content across contexts                  | Context isolation. Work happens separately, only summary returns |
+    | **[Context window](/en/context-window) impact** | Adds to your main window                       | Uses a separate window with its own input and output tokens      |
+    | **Best for**                                    | Reference material, invocable workflows        | Tasks that read many files, parallel work, specialized workers   |
 
     **Skills can be reference or action.** Reference skills provide knowledge Claude uses throughout your session (like your API style guide). Action skills tell Claude to do something specific (like `/deploy` that runs your deployment workflow).
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-market-candlesticks.md
-Downloaded: 2026-04-29T20:29:21.752Z
+Downloaded: 2026-05-05T20:28:48.123Z
 -->
 
 > ## Documentation Index
@@ -10,7 +10,7 @@ Downloaded: 2026-04-29T20:29:21.752Z
 # Get Market Candlesticks
 
 > Time period length of each candlestick in minutes. Valid values: 1 (1 minute), 60 (1 hour), 1440 (1 day).
-Candlesticks for markets that settled before the historical cutoff are only available via `GET /historical/markets/{ticker}/candlesticks`. See [Historical Data](https://kalshi.com/docs/getting_started/historical_data) for details.
+Candlesticks for markets that settled before the historical cutoff are only available via `GET /historical/markets/{ticker}/candlesticks`. See [Historical Data](https://docs.kalshi.com/getting_started/historical_data) for details.
 
 
 
@@ -73,7 +73,7 @@ paths:
         Candlesticks for markets that settled before the historical cutoff are
         only available via `GET /historical/markets/{ticker}/candlesticks`. See
         [Historical
-        Data](https://kalshi.com/docs/getting_started/historical_data) for
+        Data](https://docs.kalshi.com/getting_started/historical_data) for
         details.
       operationId: GetMarketCandlesticks
       parameters:

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/headless.md
-Downloaded: 2026-05-02T20:15:22.118Z
+Downloaded: 2026-05-05T20:28:26.514Z
 -->
 
 > ## Documentation Index
@@ -82,6 +82,10 @@ cat build-error.txt | claude -p 'concisely explain the root cause of this build 
 ```
 
 With `--output-format json`, the response payload includes `total_cost_usd` and a per-model cost breakdown, so scripted callers can track spend per invocation without consulting the [usage dashboard](/en/costs).
+
+<Note>
+  As of Claude Code v2.1.128, piped stdin is capped at 10MB. If you exceed the cap, Claude Code exits with a clear error and a non-zero status. To work with larger inputs, write the content to a file and reference the file path in your prompt instead of piping it.
+</Note>
 
 ### Add Claude to a build script
 
@@ -167,10 +171,10 @@ When an API request fails with a retryable error, Claude Code emits a `system/ap
 
 The `system/init` event reports session metadata including the model, tools, MCP servers, and loaded plugins. It is the first event in the stream unless [`CLAUDE_CODE_SYNC_PLUGIN_INSTALL`](/en/env-vars) is set, in which case `plugin_install` events precede it. Use the plugin fields to fail CI when a plugin did not load:
 
-| Field           | Type  | Description                                                                                                                                                                                                       |
-| --------------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `plugins`       | array | plugins that loaded successfully, each with `name` and `path`                                                                                                                                                     |
-| `plugin_errors` | array | plugin load-time errors such as an unsatisfied dependency version, each with `plugin`, `type`, and `message`. Affected plugins are demoted and absent from `plugins`. The key is omitted when there are no errors |
+| Field           | Type  | Description                                                                                                                                                                                                                                                                                  |
+| --------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `plugins`       | array | plugins that loaded successfully, each with `name` and `path`                                                                                                                                                                                                                                |
+| `plugin_errors` | array | plugin load-time errors, each with `plugin`, `type`, and `message`. Includes unsatisfied dependency versions and `--plugin-dir` load failures such as a missing path or invalid archive. Affected plugins are demoted and absent from `plugins`. The key is omitted when there are no errors |
 
 When [`CLAUDE_CODE_SYNC_PLUGIN_INSTALL`](/en/env-vars) is set, Claude Code emits `system/plugin_install` events while marketplace plugins install before the first turn. Use these to surface install progress in your own UI.
 

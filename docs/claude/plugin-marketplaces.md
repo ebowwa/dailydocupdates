@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/plugin-marketplaces.md
-Downloaded: 2026-04-28T20:32:51.861Z
+Downloaded: 2026-05-05T20:28:26.517Z
 -->
 
 > ## Documentation Index
@@ -697,6 +697,8 @@ The allowlist uses exact matching for most source types. For a marketplace to be
 * For URL sources: the full URL must match exactly
 * For `hostPattern` sources: the marketplace host is matched against the regex pattern
 * For `pathPattern` sources: the marketplace's filesystem path is matched against the regex pattern
+
+Exact matching does not normalize URLs: a trailing slash, `.git` suffix, or `ssh://` versus `https://` form are treated as different values. If your organization's marketplace can be cloned by more than one URL form, prefer a `hostPattern` entry over a literal URL so all forms match.
 
 Because `strictKnownMarketplaces` is set in [managed settings](/en/settings#settings-files), individual users and project configurations cannot override these restrictions.
 
