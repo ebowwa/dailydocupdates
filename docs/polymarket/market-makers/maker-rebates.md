@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-makers/maker-rebates.md
+Downloaded: 2026-05-06T20:34:41.187Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -71,7 +76,7 @@ Where **C** = number of shares traded and **p** = price of the shares. The fee p
 
 | Category        | Taker Fee Rate | Maker Fee Rate |
 | --------------- | -------------- | -------------- |
-| Crypto          | 0.072          | 0              |
+| Crypto          | 0.07           | 0              |
 | Sports          | 0.03           | 0              |
 | Finance         | 0.04           | 0              |
 | Politics        | 0.04           | 0              |

@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/agent-sdk/todo-tracking.md
+Downloaded: 2026-05-06T20:34:39.648Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -57,11 +62,11 @@ The SDK automatically creates todos for:
   ```
 
   ```python Python theme={null}
-  from claude_agent_sdk import query, AssistantMessage, ToolUseBlock
+  from claude_agent_sdk import query, ClaudeAgentOptions, AssistantMessage, ToolUseBlock
 
   async for message in query(
       prompt="Optimize my React app performance and track progress with todos",
-      options={"max_turns": 15},
+      options=ClaudeAgentOptions(max_turns=15),
   ):
       # Todo updates are reflected in the message stream
       if isinstance(message, AssistantMessage):
@@ -132,7 +137,7 @@ The SDK automatically creates todos for:
   ```
 
   ```python Python theme={null}
-  from claude_agent_sdk import query, AssistantMessage, ToolUseBlock
+  from claude_agent_sdk import query, ClaudeAgentOptions, AssistantMessage, ToolUseBlock
   from typing import List, Dict
 
 
@@ -167,7 +172,7 @@ The SDK automatically creates todos for:
               print(f"{i + 1}. {icon} {text}")
 
       async def track_query(self, prompt: str):
-          async for message in query(prompt=prompt, options={"max_turns": 20}):
+          async for message in query(prompt=prompt, options=ClaudeAgentOptions(max_turns=20)):
               if isinstance(message, AssistantMessage):
                   for block in message.content:
                       if isinstance(block, ToolUseBlock) and block.name == "TodoWrite":

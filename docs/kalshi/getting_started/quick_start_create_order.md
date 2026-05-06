@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/quick_start_create_order.md
-Downloaded: 2026-04-28T20:33:30.702Z
+Downloaded: 2026-05-06T20:34:50.214Z
 -->
 
 > ## Documentation Index
@@ -31,7 +31,7 @@ First, let's find an open market to trade on.
 
 ```python theme={null}
 # Get the first open market (no auth required for public market data)
-response = requests.get('https://demo-api.kalshi.co/trade-api/v2/markets?limit=1&status=open')
+response = requests.get('https://external-api.demo.kalshi.co/trade-api/v2/markets?limit=1&status=open')
 market = response.json()['markets'][0]
 
 print(f"Selected market: {market['ticker']}")
@@ -114,7 +114,7 @@ def post(private_key, api_key_id, path, data, base_url=BASE_URL):
 
 # Step 1: Find an open market
 print("Finding an open market...")
-response = requests.get('https://demo-api.kalshi.co/trade-api/v2/markets?limit=1&status=open')
+response = requests.get('https://external-api.demo.kalshi.co/trade-api/v2/markets?limit=1&status=open')
 market = response.json()['markets'][0]
 print(f"Selected: {market['ticker']} - {market['title']}")
 

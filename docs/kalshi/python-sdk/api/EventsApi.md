@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/python-sdk/api/EventsApi.md
-Downloaded: 2026-04-29T20:29:21.766Z
+Downloaded: 2026-05-06T20:34:50.215Z
 -->
 
 > ## Documentation Index
@@ -11,7 +11,7 @@ Downloaded: 2026-04-29T20:29:21.766Z
 
 > Python SDK methods for Events operations
 
-All URIs are relative to *[https://api.elections.kalshi.com/trade-api/v2](https://api.elections.kalshi.com/trade-api/v2)*
+All URIs are relative to *[https://external-api.kalshi.com/trade-api/v2](https://external-api.kalshi.com/trade-api/v2)*
 
 | Method                                                                                    | HTTP request                                                                  | Description                           |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------- |

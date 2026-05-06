@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/python.md
-Downloaded: 2026-05-05T20:28:26.503Z
+Downloaded: 2026-05-06T20:34:39.646Z
 -->
 
 > ## Documentation Index
@@ -1052,7 +1052,7 @@ Permission modes for controlling tool execution.
 PermissionMode = Literal[
     "default",  # Standard permission behavior
     "acceptEdits",  # Auto-accept file edits
-    "plan",  # Planning mode - no execution
+    "plan",  # Planning mode - read-only tools only
     "dontAsk",  # Deny anything not pre-approved instead of prompting
     "bypassPermissions",  # Bypass all permission checks (use with caution)
 ]

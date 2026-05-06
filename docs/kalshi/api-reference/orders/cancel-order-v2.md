@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/cancel-order-v2.md
-Downloaded: 2026-04-29T20:29:21.757Z
+Downloaded: 2026-05-06T20:34:50.205Z
 -->
 
 > ## Documentation Index
@@ -24,8 +24,14 @@ info:
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
 servers:
+  - url: https://external-api.kalshi.com/trade-api/v2
+    description: Production Trade API server
   - url: https://api.elections.kalshi.com/trade-api/v2
-    description: Production server
+    description: Production shared API server, also supported
+  - url: https://external-api.demo.kalshi.co/trade-api/v2
+    description: Demo Trade API server
+  - url: https://demo-api.kalshi.co/trade-api/v2
+    description: Demo shared API server, also supported
 security: []
 tags:
   - name: api-keys
@@ -110,6 +116,7 @@ components:
       required:
         - order_id
         - reduced_by
+        - ts_ms
       properties:
         order_id:
           type: string
@@ -120,6 +127,12 @@ components:
           description: >-
             Number of contracts that were canceled (i.e. the remaining count at
             time of cancellation).
+        ts_ms:
+          type: integer
+          format: int64
+          description: >-
+            Matching engine timestamp at which the cancellation was processed,
+            as Unix epoch milliseconds.
     FixedPointCount:
       type: string
       description: >-

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/rfq-messages.md
-Downloaded: 2026-04-30T20:28:22.490Z
+Downloaded: 2026-05-06T20:34:50.212Z
 -->
 
 > ## Documentation Index
@@ -76,7 +76,7 @@ This message is used bidirectionally:
 | 453   | NoPartyIDs                       | Integer | N        | Number of parties (only 1 supported)                                                                                                                                     |
 | 448   | PartyId                          | String  | N        | FCM SubtraderId for the customer on whose behalf the RFQ is submitted                                                                                                    |
 | 452   | PartyRole                        | Integer | N        | 24 (CustomerAccount) - required when using PartyId                                                                                                                       |
-| 21015 | RestRemainder                    | Char    | N        | Y/N - Allow partial fills (default: N)                                                                                                                                   |
+| 21015 | RestRemainder                    | Char    | N        | Y/N - Rest the quote remainder after execution (default: N)                                                                                                              |
 | 21016 | ReplaceExisting                  | Char    | N        | Y/N - Whether to delete existing RFQs as part of this RFQ's creation (default: N)                                                                                        |
 | 20180 | MultivariateCollectionTicker     | String  | C        | Collection ticker for parlay/MVE markets. Use instead of Symbol                                                                                                          |
 | 20181 | NoMultivariateSelectedLegs       | Integer | C        | Number of MVE legs (repeating group). Required with 20180                                                                                                                |
@@ -135,14 +135,15 @@ If a new Quote is created when an existing quote for the same market already exi
 
 ### Market Maker → Exchange (Submit Quote)
 
-| Tag | Name         | Type    | Required | Description                                                                                    |
-| --- | ------------ | ------- | -------- | ---------------------------------------------------------------------------------------------- |
-| 117 | QuoteId      | UUID    | Y        | Client-assigned quote identifier                                                               |
-| 131 | QuoteReqId   | UUID    | Y        | Server-assigned RFQ ID (from QuoteRequest)                                                     |
-| 55  | Symbol       | String  | Y        | Market ticker                                                                                  |
-| 132 | BidPx        | Integer | C        | Yes price in cents (1-99)                                                                      |
-| 133 | OfferPx      | Integer | C        | No price in cents (1-99)                                                                       |
-| 79  | AllocAccount | Integer | N        | Subaccount number (0-32). If provided, the quote will be created for the specified subaccount. |
+| Tag   | Name          | Type    | Required | Description                                                                                    |
+| ----- | ------------- | ------- | -------- | ---------------------------------------------------------------------------------------------- |
+| 117   | QuoteId       | UUID    | Y        | Client-assigned quote identifier                                                               |
+| 131   | QuoteReqId    | UUID    | Y        | Server-assigned RFQ ID (from QuoteRequest)                                                     |
+| 55    | Symbol        | String  | Y        | Market ticker                                                                                  |
+| 132   | BidPx         | Integer | C        | Yes price in cents (1-99)                                                                      |
+| 133   | OfferPx       | Integer | C        | No price in cents (1-99)                                                                       |
+| 79    | AllocAccount  | Integer | N        | Subaccount number (0-32). If provided, the quote will be created for the specified subaccount. |
+| 21015 | RestRemainder | Char    | N        | Y/N - Allow partial fills (default: N)                                                         |
 
 ### Exchange → Creator (Quote Notification)
 

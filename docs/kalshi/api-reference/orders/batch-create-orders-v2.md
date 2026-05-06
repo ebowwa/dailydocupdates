@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/batch-create-orders-v2.md
-Downloaded: 2026-04-29T20:29:21.757Z
+Downloaded: 2026-05-06T20:34:50.205Z
 -->
 
 > ## Documentation Index
@@ -27,8 +27,14 @@ info:
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
 servers:
+  - url: https://external-api.kalshi.com/trade-api/v2
+    description: Production Trade API server
   - url: https://api.elections.kalshi.com/trade-api/v2
-    description: Production server
+    description: Production shared API server, also supported
+  - url: https://external-api.demo.kalshi.co/trade-api/v2
+    description: Demo Trade API server
+  - url: https://demo-api.kalshi.co/trade-api/v2
+    description: Demo shared API server, also supported
 security: []
 tags:
   - name: api-keys
@@ -150,6 +156,14 @@ components:
                 description: >-
                   Volume-weighted average fee paid per contract. Only present
                   when fill_count > 0.
+              ts_ms:
+                type: integer
+                format: int64
+                nullable: true
+                x-omitempty: false
+                description: >-
+                  Matching engine timestamp at which the order was processed, as
+                  Unix epoch milliseconds. Absent when the request errored.
               error:
                 allOf:
                   - $ref: '#/components/schemas/ErrorResponse'
@@ -224,6 +238,13 @@ components:
         order_group_id:
           type: string
           description: The order group this order is part of
+          x-go-type-skip-optional-pointer: true
+        exchange_shard:
+          type: integer
+          default: 0
+          description: >-
+            The exchange shard index to route this order to. Defaults to shard
+            0.
           x-go-type-skip-optional-pointer: true
     FixedPointCount:
       type: string

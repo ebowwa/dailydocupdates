@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/settings.md
-Downloaded: 2026-05-05T20:28:26.519Z
+Downloaded: 2026-05-06T20:34:39.665Z
 -->
 
 > ## Documentation Index
@@ -176,6 +176,7 @@ The published schema is updated periodically and may not include settings added 
 | `apiKeyHelper`                    | Custom script, to be executed in `/bin/sh`, to generate an auth value. This value will be sent as `X-Api-Key` and `Authorization: Bearer` headers for model requests                                                                                                                                                                                                                                                                                                                                                         | `/bin/generate_temp_api_key.sh`                                                                                                |
 | `attribution`                     | Customize attribution for git commits and pull requests. See [Attribution settings](#attribution-settings)                                                                                                                                                                                                                                                                                                                                                                                                                   | `{"commit": "🤖 Generated with Claude Code", "pr": ""}`                                                                        |
 | `autoMemoryDirectory`             | Custom directory for [auto memory](/en/memory#storage-location) storage. Accepts an absolute path or a `~/`-prefixed path. Accepted from policy and user settings, and from the `--settings` flag. Not accepted from project or local settings, since a cloned repository could supply either file to redirect memory writes to sensitive locations                                                                                                                                                                          | `"~/my-memory-dir"`                                                                                                            |
+| `autoMemoryEnabled`               | Enable [auto memory](/en/memory#enable-or-disable-auto-memory). When `false`, Claude does not read from or write to the auto memory directory. Default: `true`. You can also toggle this with `/memory` during a session                                                                                                                                                                                                                                                                                                     | `false`                                                                                                                        |
 | `autoMode`                        | Customize what the [auto mode](/en/permission-modes#eliminate-prompts-with-auto-mode) classifier blocks and allows. Contains `environment`, `allow`, and `soft_deny` arrays of prose rules. Include the literal string `"$defaults"` in an array to inherit the built-in rules at that position. See [Configure auto mode](/en/auto-mode-config). Not read from shared project settings                                                                                                                                      | `{"soft_deny": ["$defaults", "Never run terraform apply"]}`                                                                    |
 | `autoScrollEnabled`               | In [fullscreen rendering](/en/fullscreen), follow new output to the bottom of the conversation. Default: `true`. Appears in `/config` as **Auto-scroll**. Permission prompts still scroll into view when this is off                                                                                                                                                                                                                                                                                                         | `false`                                                                                                                        |
 | `autoUpdatesChannel`              | Release channel to follow for updates. Use `"stable"` for a version that is typically about one week old and skips versions with major regressions, or `"latest"` (default) for the most recent release                                                                                                                                                                                                                                                                                                                      | `"stable"`                                                                                                                     |
@@ -226,6 +227,7 @@ The published schema is updated periodically and may not include settings added 
 | `showClearContextOnPlanAccept`    | Show the "clear context" option on the plan accept screen. Defaults to `false`. Set to `true` to restore the option                                                                                                                                                                                                                                                                                                                                                                                                          | `true`                                                                                                                         |
 | `showThinkingSummaries`           | Show [extended thinking](/en/model-config#extended-thinking) summaries in interactive sessions. When unset or `false` (default in interactive mode), thinking blocks are redacted by the API and shown as a collapsed stub. Redaction only changes what you see, not what the model generates: to reduce thinking spend, [lower the budget or disable thinking](/en/model-config#extended-thinking) instead. Non-interactive mode (`-p`) and SDK callers always receive summaries regardless of this setting                 | `true`                                                                                                                         |
 | `showTurnDuration`                | Show turn duration messages after responses, e.g. "Cooked for 1m 6s". Default: `true`. Appears in `/config` as **Show turn duration**                                                                                                                                                                                                                                                                                                                                                                                        | `false`                                                                                                                        |
+| `skillOverrides`                  | {/* min-version: 2.1.129 */}Per-skill visibility overrides keyed by skill name. Value is `"on"`, `"name-only"`, `"user-invocable-only"`, or `"off"`. Lets you hide or collapse a skill without editing its SKILL.md. Does not apply to plugin skills, which are managed through `/plugin`. The `/skills` menu writes these to `.claude/settings.local.json`. See [Override skill visibility from settings](/en/skills#override-skill-visibility-from-settings). Requires Claude Code v2.1.129 or later                       | `{"legacy-context": "name-only", "deploy": "off"}`                                                                             |
 | `skipWebFetchPreflight`           | Skip the [WebFetch domain safety check](/en/data-usage#webfetch-domain-safety-check) that sends each requested hostname to `api.anthropic.com` before fetching. Set to `true` in environments that block traffic to Anthropic, such as Bedrock, Vertex AI, or Foundry deployments with restrictive egress. When skipped, WebFetch attempts any URL without consulting the blocklist                                                                                                                                          | `true`                                                                                                                         |
 | `spinnerTipsEnabled`              | Show tips in the spinner while Claude is working. Set to `false` to disable tips (default: `true`)                                                                                                                                                                                                                                                                                                                                                                                                                           | `false`                                                                                                                        |
 | `spinnerTipsOverride`             | Override spinner tips with custom strings. `tips`: array of tip strings. `excludeDefault`: if `true`, only show custom tips; if `false` or absent, custom tips are merged with built-in tips                                                                                                                                                                                                                                                                                                                                 | `{ "excludeDefault": true, "tips": ["Use our internal tool X"] }`                                                              |
@@ -479,7 +481,7 @@ Settings apply in order of precedence. From highest to lowest:
    * Within the managed tier, precedence is: server-managed > MDM/OS-level policies > file-based (`managed-settings.d/*.json` + `managed-settings.json`) > HKCU registry (Windows only). Only one managed source is used; sources do not merge across tiers. Within the file-based tier, drop-in files and the base file are merged together.
 
 2. **Command line arguments**
-   * Temporary overrides for a specific session
+   * Temporary overrides for a specific session. JSON passed via `--settings <file-or-json>` merges with file-based settings using the same rules as the other layers: a key set here overrides the same key in local, project, or user settings, and omitting a key leaves the lower-layer value in place
 
 3. **Local project settings** (`.claude/settings.local.json`)
    * Personal project-specific settings
@@ -561,8 +563,10 @@ Plugin-related settings in `settings.json`:
   },
   "extraKnownMarketplaces": {
     "acme-tools": {
-      "source": "github",
-      "repo": "acme-corp/claude-plugins"
+      "source": {
+        "source": "github",
+        "repo": "acme-corp/claude-plugins"
+      }
     }
   }
 }
@@ -676,7 +680,7 @@ Use `source: 'settings'` to declare a small set of plugins inline without settin
 * Only available in managed settings (`managed-settings.json`)
 * Cannot be overridden by user or project settings (highest precedence)
 * Enforced BEFORE network/filesystem operations (blocked sources never execute)
-* Uses exact matching for source specifications (including `ref`, `path` for git sources), except `hostPattern`, which uses regex matching
+* Uses exact matching for source specifications (including `ref`, `path` for git sources), except `hostPattern` and `pathPattern`, which use regex matching
 
 **Allowlist behavior**:
 
@@ -686,7 +690,7 @@ Use `source: 'settings'` to declare a small set of plugins inline without settin
 
 **All supported source types**:
 
-The allowlist supports multiple marketplace source types. Most sources use exact matching, while `hostPattern` uses regex matching against the marketplace host.
+The allowlist supports multiple marketplace source types. Most sources use exact matching, while `hostPattern` and `pathPattern` use regex matching against the marketplace host and filesystem path respectively.
 
 1. **GitHub repositories**:
 
@@ -765,6 +769,17 @@ Host extraction by source type:
 * `git`: extracts hostname from the URL (supports both HTTPS and SSH formats)
 * `url`: extracts hostname from the URL
 * `npm`, `file`, `directory`: not supported for host pattern matching
+
+8. **Path pattern matching**:
+
+```json theme={null}
+{ "source": "pathPattern", "pathPattern": "^/opt/approved/" }
+{ "source": "pathPattern", "pathPattern": ".*" }
+```
+
+Fields: `pathPattern` (required: regex pattern matched against the `path` field of `file` and `directory` sources)
+
+Use path pattern matching to allow filesystem-based marketplaces alongside `hostPattern` restrictions for network sources. Set `".*"` to allow all local paths, or a narrower pattern to restrict to specific directories.
 
 **Configuration examples**:
 

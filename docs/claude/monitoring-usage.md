@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/monitoring-usage.md
-Downloaded: 2026-05-05T20:28:26.516Z
+Downloaded: 2026-05-06T20:34:39.660Z
 -->
 
 > ## Documentation Index
@@ -426,7 +426,7 @@ Incremented when code is added or removed.
 
 #### Pull request counter
 
-Incremented when creating pull requests via Claude Code.
+Incremented when Claude Code creates a pull request or merge request through a shell command or an MCP tool.
 
 **Attributes**:
 

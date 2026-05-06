@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/python-sdk/api/PortfolioApi.md
-Downloaded: 2026-05-05T20:28:48.133Z
+Downloaded: 2026-05-06T20:34:50.216Z
 -->
 
 > ## Documentation Index
@@ -11,7 +11,7 @@ Downloaded: 2026-05-05T20:28:48.133Z
 
 > Python SDK methods for Portfolio operations
 
-All URIs are relative to *[https://api.elections.kalshi.com/trade-api/v2](https://api.elections.kalshi.com/trade-api/v2)*
+All URIs are relative to *[https://external-api.kalshi.com/trade-api/v2](https://external-api.kalshi.com/trade-api/v2)*
 
 | Method                                                                                       | HTTP request                                            | Description                   |
 | -------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ----------------------------- |

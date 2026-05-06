@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/get-quote.md
-Downloaded: 2026-04-29T20:29:21.747Z
+Downloaded: 2026-05-06T20:34:50.195Z
 -->
 
 > ## Documentation Index
@@ -24,8 +24,14 @@ info:
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
 servers:
+  - url: https://external-api.kalshi.com/trade-api/v2
+    description: Production Trade API server
   - url: https://api.elections.kalshi.com/trade-api/v2
-    description: Production server
+    description: Production shared API server, also supported
+  - url: https://external-api.demo.kalshi.co/trade-api/v2
+    description: Demo Trade API server
+  - url: https://demo-api.kalshi.co/trade-api/v2
+    description: Demo shared API server, also supported
 security: []
 tags:
   - name: api-keys
@@ -185,6 +191,11 @@ components:
         rest_remainder:
           type: boolean
           description: Whether to rest the remainder of the quote after execution
+        post_only:
+          type: boolean
+          description: >-
+            Whether the quote creator's order is post-only (visible when the
+            caller is the quote creator)
         cancellation_reason:
           type: string
           description: Reason for quote cancellation if cancelled

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/order-group-updates.md
-Downloaded: 2026-05-04T20:33:20.825Z
+Downloaded: 2026-05-06T20:34:50.220Z
 -->
 
 > ## Documentation Index
@@ -44,7 +44,7 @@ description: >
 servers:
   - id: production
     protocol: wss
-    host: api.elections.kalshi.com
+    host: external-api-ws.kalshi.com
     bindings: []
     variables: []
 address: order_group_updates
@@ -106,6 +106,12 @@ operations:
                       Updated contracts limit in fixed-point (2 decimals).
                       Present for "created" and "limit_updated" events only.
                     required: false
+                  - name: ts_ms
+                    type: integer
+                    description: >-
+                      Matching engine timestamp at which the event was
+                      processed, as Unix epoch milliseconds.
+                    required: false
         headers: []
         jsonPayloadSchema:
           type: object
@@ -139,6 +145,7 @@ operations:
               required:
                 - event_type
                 - order_group_id
+                - ts_ms
               properties:
                 event_type:
                   type: string
@@ -160,6 +167,13 @@ operations:
                     Updated contracts limit in fixed-point (2 decimals). Present
                     for "created" and "limit_updated" events only.
                   x-parser-schema-id: <anonymous-schema-221>
+                ts_ms:
+                  type: integer
+                  format: int64
+                  description: >-
+                    Matching engine timestamp at which the event was processed,
+                    as Unix epoch milliseconds.
+                  x-parser-schema-id: <anonymous-schema-222>
               x-parser-schema-id: <anonymous-schema-218>
           x-parser-schema-id: orderGroupUpdatesPayload
         title: Order Group Updates

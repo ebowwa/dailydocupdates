@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/python-sdk/api/MilestonesApi.md
+Downloaded: 2026-05-06T20:34:50.216Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Python SDK methods for Milestones operations
 
-All URIs are relative to *[https://api.elections.kalshi.com/trade-api/v2](https://api.elections.kalshi.com/trade-api/v2)*
+All URIs are relative to *[https://external-api.kalshi.com/trade-api/v2](https://external-api.kalshi.com/trade-api/v2)*
 
 | Method                                 | HTTP request                       | Description    |
 | -------------------------------------- | ---------------------------------- | -------------- |
@@ -29,10 +34,10 @@ from kalshi_python.models.get_milestone_response import GetMilestoneResponse
 from kalshi_python.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.elections.kalshi.com/trade-api/v2
+# Defining the host is optional and defaults to https://external-api.kalshi.com/trade-api/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = kalshi_python.Configuration(
-    host = "https://api.elections.kalshi.com/trade-api/v2"
+    host = "https://external-api.kalshi.com/trade-api/v2"
 )
 
 # Read private key from file
@@ -94,10 +99,10 @@ from kalshi_python.models.get_milestones_response import GetMilestonesResponse
 from kalshi_python.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to https://api.elections.kalshi.com/trade-api/v2
+# Defining the host is optional and defaults to https://external-api.kalshi.com/trade-api/v2
 # See configuration.py for a list of all supported configuration parameters.
 configuration = kalshi_python.Configuration(
-    host = "https://api.elections.kalshi.com/trade-api/v2"
+    host = "https://external-api.kalshi.com/trade-api/v2"
 )
 
 # Read private key from file

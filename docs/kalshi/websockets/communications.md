@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/communications.md
-Downloaded: 2026-05-04T20:33:20.824Z
+Downloaded: 2026-05-06T20:34:50.219Z
 -->
 
 > ## Documentation Index
@@ -54,7 +54,7 @@ description: >
 servers:
   - id: production
     protocol: wss
-    host: api.elections.kalshi.com
+    host: external-api-ws.kalshi.com
     bindings: []
     variables: []
 address: communications

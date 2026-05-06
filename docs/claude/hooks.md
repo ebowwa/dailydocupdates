@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/hooks.md
-Downloaded: 2026-05-05T20:28:26.514Z
+Downloaded: 2026-05-06T20:34:39.658Z
 -->
 
 > ## Documentation Index
@@ -2417,10 +2417,10 @@ The LLM must respond with JSON containing:
 }
 ```
 
-| Field    | Description                                              |
-| :------- | :------------------------------------------------------- |
-| `ok`     | `true` allows the action, `false` blocks it              |
-| `reason` | Required when `ok` is `false`. Explanation for the block |
+| Field    | Description                                                         |
+| :------- | :------------------------------------------------------------------ |
+| `ok`     | `true` to allow, `false` to block. See the per-event behavior below |
+| `reason` | Required when `ok` is `false`. Explanation for the decision         |
 
 What happens on `ok: false` depends on the event:
 

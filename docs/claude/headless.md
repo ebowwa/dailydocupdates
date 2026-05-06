@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/headless.md
-Downloaded: 2026-05-05T20:28:26.514Z
+Downloaded: 2026-05-06T20:34:39.657Z
 -->
 
 > ## Documentation Index
@@ -59,7 +59,7 @@ In bare mode Claude has access to the Bash, file read, and file edit tools. Pass
 | Settings                | `--settings <file-or-json>`                             |
 | MCP servers             | `--mcp-config <file-or-json>`                           |
 | Custom agents           | `--agents <json>`                                       |
-| A plugin directory      | `--plugin-dir <path>`                                   |
+| A plugin                | `--plugin-dir <path>`, `--plugin-url <url>`             |
 
 Bare mode skips OAuth and keychain reads. Anthropic authentication must come from `ANTHROPIC_API_KEY` or an `apiKeyHelper` in the JSON passed to `--settings`. Bedrock, Vertex, and Foundry use their usual provider credentials.
 

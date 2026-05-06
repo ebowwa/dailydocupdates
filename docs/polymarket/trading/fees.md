@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/fees.md
+Downloaded: 2026-05-06T20:34:41.190Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -32,7 +37,7 @@ Where **C** = number of shares traded and **p** = price of the shares.
 
 | Category        | Taker Fee Rate | Maker Fee Rate | Maker Rebate |
 | --------------- | -------------- | -------------- | ------------ |
-| Crypto          | 0.072          | 0              | 20%          |
+| Crypto          | 0.07           | 0              | 20%          |
 | Sports          | 0.03           | 0              | 25%          |
 | Finance         | 0.04           | 0              | 25%          |
 | Politics        | 0.04           | 0              | 25%          |
@@ -59,28 +64,28 @@ Taker fees are calculated in USDC and vary based on the share price. The fee amo
     | Price  | Trade Value | Taker Fee (USDC) |
     | ------ | ----------- | ---------------- |
     | \$0.01 | \$1         | \$0.07           |
-    | \$0.05 | \$5         | \$0.34           |
-    | \$0.10 | \$10        | \$0.65           |
-    | \$0.15 | \$15        | \$0.92           |
-    | \$0.20 | \$20        | \$1.15           |
-    | \$0.25 | \$25        | \$1.35           |
-    | \$0.30 | \$30        | \$1.51           |
-    | \$0.35 | \$35        | \$1.64           |
-    | \$0.40 | \$40        | \$1.73           |
-    | \$0.45 | \$45        | \$1.78           |
-    | \$0.50 | \$50        | \$1.80           |
-    | \$0.55 | \$55        | \$1.78           |
-    | \$0.60 | \$60        | \$1.73           |
-    | \$0.65 | \$65        | \$1.64           |
-    | \$0.70 | \$70        | \$1.51           |
-    | \$0.75 | \$75        | \$1.35           |
-    | \$0.80 | \$80        | \$1.15           |
-    | \$0.85 | \$85        | \$0.92           |
-    | \$0.90 | \$90        | \$0.65           |
-    | \$0.95 | \$95        | \$0.34           |
+    | \$0.05 | \$5         | \$0.33           |
+    | \$0.10 | \$10        | \$0.63           |
+    | \$0.15 | \$15        | \$0.89           |
+    | \$0.20 | \$20        | \$1.12           |
+    | \$0.25 | \$25        | \$1.31           |
+    | \$0.30 | \$30        | \$1.47           |
+    | \$0.35 | \$35        | \$1.59           |
+    | \$0.40 | \$40        | \$1.68           |
+    | \$0.45 | \$45        | \$1.73           |
+    | \$0.50 | \$50        | \$1.75           |
+    | \$0.55 | \$55        | \$1.73           |
+    | \$0.60 | \$60        | \$1.68           |
+    | \$0.65 | \$65        | \$1.59           |
+    | \$0.70 | \$70        | \$1.47           |
+    | \$0.75 | \$75        | \$1.31           |
+    | \$0.80 | \$80        | \$1.12           |
+    | \$0.85 | \$85        | \$0.89           |
+    | \$0.90 | \$90        | \$0.63           |
+    | \$0.95 | \$95        | \$0.33           |
     | \$0.99 | \$99        | \$0.07           |
 
-    The fee in USDC **peaks at 50%** probability (\$1.80) and decreases symmetrically toward both extremes.
+    The fee in USDC **peaks at 50%** probability (\$1.75) and decreases symmetrically toward both extremes.
   </Tab>
 
   <Tab title="Sports">

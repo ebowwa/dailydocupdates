@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/typescript.md
-Downloaded: 2026-05-05T20:28:26.505Z
+Downloaded: 2026-05-06T20:34:39.648Z
 -->
 
 > ## Documentation Index
@@ -631,7 +631,7 @@ type PermissionMode =
   | "default" // Standard permission behavior
   | "acceptEdits" // Auto-accept file edits
   | "bypassPermissions" // Bypass all permission checks
-  | "plan" // Planning mode - no execution
+  | "plan" // Planning mode - read-only tools only
   | "dontAsk" // Don't prompt for permissions, deny if not pre-approved
   | "auto"; // Use a model classifier to approve or deny each tool call
 ```

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/quick_start_market_data.md
+Downloaded: 2026-05-06T20:34:50.214Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,10 +15,10 @@ This guide will walk you through accessing Kalshi's public market data endpoints
 
 ## Making Unauthenticated Requests
 
-Kalshi provides several public endpoints that don't require API keys. These endpoints allow you to access market data directly from our production servers at `https://api.elections.kalshi.com/trade-api/v2`.
+Kalshi provides several public endpoints that don't require API keys. These endpoints allow you to access market data directly from our production servers at `https://external-api.kalshi.com/trade-api/v2`.
 
 <Info>
-  **Note about the API URL**: Despite the "elections" subdomain, `api.elections.kalshi.com` provides access to ALL Kalshi markets - not just election-related ones. This includes markets on economics, climate, technology, entertainment, and more.
+  **Note about the API URL**: Despite the "elections" subdomain, the production Trade API provides access to ALL Kalshi markets - not just election-related ones. This includes markets on economics, climate, technology, entertainment, and more.
 </Info>
 
 <Info>
@@ -29,7 +34,7 @@ Let's start by fetching information about the KXHIGHNY series ([Highest temperat
   import requests
 
   # Get series information for KXHIGHNY
-  url = "https://api.elections.kalshi.com/trade-api/v2/series/KXHIGHNY"
+  url = "https://external-api.kalshi.com/trade-api/v2/series/KXHIGHNY"
   response = requests.get(url)
   series_data = response.json()
 
@@ -40,7 +45,7 @@ Let's start by fetching information about the KXHIGHNY series ([Highest temperat
 
   ```javascript JavaScript theme={null}
   // Get series information for KXHIGHNY
-  fetch('https://api.elections.kalshi.com/trade-api/v2/series/KXHIGHNY')
+  fetch('https://external-api.kalshi.com/trade-api/v2/series/KXHIGHNY')
     .then(response => response.json())
     .then(data => {
       console.log(`Series Title: ${data.series.title}`);
@@ -50,7 +55,7 @@ Let's start by fetching information about the KXHIGHNY series ([Highest temperat
   ```
 
   ```curl cURL theme={null}
-  curl -X GET "https://api.elections.kalshi.com/trade-api/v2/series/KXHIGHNY"
+  curl -X GET "https://external-api.kalshi.com/trade-api/v2/series/KXHIGHNY"
   ```
 </CodeGroup>
 
@@ -61,7 +66,7 @@ Now that we have the series information, let's get the markets for this series. 
 <CodeGroup>
   ```python Python theme={null}
   # Get all open markets for the KXHIGHNY series
-  markets_url = f"https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXHIGHNY&status=open"
+  markets_url = f"https://external-api.kalshi.com/trade-api/v2/markets?series_ticker=KXHIGHNY&status=open"
   markets_response = requests.get(markets_url)
   markets_data = markets_response.json()
 
@@ -76,7 +81,7 @@ Now that we have the series information, let's get the markets for this series. 
   if markets_data['markets']:
       # Let's get details for the first market's event
       event_ticker = markets_data['markets'][0]['event_ticker']
-      event_url = f"https://api.elections.kalshi.com/trade-api/v2/events/{event_ticker}"
+      event_url = f"https://external-api.kalshi.com/trade-api/v2/events/{event_ticker}"
       event_response = requests.get(event_url)
       event_data = event_response.json()
 
@@ -89,7 +94,7 @@ Now that we have the series information, let's get the markets for this series. 
   // Get markets for the KXHIGHNY series
   async function getSeriesMarkets() {
     // Get all open markets for this series
-    const marketsResponse = await fetch('https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXHIGHNY&status=open');
+    const marketsResponse = await fetch('https://external-api.kalshi.com/trade-api/v2/markets?series_ticker=KXHIGHNY&status=open');
     const marketsData = await marketsResponse.json();
 
     console.log('\nActive markets in KXHIGHNY series:');
@@ -103,7 +108,7 @@ Now that we have the series information, let's get the markets for this series. 
     // Get details for a specific event if markets exist
     if (marketsData.markets.length > 0) {
       const eventTicker = marketsData.markets[0].event_ticker;
-      const eventResponse = await fetch(`https://api.elections.kalshi.com/trade-api/v2/events/${eventTicker}`);
+      const eventResponse = await fetch(`https://external-api.kalshi.com/trade-api/v2/events/${eventTicker}`);
       const eventData = await eventResponse.json();
 
       console.log('Event Details:');
@@ -132,7 +137,7 @@ Now let's fetch the orderbook for a specific market to see the current bids and 
       raise ValueError("No open markets found. Try removing status=open or choose another series.")
 
   market_ticker = markets_data['markets'][0]['ticker']
-  orderbook_url = f"https://api.elections.kalshi.com/trade-api/v2/markets/{market_ticker}/orderbook"
+  orderbook_url = f"https://external-api.kalshi.com/trade-api/v2/markets/{market_ticker}/orderbook"
 
   orderbook_response = requests.get(orderbook_url)
   orderbook_data = orderbook_response.json()
@@ -150,7 +155,7 @@ Now let's fetch the orderbook for a specific market to see the current bids and 
   ```javascript JavaScript theme={null}
   // Get orderbook data
   async function getOrderbook(marketTicker) {
-    const response = await fetch(`https://api.elections.kalshi.com/trade-api/v2/markets/${marketTicker}/orderbook`);
+    const response = await fetch(`https://external-api.kalshi.com/trade-api/v2/markets/${marketTicker}/orderbook`);
     const data = await response.json();
 
     console.log(`\nOrderbook for ${marketTicker}:`);

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/amend-order-v2.md
-Downloaded: 2026-04-29T20:29:21.756Z
+Downloaded: 2026-05-06T20:34:50.204Z
 -->
 
 > ## Documentation Index
@@ -24,8 +24,14 @@ info:
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
 servers:
+  - url: https://external-api.kalshi.com/trade-api/v2
+    description: Production Trade API server
   - url: https://api.elections.kalshi.com/trade-api/v2
-    description: Production server
+    description: Production shared API server, also supported
+  - url: https://external-api.demo.kalshi.co/trade-api/v2
+    description: Demo Trade API server
+  - url: https://demo-api.kalshi.co/trade-api/v2
+    description: Demo shared API server, also supported
 security: []
 tags:
   - name: api-keys
@@ -150,6 +156,7 @@ components:
       type: object
       required:
         - order_id
+        - ts_ms
       properties:
         order_id:
           type: string
@@ -183,6 +190,12 @@ components:
           description: >-
             Volume-weighted average fee paid per contract for fills resulting
             from the amend. Only present when fills occurred.
+        ts_ms:
+          type: integer
+          format: int64
+          description: >-
+            Matching engine timestamp at which the amend was processed, as Unix
+            epoch milliseconds.
     BookSide:
       type: string
       enum:

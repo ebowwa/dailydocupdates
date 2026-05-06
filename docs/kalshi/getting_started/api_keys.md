@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/api_keys.md
+Downloaded: 2026-05-06T20:34:50.213Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -104,7 +109,7 @@ timestampt_str = str(current_time_milliseconds)
 private_key = load_private_key_from_file('kalshi-key-2.key')
 
 method = "GET"
-base_url = 'https://demo-api.kalshi.co'
+base_url = 'https://external-api.demo.kalshi.co'
 path='/trade-api/v2/portfolio/balance'
 
 # Strip query parameters from path before signing
@@ -169,7 +174,7 @@ const timestampStr = currentTimeMilliseconds.toString();
 const privateKeyPem = loadPrivateKeyFromFile('path/to/your/private-key.pem');
 
 const method = "GET";
-const baseUrl = 'https://demo-api.kalshi.co';
+const baseUrl = 'https://external-api.demo.kalshi.co';
 const path = '/trade-api/v2/portfolio/balance';
 
 // Strip query parameters from path before signing

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/define-constant.md
+Downloaded: 2026-05-06T20:34:47.537Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -39,19 +44,21 @@ if ("production" === "production") { // [!code ++]
 
 It doesn't stop there. Bun's optimizing transpiler is smart enough to do some basic constant folding.
 
-Since `"production" === "production"` is always `true`, Bun replaces the entire expression with the `true` value.
+Since `"production" === "production"` is always `true`, Bun replaces the entire expression with the `true` value and drops the unreachable `else` branch.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 if (true) { // [!code ++]
   console.log("Production mode");
-} else {
-  console.log("Development mode");
 }
 ```
 
 ***
 
-And finally, Bun detects the `else` branch is not reachable, and eliminates it.
+To also collapse the surrounding `if` scaffolding and produce the minimal output below, pass `--minify-syntax` (also enabled by `--minify`):
+
+```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun build --define process.env.NODE_ENV="'production'" --minify-syntax src/index.ts
+```
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log("Production mode");

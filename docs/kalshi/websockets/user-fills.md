@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/user-fills.md
+Downloaded: 2026-05-06T20:34:50.221Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -42,7 +47,7 @@ description: >
 servers:
   - id: production
     protocol: wss
-    host: api.elections.kalshi.com
+    host: external-api-ws.kalshi.com
     bindings: []
     variables: []
 address: fill
