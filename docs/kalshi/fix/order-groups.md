@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/order-groups.md
-Downloaded: 2026-04-30T20:28:22.490Z
+Downloaded: 2026-05-07T20:31:04.539Z
 -->
 
 > ## Documentation Index
@@ -130,6 +130,7 @@ Response to order group management requests.
 | ----- | ------------------------ | -------------------------------------------------------------------- |
 | 20130 | OrderGroupID             | ID of the order group                                                |
 | 20132 | OrderGroupContractsLimit | Current contracts limit (only echoed on Create and Update responses) |
+| 79    | AllocAccount             | Subaccount number (0-32) that owns the group                         |
 
 <Note>
   Business-logic errors (e.g. order group not found, exchange-returned errors) are returned as BusinessMessageReject (35=j) messages. Malformed fields (e.g. invalid UUID format for OrderGroupID) produce a session-level Reject (35=3).

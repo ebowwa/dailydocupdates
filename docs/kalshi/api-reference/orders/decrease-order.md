@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/decrease-order.md
-Downloaded: 2026-05-06T20:34:50.206Z
+Downloaded: 2026-05-07T20:31:04.534Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-05-06T20:34:50.206Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.15.0
+  version: 3.16.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -179,6 +179,8 @@ components:
         - ticker
         - side
         - action
+        - outcome_side
+        - book_side
         - type
         - status
         - yes_price_dollars
@@ -205,11 +207,54 @@ components:
           enum:
             - 'yes'
             - 'no'
+          deprecated: true
+          description: >
+            Deprecated. Use `outcome_side` (or `book_side`) instead. See [Order
+            direction](/getting_started/order_direction). This field will not be
+            removed before May 14, 2026.
         action:
           type: string
           enum:
             - buy
             - sell
+          deprecated: true
+          description: >
+            Deprecated. Use `outcome_side` (or `book_side`) instead. See [Order
+            direction](/getting_started/order_direction). This field will not be
+            removed before May 14, 2026.
+        outcome_side:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+          description: >
+            The outcome side this order is positioned for. buy-yes and sell-no
+            produce 'yes'; buy-no and sell-yes produce 'no'.
+
+
+            `outcome_side` describes directional exposure only; it does not
+            change the order's price. An order at price `p` with
+            `outcome_side=no` is matched by an order at the same price `p` with
+            `outcome_side=yes` — both parties trade at the same price, just on
+            opposite directions.
+
+
+            `outcome_side` and `book_side` will become the canonical way to
+            determine order direction. The legacy `action`, `side`, and `is_yes`
+            fields will be deprecated in a future release — please migrate to
+            these new fields.
+        book_side:
+          $ref: '#/components/schemas/BookSide'
+          description: >
+            Same directional bit as outcome_side in book vocabulary. 'bid' is
+            equivalent to outcome_side 'yes'; 'ask' is equivalent to
+            outcome_side 'no'.
+
+
+            `outcome_side` and `book_side` will become the canonical way to
+            determine order direction. The legacy `action`, `side`, and `is_yes`
+            fields will be deprecated in a future release — please migrate to
+            these new fields.
         type:
           type: string
           enum:
@@ -296,6 +341,16 @@ components:
         service:
           type: string
           description: The name of the service that generated the error
+    BookSide:
+      type: string
+      enum:
+        - bid
+        - ask
+      description: >-
+        Side of the book for an order or trade. For event markets, this refers
+        to the YES leg only: `bid` means buy YES, `ask` means sell YES. (Selling
+        YES is economically equivalent to buying NO at `1 - price`, but this
+        endpoint quotes everything from the YES side.)
     OrderStatus:
       type: string
       enum:
@@ -321,8 +376,7 @@ components:
         taker order when it would trade against another order from the same
         user; execution stops and any partial fills already matched are
         executed. `maker` cancels the resting maker order and continues
-        matching; after execution, any remaining taker quantity is canceled and
-        any fills are executed.
+        matching.
   responses:
     BadRequestError:
       description: Bad request - invalid input

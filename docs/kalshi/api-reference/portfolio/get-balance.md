@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-balance.md
-Downloaded: 2026-05-06T20:34:50.208Z
+Downloaded: 2026-05-07T20:31:04.536Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-05-06T20:34:50.208Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.15.0
+  version: 3.16.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -121,20 +121,19 @@ components:
           type: integer
           format: int64
           description: Unix timestamp of the last update to the balance.
-        sharded_balances:
+        balance_breakdown:
           type: array
           items:
-            $ref: '#/components/schemas/ShardedBalance'
-          description: Balance broken down per exchange shard.
-    ShardedBalance:
+            $ref: '#/components/schemas/IndexedBalance'
+          description: Balance broken down per exchange index.
+    IndexedBalance:
       type: object
       required:
-        - shard
+        - exchange_index
         - balance
       properties:
-        shard:
-          type: integer
-          description: Exchange shard index (0 = default)
+        exchange_index:
+          $ref: '#/components/schemas/ExchangeIndex'
         balance:
           $ref: '#/components/schemas/FixedPointDollars'
     ErrorResponse:
@@ -152,6 +151,10 @@ components:
         service:
           type: string
           description: The name of the service that generated the error
+    ExchangeIndex:
+      type: integer
+      description: 'Defaults to 0. Note: currently only 0 supported.'
+      example: 0
     FixedPointDollars:
       type: string
       description: >-

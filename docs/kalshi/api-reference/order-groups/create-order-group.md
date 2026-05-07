@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/order-groups/create-order-group.md
-Downloaded: 2026-05-06T20:34:50.203Z
+Downloaded: 2026-05-07T20:31:04.532Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-05-06T20:34:50.203Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.15.0
+  version: 3.16.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -132,10 +132,18 @@ components:
       type: object
       required:
         - order_group_id
+        - subaccount
       properties:
         order_group_id:
           type: string
           description: The unique identifier for the created order group
+        subaccount:
+          type: integer
+          minimum: 0
+          description: >-
+            Subaccount number that owns the created order group (0 for primary,
+            1-32 for subaccounts).
+          x-go-type-skip-optional-pointer: true
     FixedPointCount:
       type: string
       description: >-

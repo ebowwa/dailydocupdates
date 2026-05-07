@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/get-quotes.md
-Downloaded: 2026-05-06T20:34:50.195Z
+Downloaded: 2026-05-07T20:31:04.524Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-05-06T20:34:50.195Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.15.0
+  version: 3.16.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -103,6 +103,18 @@ paths:
         - name: user_filter
           in: query
           required: false
+          description: Filter for quotes created by the authenticated user.
+          schema:
+            $ref: '#/components/schemas/UserFilter'
+            x-go-type-skip-optional-pointer: true
+          x-oapi-codegen-extra-tags:
+            validate: omitempty,oneof=self
+        - name: rfq_user_filter
+          in: query
+          required: false
+          description: >-
+            Filter for quotes responding to RFQs created by the authenticated
+            user.
           schema:
             $ref: '#/components/schemas/UserFilter'
             x-go-type-skip-optional-pointer: true

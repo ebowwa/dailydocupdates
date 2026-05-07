@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/interactive-mode.md
-Downloaded: 2026-05-06T20:34:39.659Z
+Downloaded: 2026-05-07T20:31:03.581Z
 -->
 
 > ## Documentation Index
@@ -16,7 +16,7 @@ Downloaded: 2026-05-06T20:34:39.659Z
 <Note>
   Keyboard shortcuts may vary by platform and terminal. Press `?` to see available shortcuts for your environment.
 
-  **macOS users**: Option/Alt key shortcuts (`Alt+B`, `Alt+F`, `Alt+Y`, `Alt+M`, `Alt+P`, `Alt+T`) require configuring Option as Meta in your terminal:
+  **macOS users**: Option/Alt key shortcuts (`Alt+B`, `Alt+F`, `Alt+Y`, `Alt+M`, `Alt+P`) require configuring Option as Meta in your terminal:
 
   * **iTerm2**: Settings → Profiles → Keys → General → set Left/Right Option key to "Esc+"
   * **Apple Terminal**: Settings → Profiles → Keyboard → check "Use Option as Meta Key"
@@ -44,7 +44,7 @@ Downloaded: 2026-05-06T20:34:39.659Z
 | `Esc` + `Esc`                                     | Rewind or summarize                                                 | Restore code and/or conversation to a previous point, or summarize from a selected message                                                                                                                                                                                                             |
 | `Shift+Tab` or `Alt+M` (some configurations)      | Cycle permission modes                                              | Cycle through `default`, `acceptEdits`, `plan`, and any modes you have enabled, such as `auto` or `bypassPermissions`. See [permission modes](/en/permission-modes).                                                                                                                                   |
 | `Option+P` (macOS) or `Alt+P` (Windows/Linux)     | Switch model                                                        | Switch models without clearing your prompt                                                                                                                                                                                                                                                             |
-| `Option+T` (macOS) or `Alt+T` (Windows/Linux)     | Toggle extended thinking                                            | Enable or disable extended thinking mode. On macOS, configure your terminal to send Option as Meta for this shortcut to work                                                                                                                                                                           |
+| `Option+T` (macOS) or `Alt+T` (Windows/Linux)     | Toggle extended thinking                                            | Enable or disable extended thinking mode. {/* min-version: 2.1.132 */}As of v2.1.132 this shortcut works on macOS without configuring Option as Meta                                                                                                                                                   |
 | `Option+O` (macOS) or `Alt+O` (Windows/Linux)     | Toggle fast mode                                                    | Enable or disable [fast mode](/en/fast-mode)                                                                                                                                                                                                                                                           |
 
 ### Text editing
@@ -73,12 +73,12 @@ Downloaded: 2026-05-06T20:34:39.659Z
 | :--------------- | :------------- | :------------------------------------------------------------------------------------------------- |
 | Quick escape     | `\` + `Enter`  | Works in all terminals                                                                             |
 | Option key       | `Option+Enter` | After enabling [Option as Meta](/en/terminal-config#enable-option-key-shortcuts-on-macos) on macOS |
-| Shift+Enter      | `Shift+Enter`  | Native in iTerm2, WezTerm, Ghostty, Kitty, Warp, Apple Terminal                                    |
+| Shift+Enter      | `Shift+Enter`  | Native in iTerm2, WezTerm, Ghostty, Kitty, Warp, Apple Terminal, Windows Terminal                  |
 | Control sequence | `Ctrl+J`       | Works in any terminal without configuration                                                        |
 | Paste mode       | Paste directly | For code blocks, logs                                                                              |
 
 <Tip>
-  Shift+Enter works without configuration in iTerm2, WezTerm, Ghostty, Kitty, Warp, and Apple Terminal. For VS Code, Cursor, Windsurf, Alacritty, and Zed, run `/terminal-setup` to install the binding.
+  Shift+Enter works without configuration in iTerm2, WezTerm, Ghostty, Kitty, Warp, Apple Terminal, and Windows Terminal. For VS Code, Cursor, Windsurf, Alacritty, and Zed, run `/terminal-setup` to install the binding.
 </Tip>
 
 ### Quick commands

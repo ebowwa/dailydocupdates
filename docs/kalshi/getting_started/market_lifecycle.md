@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/market_lifecycle.md
+Downloaded: 2026-05-07T20:31:04.540Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -79,10 +84,10 @@ Once `close_time` passes, all order operations, including cancellations, are rej
 
 Market lifecycle events are delivered on two channels:
 
-| Channel                         | Markets covered                   | Event types                                                                          |
-| ------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------ |
-| `market_lifecycle_v2`           | All markets except MVE (`KXMVE*`) | `created`, `activated`, `deactivated`, `close_date_updated`, `determined`, `settled` |
-| `multivariate_market_lifecycle` | MVE markets only (`KXMVE*`)       | `created`, `activated`, `deactivated`, `close_date_updated`, `determined`, `settled` |
+| Channel                         | Markets covered                   | Event types                                                                                              |
+| ------------------------------- | --------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `market_lifecycle_v2`           | All markets except MVE (`KXMVE*`) | `created`, `activated`, `deactivated`, `close_date_updated`, `determined`, `settled`, `metadata_updated` |
+| `multivariate_market_lifecycle` | MVE markets only (`KXMVE*`)       | `created`, `activated`, `deactivated`, `close_date_updated`, `determined`, `settled`                     |
 
 Both channels also emit `event_lifecycle` messages when new events are created.
 

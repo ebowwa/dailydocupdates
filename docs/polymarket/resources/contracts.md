@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/resources/contracts.md
-Downloaded: 2026-04-30T20:28:22.802Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

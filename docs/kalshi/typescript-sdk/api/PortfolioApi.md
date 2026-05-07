@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/typescript-sdk/api/PortfolioApi.md
-Downloaded: 2026-05-06T20:34:50.218Z
+Downloaded: 2026-05-07T20:31:04.544Z
 -->
 
 > ## Documentation Index
@@ -138,7 +138,7 @@ Endpoint for getting the member's deposit history.
 
 | Name       | Type          | Description                                                                                                                                  | Notes                            |
 | ---------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| **limit**  | \[**number**] | Number of results per page. Defaults to 100.                                                                                                 | (optional) defaults to 100       |
+| **limit**  | \[**number**] | Number of results per page. Defaults to 100. Maximum value is 500.                                                                           | (optional) defaults to 100       |
 | **cursor** | \[**string**] | Pagination cursor. Use the cursor value returned from the previous response to get the next page of results. Leave empty for the first page. | (optional) defaults to undefined |
 
 ### Return type

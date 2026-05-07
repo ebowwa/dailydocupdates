@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/user-fills.md
-Downloaded: 2026-05-06T20:34:50.221Z
+Downloaded: 2026-05-07T20:31:04.546Z
 -->
 
 > ## Documentation Index
@@ -156,6 +156,23 @@ operations:
                       - 'yes'
                       - 'no'
                     required: false
+                  - name: outcome_side
+                    type: string
+                    description: Market side
+                    enumValues:
+                      - 'yes'
+                      - 'no'
+                    required: false
+                  - name: book_side
+                    type: string
+                    description: >-
+                      Side of the book for an order or trade. 'bid' is
+                      equivalent to outcome_side 'yes'; 'ask' is equivalent to
+                      outcome_side 'no'.
+                    enumValues:
+                      - bid
+                      - ask
+                    required: false
                   - name: subaccount
                     type: integer
                     description: Optional subaccount number for the fill
@@ -171,7 +188,7 @@ operations:
             type:
               type: string
               const: fill
-              x-parser-schema-id: <anonymous-schema-87>
+              x-parser-schema-id: <anonymous-schema-88>
             sid:
               type: integer
               description: >-
@@ -191,6 +208,8 @@ operations:
                 - count_fp
                 - fee_cost
                 - action
+                - outcome_side
+                - book_side
                 - ts
                 - ts_ms
                 - post_position_fp
@@ -202,14 +221,14 @@ operations:
                     Unique identifier for fills. This is what you use to
                     differentiate fills
                   format: uuid
-                  x-parser-schema-id: <anonymous-schema-89>
+                  x-parser-schema-id: <anonymous-schema-90>
                 order_id:
                   type: string
                   description: >-
                     Unique identifier for orders. This is what you use to
                     differentiate fills for different orders
                   format: uuid
-                  x-parser-schema-id: <anonymous-schema-90>
+                  x-parser-schema-id: <anonymous-schema-91>
                 market_ticker:
                   type: string
                   description: Unique market identifier
@@ -221,7 +240,7 @@ operations:
                 is_taker:
                   type: boolean
                   description: If you were a taker on this fill
-                  x-parser-schema-id: <anonymous-schema-91>
+                  x-parser-schema-id: <anonymous-schema-92>
                 side: &ref_0
                   type: string
                   description: Market side
@@ -232,15 +251,15 @@ operations:
                 yes_price_dollars:
                   type: string
                   description: Price for the yes side of the fill in dollars
-                  x-parser-schema-id: <anonymous-schema-92>
+                  x-parser-schema-id: <anonymous-schema-93>
                 count_fp:
                   type: string
                   description: Fixed-point contracts filled (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-93>
+                  x-parser-schema-id: <anonymous-schema-94>
                 fee_cost:
                   type: string
                   description: Exchange fee paid for this fill in fixed-point dollars
-                  x-parser-schema-id: <anonymous-schema-94>
+                  x-parser-schema-id: <anonymous-schema-95>
                 action:
                   type: string
                   description: Order action type
@@ -255,28 +274,39 @@ operations:
                     Deprecated - Unix timestamp for when the update happened (in
                     seconds). Use ts_ms instead.
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-95>
+                  x-parser-schema-id: <anonymous-schema-96>
                 ts_ms:
                   type: integer
                   description: >-
                     Unix timestamp for when the update happened (in
                     milliseconds)
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-96>
+                  x-parser-schema-id: <anonymous-schema-97>
                 client_order_id:
                   type: string
                   description: Optional client-provided order ID
-                  x-parser-schema-id: <anonymous-schema-97>
+                  x-parser-schema-id: <anonymous-schema-98>
                 post_position_fp:
                   type: string
                   description: Fixed-point position after the fill (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-98>
+                  x-parser-schema-id: <anonymous-schema-99>
                 purchased_side: *ref_0
+                outcome_side: *ref_0
+                book_side:
+                  type: string
+                  description: >-
+                    Side of the book for an order or trade. 'bid' is equivalent
+                    to outcome_side 'yes'; 'ask' is equivalent to outcome_side
+                    'no'.
+                  enum:
+                    - bid
+                    - ask
+                  x-parser-schema-id: bookSide
                 subaccount:
                   type: integer
                   description: Optional subaccount number for the fill
-                  x-parser-schema-id: <anonymous-schema-99>
-              x-parser-schema-id: <anonymous-schema-88>
+                  x-parser-schema-id: <anonymous-schema-100>
+              x-parser-schema-id: <anonymous-schema-89>
           x-parser-schema-id: fillPayload
         title: Fill Update
         description: Private fill information for authenticated user

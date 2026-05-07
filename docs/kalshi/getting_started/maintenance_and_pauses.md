@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/getting_started/maintenance_and_pauses.md
-Downloaded: 2026-04-30T20:28:22.491Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

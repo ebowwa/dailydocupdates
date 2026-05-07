@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-05-06T20:34:50.211Z
+Downloaded: 2026-05-07T20:31:04.538Z
 -->
 
 > ## Documentation Index
@@ -19,6 +19,77 @@ This changelog is a work in progress. As always, we welcome any feedback in our 
 
 <Update
   label="May 7, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Order group creation response includes subaccount",
+description: "CreateOrderGroup now returns the subaccount that owns the created order group."
+}}
+>
+  `CreateOrderGroup` now returns `subaccount`, the subaccount number that owns the created order group. The value is `0` for the primary account and `1-32` for subaccounts.
+
+  Affected endpoint: `POST /portfolio/order_groups/create`.
+</Update>
+
+<Update
+  label="May 7, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "RFQ User Filter on Get Quotes",
+description: "RFQ User Filter on Get Quotes"
+}}
+>
+  Added `rfq_user_filter` to `GetQuotes` for filtering by quotes in response to RFQs created by the authenticated user.
+
+  Affected endpoint: `GET /communications/quotes`.
+</Update>
+
+<Update
+  label="May 6, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Normalized outcome_side and book_side on Order, Fill, and Trade responses",
+description: "REST and WebSocket Order, Fill, and Trade responses now include outcome_side (yes/no) and book_side (bid/ask), each carrying the full directional bit so the action × side matrix is no longer required to interpret a response."
+}}
+>
+  Order, Fill, and Trade responses now include two new normalized direction
+  fields. Each carries the full directional bit on its own — combining
+  `action` with `side` is no longer required to know what the user is
+  positioned for. The two fields encode the same bit in two vocabularies:
+  `bid` is equivalent to `yes`, `ask` is equivalent to `no`.
+
+  * `outcome_side` (`yes` | `no`) — the outcome the user profits from.
+    Buy-yes and sell-no produce `yes`; buy-no and sell-yes produce `no`.
+  * `book_side` (`bid` | `ask`) — same bit in book vocabulary.
+
+  Affected REST responses (`svc-api2`):
+
+  * `Order` (GetOrders, GetOrder, GetHistoricalOrders, and order-write responses)
+  * `Fill` (GetFills, GetFillsHistorical)
+  * `Trade` (public) — fields are named `taker_outcome_side` and `taker_book_side` to match the existing `taker_side`
+
+  Affected WebSocket channels (`svc-apiexternal-ws`):
+
+  * `user_orders`
+  * `fill`
+  * `trade` — `taker_outcome_side` and `taker_book_side`
+
+  `outcome_side` describes directional exposure only; it does not change
+  the order's price. An order at price `p` with `outcome_side=no` is
+  matched by an order at the same price `p` with `outcome_side=yes` —
+  both parties trade at the same price, just on opposite directions.
+
+  Existing `action`, `side`, `is_yes`, `purchased_side`, and `taker_side`
+  fields are now marked deprecated. `outcome_side` and `book_side` are
+  the canonical way to determine order/trade direction going forward.
+  The legacy fields **will not be removed before May 14, 2026** — please
+  migrate to the new fields when integrating against these endpoints.
+
+  See the [Order direction](/getting_started/order_direction) reference
+  page for the full migration table and equivalence rules.
+</Update>
+
+<Update
+  label="May 7, 2026"
   tags={["Documentation", "Upcoming"]}
   rss={{
 title: "Dedicated external Trade API endpoints documented",
@@ -33,6 +104,24 @@ description: "Added dedicated external REST and WebSocket hosts for production a
   * Demo WebSocket: `wss://external-api-ws.demo.kalshi.co/trade-api/ws/v2`
 
   Existing shared hosts remain supported for compatibility. Request signing is unchanged: sign the full request path from the API root, without the hostname or query string.
+</Update>
+
+<Update
+  label="May 5, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "market_lifecycle_v2 WS channel emits metadata_updated events",
+description: "The market_lifecycle_v2 websocket channel now emits metadata_updated events."
+}}
+>
+  The `market_lifecycle_v2` websocket channel now supports a new event type
+  `metadata_updated`. Initially this will only be triggered by a floor strike
+  update, but may expand to more fields in the future. The message contains the
+  updated `floor_strike` as a top-level field.
+
+  **Affected channels:**
+
+  * `market_lifecycle_v2`
 </Update>
 
 <Update

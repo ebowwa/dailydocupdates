@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/model-config.md
-Downloaded: 2026-05-06T20:34:39.660Z
+Downloaded: 2026-05-07T20:31:03.582Z
 -->
 
 > ## Documentation Index
@@ -227,7 +227,7 @@ Extended thinking is the reasoning Claude emits before responding. On models tha
 
 | Control                        | How to set it                                                                                                                                       |
 | :----------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Toggle for the current session | Press `Option+T` on macOS or `Alt+T` on Windows and Linux. May require [terminal configuration](/en/terminal-config) for Option-key shortcuts       |
+| Toggle for the current session | Press `Option+T` on macOS or `Alt+T` on Windows and Linux                                                                                           |
 | Set the global default         | Run `/config` and toggle thinking mode. Saved as `alwaysThinkingEnabled` in `~/.claude/settings.json`                                               |
 | Disable regardless of effort   | Set [`MAX_THINKING_TOKENS=0`](/en/env-vars). Other values apply only with a [fixed thinking budget](#adaptive-reasoning-and-fixed-thinking-budgets) |
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-fills.md
-Downloaded: 2026-05-06T20:34:50.208Z
+Downloaded: 2026-05-07T20:31:04.536Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,7 @@ Fills that occurred before the historical cutoff are only available via `GET /hi
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.15.0
+  version: 3.16.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -189,6 +189,8 @@ components:
         - market_ticker
         - side
         - action
+        - outcome_side
+        - book_side
         - count_fp
         - yes_price_dollars
         - no_price_dollars
@@ -215,13 +217,54 @@ components:
           enum:
             - 'yes'
             - 'no'
-          description: Specifies if this is a 'yes' or 'no' fill
+          deprecated: true
+          description: >
+            Deprecated. Use `outcome_side` (or `book_side`) instead. See [Order
+            direction](/getting_started/order_direction). This field will not be
+            removed before May 14, 2026.
         action:
           type: string
           enum:
             - buy
             - sell
-          description: Specifies if this is a buy or sell order
+          deprecated: true
+          description: >
+            Deprecated. Use `outcome_side` (or `book_side`) instead. See [Order
+            direction](/getting_started/order_direction). This field will not be
+            removed before May 14, 2026.
+        outcome_side:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+          description: >
+            The outcome side this fill positioned the user for. buy-yes and
+            sell-no produce 'yes'; buy-no and sell-yes produce 'no'.
+
+
+            `outcome_side` describes directional exposure only; it does not
+            change the fill's price. A fill at price `p` with `outcome_side=no`
+            is matched against an order at the same price `p` with
+            `outcome_side=yes` — both parties trade at the same price, just on
+            opposite directions.
+
+
+            `outcome_side` and `book_side` will become the canonical way to
+            determine fill direction. The legacy `action` and `side` fields will
+            be deprecated in a future release — please migrate to these new
+            fields.
+        book_side:
+          $ref: '#/components/schemas/BookSide'
+          description: >
+            Same directional bit as outcome_side in book vocabulary. 'bid' is
+            equivalent to outcome_side 'yes'; 'ask' is equivalent to
+            outcome_side 'no'.
+
+
+            `outcome_side` and `book_side` will become the canonical way to
+            determine fill direction. The legacy `action` and `side` fields will
+            be deprecated in a future release — please migrate to these new
+            fields.
         count_fp:
           $ref: '#/components/schemas/FixedPointCount'
           description: >-
@@ -256,6 +299,16 @@ components:
           type: integer
           format: int64
           description: Unix timestamp when this fill was executed (legacy field name)
+    BookSide:
+      type: string
+      enum:
+        - bid
+        - ask
+      description: >-
+        Side of the book for an order or trade. For event markets, this refers
+        to the YES leg only: `bid` means buy YES, `ask` means sell YES. (Selling
+        YES is economically equivalent to buying NO at `1 - price`, but this
+        endpoint quotes everything from the YES side.)
     FixedPointCount:
       type: string
       description: >-
