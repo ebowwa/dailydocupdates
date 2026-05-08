@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/bridge/deposit.md
+Downloaded: 2026-05-08T20:25:34.712Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -81,10 +86,9 @@ Each asset has a minimum deposit amount. Deposits below the minimum will not be 
 
 ## Deposit Recovery
 
-If you deposited the wrong token on Ethereum or Polygon, use these tools to recover your funds:
+If you deposited the wrong token, use this tool to recover your funds:
 
-* **Ethereum deposits**: [recovery.polymarket.com](https://recovery.polymarket.com/)
-* **Polygon deposits**: [matic-recovery.polymarket.com](https://matic-recovery.polymarket.com/)
+[recovery.polymarket.com](https://recovery.polymarket.com/)
 
 <Warning>
   Sending unsupported tokens may cause **irrecoverable loss**. Always verify

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/builders/overview.md
+Downloaded: 2026-05-08T20:25:34.710Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -119,7 +124,7 @@ These open-source demo applications show how to integrate Polymarket's CLOB Clie
   </Card>
 
   <Card title="Gasless Trading" icon="gas-pump">
-    Safe & Proxy wallet support
+    Deposit wallet support for new API users
   </Card>
 
   <Card title="Full Integration" icon="puzzle-piece">
@@ -127,9 +132,18 @@ These open-source demo applications show how to integrate Polymarket's CLOB Clie
   </Card>
 </CardGroup>
 
-### Safe Wallet Examples
+### Deposit Wallet Integrations
 
-Deploy Gnosis Safe wallets for your users:
+New API users should use deposit wallets. Use the Builder Relayer Client to
+deploy deposit wallets and execute signed wallet batches, then place CLOB
+orders with `POLY_1271`.
+
+See the [Deposit Wallet Guide](/trading/deposit-wallets) for TypeScript,
+Python, Rust, and direct API integration details.
+
+### Existing Safe Wallet Examples
+
+Existing Safe integrations can continue using Gnosis Safe wallets:
 
 <CardGroup cols={2}>
   <Card title="wagmi + Safe" icon="wallet" href="https://github.com/Polymarket/wagmi-safe-builder-example">
@@ -149,7 +163,7 @@ Deploy Gnosis Safe wallets for your users:
   </Card>
 </CardGroup>
 
-### Proxy Wallet Examples
+### Existing Proxy Wallet Examples
 
 For existing Magic Link users from Polymarket.com:
 
@@ -163,24 +177,30 @@ For existing Magic Link users from Polymarket.com:
 
 <Tabs>
   <Tab title="Authentication">
-    * User sign-in via wallet provider
-    * User API credential derivation (L2 auth)
-    * Builder config with remote signing
-    * Signature types for Safe vs Proxy wallets
+    <ul>
+      <li>User sign-in via wallet provider</li>
+      <li>User API credential derivation (L2 auth)</li>
+      <li>Builder config with remote signing</li>
+      <li>Signature types for Deposit Wallet, Safe, and Proxy wallets</li>
+    </ul>
   </Tab>
 
   <Tab title="Wallet Operations">
-    * Safe wallet deployment via Relayer
-    * Batch token approvals (pUSD + outcome tokens)
-    * CTF operations (split, merge, redeem)
-    * Transaction monitoring
+    <ul>
+      <li>Deposit wallet deployment via Relayer</li>
+      <li>Batch token approvals (pUSD + outcome tokens)</li>
+      <li>CTF operations (split, merge, redeem)</li>
+      <li>Transaction monitoring</li>
+    </ul>
   </Tab>
 
   <Tab title="Trading">
-    * CLOB client initialization
-    * Order placement with builder attribution
-    * Position and order management
-    * Market discovery via Gamma API
+    <ul>
+      <li>CLOB client initialization</li>
+      <li>Order placement with builder attribution</li>
+      <li>Position and order management</li>
+      <li>Market discovery via Gamma API</li>
+    </ul>
   </Tab>
 </Tabs>
 

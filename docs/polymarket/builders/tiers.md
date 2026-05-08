@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/builders/tiers.md
+Downloaded: 2026-05-08T20:25:34.710Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,18 +15,18 @@ The Builder Program uses a tiered system to manage rate limits while rewarding h
 
 ## Feature Definitions
 
-| Feature                     | Description                                                               |
-| --------------------------- | ------------------------------------------------------------------------- |
-| **Daily Relayer Txn Limit** | Maximum Relayer transactions per day for Safe/Proxy wallet operations     |
-| **API Rate Limits**         | Rate limits for non-relayer endpoints (CLOB, Gamma, etc.)                 |
-| **Gasless Trading**         | Gas fees subsidized for trading via Safe/Proxy wallets                    |
-| **Order Attribution**       | Orders tracked and attributed to your Builder profile                     |
-| **Builder Fees**            | Builders who route orders can charge fees and monetize on flow            |
-| **Leaderboard Visibility**  | Visibility on the [Builder Leaderboard](https://builders.polymarket.com/) |
-| **Telegram Channel**        | Private Builders channel for announcements and support                    |
-| **Engineering Support**     | Direct access to engineering team                                         |
-| **Marketing Support**       | Promotion via official Polymarket social accounts                         |
-| **Priority Access**         | Early access to new features and products                                 |
+| Feature                     | Description                                                                                |
+| --------------------------- | ------------------------------------------------------------------------------------------ |
+| **Daily Relayer Txn Limit** | Maximum Relayer transactions per day for deposit wallet, Safe, and Proxy wallet operations |
+| **API Rate Limits**         | Rate limits for non-relayer endpoints (CLOB, Gamma, etc.)                                  |
+| **Gasless Trading**         | Gas fees subsidized for supported smart-wallet operations                                  |
+| **Order Attribution**       | Orders tracked and attributed to your Builder profile                                      |
+| **Builder Fees**            | Builders who route orders can charge fees and monetize on flow                             |
+| **Leaderboard Visibility**  | Visibility on the [Builder Leaderboard](https://builders.polymarket.com/)                  |
+| **Telegram Channel**        | Private Builders channel for announcements and support                                     |
+| **Engineering Support**     | Direct access to engineering team                                                          |
+| **Marketing Support**       | Promotion via official Polymarket social accounts                                          |
+| **Priority Access**         | Early access to new features and products                                                  |
 
 ***
 
@@ -31,7 +36,7 @@ The Builder Program uses a tiered system to manage rate limits while rewarding h
 | --------------------------- | :--------: | :--------: | :-------: |
 | **Daily Relayer Txn Limit** |   100/day  | 10,000/day | Unlimited |
 | **API Rate Limits**         |  Standard  |  Standard  |  Highest  |
-| **Gasless Trading**\*       |     Yes    |     Yes    |    Yes    |
+| **Gasless Trading\***       |     Yes    |     Yes    |    Yes    |
 | **Order Attribution**       |     Yes    |     Yes    |    Yes    |
 | **Builder Fees**            |     Yes    |     Yes    |    Yes    |
 | **Leaderboard Visibility**  |      —     |     Yes    |    Yes    |
@@ -58,8 +63,8 @@ The Builder Program uses a tiered system to manage rate limits while rewarding h
 
 **What's included:**
 
-* Gasless trading on all CLOB orders through Safe/Proxy wallets
-* Gas subsidized on all Relayer transactions up to daily limit (through Safe/Proxy wallets)
+* Gasless trading through deposit wallets for new API users and existing Safe/Proxy wallets
+* Gas subsidized on all Relayer transactions up to the daily limit
 * Access to all client libraries and documentation
 
 ***

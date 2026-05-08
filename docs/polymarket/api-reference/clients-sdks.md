@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/clients-sdks.md
+Downloaded: 2026-05-08T20:25:34.703Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -77,7 +82,9 @@ Each repository includes working examples in the `/examples` directory.
 
 ## Relayer SDK
 
-For [gasless transactions](/trading/gasless) using proxy wallets, the relayer client handles submitting transactions through Polymarket's relayer:
+For [gasless transactions](/trading/gasless), the relayer client handles deposit
+wallet creation and signed wallet batches for new API users. Existing Safe and
+Proxy wallet flows remain supported.
 
 | Language   | Package                              | Repository                                                                                                 |
 | ---------- | ------------------------------------ | ---------------------------------------------------------------------------------------------------------- |

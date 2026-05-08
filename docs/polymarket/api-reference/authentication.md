@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/authentication.md
+Downloaded: 2026-05-08T20:25:34.702Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -266,14 +271,15 @@ The `POLY_SIGNATURE` for L2 is an HMAC-SHA256 signature created using the user's
 
     const account = privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`);
     const signer = createWalletClient({ account, transport: http() });
+    const depositWalletAddress = process.env.DEPOSIT_WALLET_ADDRESS!;
 
     const client = new ClobClient({
       host: "https://clob.polymarket.com",
       chain: 137,
       signer,
       creds: apiCreds, // Generated from L1 auth, API credentials enable L2 methods
-      signatureType: 1, // signatureType explained below
-      funderAddress, // funder explained below
+      signatureType: 3, // POLY_1271, explained below
+      funderAddress: depositWalletAddress, // deposit wallet funder
     });
 
     // Now you can trade!
@@ -295,8 +301,8 @@ The `POLY_SIGNATURE` for L2 is an HMAC-SHA256 signature created using the user's
         chain_id=137,
         key=os.getenv("PRIVATE_KEY"),
         creds=api_creds,  # Generated from L1 auth, API credentials enable L2 methods
-        signature_type=1,  # signatureType explained below
-        funder=os.getenv("FUNDER_ADDRESS") # funder explained below
+        signature_type=3,  # POLY_1271, explained below
+        funder=os.getenv("DEPOSIT_WALLET_ADDRESS")
     )
 
     # Now you can trade!
@@ -312,10 +318,12 @@ The `POLY_SIGNATURE` for L2 is an HMAC-SHA256 signature created using the user's
     use polymarket_client_sdk_v2::clob::types::{Side, SignatureType};
     use polymarket_client_sdk_v2::types::dec;
 
+    let deposit_wallet = std::env::var("DEPOSIT_WALLET_ADDRESS")?.parse()?;
+
     let client = Client::new("https://clob.polymarket.com", Config::default())?
         .authentication_builder(&signer)
-        .signature_type(SignatureType::Proxy) // signatureType explained below
-        // Funder auto-derived via CREATE2 for Proxy/GnosisSafe
+        .funder(deposit_wallet)
+        .signature_type(SignatureType::Poly1271)
         .authenticate()
         .await?;
 
@@ -343,17 +351,18 @@ The `POLY_SIGNATURE` for L2 is an HMAC-SHA256 signature created using the user's
 
 When initializing the L2 client, you must specify your wallet **signatureType** and the **funder** address which holds the funds:
 
-| Signature Type | Value | Description                                                                                                                                                                                  |
-| -------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| EOA            | `0`   | Standard Ethereum wallet (MetaMask). Funder is the EOA address and will need POL to pay gas on transactions.                                                                                 |
-| POLY\_PROXY    | `1`   | A custom proxy wallet only used with users who logged in via Magic Link email/Google. Using this requires the user to have exported their PK from Polymarket.com and imported into your app. |
-| GNOSIS\_SAFE   | `2`   | Gnosis Safe multisig proxy wallet (most common). Use this for any new or returning user who does not fit the other 2 types.                                                                  |
+| Signature Type | Value | Description                                                                                                                |
+| -------------- | ----- | -------------------------------------------------------------------------------------------------------------------------- |
+| EOA            | `0`   | Standard Ethereum wallet (MetaMask). Funder is the EOA address and will need POL to pay gas on transactions.               |
+| POLY\_PROXY    | `1`   | Existing Polymarket proxy wallet flow, commonly used by users who logged in via Magic Link email/Google.                   |
+| GNOSIS\_SAFE   | `2`   | Existing Gnosis Safe wallet flow. Existing Safe users can continue using this type.                                        |
+| POLY\_1271     | `3`   | Deposit wallet flow for new API users. The funder is the deposit wallet address and orders are validated through ERC-1271. |
 
 <Tip>
-  The wallet address displayed to the user on Polymarket.com is the proxy wallet
-  and should be used as the funder. These can be deterministically derived or
-  you can deploy them on behalf of the user. These proxy wallets are
-  automatically deployed for the user on their first login to Polymarket.com.
+  New API users should use deposit wallets with `POLY_1271`. Existing Safe and
+  Proxy users are unaffected and can keep using their current funder address and
+  signature type. See the [Deposit Wallet Guide](/trading/deposit-wallets) for
+  setup details.
 </Tip>
 
 ***

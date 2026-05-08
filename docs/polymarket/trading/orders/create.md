@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/orders/create.md
+Downloaded: 2026-05-08T20:25:34.714Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,9 +15,10 @@ All orders on Polymarket are expressed as **limit orders**. Market orders are su
 
 <Info>
   The SDK handles EIP-712 signing and submission for you. If you prefer the REST
-  API directly, see [Authentication](/api-reference/authentication) for constructing the
-  required headers and the [API Reference](/api-reference/introduction) for full endpoint
-  documentation including the raw order object fields and request/response schemas.
+  API directly, see [Authentication](/api-reference/authentication) for
+  constructing the required headers and the [API
+  Reference](/api-reference/introduction) for full endpoint documentation
+  including the raw order object fields and request/response schemas.
 </Info>
 
 ***
@@ -501,7 +507,10 @@ Place up to **15 orders** in a single request:
 
 ## Order Options
 
-Every order requires two market-specific options: `tickSize` and `negRisk`. For details on signature types (`0` = EOA, `1` = POLY\_PROXY, `2` = GNOSIS\_SAFE), see [Authentication](/api-reference/authentication#signature-types-and-funder).
+Every order requires two market-specific options: `tickSize` and `negRisk`. For
+details on signature types (`0` = EOA, `1` = POLY\_PROXY, `2` = GNOSIS\_SAFE,
+`3` = POLY\_1271 deposit wallet), see
+[Authentication](/api-reference/authentication#signature-types-and-funder).
 
 ### Tick Sizes
 
@@ -550,7 +559,8 @@ Multi-outcome events (3+ outcomes) use the Neg Risk CTF Exchange. Pass `negRisk:
 
 <Tip>
   Both values are also available on the market object: `minimum_tick_size` and
-  `neg_risk`. In Rust, the order builder auto-fetches both — you don't need to look them up manually.
+  `neg_risk`. In Rust, the order builder auto-fetches both — you don't need to
+  look them up manually.
 </Tip>
 
 ***
@@ -570,8 +580,8 @@ $$
 
 <Warning>
   Orders are continuously monitored for validity — balances and allowances are
-  tracked in real time. Any maker caught intentionally abusing these checks
-  will be blacklisted.
+  tracked in real time. Any maker caught intentionally abusing these checks will
+  be blacklisted.
 </Warning>
 
 ### Sports Markets

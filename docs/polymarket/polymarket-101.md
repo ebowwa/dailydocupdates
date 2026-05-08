@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/polymarket-101.md
+Downloaded: 2026-05-08T20:25:34.711Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -22,8 +27,8 @@ Polymarket operates on a non-custodial model. You maintain full control of your 
 
 <Warning>
   Keep your private key safe and never share it with anyone. If you lose your
-  private key, you lose access to your funds. If you signed up via Magic Link
-  or have a proxy wallet, recovery may be possible through
+  private key, you lose access to your funds. If you signed up via Magic Link or
+  have a proxy wallet, recovery may be possible through
   [recovery.polymarket.com](https://recovery.polymarket.com).
 </Warning>
 
@@ -86,20 +91,32 @@ Polymarket is built on **Polygon**, a blockchain network, for several key reason
 * **Fast and affordable** - Polygon enables quick, low-cost transactions
 * **Stable value** - pUSD is a standard ERC-20 backed by USDC, with backing enforced onchain by the smart contract — avoiding crypto volatility
 
-## Proxy Wallets
+## Smart Wallets
 
-When a user first uses Polymarket.com to trade they are prompted to create a wallet. When they do this, a 1 of 1 multisig is deployed to Polygon which is controlled/owned by the accessing EOA (either MetaMask wallet or MagicLink wallet). This proxy wallet is where all the user's positions (ERC1155) and pUSD (ERC20) are held.
+Polymarket uses smart wallets so users can trade without manually submitting
+every onchain transaction. New API users use deposit wallets. Existing Safe and
+Proxy users can continue using their current wallet.
 
-Using proxy wallets allows Polymarket to provide an improved UX where multi-step transactions can be executed atomically and transactions can be relayed by relayers on the gas station network. If you are a developer looking to programmatically access positions you accumulated via the Polymarket.com interface, you can either continue using the smart contract wallet by executing transactions through it from the owner account, or you can transfer these assets to a new address using the owner account.
+Deposit wallets hold the user's pUSD and outcome tokens on Polygon and validate
+orders through ERC-1271. Safe and Proxy wallets remain supported for existing
+users and integrations.
+
+Using smart wallets allows Polymarket to provide an improved UX where multi-step
+transactions can be executed atomically and transactions can be relayed by
+Polymarket's relayer. If you are a developer looking to programmatically access
+positions accumulated through an existing Polymarket account, continue using
+that account's current smart wallet type.
 
 ### Deployments
 
-Each user has their own proxy wallet (and thus proxy wallet address). See [Contracts](/resources/contracts) for all deployed factory and trading contract addresses on Polygon.
+Each smart-wallet user has their own wallet address. See
+[Contracts](/resources/contracts) for all deployed factory and trading contract
+addresses on Polygon.
 
 <Tip>
-  For details on signature types (`EOA`, `POLY_PROXY`, `GNOSIS_SAFE`) and how to
-  configure your trading client for each wallet type, see [Signature
-  Types](/trading/overview#signature-types).
+  For details on signature types (`EOA`, `POLY_PROXY`, `GNOSIS_SAFE`,
+  `POLY_1271`) and how to configure your trading client for each wallet type,
+  see [Signature Types](/trading/overview#signature-types).
 </Tip>
 
 ***

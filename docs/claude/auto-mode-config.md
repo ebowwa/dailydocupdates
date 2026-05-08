@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/auto-mode-config.md
-Downloaded: 2026-05-01T20:21:59.969Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

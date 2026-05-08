@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/model-config.md
-Downloaded: 2026-05-07T20:31:03.582Z
+Downloaded: 2026-05-08T20:25:34.094Z
 -->
 
 > ## Documentation Index
@@ -21,6 +21,10 @@ For the `model` setting in Claude Code, you can configure either:
   * Bedrock: an inference profile ARN
   * Foundry: a deployment name
   * Vertex: a version name
+
+<Note>
+  `ANTHROPIC_BASE_URL` changes where requests are sent, not which model answers them. To route Claude through an LLM gateway, see [LLM gateway configuration](/en/llm-gateway).
+</Note>
 
 ### Model aliases
 

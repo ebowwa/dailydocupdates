@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/amend-order-v2.md
-Downloaded: 2026-05-07T20:31:04.533Z
+Downloaded: 2026-05-08T20:25:34.795Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,7 @@ Downloaded: 2026-05-07T20:31:04.533Z
 
 # Amend Order (V2)
 
-> Endpoint for amending the price and/or remaining count of an existing event-market order using the V2 request/response shape.
+> Endpoint for amending the price and/or max fillable count of an existing event-market order using the V2 request/response shape. The request `count` is the updated total/max fillable count, equal to already filled count plus desired resting remaining count. This behavior matches the v1 amend endpoints; only the request/response shape differs.
 
 
 
@@ -71,8 +71,11 @@ paths:
         - orders
       summary: Amend Order (V2)
       description: >-
-        Endpoint for amending the price and/or remaining count of an existing
-        event-market order using the V2 request/response shape.
+        Endpoint for amending the price and/or max fillable count of an existing
+        event-market order using the V2 request/response shape. The request
+        `count` is the updated total/max fillable count, equal to already filled
+        count plus desired resting remaining count. This behavior matches the v1
+        amend endpoints; only the request/response shape differs.
       operationId: AmendOrderV2
       parameters:
         - $ref: '#/components/parameters/OrderIdPath'
@@ -142,7 +145,10 @@ components:
           x-go-type-skip-optional-pointer: true
         count:
           $ref: '#/components/schemas/FixedPointCount'
-          description: String representation of the updated quantity for the order.
+          description: >-
+            Updated total/max fillable count for the order. Set this to the
+            order's already filled count plus the desired resting remaining
+            count after the amend.
           x-go-type-skip-optional-pointer: true
         client_order_id:
           type: string
@@ -167,8 +173,10 @@ components:
           nullable: true
           x-omitempty: false
           description: >-
-            Number of contracts remaining after the amend. Only present when the
-            amend caused a fill or changed the resting size.
+            Number of resting contracts remaining after the amend. This is the
+            actual post-amend resting quantity, not the request's total/max
+            fillable count. Only present when the amend caused a fill or changed
+            the resting size.
         fill_count:
           $ref: '#/components/schemas/FixedPointCount'
           nullable: true

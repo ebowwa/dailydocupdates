@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/runtime/bunfig.md
-Downloaded: 2026-05-01T20:22:04.457Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

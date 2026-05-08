@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/orders/attribution.md
+Downloaded: 2026-05-08T20:25:34.714Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -21,7 +26,9 @@ Your **builder code** is a `bytes32` identifier tied to your builder profile. Fi
 That's the only credential you need for attribution — no HMAC signing, no separate API key, no special headers.
 
 <Note>
-  Builder codes are public identifiers — they appear onchain in the `builder` field of every order you attribute. Only you control which orders include your code, so keep it scoped to apps you own.
+  Builder codes are public identifiers — they appear onchain in the `builder`
+  field of every order you attribute. Only you control which orders include your
+  code, so keep it scoped to apps you own.
 </Note>
 
 ***
@@ -39,8 +46,8 @@ Pass `builderCode` in the order struct on every order you submit. The SDK serial
     chain: 137,
     signer,
     creds: apiCreds,
-    signatureType: 2,
-    funderAddress,
+    signatureType: 3,
+    funderAddress: depositWalletAddress,
   });
 
   const response = await client.createAndPostOrder(
@@ -66,8 +73,8 @@ Pass `builderCode` in the order struct on every order you submit. The SDK serial
       chain_id=137,
       key=private_key,
       creds=api_creds,
-      signature_type=2,
-      funder=funder_address,
+      signature_type=3,
+      funder=deposit_wallet_address,
   )
 
   response = client.create_and_post_order(
@@ -119,13 +126,17 @@ Each `BuilderTrade` includes: `id`, `market`, `assetId`, `side`, `size`, `price`
 
 <AccordionGroup>
   <Accordion title="Volume not appearing on the leaderboard">
-    * Confirm your `builderCode` is correctly attached to every order
-    * Check that orders are being matched (not just placed)
-    * Allow up to 24 hours for volume to appear on the leaderboard
+    <ul>
+      <li>Confirm your `builderCode` is correctly attached to every order</li>
+      <li>Check that orders are being matched, not just placed</li>
+      <li>Allow up to 24 hours for volume to appear on the leaderboard</li>
+    </ul>
   </Accordion>
 
   <Accordion title="Invalid builder code">
-    Verify the code matches what's shown on [your Builder Profile](https://polymarket.com/settings?tab=builder). Builder codes are `bytes32` hex values starting with `0x`.
+    Verify the code matches what's shown on [your Builder
+    Profile](https://polymarket.com/settings?tab=builder). Builder codes are
+    `bytes32` hex values starting with `0x`.
   </Accordion>
 </AccordionGroup>
 

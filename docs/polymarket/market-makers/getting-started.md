@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-makers/getting-started.md
+Downloaded: 2026-05-08T20:25:34.711Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -41,14 +46,23 @@ Before you can start market making, you need to complete these one-time setup st
 
     Standard Ethereum wallet. You pay for all onchain transactions (approvals, splits, merges, trade execution).
 
-    ### Safe Wallet
+    ### Deposit Wallet
 
-    Gnosis Safe-based wallet deployed via Polymarket's relayer. Benefits:
+    Deposit wallets are the recommended wallet path for new API users. They are
+    deployed through Polymarket's relayer and use `POLY_1271` order signatures.
+
+    See the [Deposit Wallet Guide](/trading/deposit-wallets) for the
+    wallet creation, approval, balance sync, and order-signing flow.
+
+    ### Existing Safe Wallets
+
+    Existing Gnosis Safe users can continue using their current wallet. Safe wallets
+    are deployed via Polymarket's relayer and support:
 
     * **Gasless transactions** — Polymarket pays gas fees for onchain operations
     * **Contract wallet** — Enables advanced features like batched transactions
 
-    Deploy a Safe wallet using the Relayer Client:
+    For existing Safe integrations, deploy a Safe wallet using the Relayer Client:
 
     <CodeGroup>
       ```typescript TypeScript theme={null}
@@ -172,7 +186,11 @@ Before you can start market making, you need to complete these one-time setup st
       ```typescript TypeScript theme={null}
       import { ClobClient } from "@polymarket/clob-client-v2";
 
-      const client = new ClobClient({ host: "https://clob.polymarket.com", chain: 137, signer });
+      const client = new ClobClient({
+        host: "https://clob.polymarket.com",
+        chain: 137,
+        signer,
+      });
 
       // Derive API credentials from your wallet
       const credentials = await client.createOrDeriveApiKey();

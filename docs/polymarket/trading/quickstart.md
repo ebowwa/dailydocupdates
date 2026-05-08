@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/quickstart.md
+Downloaded: 2026-05-08T20:25:34.715Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -26,11 +31,13 @@ This guide walks you through placing an order on Polymarket end-to-end.
   </Step>
 
   <Step title="Set Up Your Client">
-    Derive your API credentials and initialize the trading client. This example uses an EOA wallet (type `0`) — your wallet pays its own gas and acts as the funder:
+    Derive your API credentials and initialize the trading client. This example uses
+    a deposit wallet with signature type `3` (`POLY_1271`), which is the wallet path
+    for new API users:
 
     <CodeGroup>
       ```typescript TypeScript theme={null}
-      import { ClobClient } from "@polymarket/clob-client-v2";
+      import { ClobClient, SignatureTypeV2 } from "@polymarket/clob-client-v2";
       import { createWalletClient, http } from "viem";
       import { privateKeyToAccount } from "viem/accounts";
 
@@ -38,6 +45,7 @@ This guide walks you through placing an order on Polymarket end-to-end.
       const CHAIN_ID = 137; // Polygon mainnet
       const account = privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`);
       const signer = createWalletClient({ account, transport: http() });
+      const depositWalletAddress = process.env.DEPOSIT_WALLET_ADDRESS!;
 
       // Derive API credentials
       const tempClient = new ClobClient({ host: HOST, chain: CHAIN_ID, signer });
@@ -49,18 +57,19 @@ This guide walks you through placing an order on Polymarket end-to-end.
         chain: CHAIN_ID,
         signer,
         creds: apiCreds,
-        signatureType: 0, // EOA
-        funderAddress: account.address,
+        signatureType: SignatureTypeV2.POLY_1271,
+        funderAddress: depositWalletAddress,
       });
       ```
 
       ```python Python theme={null}
-      from py_clob_client_v2 import ClobClient
+      from py_clob_client_v2 import ClobClient, SignatureTypeV2
       import os
 
       host = "https://clob.polymarket.com"
       chain = 137  # Polygon mainnet
       private_key = os.getenv("PRIVATE_KEY")
+      deposit_wallet_address = os.getenv("DEPOSIT_WALLET_ADDRESS")
 
       # Derive API credentials
       temp_client = ClobClient(host, key=private_key, chain_id=chain)
@@ -72,8 +81,8 @@ This guide walks you through placing an order on Polymarket end-to-end.
           key=private_key,
           chain_id=chain,
           creds=api_creds,
-          signature_type=0,  # EOA
-          funder="YOUR_WALLET_ADDRESS"
+          signature_type=SignatureTypeV2.POLY_1271,
+          funder=deposit_wallet_address
       )
       ```
 
@@ -81,30 +90,35 @@ This guide walks you through placing an order on Polymarket end-to-end.
       use std::str::FromStr;
       use polymarket_client_sdk_v2::POLYGON;
       use polymarket_client_sdk_v2::auth::{LocalSigner, Signer};
+      use polymarket_client_sdk_v2::clob::types::SignatureType;
       use polymarket_client_sdk_v2::clob::{Client, Config};
 
       let private_key = std::env::var("POLYMARKET_PRIVATE_KEY")?;
       let signer = LocalSigner::from_str(&private_key)?
           .with_chain_id(Some(POLYGON));
+      let deposit_wallet = std::env::var("DEPOSIT_WALLET_ADDRESS")?.parse()?;
 
-      // Derive API credentials and initialize client (EOA by default)
+      // Derive API credentials and initialize client
       let client = Client::new("https://clob.polymarket.com", Config::default())?
           .authentication_builder(&signer)
+          .funder(deposit_wallet)
+          .signature_type(SignatureType::Poly1271)
           .authenticate()
           .await?;
       ```
     </CodeGroup>
 
     <Note>
-      If you have a Polymarket.com account, your funds are in a proxy wallet — use
-      signature type `1` or `2` instead. See [Signature
-      Types](/trading/overview#signature-types) for details.
+      Existing EOA, Safe, and Proxy integrations can keep using their current
+      signature type and funder address. See [Signature
+      Types](/trading/overview#signature-types) for all wallet types.
     </Note>
 
     <Warning>
-      Before trading, your funder address needs **pUSD** (for buying outcome
-      tokens) and **POL** (for gas, if using EOA type `0`). Proxy wallet users
-      (types `1` and `2`) can use Polymarket's gasless relayer instead.
+      Before trading from a deposit wallet, the deposit wallet needs **pUSD** and
+      the required trading approvals. See the [Deposit Wallet
+      Guide](/trading/deposit-wallets) for wallet creation, funding, approvals, and
+      balance sync.
     </Warning>
   </Step>
 
@@ -253,18 +267,21 @@ This guide walks you through placing an order on Polymarket end-to-end.
   </Accordion>
 
   <Accordion title="Order rejected - insufficient allowance">
-    You need to approve the Exchange contract to spend your tokens. This is
-    typically done through the Polymarket UI on your first trade, or using the CTF
-    contract's `setApprovalForAll()` method.
+    You need to approve the Exchange contract to spend your tokens. Deposit wallet
+    approvals must be executed from the deposit wallet through a relayer `WALLET`
+    batch. Existing Safe and Proxy users should use their current relayer approval
+    flow.
   </Accordion>
 
   <Accordion title="What is my funder address">
     Your funder address is the wallet where your funds are held:
 
     * **EOA (type 0)**: Your wallet address directly
-    * **Proxy wallet (type 1 or 2)**: Go to [polymarket.com/settings](https://polymarket.com/settings) and look for the wallet address in the profile dropdown
+    * **Deposit wallet (type 3)**: The deposit wallet deployed for the owner or session signer
+    * **Proxy/Safe wallet (type 1 or 2)**: Existing Polymarket.com wallet address
 
-    If the proxy wallet doesn't exist, log into Polymarket.com first (it's deployed on first login).
+    New API users should create a deposit wallet. Existing Proxy and Safe users
+    can continue using their current wallet address.
   </Accordion>
 
   <Accordion title="Blocked by Cloudflare or Geoblock">

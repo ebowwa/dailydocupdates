@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/overview.md
+Downloaded: 2026-05-08T20:25:34.714Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -22,7 +27,9 @@ We recommend using the open-source SDK clients, which handle order signing, auth
   </Card>
 
   <Card title="Rust Client" icon="github" href="https://github.com/Polymarket/rs-clob-client-v2">
-    <p className="font-mono text-[0.8rem]">cargo add polymarket\_client\_sdk\_v2 --features clob</p>
+    <p className="font-mono text-[0.8rem]">
+      cargo add polymarket\_client\_sdk\_v2 --features clob
+    </p>
   </Card>
 </CardGroup>
 
@@ -58,7 +65,11 @@ You use your private key once to derive **L2 credentials** (API key, secret, pas
   const signer = createWalletClient({ account, transport: http() });
 
   // Derive L2 API credentials
-  const tempClient = new ClobClient({ host: "https://clob.polymarket.com", chain: 137, signer });
+  const tempClient = new ClobClient({
+    host: "https://clob.polymarket.com",
+    chain: 137,
+    signer,
+  });
   const apiCreds = await tempClient.createOrDeriveApiKey();
   ```
 
@@ -97,49 +108,57 @@ You use your private key once to derive **L2 credentials** (API key, secret, pas
 
 When initializing the trading client, you must specify your wallet's **signature type** and **funder address**:
 
-| Wallet Type      | ID  | When to Use                                                                                                                                  | Funder Address            |
-| ---------------- | --- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
-| **EOA**          | `0` | Standalone wallet — you pay your own gas (POL for gas)                                                                                       | Your EOA wallet address   |
-| **POLY\_PROXY**  | `1` | Polymarket account via Magic Link (email/Google login). Requires [exported private key](https://polymarket.com/settings) from Polymarket.com | Your proxy wallet address |
-| **GNOSIS\_SAFE** | `2` | Polymarket account via browser wallet (MetaMask, Rabby) or embedded wallet (Privy, Turnkey). Most common type                                | Your proxy wallet address |
+| Wallet Type      | ID  | When to Use                                                                                                    | Funder Address              |
+| ---------------- | --- | -------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| **EOA**          | `0` | Standalone wallet — you pay your own gas (POL for gas)                                                         | Your EOA wallet address     |
+| **POLY\_PROXY**  | `1` | Existing Polymarket proxy wallet flow                                                                          | Your proxy wallet address   |
+| **GNOSIS\_SAFE** | `2` | Existing Gnosis Safe wallet flow                                                                               | Your Safe wallet address    |
+| **POLY\_1271**   | `3` | Deposit wallet flow for new API users. Orders are signed by the owner/session signer and validated by ERC-1271 | Your deposit wallet address |
 
 <Note>
-  If you have a Polymarket.com account, your funds are in a proxy wallet visible
-  in the profile dropdown. Use type `1` or `2`. Type `0` is for standalone EOA
-  wallets only.
+  New API users should use deposit wallets with signature type `3`. Existing
+  Proxy and Safe users are unaffected and can keep using signature types `1` and
+  `2`. Type `0` is for standalone EOA wallets only.
 </Note>
 
 ### Initialize the Trading Client
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
+  const depositWalletAddress = process.env.DEPOSIT_WALLET_ADDRESS!;
+
   const client = new ClobClient({
     host: "https://clob.polymarket.com",
     chain: 137,
     signer,
     creds: apiCreds,
-    signatureType: 2, // GNOSIS_SAFE
-    funderAddress: "0x...", // Your proxy wallet address
+    signatureType: 3, // POLY_1271
+    funderAddress: depositWalletAddress,
   });
   ```
 
   ```python Python theme={null}
+  deposit_wallet_address = os.getenv("DEPOSIT_WALLET_ADDRESS")
+
   client = ClobClient(
       "https://clob.polymarket.com",
       key=private_key,
       chain_id=137,
       creds=api_creds,
-      signature_type=2,  # GNOSIS_SAFE
-      funder="0x..."  # Your proxy wallet address
+      signature_type=3,  # POLY_1271
+      funder=deposit_wallet_address
   )
   ```
 
   ```rust Rust theme={null}
   use polymarket_client_sdk_v2::clob::types::SignatureType;
 
+  let deposit_wallet = std::env::var("DEPOSIT_WALLET_ADDRESS")?.parse()?;
+
   let client = Client::new("https://clob.polymarket.com", Config::default())?
       .authentication_builder(&signer)
-      .signature_type(SignatureType::GnosisSafe) // Funder auto-derived via CREATE2
+      .funder(deposit_wallet)
+      .signature_type(SignatureType::Poly1271)
       .authenticate()
       .await?;
   ```

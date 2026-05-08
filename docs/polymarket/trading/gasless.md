@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/gasless.md
+Downloaded: 2026-05-08T20:25:34.714Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -24,7 +29,7 @@ Polymarket pays gas for all operations routed through the relayer:
 
 | Operation             | Description                                       |
 | --------------------- | ------------------------------------------------- |
-| **Wallet deployment** | Deploy Safe or Proxy wallets for new users        |
+| **Wallet deployment** | Deploy deposit wallets for new API users          |
 | **Token approvals**   | Approve contracts to spend pUSD or outcome tokens |
 | **CTF operations**    | Split, merge, and redeem positions                |
 | **Transfers**         | Move tokens between addresses                     |
@@ -34,7 +39,10 @@ Polymarket pays gas for all operations routed through the relayer:
 The relayer uses **Relayer API Keys**. You can create one from [Settings > API Keys](https://polymarket.com/settings?tab=api-keys) on the Polymarket website.
 
 <Note>
-  **Already have a builder signing key?** Your existing HMAC-based builder API key keeps working with the Relayer — no need to rotate or reissue. Only order-signing moved to the native `builderCode` field in CLOB V2. See [Migrating to CLOB V2](/v2-migration#builder-program) for context.
+  **Already have a builder signing key?** Your existing HMAC-based builder API
+  key keeps working with the Relayer — no need to rotate or reissue. Order
+  attribution is now associated with the native `builderCode` field in CLOB V2.
+  See [Migrating to CLOB V2](/v2-migration#builder-program) for context.
 </Note>
 
 Include these headers with your requests:
@@ -45,7 +53,8 @@ Include these headers with your requests:
 | `RELAYER_API_KEY_ADDRESS` | The address that owns the key |
 
 <Info>
-  If you want to use the Relayer API Key directly without the SDK, see the [Relayer API Reference](/api-reference/relayer).
+  If you want to use the Relayer API Key directly without the SDK, see the
+  [Relayer API Reference](/api-reference/relayer).
 </Info>
 
 ## Prerequisites
@@ -118,12 +127,20 @@ Initialize the relayer client with your Relayer API Key:
 
 ## Wallet Types
 
-Choose a wallet type when initializing the client:
+Use deposit wallets for new API users. Existing Safe and Proxy users can keep
+using their current wallet type and signature flow.
 
-| Type      | Deployment                               | Best For                  |
-| --------- | ---------------------------------------- | ------------------------- |
-| **Safe**  | Call `deploy()` before first transaction | Most builder integrations |
-| **Proxy** | Auto-deploys on first transaction        | Magic Link users          |
+| Type               | Deployment                               | Best For                            |
+| ------------------ | ---------------------------------------- | ----------------------------------- |
+| **Deposit Wallet** | Call `deployDepositWallet()`             | New API users                       |
+| **Safe**           | Call `deploy()` before first transaction | Existing Safe integrations          |
+| **Proxy**          | Auto-deploys on first transaction        | Existing Polymarket.com proxy users |
+
+<Info>
+  For the new deposit wallet flow, including `WALLET-CREATE`, signed `WALLET`
+  batches, and `POLY_1271` CLOB orders, see the [Deposit Wallet
+  Guide](/trading/deposit-wallets).
+</Info>
 
 <CodeGroup>
   ```typescript Safe Wallet (TypeScript) theme={null}

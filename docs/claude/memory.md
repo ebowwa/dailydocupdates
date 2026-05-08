@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/memory.md
-Downloaded: 2026-05-07T20:31:03.582Z
+Downloaded: 2026-05-08T20:25:34.093Z
 -->
 
 > ## Documentation Index
@@ -136,6 +136,16 @@ Claude Code reads `CLAUDE.md`, not `AGENTS.md`. If your repository already uses 
 
 Use plan mode for changes under `src/billing/`.
 ```
+
+A symlink also works if you don't need to add Claude-specific content:
+
+```bash theme={null}
+ln -s AGENTS.md CLAUDE.md
+```
+
+On Windows, creating a symlink requires Administrator privileges or Developer Mode, so use the `@AGENTS.md` import instead.
+
+Running [`/init`](/en/commands) in a repo that already has an `AGENTS.md` reads it and incorporates the relevant parts into the generated `CLAUDE.md`. It also reads other tool configs like `.cursorrules` and `.windsurfrules`.
 
 ### How CLAUDE.md files load
 
