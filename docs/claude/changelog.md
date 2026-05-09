@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/changelog.md
-Downloaded: 2026-05-08T20:25:34.086Z
+Downloaded: 2026-05-09T20:18:04.057Z
 -->
 
 > ## Documentation Index
@@ -14,6 +14,14 @@ Downloaded: 2026-05-08T20:25:34.086Z
 This page is generated from the [CHANGELOG.md on GitHub](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md).
 
 Run `claude --version` to check your installed version.
+
+<Update label="2.1.138" description="May 9, 2026">
+  * Internal fixes
+</Update>
+
+<Update label="2.1.137" description="May 9, 2026">
+  * \[VSCode] Fixed extension failing to activate on Windows
+</Update>
 
 <Update label="2.1.136" description="May 8, 2026">
   * Added `CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL` to re-enable the session quality survey for enterprises capturing responses through OpenTelemetry

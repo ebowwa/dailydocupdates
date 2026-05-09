@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/python.md
-Downloaded: 2026-05-08T20:25:34.081Z
+Downloaded: 2026-05-09T20:18:04.052Z
 -->
 
 > ## Documentation Index
@@ -2339,7 +2339,9 @@ Asks the user clarifying questions during execution. See [Handle approvals and u
             "multiSelect": bool,  # Set to true to allow multiple selections
         }
     ],
-    "answers": dict | None,  # User answers populated by the permission system
+    "answers": dict[str, str | list[str]] | None,
+    # User answers populated by the permission system. Multi-select
+    # answers may be a list of labels or a comma-joined string
 }
 ```
 

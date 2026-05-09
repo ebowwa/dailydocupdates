@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/routines.md
-Downloaded: 2026-05-08T20:25:34.096Z
+Downloaded: 2026-05-09T20:18:04.068Z
 -->
 
 > ## Documentation Index
@@ -366,6 +366,12 @@ Routines draw down subscription usage the same way interactive sessions do. In a
 When a routine hits the daily cap or your subscription usage limit, organizations with extra usage enabled can keep running routines on metered overage. Without extra usage, additional runs are rejected until the window resets. Enable extra usage from **Settings > Billing** on claude.ai.
 
 One-off runs do not count against the daily routine cap. They draw down your regular subscription usage like any other session, but they are exempt from the per-account daily routine run allowance.
+
+## Troubleshooting
+
+### "Routines are disabled by your organization's policy"
+
+Your Team or Enterprise admin has likely turned off the **Routines** toggle at [claude.ai/admin-settings/claude-code](https://claude.ai/admin-settings/claude-code). This is a server-side organization setting, so it cannot be overridden from your local configuration. Contact your admin to request that routines be enabled for your organization.
 
 ## Related resources
 
