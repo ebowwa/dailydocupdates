@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/multivariate-market-&-event-lifecycle.md
-Downloaded: 2026-05-07T20:31:04.545Z
+Downloaded: 2026-05-11T20:38:32.334Z
 -->
 
 > ## Documentation Index
@@ -114,9 +114,8 @@ operations:
                           - `price_level_structure_updated` - Market price level
                           structure changed
 
-                          - `metadata_updated` - Market metadata updated
-                          (initially floor strike only, may expand to more
-                          fields)
+                          - `metadata_updated` - Market metadata updated (e.g.
+                          floor strike, yes_sub_title)
                         enum:
                           - created
                           - deactivated
@@ -208,6 +207,13 @@ operations:
                           metadata_updated events. The updated floor strike
                           value for the market
                         x-parser-schema-id: <anonymous-schema-122>
+                      yes_sub_title:
+                        type: string
+                        description: >-
+                          Optional - This key will ONLY exist for
+                          metadata_updated events. The updated yes subtitle for
+                          the market
+                        x-parser-schema-id: <anonymous-schema-123>
                       additional_metadata:
                         type: object
                         description: >-
@@ -216,45 +222,45 @@ operations:
                         properties:
                           name:
                             type: string
-                            x-parser-schema-id: <anonymous-schema-124>
+                            x-parser-schema-id: <anonymous-schema-125>
                           title:
                             type: string
-                            x-parser-schema-id: <anonymous-schema-125>
+                            x-parser-schema-id: <anonymous-schema-126>
                           yes_sub_title:
                             type: string
-                            x-parser-schema-id: <anonymous-schema-126>
+                            x-parser-schema-id: <anonymous-schema-127>
                           no_sub_title:
                             type: string
-                            x-parser-schema-id: <anonymous-schema-127>
+                            x-parser-schema-id: <anonymous-schema-128>
                           rules_primary:
                             type: string
-                            x-parser-schema-id: <anonymous-schema-128>
+                            x-parser-schema-id: <anonymous-schema-129>
                           rules_secondary:
                             type: string
-                            x-parser-schema-id: <anonymous-schema-129>
+                            x-parser-schema-id: <anonymous-schema-130>
                           can_close_early:
                             type: boolean
-                            x-parser-schema-id: <anonymous-schema-130>
+                            x-parser-schema-id: <anonymous-schema-131>
                           event_ticker:
                             type: string
-                            x-parser-schema-id: <anonymous-schema-131>
+                            x-parser-schema-id: <anonymous-schema-132>
                           expected_expiration_ts:
                             type: integer
                             format: int64
-                            x-parser-schema-id: <anonymous-schema-132>
+                            x-parser-schema-id: <anonymous-schema-133>
                           strike_type:
                             type: string
-                            x-parser-schema-id: <anonymous-schema-133>
+                            x-parser-schema-id: <anonymous-schema-134>
                           floor_strike:
                             type: number
-                            x-parser-schema-id: <anonymous-schema-134>
+                            x-parser-schema-id: <anonymous-schema-135>
                           cap_strike:
                             type: number
-                            x-parser-schema-id: <anonymous-schema-135>
+                            x-parser-schema-id: <anonymous-schema-136>
                           custom_strike:
                             type: object
-                            x-parser-schema-id: <anonymous-schema-136>
-                        x-parser-schema-id: <anonymous-schema-123>
+                            x-parser-schema-id: <anonymous-schema-137>
+                        x-parser-schema-id: <anonymous-schema-124>
                     x-parser-schema-id: <anonymous-schema-112>
                 x-parser-schema-id: marketLifecycleV2Payload
               - type: object
@@ -262,8 +268,8 @@ operations:
                   type:
                     type: string
                     const: multivariate_market_lifecycle
-                    x-parser-schema-id: <anonymous-schema-147>
-                x-parser-schema-id: <anonymous-schema-146>
+                    x-parser-schema-id: <anonymous-schema-148>
+                x-parser-schema-id: <anonymous-schema-147>
             x-parser-schema-id: multivariateMarketLifecyclePayload
             name: Multivariate Market Lifecycle
             description: >-
@@ -385,7 +391,7 @@ operations:
             type:
               type: string
               const: event_lifecycle
-              x-parser-schema-id: <anonymous-schema-137>
+              x-parser-schema-id: <anonymous-schema-138>
             sid: *ref_1
             msg:
               type: object
@@ -399,15 +405,15 @@ operations:
                 event_ticker:
                   type: string
                   description: Unique identifier for the event being created
-                  x-parser-schema-id: <anonymous-schema-139>
+                  x-parser-schema-id: <anonymous-schema-140>
                 title:
                   type: string
                   description: Title of event
-                  x-parser-schema-id: <anonymous-schema-140>
+                  x-parser-schema-id: <anonymous-schema-141>
                 subtitle:
                   type: string
                   description: Subtitle of event
-                  x-parser-schema-id: <anonymous-schema-141>
+                  x-parser-schema-id: <anonymous-schema-142>
                 collateral_return_type:
                   type: string
                   description: >-
@@ -417,25 +423,25 @@ operations:
                     - MECNET
                     - DIRECNET
                     - ''
-                  x-parser-schema-id: <anonymous-schema-142>
+                  x-parser-schema-id: <anonymous-schema-143>
                 series_ticker:
                   type: string
                   description: Series ticker for the event
-                  x-parser-schema-id: <anonymous-schema-143>
+                  x-parser-schema-id: <anonymous-schema-144>
                 strike_date:
                   type: integer
                   description: >-
                     Optional - Unix timestamp to indicate the strike date of the
                     event if there is one
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-144>
+                  x-parser-schema-id: <anonymous-schema-145>
                 strike_period:
                   type: string
                   description: >-
                     Optional - String to indicate the strike period of the event
                     if there is one
-                  x-parser-schema-id: <anonymous-schema-145>
-              x-parser-schema-id: <anonymous-schema-138>
+                  x-parser-schema-id: <anonymous-schema-146>
+              x-parser-schema-id: <anonymous-schema-139>
           x-parser-schema-id: eventLifecyclePayload
         title: Event Lifecycle
         description: Event creation notification

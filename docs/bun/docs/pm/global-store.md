@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/global-store.md
+Downloaded: 2026-05-11T20:38:37.080Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,30 +19,23 @@ The result: warm installs are roughly **7× faster** (one symlink per package in
 
 ## Enabling
 
-The global virtual store is **on by default** with the isolated linker on every platform. It is not used by the hoisted linker.
+The global virtual store is **off by default**. It only applies to the isolated linker; it is not used by the hoisted linker.
 
-```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun install --linker isolated
-```
-
-To make isolated the default for a project:
+To enable it for a project:
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]
 linker = "isolated"
+globalStore = true
 ```
 
-To opt out and fall back to per-project package copies:
-
-```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
-[install]
-linker = "isolated"
-globalStore = false
-```
+Or per-invocation via the environment:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-BUN_INSTALL_GLOBAL_STORE=0 bun install --linker isolated
+BUN_INSTALL_GLOBAL_STORE=1 bun install --linker isolated
 ```
+
+To explicitly opt out (the default), set `globalStore = false` or `BUN_INSTALL_GLOBAL_STORE=0`.
 
 ## Why it's fast
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/bunfig.md
+Downloaded: 2026-05-11T20:38:37.082Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -674,13 +679,13 @@ Valid values are:
 
 ### `install.globalStore`
 
-When using the `"isolated"` linker, share package installations across projects in a global virtual store at `<cache>/links/` and link `node_modules/.bun/<pkg>@<ver>` into it instead of materializing each package into the project. Makes warm installs after `rm -rf node_modules` an order of magnitude faster. Default `true`. Can also be set with the `BUN_INSTALL_GLOBAL_STORE` environment variable.
+When using the `"isolated"` linker, share package installations across projects in a global virtual store at `<cache>/links/` and link `node_modules/.bun/<pkg>@<ver>` into it instead of materializing each package into the project. Makes warm installs after `rm -rf node_modules` an order of magnitude faster. Default `false`. Can also be set with the `BUN_INSTALL_GLOBAL_STORE` environment variable.
 
 For complete documentation refer to [Package manager > Global virtual store](/pm/global-store).
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]
-globalStore = false
+globalStore = true
 ```
 
 ### `install.publicHoistPattern`

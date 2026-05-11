@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/llm-gateway.md
-Downloaded: 2026-05-06T20:34:39.659Z
+Downloaded: 2026-05-11T20:38:31.041Z
 -->
 
 > ## Documentation Index
@@ -189,6 +189,17 @@ export ANTHROPIC_VERTEX_PROJECT_ID=your-gcp-project-id
 export CLAUDE_CODE_SKIP_VERTEX_AUTH=1
 export CLAUDE_CODE_USE_VERTEX=1
 export CLOUD_ML_REGION=us-east5
+```
+
+##### Claude Platform on AWS through a gateway
+
+Route to a gateway that forwards to the [Claude Platform on AWS](/en/claude-platform-on-aws) endpoint:
+
+```bash theme={null}
+export ANTHROPIC_AWS_BASE_URL=https://litellm-server:4000/anthropic-aws
+export ANTHROPIC_AWS_WORKSPACE_ID=wrkspc_01ABCDEFGHIJKLMN
+export CLAUDE_CODE_SKIP_ANTHROPIC_AWS_AUTH=1
+export CLAUDE_CODE_USE_ANTHROPIC_AWS=1
 ```
 
 For more detailed information, refer to the [LiteLLM documentation](https://docs.litellm.ai/).
