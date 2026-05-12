@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/routines.md
-Downloaded: 2026-05-09T20:18:04.068Z
+Downloaded: 2026-05-12T20:36:49.785Z
 -->
 
 > ## Documentation Index
@@ -322,6 +322,8 @@ By default, Claude can only push to branches prefixed with `claude/`. This preve
 ### Connectors
 
 Routines can use your connected MCP connectors to read from and write to external services during each run. For example, a routine that triages support requests might read from a Slack channel and create issues in Linear.
+
+Connectors are the [claude.ai integrations](/en/mcp#use-mcp-servers-from-claude-ai) on your account. MCP servers you added locally in the CLI with `claude mcp add` are stored on your machine rather than your claude.ai account, so they do not appear in the connectors list. To use one of those servers in a routine, add it as a connector at [claude.ai/customize/connectors](https://claude.ai/customize/connectors), or declare it in a committed [`.mcp.json`](/en/mcp#project-scope) so it is part of the cloned repository.
 
 When you create a routine, all of your currently connected connectors are included by default. Remove any that aren't needed to limit which tools Claude has access to during the run. You can also add connectors directly from the routine form.
 

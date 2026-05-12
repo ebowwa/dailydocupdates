@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-05-11T20:38:32.328Z
+Downloaded: 2026-05-12T20:37:03.408Z
 -->
 
 > ## Documentation Index
@@ -16,6 +16,40 @@ You can subscribe to the RSS changelog at `/changelog/rss.xml` if you'd like to 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="May 11, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Cancelled quotes are automatically deleted after 14 days",
+description: "Cancelled quotes are now automatically deleted 14 days after cancellation."
+}}
+>
+  Cancelled quotes are now automatically deleted 14 days after cancellation. Previously, only quotes associated with closed RFQs were cleaned up. This applies to all cancelled quotes regardless of their parent RFQ status.
+
+  Affected endpoint: `GET /communications/quotes`.
+</Update>
+
+<Update
+  label="May 11, 2026"
+  tags={["Breaking Change", "Upcoming"]}
+  rss={{
+title: "/margin/fee_tiers response replaced with per-market fee rates",
+description: "GET /trade-api/v2/margin/fee_tiers now returns maker_fee_rates and taker_fee_rates maps (ticker -> rate as a decimal fraction of notional). The maker_fee_tiers and taker_fee_tiers fields have been removed."
+}}
+>
+  `GET /trade-api/v2/margin/fee_tiers` now returns `maker_fee_rates` and
+  `taker_fee_rates`. Each is a map from market ticker to the fee rate as
+  a decimal fraction of notional (e.g. `0.0008` = 0.08% = 8 bps). Compute
+  the expected fee directly as `notional * rate`.
+
+  The previous `maker_fee_tiers` and `taker_fee_tiers` tier-name maps have
+  been removed from the response.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/margin/fee_tiers`
+</Update>
 
 <Update
   label="May 11, 2026"

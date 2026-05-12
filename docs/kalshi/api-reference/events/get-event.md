@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-event.md
-Downloaded: 2026-05-07T20:31:04.525Z
+Downloaded: 2026-05-12T20:37:03.398Z
 -->
 
 > ## Documentation Index
@@ -215,6 +215,21 @@ components:
           type: string
           format: date-time
           description: Timestamp of when this event's metadata was last updated.
+        fee_type_override:
+          type: string
+          nullable: true
+          x-omitempty: true
+          description: >-
+            Fee type override for this event. When present, takes precedence
+            over the series-level fee for this event's markets.
+        fee_multiplier_override:
+          type: number
+          format: double
+          nullable: true
+          x-omitempty: true
+          description: >-
+            Fee multiplier override for this event. Paired with
+            fee_type_override.
     Market:
       type: object
       required:

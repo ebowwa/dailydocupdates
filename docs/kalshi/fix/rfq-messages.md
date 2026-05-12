@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/rfq-messages.md
-Downloaded: 2026-05-06T20:34:50.212Z
+Downloaded: 2026-05-12T20:37:03.409Z
 -->
 
 > ## Documentation Index
@@ -170,17 +170,19 @@ A QuoteStatusReport is sent by the exchange:
 2. When the requester accepts the quote. Status will be ACCEPTED
 3. In response to a QuoteCancel. Status will be CANCELLED
 
-| Tag | Name         | Type    | Required | Description                                                                                                   |
-| --- | ------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------- |
-| 117 | QuoteId      | String  | Y        | Quote identifier (empty if rejected)                                                                          |
-| 131 | QuoteReqId   | String  | Y        | Request reference                                                                                             |
-| 79  | AllocAccount | Integer | C        | Subaccount number (0-32). Present if the quote was created for a subaccount                                   |
-| 297 | QuoteStatus  | Integer | Y        | Current status                                                                                                |
-| 38  | OrderQty     | Decimal | C        | Quantity of contracts as a fixed-point decimal. Currently emitted as whole contracts. Not present if REJECTED |
-| 132 | BidPx        | Integer | C        | Yes price in cents. Only integer part considered. Not present if REJECTED                                     |
-| 133 | OfferPx      | Integer | C        | No price in cents. Only integer part considered. Not present if REJECTED                                      |
-| 54  | AcceptedSide | Char    | C        | Side accepted (1=Yes, 2=No). Only present if ACCEPTED                                                         |
-| 58  | Text         | String  | C        | Rejection reason. Only present if REJECTED                                                                    |
+| Tag | Name         | Type    | Required | Description                                                                 |
+| --- | ------------ | ------- | -------- | --------------------------------------------------------------------------- |
+| 117 | QuoteId      | String  | Y        | Quote identifier (empty if rejected)                                        |
+| 131 | QuoteReqId   | String  | Y        | Request reference                                                           |
+| 79  | AllocAccount | Integer | C        | Subaccount number (0-32). Present if the quote was created for a subaccount |
+| 297 | QuoteStatus  | Integer | Y        | Current status                                                              |
+| 38  | OrderQty     | Decimal | C        | Original RFQ contract size if specified.                                    |
+| 132 | BidPx        | Integer | C        | Yes price in cents. Only integer part considered. Not present if REJECTED   |
+| 133 | OfferPx      | Integer | C        | No price in cents. Only integer part considered. Not present if REJECTED    |
+| 134 | BidSize      | Decimal | C        | Yes contract size offered by the quote.                                     |
+| 135 | OfferSize    | Decimal | C        | No contract size offered by the quote.                                      |
+| 54  | AcceptedSide | Char    | C        | Side accepted (1=Yes, 2=No). Only present if ACCEPTED                       |
+| 58  | Text         | String  | C        | Rejection reason. Only present if REJECTED                                  |
 
 ### Quote Status Values (297)
 

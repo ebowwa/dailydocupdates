@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/model-config.md
-Downloaded: 2026-05-11T20:38:31.042Z
+Downloaded: 2026-05-12T20:36:49.781Z
 -->
 
 > ## Documentation Index
@@ -61,6 +61,8 @@ You can configure your model in several ways, listed in order of priority:
    field.
 
 Your `/model` selection is saved to user settings and persists across restarts. As of v2.1.117, if the project's `.claude/settings.json` pins a different model, Claude Code also writes your choice to `.claude/settings.local.json` so it continues to apply in that project after a restart. Managed settings take precedence and reapply on the next launch.
+
+The `--model` flag and `ANTHROPIC_MODEL` environment variable apply only to the session you launch with them and are not saved. To run different models in different terminals at the same time, launch each one with its own `--model` flag rather than switching with `/model`.
 
 When the active model at startup comes from project or managed settings rather than your own selection, the startup header shows which settings file set it. Run `/model` to override for the current session.
 

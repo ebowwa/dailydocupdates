@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/trade/get-trades.md
+Downloaded: 2026-05-12T20:36:49.911Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ Requires readonly or level 2 API key authentication.
 
 ## OpenAPI
 
-````yaml /api-spec/clob-openapi.yaml get /trades
+````yaml /api-spec/clob-openapi.yaml get /data/trades
 openapi: 3.1.0
 info:
   title: Polymarket CLOB API
@@ -41,7 +46,7 @@ tags:
   - name: Rebates
     description: Maker rebate endpoints
 paths:
-  /trades:
+  /data/trades:
     get:
       tags:
         - Trade

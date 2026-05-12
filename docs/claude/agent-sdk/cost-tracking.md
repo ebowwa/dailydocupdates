@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/agent-sdk/cost-tracking.md
-Downloaded: 2026-05-05T20:28:26.500Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

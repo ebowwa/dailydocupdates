@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/changelog.md
-Downloaded: 2026-05-11T20:38:32.328Z
+Downloaded: 2026-05-12T20:37:03.408Z
 -->
 
 > ## Documentation Index
@@ -12,6 +12,10 @@ Downloaded: 2026-05-11T20:38:32.328Z
 > Version history and updates for the Kalshi FIX API
 
 # FIX API Changelog
+
+## Version 1.0.25 (2026-05-08)
+
+BidSize (134) and OfferSize (135) conditionally offered on QuoteStatusReport (35=AI).
 
 ## Version 1.0.24 (2026-05-07)
 

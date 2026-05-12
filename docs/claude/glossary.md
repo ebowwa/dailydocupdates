@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/glossary.md
-Downloaded: 2026-05-11T20:38:31.039Z
+Downloaded: 2026-05-12T20:36:49.778Z
 -->
 
 > ## Documentation Index
@@ -179,7 +179,7 @@ Learn more: [Run Claude Code programmatically](/en/headless)
 
 ### Output style
 
-A configuration that modifies Claude's system prompt to change response behavior, tone, or format. Output styles turn off the software-engineering-specific parts of the default system prompt, unlike [CLAUDE.md](#claude-md) which is delivered as a user message following the system prompt. Built-in styles include Default, Explanatory, and Learning.
+A configuration that modifies Claude's system prompt to change response behavior, tone, or format. Output styles turn off the software-engineering-specific parts of the default system prompt, unlike [CLAUDE.md](#claude-md) which is delivered as a user message following the system prompt. Built-in styles include Default, Proactive, Explanatory, and Learning.
 
 Learn more: [Output styles](/en/output-styles)
 
