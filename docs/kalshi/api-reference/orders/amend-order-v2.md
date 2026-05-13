@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/amend-order-v2.md
-Downloaded: 2026-05-08T20:25:34.795Z
+Downloaded: 2026-05-13T20:37:36.795Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-05-08T20:25:34.795Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.16.0
+  version: 3.18.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach

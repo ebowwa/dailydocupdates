@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/get-orders.md
-Downloaded: 2026-05-07T20:31:04.535Z
+Downloaded: 2026-05-13T20:37:36.797Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,7 @@ Orders that have been canceled or fully executed before the historical cutoff ar
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.16.0
+  version: 3.18.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach

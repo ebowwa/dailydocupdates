@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/geoblock.md
+Downloaded: 2026-05-13T20:37:32.269Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -116,6 +121,13 @@ The geoblocking system includes:
 
 * **Primary Servers**: eu-west-2
 * **Closest Non-Georestricted Region**: eu-west-1
+
+<Tip>
+  **Direct co-location available.** Users who complete the [KYC/KYB
+  form](https://forms.gle/Qy39FtiizodXbdLNA) can get access to co-locate
+  directly in `eu-west-2` for the lowest possible latency to Polymarket's
+  primary servers.
+</Tip>
 
 ***
 

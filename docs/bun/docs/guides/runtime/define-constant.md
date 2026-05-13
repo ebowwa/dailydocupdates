@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/guides/runtime/define-constant.md
-Downloaded: 2026-05-06T20:34:47.537Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

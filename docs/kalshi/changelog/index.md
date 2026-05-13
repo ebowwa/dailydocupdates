@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-05-12T20:37:03.408Z
+Downloaded: 2026-05-13T20:37:36.800Z
 -->
 
 > ## Documentation Index
@@ -16,6 +16,50 @@ You can subscribe to the RSS changelog at `/changelog/rss.xml` if you'd like to 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="May 12, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "reduce_by supported on V2 decrease endpoint",
+description: "POST /portfolio/events/orders/{order_id}/decrease now accepts reduce_by in addition to reduce_to. Exactly one must be provided."
+}}
+>
+  `POST /trade-api/v2/portfolio/events/orders/{order_id}/decrease` now
+  accepts `reduce_by` (fixed-point contract count) in addition to
+  `reduce_to`. Exactly one of the two must be provided.
+</Update>
+
+<Update
+  label="May 12, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Subaccount creation for direct members",
+description: "Subaccount creation now supported for all direct members with advanced API access."
+}}
+>
+  Subaccount creation now supported for all direct members with advanced API access.
+</Update>
+
+<Update
+  label="May 12, 2026"
+  tags={["Documentation", "Upcoming"]}
+  rss={{
+title: "WebSocket error code list documented",
+description: "The WebSocket docs now include the current public error code list, and code 25 is now returned for subscription buffer overflow."
+}}
+>
+  The WebSocket docs now include the current public error code list with each
+  code's name, message, description, and user-error classification.
+
+  WebSocket error code `25` is now returned as `Subscription buffer overflow`
+  when a subscription's event buffer overflows during a message burst. When this
+  happens, subscribe to a smaller subset of data, or ensure that your connection
+  read throughput is optimized.
+
+  See the [WebSocket error messages](/websockets/websocket-connection#error-messages)
+  section for the full list.
+</Update>
 
 <Update
   label="May 11, 2026"

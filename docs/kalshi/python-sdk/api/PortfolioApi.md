@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/python-sdk/api/PortfolioApi.md
-Downloaded: 2026-05-07T20:31:04.543Z
+Downloaded: 2026-05-13T20:37:36.805Z
 -->
 
 > ## Documentation Index
@@ -62,7 +62,7 @@ Transfers funds between the authenticated user's subaccounts. Use 0 for the prim
 
 Create Subaccount
 
-Creates a new subaccount for the authenticated user. Subaccounts are numbered sequentially starting from 1. Maximum 32 subaccounts per user.
+Creates a new subaccount for the authenticated user. This endpoint is currently only available to institutions and market makers. Subaccounts are numbered sequentially starting from 1. Maximum 32 subaccounts per user.
 
 ### Parameters
 

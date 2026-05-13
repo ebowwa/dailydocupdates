@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/python-sdk/api/CommunicationsApi.md
-Downloaded: 2026-05-06T20:34:50.215Z
+Downloaded: 2026-05-13T20:37:36.804Z
 -->
 
 > ## Documentation Index
@@ -246,7 +246,7 @@ Endpoint for getting a particular quote
 
 # **get\_quotes**
 
-> GetQuotesResponse get\_quotes(cursor=cursor, event\_ticker=event\_ticker, market\_ticker=market\_ticker, limit=limit, status=status, quote\_creator\_user\_id=quote\_creator\_user\_id, user\_filter=user\_filter, rfq\_creator\_user\_id=rfq\_creator\_user\_id, rfq\_creator\_subtrader\_id=rfq\_creator\_subtrader\_id, rfq\_id=rfq\_id)
+> GetQuotesResponse get\_quotes(cursor=cursor, event\_ticker=event\_ticker, market\_ticker=market\_ticker, limit=limit, status=status, quote\_creator\_user\_id=quote\_creator\_user\_id, user\_filter=user\_filter, rfq\_user\_filter=rfq\_user\_filter, rfq\_creator\_user\_id=rfq\_creator\_user\_id, rfq\_creator\_subtrader\_id=rfq\_creator\_subtrader\_id, rfq\_id=rfq\_id)
 
 Get Quotes
 
@@ -262,7 +262,8 @@ Endpoint for getting quotes
 | **limit**                       | **int**                                                      | Parameter to specify the number of results per page. Defaults to 500.                                                                        | \[optional] \[default to 500] |
 | **status**                      | **str**                                                      | Filter quotes by status                                                                                                                      | \[optional]                   |
 | **quote\_creator\_user\_id**    | **str**                                                      | Filter quotes by quote creator user ID                                                                                                       | \[optional]                   |
-| **user\_filter**                | [**UserFilter**](https://docs.kalshi.com/python-sdk/models/) |                                                                                                                                              | \[optional]                   |
+| **user\_filter**                | [**UserFilter**](https://docs.kalshi.com/python-sdk/models/) | Filter for quotes created by the authenticated user.                                                                                         | \[optional]                   |
+| **rfq\_user\_filter**           | [**UserFilter**](https://docs.kalshi.com/python-sdk/models/) | Filter for quotes responding to RFQs created by the authenticated user.                                                                      | \[optional]                   |
 | **rfq\_creator\_user\_id**      | **str**                                                      | Filter quotes by RFQ creator user ID                                                                                                         | \[optional]                   |
 | **rfq\_creator\_subtrader\_id** | **str**                                                      | Filter quotes by RFQ creator subtrader ID (FCM members only)                                                                                 | \[optional]                   |
 | **rfq\_id**                     | **str**                                                      | Filter quotes by RFQ ID                                                                                                                      | \[optional]                   |

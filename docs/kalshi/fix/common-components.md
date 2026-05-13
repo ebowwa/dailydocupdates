@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix/common-components.md
+Downloaded: 2026-05-13T20:37:36.800Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -52,9 +57,9 @@ Every FIX message ends with:
 | A       | Logon         | Both                           |
 | 0       | Heartbeat     | Both                           |
 | 1       | TestRequest   | Both                           |
-| 2       | ResendRequest | Both (KalshiRT/KalshiRFQ only) |
+| 2       | ResendRequest | Both (KalshiRT, KalshiPT only) |
 | 3       | Reject        | Server -> Client               |
-| 4       | SequenceReset | Both (KalshiRT/KalshiRFQ only) |
+| 4       | SequenceReset | Both (KalshiRT, KalshiPT only) |
 | 5       | Logout        | Both                           |
 
 ### Application-Level
@@ -66,10 +71,10 @@ Every FIX message ends with:
 | D       | NewOrderSingle            | KalshiNR, KalshiRT           | Client -> Server |
 | F       | OrderCancelRequest        | KalshiNR, KalshiRT           | Client -> Server |
 | G       | OrderCancelReplaceRequest | KalshiNR, KalshiRT           | Client -> Server |
-| q       | OrderMassCancelRequest    | KalshiNR, KalshiRT           | Client -> Server |
+| q       | OrderMassCancelRequest    | KalshiNR                     | Client -> Server |
 | 8       | ExecutionReport           | KalshiNR, KalshiRT, KalshiDC | Server -> Client |
 | 9       | OrderCancelReject         | KalshiNR, KalshiRT           | Server -> Client |
-| r       | OrderMassCancelReport     | KalshiNR, KalshiRT           | Server -> Client |
+| r       | OrderMassCancelReport     | KalshiNR                     | Server -> Client |
 | j       | BusinessMessageReject     | All                          | Server -> Client |
 
 #### Order Groups
@@ -81,34 +86,34 @@ Every FIX message ends with:
 
 #### Drop Copy
 
-| MsgType | Name                      | Sessions | Direction        |
-| ------- | ------------------------- | -------- | ---------------- |
-| AD      | TradeCaptureReportRequest | KalshiDC | Client -> Server |
-| AE      | TradeCaptureReport        | KalshiDC | Server -> Client |
-| U1      | EventResendRequest        | KalshiDC | Client -> Server |
-| U2      | EventResendComplete       | KalshiDC | Server -> Client |
-| U3      | EventResendReject         | KalshiDC | Server -> Client |
+| MsgType | Name                | Sessions | Direction        |
+| ------- | ------------------- | -------- | ---------------- |
+| U1      | EventResendRequest  | KalshiDC | Client -> Server |
+| U2      | EventResendComplete | KalshiDC | Server -> Client |
+| U3      | EventResendReject   | KalshiDC | Server -> Client |
+
+After an EventResendRequest, the server replays the matching historical order updates as ExecutionReport (35=8) messages and then sends EventResendComplete (35=U2) or EventResendReject (35=U3).
 
 #### Post Trade
 
-| MsgType | Name                   | Sessions | Direction        |
-| ------- | ---------------------- | -------- | ---------------- |
-| UMS     | MarketSettlementReport | KalshiPT | Server -> Client |
+| MsgType | Name                   | Sessions           | Direction        |
+| ------- | ---------------------- | ------------------ | ---------------- |
+| UMS     | MarketSettlementReport | KalshiPT, KalshiRT | Server -> Client |
 
 #### RFQ
 
-| MsgType | Name               | Sessions            | Direction        |
-| ------- | ------------------ | ------------------- | ---------------- |
-| R       | QuoteRequest       | KalshiRT, KalshiRFQ | Both             |
-| b       | QuoteRequestAck    | KalshiRT            | Server -> Client |
-| S       | Quote              | KalshiRT, KalshiRFQ | Both             |
-| AI      | QuoteStatusReport  | KalshiRFQ           | Server -> Client |
-| Z       | QuoteCancel        | KalshiRFQ           | Client -> Server |
-| U9      | QuoteCancelStatus  | KalshiRFQ           | Server -> Client |
-| AG      | QuoteRequestReject | KalshiRFQ           | Server -> Client |
-| UA      | AcceptQuote        | KalshiRT            | Client -> Server |
-| UC      | AcceptQuoteStatus  | KalshiRT            | Server -> Client |
-| U7      | QuoteConfirm       | KalshiRFQ           | Client -> Server |
-| U8      | QuoteConfirmStatus | KalshiRFQ           | Server -> Client |
-| UE      | RFQCancel          | KalshiRT            | Client -> Server |
-| UB      | RFQCancelStatus    | KalshiRT            | Server -> Client |
+| MsgType | Name               | Sessions            | Direction                                               |
+| ------- | ------------------ | ------------------- | ------------------------------------------------------- |
+| R       | QuoteRequest       | KalshiRT, KalshiRFQ | KalshiRT: Client -> Server; KalshiRFQ: Server -> Client |
+| b       | QuoteRequestAck    | KalshiRT            | Server -> Client                                        |
+| S       | Quote              | KalshiRT, KalshiRFQ | KalshiRT: Server -> Client; KalshiRFQ: Client -> Server |
+| AI      | QuoteStatusReport  | KalshiRFQ           | Server -> Client                                        |
+| Z       | QuoteCancel        | KalshiRFQ           | Client -> Server                                        |
+| U9      | QuoteCancelStatus  | KalshiRFQ           | Server -> Client                                        |
+| AG      | QuoteRequestReject | KalshiRT, KalshiRFQ | Server -> Client                                        |
+| UA      | AcceptQuote        | KalshiRT            | Client -> Server                                        |
+| UC      | AcceptQuoteStatus  | KalshiRT            | Server -> Client                                        |
+| U7      | QuoteConfirm       | KalshiRFQ           | Client -> Server                                        |
+| U8      | QuoteConfirmStatus | KalshiRFQ           | Server -> Client                                        |
+| UE      | RFQCancel          | KalshiRT            | Client -> Server                                        |
+| UB      | RFQCancelStatus    | KalshiRT            | Server -> Client                                        |

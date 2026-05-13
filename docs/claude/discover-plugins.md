@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/discover-plugins.md
-Downloaded: 2026-05-07T20:31:03.578Z
+Downloaded: 2026-05-13T20:37:31.383Z
 -->
 
 > ## Documentation Index
@@ -368,6 +368,8 @@ Toggle auto-update for individual marketplaces through the UI:
 4. Select **Enable auto-update** or **Disable auto-update**
 
 Official Anthropic marketplaces have auto-update enabled by default. Third-party and local development marketplaces have auto-update disabled by default.
+
+Administrators can also set `"autoUpdate": true` on each [`extraKnownMarketplaces`](/en/settings#extraknownmarketplaces) entry in managed settings to enable auto-update for an organization marketplace without requiring each user to toggle it.
 
 To disable all automatic updates entirely for both Claude Code and all plugins, set the `DISABLE_AUTOUPDATER` environment variable. See [Auto updates](/en/setup#auto-updates) for details.
 

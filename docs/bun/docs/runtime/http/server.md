@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/http/server.md
+Downloaded: 2026-05-13T20:37:48.783Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -169,6 +174,49 @@ Bun.serve({
 ```
 
 Unlike unix domain sockets, abstract namespace sockets are not bound to the filesystem and are automatically removed when the last reference to the socket is closed.
+
+***
+
+## HTTP/3 (QUIC)
+
+<Note>HTTP/3 support in `Bun.serve` is **experimental** and may change in future releases.</Note>
+
+`Bun.serve` can also listen for HTTP/3 over QUIC. Set `http3: true` together with [`tls`](./tls) — HTTP/3 always requires TLS.
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+Bun.serve({
+  tls: {
+    key: Bun.file("./key.pem"),
+    cert: Bun.file("./cert.pem"),
+  },
+  http3: true, // [!code ++]
+  fetch(req) {
+    return new Response("Hello over HTTP/3!");
+  },
+});
+```
+
+When `http3` is enabled, the server listens on the same port over both TCP (HTTP/1.1) and UDP (HTTP/3). HTTP/1.1 responses include an `Alt-Svc` header advertising the HTTP/3 endpoint so capable clients can upgrade automatically.
+
+To serve HTTP/3 only — no TCP listener at all — set `http1: false`:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+Bun.serve({
+  tls: {
+    key: Bun.file("./key.pem"),
+    cert: Bun.file("./cert.pem"),
+  },
+  http3: true,
+  http1: false, // [!code ++]
+  fetch(req) {
+    return new Response("HTTP/3 only");
+  },
+});
+```
+
+<Note>
+  `http3` is not supported with unix domain sockets — QUIC requires a UDP port. `http1: false` requires `http3: true`.
+</Note>
 
 ***
 

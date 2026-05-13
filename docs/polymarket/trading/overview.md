@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/overview.md
-Downloaded: 2026-05-08T20:25:34.714Z
+Downloaded: 2026-05-13T20:37:32.281Z
 -->
 
 > ## Documentation Index
@@ -216,6 +216,24 @@ If you're using the REST API directly (without the SDK), you need to attach auth
     Track orders and trades attributed to your builder code.
   </Card>
 </CardGroup>
+
+***
+
+## Server Infrastructure
+
+The CLOB matching engine runs in the following regions:
+
+* **Primary Servers**: eu-west-2
+* **Closest Non-Georestricted Region**: eu-west-1
+
+<Tip>
+  **Direct co-location available.** Users who complete the [KYC/KYB
+  form](https://forms.gle/Qy39FtiizodXbdLNA) can get access to co-locate
+  directly in `eu-west-2` for the lowest possible latency to Polymarket's
+  primary servers. See [Geographic
+  Restrictions](/api-reference/geoblock#server-infrastructure) for full
+  geographic availability details.
+</Tip>
 
 ***
 

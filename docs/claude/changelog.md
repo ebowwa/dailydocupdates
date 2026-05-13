@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/changelog.md
-Downloaded: 2026-05-11T20:38:31.032Z
+Downloaded: 2026-05-13T20:37:31.379Z
 -->
 
 > ## Documentation Index
@@ -14,6 +14,22 @@ Downloaded: 2026-05-11T20:38:31.032Z
 This page is generated from the [CHANGELOG.md on GitHub](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md).
 
 Run `claude --version` to check your installed version.
+
+<Update label="2.1.140" description="May 12, 2026">
+  * Improved Agent tool `subagent_type` matching to accept case- and separator-insensitive values (e.g. `"Code Reviewer"` resolves to `code-reviewer`)
+  * Updated agent color palette
+  * Fixed `/goal` silently hanging when `disableAllHooks` or `allowManagedHooksOnly` is set — now shows a clear message instead of an indicator that never resolves
+  * Fixed a regression in settings hot-reload where symlinked settings files caused misattributed change events and spurious `ConfigChange` hooks
+  * Fixed `claude --bg` failing with "connection dropped mid-request" when the background service was about to idle-exit
+  * Fixed background service startup failing on machines with enterprise endpoint security by allowing more time
+  * Fixed remote managed settings not retrying on 401 — now retries once with a force-refreshed token
+  * Fixed managed `extraKnownMarketplaces` auto-update policy not being persisted to `known_marketplaces.json`
+  * Fixed `/loop` scheduling redundant wakeups to poll for background tasks that already notify on completion
+  * Fixed a recurring event-loop stall on Windows when a missing executable (e.g. `gh`) triggered synchronous `where.exe` re-spawns on every check
+  * Fixed `Read` tool calls failing validation when `offset` is passed as a whitespace-padded or `+`-prefixed string
+  * Fixed native terminal cursor not staying at the input caret when the terminal loses focus
+  * Plugins now warn when a default component folder (e.g. `commands/`) is silently ignored because `plugin.json` sets the matching key. Shown in `/doctor`, `claude plugin list`, and `/plugin`.
+</Update>
 
 <Update label="2.1.139" description="May 11, 2026">
   * Added agent view (Research Preview): a single list of every Claude Code session — running, blocked on you, or done. Run `claude agents` to get started. See [https://code.claude.com/docs/en/agent-view](https://code.claude.com/docs/en/agent-view)
