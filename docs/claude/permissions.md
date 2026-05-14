@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/permissions.md
-Downloaded: 2026-05-13T20:37:31.389Z
+Downloaded: 2026-05-14T20:34:49.822Z
 -->
 
 > ## Documentation Index
@@ -360,7 +360,7 @@ If a tool is denied at any level, no other level can allow it. For example, a ma
 
 Embedding hosts can supply additional managed policy via the SDK `managedSettings` option when [`parentSettingsBehavior`](/en/settings#settings-precedence) is set to `"merge"`; embedder values can tighten policy but not loosen it.
 
-If a permission is allowed in user settings but denied in project settings, the project setting takes precedence and the permission is blocked.
+For example, if user settings allow a permission and project settings deny it, the deny rule blocks it. The reverse is also true: a user-level deny blocks a project-level allow, because deny rules from any scope are evaluated before allow rules.
 
 ## Example configurations
 

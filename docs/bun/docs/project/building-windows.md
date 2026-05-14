@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/project/building-windows.md
+Downloaded: 2026-05-14T20:35:01.114Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -40,19 +45,21 @@ After Visual Studio, you need the following:
 
 * LLVM 21.1.8
 * Go
-* Rust
+* Rust (via rustup)
 * NASM
 * Perl
 * Ruby
 * Node.js
 
-<Note>The Zig compiler is automatically downloaded, installed, and updated by the building process.</Note>
+<Note>
+  The pinned Rust nightly toolchain in `rust-toolchain.toml` is automatically installed by rustup on first build.
+</Note>
 
 Use [Scoop](https://scoop.sh) to install these remaining tools.
 
 ```ps1 Scoop (x64) theme={"theme":{"light":"github-light","dark":"dracula"}}
 irm https://get.scoop.sh | iex
-scoop install nodejs-lts go rust nasm ruby perl ccache
+scoop install nodejs-lts go rustup nasm ruby perl ccache
 # scoop seems to be buggy if you install llvm and the rest at the same time
 scoop install llvm@21.1.8
 ```
@@ -116,7 +123,6 @@ You should add this to `$Env:PATH`. The simplest way to do so is to open the sta
 ## Extra paths
 
 * WebKit is extracted to `build/debug/cache/webkit/`
-* Zig is extracted to `build/debug/cache/zig/bin/zig.exe`
 
 ## Tests
 

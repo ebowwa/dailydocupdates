@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/python.md
-Downloaded: 2026-05-12T20:36:49.766Z
+Downloaded: 2026-05-14T20:34:49.807Z
 -->
 
 > ## Documentation Index
@@ -1865,7 +1865,7 @@ Parameters:
 Returns a [`HookJSONOutput`](#hookjsonoutput) that may contain:
 
 * `decision`: `"block"` to block the action
-* `systemMessage`: System message to add to the transcript
+* `systemMessage`: warning message shown to the user
 * `hookSpecificOutput`: Hook-specific output data
 
 ### `HookContext`

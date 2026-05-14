@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/hooks-guide.md
-Downloaded: 2026-05-12T20:36:49.779Z
+Downloaded: 2026-05-14T20:34:49.820Z
 -->
 
 > ## Documentation Index
@@ -759,7 +759,7 @@ Where you add a hook determines its scope:
 | [Plugin](/en/plugins) `hooks/hooks.json`                   | When plugin is enabled             | Yes, bundled with the plugin       |
 | [Skill](/en/skills) or [agent](/en/sub-agents) frontmatter | While the skill or agent is active | Yes, defined in the component file |
 
-Run [`/hooks`](/en/hooks#the-hooks-menu) in Claude Code to browse all configured hooks grouped by event. To disable all hooks at once, set `"disableAllHooks": true` in your settings file.
+Run [`/hooks`](/en/hooks#the-hooks-menu) in Claude Code to browse all configured hooks grouped by event. To disable hooks, set `"disableAllHooks": true` in your settings file. Hooks configured in managed settings still run unless `disableAllHooks` is also set there.
 
 If you edit settings files directly while Claude Code is running, the file watcher normally picks up hook changes automatically.
 
@@ -870,7 +870,10 @@ For full configuration options and response handling, see [HTTP hooks](/en/hooks
 ### Limitations
 
 * Command hooks communicate through stdout, stderr, and exit codes only. They cannot trigger `/` commands or tool calls. Text returned via `additionalContext` is injected as a system reminder that Claude reads as plain text. HTTP hooks communicate through the response body instead.
-* Hook timeout is 10 minutes by default, configurable per hook with the `timeout` field (in seconds).
+* Hook timeouts vary by type. Override per hook with the `timeout` field in seconds.
+  * `command`, `http`, `mcp_tool`: 10 minutes. `UserPromptSubmit` lowers these to 30 seconds.
+  * `prompt`: 30 seconds.
+  * `agent`: 60 seconds.
 * `PostToolUse` hooks cannot undo actions since the tool has already executed.
 * `PermissionRequest` hooks do not fire in [non-interactive mode](/en/headless) (`-p`). Use `PreToolUse` hooks for automated permission decisions.
 * `Stop` hooks fire whenever Claude finishes responding, not only at task completion. They do not fire on user interrupts. API errors fire [StopFailure](/en/hooks#stopfailure) instead.
