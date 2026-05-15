@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/agent-sdk/streaming-vs-single-mode.md
+Downloaded: 2026-05-15T20:29:58.762Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -91,17 +96,18 @@ sequenceDiagram
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  import { query } from "@anthropic-ai/claude-agent-sdk";
+  import { query, type SDKUserMessage } from "@anthropic-ai/claude-agent-sdk";
   import { readFile } from "fs/promises";
 
-  async function* generateMessages() {
+  async function* generateMessages(): AsyncGenerator<SDKUserMessage> {
     // First message
     yield {
-      type: "user" as const,
+      type: "user",
       message: {
-        role: "user" as const,
+        role: "user",
         content: "Analyze this codebase for security issues"
-      }
+      },
+      parent_tool_use_id: null
     };
 
     // Wait for conditions or user input
@@ -109,9 +115,9 @@ sequenceDiagram
 
     // Follow-up with image
     yield {
-      type: "user" as const,
+      type: "user",
       message: {
-        role: "user" as const,
+        role: "user",
         content: [
           {
             type: "text",
@@ -126,7 +132,8 @@ sequenceDiagram
             }
           }
         ]
-      }
+      },
+      parent_tool_use_id: null
     };
   }
 
@@ -138,7 +145,7 @@ sequenceDiagram
       allowedTools: ["Read", "Grep"]
     }
   })) {
-    if (message.type === "result") {
+    if (message.type === "result" && message.subtype === "success") {
       console.log(message.result);
     }
   }
@@ -248,7 +255,7 @@ Use single message input when:
       allowedTools: ["Read", "Grep"]
     }
   })) {
-    if (message.type === "result") {
+    if (message.type === "result" && message.subtype === "success") {
       console.log(message.result);
     }
   }
@@ -261,7 +268,7 @@ Use single message input when:
       maxTurns: 1
     }
   })) {
-    if (message.type === "result") {
+    if (message.type === "result" && message.subtype === "success") {
       console.log(message.result);
     }
   }

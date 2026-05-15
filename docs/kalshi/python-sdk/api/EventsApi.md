@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/python-sdk/api/EventsApi.md
+Downloaded: 2026-05-15T20:30:12.889Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -62,7 +67,7 @@ Endpoint for getting the historical raw and formatted forecast numbers for an ev
 | -------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ----- |
 | **ticker**           | **str**                                                          | The event ticker                                                                                                                  |       |
 | **series\_ticker**   | **str**                                                          | The series ticker                                                                                                                 |       |
-| **percentiles**      | [**List\[int\]**](https://docs.kalshi.com/python-sdk/models/int) | Array of percentile values to retrieve (0-10000, max 10 values)                                                                   |       |
+| **percentiles**      | [**List\[int\]**](https://docs.kalshi.com/python-sdk/models/int) | Array of percentile values to retrieve (0-9999, max 10 values)                                                                    |       |
 | **start\_ts**        | **int**                                                          | Start timestamp for the range                                                                                                     |       |
 | **end\_ts**          | **int**                                                          | End timestamp for the range                                                                                                       |       |
 | **period\_interval** | **int**                                                          | Specifies the length of each forecast period, in minutes. 0 for 5-second intervals, or 1, 60, or 1440 for minute-based intervals. |       |

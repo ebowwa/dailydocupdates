@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/amend-order.md
-Downloaded: 2026-05-13T20:37:36.795Z
+Downloaded: 2026-05-15T20:30:12.880Z
 -->
 
 > ## Documentation Index
@@ -183,6 +183,11 @@ components:
             String representation of the updated quantity for the order. If
             updating quantity, provide count or count_fp; if both provided they
             must match.
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          default: 0
+          x-go-type-skip-optional-pointer: true
     AmendOrderResponse:
       type: object
       required:
@@ -214,6 +219,12 @@ components:
         contract count fields are legacy and will be deprecated; when both
         integer and fp fields are provided, they must match.
       example: '10.00'
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
     Order:
       type: object
       required:
@@ -370,6 +381,10 @@ components:
           nullable: true
           x-omitempty: true
           description: Subaccount number (0 for primary, 1-32 for subaccounts).
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          x-go-type-skip-optional-pointer: true
     ErrorResponse:
       type: object
       properties:

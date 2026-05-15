@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/amend-order-v2.md
-Downloaded: 2026-05-13T20:37:36.795Z
+Downloaded: 2026-05-15T20:30:12.880Z
 -->
 
 > ## Documentation Index
@@ -158,6 +158,11 @@ components:
           type: string
           description: The new client-specified order ID after amendment
           x-go-type-skip-optional-pointer: true
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          default: 0
+          x-go-type-skip-optional-pointer: true
     AmendOrderV2Response:
       type: object
       required:
@@ -233,6 +238,12 @@ components:
         contract count fields are legacy and will be deprecated; when both
         integer and fp fields are provided, they must match.
       example: '10.00'
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
     ErrorResponse:
       type: object
       properties:

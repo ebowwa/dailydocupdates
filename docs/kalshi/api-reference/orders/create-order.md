@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/create-order.md
-Downloaded: 2026-05-13T20:37:36.796Z
+Downloaded: 2026-05-15T20:30:12.881Z
 -->
 
 > ## Documentation Index
@@ -274,7 +274,9 @@ components:
         matching.
     ExchangeIndex:
       type: integer
-      description: 'Defaults to 0. Note: currently only 0 supported.'
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
       example: 0
     Order:
       type: object
@@ -432,6 +434,10 @@ components:
           nullable: true
           x-omitempty: true
           description: Subaccount number (0 for primary, 1-32 for subaccounts).
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          x-go-type-skip-optional-pointer: true
     ErrorResponse:
       type: object
       properties:

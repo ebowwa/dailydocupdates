@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/fcm/get-fcm-orders.md
-Downloaded: 2026-05-13T20:37:36.789Z
+Downloaded: 2026-05-15T20:30:12.875Z
 -->
 
 > ## Documentation Index
@@ -336,6 +336,10 @@ components:
           nullable: true
           x-omitempty: true
           description: Subaccount number (0 for primary, 1-32 for subaccounts).
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          x-go-type-skip-optional-pointer: true
     BookSide:
       type: string
       enum:
@@ -383,6 +387,12 @@ components:
         user; execution stops and any partial fills already matched are
         executed. `maker` cancels the resting maker order and continues
         matching.
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
   securitySchemes:
     kalshiAccessKey:
       type: apiKey

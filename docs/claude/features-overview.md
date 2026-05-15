@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/features-overview.md
-Downloaded: 2026-05-08T20:25:34.091Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

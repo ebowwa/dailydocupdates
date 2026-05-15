@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/order-groups/reset-order-group.md
-Downloaded: 2026-05-13T20:37:36.795Z
+Downloaded: 2026-05-15T20:30:12.879Z
 -->
 
 > ## Documentation Index
@@ -75,6 +75,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/OrderGroupIdPath'
         - $ref: '#/components/parameters/SubaccountQueryDefaultPrimary'
+        - $ref: '#/components/parameters/ExchangeIndexQuery'
       requestBody:
         required: false
         content:
@@ -113,10 +114,22 @@ components:
       description: Subaccount number (0 for primary, 1-32 for subaccounts). Defaults to 0.
       schema:
         type: integer
+    ExchangeIndexQuery:
+      name: exchange_index
+      in: query
+      schema:
+        $ref: '#/components/schemas/ExchangeIndex'
+      x-go-type-skip-optional-pointer: true
   schemas:
     EmptyResponse:
       type: object
       description: An empty response body
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
     ErrorResponse:
       type: object
       properties:

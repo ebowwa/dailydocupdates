@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/decrease-order.md
-Downloaded: 2026-05-13T20:37:36.796Z
+Downloaded: 2026-05-15T20:30:12.882Z
 -->
 
 > ## Documentation Index
@@ -152,6 +152,11 @@ components:
             Reduce-to may be provided via reduce_to or reduce_to_fp; if both
             provided they must match. Exactly one of reduce_by(/reduce_by_fp) or
             reduce_to(/reduce_to_fp) must be provided.
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          default: 0
+          x-go-type-skip-optional-pointer: true
     DecreaseOrderResponse:
       type: object
       required:
@@ -170,6 +175,12 @@ components:
         contract count fields are legacy and will be deprecated; when both
         integer and fp fields are provided, they must match.
       example: '10.00'
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
     Order:
       type: object
       required:
@@ -326,6 +337,10 @@ components:
           nullable: true
           x-omitempty: true
           description: Subaccount number (0 for primary, 1-32 for subaccounts).
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          x-go-type-skip-optional-pointer: true
     ErrorResponse:
       type: object
       properties:

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-view.md
-Downloaded: 2026-05-14T20:34:49.810Z
+Downloaded: 2026-05-15T20:29:58.764Z
 -->
 
 > ## Documentation Index
@@ -268,6 +268,12 @@ To run a specific subagent as the session's main agent, combine `--bg` with `--a
 
 ```bash theme={null}
 claude --agent code-reviewer --bg "address review comments on PR 1234"
+```
+
+Pass `--name` to set the session's display name in agent view instead of the auto-generated one:
+
+```bash theme={null}
+claude --bg --name "flaky-test-fix" "investigate the flaky SettingsChangeDetector test"
 ```
 
 After backgrounding, Claude prints the session's short ID and the commands for managing it:

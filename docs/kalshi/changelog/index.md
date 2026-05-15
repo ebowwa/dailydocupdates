@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-05-13T20:37:36.800Z
+Downloaded: 2026-05-15T20:30:12.884Z
 -->
 
 > ## Documentation Index
@@ -18,6 +18,35 @@ This changelog is a work in progress. As always, we welcome any feedback in our 
 ## Recent Updates
 
 <Update
+  label="May 21, 2026"
+  tags={["Bug Fix", "Upcoming"]}
+  rss={{
+title: "V2 cancel/amend response correctness",
+description: "In certain uncommon cases, V2 cancel and amend responses don't describe the order that was cancelled or amended. The legacy /portfolio/orders* rate-limit cost bump is delayed until May 21."
+}}
+>
+  In certain uncommon cases, responses from `DELETE /trade-api/v2/portfolio/events/orders/{order_id}` and `POST /trade-api/v2/portfolio/events/orders/{order_id}/amend` do not describe the order that was cancelled or amended — the `order_id`, `client_order_id`, and quantity fields (`reduced_by_centicount`, `remaining_centicount`, fill fields) in the response may not correspond to your request. The cancel or amend itself executes correctly against the intended order; only the response body is affected. Downstream order and position state are correct.
+
+  As a result, the previously announced rate-limit cost bump on the legacy `/portfolio/orders*` endpoints is delayed until May 21.
+
+  **Affected endpoints:**
+
+  * `DELETE /trade-api/v2/portfolio/events/orders/{order_id}`
+  * `POST /trade-api/v2/portfolio/events/orders/{order_id}/amend`
+</Update>
+
+<Update
+  label="May 21, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Fixed-point dollars added to GET /portfolio/balance",
+description: "GET /portfolio/balance now returns balance_dollars alongside the existing balance field."
+}}
+>
+  `GET /portfolio/balance` now returns `balance_dollars`, the member's available balance as a fixed-point dollar string, alongside the existing integer-cent `balance` field.
+</Update>
+
+<Update
   label="May 12, 2026"
   tags={["New Feature", "Upcoming"]}
   rss={{
@@ -28,6 +57,19 @@ description: "POST /portfolio/events/orders/{order_id}/decrease now accepts redu
   `POST /trade-api/v2/portfolio/events/orders/{order_id}/decrease` now
   accepts `reduce_by` (fixed-point contract count) in addition to
   `reduce_to`. Exactly one of the two must be provided.
+</Update>
+
+<Update
+  label="May 12, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Preliminary exchange sharding spec",
+description: "Preliminary exchange sharding spec"
+}}
+>
+  In order to scale capacity, Kalshi will be sharding trading across multiple exchange instances. A more specific rollout timeline will be released in the coming weeks.
+
+  See [Exchange Sharding](/getting_started/exchange_sharding) for the full overview.
 </Update>
 
 <Update

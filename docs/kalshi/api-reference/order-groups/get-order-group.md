@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/order-groups/get-order-group.md
-Downloaded: 2026-05-13T20:37:36.794Z
+Downloaded: 2026-05-15T20:30:12.879Z
 -->
 
 > ## Documentation Index
@@ -131,6 +131,10 @@ components:
             type: string
           description: List of order IDs that belong to this order group
           x-go-type-skip-optional-pointer: true
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          x-go-type-skip-optional-pointer: true
     FixedPointCount:
       type: string
       description: >-
@@ -142,6 +146,12 @@ components:
         contract count fields are legacy and will be deprecated; when both
         integer and fp fields are provided, they must match.
       example: '10.00'
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
     ErrorResponse:
       type: object
       properties:

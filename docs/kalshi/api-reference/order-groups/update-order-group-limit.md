@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/order-groups/update-order-group-limit.md
-Downloaded: 2026-05-13T20:37:36.795Z
+Downloaded: 2026-05-15T20:30:12.880Z
 -->
 
 > ## Documentation Index
@@ -74,6 +74,7 @@ paths:
       operationId: UpdateOrderGroupLimit
       parameters:
         - $ref: '#/components/parameters/OrderGroupIdPath'
+        - $ref: '#/components/parameters/ExchangeIndexQuery'
       requestBody:
         required: true
         content:
@@ -108,6 +109,12 @@ components:
       description: Order group ID
       schema:
         type: string
+    ExchangeIndexQuery:
+      name: exchange_index
+      in: query
+      schema:
+        $ref: '#/components/schemas/ExchangeIndex'
+      x-go-type-skip-optional-pointer: true
   schemas:
     UpdateOrderGroupLimitRequest:
       type: object
@@ -135,6 +142,12 @@ components:
     EmptyResponse:
       type: object
       description: An empty response body
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
     FixedPointCount:
       type: string
       description: >-

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/order-entry.md
-Downloaded: 2026-05-13T20:37:36.801Z
+Downloaded: 2026-05-15T20:30:12.885Z
 -->
 
 > ## Documentation Index
@@ -30,7 +30,7 @@ Used to submit a new order to the Exchange.
 | 452   | PartyRole               | Integer      | N        | FCM only. `24`=Customer Account. Required when using PartyID.                                               |
 | 453   | NoPartyIDs              | Integer      | N        | FCM only. Number of parties (only 1 supported).                                                             |
 | 79    | AllocAccount            | Integer      | N        | Subaccount number (0–32). Alternative to NoPartyIDs.                                                        |
-| 526   | SecondaryClOrdID        | UUID         | N        | [Order group](/getting_started/order_groups) identifier.                                                    |
+| 526   | SecondaryClOrdID        | UUID         | N        | [Order group](/fix/order-groups) identifier.                                                                |
 | 2964  | SelfTradePreventionType | Integer      | N        | `1`=Taker At Cross (default), `2`=Maker                                                                     |
 | 21006 | CancelOrderOnPause      | Boolean      | N        | Cancel order if trading is paused.                                                                          |
 | 21009 | MaxExecutionCost        | Decimal      | N        | Max execution cost in dollars. Order canceled if unable to fill within cost.                                |

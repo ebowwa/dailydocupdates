@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/typescript.md
-Downloaded: 2026-05-14T20:34:49.809Z
+Downloaded: 2026-05-15T20:29:58.763Z
 -->
 
 > ## Documentation Index
@@ -953,7 +953,7 @@ User input message.
 type SDKUserMessage = {
   type: "user";
   uuid?: UUID;
-  session_id: string;
+  session_id?: string;
   message: MessageParam; // From Anthropic SDK
   parent_tool_use_id: string | null;
   isSynthetic?: boolean;

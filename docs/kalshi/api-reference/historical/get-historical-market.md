@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-market.md
-Downloaded: 2026-05-13T20:37:36.789Z
+Downloaded: 2026-05-15T20:30:12.876Z
 -->
 
 > ## Documentation Index
@@ -401,6 +401,10 @@ components:
             If true, the market may be removed after determination if there is
             no activity on it
           x-go-type-skip-optional-pointer: true
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          x-go-type-skip-optional-pointer: true
     ErrorResponse:
       type: object
       properties:
@@ -473,6 +477,12 @@ components:
         step:
           type: string
           description: Price step/tick size for this range in dollars
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
   responses:
     NotFoundError:
       description: Resource not found

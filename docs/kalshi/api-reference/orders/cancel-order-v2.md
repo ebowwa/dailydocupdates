@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/cancel-order-v2.md
-Downloaded: 2026-05-13T20:37:36.796Z
+Downloaded: 2026-05-15T20:30:12.881Z
 -->
 
 > ## Documentation Index
@@ -78,6 +78,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/OrderIdPath'
         - $ref: '#/components/parameters/SubaccountQueryDefaultPrimary'
+        - $ref: '#/components/parameters/ExchangeIndexQuery'
       responses:
         '200':
           description: Order cancelled successfully
@@ -110,6 +111,12 @@ components:
       description: Subaccount number (0 for primary, 1-32 for subaccounts). Defaults to 0.
       schema:
         type: integer
+    ExchangeIndexQuery:
+      name: exchange_index
+      in: query
+      schema:
+        $ref: '#/components/schemas/ExchangeIndex'
+      x-go-type-skip-optional-pointer: true
   schemas:
     CancelOrderV2Response:
       type: object
@@ -133,6 +140,12 @@ components:
           description: >-
             Matching engine timestamp at which the cancellation was processed,
             as Unix epoch milliseconds.
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
     FixedPointCount:
       type: string
       description: >-

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-multivariate-events.md
-Downloaded: 2026-05-13T20:37:36.788Z
+Downloaded: 2026-05-15T20:30:12.875Z
 -->
 
 > ## Documentation Index
@@ -244,6 +244,10 @@ components:
           description: >-
             Fee multiplier override for this event. Paired with
             fee_type_override.
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          x-go-type-skip-optional-pointer: true
     Market:
       type: object
       required:
@@ -543,6 +547,16 @@ components:
             If true, the market may be removed after determination if there is
             no activity on it
           x-go-type-skip-optional-pointer: true
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          x-go-type-skip-optional-pointer: true
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
     FixedPointDollars:
       type: string
       description: >-

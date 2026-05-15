@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/markets/list-markets-keyset-pagination.md
+Downloaded: 2026-05-15T20:30:00.628Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -55,11 +60,11 @@ paths:
       parameters:
         - name: limit
           in: query
-          description: Maximum number of results to return (max 1000)
+          description: Maximum number of results to return (max 100)
           schema:
             type: integer
             minimum: 1
-            maximum: 1000
+            maximum: 100
             default: 20
         - name: order
           in: query

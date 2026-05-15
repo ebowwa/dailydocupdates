@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/typescript-sdk/api/EventsApi.md
+Downloaded: 2026-05-15T20:30:12.890Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -61,14 +66,14 @@ Endpoint for getting the historical raw and formatted forecast numbers for an ev
 
 ### Parameters
 
-| Name               | Type               | Description                                                     | Notes                 |                                           |                                                                                                                                   |                       |
-| ------------------ | ------------------ | --------------------------------------------------------------- | --------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| **ticker**         | \[**string**]      | The event ticker                                                | defaults to undefined |                                           |                                                                                                                                   |                       |
-| **seriesTicker**   | \[**string**]      | The series ticker                                               | defaults to undefined |                                           |                                                                                                                                   |                       |
-| **percentiles**    | **Array\<number>** | Array of percentile values to retrieve (0-10000, max 10 values) | defaults to undefined |                                           |                                                                                                                                   |                       |
-| **startTs**        | \[**number**]      | Start timestamp for the range                                   | defaults to undefined |                                           |                                                                                                                                   |                       |
-| **endTs**          | \[**number**]      | End timestamp for the range                                     | defaults to undefined |                                           |                                                                                                                                   |                       |
-| **periodInterval** | \[\*\*0            | 1                                                               | 60                    | 1440\*\*]**Array\<0 \| 1 \| 60 \| 1440>** | Specifies the length of each forecast period, in minutes. 0 for 5-second intervals, or 1, 60, or 1440 for minute-based intervals. | defaults to undefined |
+| Name               | Type               | Description                                                    | Notes                 |                                           |                                                                                                                                   |                       |
+| ------------------ | ------------------ | -------------------------------------------------------------- | --------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| **ticker**         | \[**string**]      | The event ticker                                               | defaults to undefined |                                           |                                                                                                                                   |                       |
+| **seriesTicker**   | \[**string**]      | The series ticker                                              | defaults to undefined |                                           |                                                                                                                                   |                       |
+| **percentiles**    | **Array\<number>** | Array of percentile values to retrieve (0-9999, max 10 values) | defaults to undefined |                                           |                                                                                                                                   |                       |
+| **startTs**        | \[**number**]      | Start timestamp for the range                                  | defaults to undefined |                                           |                                                                                                                                   |                       |
+| **endTs**          | \[**number**]      | End timestamp for the range                                    | defaults to undefined |                                           |                                                                                                                                   |                       |
+| **periodInterval** | \[\*\*0            | 1                                                              | 60                    | 1440\*\*]**Array\<0 \| 1 \| 60 \| 1440>** | Specifies the length of each forecast period, in minutes. 0 for 5-second intervals, or 1, 60, or 1440 for minute-based intervals. | defaults to undefined |
 
 ### Return type
 

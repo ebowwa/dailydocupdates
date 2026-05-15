@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-balance.md
-Downloaded: 2026-05-13T20:37:36.798Z
+Downloaded: 2026-05-15T20:30:12.883Z
 -->
 
 > ## Documentation Index
@@ -102,6 +102,7 @@ components:
       type: object
       required:
         - balance
+        - balance_dollars
         - portfolio_value
         - updated_ts
       properties:
@@ -111,6 +112,11 @@ components:
           description: >-
             Member's available balance in cents. This represents the amount
             available for trading.
+        balance_dollars:
+          $ref: '#/components/schemas/FixedPointDollars'
+          description: >-
+            Member's available balance as a fixed-point dollar string. This
+            represents the amount available for trading.
         portfolio_value:
           type: integer
           format: int64
@@ -126,6 +132,14 @@ components:
           items:
             $ref: '#/components/schemas/IndexedBalance'
           description: Balance broken down per exchange index.
+    FixedPointDollars:
+      type: string
+      description: >-
+        US dollar amount as a fixed-point decimal string with up to 6 decimal
+        places of precision. This is the maximum supported precision; valid
+        quote intervals for a given market are constrained by that market's
+        price level structure.
+      example: '0.5600'
     IndexedBalance:
       type: object
       required:
@@ -153,16 +167,10 @@ components:
           description: The name of the service that generated the error
     ExchangeIndex:
       type: integer
-      description: 'Defaults to 0. Note: currently only 0 supported.'
-      example: 0
-    FixedPointDollars:
-      type: string
       description: >-
-        US dollar amount as a fixed-point decimal string with up to 6 decimal
-        places of precision. This is the maximum supported precision; valid
-        quote intervals for a given market are constrained by that market's
-        price level structure.
-      example: '0.5600'
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
   responses:
     UnauthorizedError:
       description: Unauthorized - authentication required

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/order-groups/create-order-group.md
-Downloaded: 2026-05-13T20:37:36.794Z
+Downloaded: 2026-05-15T20:30:12.879Z
 -->
 
 > ## Documentation Index
@@ -128,6 +128,11 @@ components:
             matched within this group over a rolling 15-second window. Provide
             contracts_limit or contracts_limit_fp; if both provided they must
             match.
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          default: 0
+          x-go-type-skip-optional-pointer: true
     CreateOrderGroupResponse:
       type: object
       required:
@@ -144,6 +149,10 @@ components:
             Subaccount number that owns the created order group (0 for primary,
             1-32 for subaccounts).
           x-go-type-skip-optional-pointer: true
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          x-go-type-skip-optional-pointer: true
     FixedPointCount:
       type: string
       description: >-
@@ -155,6 +164,12 @@ components:
         contract count fields are legacy and will be deprecated; when both
         integer and fp fields are provided, they must match.
       example: '10.00'
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
     ErrorResponse:
       type: object
       properties:

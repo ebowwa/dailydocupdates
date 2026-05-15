@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/decrease-order-v2.md
-Downloaded: 2026-05-13T20:37:36.797Z
+Downloaded: 2026-05-15T20:30:12.882Z
 -->
 
 > ## Documentation Index
@@ -134,6 +134,11 @@ components:
           description: >-
             String representation of the number of contracts to reduce to.
             Exactly one of `reduce_by` or `reduce_to` must be provided.
+        exchange_index:
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          default: 0
+          x-go-type-skip-optional-pointer: true
     DecreaseOrderV2Response:
       type: object
       required:
@@ -165,6 +170,12 @@ components:
         contract count fields are legacy and will be deprecated; when both
         integer and fp fields are provided, they must match.
       example: '10.00'
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
     ErrorResponse:
       type: object
       properties:

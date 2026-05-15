@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/geoblock.md
-Downloaded: 2026-05-13T20:37:32.269Z
+Downloaded: 2026-05-15T20:30:00.625Z
 -->
 
 > ## Documentation Index
@@ -124,7 +124,7 @@ The geoblocking system includes:
 
 <Tip>
   **Direct co-location available.** Users who complete the [KYC/KYB
-  form](https://forms.gle/Qy39FtiizodXbdLNA) can get access to co-locate
+  form](https://docs.google.com/forms/d/e/1FAIpQLSfY-3Dl3yxq8HKFjFad8YzKZmm0k3Gdg29HD6gL-K-AmI6KXw/viewform) can get access to co-locate
   directly in `eu-west-2` for the lowest possible latency to Polymarket's
   primary servers.
 </Tip>
