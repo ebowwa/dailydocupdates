@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-05-15T20:30:12.884Z
+Downloaded: 2026-05-16T20:19:12.724Z
 -->
 
 > ## Documentation Index
@@ -57,19 +57,6 @@ description: "POST /portfolio/events/orders/{order_id}/decrease now accepts redu
   `POST /trade-api/v2/portfolio/events/orders/{order_id}/decrease` now
   accepts `reduce_by` (fixed-point contract count) in addition to
   `reduce_to`. Exactly one of the two must be provided.
-</Update>
-
-<Update
-  label="May 12, 2026"
-  tags={["New Feature", "Upcoming"]}
-  rss={{
-title: "Preliminary exchange sharding spec",
-description: "Preliminary exchange sharding spec"
-}}
->
-  In order to scale capacity, Kalshi will be sharding trading across multiple exchange instances. A more specific rollout timeline will be released in the coming weeks.
-
-  See [Exchange Sharding](/getting_started/exchange_sharding) for the full overview.
 </Update>
 
 <Update
