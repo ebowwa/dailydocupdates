@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/skills.md
-Downloaded: 2026-05-13T20:37:31.391Z
+Downloaded: 2026-05-17T20:20:06.099Z
 -->
 
 > ## Documentation Index
@@ -411,6 +411,8 @@ When this skill runs:
 3. Claude receives the fully-rendered prompt with actual PR data
 
 This is preprocessing, not something Claude executes. Claude only sees the final result.
+
+Substitution runs once over the original file. Command output is inserted as plain text and is not re-scanned for further `` !`<command>` `` placeholders, so a command cannot emit a placeholder for a later pass to expand.
 
 For multi-line commands, use a fenced code block opened with ` ```! ` instead of the inline form:
 
