@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/builders/get-daily-builder-volume-time-series.md
+Downloaded: 2026-05-18T20:35:58.768Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -79,6 +84,12 @@ components:
         builder:
           type: string
           description: The builder name or identifier
+        builderCode:
+          type: string
+          description: >-
+            The builder's onchain attribution code as attached to orders via
+            `builderCode` (see CLOB V2). Empty string for legacy builders
+            without a registered code.
         builderLogo:
           type: string
           description: URL to the builder's logo image

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/delete-quote.md
-Downloaded: 2026-05-13T20:37:36.785Z
+Downloaded: 2026-05-18T20:36:07.255Z
 -->
 
 > ## Documentation Index
@@ -11,9 +11,6 @@ Downloaded: 2026-05-13T20:37:36.785Z
 
 >  Endpoint for deleting a quote, which means it can no longer be accepted.
 
-<Note>
-  **Rate limit:** 2 tokens per request. Other endpoints use the default cost of 10 tokens per request unless noted on their own page. See [Rate Limits and Tiers](/getting_started/rate_limits).
-</Note>
 
 
 ## OpenAPI

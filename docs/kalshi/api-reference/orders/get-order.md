@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/get-order.md
-Downloaded: 2026-05-15T20:30:12.882Z
+Downloaded: 2026-05-18T20:36:07.263Z
 -->
 
 > ## Documentation Index
@@ -11,9 +11,6 @@ Downloaded: 2026-05-15T20:30:12.882Z
 
 >  Endpoint for getting a single order.
 
-<Note>
-  **Rate limit:** 2 tokens per request. Other endpoints use the default cost of 10 tokens per request unless noted on their own page. See [Rate Limits and Tiers](/getting_started/rate_limits).
-</Note>
 
 
 ## OpenAPI

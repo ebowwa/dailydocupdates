@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/hashing.md
+Downloaded: 2026-05-18T20:35:57.604Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -35,7 +40,7 @@ const password = "super-secure-pa$$word";
 // use argon2 (default)
 const argonHash = await Bun.password.hash(password, {
   algorithm: "argon2id", // "argon2id" | "argon2i" | "argon2d"
-  memoryCost: 4, // memory usage in kibibytes
+  memoryCost: 8, // memory usage in kibibytes (minimum 8)
   timeCost: 3, // the number of iterations
 });
 

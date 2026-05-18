@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/rate-limits.md
-Downloaded: 2026-05-13T20:37:32.272Z
+Downloaded: 2026-05-18T20:35:58.774Z
 -->
 
 > ## Documentation Index
@@ -106,6 +106,16 @@ Trading endpoints have both **burst** limits (short spikes allowed) and **sustai
 | `DELETE /orders`               | 1,000 req / 10s | 15,000 req / 10 min |
 | `DELETE /cancel-all`           | 250 req / 10s   | 6,000 req / 10 min  |
 | `DELETE /cancel-market-orders` | 1,500 req / 10s | 21,000 req / 10 min |
+
+***
+
+## Bridge API
+
+Base URL: `https://bridge.polymarket.com`
+
+| Endpoint | Limit        |
+| -------- | ------------ |
+| General  | 50 req / 10s |
 
 ***
 
