@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/resources/error-codes.md
+Downloaded: 2026-05-19T20:38:31.029Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -30,10 +35,6 @@ These errors can occur on **any authenticated endpoint**.
 
 <ResponseField name="503" type="Service Unavailable">
   `Trading is currently disabled. Check polymarket.com for updates` — The exchange is temporarily paused. No orders (including cancels) are accepted.
-</ResponseField>
-
-<ResponseField name="503" type="Service Unavailable">
-  `Trading is currently cancel-only. New orders are not accepted, but cancels are allowed.` — The exchange is in cancel-only mode. You can cancel existing orders but cannot place new ones.
 </ResponseField>
 
 <ResponseField name="429" type="Too Many Requests">
@@ -168,6 +169,26 @@ Errors from order placement endpoints.
   `'{address}' address in closed only mode`
 </ResponseField>
 
+<ResponseField name="503" type="Service Unavailable">
+  `Trading is currently cancel-only. New orders are not accepted, but cancels are allowed.` — The exchange is in cancel-only mode. You can cancel existing orders but cannot place new orders.
+</ResponseField>
+
+<ResponseField name="503" type="Service Unavailable">
+  `post-and-cancel-only mode: only post-only orders and cancels are allowed` — The exchange is in post-only mode. You can cancel orders and place orders with `postOnly: true`; non-post-only orders are rejected. The response includes `code: "post_and_cancel_only"` and `retry_after_seconds`, and the same retry delay is also sent in the `Retry-After` HTTP header.
+</ResponseField>
+
+Example response:
+
+```json theme={null}
+{
+  "error": "post-and-cancel-only mode: only post-only orders and cancels are allowed",
+  "code": "post_and_cancel_only",
+  "retry_after_seconds": 79
+}
+```
+
+The retry delay is also sent in the `Retry-After` HTTP header.
+
 ### POST orders
 
 All errors from `POST /order` apply, plus:
@@ -177,6 +198,29 @@ All errors from `POST /order` apply, plus:
 </ResponseField>
 
 Per-order errors are returned in the `200` response array, with individual error messages for each failed order.
+
+In post-only mode, non-post-only orders in a batch return per-order errors:
+
+```json theme={null}
+[
+  {
+    "errorMsg": "post-and-cancel-only mode: only post-only orders and cancels are allowed",
+    "orderID": "",
+    "takingAmount": "",
+    "makingAmount": "",
+    "status": "",
+    "success": true
+  },
+  {
+    "errorMsg": "post-and-cancel-only mode: only post-only orders and cancels are allowed",
+    "orderID": "",
+    "takingAmount": "",
+    "makingAmount": "",
+    "status": "",
+    "success": true
+  }
+]
+```
 
 ***
 
@@ -536,7 +580,7 @@ Errors from order query endpoints.
 | `425`  | Too Early             | Matching engine is restarting — retry with backoff. See [Matching Engine](/trading/matching-engine) |
 | `429`  | Too Many Requests     | Rate limit exceeded — implement exponential backoff                                                 |
 | `500`  | Internal Server Error | Unexpected server error — retry with backoff                                                        |
-| `503`  | Service Unavailable   | Exchange paused or in cancel-only mode                                                              |
+| `503`  | Service Unavailable   | Exchange paused, or order placement blocked by cancel-only / post-only mode                         |
 
 <Note>
   The CLOB API has an internal override: any error message containing `"not found"` returns `404`, `"unauthorized"` returns `401`, and `"context canceled"` returns `400`, regardless of the original status code.

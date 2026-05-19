@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/trade/get-single-order-by-id.md
-Downloaded: 2026-05-12T20:36:49.910Z
+Downloaded: 2026-05-19T20:38:31.025Z
 -->
 
 > ## Documentation Index
@@ -232,6 +232,12 @@ components:
         error:
           type: string
           description: Error message
+        code:
+          type: string
+          description: Machine-readable error code, when provided
+        retry_after_seconds:
+          type: integer
+          description: Number of seconds to wait before retrying, when provided
   securitySchemes:
     polyApiKey:
       type: apiKey

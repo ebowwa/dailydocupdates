@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/routines.md
-Downloaded: 2026-05-18T20:35:57.155Z
+Downloaded: 2026-05-19T20:38:29.148Z
 -->
 
 > ## Documentation Index
@@ -370,6 +370,16 @@ When a routine hits the daily cap or your subscription usage limit, organization
 One-off runs do not count against the daily routine cap. They draw down your regular subscription usage like any other session, but they are exempt from the per-account daily routine run allowance.
 
 ## Troubleshooting
+
+### `/schedule` returns "Unknown command"
+
+The CLI hides `/schedule` when one of its requirements is not met. The cause is usually one of the following:
+
+* You are authenticated with a Console API key or a cloud provider such as Bedrock, Vertex, or Foundry. `/schedule` requires a claude.ai subscription login. If `ANTHROPIC_API_KEY` or `ANTHROPIC_AUTH_TOKEN` is set in your shell, or `apiKeyHelper` is set in `settings.json`, remove it first, since these take precedence over a claude.ai login
+* `DISABLE_TELEMETRY`, `DO_NOT_TRACK`, `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC`, or `DISABLE_GROWTHBOOK` is set in your shell environment or in the `env` block of a [`settings.json` file](/en/settings#available-settings). These disable feature-flag fetching, which `/schedule` depends on
+* You are inside a Claude Code on the web session. Manage routines from the [web UI](https://claude.ai/code/routines) instead
+
+You can always create and manage routines at [claude.ai/code/routines](https://claude.ai/code/routines) regardless of how the CLI is configured.
 
 ### "Routines are disabled by your organization's policy"
 

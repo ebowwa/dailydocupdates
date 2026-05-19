@@ -1,29 +1,17 @@
+<!--
+Source: https://docs.polymarket.com/trading/matching-engine.md
+Downloaded: 2026-05-19T20:38:31.030Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Matching Engine Restarts
 
-> Restart schedule, maintenance windows, and how to handle downtime
+> Maintenance windows, restart handling, and post-restart post-only mode
 
-The Polymarket matching engine undergoes periodic restarts for maintenance and upgrades. This page covers the restart schedule, how to detect and handle downtime, and where to get advance notice of changes.
-
-***
-
-## Restart Schedule
-
-The matching engine restarts **weekly on Tuesdays at 7:00 AM ET**. During a restart window, the engine is temporarily unavailable — typically for about **90 seconds**.
-
-|                      | Details                                     |
-| -------------------- | ------------------------------------------- |
-| **Cadence**          | Weekly                                      |
-| **Day & time**       | Tuesday, 7:00 AM ET                         |
-| **Typical duration** | \~90 seconds                                |
-| **What happens**     | Order matching is paused, API returns `425` |
-
-<Note>
-  Unscheduled restarts may occur for critical updates or hotfixes. These are announced with as much advance notice as possible.
-</Note>
+The Polymarket matching engine undergoes restarts for maintenance and upgrades. This page covers how to detect and handle downtime, the post-restart post-only period, and where to get advance notice of changes.
 
 ***
 
@@ -49,6 +37,8 @@ Announcements typically include **what's changing**, the **scheduled time**, and
 
 During a restart window, the CLOB API returns **HTTP 425 (Too Early)** on all order-related endpoints. This tells your client that the matching engine is restarting and will be back shortly.
 
+After every restart, the matching engine enters **post-only mode for 2 minutes**. During this period, cancels are accepted and new orders must use `postOnly: true`; non-post-only orders are rejected.
+
 ### Recommended Retry Strategy
 
 <Steps>
@@ -60,8 +50,8 @@ During a restart window, the CLOB API returns **HTTP 425 (Too Early)** on all or
     Wait and retry with exponential backoff. Start at 1–2 seconds and increase the interval on each retry.
   </Step>
 
-  <Step title="Resume normal operation">
-    Once you receive a successful response, the engine is back online. Resume normal order flow.
+  <Step title="Handle post-only mode">
+    Once `425` responses stop, the engine is back online but remains in post-only mode for 2 minutes. During that period, only cancels and orders with `postOnly: true` are accepted.
   </Step>
 </Steps>
 
@@ -158,9 +148,67 @@ Check the HTTP status code on responses to the CLOB API and retry on `425`:
 
 ***
 
+## Restricted Trading Modes
+
+During restricted trading modes, order placement behavior changes for `POST /order` and `POST /orders`. Cancel endpoints continue to accept cancels unless trading is fully disabled.
+
+### Cancel-Only Mode
+
+In cancel-only mode, new orders are rejected, but cancel requests are still accepted.
+
+`POST /order` and `POST /orders` return `503`:
+
+```json theme={null}
+{
+  "error": "Trading is currently cancel-only. New orders are not accepted, but cancels are allowed."
+}
+```
+
+### Post-Only Mode
+
+After every restart, the matching engine enters post-only mode for **2 minutes**. Cancel requests are accepted and new orders must use `postOnly: true`. Non-post-only orders are rejected.
+
+`POST /order` returns `503` with a retry delay in both the response body and the `Retry-After` HTTP header:
+
+```json theme={null}
+{
+  "error": "post-and-cancel-only mode: only post-only orders and cancels are allowed",
+  "code": "post_and_cancel_only",
+  "retry_after_seconds": 79
+}
+```
+
+`POST /orders` returns per-order errors for non-post-only orders in the batch:
+
+```json theme={null}
+[
+  {
+    "errorMsg": "post-and-cancel-only mode: only post-only orders and cancels are allowed",
+    "orderID": "",
+    "takingAmount": "",
+    "makingAmount": "",
+    "status": "",
+    "success": true
+  },
+  {
+    "errorMsg": "post-and-cancel-only mode: only post-only orders and cancels are allowed",
+    "orderID": "",
+    "takingAmount": "",
+    "makingAmount": "",
+    "status": "",
+    "success": true
+  }
+]
+```
+
+When you receive either restricted-mode response, do not retry the same non-post-only order unchanged. Cancel existing orders, retry after the indicated delay when one is provided, or resubmit eligible maker orders with `postOnly: true`.
+
+***
+
 ## Best Practices
 
 * **Subscribe to announcement channels** — get notified before restarts happen so you can prepare
 * **Handle 425 gracefully** — treat it as a temporary condition, not an error; your retry logic should resume automatically
+* **Handle 503 mode responses on order placement** — cancel-only and post-only responses require changing order flow, not blind retrying
 * **Avoid aggressive retries** — the engine needs time to reload orderbooks; rapid-fire retries won't speed things up and may hit rate limits once the engine is back
 * **Log restart events** — track when your client encounters 425s to correlate with announced maintenance windows

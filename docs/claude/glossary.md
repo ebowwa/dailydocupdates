@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/glossary.md
-Downloaded: 2026-05-14T20:34:49.819Z
+Downloaded: 2026-05-19T20:38:29.140Z
 -->
 
 > ## Documentation Index
@@ -211,7 +211,7 @@ Learn more: [Plugins](/en/plugins)
 
 ### Project trust
 
-A one-time dialog accepting a directory before Claude Code loads its configuration. Trust gates auto-installation of marketplace plugins and execution of project-defined hooks. Trusting a directory means its `.claude/settings.json`, `.mcp.json`, and other config files take effect.
+A dialog accepting a directory before Claude Code loads its configuration. Acceptance is saved per project directory, except your home directory, where trust is held for the current session only and the prompt reappears on each launch. Trust gates auto-installation of marketplace plugins and execution of project-defined hooks. Trusting a directory means its `.claude/settings.json`, `.mcp.json`, and other config files take effect.
 
 Learn more: [The `.claude` directory](/en/claude-directory)
 

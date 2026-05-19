@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/sub-agents.md
-Downloaded: 2026-05-18T20:35:57.156Z
+Downloaded: 2026-05-19T20:38:29.150Z
 -->
 
 > ## Documentation Index
@@ -659,7 +659,19 @@ The subagent's system prompt replaces the default Claude Code system prompt enti
 
 This works with built-in and custom subagents, and the choice persists when you resume the session.
 
-For a plugin-provided subagent, pass the scoped name: `claude --agent <plugin-name>:<agent-name>`. If the plugin places the agent in a subfolder of its `agents/` directory, include the subfolder in the scoped name, for example `claude --agent my-plugin:review:security`.
+For a plugin-provided subagent, you can pass just the agent name and Claude Code will find it:
+
+```bash theme={null}
+claude --agent security-reviewer
+```
+
+If multiple plugins provide agents with the same name, pass the scoped name to disambiguate:
+
+```bash theme={null}
+claude --agent my-plugin:security-reviewer
+```
+
+If the plugin places the agent in a subfolder of its `agents/` directory, include the subfolder in the scoped name, for example `claude --agent my-plugin:review:security`.
 
 To make it the default for every session in a project, set `agent` in `.claude/settings.json`:
 
@@ -856,7 +868,7 @@ A fork inherits everything the main session has at the moment it spawns. A named
 | Permissions             | Prompts surface in your terminal | [Auto-denied](#run-subagents-in-foreground-or-background) when running in the background |
 | Prompt cache            | Shared with main session         | Separate cache                                                                           |
 
-Because a fork's system prompt and tool definitions are identical to the parent, its first request reuses the parent's prompt cache. This makes forking cheaper than spawning a fresh subagent for tasks that need the same context.
+Because a fork's system prompt and tool definitions are identical to the parent, its first request reuses the parent's [prompt cache](/en/prompt-caching#subagents-and-the-cache). This makes forking cheaper than spawning a fresh subagent for tasks that need the same context.
 
 When Claude spawns a fork through the Agent tool, it can pass `isolation: "worktree"` so the fork's file edits are written to a separate git worktree instead of your checkout.
 

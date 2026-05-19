@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/rewards/get-raw-rewards-for-a-specific-market.md
+Downloaded: 2026-05-19T20:38:31.023Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -188,6 +193,12 @@ components:
         error:
           type: string
           description: Error message
+        code:
+          type: string
+          description: Machine-readable error code, when provided
+        retry_after_seconds:
+          type: integer
+          description: Number of seconds to wait before retrying, when provided
     MarketReward:
       type: object
       description: Market with raw reward configurations

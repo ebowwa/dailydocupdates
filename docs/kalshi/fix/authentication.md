@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/authentication.md
-Downloaded: 2026-05-13T20:37:36.800Z
+Downloaded: 2026-05-19T20:38:38.716Z
 -->
 
 > ## Documentation Index
@@ -48,6 +48,7 @@ The initiator sends a Logon message. The acceptor responds with either a Logon (
 | 21007 | EnableIocCancelReport    | Partially filled IOC orders produce a cancel report                                                                         | N                 |
 | 21008 | PreserveOriginalOrderQty | OrderQty tag 38 always reflects original order quantity across all states                                                   | N                 |
 | 21026 | AlwaysEmitNewBeforeTrade | Emit a standalone New\<0> execution report before any Trade\<F> report when both occur in the same matching cycle           | N                 |
+| 21027 | SplitCollateralReturn    | Include per-trade collateral return breakdown (tags 21030/21031) on Execution Reports                                       | N                 |
 
 ### Signature Generation
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/vs-code.md
-Downloaded: 2026-05-12T20:36:49.789Z
+Downloaded: 2026-05-19T20:38:29.151Z
 -->
 
 > ## Documentation Index
@@ -447,6 +447,8 @@ With auto-edit permissions enabled, Claude Code can modify VS Code configuration
 When the extension is active, it runs a local MCP server that the CLI connects to automatically. This is how the CLI opens diffs in VS Code's native diff viewer, reads your current selection for `@`-mentions, and — when you're working in a Jupyter notebook — asks VS Code to execute cells.
 
 The server is named `ide` and is hidden from `/mcp` because there's nothing to configure. If your organization uses a `PreToolUse` hook to allowlist MCP tools, though, you'll need to know it exists.
+
+**Selection and open-file context.** While connected, the CLI includes your current editor selection and the path of the active file as context on each prompt you send. The transcript shows a `⧉ Selected N lines from <file>` line when this happens. To exclude a sensitive file such as `.env`, add a [`Read` deny rule](/en/permissions#read-and-edit) for its path. A matching deny rule prevents both the selected text and the open-file notice for that file from reaching Claude.
 
 **Transport and authentication.** The server binds to `127.0.0.1` on a random high port and is not reachable from other machines. Each extension activation generates a fresh random auth token that the CLI must present to connect. The token is written to a lock file under `~/.claude/ide/` with `0600` permissions in a `0700` directory, so only the user running VS Code can read it.
 

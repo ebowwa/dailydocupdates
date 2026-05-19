@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/permissions.md
-Downloaded: 2026-05-14T20:34:49.822Z
+Downloaded: 2026-05-19T20:38:29.145Z
 -->
 
 > ## Documentation Index
@@ -32,6 +32,8 @@ You can view and manage Claude Code's tool permissions with `/permissions`. This
 * **Deny** rules prevent Claude Code from using the specified tool.
 
 Rules are evaluated in order: **deny -> ask -> allow**. The first matching rule wins, so deny rules always take precedence.
+
+Deny rules behave differently depending on whether they name a tool or scope a pattern within one. A bare tool name like `Bash` removes the tool from Claude's context entirely, so Claude never sees it. A scoped rule like `Bash(rm *)` leaves the tool available and blocks matching calls when Claude attempts them.
 
 <Note>
   Permission rules are enforced by Claude Code, not by the model. Instructions in your prompt or `CLAUDE.md` shape what Claude tries to do, but they don't change what Claude Code allows. To grant or revoke access, use `/permissions`, the rules described here, a [permission mode](/en/permission-modes), or a [PreToolUse hook](#extend-permissions-with-hooks).
@@ -70,7 +72,7 @@ To match all uses of a tool, use just the tool name without parentheses:
 | `WebFetch` | Matches all web fetch requests |
 | `Read`     | Matches all file reads         |
 
-`Bash(*)` is equivalent to `Bash` and matches all Bash commands.
+`Bash(*)` is equivalent to `Bash` and matches all Bash commands. As a deny rule, both forms remove the tool from Claude's context.
 
 ### Use specifiers for fine-grained control
 
@@ -191,7 +193,7 @@ Claude Code parses the PowerShell AST and checks each command in a compound comm
 
 ### Read and Edit
 
-`Edit` rules apply to all built-in tools that edit files. Claude makes a best-effort attempt to apply `Read` rules to all built-in tools that read files like Grep and Glob.
+`Edit` rules apply to all built-in tools that edit files. Claude makes a best-effort attempt to apply `Read` rules to all built-in tools that read files like Grep and Glob, to `@file` mentions in your prompts, and to the selection and open-file context that a connected [IDE](/en/vs-code#the-built-in-ide-mcp-server) shares with Claude.
 
 <Warning>
   Read and Edit deny rules apply to Claude's built-in file tools and to file commands Claude Code recognizes in Bash, such as `cat`, `head`, `tail`, and `sed`. They do not apply to arbitrary subprocesses that read or write files indirectly, like a Python or Node script that opens files itself. For OS-level enforcement that blocks all processes from accessing a path, [enable the sandbox](/en/sandboxing).

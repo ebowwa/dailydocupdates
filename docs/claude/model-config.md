@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/model-config.md
-Downloaded: 2026-05-18T20:35:57.152Z
+Downloaded: 2026-05-19T20:38:29.144Z
 -->
 
 > ## Documentation Index
@@ -60,9 +60,11 @@ You can configure your model in several ways, listed in order of priority:
 4. **Settings** - Configure permanently in your settings file using the `model`
    field.
 
-Your `/model` selection is saved to user settings and persists across restarts. As of v2.1.117, if the project's `.claude/settings.json` pins a different model, Claude Code also writes your choice to `.claude/settings.local.json` so it continues to apply in that project after a restart. Managed settings take precedence and reapply on the next launch.
+As of v2.1.144, `/model` applies to the current session only and is not written to settings. To save your choice as the default for new sessions, press `d` on the highlighted row in the picker, which writes the `model` field in your user settings. Managed settings take precedence and reapply on the next launch.
 
-The `--model` flag and `ANTHROPIC_MODEL` environment variable apply only to the session you launch with them and are not saved. To run different models in different terminals at the same time, launch each one with its own `--model` flag rather than switching with `/model`.
+The `--model` flag and `ANTHROPIC_MODEL` environment variable also apply only to the session you launch with them. To run different models in different terminals at the same time, launch each one with its own `--model` flag rather than switching with `/model`.
+
+Resumed sessions started with `claude --resume`, `--continue`, or the `/resume` picker keep the model they were using when the transcript was saved, regardless of the current `model` setting. If that model has been retired, the session falls through to the normal precedence order. This prevents another session's `/model` choice from changing the model on resume.
 
 When the active model at startup comes from project or managed settings rather than your own selection, the startup header shows which settings file set it. Run `/model` to override for the current session.
 
@@ -332,7 +334,11 @@ To enable [extended context](#extended-context) for a pinned model, append `[1m]
 export ANTHROPIC_DEFAULT_OPUS_MODEL='claude-opus-4-7[1m]'
 ```
 
-The `[1m]` suffix applies the 1M context window to all usage of that alias, including `opusplan`. Claude Code strips the suffix before sending the model ID to your provider. Only append `[1m]` when the underlying model supports 1M context, such as Opus 4.7 or Sonnet 4.6.
+The `[1m]` suffix applies the 1M context window to all usage of that alias, including `opusplan`.
+
+* Claude Code strips the suffix before sending the model ID to your provider.
+* Only append `[1m]` when the underlying model [supports 1M context](https://platform.claude.com/docs/en/build-with-claude/context-windows#1m-token-context-window).
+* The suffix is read per variable, not per model. On Bedrock, Vertex, and Foundry, a model ID without `[1m]` in one variable uses 200K context even if another variable sets the same model with the suffix.
 
 <Note>
   The `settings.availableModels` allowlist still applies when using third-party providers. Filtering matches on the model alias (`opus`, `sonnet`, `haiku`), not the provider-specific model ID.
@@ -402,13 +408,13 @@ Overrides replace the built-in model IDs that back each entry in the `/model` pi
 
 ### Prompt caching configuration
 
-Claude Code automatically uses [prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching) to optimize performance and reduce costs. You can disable prompt caching globally or for specific model tiers:
+Claude Code automatically uses [prompt caching](/en/prompt-caching) to optimize performance and reduce costs. You can disable prompt caching globally or for specific model tiers:
 
-| Environment variable            | Description                                                                                    |
-| ------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `DISABLE_PROMPT_CACHING`        | Set to `1` to disable prompt caching for all models (takes precedence over per-model settings) |
-| `DISABLE_PROMPT_CACHING_HAIKU`  | Set to `1` to disable prompt caching for Haiku models only                                     |
-| `DISABLE_PROMPT_CACHING_SONNET` | Set to `1` to disable prompt caching for Sonnet models only                                    |
-| `DISABLE_PROMPT_CACHING_OPUS`   | Set to `1` to disable prompt caching for Opus models only                                      |
+| Environment variable            | Description                                                                                       |
+| ------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `DISABLE_PROMPT_CACHING`        | Set to `1` to disable prompt caching for all models. Takes precedence over the per-model settings |
+| `DISABLE_PROMPT_CACHING_HAIKU`  | Set to `1` to disable prompt caching for Haiku models only                                        |
+| `DISABLE_PROMPT_CACHING_SONNET` | Set to `1` to disable prompt caching for Sonnet models only                                       |
+| `DISABLE_PROMPT_CACHING_OPUS`   | Set to `1` to disable prompt caching for Opus models only                                         |
 
-These environment variables give you fine-grained control over prompt caching behavior. The global `DISABLE_PROMPT_CACHING` setting takes precedence over the model-specific settings, allowing you to quickly disable all caching when needed. The per-model settings are useful for selective control, such as when debugging specific models or working with cloud providers that may have different caching implementations.
+To change the cache TTL or learn what triggers a cache miss, see [How Claude Code uses prompt caching](/en/prompt-caching).

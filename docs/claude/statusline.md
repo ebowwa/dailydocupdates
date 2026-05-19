@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/statusline.md
-Downloaded: 2026-05-18T20:35:57.156Z
+Downloaded: 2026-05-19T20:38:29.150Z
 -->
 
 > ## Documentation Index
@@ -296,6 +296,8 @@ The `current_usage` object contains:
 * `output_tokens`: output tokens generated
 * `cache_creation_input_tokens`: tokens written to cache
 * `cache_read_input_tokens`: tokens read from cache
+
+For what the cache fields mean and how they're billed, see [check cache performance](/en/prompt-caching#check-cache-performance).
 
 The `used_percentage` field is calculated from input tokens only: `input_tokens + cache_creation_input_tokens + cache_read_input_tokens`. It does not include `output_tokens`.
 

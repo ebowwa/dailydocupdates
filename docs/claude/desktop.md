@@ -1,13 +1,13 @@
 <!--
 Source: https://code.claude.com/docs/en/desktop.md
-Downloaded: 2026-05-18T20:35:57.147Z
+Downloaded: 2026-05-19T20:38:29.138Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Use Claude Code Desktop
+# Desktop application
 
 > Get more out of Claude Code Desktop: parallel sessions with Git isolation, drag-and-drop pane layout, integrated terminal and file editor, side chats, computer use, Dispatch sessions from your phone, visual diff review, app previews, PR monitoring, connectors, and enterprise configuration.
 

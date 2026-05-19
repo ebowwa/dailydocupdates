@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/costs.md
+Downloaded: 2026-05-19T20:38:29.137Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -76,7 +81,7 @@ To keep agent team costs manageable:
 
 ## Reduce token usage
 
-Token costs scale with context size: the more context Claude processes, the more tokens you use. Claude Code automatically optimizes costs through prompt caching (which reduces costs for repeated content like system prompts) and auto-compaction (which summarizes conversation history when approaching context limits).
+Token costs scale with context size: the more context Claude processes, the more tokens you use. Claude Code automatically optimizes costs through [prompt caching](/en/prompt-caching), which reduces costs for repeated content like system prompts, and auto-compaction, which summarizes conversation history when approaching context limits.
 
 The following strategies help you keep context small and reduce per-message costs.
 

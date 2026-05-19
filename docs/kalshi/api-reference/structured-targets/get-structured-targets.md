@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/structured-targets/get-structured-targets.md
-Downloaded: 2026-05-13T20:37:36.799Z
+Downloaded: 2026-05-19T20:38:38.715Z
 -->
 
 > ## Documentation Index
@@ -81,6 +81,7 @@ paths:
           required: false
           schema:
             type: array
+            maxItems: 2000
             items:
               type: string
           style: form

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/trade/post-a-new-order.md
+Downloaded: 2026-05-19T20:38:31.026Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -76,6 +81,7 @@ paths:
                   owner: f4f247b7-4ac7-ff29-a152-04fda0a8755a
                   orderType: GTC
                   deferExec: false
+                  postOnly: false
       responses:
         '200':
           description: Order successfully processed
@@ -168,6 +174,11 @@ paths:
                 error: could not insert order
         '503':
           description: Service unavailable - Trading disabled or cancel-only mode
+          headers:
+            Retry-After:
+              description: Seconds to wait before retrying when provided by post-only mode.
+              schema:
+                type: integer
           content:
             application/json:
               schema:
@@ -185,6 +196,14 @@ paths:
                     error: >-
                       Trading is currently cancel-only. New orders are not
                       accepted, but cancels are allowed.
+                post_and_cancel_only:
+                  summary: Post-only mode
+                  value:
+                    error: >-
+                      post-and-cancel-only mode: only post-only orders and
+                      cancels are allowed
+                    code: post_and_cancel_only
+                    retry_after_seconds: 79
       security:
         - polyApiKey: []
           polyAddress: []
@@ -217,6 +236,12 @@ components:
         deferExec:
           type: boolean
           description: Whether to defer execution
+          default: false
+        postOnly:
+          type: boolean
+          description: >-
+            Whether the order must rest on the book and not match immediately.
+            Only supported for GTC and GTD orders.
           default: false
     SendOrderResponse:
       type: object
@@ -272,6 +297,12 @@ components:
         error:
           type: string
           description: Error message
+        code:
+          type: string
+          description: Machine-readable error code, when provided
+        retry_after_seconds:
+          type: integer
+          description: Number of seconds to wait before retrying, when provided
     Order:
       type: object
       description: >

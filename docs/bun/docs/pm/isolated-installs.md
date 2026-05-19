@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/pm/isolated-installs.md
-Downloaded: 2026-05-11T20:38:37.080Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
