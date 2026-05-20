@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-view.md
-Downloaded: 2026-05-19T20:38:29.131Z
+Downloaded: 2026-05-20T20:47:05.290Z
 -->
 
 > ## Documentation Index
@@ -129,6 +129,8 @@ Separately, the icon's shape shows whether the underlying process is running:
 | `✢`                 | A [`/loop`](/en/scheduled-tasks) session sleeping between iterations. The row shows its run count and a countdown |
 
 The `●` that can appear at the right edge of a row is the [pull request status](#pull-request-status) indicator, not part of the state icon. A number before it is the count of pull requests the session has opened.
+
+The terminal tab title shows the awaiting-input count while agent view is open: `2 awaiting input · claude agents` when sessions need input, or `claude agents` when none do.
 
 Background sessions don't need any terminal open to keep working. A separate [supervisor process](#the-supervisor-process) runs them, so you can close agent view, close your shell, or start a new interactive session and your dispatched work keeps going.
 
@@ -403,6 +405,7 @@ Every background session has a short ID you can use from the shell. The ID is pr
 | :--------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `claude agents`              | Open agent view                                                                                                                                                                                                                                                                                                                         |
 | `claude agents --cwd <path>` | Open agent view scoped to sessions started under `<path>`                                                                                                                                                                                                                                                                               |
+| `claude agents --json`       | Print live sessions as a JSON array and exit. Each entry has `pid`, `cwd`, `kind`, and `startedAt`, plus `sessionId`, `name`, and `status` when set. Combine with `--cwd <path>` to filter                                                                                                                                              |
 | `claude attach <id>`         | Attach to a session in this terminal                                                                                                                                                                                                                                                                                                    |
 | `claude logs <id>`           | Print the session's recent output                                                                                                                                                                                                                                                                                                       |
 | `claude stop <id>`           | Stop a session. Also accepts `claude kill`                                                                                                                                                                                                                                                                                              |

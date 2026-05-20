@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/trade/post-multiple-orders.md
-Downloaded: 2026-05-19T20:38:31.026Z
+Downloaded: 2026-05-20T20:47:07.727Z
 -->
 
 > ## Documentation Index
@@ -143,20 +143,20 @@ paths:
                       orderID: ''
                       status: delayed
                       errorMsg: 'Rate limit exceeded for tokenId: 0xdef456abc789...'
-                post_and_cancel_only:
+                post_only_mode:
                   summary: Post-only mode results
                   value:
                     - errorMsg: >-
-                        post-and-cancel-only mode: only post-only orders and
-                        cancels are allowed
+                        post-only mode: only post-only orders and cancels are
+                        allowed
                       orderID: ''
                       takingAmount: ''
                       makingAmount: ''
                       status: ''
                       success: true
                     - errorMsg: >-
-                        post-and-cancel-only mode: only post-only orders and
-                        cancels are allowed
+                        post-only mode: only post-only orders and cancels are
+                        allowed
                       orderID: ''
                       takingAmount: ''
                       makingAmount: ''
@@ -239,13 +239,13 @@ paths:
                     error: >-
                       Trading is currently cancel-only. New orders are not
                       accepted, but cancels are allowed.
-                post_and_cancel_only:
+                post_only_mode:
                   summary: Post-only mode
                   value:
                     error: >-
-                      post-and-cancel-only mode: only post-only orders and
-                      cancels are allowed
-                    code: post_and_cancel_only
+                      post-only mode: only post-only orders and cancels are
+                      allowed
+                    code: post_only_mode
                     retry_after_seconds: 79
       security:
         - polyApiKey: []

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/deposit-wallets.md
+Downloaded: 2026-05-20T20:47:07.732Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -458,9 +463,13 @@ Current factory addresses:
 | Polygon mainnet `137` | `0x00000000000Fb5C9ADea0298D729A0CB3823Cc07` |
 
 There is no user signature field in this payload. After submission, poll the
-relayer transaction until it reaches `STATE_MINED` or `STATE_CONFIRMED`. Store
-the deployed wallet address from the `WalletDeployed` event, from your
-onboarding flow, or derive it deterministically using the SDK's chain config.
+relayer transaction until it reaches `STATE_CONFIRMED` before treating the
+deposit wallet as ready. `STATE_MINED` or `GET /deployed?...&type=WALLET` can
+indicate that the wallet exists onchain before the relayer has completed wallet
+registry updates, so submitting a deposit wallet batch before confirmation may
+fail with a wallet registration error. Store the deployed wallet address from
+the `WalletDeployed` event, from your onboarding flow, or derive it
+deterministically using the SDK's chain config.
 
 Deterministic address derivation follows the relayer clients:
 
@@ -537,6 +546,9 @@ Submit the signed batch to the relayer:
 
 The `signature` in a `WALLET` request is a normal 65-byte EIP-712 signature with
 a `0x` prefix. This is different from the CLOB order signature described below.
+After submitting a `WALLET` batch, poll its relayer transaction until
+`STATE_CONFIRMED` before relying on its effects for later deposit wallet
+actions.
 
 ### Place CLOB Orders
 

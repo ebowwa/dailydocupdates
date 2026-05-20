@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/session-storage.md
-Downloaded: 2026-04-21T20:21:42.329Z
+Downloaded: 2026-05-20T20:47:05.287Z
 -->
 
 > ## Documentation Index
@@ -246,11 +246,11 @@ The following SDK functions accept a `sessionStore` option and operate against t
 
 * [`query()`](/en/agent-sdk/typescript#query)
 * [`startup()`](/en/agent-sdk/typescript#startup)
-* [`listSessions()`](/en/agent-sdk/typescript#list-sessions)
-* [`getSessionInfo()`](/en/agent-sdk/typescript#get-session-info)
-* [`getSessionMessages()`](/en/agent-sdk/typescript#get-session-messages)
-* [`renameSession()`](/en/agent-sdk/typescript#rename-session)
-* [`tagSession()`](/en/agent-sdk/typescript#tag-session)
+* [`listSessions()`](/en/agent-sdk/typescript#listsessions)
+* [`getSessionInfo()`](/en/agent-sdk/typescript#getsessioninfo)
+* [`getSessionMessages()`](/en/agent-sdk/typescript#getsessionmessages)
+* [`renameSession()`](/en/agent-sdk/typescript#renamesession)
+* [`tagSession()`](/en/agent-sdk/typescript#tagsession)
 * [`deleteSession()`](/en/agent-sdk/typescript)
 * [`forkSession()`](/en/agent-sdk/typescript)
 * [`listSubagents()`](/en/agent-sdk/typescript)

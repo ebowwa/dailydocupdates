@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/settings.md
-Downloaded: 2026-05-19T20:38:29.149Z
+Downloaded: 2026-05-20T20:47:05.306Z
 -->
 
 > ## Documentation Index
@@ -158,6 +158,15 @@ Code through hierarchical settings:
 The `$schema` line in the example above points to the [official JSON schema](https://json.schemastore.org/claude-code-settings.json) for Claude Code settings. Adding it to your `settings.json` enables autocomplete and inline validation in VS Code, Cursor, and any other editor that supports JSON schema validation.
 
 The published schema is updated periodically and may not include settings added in the most recent CLI releases, so a validation warning on a recently documented field does not necessarily mean your configuration is invalid.
+
+### When edits take effect
+
+Claude Code watches your settings files and reloads them when they change, so edits to most keys apply to the running session without a restart. This includes `permissions`, `hooks`, and credential helpers like `apiKeyHelper`. The reload covers user, project, local, and managed settings, and the [`ConfigChange` hook](/en/hooks#configchange) fires for each detected change.
+
+A few keys are read once at session start and apply on the next restart instead:
+
+* `model`: use [`/model`](/en/model-config#setting-your-model) to switch mid-session
+* [`outputStyle`](/en/output-styles): part of the system prompt, which is rebuilt on `/clear` or restart
 
 ### Available settings
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/matching-engine.md
-Downloaded: 2026-05-19T20:38:31.030Z
+Downloaded: 2026-05-20T20:47:07.732Z
 -->
 
 > ## Documentation Index
@@ -172,8 +172,8 @@ After every restart, the matching engine enters post-only mode for **2 minutes**
 
 ```json theme={null}
 {
-  "error": "post-and-cancel-only mode: only post-only orders and cancels are allowed",
-  "code": "post_and_cancel_only",
+  "error": "post-only mode: only post-only orders and cancels are allowed",
+  "code": "post_only_mode",
   "retry_after_seconds": 79
 }
 ```
@@ -183,7 +183,7 @@ After every restart, the matching engine enters post-only mode for **2 minutes**
 ```json theme={null}
 [
   {
-    "errorMsg": "post-and-cancel-only mode: only post-only orders and cancels are allowed",
+    "errorMsg": "post-only mode: only post-only orders and cancels are allowed",
     "orderID": "",
     "takingAmount": "",
     "makingAmount": "",
@@ -191,7 +191,7 @@ After every restart, the matching engine enters post-only mode for **2 minutes**
     "success": true
   },
   {
-    "errorMsg": "post-and-cancel-only mode: only post-only orders and cancels are allowed",
+    "errorMsg": "post-only mode: only post-only orders and cancels are allowed",
     "orderID": "",
     "takingAmount": "",
     "makingAmount": "",

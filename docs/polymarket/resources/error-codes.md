@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/resources/error-codes.md
-Downloaded: 2026-05-19T20:38:31.029Z
+Downloaded: 2026-05-20T20:47:07.730Z
 -->
 
 > ## Documentation Index
@@ -174,15 +174,15 @@ Errors from order placement endpoints.
 </ResponseField>
 
 <ResponseField name="503" type="Service Unavailable">
-  `post-and-cancel-only mode: only post-only orders and cancels are allowed` — The exchange is in post-only mode. You can cancel orders and place orders with `postOnly: true`; non-post-only orders are rejected. The response includes `code: "post_and_cancel_only"` and `retry_after_seconds`, and the same retry delay is also sent in the `Retry-After` HTTP header.
+  `post-only mode: only post-only orders and cancels are allowed` — The exchange is in post-only mode. You can cancel orders and place orders with `postOnly: true`; non-post-only orders are rejected. The response includes `code: "post_only_mode"` and `retry_after_seconds`, and the same retry delay is also sent in the `Retry-After` HTTP header.
 </ResponseField>
 
 Example response:
 
 ```json theme={null}
 {
-  "error": "post-and-cancel-only mode: only post-only orders and cancels are allowed",
-  "code": "post_and_cancel_only",
+  "error": "post-only mode: only post-only orders and cancels are allowed",
+  "code": "post_only_mode",
   "retry_after_seconds": 79
 }
 ```
@@ -204,7 +204,7 @@ In post-only mode, non-post-only orders in a batch return per-order errors:
 ```json theme={null}
 [
   {
-    "errorMsg": "post-and-cancel-only mode: only post-only orders and cancels are allowed",
+    "errorMsg": "post-only mode: only post-only orders and cancels are allowed",
     "orderID": "",
     "takingAmount": "",
     "makingAmount": "",
@@ -212,7 +212,7 @@ In post-only mode, non-post-only orders in a batch return per-order errors:
     "success": true
   },
   {
-    "errorMsg": "post-and-cancel-only mode: only post-only orders and cancels are allowed",
+    "errorMsg": "post-only mode: only post-only orders and cancels are allowed",
     "orderID": "",
     "takingAmount": "",
     "makingAmount": "",
