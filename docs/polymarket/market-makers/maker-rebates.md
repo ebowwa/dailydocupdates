@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-makers/maker-rebates.md
+Downloaded: 2026-05-21T20:39:19.166Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -163,7 +168,7 @@ The following market categories have taker fees enabled and are eligible for mak
     Full fee handling guide for SDK and REST API users.
   </Card>
 
-  <Card title="Place Orders" icon="plus" href="/trading/quickstart">
-    Start placing orders on Polymarket.
+  <Card title="Taker Rebate Program" icon="trophy" href="/trading/taker-rebates">
+    Climb the tiers and earn daily pUSD rebates on taker trades.
   </Card>
 </CardGroup>

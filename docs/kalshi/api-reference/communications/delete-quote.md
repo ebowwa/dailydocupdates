@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/delete-quote.md
-Downloaded: 2026-05-18T20:36:07.255Z
+Downloaded: 2026-05-21T20:39:19.707Z
 -->
 
 > ## Documentation Index
@@ -11,6 +11,9 @@ Downloaded: 2026-05-18T20:36:07.255Z
 
 >  Endpoint for deleting a quote, which means it can no longer be accepted.
 
+<Note>
+  **Rate limit:** 2 tokens per request. Other endpoints use the default cost of 10 tokens per request unless noted on their own page. See [Rate Limits and Tiers](/getting_started/rate_limits).
+</Note>
 
 
 ## OpenAPI
@@ -19,7 +22,7 @@ Downloaded: 2026-05-18T20:36:07.255Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.18.0
+  version: 3.19.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach

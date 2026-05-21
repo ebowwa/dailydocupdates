@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-orders.md
-Downloaded: 2026-05-15T20:30:12.876Z
+Downloaded: 2026-05-21T20:39:19.712Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-05-15T20:30:12.876Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.18.0
+  version: 3.19.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach

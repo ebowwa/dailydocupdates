@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/multivariate/get-multivariate-event-collection-lookup-history.md
-Downloaded: 2026-05-18T20:36:07.260Z
+Downloaded: 2026-05-21T20:39:19.715Z
 -->
 
 > ## Documentation Index
@@ -11,6 +11,9 @@ Downloaded: 2026-05-18T20:36:07.260Z
 
 > DEPRECATED: This endpoint predates RFQs and should not be used for new integrations. Endpoint for retrieving which markets in an event collection were recently looked up.
 
+<Warning>
+  This endpoint is deprecated and predates RFQs. Do not use it for new integrations.
+</Warning>
 
 
 ## OpenAPI
@@ -19,7 +22,7 @@ Downloaded: 2026-05-18T20:36:07.260Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.18.0
+  version: 3.19.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach

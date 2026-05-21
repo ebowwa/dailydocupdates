@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/get-order.md
-Downloaded: 2026-05-18T20:36:07.263Z
+Downloaded: 2026-05-21T20:39:19.719Z
 -->
 
 > ## Documentation Index
@@ -11,6 +11,9 @@ Downloaded: 2026-05-18T20:36:07.263Z
 
 >  Endpoint for getting a single order.
 
+<Note>
+  **Rate limit:** 2 tokens per request. Other endpoints use the default cost of 10 tokens per request unless noted on their own page. See [Rate Limits and Tiers](/getting_started/rate_limits).
+</Note>
 
 
 ## OpenAPI
@@ -19,7 +22,7 @@ Downloaded: 2026-05-18T20:36:07.263Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.18.0
+  version: 3.19.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach

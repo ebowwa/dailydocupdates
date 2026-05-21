@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/github-actions.md
-Downloaded: 2026-05-14T20:34:49.819Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

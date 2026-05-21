@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-makers/inventory.md
+Downloaded: 2026-05-21T20:39:19.166Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -26,10 +31,11 @@ Split converts pUSD into equal amounts of YES and NO tokens — creating the inv
   import { Interface } from "ethers/lib/utils";
   import { RelayClient, Transaction } from "@polymarket/builder-relayer-client";
 
-  const CTF_ADDRESS = "0x4D97DCd97eC945f40cF65F87097ACe5EA0476045";
+  const CTF_COLLATERAL_ADAPTER_ADDRESS =
+    "0xAdA100Db00Ca00073811820692005400218FcE1f";
   const pUSD_ADDRESS = "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB";
 
-  const ctfInterface = new Interface([
+  const collateralAdapterInterface = new Interface([
     "function splitPosition(address collateralToken, bytes32 parentCollectionId, bytes32 conditionId, uint[] partition, uint amount)",
   ]);
 
@@ -37,8 +43,8 @@ Split converts pUSD into equal amounts of YES and NO tokens — creating the inv
   const amount = ethers.utils.parseUnits("1000", 6); // pUSD has 6 decimals
 
   const splitTx: Transaction = {
-    to: CTF_ADDRESS,
-    data: ctfInterface.encodeFunctionData("splitPosition", [
+    to: CTF_COLLATERAL_ADAPTER_ADDRESS,
+    data: collateralAdapterInterface.encodeFunctionData("splitPosition", [
       pUSD_ADDRESS, // collateralToken
       ethers.constants.HashZero, // parentCollectionId (always zero for Polymarket)
       conditionId, // conditionId from market
@@ -56,10 +62,10 @@ Split converts pUSD into equal amounts of YES and NO tokens — creating the inv
   ```python Python theme={null}
   from web3 import Web3
 
-  CTF_ADDRESS = "0x4D97DCd97eC945f40cF65F87097ACe5EA0476045"
+  CTF_COLLATERAL_ADAPTER_ADDRESS = "0xAdA100Db00Ca00073811820692005400218FcE1f"
   pUSD_ADDRESS = "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB"
 
-  ctf_abi = [{
+  collateral_adapter_abi = [{
       "name": "splitPosition",
       "type": "function",
       "inputs": [
@@ -76,9 +82,9 @@ Split converts pUSD into equal amounts of YES and NO tokens — creating the inv
   amount = 1000 * 10**6  # pUSD has 6 decimals
 
   split_tx = {
-      "to": CTF_ADDRESS,
+      "to": CTF_COLLATERAL_ADAPTER_ADDRESS,
       "data": Web3().eth.contract(
-          address=CTF_ADDRESS, abi=ctf_abi
+          address=CTF_COLLATERAL_ADAPTER_ADDRESS, abi=collateral_adapter_abi
       ).encode_abi(
           abi_element_identifier="splitPosition",
           args=[
@@ -95,24 +101,6 @@ Split converts pUSD into equal amounts of YES and NO tokens — creating the inv
   response = client.execute([split_tx], "Split pUSD into tokens")
   response.wait()
   ```
-
-  ```rust Rust theme={null}
-  use polymarket_client_sdk_v2::ctf::Client as CtfClient;
-  use polymarket_client_sdk_v2::ctf::types::SplitPositionRequest;
-  use polymarket_client_sdk_v2::types::{U256, address};
-
-  let ctf_client = CtfClient::new(provider, 137)?;
-
-  // Split $1000 pUSD into YES/NO tokens
-  let request = SplitPositionRequest::builder()
-      .collateral_token(address!("0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB"))
-      .condition_id(condition_id)
-      .partition(vec![U256::from(1), U256::from(2)])
-      .amount(U256::from(1000_000_000u64)) // 1000 pUSD (6 decimals)
-      .build();
-  let result = ctf_client.split_position(&request).await?;
-  println!("Split tx: {:?}", result.transaction_hash);
-  ```
 </CodeGroup>
 
 After splitting 1000 pUSD, you receive 1000 YES tokens and 1000 NO tokens. Your pUSD balance decreases by 1000.
@@ -125,7 +113,7 @@ Merge converts equal amounts of YES and NO tokens back into pUSD — useful for 
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  const ctfInterface = new Interface([
+  const collateralAdapterInterface = new Interface([
     "function mergePositions(address collateralToken, bytes32 parentCollectionId, bytes32 conditionId, uint[] partition, uint amount)",
   ]);
 
@@ -133,8 +121,8 @@ Merge converts equal amounts of YES and NO tokens back into pUSD — useful for 
   const amount = ethers.utils.parseUnits("500", 6);
 
   const mergeTx: Transaction = {
-    to: CTF_ADDRESS,
-    data: ctfInterface.encodeFunctionData("mergePositions", [
+    to: CTF_COLLATERAL_ADAPTER_ADDRESS,
+    data: collateralAdapterInterface.encodeFunctionData("mergePositions", [
       pUSD_ADDRESS,
       ethers.constants.HashZero,
       conditionId,
@@ -166,9 +154,9 @@ Merge converts equal amounts of YES and NO tokens back into pUSD — useful for 
   amount = 500 * 10**6
 
   merge_tx = {
-      "to": CTF_ADDRESS,
+      "to": CTF_COLLATERAL_ADAPTER_ADDRESS,
       "data": Web3().eth.contract(
-          address=CTF_ADDRESS, abi=merge_abi
+          address=CTF_COLLATERAL_ADAPTER_ADDRESS, abi=merge_abi
       ).encode_abi(
           abi_element_identifier="mergePositions",
           args=[pUSD_ADDRESS, bytes(32), condition_id, [1, 2], amount]
@@ -178,19 +166,6 @@ Merge converts equal amounts of YES and NO tokens back into pUSD — useful for 
 
   response = client.execute([merge_tx], "Merge tokens to pUSD")
   response.wait()
-  ```
-
-  ```rust Rust theme={null}
-  use polymarket_client_sdk_v2::ctf::types::MergePositionsRequest;
-
-  // Merge 500 YES + 500 NO back to 500 pUSD
-  let request = MergePositionsRequest::builder()
-      .collateral_token(address!("0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB"))
-      .condition_id(condition_id)
-      .partition(vec![U256::from(1), U256::from(2)])
-      .amount(U256::from(500_000_000u64)) // 500 pUSD (6 decimals)
-      .build();
-  let result = ctf_client.merge_positions(&request).await?;
   ```
 </CodeGroup>
 
@@ -234,13 +209,13 @@ Once a market resolves, redeem winning tokens for pUSD. Each winning token is wo
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  const ctfInterface = new Interface([
+  const collateralAdapterInterface = new Interface([
     "function redeemPositions(address collateralToken, bytes32 parentCollectionId, bytes32 conditionId, uint[] indexSets)",
   ]);
 
   const redeemTx: Transaction = {
-    to: CTF_ADDRESS,
-    data: ctfInterface.encodeFunctionData("redeemPositions", [
+    to: CTF_COLLATERAL_ADAPTER_ADDRESS,
+    data: collateralAdapterInterface.encodeFunctionData("redeemPositions", [
       pUSD_ADDRESS,
       ethers.constants.HashZero,
       conditionId,
@@ -267,9 +242,9 @@ Once a market resolves, redeem winning tokens for pUSD. Each winning token is wo
   }]
 
   redeem_tx = {
-      "to": CTF_ADDRESS,
+      "to": CTF_COLLATERAL_ADAPTER_ADDRESS,
       "data": Web3().eth.contract(
-          address=CTF_ADDRESS, abi=redeem_abi
+          address=CTF_COLLATERAL_ADAPTER_ADDRESS, abi=redeem_abi
       ).encode_abi(
           abi_element_identifier="redeemPositions",
           args=[pUSD_ADDRESS, bytes(32), condition_id, [1, 2]]
@@ -280,28 +255,18 @@ Once a market resolves, redeem winning tokens for pUSD. Each winning token is wo
   response = client.execute([redeem_tx], "Redeem winning tokens")
   response.wait()
   ```
-
-  ```rust Rust theme={null}
-  use polymarket_client_sdk_v2::ctf::types::RedeemPositionsRequest;
-
-  let request = RedeemPositionsRequest::builder()
-      .collateral_token(address!("0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB"))
-      .condition_id(condition_id)
-      .index_sets(vec![U256::from(1), U256::from(2)]) // Redeem both (only winners pay)
-      .build();
-  let result = ctf_client.redeem_positions(&request).await?;
-  ```
 </CodeGroup>
 
 ***
 
 ## Negative Risk Markets
 
-Multi-outcome markets use the Neg Risk CTF Exchange and Neg Risk Adapter. Split and merge work the same way, but use different contract addresses:
+Multi-outcome markets use the Neg Risk CTF Exchange for trading and the Neg Risk CTF Collateral Adapter for pUSD-native split, merge, and redeem actions. Split and merge work the same way, but use different contract addresses:
 
 ```typescript theme={null}
 const NEG_RISK_CTF_EXCHANGE = "0xe2222d279d744050d28e00520010520000310F59";
-const NEG_RISK_ADAPTER = "0xd91E80cF2E7be2e162c6513ceD06f1dD0dA35296";
+const NEG_RISK_CTF_COLLATERAL_ADAPTER =
+  "0xadA2005600Dec949baf300f4C6120000bDB6eAab";
 ```
 
 See [Negative Risk Markets](/advanced/neg-risk) for details on how multi-outcome token mechanics differ.
@@ -339,8 +304,8 @@ Execute multiple inventory operations in a single relayer call for efficiency:
 const transactions: Transaction[] = [
   // Split on Market A
   {
-    to: CTF_ADDRESS,
-    data: ctfInterface.encodeFunctionData("splitPosition", [
+    to: CTF_COLLATERAL_ADAPTER_ADDRESS,
+    data: collateralAdapterInterface.encodeFunctionData("splitPosition", [
       pUSD_ADDRESS,
       ethers.constants.HashZero,
       conditionIdA,
@@ -351,8 +316,8 @@ const transactions: Transaction[] = [
   },
   // Split on Market B
   {
-    to: CTF_ADDRESS,
-    data: ctfInterface.encodeFunctionData("splitPosition", [
+    to: CTF_COLLATERAL_ADAPTER_ADDRESS,
+    data: collateralAdapterInterface.encodeFunctionData("splitPosition", [
       pUSD_ADDRESS,
       ethers.constants.HashZero,
       conditionIdB,

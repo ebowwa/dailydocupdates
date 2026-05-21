@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-events.md
-Downloaded: 2026-05-15T20:30:12.874Z
+Downloaded: 2026-05-21T20:39:19.710Z
 -->
 
 > ## Documentation Index
@@ -22,7 +22,7 @@ All events are accessible through this endpoint, even if their associated market
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.18.0
+  version: 3.19.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
