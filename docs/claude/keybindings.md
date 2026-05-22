@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/keybindings.md
-Downloaded: 2026-05-19T20:38:29.143Z
+Downloaded: 2026-05-22T20:36:02.403Z
 -->
 
 > ## Documentation Index
@@ -154,9 +154,9 @@ Actions available in the `Confirmation` context:
 
 Actions available in the `Confirmation` context for permission dialogs:
 
-| Action                   | Default | Description                  |
-| :----------------------- | :------ | :--------------------------- |
-| `permission:toggleDebug` | Ctrl+D  | Toggle permission debug info |
+| Action                   | Default   | Description                                                                                                         |
+| :----------------------- | :-------- | :------------------------------------------------------------------------------------------------------------------ |
+| `permission:toggleDebug` | (unbound) | Toggle permission debug info. The previous default of Ctrl+D was removed in v2.1.146 because it shadowed `app:exit` |
 
 ### Transcript actions
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/interactive-mode.md
-Downloaded: 2026-05-20T20:47:05.299Z
+Downloaded: 2026-05-22T20:36:02.403Z
 -->
 
 > ## Documentation Index
@@ -219,6 +219,7 @@ Claude Code maintains command history for the current session:
 
 * Input history is stored per working directory
 * Input history resets when you run `/clear` to start a new session. The previous session's conversation is preserved and can be resumed.
+* Submitting the same prompt twice in a row records one history entry, so pressing Up steps to the previous distinct prompt
 * Use Up/Down arrows to navigate (see keyboard shortcuts above)
 * **Note**: history expansion (`!`) is disabled by default
 
