@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/multivariate-lookups-deprecated.md
+Downloaded: 2026-05-23T20:20:36.331Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -79,16 +84,30 @@ operations:
                 properties:
                   - name: collection_ticker
                     type: string
-                    required: false
+                    required: true
                   - name: event_ticker
                     type: string
-                    required: false
+                    required: true
                   - name: market_ticker
                     type: string
-                    required: false
+                    required: true
                   - name: selected_markets
                     type: array
-                    required: false
+                    required: true
+                    properties:
+                      - name: event_ticker
+                        type: string
+                        required: true
+                      - name: market_ticker
+                        type: string
+                        required: true
+                      - name: side
+                        type: string
+                        description: Market side
+                        enumValues:
+                          - 'yes'
+                          - 'no'
+                        required: true
         headers: []
         jsonPayloadSchema:
           type: object

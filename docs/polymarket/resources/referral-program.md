@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/resources/referral-program.md
-Downloaded: 2026-05-21T20:39:19.167Z
+Downloaded: 2026-05-23T20:20:35.904Z
 -->
 
 > ## Documentation Index
@@ -12,7 +12,7 @@ Downloaded: 2026-05-21T20:39:19.167Z
 > Refer traders to Polymarket and earn daily pUSD rewards
 
 <Note>
-  These updated Referral Program terms take effect on **Thursday, May 29, 2026**.
+  These updated Referral Program terms take effect on **Thursday, May 28, 2026**.
 </Note>
 
 Refer traders to Polymarket and earn a share of the net trading fees they generate, paid every day in pUSD.

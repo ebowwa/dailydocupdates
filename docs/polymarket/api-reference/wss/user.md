@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/wss/user.md
+Downloaded: 2026-05-23T20:20:35.901Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -49,15 +54,15 @@ operations:
                   - name: apiKey
                     type: string
                     description: CLOB API key (UUID format)
-                    required: false
+                    required: true
                   - name: secret
                     type: string
                     description: CLOB API secret
-                    required: false
+                    required: true
                   - name: passphrase
                     type: string
                     description: CLOB API passphrase
-                    required: false
+                    required: true
               - name: type
                 type: string
                 description: Must be 'user'
@@ -68,6 +73,10 @@ operations:
                   Optional condition IDs to filter events. If omitted, receives
                   events for all markets.
                 required: false
+                properties:
+                  - name: item
+                    type: string
+                    required: false
         headers: []
         jsonPayloadSchema:
           type: object
@@ -155,6 +164,10 @@ operations:
                 type: array
                 description: Condition IDs to subscribe to or unsubscribe from
                 required: true
+                properties:
+                  - name: item
+                    type: string
+                    required: false
         headers: []
         jsonPayloadSchema:
           type: object
@@ -308,6 +321,10 @@ operations:
                 type: array
                 description: Trade IDs this order has been matched in
                 required: false
+                properties:
+                  - name: item
+                    type: string
+                    required: false
               - name: outcome
                 type: string
                 description: e.g. 'YES', 'NO'
@@ -565,6 +582,37 @@ operations:
               - name: maker_orders
                 type: array
                 required: false
+                properties:
+                  - name: order_id
+                    type: string
+                    required: true
+                  - name: owner
+                    type: string
+                    required: true
+                  - name: maker_address
+                    type: string
+                    required: false
+                  - name: matched_amount
+                    type: string
+                    required: true
+                  - name: price
+                    type: string
+                    required: true
+                  - name: fee_rate_bps
+                    type: string
+                    required: false
+                  - name: asset_id
+                    type: string
+                    required: true
+                  - name: outcome
+                    type: string
+                    required: false
+                  - name: side
+                    type: string
+                    enumValues:
+                      - BUY
+                      - SELL
+                    required: false
               - name: trader_side
                 type: string
                 description: Whether the receiving user was TAKER or MAKER

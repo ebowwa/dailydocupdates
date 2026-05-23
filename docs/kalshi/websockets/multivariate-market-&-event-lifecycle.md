@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/multivariate-market-&-event-lifecycle.md
+Downloaded: 2026-05-23T20:20:36.331Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -339,15 +344,15 @@ operations:
                   - name: event_ticker
                     type: string
                     description: Unique identifier for the event being created
-                    required: false
+                    required: true
                   - name: title
                     type: string
                     description: Title of event
-                    required: false
+                    required: true
                   - name: subtitle
                     type: string
                     description: Subtitle of event
-                    required: false
+                    required: true
                   - name: collateral_return_type
                     type: string
                     description: >-
@@ -358,11 +363,11 @@ operations:
                       - MECNET
                       - DIRECNET
                       - ''
-                    required: false
+                    required: true
                   - name: series_ticker
                     type: string
                     description: Series ticker for the event
-                    required: false
+                    required: true
                   - name: strike_date
                     type: integer
                     description: >-

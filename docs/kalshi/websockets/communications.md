@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/communications.md
+Downloaded: 2026-05-23T20:20:36.330Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -87,17 +92,17 @@ operations:
                   - name: id
                     type: string
                     description: Unique identifier for the RFQ
-                    required: false
+                    required: true
                   - name: creator_id
                     type: string
                     description: >-
                       Public communications ID of the RFQ creator (anonymized).
                       Currently empty for rfq_created events.
-                    required: false
+                    required: true
                   - name: market_ticker
                     type: string
                     description: Market ticker for the RFQ
-                    required: false
+                    required: true
                   - name: event_ticker
                     type: string
                     description: Event ticker (optional)
@@ -113,7 +118,7 @@ operations:
                   - name: created_ts
                     type: string
                     description: Timestamp when the RFQ was created
-                    required: false
+                    required: true
                   - name: mve_collection_ticker
                     type: string
                     description: Multivariate event collection ticker (optional)
@@ -122,6 +127,22 @@ operations:
                     type: array
                     description: Selected legs for multivariate events (optional)
                     required: false
+                    properties:
+                      - name: event_ticker
+                        type: string
+                        required: false
+                      - name: market_ticker
+                        type: string
+                        required: false
+                      - name: side
+                        type: string
+                        required: false
+                      - name: yes_settlement_value_dollars
+                        type: string
+                        description: >-
+                          Yes settlement value in dollars for the selected leg
+                          (optional)
+                        required: false
         headers: []
         jsonPayloadSchema:
           type: object
@@ -264,15 +285,15 @@ operations:
                   - name: id
                     type: string
                     description: Unique identifier for the RFQ
-                    required: false
+                    required: true
                   - name: creator_id
                     type: string
                     description: Public communications ID of the RFQ creator (anonymized)
-                    required: false
+                    required: true
                   - name: market_ticker
                     type: string
                     description: Market ticker for the RFQ
-                    required: false
+                    required: true
                   - name: event_ticker
                     type: string
                     description: Event ticker (optional)
@@ -288,7 +309,7 @@ operations:
                   - name: deleted_ts
                     type: string
                     description: Timestamp when the RFQ was deleted
-                    required: false
+                    required: true
         headers: []
         jsonPayloadSchema:
           type: object
@@ -394,19 +415,19 @@ operations:
                   - name: quote_id
                     type: string
                     description: Unique identifier for the quote
-                    required: false
+                    required: true
                   - name: rfq_id
                     type: string
                     description: Identifier of the RFQ this quote is for
-                    required: false
+                    required: true
                   - name: quote_creator_id
                     type: string
                     description: Public communications ID of the quote creator (anonymized)
-                    required: false
+                    required: true
                   - name: market_ticker
                     type: string
                     description: Market ticker for the quote
-                    required: false
+                    required: true
                   - name: event_ticker
                     type: string
                     description: Event ticker (optional)
@@ -414,11 +435,11 @@ operations:
                   - name: yes_bid_dollars
                     type: string
                     description: Yes side bid price in dollars
-                    required: false
+                    required: true
                   - name: no_bid_dollars
                     type: string
                     description: No side bid price in dollars
-                    required: false
+                    required: true
                   - name: yes_contracts_offered_fp
                     type: string
                     description: Fixed-point yes contracts offered (2 decimals) (optional)
@@ -434,7 +455,7 @@ operations:
                   - name: created_ts
                     type: string
                     description: Timestamp when the quote was created
-                    required: false
+                    required: true
         headers: []
         jsonPayloadSchema:
           type: object
@@ -563,19 +584,19 @@ operations:
                   - name: quote_id
                     type: string
                     description: Unique identifier for the quote
-                    required: false
+                    required: true
                   - name: rfq_id
                     type: string
                     description: Identifier of the RFQ this quote is for
-                    required: false
+                    required: true
                   - name: quote_creator_id
                     type: string
                     description: Public communications ID of the quote creator (anonymized)
-                    required: false
+                    required: true
                   - name: market_ticker
                     type: string
                     description: Market ticker for the quote
-                    required: false
+                    required: true
                   - name: event_ticker
                     type: string
                     description: Event ticker (optional)
@@ -583,11 +604,11 @@ operations:
                   - name: yes_bid_dollars
                     type: string
                     description: Yes side bid price in dollars
-                    required: false
+                    required: true
                   - name: no_bid_dollars
                     type: string
                     description: No side bid price in dollars
-                    required: false
+                    required: true
                   - name: accepted_side
                     type: string
                     description: Which side was accepted (yes/no) (optional)
@@ -747,41 +768,41 @@ operations:
                   - name: quote_id
                     type: string
                     description: Unique identifier for the quote that was executed
-                    required: false
+                    required: true
                   - name: rfq_id
                     type: string
                     description: Identifier of the RFQ this quote was for
-                    required: false
+                    required: true
                   - name: quote_creator_id
                     type: string
                     description: Anonymized identifier for the quote creator
-                    required: false
+                    required: true
                   - name: rfq_creator_id
                     type: string
                     description: Anonymized identifier for the RFQ creator
-                    required: false
+                    required: true
                   - name: order_id
                     type: string
                     description: >-
                       Your order ID resulting from the quote execution. Use this
                       to match with fill messages
-                    required: false
+                    required: true
                   - name: client_order_id
                     type: string
                     description: >-
                       Your client order ID for the executed order. Use this to
                       correlate with fill messages
-                    required: false
+                    required: true
                   - name: market_ticker
                     type: string
                     description: Market ticker for the executed quote
-                    required: false
+                    required: true
                   - name: executed_ts
                     type: string
                     description: >-
                       Timestamp when the quote was executed and orders were
                       placed
-                    required: false
+                    required: true
         headers: []
         jsonPayloadSchema:
           type: object

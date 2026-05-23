@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/agent-sdk/plugins.md
+Downloaded: 2026-05-23T20:20:34.807Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -99,7 +104,7 @@ When plugins load successfully, they appear in the system initialization message
 
       // Check available commands from plugins
       console.log("Commands:", message.slash_commands);
-      // Example: ["/help", "/compact", "my-plugin:custom-command"]
+      // Example: ["compact", "context", "my-plugin:custom-command"]
     }
   }
   ```
@@ -123,7 +128,7 @@ When plugins load successfully, they appear in the system initialization message
 
               # Check available commands from plugins
               print("Commands:", message.data.get("slash_commands"))
-              # Example: ["/help", "/compact", "my-plugin:custom-command"]
+              # Example: ["compact", "context", "my-plugin:custom-command"]
 
 
   asyncio.run(main())

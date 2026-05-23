@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/wss/market.md
+Downloaded: 2026-05-23T20:20:35.901Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -45,6 +50,10 @@ operations:
                 type: array
                 description: Asset IDs (token IDs) to subscribe to
                 required: true
+                properties:
+                  - name: item
+                    type: string
+                    required: false
               - name: type
                 type: string
                 description: Must be 'market'
@@ -150,6 +159,10 @@ operations:
               - name: assets_ids
                 type: array
                 required: true
+                properties:
+                  - name: item
+                    type: string
+                    required: false
               - name: level
                 type: integer
                 enumValues:
@@ -294,10 +307,28 @@ operations:
                 type: array
                 description: Aggregated buy orders by price level
                 required: true
+                properties:
+                  - name: price
+                    type: string
+                    description: Price level (e.g., '0.50')
+                    required: true
+                  - name: size
+                    type: string
+                    description: Total size at this price level
+                    required: true
               - name: asks
                 type: array
                 description: Aggregated sell orders by price level
                 required: true
+                properties:
+                  - name: price
+                    type: string
+                    description: Price level (e.g., '0.50')
+                    required: true
+                  - name: size
+                    type: string
+                    description: Total size at this price level
+                    required: true
               - name: timestamp
                 type: string
                 description: Unix timestamp in milliseconds
@@ -436,6 +467,34 @@ operations:
               - name: price_changes
                 type: array
                 required: true
+                properties:
+                  - name: asset_id
+                    type: string
+                    required: true
+                  - name: price
+                    type: string
+                    description: Price level affected
+                    required: true
+                  - name: size
+                    type: string
+                    description: New aggregate size (0 means level removed)
+                    required: true
+                  - name: side
+                    type: string
+                    enumValues:
+                      - BUY
+                      - SELL
+                    required: true
+                  - name: hash
+                    type: string
+                    description: Hash of the order that caused this change
+                    required: true
+                  - name: best_bid
+                    type: string
+                    required: false
+                  - name: best_ask
+                    type: string
+                    required: false
               - name: timestamp
                 type: string
                 description: Unix timestamp in milliseconds
@@ -861,9 +920,17 @@ operations:
               - name: assets_ids
                 type: array
                 required: true
+                properties:
+                  - name: item
+                    type: string
+                    required: false
               - name: outcomes
                 type: array
                 required: true
+                properties:
+                  - name: item
+                    type: string
+                    required: false
               - name: event_message
                 type: object
                 description: Parent event metadata for grouped markets
@@ -890,6 +957,10 @@ operations:
               - name: tags
                 type: array
                 required: false
+                properties:
+                  - name: item
+                    type: string
+                    required: false
               - name: condition_id
                 type: string
                 description: Condition ID
@@ -902,6 +973,10 @@ operations:
                 type: array
                 description: CLOB token IDs for the market
                 required: false
+                properties:
+                  - name: item
+                    type: string
+                    required: false
               - name: sports_market_type
                 type: string
                 description: Sports market type such as spread or moneyline
@@ -1113,6 +1188,10 @@ operations:
               - name: assets_ids
                 type: array
                 required: true
+                properties:
+                  - name: item
+                    type: string
+                    required: false
               - name: winning_asset_id
                 type: string
                 required: true
@@ -1145,6 +1224,10 @@ operations:
               - name: tags
                 type: array
                 required: false
+                properties:
+                  - name: item
+                    type: string
+                    required: false
         headers: []
         jsonPayloadSchema:
           type: object

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/market-positions.md
+Downloaded: 2026-05-23T20:20:36.330Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -58,13 +63,13 @@ address: market_positions
 parameters: []
 bindings: []
 operations:
-  - &ref_0
+  - &ref_1
     id: receiveMarketPosition
     title: Market Position Update
     description: Receive updates for your market positions
     type: send
     messages:
-      - &ref_1
+      - &ref_2
         id: marketPosition
         contentType: application/json
         payload:
@@ -89,37 +94,40 @@ operations:
                   - name: user_id
                     type: string
                     description: User ID for the position
-                    required: false
+                    required: true
                   - name: market_ticker
                     type: string
                     description: Unique market identifier
-                    required: false
+                    examples: &ref_0
+                      - FED-23DEC-T3.00
+                      - HIGHNY-22DEC23-B53.5
+                    required: true
                   - name: position_fp
                     type: string
                     description: Fixed-point net position (2 decimals)
-                    required: false
+                    required: true
                   - name: position_cost_dollars
                     type: string
                     description: >-
                       Current cost basis of the position as a fixed-point dollar
                       string
-                    required: false
+                    required: true
                   - name: realized_pnl_dollars
                     type: string
                     description: Realized profit/loss as a fixed-point dollar string
-                    required: false
+                    required: true
                   - name: fees_paid_dollars
                     type: string
                     description: Total fees paid as a fixed-point dollar string
-                    required: false
+                    required: true
                   - name: position_fee_cost_dollars
                     type: string
                     description: Total position fee cost as a fixed-point dollar string
-                    required: false
+                    required: true
                   - name: volume_fp
                     type: string
                     description: Fixed-point total volume traded (2 decimals)
-                    required: false
+                    required: true
                   - name: subaccount
                     type: integer
                     description: Optional subaccount number for the position
@@ -163,9 +171,7 @@ operations:
                   type: string
                   description: Unique market identifier
                   pattern: ^[A-Z0-9-]+$
-                  examples:
-                    - FED-23DEC-T3.00
-                    - HIGHNY-22DEC23-B53.5
+                  examples: *ref_0
                   x-parser-schema-id: marketTicker
                 position_fp:
                   type: string
@@ -226,10 +232,10 @@ operations:
         value: market_positions
 sendOperations: []
 receiveOperations:
-  - *ref_0
+  - *ref_1
 sendMessages: []
 receiveMessages:
-  - *ref_1
+  - *ref_2
 extensions:
   - id: x-parser-unique-object-id
     value: market_positions

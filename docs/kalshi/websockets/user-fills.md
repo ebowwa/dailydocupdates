@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/user-fills.md
+Downloaded: 2026-05-23T20:20:36.331Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -49,13 +54,13 @@ address: fill
 parameters: []
 bindings: []
 operations:
-  - &ref_1
+  - &ref_2
     id: receiveFill
     title: Fill Notification
     description: Receive notifications for your fills
     type: send
     messages:
-      - &ref_2
+      - &ref_3
         id: fill
         contentType: application/json
         payload:
@@ -82,60 +87,63 @@ operations:
                     description: >-
                       Unique identifier for fills. This is what you use to
                       differentiate fills
-                    required: false
+                    required: true
                   - name: order_id
                     type: string
                     description: >-
                       Unique identifier for orders. This is what you use to
                       differentiate fills for different orders
-                    required: false
+                    required: true
                   - name: market_ticker
                     type: string
                     description: Unique market identifier
-                    required: false
+                    examples: &ref_0
+                      - FED-23DEC-T3.00
+                      - HIGHNY-22DEC23-B53.5
+                    required: true
                   - name: is_taker
                     type: boolean
                     description: If you were a taker on this fill
-                    required: false
+                    required: true
                   - name: side
                     type: string
                     description: Market side
                     enumValues:
                       - 'yes'
                       - 'no'
-                    required: false
+                    required: true
                   - name: yes_price_dollars
                     type: string
                     description: Price for the yes side of the fill in dollars
-                    required: false
+                    required: true
                   - name: count_fp
                     type: string
                     description: Fixed-point contracts filled (2 decimals)
-                    required: false
+                    required: true
                   - name: fee_cost
                     type: string
                     description: Exchange fee paid for this fill in fixed-point dollars
-                    required: false
+                    required: true
                   - name: action
                     type: string
                     description: Order action type
                     enumValues:
                       - buy
                       - sell
-                    required: false
+                    required: true
                   - name: ts
                     type: integer
                     description: >-
                       Deprecated - Unix timestamp for when the update happened
                       (in seconds). Use ts_ms instead.
                     deprecated: true
-                    required: false
+                    required: true
                   - name: ts_ms
                     type: integer
                     description: >-
                       Unix timestamp for when the update happened (in
                       milliseconds)
-                    required: false
+                    required: true
                   - name: client_order_id
                     type: string
                     description: Optional client-provided order ID
@@ -143,21 +151,21 @@ operations:
                   - name: post_position_fp
                     type: string
                     description: Fixed-point position after the fill (2 decimals)
-                    required: false
+                    required: true
                   - name: purchased_side
                     type: string
                     description: Market side
                     enumValues:
                       - 'yes'
                       - 'no'
-                    required: false
+                    required: true
                   - name: outcome_side
                     type: string
                     description: Market side
                     enumValues:
                       - 'yes'
                       - 'no'
-                    required: false
+                    required: true
                   - name: book_side
                     type: string
                     description: >-
@@ -167,7 +175,7 @@ operations:
                     enumValues:
                       - bid
                       - ask
-                    required: false
+                    required: true
                   - name: subaccount
                     type: integer
                     description: Optional subaccount number for the fill
@@ -228,15 +236,13 @@ operations:
                   type: string
                   description: Unique market identifier
                   pattern: ^[A-Z0-9-]+$
-                  examples:
-                    - FED-23DEC-T3.00
-                    - HIGHNY-22DEC23-B53.5
+                  examples: *ref_0
                   x-parser-schema-id: marketTicker
                 is_taker:
                   type: boolean
                   description: If you were a taker on this fill
                   x-parser-schema-id: <anonymous-schema-92>
-                side: &ref_0
+                side: &ref_1
                   type: string
                   description: Market side
                   enum:
@@ -285,8 +291,8 @@ operations:
                   type: string
                   description: Fixed-point position after the fill (2 decimals)
                   x-parser-schema-id: <anonymous-schema-99>
-                purchased_side: *ref_0
-                outcome_side: *ref_0
+                purchased_side: *ref_1
+                outcome_side: *ref_1
                 book_side:
                   type: string
                   description: >-
@@ -335,10 +341,10 @@ operations:
         value: fill
 sendOperations: []
 receiveOperations:
-  - *ref_1
+  - *ref_2
 sendMessages: []
 receiveMessages:
-  - *ref_2
+  - *ref_3
 extensions:
   - id: x-parser-unique-object-id
     value: fill

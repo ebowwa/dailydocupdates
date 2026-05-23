@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/market-&-event-lifecycle.md
+Downloaded: 2026-05-23T20:20:36.330Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -49,13 +54,13 @@ address: market_lifecycle_v2
 parameters: []
 bindings: []
 operations:
-  - &ref_2
+  - &ref_3
     id: receiveMarketLifecycleV2
     title: Market Lifecycle Event
     description: Receive market lifecycle updates (open, close, determination, etc.)
     type: send
     messages:
-      - &ref_4
+      - &ref_5
         id: marketLifecycleV2
         contentType: application/json
         payload:
@@ -112,11 +117,14 @@ operations:
                       - settled
                       - price_level_structure_updated
                       - metadata_updated
-                    required: false
+                    required: true
                   - name: market_ticker
                     type: string
                     description: Unique market identifier
-                    required: false
+                    examples: &ref_0
+                      - FED-23DEC-T3.00
+                      - HIGHNY-22DEC23-B53.5
+                    required: true
                   - name: open_ts
                     type: integer
                     description: >-
@@ -248,7 +256,7 @@ operations:
               type: string
               const: market_lifecycle_v2
               x-parser-schema-id: <anonymous-schema-111>
-            sid: &ref_0
+            sid: &ref_1
               type: integer
               description: >-
                 Server-generated subscription identifier (sid) used to identify
@@ -297,9 +305,7 @@ operations:
                   type: string
                   description: Unique market identifier
                   pattern: ^[A-Z0-9-]+$
-                  examples:
-                    - FED-23DEC-T3.00
-                    - HIGHNY-22DEC23-B53.5
+                  examples: *ref_0
                   x-parser-schema-id: marketTicker
                 open_ts:
                   type: integer
@@ -462,16 +468,16 @@ operations:
           - id: x-parser-unique-object-id
             value: marketLifecycleV2
     bindings: []
-    extensions: &ref_1
+    extensions: &ref_2
       - id: x-parser-unique-object-id
         value: market_lifecycle_v2
-  - &ref_3
+  - &ref_4
     id: receiveEventLifecycle
     title: Event Lifecycle
     description: Receive event creation notifications
     type: send
     messages:
-      - &ref_5
+      - &ref_6
         id: eventLifecycle
         contentType: application/json
         payload:
@@ -496,15 +502,15 @@ operations:
                   - name: event_ticker
                     type: string
                     description: Unique identifier for the event being created
-                    required: false
+                    required: true
                   - name: title
                     type: string
                     description: Title of event
-                    required: false
+                    required: true
                   - name: subtitle
                     type: string
                     description: Subtitle of event
-                    required: false
+                    required: true
                   - name: collateral_return_type
                     type: string
                     description: >-
@@ -515,11 +521,11 @@ operations:
                       - MECNET
                       - DIRECNET
                       - ''
-                    required: false
+                    required: true
                   - name: series_ticker
                     type: string
                     description: Series ticker for the event
-                    required: false
+                    required: true
                   - name: strike_date
                     type: integer
                     description: >-
@@ -544,7 +550,7 @@ operations:
               type: string
               const: event_lifecycle
               x-parser-schema-id: <anonymous-schema-138>
-            sid: *ref_0
+            sid: *ref_1
             msg:
               type: object
               required:
@@ -614,15 +620,15 @@ operations:
           - id: x-parser-unique-object-id
             value: eventLifecycle
     bindings: []
-    extensions: *ref_1
+    extensions: *ref_2
 sendOperations: []
 receiveOperations:
-  - *ref_2
   - *ref_3
+  - *ref_4
 sendMessages: []
 receiveMessages:
-  - *ref_4
   - *ref_5
+  - *ref_6
 extensions:
   - id: x-parser-unique-object-id
     value: market_lifecycle_v2
