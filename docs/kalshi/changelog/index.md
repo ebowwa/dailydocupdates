@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/changelog/index.md
+Downloaded: 2026-05-25T20:33:47.092Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -11,6 +16,41 @@ You can subscribe to the RSS changelog at `/changelog/rss.xml` if you'd like to 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="May 28, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Fixed-point dollars added to GET /portfolio/balance",
+description: "Starting Thursday, May 28, 2026, GET /portfolio/balance returns balance_dollars alongside the existing balance field. Direct member balances use centi-cent precision."
+}}
+>
+  Starting Thursday, May 28, 2026, `GET /portfolio/balance` returns `balance_dollars`, the member's available balance as a fixed-point dollar string, alongside the existing integer-cent `balance` field. This precision change applies only to direct members of the exchange: direct member balances are aligned to centi-cent (`$0.0001`, or `0.01c`) precision. The legacy `balance` field truncates any sub-cent amount, so use `balance_dollars` for exact values.
+
+  See [Fee Rounding](/getting_started/fee_rounding) for balance alignment and rounding mechanics.
+</Update>
+
+<Update
+  label="May 25, 2026"
+  tags={["Change", "Released"]}
+  rss={{
+title: "Legacy order mutation rate-limit costs updated",
+description: "Effective Monday, May 25, 2026, legacy /portfolio/orders mutation and batch endpoint rate-limit costs are increased. The V2 /portfolio/events/orders endpoints are unchanged."
+}}
+>
+  Effective Monday, May 25, 2026, rate-limit token costs for legacy
+  `/portfolio/orders` mutation and batch endpoints are increased. The V2
+  `/portfolio/events/orders` endpoints are unchanged.
+
+  **Affected endpoints:**
+
+  * `POST /trade-api/v2/portfolio/orders` - cost `10` to `15`
+  * `DELETE /trade-api/v2/portfolio/orders/{order_id}` - cost `2` to `3`
+  * `POST /trade-api/v2/portfolio/orders/{order_id}/amend` - cost `10` to `15`
+  * `POST /trade-api/v2/portfolio/orders/{order_id}/decrease` - cost `10` to `15`
+  * `POST /trade-api/v2/portfolio/orders/batched` - cost `10` to `15`
+  * `DELETE /trade-api/v2/portfolio/orders/batched` - cost `2` to `3`
+</Update>
 
 <Update
   label="May 21, 2026"
@@ -28,17 +68,6 @@ description: "In certain uncommon cases, V2 cancel and amend responses don't des
 
   * `DELETE /trade-api/v2/portfolio/events/orders/{order_id}`
   * `POST /trade-api/v2/portfolio/events/orders/{order_id}/amend`
-</Update>
-
-<Update
-  label="May 21, 2026"
-  tags={["New Feature", "Upcoming"]}
-  rss={{
-title: "Fixed-point dollars added to GET /portfolio/balance",
-description: "GET /portfolio/balance now returns balance_dollars alongside the existing balance field."
-}}
->
-  `GET /portfolio/balance` now returns `balance_dollars`, the member's available balance as a fixed-point dollar string, alongside the existing integer-cent `balance` field.
 </Update>
 
 <Update

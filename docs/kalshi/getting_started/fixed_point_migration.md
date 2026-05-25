@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/fixed_point_migration.md
+Downloaded: 2026-05-25T20:33:47.095Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -71,6 +76,6 @@ Even if you are not placing fractional orders, you will encounter fractional val
 
 ## Fee Rounding
 
-Both subpenny pricing and fractional contracts can produce sub-cent balance changes on fills. When this happens, the exchange applies a rounding fee to restore cent-alignment, and a fee accumulator issues rebates to prevent systematic overpayment.
+Both subpenny pricing and fractional contracts can produce balance changes with more precision than a user's balance alignment. When this happens, the exchange applies a rounding fee to restore the applicable balance precision, and a fee accumulator issues rebates to prevent systematic overpayment.
 
 See [Fee Rounding](/getting_started/fee_rounding) for the mechanics and worked examples.

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/monitoring-usage.md
-Downloaded: 2026-05-20T20:47:05.301Z
+Downloaded: 2026-05-25T20:33:54.013Z
 -->
 
 > ## Documentation Index
@@ -267,6 +267,8 @@ Add to your `.claude/settings.json`:
 }
 ```
 
+The value can be the path to an executable file, including a path that contains spaces, or a shell command line with arguments. On Windows, the value always runs through the shell, so quote a path that contains spaces inside the JSON value.
+
 #### Script requirements
 
 The script must output valid JSON with string key-value pairs representing HTTP headers:
@@ -276,6 +278,12 @@ The script must output valid JSON with string key-value pairs representing HTTP 
 # Example: Multiple headers
 echo "{\"Authorization\": \"Bearer $(get-token.sh)\", \"X-API-Key\": \"$(get-api-key.sh)\"}"
 ```
+
+If the helper fails or prints output that doesn't meet these requirements, Claude Code reports the error in:
+
+* `/doctor` output
+* The debug log, when running with [`--debug`](/en/cli-reference#cli-flags) or after running `/debug` in the session
+* stderr, in non-interactive sessions started with `-p`
 
 #### Refresh behavior
 
