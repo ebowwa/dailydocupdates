@@ -1,19 +1,22 @@
 <!--
-Source: https://docs.kalshi.com/api-reference/exchange/get-series-fee-changes.md
-Downloaded: 2026-05-26T20:44:12.762Z
+Source: https://docs.kalshi.com/api-reference/events/get-event-fee-changes.md
+Downloaded: 2026-05-26T20:44:12.761Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Get Series Fee Changes
+# Get Event Fee Changes
+
+> Event fees are an override layered on top of the parent series' fee structure. If `fee_type_override` and `fee_multiplier_override` are null, that indicates the override is cleared.
+
 
 
 
 ## OpenAPI
 
-````yaml /openapi.yaml get /series/fee_changes
+````yaml /openapi.yaml get /events/fee_changes
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -63,71 +66,111 @@ tags:
   - name: structured-targets
     description: Structured targets endpoints
 paths:
-  /series/fee_changes:
+  /events/fee_changes:
     get:
       tags:
-        - exchange
-      summary: Get Series Fee Changes
-      operationId: GetSeriesFeeChanges
+        - events
+      summary: Get Event Fee Changes
+      description: >
+        Event fees are an override layered on top of the parent series' fee
+        structure. If `fee_type_override` and `fee_multiplier_override` are
+        null, that indicates the override is cleared.
+      operationId: GetEventFeeChanges
       parameters:
-        - name: series_ticker
+        - name: event_ticker
           in: query
           required: false
           schema:
             type: string
           x-go-type-skip-optional-pointer: true
-        - name: show_historical
-          in: query
-          required: false
-          schema:
-            type: boolean
-            default: false
-          x-go-type-skip-optional-pointer: true
+        - $ref: '#/components/parameters/LimitQuery'
+        - $ref: '#/components/parameters/CursorQuery'
       responses:
         '200':
-          description: Series fee changes retrieved successfully
+          description: Event fee changes retrieved successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetSeriesFeeChangesResponse'
+                $ref: '#/components/schemas/GetEventFeeChangesResponse'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '500':
           $ref: '#/components/responses/InternalServerError'
 components:
+  parameters:
+    LimitQuery:
+      name: limit
+      in: query
+      description: Number of results per page. Defaults to 100.
+      schema:
+        type: integer
+        format: int64
+        minimum: 1
+        maximum: 1000
+        default: 100
+        x-oapi-codegen-extra-tags:
+          validate: omitempty,min=1,max=1000
+    CursorQuery:
+      name: cursor
+      in: query
+      description: >-
+        Pagination cursor. Use the cursor value returned from the previous
+        response to get the next page of results. Leave empty for the first
+        page.
+      schema:
+        type: string
+        x-go-type-skip-optional-pointer: true
   schemas:
-    GetSeriesFeeChangesResponse:
+    GetEventFeeChangesResponse:
       type: object
       required:
-        - series_fee_change_arr
+        - event_fee_changes
+        - cursor
       properties:
-        series_fee_change_arr:
+        event_fee_changes:
           type: array
           items:
-            $ref: '#/components/schemas/SeriesFeeChange'
-    SeriesFeeChange:
+            $ref: '#/components/schemas/EventFeeChange'
+        cursor:
+          type: string
+          description: >-
+            Pagination cursor for the next page. Empty if there are no more
+            results.
+    EventFeeChange:
       type: object
       required:
         - id
+        - event_ticker
         - series_ticker
-        - fee_type
-        - fee_multiplier
+        - fee_type_override
+        - fee_multiplier_override
         - scheduled_ts
       properties:
         id:
           type: string
           description: Unique identifier for this fee change
+        event_ticker:
+          type: string
+          description: Event ticker this fee change applies to
         series_ticker:
           type: string
-          description: Series ticker this fee change applies to
-        fee_type:
+          description: Series ticker for the event
+        fee_type_override:
           allOf:
             - $ref: '#/components/schemas/FeeType'
-          description: New fee type for the series
-        fee_multiplier:
+          nullable: true
+          example: quadratic
+          description: >-
+            New fee type override for the event. When null, the event clears any
+            prior override and falls back to the parent series' fee structure.
+        fee_multiplier_override:
           type: number
           format: double
-          description: New fee multiplier for the series
+          nullable: true
+          description: >-
+            New fee multiplier override for the event. When null, the event
+            clears any prior override and falls back to the parent series' fee
+            multiplier.
         scheduled_ts:
           type: string
           format: date-time

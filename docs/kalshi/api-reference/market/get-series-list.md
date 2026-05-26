@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-series-list.md
-Downloaded: 2026-05-21T20:39:19.714Z
+Downloaded: 2026-05-26T20:44:12.765Z
 -->
 
 > ## Documentation Index
@@ -168,6 +168,7 @@ components:
           description: Category specifies the category which this series belongs to.
         tags:
           type: array
+          nullable: true
           items:
             type: string
           description: >-
@@ -175,6 +176,7 @@ components:
             series from different categories can have the same tags.
         settlement_sources:
           type: array
+          nullable: true
           items:
             $ref: '#/components/schemas/SettlementSource'
           description: >-
@@ -197,11 +199,8 @@ components:
           x-omitempty: true
           description: Internal product metadata of the series.
         fee_type:
-          type: string
-          enum:
-            - quadratic
-            - quadratic_with_maker_fees
-            - flat
+          allOf:
+            - $ref: '#/components/schemas/FeeType'
           description: >-
             FeeType is a string representing the series' fee structure. Fee
             structures can be found at
@@ -258,6 +257,17 @@ components:
           type: string
           description: URL to the settlement source
           x-go-type-skip-optional-pointer: true
+    FeeType:
+      type: string
+      enum:
+        - quadratic
+        - quadratic_with_maker_fees
+        - flat
+      x-enum-varnames:
+        - FeeTypeQuadratic
+        - FeeTypeQuadraticWithMakerFees
+        - FeeTypeFlat
+      description: Fee type for a series or scheduled fee override.
     FixedPointCount:
       type: string
       description: >-

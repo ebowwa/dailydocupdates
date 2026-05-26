@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-multivariate-events.md
-Downloaded: 2026-05-21T20:39:19.710Z
+Downloaded: 2026-05-26T20:44:12.762Z
 -->
 
 > ## Documentation Index
@@ -162,7 +162,6 @@ components:
         - collateral_return_type
         - mutually_exclusive
         - available_on_brokers
-        - product_metadata
       properties:
         event_ticker:
           type: string

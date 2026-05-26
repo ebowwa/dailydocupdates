@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/output-styles.md
-Downloaded: 2026-05-20T20:47:05.301Z
+Downloaded: 2026-05-26T20:43:56.287Z
 -->
 
 > ## Documentation Index
@@ -32,6 +32,8 @@ There are three additional built-in output styles:
 ## Change your output style
 
 Run `/config` and select **Output style** to pick a style from a menu. Your selection is saved to `.claude/settings.local.json` at the [local project level](/en/settings).
+
+<Note>{/* max-version: 2.1.90 */}The standalone `/output-style` command was deprecated in v2.1.73 and removed in v2.1.91. Use `/config` or edit the `outputStyle` setting directly.</Note>
 
 To set a style without the menu, edit the `outputStyle` field directly in a settings file:
 

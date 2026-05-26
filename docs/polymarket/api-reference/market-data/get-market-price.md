@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/api-reference/market-data/get-market-price.md
-Downloaded: 2026-05-19T20:38:31.018Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

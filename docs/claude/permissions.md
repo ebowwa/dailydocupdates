@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/permissions.md
-Downloaded: 2026-05-25T20:33:54.014Z
+Downloaded: 2026-05-26T20:43:56.288Z
 -->
 
 > ## Documentation Index
@@ -288,6 +288,8 @@ Files in additional directories follow the same permission rules as the original
 ### Additional directories grant file access, not configuration
 
 Adding a directory extends where Claude can read and edit files. It does not make that directory a full configuration root: most `.claude/` configuration is not discovered from additional directories, though a few types are loaded as exceptions.
+
+These exceptions apply only to directories added with the `--add-dir` flag or the `/add-dir` command. Directories listed in `permissions.additionalDirectories` in a settings file grant file access only and do not load any of the configuration below.
 
 The following configuration types are loaded from `--add-dir` directories:
 

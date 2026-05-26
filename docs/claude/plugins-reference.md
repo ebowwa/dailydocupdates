@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/plugins-reference.md
-Downloaded: 2026-05-20T20:47:05.303Z
+Downloaded: 2026-05-26T20:43:56.289Z
 -->
 
 > ## Documentation Index
@@ -949,9 +949,9 @@ The output shows two cost figures for each component:
 This example shows what the output looks like for a plugin with two skills:
 
 ```
-security-guidance 1.2.0
-  Real-time security analysis for Claude Code sessions
-  Source: security-guidance@claude-code-marketplace
+dependency-guard 1.2.0
+  Dependency analysis for Claude Code sessions
+  Source: dependency-guard@example-marketplace
 
 Component inventory
   Skills (2)  scan-dependencies, review-changes

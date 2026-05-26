@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/discover-plugins.md
-Downloaded: 2026-05-20T20:47:05.297Z
+Downloaded: 2026-05-26T20:43:56.282Z
 -->
 
 > ## Documentation Index
@@ -95,6 +95,10 @@ These plugins bundle pre-configured [MCP servers](/en/mcp) so you can connect Cl
 * **Communication**: `slack`
 * **Monitoring**: `sentry`
 
+### Automatic security review
+
+The `security-guidance` plugin reviews each change Claude makes for common vulnerabilities and instructs Claude to fix what it finds in the same session. See [Catch security issues as Claude writes code](/en/security-guidance) for what it checks and how to add project-specific rules.
+
 ### Development workflows
 
 Plugins that add skills and agents for common development tasks:
@@ -171,7 +175,7 @@ Anthropic also maintains a [demo plugins marketplace](https://github.com/anthrop
     You can also install directly from the command line:
 
     ```shell theme={null}
-    /plugin install commit-commands@anthropics-claude-code
+    /plugin install commit-commands@claude-code-plugins
     ```
 
     See [Configuration scopes](/en/settings#configuration-scopes) to learn more about scopes.
