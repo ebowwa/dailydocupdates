@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/python-sdk/api/EventsApi.md
+Downloaded: 2026-05-27T20:46:39.631Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -11,6 +16,7 @@ All URIs are relative to *[https://external-api.kalshi.com/trade-api/v2](https:/
 | Method                                                                                    | HTTP request                                                                  | Description                           |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------- |
 | [**get\_event**](#get-event)                                                              | **GET** /events/{event_ticker}                                                | Get Event                             |
+| [**get\_event\_fee\_changes**](#get-event-fee-changes)                                    | **GET** /events/fee\_changes                                                  | Get Event Fee Changes                 |
 | [**get\_event\_forecast\_percentiles\_history**](#get-event-forecast-percentiles-history) | **GET** /series/{series_ticker}/events/{ticker}/forecast\_percentile\_history | Get Event Forecast Percentile History |
 | [**get\_event\_metadata**](#get-event-metadata)                                           | **GET** /events/{event_ticker}/metadata                                       | Get Event Metadata                    |
 | [**get\_events**](#get-events)                                                            | **GET** /events                                                               | Get Events                            |
@@ -47,6 +53,34 @@ All events are accessible through this endpoint, even if their associated market
 | **404**     | Event not found              |
 | **401**     | Unauthorized                 |
 | **500**     | Internal server error        |
+
+# **get\_event\_fee\_changes**
+
+> GetEventFeeChangesResponse get\_event\_fee\_changes(event\_ticker=event\_ticker, limit=limit, cursor=cursor)
+
+Get Event Fee Changes
+
+Event fees are an override layered on top of the parent series' fee structure. If `fee_type_override` and `fee_multiplier_override` are null, that indicates the override is cleared.
+
+### Parameters
+
+| Name              | Type    | Description                                                                                                                                  | Notes                         |
+| ----------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| **event\_ticker** | **str** |                                                                                                                                              | \[optional]                   |
+| **limit**         | **int** | Number of results per page. Defaults to 100.                                                                                                 | \[optional] \[default to 100] |
+| **cursor**        | **str** | Pagination cursor. Use the cursor value returned from the previous response to get the next page of results. Leave empty for the first page. | \[optional]                   |
+
+### Return type
+
+[**GetEventFeeChangesResponse**](https://docs.kalshi.com/python-sdk/models/GetEventFeeChangesResponse)
+
+### HTTP response details
+
+| Status code | Description                              |
+| ----------- | ---------------------------------------- |
+| **200**     | Event fee changes retrieved successfully |
+| **400**     | Bad request - invalid input              |
+| **500**     | Internal server error                    |
 
 # **get\_event\_forecast\_percentiles\_history**
 

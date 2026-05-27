@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/microsoft-foundry.md
+Downloaded: 2026-05-27T20:46:48.844Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -130,7 +135,7 @@ az login
 ```
 
 <Note>
-  When using Microsoft Foundry, the `/login` and `/logout` commands are disabled since authentication is handled through Azure credentials.
+  When using Microsoft Foundry, the `/logout` command is unavailable since authentication is handled through Azure credentials.
 </Note>
 
 ### 3. Configure Claude Code

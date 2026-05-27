@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/bridge/withdraw.md
+Downloaded: 2026-05-27T20:46:39.776Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -11,8 +16,8 @@ Withdraw pUSD from your Polymarket wallet to any supported chain and token. Fund
 ## How It Works
 
 1. Specify your destination chain, token, and recipient address
-2. Receive deposit addresses for each destination chain (EVM, Solana, Bitcoin)
-3. Send pUSD from your Polymarket wallet to the appropriate deposit address
+2. Receive bridge addresses for each destination chain (EVM, Solana, Bitcoin)
+3. Send pUSD from your Polymarket wallet to the appropriate bridge address
 4. Funds are automatically bridged and swapped to your desired token
 5. Funds arrive at your destination wallet
 
@@ -40,7 +45,7 @@ Withdraw pUSD from your Polymarket wallet to any supported chain and token. Fund
 
 ## Create Withdrawal Addresses
 
-Generate deposit addresses configured for your withdrawal destination. See the [Bridge API Reference](/api-reference/introduction) for full request and response schemas.
+Generate bridge addresses configured for your withdrawal destination. See the [Bridge API Reference](/api-reference/introduction) for full request and response schemas.
 
 ```bash theme={null}
 curl -X POST https://bridge.polymarket.com/withdraw \
@@ -82,7 +87,7 @@ Withdrawals are **instant** and **free** — Polymarket does not charge withdraw
   </Step>
 
   <Step title="Send pUSD">
-    Transfer pUSD from your Polymarket wallet to the appropriate deposit
+    Transfer pUSD from your Polymarket wallet to the appropriate bridge
     address.
   </Step>
 

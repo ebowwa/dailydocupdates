@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/common-workflows.md
+Downloaded: 2026-05-27T20:46:48.838Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -22,6 +27,8 @@ This page covers:
 These are prompt patterns for everyday tasks like exploring unfamiliar code, debugging, refactoring, writing tests, and creating PRs. Each works in any Claude Code surface; adapt the wording to your project.
 
 ### Understand new codebases
+
+For configuring Claude Code in a monorepo or large codebase, see [Monorepos and large repos](/en/large-codebases).
 
 #### Get a quick codebase overview
 

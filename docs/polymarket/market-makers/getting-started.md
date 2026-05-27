@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-makers/getting-started.md
+Downloaded: 2026-05-27T20:46:39.774Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -21,7 +26,7 @@ Before you can start market making, you need to complete these one-time setup st
     ### Using the Bridge API
 
     ```typescript theme={null}
-    // Get deposit addresses for your Polymarket wallet
+    // Get bridge addresses for your Polymarket wallet
     const deposit = await fetch("https://bridge.polymarket.com/deposit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -30,7 +35,7 @@ Before you can start market making, you need to complete these one-time setup st
       }),
     });
 
-    // Returns deposit addresses for EVM, SVM, and BTC networks
+    // Returns bridge addresses for EVM, SVM, and BTC networks
     const addresses = await deposit.json();
     // Send USDC to the appropriate address for your source chain
     ```

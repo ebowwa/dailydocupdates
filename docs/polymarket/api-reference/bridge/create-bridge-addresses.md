@@ -1,5 +1,5 @@
 <!--
-Source: https://docs.polymarket.com/api-reference/bridge/create-withdrawal-addresses.md
+Source: https://docs.polymarket.com/api-reference/bridge/create-bridge-addresses.md
 Downloaded: 2026-05-27T20:46:39.760Z
 -->
 
@@ -7,13 +7,13 @@ Downloaded: 2026-05-27T20:46:39.760Z
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Create withdrawal addresses
+# Create bridge addresses
 
 
 
 ## OpenAPI
 
-````yaml /api-spec/bridge-openapi.yaml post /withdraw
+````yaml /api-spec/bridge-openapi.yaml post /deposit
 openapi: 3.0.3
 info:
   title: Polymarket Bridge API
@@ -27,39 +27,28 @@ tags:
   - name: Bridge
     description: Bridge and swap operations for Polymarket
 paths:
-  /withdraw:
+  /deposit:
     post:
       tags:
         - Bridge
-      summary: Create withdrawal addresses
+      summary: Create bridge addresses
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/WithdrawalRequest'
+              $ref: '#/components/schemas/DepositRequest'
             example:
-              address: '0x9156dd10bea4c8d7e2d591b633d1694b1d764756'
-              toChainId: '1'
-              toTokenAddress: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'
-              recipientAddr: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
+              address: '0x56687bf447db6ffa42ffe2204a05edaa20f55839'
       responses:
         '201':
-          description: Withdrawal addresses created successfully
+          description: Bridge addresses created successfully
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/DepositResponse'
-              example:
-                address:
-                  evm: '0x23566f8b2E82aDfCf01846E54899d110e97AC053'
-                  svm: CrvTBvzryYxBHbWu2TiQpcqD5M7Le7iBKzVmEj3f36Jb
-                  btc: bc1q8eau83qffxcj8ht4hsjdza3lha9r3egfqysj3g
-                note: >-
-                  Send funds to these addresses to bridge to your destination
-                  chain and token.
         '400':
-          description: Bad Request - Invalid or missing parameters
+          description: Bad Request - Invalid address or request body
           content:
             application/json:
               schema:
@@ -72,31 +61,16 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    WithdrawalRequest:
+    DepositRequest:
       type: object
       required:
         - address
-        - toChainId
-        - toTokenAddress
-        - recipientAddr
       properties:
         address:
           $ref: '#/components/schemas/Address'
-          description: Source Polymarket wallet address on Polygon
-        toChainId:
-          type: string
           description: >-
-            Destination chain ID (e.g., "1" for Ethereum, "8453" for Base,
-            "1151111081099710" for Solana)
-          example: '1'
-        toTokenAddress:
-          type: string
-          description: Destination token contract address
-          example: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'
-        recipientAddr:
-          type: string
-          description: Destination wallet address where funds will be sent
-          example: '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
+            Your Polymarket wallet address where deposited funds will be
+            credited as pUSD
     DepositResponse:
       type: object
       properties:

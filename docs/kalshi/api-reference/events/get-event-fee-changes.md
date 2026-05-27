@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-event-fee-changes.md
-Downloaded: 2026-05-26T20:44:12.761Z
+Downloaded: 2026-05-27T20:46:39.613Z
 -->
 
 > ## Documentation Index
@@ -20,7 +20,7 @@ Downloaded: 2026-05-26T20:44:12.761Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.19.0
+  version: 3.20.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
