@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix/common-components.md
+Downloaded: 2026-05-28T20:51:18.965Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -88,6 +93,15 @@ Every FIX message ends with:
 | U3      | EventResendReject   | KalshiDC | Server -> Client |
 
 After an EventResendRequest, the server replays the matching historical order updates as ExecutionReport (35=8) messages and then sends EventResendComplete (35=U2) or EventResendReject (35=U3).
+
+#### Market Data
+
+| MsgType | Name                          | Sessions | Direction        |
+| ------- | ----------------------------- | -------- | ---------------- |
+| V       | MarketDataRequest             | KalshiMD | Client -> Server |
+| W       | MarketDataSnapshotFullRefresh | KalshiMD | Server -> Client |
+| X       | MarketDataIncrementalRefresh  | KalshiMD | Server -> Client |
+| Y       | MarketDataRequestReject       | KalshiMD | Server -> Client |
 
 #### Post Trade
 

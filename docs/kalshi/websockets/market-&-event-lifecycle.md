@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/market-&-event-lifecycle.md
-Downloaded: 2026-05-23T20:20:36.330Z
+Downloaded: 2026-05-28T20:51:18.970Z
 -->
 
 > ## Documentation Index
@@ -60,7 +60,7 @@ operations:
     description: Receive market lifecycle updates (open, close, determination, etc.)
     type: send
     messages:
-      - &ref_5
+      - &ref_6
         id: marketLifecycleV2
         contentType: application/json
         payload:
@@ -477,7 +477,7 @@ operations:
     description: Receive event creation notifications
     type: send
     messages:
-      - &ref_6
+      - &ref_7
         id: eventLifecycle
         contentType: application/json
         payload:
@@ -621,14 +621,127 @@ operations:
             value: eventLifecycle
     bindings: []
     extensions: *ref_2
+  - &ref_5
+    id: receiveEventFeeUpdate
+    title: Event Fee Override Update
+    description: Receive notifications when an event-level fee override is set or cleared
+    type: send
+    messages:
+      - &ref_8
+        id: eventFeeUpdate
+        contentType: application/json
+        payload:
+          - name: Event Fee Override Update
+            description: Emitted when an event-level fee override is set or cleared
+            type: object
+            properties:
+              - name: type
+                type: string
+                description: event_fee_update
+                required: true
+              - name: sid
+                type: integer
+                description: >-
+                  Server-generated subscription identifier (sid) used to
+                  identify the channel
+                required: true
+              - name: msg
+                type: object
+                required: true
+                properties:
+                  - name: event_ticker
+                    type: string
+                    description: Unique identifier for the event
+                    required: true
+                  - name: fee_type_override
+                    type: string
+                    description: >-
+                      Event fee type override. `null` when the override has been
+                      cleared.
+                    enumValues:
+                      - quadratic
+                      - quadratic_with_maker_fees
+                      - flat
+                    required: true
+                  - name: fee_multiplier_override
+                    type: number
+                    description: >-
+                      Event fee multiplier override. `null` when the override
+                      has been cleared.
+                    required: true
+        headers: []
+        jsonPayloadSchema:
+          type: object
+          required:
+            - type
+            - sid
+            - msg
+          properties:
+            type:
+              type: string
+              const: event_fee_update
+              x-parser-schema-id: <anonymous-schema-147>
+            sid: *ref_1
+            msg:
+              type: object
+              required:
+                - event_ticker
+                - fee_type_override
+                - fee_multiplier_override
+              properties:
+                event_ticker:
+                  type: string
+                  description: Unique identifier for the event
+                  x-parser-schema-id: <anonymous-schema-149>
+                fee_type_override:
+                  type: string
+                  nullable: true
+                  enum:
+                    - quadratic
+                    - quadratic_with_maker_fees
+                    - flat
+                    - null
+                  description: >-
+                    Event fee type override. `null` when the override has been
+                    cleared.
+                  x-parser-schema-id: <anonymous-schema-150>
+                fee_multiplier_override:
+                  type: number
+                  nullable: true
+                  description: >-
+                    Event fee multiplier override. `null` when the override has
+                    been cleared.
+                  x-parser-schema-id: <anonymous-schema-151>
+              x-parser-schema-id: <anonymous-schema-148>
+          x-parser-schema-id: eventFeeUpdatePayload
+        title: Event Fee Override Update
+        description: Emitted when an event-level fee override is set or cleared
+        example: |-
+          {
+            "type": "event_fee_update",
+            "sid": 5,
+            "msg": {
+              "event_ticker": "KXBTCD-26MAY2018",
+              "fee_type_override": "quadratic",
+              "fee_multiplier_override": 1
+            }
+          }
+        bindings: []
+        extensions:
+          - id: x-parser-unique-object-id
+            value: eventFeeUpdate
+    bindings: []
+    extensions: *ref_2
 sendOperations: []
 receiveOperations:
   - *ref_3
   - *ref_4
+  - *ref_5
 sendMessages: []
 receiveMessages:
-  - *ref_5
   - *ref_6
+  - *ref_7
+  - *ref_8
 extensions:
   - id: x-parser-unique-object-id
     value: market_lifecycle_v2

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/multivariate-market-&-event-lifecycle.md
-Downloaded: 2026-05-23T20:20:36.331Z
+Downloaded: 2026-05-28T20:51:18.971Z
 -->
 
 > ## Documentation Index
@@ -268,8 +268,8 @@ operations:
                   type:
                     type: string
                     const: multivariate_market_lifecycle
-                    x-parser-schema-id: <anonymous-schema-148>
-                x-parser-schema-id: <anonymous-schema-147>
+                    x-parser-schema-id: <anonymous-schema-153>
+                x-parser-schema-id: <anonymous-schema-152>
             x-parser-schema-id: multivariateMarketLifecyclePayload
             name: Multivariate Market Lifecycle
             description: >-

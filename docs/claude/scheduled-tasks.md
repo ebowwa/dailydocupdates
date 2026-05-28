@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/scheduled-tasks.md
-Downloaded: 2026-05-21T20:39:18.262Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

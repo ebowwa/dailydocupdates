@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/trading/fees.md
-Downloaded: 2026-05-21T20:39:19.169Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

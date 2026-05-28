@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/trading/matching-engine.md
-Downloaded: 2026-05-20T20:47:07.732Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/resources/error-codes.md
-Downloaded: 2026-05-20T20:47:07.730Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
