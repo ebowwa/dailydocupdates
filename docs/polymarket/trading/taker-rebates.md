@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/taker-rebates.md
-Downloaded: 2026-05-23T20:20:35.907Z
+Downloaded: 2026-05-29T20:51:36.243Z
 -->
 
 > ## Documentation Index
@@ -138,6 +138,7 @@ Your tier shows on your Polymarket profile and on the leaderboards. As you climb
 * Your tier is based on your **last 30 days** of Weighted Volume and is updated every day at midnight UTC.
 * Rebates are paid once a day at midnight UTC in pUSD.
 * Rebate rates, tier thresholds, category weights, level-up bonuses, and any bonus multipliers are set by Polymarket and can change at any time without notice.
+* Polymarket reserves the right, at its sole discretion, to adjust rebates and tier status for users.
 * Polymarket reserves the right, at its sole discretion, to adjust or remove rebates and tier status for activity that breaks our Terms of Service, including but not limited to wash trading, self-matching, or other inauthentic trading.
 
 ***

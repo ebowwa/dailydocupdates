@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/server-managed-settings.md
-Downloaded: 2026-05-22T20:36:02.407Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

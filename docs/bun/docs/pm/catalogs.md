@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/catalogs.md
+Downloaded: 2026-05-29T20:51:42.651Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -245,7 +250,7 @@ Bun's lockfile tracks catalog versions, ensuring consistent installations across
 
 ```json bun.lock(excerpt) icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
-  "lockfileVersion": 1,
+  "lockfileVersion": 2,
   "workspaces": {
     "": {
       "name": "react-monorepo",
