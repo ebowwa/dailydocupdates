@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-05-26T20:44:12.771Z
+Downloaded: 2026-05-31T20:28:27.177Z
 -->
 
 > ## Documentation Index
@@ -182,7 +182,7 @@ title: "metadata_updated WS event now includes yes_sub_title",
 description: "The market_lifecycle_v2 metadata_updated event now emits yes_sub_title when a market's subtitle changes."
 }}
 >
-  The `metadata_updated` event on the `market_lifecycle_v2` websocket channel
+  The `metadata_updated` event on the `market_lifecycle_v2` WebSocket channel
   now includes `yes_sub_title` as a top-level field when a market's yes
   subtitle changes.
 
@@ -285,10 +285,10 @@ description: "Added dedicated external REST and WebSocket hosts for production a
   tags={["New Feature", "Upcoming"]}
   rss={{
 title: "market_lifecycle_v2 WS channel emits metadata_updated events",
-description: "The market_lifecycle_v2 websocket channel now emits metadata_updated events."
+description: "The market_lifecycle_v2 WebSocket channel now emits metadata_updated events."
 }}
 >
-  The `market_lifecycle_v2` websocket channel now supports a new event type
+  The `market_lifecycle_v2` WebSocket channel now supports a new event type
   `metadata_updated`. Initially this will only be triggered by a floor strike
   update, but may expand to more fields in the future. The message contains the
   updated `floor_strike` as a top-level field.
@@ -1061,8 +1061,8 @@ description: "The undocumented ticker_v2 WebSocket channel has been removed from
   label="Feb 11, 2026"
   tags={["New Feature", "Upcoming"]}
   rss={{
-title: "Websocket QoL Improvements",
-description: "Websocket QoL Improvements"
+title: "WebSocket QoL Improvements",
+description: "WebSocket QoL Improvements"
 }}
 >
   * `ticker` channel now provides high precision `time` field.
@@ -1107,7 +1107,7 @@ description: "Incentive Programs API responses now include market_id field"
   tags={["New Feature", "Upcoming"]}
   rss={{
 title: "User orders WebSocket channel",
-description: "New websocket channel for real-time order created and updated notifications"
+description: "New WebSocket channel for real-time order created and updated notifications"
 }}
 >
   Added `user_orders` WebSocket channel to stream real-time order updates (created, updated, canceled, executed)
@@ -1244,7 +1244,7 @@ description: "Fields that have a `_fp` equivalent will no longer be returned via
   tags={["Change", "Upcoming"]}
   rss={{
 title: "Fee cost added to fill WebSocket messages",
-description: "Fill websocket messages now include fee_cost as a fixed-point dollars string."
+description: "Fill WebSocket messages now include fee_cost as a fixed-point dollars string."
 }}
 >
   Fill WebSocket messages now include `fee_cost` as a fixed-point dollars string.
@@ -1411,7 +1411,7 @@ description: "New endpoint to retrieve the authorized user's api tier limits"
   tags={["New Feature", "Upcoming"]}
   rss={{
 title: "Order group updates WebSocket channel",
-description: "New websocket channel for order group lifecycle updates"
+description: "New WebSocket channel for order group lifecycle updates"
 }}
 >
   Added `order_group_updates` WebSocket channel to stream order group lifecycle updates
@@ -2327,7 +2327,7 @@ description: "Subpenny support in WS for RFQs and Quotes"
   For more info reference:
 
   * [Subpenny Pricing](/getting_started/subpenny_pricing)
-  * [Websocket Documentation](/websockets)
+  * [WebSocket Documentation](/websockets)
 </Update>
 
 <Update
@@ -2358,11 +2358,11 @@ description: "Series Fee Changes API and notifications now return user-facing fe
   label="Sep 25, 2025"
   tags={["Released"]}
   rss={{
-title: "Websocket subscribe idempotent",
-description: "Websocket subscribe idempotent"
+title: "WebSocket subscribe idempotent",
+description: "WebSocket subscribe idempotent"
 }}
 >
-  Repeated subscriptions on the same websocket call will no longer error. If passing
+  Repeated subscriptions on the same WebSocket call will no longer error. If passing
   the same market tickers as before, no action will be taken. If passing new market tickers,
   they will be added to your existing subscription.
 
@@ -2395,10 +2395,10 @@ description: "FoK orders that self-cross treated as IoC."
   tags={["Released"]}
   rss={{
 title: "Adding purchased_side to REST and ws fills",
-description: "User seeking a simple way to determine the direction of their fill should reference purchased_side. Both BUY YES or SELL NO result in purchased_side = YES. The addition of this field is the first step in standardizing the fills websocket and REST endpoints, which have different conventions for the interpretation 'side' and 'user_action'"
+description: "User seeking a simple way to determine the direction of their fill should reference purchased_side. Both BUY YES or SELL NO result in purchased_side = YES. The addition of this field is the first step in standardizing the fills WebSocket and REST endpoints, which have different conventions for the interpretation 'side' and 'user_action'"
 }}
 >
-  User seeking a simple way to determine the direction of their fill should reference purchased\_side. Both BUY YES or SELL NO result in purchased\_side = YES. The addition of this field is the first step in standardizing the fills websocket and REST endpoints, which have different conventions for the interpretation 'side' and 'user\_action'.
+  User seeking a simple way to determine the direction of their fill should reference purchased\_side. Both BUY YES or SELL NO result in purchased\_side = YES. The addition of this field is the first step in standardizing the fills WebSocket and REST endpoints, which have different conventions for the interpretation 'side' and 'user\_action'.
 
   Expected Enforce Date: deprecation date for existing fields not yet scheduled.
 </Update>
@@ -2439,8 +2439,8 @@ description: "Deprecating order type `market`"
   label="Sep 18, 2025"
   tags={["Breaking change", "Released"]}
   rss={{
-title: "Websocket API Session Limit",
-description: "Websocket API Session Limit"
+title: "WebSocket API Session Limit",
+description: "WebSocket API Session Limit"
 }}
 >
   WebSocket connections per user are limited by usage tier. The default limit begins at 200 and increases based on API usage tier.
@@ -2524,11 +2524,11 @@ description: "New endpoint for retrieving incentive program information"
   label="Sep 9, 2025"
   tags={["Released"]}
   rss={{
-title: "Subpenny pricing added to websocket",
-description: "Subpenny pricing added to websocket"
+title: "Subpenny pricing added to WebSocket",
+description: "Subpenny pricing added to WebSocket"
 }}
 >
-  Subpenny pricing fields have been added to websocket messages. Any message bearing price in cents will now also bear
+  Subpenny pricing fields have been added to WebSocket messages. Any message bearing price in cents will now also bear
   an equivalent fixed-point dollars field.
 
   For more info, see [Subpenny Pricing](/getting_started/subpenny_pricing).

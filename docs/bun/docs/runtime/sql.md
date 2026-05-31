@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/sql.md
+Downloaded: 2026-05-31T20:28:15.437Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -1255,7 +1260,7 @@ MySQL types are automatically converted to JavaScript types:
 | DECIMAL, NUMERIC                        | string                   | To preserve precision                                                                                |
 | FLOAT, DOUBLE                           | number                   |                                                                                                      |
 | DATE                                    | Date                     | JavaScript Date object                                                                               |
-| DATETIME, TIMESTAMP                     | Date                     | With timezone handling                                                                               |
+| DATETIME, TIMESTAMP                     | Date                     | Decoded as UTC (see note below); `0000-00-00` becomes an Invalid Date                                |
 | TIME                                    | number                   | Total of microseconds                                                                                |
 | YEAR                                    | number                   |                                                                                                      |
 | CHAR, VARCHAR, VARSTRING, STRING        | string                   |                                                                                                      |
@@ -1264,6 +1269,8 @@ MySQL types are automatically converted to JavaScript types:
 | JSON                                    | object/array             | Automatically parsed                                                                                 |
 | BIT(1)                                  | boolean                  | BIT(1) in MySQL                                                                                      |
 | GEOMETRY                                | string                   | Geometry data                                                                                        |
+
+`DATETIME` and `TIMESTAMP` values have no timezone on the wire, so Bun reads them back as **UTC** — the `Date` you get has the same UTC wall-clock that was stored, regardless of the machine's timezone. This matches how values are written (a bound `Date` stores its UTC components). The same applies to PostgreSQL's `timestamp` (without time zone); `timestamptz` carries an explicit offset and is unaffected.
 
 #### Differences from PostgreSQL
 
