@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-trades.md
-Downloaded: 2026-05-27T20:46:39.619Z
+Downloaded: 2026-06-01T21:14:09.209Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,7 @@ Downloaded: 2026-05-27T20:46:39.619Z
 
 # Get Trades
 
-> Endpoint for getting all trades for all markets. A trade represents a completed transaction between two users on a specific market. Each trade includes the market ticker, price, quantity, and timestamp information. This endpoint returns a paginated response. Use the 'limit' parameter to control page size (1-1000, defaults to 100). The response includes a 'cursor' field - pass this value in the 'cursor' parameter of your next request to get the next page. An empty cursor indicates no more pages are available.
+> Endpoint for getting all trades for all markets. A trade represents a completed transaction between two users on a specific market. Each trade includes the market ticker, price, quantity, and timestamp information. Block trades are included in the response by default and identified by the `is_block_trade` field; use the `is_block_trade` query parameter to filter by block / non-block. This endpoint returns a paginated response. Use the 'limit' parameter to control page size (1-1000, defaults to 100). The response includes a 'cursor' field - pass this value in the 'cursor' parameter of your next request to get the next page. An empty cursor indicates no more pages are available.
 
 
 
@@ -75,11 +75,13 @@ paths:
         Endpoint for getting all trades for all markets. A trade represents a
         completed transaction between two users on a specific market. Each trade
         includes the market ticker, price, quantity, and timestamp information.
-        This endpoint returns a paginated response. Use the 'limit' parameter to
-        control page size (1-1000, defaults to 100). The response includes a
-        'cursor' field - pass this value in the 'cursor' parameter of your next
-        request to get the next page. An empty cursor indicates no more pages
-        are available.
+        Block trades are included in the response by default and identified by
+        the `is_block_trade` field; use the `is_block_trade` query parameter to
+        filter by block / non-block. This endpoint returns a paginated response.
+        Use the 'limit' parameter to control page size (1-1000, defaults to
+        100). The response includes a 'cursor' field - pass this value in the
+        'cursor' parameter of your next request to get the next page. An empty
+        cursor indicates no more pages are available.
       operationId: GetTrades
       parameters:
         - $ref: '#/components/parameters/MarketLimitQuery'
@@ -87,6 +89,7 @@ paths:
         - $ref: '#/components/parameters/TickerQuery'
         - $ref: '#/components/parameters/MinTsQuery'
         - $ref: '#/components/parameters/MaxTsQuery'
+        - $ref: '#/components/parameters/IsBlockTradeQuery'
       responses:
         '200':
           description: Trades retrieved successfully
@@ -143,6 +146,15 @@ components:
       schema:
         type: integer
         format: int64
+    IsBlockTradeQuery:
+      name: is_block_trade
+      in: query
+      description: >
+        Filter trades by whether they are block trades. Omit to return all
+        trades. Set to `true` to return only block trades. Set to `false` to
+        return only non-block trades.
+      schema:
+        type: boolean
   schemas:
     GetTradesResponse:
       type: object
@@ -168,6 +180,7 @@ components:
         - taker_outcome_side
         - taker_book_side
         - created_time
+        - is_block_trade
       properties:
         trade_id:
           type: string
@@ -239,6 +252,12 @@ components:
           type: string
           format: date-time
           description: Timestamp when this trade was executed
+        is_block_trade:
+          type: boolean
+          description: >-
+            True if this trade was matched off-book as a block trade (e.g. via
+            RFQ / negotiated block proposal); false for trades that filled on
+            the standard order book.
     FixedPointCount:
       type: string
       description: >-

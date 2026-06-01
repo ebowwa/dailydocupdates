@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-ws/websockets/user-orders.md
-Downloaded: 2026-05-31T20:28:27.189Z
+Downloaded: 2026-06-01T21:14:09.224Z
 -->
 
 > ## Documentation Index
@@ -39,12 +39,12 @@ description: >
 servers:
   - id: production
     protocol: wss
-    host: external-api-ws.kalshi.com
+    host: external-api-margin-ws.kalshi.com
     bindings: []
     variables: []
   - id: demo
     protocol: wss
-    host: external-api-ws.demo.kalshi.co
+    host: external-api-margin-ws.demo.kalshi.co
     bindings: []
     variables: []
 address: user_orders
@@ -91,7 +91,6 @@ operations:
                     required: true
                   - name: side
                     type: string
-                    description: Margin book side
                     enumValues:
                       - bid
                       - ask
@@ -144,7 +143,7 @@ operations:
             type:
               type: string
               const: user_order
-              x-parser-schema-id: <anonymous-schema-87>
+              x-parser-schema-id: <anonymous-schema-88>
             sid:
               type: integer
               minimum: 1
@@ -166,14 +165,14 @@ operations:
                 order_id:
                   type: string
                   format: uuid
-                  x-parser-schema-id: <anonymous-schema-89>
+                  x-parser-schema-id: <anonymous-schema-90>
                 user_id:
                   type: string
                   format: uuid
-                  x-parser-schema-id: <anonymous-schema-90>
+                  x-parser-schema-id: <anonymous-schema-91>
                 client_order_id:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-91>
+                  x-parser-schema-id: <anonymous-schema-92>
                 ticker:
                   type: string
                   description: Unique market identifier
@@ -183,17 +182,16 @@ operations:
                   enum:
                     - bid
                     - ask
-                  description: Margin book side
                   x-parser-schema-id: bookSide
                 price:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-92>
+                  x-parser-schema-id: <anonymous-schema-93>
                 fill_count:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-93>
+                  x-parser-schema-id: <anonymous-schema-94>
                 remaining_count:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-94>
+                  x-parser-schema-id: <anonymous-schema-95>
                 self_trade_prevention_type:
                   type: string
                   enum:
@@ -206,26 +204,26 @@ operations:
                   description: >-
                     Order group identifier, if the order belongs to an order
                     group
-                  x-parser-schema-id: <anonymous-schema-95>
+                  x-parser-schema-id: <anonymous-schema-96>
                 expiration_ts_ms:
                   type: integer
                   format: int64
                   description: Unix timestamp in milliseconds.
-                  x-parser-schema-id: <anonymous-schema-96>
+                  x-parser-schema-id: <anonymous-schema-97>
                 created_ts_ms:
                   type: integer
                   format: int64
                   description: Unix timestamp in milliseconds.
-                  x-parser-schema-id: <anonymous-schema-97>
+                  x-parser-schema-id: <anonymous-schema-98>
                 last_updated_ts_ms:
                   type: integer
                   format: int64
                   description: Unix timestamp in milliseconds.
-                  x-parser-schema-id: <anonymous-schema-98>
+                  x-parser-schema-id: <anonymous-schema-99>
                 subaccount_number:
                   type: integer
-                  x-parser-schema-id: <anonymous-schema-99>
-              x-parser-schema-id: <anonymous-schema-88>
+                  x-parser-schema-id: <anonymous-schema-100>
+              x-parser-schema-id: <anonymous-schema-89>
           x-parser-schema-id: marginUserOrderPayload
         title: User Order Update
         description: Private margin order create/update notifications

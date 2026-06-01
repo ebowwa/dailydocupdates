@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/rate-limits.md
+Downloaded: 2026-06-01T21:13:58.578Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -93,14 +98,14 @@ Base URL: `https://clob.polymarket.com`
 
 Trading endpoints have both **burst** limits (short spikes allowed) and **sustained** limits (longer-term average).
 
-| Endpoint                       | Burst Limit     | Sustained Limit     |
-| ------------------------------ | --------------- | ------------------- |
-| `POST /order`                  | 5,000 req / 10s | 48,000 req / 10 min |
-| `DELETE /order`                | 5,000 req / 10s | 48,000 req / 10 min |
-| `POST /orders`                 | 1,500 req / 10s | 21,000 req / 10 min |
-| `DELETE /orders`               | 1,000 req / 10s | 15,000 req / 10 min |
-| `DELETE /cancel-all`           | 250 req / 10s   | 6,000 req / 10 min  |
-| `DELETE /cancel-market-orders` | 1,500 req / 10s | 21,000 req / 10 min |
+| Endpoint                       | Burst Limit     | Sustained Limit      |
+| ------------------------------ | --------------- | -------------------- |
+| `POST /order`                  | 5,000 req / 10s | 120,000 req / 10 min |
+| `DELETE /order`                | 5,000 req / 10s | 120,000 req / 10 min |
+| `POST /orders`                 | 2,000 req / 10s | 21,000 req / 10 min  |
+| `DELETE /orders`               | 2,000 req / 10s | 15,000 req / 10 min  |
+| `DELETE /cancel-all`           | 250 req / 10s   | 6,000 req / 10 min   |
+| `DELETE /cancel-market-orders` | 1,500 req / 10s | 21,000 req / 10 min  |
 
 ***
 

@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/managed-mcp.md
-Downloaded: 2026-05-25T20:33:54.012Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

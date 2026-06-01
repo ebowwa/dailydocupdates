@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-ws/websockets/orderbook-updates.md
-Downloaded: 2026-05-31T20:28:27.189Z
+Downloaded: 2026-06-01T21:14:09.223Z
 -->
 
 > ## Documentation Index
@@ -34,12 +34,12 @@ description: |
 servers:
   - id: production
     protocol: wss
-    host: external-api-ws.kalshi.com
+    host: external-api-margin-ws.kalshi.com
     bindings: []
     variables: []
   - id: demo
     protocol: wss
-    host: external-api-ws.demo.kalshi.co
+    host: external-api-margin-ws.demo.kalshi.co
     bindings: []
     variables: []
 address: orderbook_delta
@@ -205,7 +205,6 @@ operations:
                     required: true
                   - name: side
                     type: string
-                    description: Margin book side
                     enumValues:
                       - bid
                       - ask
@@ -269,7 +268,6 @@ operations:
                   enum:
                     - bid
                     - ask
-                  description: Margin book side
                   x-parser-schema-id: bookSide
                 last_update_reason:
                   type: string

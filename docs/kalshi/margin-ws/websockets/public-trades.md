@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-ws/websockets/public-trades.md
-Downloaded: 2026-05-31T20:28:27.189Z
+Downloaded: 2026-06-01T21:14:09.224Z
 -->
 
 > ## Documentation Index
@@ -36,12 +36,12 @@ description: >
 servers:
   - id: production
     protocol: wss
-    host: external-api-ws.kalshi.com
+    host: external-api-margin-ws.kalshi.com
     bindings: []
     variables: []
   - id: demo
     protocol: wss
-    host: external-api-ws.demo.kalshi.co
+    host: external-api-margin-ws.demo.kalshi.co
     bindings: []
     variables: []
 address: trade
@@ -88,7 +88,6 @@ operations:
                     required: true
                   - name: taker_side
                     type: string
-                    description: Margin book side
                     enumValues:
                       - bid
                       - ask
@@ -108,7 +107,7 @@ operations:
             type:
               type: string
               const: trade
-              x-parser-schema-id: <anonymous-schema-69>
+              x-parser-schema-id: <anonymous-schema-70>
             sid:
               type: integer
               minimum: 1
@@ -127,30 +126,29 @@ operations:
                 trade_id:
                   type: string
                   format: uuid
-                  x-parser-schema-id: <anonymous-schema-71>
+                  x-parser-schema-id: <anonymous-schema-72>
                 market_ticker:
                   type: string
                   description: Unique market identifier
                   x-parser-schema-id: marketTicker
                 price:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-72>
+                  x-parser-schema-id: <anonymous-schema-73>
                 count:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-73>
+                  x-parser-schema-id: <anonymous-schema-74>
                 taker_side:
                   type: string
                   enum:
                     - bid
                     - ask
-                  description: Margin book side
                   x-parser-schema-id: bookSide
                 ts_ms:
                   type: integer
                   format: int64
                   description: Unix timestamp in milliseconds.
-                  x-parser-schema-id: <anonymous-schema-74>
-              x-parser-schema-id: <anonymous-schema-70>
+                  x-parser-schema-id: <anonymous-schema-75>
+              x-parser-schema-id: <anonymous-schema-71>
           x-parser-schema-id: marginTradePayload
         title: Trade Update
         description: Public margin trade information

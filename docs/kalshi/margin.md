@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin.md
-Downloaded: 2026-05-31T20:28:27.181Z
+Downloaded: 2026-06-01T21:14:09.219Z
 -->
 
 > ## Documentation Index
@@ -11,7 +11,7 @@ Downloaded: 2026-05-31T20:28:27.181Z
 
 > Getting started with Kalshi's perpetual-futures (perps) trading API
 
-The **Perps API** is how you trade Kalshi's perpetual futures. **"Perps", "margin", and "perpetual futures" all refer to the same product** — the API surface uses *margin* throughout (endpoints under the `/margin` namespace, margin-prefixed fields), so these docs use *margin* for technical references. It mirrors the existing event contract API, so if you're already integrated there you're most of the way there: the margin endpoints follow the same patterns, authentication, and conventions, just under `/margin`.
+The **Perps API** is how you trade Kalshi's perpetual futures. **"Perps", "margin", and "perpetual futures" all refer to the same product.** The API surface uses *margin* throughout (endpoints under the `/margin` namespace, margin-prefixed fields), so these docs use *margin* for technical references. It mirrors the existing event contract API, so if you're already integrated there you're most of the way there: the margin endpoints follow the same patterns, authentication, and conventions, just under `/margin`.
 
 <Note>
   Perps trading is rolling out to production **gradually, member by member**. The demo environment is open to everyone today; production access is enabled in phases, so your account may not have production perps access yet even after the production endpoints are live. Build and test against demo now, and call `GET /margin/enabled` to check whether perps is enabled for your account in a given environment.
@@ -24,25 +24,27 @@ The **Perps API** is how you trade Kalshi's perpetual futures. **"Perps", "margi
 | Environment | Base URL                                                                              |
 | ----------- | ------------------------------------------------------------------------------------- |
 | Demo        | `https://external-api.demo.kalshi.co/trade-api/v2/margin/`                            |
-| Production  | `https://external-api.kalshi.com/trade-api/v2/margin/` — rolling out member by member |
+| Production  | `https://external-api.kalshi.com/trade-api/v2/margin/` (rolling out member by member) |
 
-Perps shares the same hosts as the event contract API (the `external-api` hosts are recommended; the shared `api.elections.kalshi.com` / `demo-api.kalshi.co` hosts also work). See [API Environments and Endpoints](/getting_started/api_environments) for the full list.
+Use the `external-api` hosts for perps REST. WebSocket and FIX use the separate perps hosts listed below.
 
 ### WebSocket API
 
-| Environment | URL                                                                                      |
-| ----------- | ---------------------------------------------------------------------------------------- |
-| Demo        | `wss://external-api-ws.demo.kalshi.co/trade-api/ws/v2/margin`                            |
-| Production  | `wss://external-api-ws.kalshi.com/trade-api/ws/v2/margin` — rolling out member by member |
+| Environment | URL                                                                                             |
+| ----------- | ----------------------------------------------------------------------------------------------- |
+| Demo        | `wss://external-api-margin-ws.demo.kalshi.co/trade-api/ws/v2/margin`                            |
+| Production  | `wss://external-api-margin-ws.kalshi.com/trade-api/ws/v2/margin` (rolling out member by member) |
 
 ### FIX API
 
 The margin FIX gateway uses a **separate host** from event contract FIX.
 
-| Environment | Host                        |
-| ----------- | --------------------------- |
-| Demo        | `margin-fix.demo.kalshi.co` |
-| Production  | Coming soon                 |
+| Environment | Type                      | Host                                      |
+| ----------- | ------------------------- | ----------------------------------------- |
+| Demo        | Order entry and drop copy | `margin-fix.demo.kalshi.co`               |
+| Demo        | Market data               | `margin-marketdata.fix.demo.kalshi.co`    |
+| Production  | Order entry and drop copy | `margin-fix-api.fix.elections.kalshi.com` |
+| Production  | Market data               | Coming soon                               |
 
 Available session types:
 
@@ -51,18 +53,20 @@ Available session types:
 | Order Entry (without retransmission) | 8228 | KalshiNR     |
 | Drop Copy                            | 8229 | KalshiDC     |
 | Order Entry (with retransmission)    | 8230 | KalshiRT     |
+| Market Data                          | 8233 | KalshiMD     |
 
 ## API Reference
 
-The Perps API mirrors the event contract API — same auth, pagination, error format, and order lifecycle — so the conventions in [Making Your First Request](/getting_started/making_your_first_request) and [API Environments](/getting_started/api_environments) apply directly.
+The Perps API mirrors the event contract API (same auth, pagination, error format, and order lifecycle), so the conventions in [Making Your First Request](/getting_started/making_your_first_request) and [API Environments](/getting_started/api_environments) apply directly.
 
-* **REST** — see the **REST** reference in this section.
-* **WebSocket** — see the margin channels under **WebSockets** in this section.
+* **REST**: see the **REST** reference in this section.
+* **WebSocket**: see the margin channels under **WebSockets** in this section.
 * **FIX**:
   * [Connectivity](/fix-margin/connectivity)
   * [Authentication & Sessions](/fix-margin/authentication)
   * [Order Entry](/fix-margin/order-entry)
   * [Order Groups](/fix-margin/order-groups)
+  * [Market Data](/fix-margin/market-data)
   * [Drop Copy](/fix-margin/drop-copy)
   * [Listener Sessions](/fix-margin/listener-sessions)
   * [Error Handling](/fix-margin/error-handling)
@@ -71,7 +75,7 @@ The Perps API mirrors the event contract API — same auth, pagination, error fo
 
 **What's the same:** authentication, pagination, error format, and core order lifecycle (create, amend, decrease, cancel) all work identically, just under `/margin/*` instead of `/portfolio/*` and `/markets/*`.
 
-**Margin-specific additions:** beyond the mirrored order, market, and order-group endpoints, margin adds endpoints for account balance and risk, funding (estimated and historical rates, plus payment history), fee tiers, subaccounts, and transfers between your event-contract and margin balances — see the **REST** reference for the full list. Two things to know up front: the event-contract ↔ margin transfer (`/portfolio/intra_exchange_instance_transfer`) is **not yet available** (enabled with the production rollout), and you can call `/margin/enabled` to check whether margin is on for your account in a given environment.
+**Margin-specific additions:** beyond the mirrored order, market, and order-group endpoints, margin adds endpoints for account balance and risk, funding (estimated and historical rates, plus payment history), fee tiers, subaccounts, and transfers between your event-contract and margin balances. See the **REST** reference for the full list. Two things to know up front: the event-contract ↔ margin transfer (`/portfolio/intra_exchange_instance_transfer`) is **not yet available** (enabled with the production rollout), and you can call `/margin/enabled` to check whether margin is on for your account in a given environment.
 
 **Not available on margin:**
 
@@ -112,10 +116,10 @@ The Perps API mirrors the event contract API — same auth, pagination, error fo
 
 **Key differences:**
 
-|                               | Event Contract FIX      | Margin FIX                                                         |
-| ----------------------------- | ----------------------- | ------------------------------------------------------------------ |
-| **Pricing**                   | Integer cents (1–99)    | Decimal dollars up to 4 decimal places                             |
-| **Session types**             | 5 (NR, RT, DC, PT, RFQ) | 3 (NR, RT, DC)                                                     |
-| **RFQ / Quotes**              | Supported               | Not available                                                      |
-| **Market settlement reports** | Supported (on KalshiRT) | Not available                                                      |
-| **UseDollars (21005)**        | Optional logon flag     | Always enabled (margin uses fixed-point dollar pricing by default) |
+|                               | Event Contract FIX          | Margin FIX                                                         |
+| ----------------------------- | --------------------------- | ------------------------------------------------------------------ |
+| **Pricing**                   | Integer cents (1–99)        | Decimal dollars up to 4 decimal places                             |
+| **Session types**             | 6 (NR, RT, DC, PT, RFQ, MD) | 4 (NR, RT, DC, MD)                                                 |
+| **RFQ / Quotes**              | Supported                   | Not available                                                      |
+| **Market settlement reports** | Supported (on KalshiRT)     | Not available                                                      |
+| **UseDollars (21005)**        | Optional logon flag         | Always enabled (margin uses fixed-point dollar pricing by default) |

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/connectivity.md
-Downloaded: 2026-05-28T20:51:18.966Z
+Downloaded: 2026-06-01T21:14:09.216Z
 -->
 
 > ## Documentation Index
@@ -24,11 +24,13 @@ Downloaded: 2026-05-28T20:51:18.966Z
     | Drop Copy                            | 8229 | KalshiDC     | Request-response queries for historical execution reports                                                                                                                                                                                            |
     | Post Trade                           | 8231 | KalshiPT     | Read-only stream for market settlement reports and position resolution. Contact [institutional@kalshi.com](mailto:institutional@kalshi.com) for access                                                                                               |
     | RFQ                                  | 8232 | KalshiRFQ    | Market maker session for receiving RFQ broadcasts, submitting quotes, and managing quote lifecycle                                                                                                                                                   |
-    | Market Data                          | 8233 | KalshiMD     | Order book snapshots and incremental updates                                                                                                                                                                                                         |
+    | Market Data                          | 8233 | KalshiMD     | Order book snapshots and incremental updates. Available only on market data host                                                                                                                                                                     |
   </Tab>
 
   <Tab title="Demo">
-    **Host:** `fix.demo.kalshi.co`
+    **Order Entry Host:** `fix.demo.kalshi.co`
+
+    **Market Data Host:** `marketdata.fix.demo.kalshi.co`
 
     | Purpose                              | Port | TargetCompID | Description                                                                                                                                                                                                                                          |
     | ------------------------------------ | ---- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -37,7 +39,7 @@ Downloaded: 2026-05-28T20:51:18.966Z
     | Drop Copy                            | 8229 | KalshiDC     | Request-response queries for historical execution reports                                                                                                                                                                                            |
     | Post Trade                           | 8231 | KalshiPT     | Read-only stream for market settlement reports and position resolution. Contact [institutional@kalshi.com](mailto:institutional@kalshi.com) for access                                                                                               |
     | RFQ                                  | 8232 | KalshiRFQ    | Market maker session for receiving RFQ broadcasts, submitting quotes, and managing quote lifecycle                                                                                                                                                   |
-    | Market Data                          | 8233 | KalshiMD     | Order book snapshots and incremental updates                                                                                                                                                                                                         |
+    | Market Data                          | 8233 | KalshiMD     | Order book snapshots and incremental updates. Available only on market data host                                                                                                                                                                     |
   </Tab>
 </Tabs>
 

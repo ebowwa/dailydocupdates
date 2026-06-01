@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/portfolio/get-balance.md
-Downloaded: 2026-05-31T20:28:27.187Z
+Downloaded: 2026-06-01T21:14:09.222Z
 -->
 
 > ## Documentation Index
@@ -28,13 +28,9 @@ info:
     approach
 servers:
   - url: https://external-api.kalshi.com/trade-api/v2
-    description: Production Trade API server
-  - url: https://api.elections.kalshi.com/trade-api/v2
-    description: Production shared API server, also supported
+    description: Production perps REST API server
   - url: https://external-api.demo.kalshi.co/trade-api/v2
-    description: Demo Trade API server
-  - url: https://demo-api.kalshi.co/trade-api/v2
-    description: Demo shared API server, also supported
+    description: Demo perps REST API server
 security: []
 tags:
   - name: exchange

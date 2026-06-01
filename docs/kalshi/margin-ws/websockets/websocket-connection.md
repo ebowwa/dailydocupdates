@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-ws/websockets/websocket-connection.md
-Downloaded: 2026-05-31T20:28:27.190Z
+Downloaded: 2026-06-01T21:14:09.224Z
 -->
 
 > ## Documentation Index
@@ -26,12 +26,12 @@ description: |
 servers:
   - id: production
     protocol: wss
-    host: external-api-ws.kalshi.com
+    host: external-api-margin-ws.kalshi.com
     bindings: []
     variables: []
   - id: demo
     protocol: wss
-    host: external-api-ws.demo.kalshi.co
+    host: external-api-margin-ws.demo.kalshi.co
     bindings: []
     variables: []
 address: /

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-ws/websockets/user-fills.md
-Downloaded: 2026-05-31T20:28:27.189Z
+Downloaded: 2026-06-01T21:14:09.224Z
 -->
 
 > ## Documentation Index
@@ -34,12 +34,12 @@ description: |
 servers:
   - id: production
     protocol: wss
-    host: external-api-ws.kalshi.com
+    host: external-api-margin-ws.kalshi.com
     bindings: []
     variables: []
   - id: demo
     protocol: wss
-    host: external-api-ws.demo.kalshi.co
+    host: external-api-margin-ws.demo.kalshi.co
     bindings: []
     variables: []
 address: fill
@@ -89,7 +89,6 @@ operations:
                     required: true
                   - name: side
                     type: string
-                    description: Margin book side
                     enumValues:
                       - bid
                       - ask
@@ -124,7 +123,7 @@ operations:
             type:
               type: string
               const: fill
-              x-parser-schema-id: <anonymous-schema-75>
+              x-parser-schema-id: <anonymous-schema-76>
             sid:
               type: integer
               minimum: 1
@@ -147,49 +146,48 @@ operations:
                 trade_id:
                   type: string
                   format: uuid
-                  x-parser-schema-id: <anonymous-schema-77>
+                  x-parser-schema-id: <anonymous-schema-78>
                 order_id:
                   type: string
                   format: uuid
-                  x-parser-schema-id: <anonymous-schema-78>
+                  x-parser-schema-id: <anonymous-schema-79>
                 client_order_id:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-79>
+                  x-parser-schema-id: <anonymous-schema-80>
                 market_ticker:
                   type: string
                   description: Unique market identifier
                   x-parser-schema-id: marketTicker
                 is_taker:
                   type: boolean
-                  x-parser-schema-id: <anonymous-schema-80>
+                  x-parser-schema-id: <anonymous-schema-81>
                 side:
                   type: string
                   enum:
                     - bid
                     - ask
-                  description: Margin book side
                   x-parser-schema-id: bookSide
                 ts_ms:
                   type: integer
                   format: int64
                   description: Unix timestamp in milliseconds.
-                  x-parser-schema-id: <anonymous-schema-81>
+                  x-parser-schema-id: <anonymous-schema-82>
                 price:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-82>
+                  x-parser-schema-id: <anonymous-schema-83>
                 count:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-83>
+                  x-parser-schema-id: <anonymous-schema-84>
                 fee_cost:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-84>
+                  x-parser-schema-id: <anonymous-schema-85>
                 post_position:
                   type: string
-                  x-parser-schema-id: <anonymous-schema-85>
+                  x-parser-schema-id: <anonymous-schema-86>
                 subaccount:
                   type: integer
-                  x-parser-schema-id: <anonymous-schema-86>
-              x-parser-schema-id: <anonymous-schema-76>
+                  x-parser-schema-id: <anonymous-schema-87>
+              x-parser-schema-id: <anonymous-schema-77>
           x-parser-schema-id: marginFillPayload
         title: Fill Update
         description: Private margin fill information for the authenticated user

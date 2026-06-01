@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/deposit-wallets.md
+Downloaded: 2026-06-01T21:13:58.586Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -466,15 +471,60 @@ fail with a wallet registration error. Store the deployed wallet address from
 the `WalletDeployed` event, from your onboarding flow, or derive it
 deterministically using the SDK's chain config.
 
-Deterministic address derivation follows the relayer clients:
+#### Wallet Implementation
+
+All new deposit wallets are **ERC-1967 BeaconProxy clones** that delegate to
+a shared **deposit wallet beacon** holding the wallet implementation. This
+lets the implementation be upgraded once without changing any user's deposit
+wallet address. Deposit wallets created before the factory upgrade are
+**ERC-1967 UUPS clones** that hold an implementation address in their own
+ERC-1967 implementation slot. Those legacy wallets remain at their original
+addresses and continue to work.
+
+Users who prefer to manage upgrades themselves can opt out of beacon upgrades
+at the contract level by pausing the wallet and opting out after the pause
+period.
+
+| Chain                 | Deposit wallet beacon                        |
+| --------------------- | -------------------------------------------- |
+| Polygon mainnet `137` | `0x7A18EDfe055488A3128f01F563e5B479D92ffc3a` |
+
+#### Deterministic Address Derivation
+
+The TypeScript and Python relayer clients pick the correct clone shape inside
+`deriveDepositWalletAddress()` and `get_expected_deposit_wallet()`, so SDK
+users do not need to handle the two shapes manually. Direct API integrations
+that derive addresses themselves should follow the same algorithm.
+
+Both clone shapes share the same outer CREATE2 inputs and differ only in the
+init code hash:
 
 ```text theme={null}
-walletId = bytes32(owner) // owner address left-padded to 32 bytes
-args = abi.encode(factory, walletId)
-salt = keccak256(args)
-bytecodeHash = SoladyLibClone.initCodeHashERC1967(implementation, args)
-depositWallet = CREATE2(factory, salt, bytecodeHash)
+walletId = bytes32(owner)                  // owner address left-padded to 32 bytes
+args     = abi.encode(factory, walletId)
+salt     = keccak256(args)
+
+// UUPS clones
+uupsBytecodeHash = SoladyLibClone.initCodeHashERC1967(implementation, args)
+uupsWallet       = CREATE2(factory, salt, uupsBytecodeHash)
+
+// BeaconProxy clones
+beaconBytecodeHash = SoladyLibClone.initCodeHashERC1967BeaconProxy(beacon, args)
+beaconWallet       = CREATE2(factory, salt, beaconBytecodeHash)
 ```
+
+To resolve a user's address, probe the factory's `BEACON()` view (selector
+`0x49493a4d`) and check whether the UUPS address is already deployed:
+
+1. Compute `uupsWallet`.
+2. `eth_call` the factory with data `0x49493a4d`. If the call reverts or
+   returns the zero address, the factory does not expose a beacon — return
+   `uupsWallet`.
+3. If the call returns a non-zero address, check `eth_getCode(uupsWallet)`.
+   If it has bytecode, the user already has a UUPS wallet there — return
+   `uupsWallet`.
+4. Otherwise, compute and return `beaconWallet` using the address returned
+   from `BEACON()`.
 
 ### Submit a Deposit Wallet Batch
 

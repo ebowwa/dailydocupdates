@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-ws/websockets/market-ticker.md
-Downloaded: 2026-05-31T20:28:27.189Z
+Downloaded: 2026-06-01T21:14:09.223Z
 -->
 
 > ## Documentation Index
@@ -52,12 +52,12 @@ description: >
 servers:
   - id: production
     protocol: wss
-    host: external-api-ws.kalshi.com
+    host: external-api-margin-ws.kalshi.com
     bindings: []
     variables: []
   - id: demo
     protocol: wss
-    host: external-api-ws.demo.kalshi.co
+    host: external-api-margin-ws.demo.kalshi.co
     bindings: []
     variables: []
 address: ticker
@@ -95,12 +95,17 @@ operations:
                     required: true
                   - name: price
                     type: string
+                    description: >-
+                      Last traded price in USD as a fixed-point decimal string
+                      (4 decimals).
                     required: true
                   - name: bid
                     type: string
+                    description: USD price as a fixed-point decimal string (4 decimals).
                     required: true
                   - name: ask
                     type: string
+                    description: USD price as a fixed-point decimal string (4 decimals).
                     required: true
                   - name: bid_size_fp
                     type: string
@@ -122,6 +127,7 @@ operations:
                     required: true
                   - name: reference_price
                     type: object
+                    description: Reference price of underlying asset, when available.
                     required: false
                     properties:
                       - name: price
@@ -218,12 +224,17 @@ operations:
                   x-parser-schema-id: marketTicker
                 price:
                   type: string
+                  description: >-
+                    Last traded price in USD as a fixed-point decimal string (4
+                    decimals).
                   x-parser-schema-id: <anonymous-schema-54>
                 bid:
                   type: string
+                  description: USD price as a fixed-point decimal string (4 decimals).
                   x-parser-schema-id: <anonymous-schema-55>
                 ask:
                   type: string
+                  description: USD price as a fixed-point decimal string (4 decimals).
                   x-parser-schema-id: <anonymous-schema-56>
                 bid_size_fp:
                   type: string
@@ -243,22 +254,28 @@ operations:
                 open_interest:
                   type: string
                   x-parser-schema-id: <anonymous-schema-62>
-                reference_price: &ref_0
-                  type: object
-                  required:
-                    - price
-                    - ts_ms
-                  properties:
-                    price:
-                      type: string
-                      description: USD price as a fixed-point decimal string (4 decimals)
-                      x-parser-schema-id: <anonymous-schema-63>
-                    ts_ms:
-                      type: integer
-                      format: int64
-                      description: Unix timestamp in milliseconds.
-                      x-parser-schema-id: <anonymous-schema-64>
-                  x-parser-schema-id: tickerPrice
+                reference_price:
+                  description: Reference price of underlying asset, when available.
+                  allOf:
+                    - &ref_0
+                      type: object
+                      required:
+                        - price
+                        - ts_ms
+                      properties:
+                        price:
+                          type: string
+                          description: >-
+                            USD price as a fixed-point decimal string (4
+                            decimals)
+                          x-parser-schema-id: <anonymous-schema-64>
+                        ts_ms:
+                          type: integer
+                          format: int64
+                          description: Unix timestamp in milliseconds.
+                          x-parser-schema-id: <anonymous-schema-65>
+                      x-parser-schema-id: tickerPrice
+                  x-parser-schema-id: <anonymous-schema-63>
                 settlement_mark_price: *ref_0
                 liquidation_mark_price: *ref_0
                 funding_rate:
@@ -272,25 +289,25 @@ operations:
                       type: number
                       format: double
                       description: Funding rate as a decimal value.
-                      x-parser-schema-id: <anonymous-schema-65>
+                      x-parser-schema-id: <anonymous-schema-66>
                     next_funding_time_ms:
                       type: integer
                       format: int64
                       description: >-
                         Unix timestamp in milliseconds for the next funding
                         time.
-                      x-parser-schema-id: <anonymous-schema-66>
+                      x-parser-schema-id: <anonymous-schema-67>
                     ts_ms:
                       type: integer
                       format: int64
                       description: Unix timestamp in milliseconds for the funding snapshot.
-                      x-parser-schema-id: <anonymous-schema-67>
+                      x-parser-schema-id: <anonymous-schema-68>
                   x-parser-schema-id: fundingRate
                 ts_ms:
                   type: integer
                   format: int64
                   description: Unix timestamp in milliseconds.
-                  x-parser-schema-id: <anonymous-schema-68>
+                  x-parser-schema-id: <anonymous-schema-69>
               x-parser-schema-id: <anonymous-schema-53>
           x-parser-schema-id: marginTickerPayload
         title: Ticker Update

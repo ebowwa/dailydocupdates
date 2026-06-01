@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/resources/contracts.md
+Downloaded: 2026-06-01T21:13:58.584Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -40,6 +45,7 @@ All Polymarket contracts are deployed on **Polygon mainnet** (Chain ID: 137). Th
 | Contract                 | Address                                                                                                                    |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | Deposit Wallet Factory   | [`0x00000000000Fb5C9ADea0298D729A0CB3823Cc07`](https://polygonscan.com/address/0x00000000000Fb5C9ADea0298D729A0CB3823Cc07) |
+| Deposit Wallet Beacon    | [`0x7A18EDfe055488A3128f01F563e5B479D92ffc3a`](https://polygonscan.com/address/0x7A18EDfe055488A3128f01F563e5B479D92ffc3a) |
 | Gnosis Safe Factory      | [`0xaacfeea03eb1561c4e67d661e40682bd20e3541b`](https://polygonscan.com/address/0xaacfeea03eb1561c4e67d661e40682bd20e3541b) |
 | Polymarket Proxy Factory | [`0xaB45c5A4B0c941a2F231C04C3f49182e1A254052`](https://polygonscan.com/address/0xaB45c5A4B0c941a2F231C04C3f49182e1A254052) |
 
