@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix-margin/order-entry.md
-Downloaded: 2026-06-01T21:14:09.215Z
+Downloaded: 2026-06-02T21:08:39.843Z
 -->
 
 > ## Documentation Index
@@ -155,6 +155,7 @@ This message is sent by the exchange to reflect changes to an order's state.
 Common values include:
 
 * `EXCHANGE_UNAVAILABLE`
+* `INTERNAL_ERROR`
 * `MARKET_ALREADY_CLOSED`
 * `MARKET_INACTIVE`
 * `MARKET_NOT_FOUND`

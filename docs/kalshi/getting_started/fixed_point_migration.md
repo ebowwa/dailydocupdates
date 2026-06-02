@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/fixed_point_migration.md
+Downloaded: 2026-06-02T21:08:39.846Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,8 +17,8 @@ Last Updated: April 17, 2026
 
 Kalshi uses fixed-point representation across all APIs. This involves two independent changes:
 
-1. **Subpenny Pricing** — price fields use fixed-point dollar strings (`_dollars` suffix)
-2. **Fractional Contracts** — contract count fields use fixed-point strings (`_fp` suffix)
+1. **Subpenny Pricing**: price fields use fixed-point dollar strings (`_dollars` suffix)
+2. **Fractional Contracts**: contract count fields use fixed-point strings (`_fp` suffix)
 
 The `price_level_structure` field on Market responses indicates which pricing tier is active for a given market.
 
@@ -44,7 +49,7 @@ Subpenny pricing is offered on a per-market basis. The `price_level_structure` f
 |                     | \$0.90 – \$1.00 | \$0.001   |
 | `deci_cent`         | \$0.00 – \$1.00 | \$0.001   |
 
-`tapered_deci_cent` provides finer \$0.001 (decicent) precision at the tails of the probability range — below \$0.10 and above \$0.90 — where small absolute price differences represent large relative changes in implied probability. The middle range uses standard \$0.01 (cent) ticks.
+`tapered_deci_cent` provides finer \$0.001 (decicent) precision at the tails of the probability range, below \$0.10 and above \$0.90, where small absolute price differences represent large relative changes in implied probability. The middle range uses standard \$0.01 (cent) ticks.
 
 `deci_cent` applies \$0.001 precision across the entire range.
 

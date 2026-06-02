@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets.md
-Downloaded: 2026-05-31T20:28:27.190Z
+Downloaded: 2026-06-02T21:08:39.852Z
 -->
 
 > ## Documentation Index
@@ -23,3 +23,4 @@ WebSocket connections use the same API key authentication and signing path as be
 * For connection and subscription examples, see [Quick Start: WebSockets](/getting_started/quick_start_websockets).
 * For all REST and WebSocket base URLs, see [API Environments and Endpoints](/getting_started/api_environments).
 * To generate clients or inspect channel payloads directly, download the [AsyncAPI specification](/asyncapi.yaml).
+* For detailed CF Benchmarks channel usage (`cfbenchmarks_value`), see [CF Benchmarks Value Feed](/websockets/cfbenchmarks-value).

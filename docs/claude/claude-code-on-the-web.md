@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/claude-code-on-the-web.md
+Downloaded: 2026-06-02T21:08:38.789Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -752,6 +757,8 @@ When auto-fix is active, Claude receives GitHub events for the PR including new 
 * **Clear fixes**: if Claude is confident in a fix and it doesn't conflict with earlier instructions, Claude makes the change, pushes it, and explains what was done in the session
 * **Ambiguous requests**: if a reviewer's comment could be interpreted multiple ways or involves something architecturally significant, Claude asks you before acting
 * **Duplicate or no-action events**: if an event is a duplicate or requires no change, Claude notes it in the session and moves on
+
+GitHub does not emit a webhook when the base branch advances and creates a merge conflict, so auto-fix cannot react to conflicts on its own. To resolve a conflict, open the session and ask Claude to rebase.
 
 Claude may reply to review comment threads on GitHub as part of resolving them. These replies are posted using your GitHub account, so they appear under your username, but each reply is labeled as coming from Claude Code so reviewers know it was written by the agent and not by you directly.
 

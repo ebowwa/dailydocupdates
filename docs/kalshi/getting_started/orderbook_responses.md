@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/orderbook_responses.md
+Downloaded: 2026-06-02T21:08:39.847Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -49,7 +54,7 @@ No authentication is required for this endpoint.
 
 ## Response Structure
 
-The orderbook response is wrapped in an `orderbook_fp` object containing two arrays of bids — `yes_dollars` for YES positions and `no_dollars` for NO positions. Each bid is a two-element string array: `[price_dollars, count_fp]`.
+The orderbook response is wrapped in an `orderbook_fp` object containing two arrays of bids: `yes_dollars` for YES positions and `no_dollars` for NO positions. Each bid is a two-element string array: `[price_dollars, count_fp]`.
 
 * **`price_dollars`**: Price as a dollar string (e.g., `"0.4200"` = \$0.42)
 * **`count_fp`**: Number of contracts as a fixed-point string (e.g., `"13.00"` = 13 contracts)

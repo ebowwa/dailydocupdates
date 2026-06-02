@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/batch-create-orders-v2.md
-Downloaded: 2026-05-27T20:46:39.622Z
+Downloaded: 2026-06-02T21:08:39.840Z
 -->
 
 > ## Documentation Index
@@ -172,7 +172,6 @@ components:
       type: object
       required:
         - ticker
-        - client_order_id
         - side
         - count
         - price

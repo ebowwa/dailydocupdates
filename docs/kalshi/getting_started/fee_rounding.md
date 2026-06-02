@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/fee_rounding.md
+Downloaded: 2026-06-02T21:08:39.846Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -50,7 +55,7 @@ The examples below assume a target balance precision of `$0.01` (`1c`). For dire
 
 <AccordionGroup>
   <Accordion title="Subpenny prices: buy 3 contracts at $0.055 (three 1-lot matches)">
-    Buy **3 contracts** at **\$0.055** — filled as three 1-lot matches. Contracts are whole; rounding arises from the sub-cent price.
+    Buy **3 contracts** at **\$0.055**, filled as three 1-lot matches. Contracts are whole; rounding arises from the sub-cent price.
 
     **Fill 1 walkthrough:**
 
@@ -74,7 +79,7 @@ The examples below assume a target balance precision of `$0.01` (`1c`). For dire
   </Accordion>
 
   <Accordion title="Fractional contracts: buy 0.90 contracts at $0.50 (three 0.30-lot matches)">
-    Buy **0.90 contracts** at **\$0.50** — filled as three 0.30-lot matches. The price is a whole cent; rounding arises from the fractional quantity.
+    Buy **0.90 contracts** at **\$0.50**, filled as three 0.30-lot matches. The price is a whole cent; rounding arises from the fractional quantity.
 
     **Fill 1 walkthrough:**
 
@@ -98,7 +103,7 @@ The examples below assume a target balance precision of `$0.01` (`1c`). For dire
   </Accordion>
 
   <Accordion title="Combined: fractional contracts + subpenny prices (three 0.03-lot matches)">
-    Buy **0.09 contracts** at **\$0.3301** — filled as three 0.03-lot matches. Both features contribute sub-cent components, pushing intermediates to 6 decimal places.
+    Buy **0.09 contracts** at **\$0.3301**, filled as three 0.03-lot matches. Both features contribute sub-cent components, pushing intermediates to 6 decimal places.
 
     **Fill 1 walkthrough:**
 

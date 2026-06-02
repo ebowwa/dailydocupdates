@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/scheduled-tasks.md
+Downloaded: 2026-06-02T21:08:38.801Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -44,7 +49,7 @@ The `/loop` [bundled skill](/en/commands) is the quickest way to run a prompt on
 | Prompt only               | `/loop check the deploy`    | Your prompt runs at an [interval Claude chooses](#let-claude-choose-the-interval) each iteration              |
 | Interval only, or nothing | `/loop`                     | The [built-in maintenance prompt](#run-the-built-in-maintenance-prompt) runs, or your `loop.md` if one exists |
 
-You can also pass another command as the prompt, for example `/loop 20m /review-pr 1234`, to re-run a packaged workflow each iteration.
+You can also pass another command as the prompt, for example `/loop 20m /review-pr 1234`, to re-run a saved skill or command each iteration.
 
 ### Run on a fixed interval
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/mcp.md
-Downloaded: 2026-05-30T20:25:59.561Z
+Downloaded: 2026-06-02T21:08:38.796Z
 -->
 
 > ## Documentation Index
@@ -14,6 +14,8 @@ Downloaded: 2026-05-30T20:25:59.561Z
 Claude Code can connect to hundreds of external tools and data sources through the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction), an open source standard for AI-tool integrations. MCP servers give Claude Code access to your tools, databases, and APIs.
 
 Connect a server when you find yourself copying data into chat from another tool, like an issue tracker or a monitoring dashboard. Once connected, Claude can read and act on that system directly instead of working from what you paste.
+
+If you're connecting your first server, start with the [MCP quickstart](/en/mcp-quickstart) for a step-by-step walkthrough. This page is the full reference.
 
 ## What you can do with MCP
 
@@ -960,7 +962,7 @@ MCP servers can expose resources that you can reference using @ mentions, simila
 
 ## Scale with MCP Tool Search
 
-Tool search keeps MCP context usage low by deferring tool definitions until Claude needs them. Only tool names load at session start, so adding more MCP servers has minimal impact on your context window.
+Tool search keeps MCP context usage low by deferring tool definitions until Claude needs them. Only tool names and server instructions load at session start, so adding more MCP servers has minimal impact on your context window.
 
 ### How it works
 
