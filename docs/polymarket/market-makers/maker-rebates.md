@@ -1,12 +1,17 @@
+<!--
+Source: https://docs.polymarket.com/market-makers/maker-rebates.md
+Downloaded: 2026-06-03T21:08:49.734Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Maker Rebates Program
 
-> Earn daily USDC rebates by providing liquidity on Polymarket
+> Earn daily pUSD rebates by providing liquidity on Polymarket
 
-Polymarket charges taker fees across multiple market categories. Fees are determined by the protocol at match time and fund a **Maker Rebates** program that pays daily USDC rebates to liquidity providers.
+Polymarket charges taker fees across multiple market categories. Fees are determined by the protocol at match time and fund a **Maker Rebates** program that pays daily pUSD rebates to liquidity providers.
 
 ***
 
@@ -18,7 +23,7 @@ Deeper liquidity means tighter spreads, lower price impact, more reliable fills,
 
 ## How Maker Rebates Work
 
-* **Paid daily in USDC:** Rebates are calculated and distributed every day.
+* **Paid daily in pUSD:** Rebates are calculated and distributed every day.
 * **Performance-based:** You earn based on the share of liquidity you provided that actually got taken.
 
 ### Eligibility
@@ -27,7 +32,7 @@ Place orders that add liquidity to the book and get filled (i.e., your liquidity
 
 ### Payment
 
-Rebates are paid daily in USDC, directly to your wallet. A minimum accrued rebate of **\$1 USDC** is required for a payout.
+Rebates are paid daily in pUSD, directly to your wallet. A minimum accrued rebate of **\$1 pUSD** is required for a payout.
 
 ***
 
@@ -95,7 +100,7 @@ Totals are calculated per market, so you only compete with other makers in the s
 
 ## Taker Fee Structure
 
-Taker fees are calculated in USDC and vary based on the share price. The fee amount in USDC is symmetric around 50% probability — a trade at 30¢ incurs the same dollar fee as a trade at 70¢.
+Taker fees are calculated in pUSD and vary based on the share price. The fee amount in pUSD is symmetric around 50% probability — a trade at 30¢ incurs the same dollar fee as a trade at 70¢.
 
 <Frame>
   <div className="p-3 bg-white rounded-xl">
@@ -109,7 +114,7 @@ For detailed fee tables for each market category, see the [Fees](/trading/fees) 
 
 ### Fee Precision
 
-Fees are rounded to 5 decimal places. The smallest fee charged is 0.00001 USDC. Anything smaller rounds to zero, so very small trades near the extremes may incur no fee at all.
+Fees are rounded to 5 decimal places. The smallest fee charged is 0.00001 pUSD. Anything smaller rounds to zero, so very small trades near the extremes may incur no fee at all.
 
 ***
 
@@ -132,7 +137,7 @@ The following market categories have taker fees enabled and are eligible for mak
     liquidity is taken by another trader).
   </Accordion>
 
-  <Accordion title="When are rebates paid">Daily, in USDC. You must accrue at least \$1 in rebates before a payout is issued.</Accordion>
+  <Accordion title="When are rebates paid">Daily, in pUSD. You must accrue at least \$1 in rebates before a payout is issued.</Accordion>
 
   <Accordion title="How are rebates calculated">
     Rebates are proportional to your share of executed maker liquidity in each

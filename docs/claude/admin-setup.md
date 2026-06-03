@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/admin-setup.md
-Downloaded: 2026-05-27T20:46:48.826Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

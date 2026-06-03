@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-01T21:14:09.214Z
+Downloaded: 2026-06-03T21:08:50.406Z
 -->
 
 > ## Documentation Index
@@ -18,14 +18,30 @@ This changelog is a work in progress. As always, we welcome any feedback in our 
 ## Recent Updates
 
 <Update
-  label="June 4, 2026"
+  label="June 11, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Tick size added to GET Margin Markets",
+description: "Tick size added to GET Margin Markets."
+}}
+>
+  Margin market responses now report `tick_size`.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/margin/markets`
+  * `GET /trade-api/v2/margin/markets/{ticker}`
+</Update>
+
+<Update
+  label="June 11, 2026"
   tags={["New Feature", "Upcoming"]}
   rss={{
 title: "Fractional quantities for RFQs",
 description: "RFQs will support fractional contract quantities in API and FIX flows."
 }}
 >
-  RFQs will support fractional contract quantities beginning with the June 4,
+  RFQs will support fractional contract quantities beginning with the June 11,
   2026 release. API clients will be able to create RFQs with positive
   `contracts_fp` values in `0.01`-contract increments, and quote responses may
   include fractional values in fixed-point quantity fields such as
@@ -41,6 +57,20 @@ description: "RFQs will support fractional contract quantities in API and FIX fl
   * `GET /communications/rfqs`
   * `GET /communications/quotes`
   * FIX `QuoteRequest (35=R)`, `Quote (35=S)`, and `QuoteStatusReport (35=AI)`
+</Update>
+
+<Update
+  label="June 2, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Transfer-scoped API key permissions",
+description: "API keys can now use write::transfer for transfer-scoped write endpoint access."
+}}
+>
+  API keys can now use `write::transfer` to grant access only to
+  transfer-scoped write endpoints without granting the broad `write` parent
+  scope. Parent scopes still grant broad access, so `write` continues to grant
+  all write endpoint groups, including transfer-scoped writes.
 </Update>
 
 <Update
