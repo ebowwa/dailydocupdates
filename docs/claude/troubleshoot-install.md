@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/troubleshoot-install.md
+Downloaded: 2026-06-04T20:46:27.320Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -54,6 +59,8 @@ The installer downloads from `downloads.claude.ai`. Verify you can reach it:
 ```bash theme={null}
 curl -sI https://downloads.claude.ai/claude-code-releases/latest
 ```
+
+In PowerShell, run `curl.exe -sI` instead. PowerShell aliases `curl` to `Invoke-WebRequest`, which rejects the `-sI` flags.
 
 An `HTTP/2 200` line means you reached the server. If you see no output, `Could not resolve host`, or a connection timeout, your network is blocking the connection. Common causes:
 

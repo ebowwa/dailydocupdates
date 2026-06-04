@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/fcm/get-fcm-orders.md
-Downloaded: 2026-06-01T21:14:09.219Z
+Downloaded: 2026-06-04T20:46:33.762Z
 -->
 
 > ## Documentation Index
@@ -256,6 +256,7 @@ components:
         - SelfTradeCancel
         - ExpiryCancel
         - Trade
+        - PostOnlyCrossCancel
     FixedPointDollars:
       type: string
       description: >-

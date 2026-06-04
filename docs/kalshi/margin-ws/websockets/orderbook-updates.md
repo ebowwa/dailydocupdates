@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-ws/websockets/orderbook-updates.md
-Downloaded: 2026-06-01T21:14:09.223Z
+Downloaded: 2026-06-04T20:46:33.767Z
 -->
 
 > ## Documentation Index
@@ -222,6 +222,7 @@ operations:
                       - SelfTradeCancel
                       - ExpiryCancel
                       - Trade
+                      - PostOnlyCrossCancel
                     required: false
                   - name: client_order_id
                     type: string
@@ -279,6 +280,7 @@ operations:
                     - SelfTradeCancel
                     - ExpiryCancel
                     - Trade
+                    - PostOnlyCrossCancel
                   description: >-
                     Margin order update reason when the delta corresponds to the
                     authenticated user's order.

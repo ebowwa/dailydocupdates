@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-03T21:08:50.406Z
+Downloaded: 2026-06-04T20:46:33.757Z
 -->
 
 > ## Documentation Index
@@ -16,6 +16,22 @@ You can subscribe to the RSS changelog at `/changelog/rss.xml` if you'd like to 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="June 11, 2026"
+  tags={["Bug Fix", "Upcoming"]}
+  rss={{
+title: "Margin fee-tier endpoint returns active rates",
+description: "GET /trade-api/v2/margin/fee_tiers now returns active maker and taker fee rates instead of zeroing the response."
+}}
+>
+  `GET /trade-api/v2/margin/fee_tiers` now returns active maker and taker
+  fee rates for each eligible margin market instead of zeroing the response.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/margin/fee_tiers`
+</Update>
 
 <Update
   label="June 11, 2026"
@@ -57,6 +73,56 @@ description: "RFQs will support fractional contract quantities in API and FIX fl
   * `GET /communications/rfqs`
   * `GET /communications/quotes`
   * FIX `QuoteRequest (35=R)`, `Quote (35=S)`, and `QuoteStatusReport (35=AI)`
+</Update>
+
+<Update
+  label="June 4, 2026"
+  tags={["Change", "Upcoming"]}
+  rss={{
+title: "Legacy order mutation rate-limit costs increase to 10x V2",
+description: "Legacy /portfolio/orders mutation and batch endpoint rate-limit costs will be 10x the corresponding V2 /portfolio/events/orders endpoint costs. V2 endpoint costs are unchanged."
+}}
+>
+  Legacy `/portfolio/orders` mutation and batch endpoint rate-limit token costs
+  will be 10x the corresponding V2 `/portfolio/events/orders` endpoint costs.
+  The V2 endpoint costs are unchanged.
+
+  Switch to the V2 event-order endpoints to keep full write rate-limit access
+  for these workflows:
+
+  * [Create Order (V2)](/api-reference/orders/create-order-v2)
+  * [Cancel Order (V2)](/api-reference/orders/cancel-order-v2)
+  * [Amend Order (V2)](/api-reference/orders/amend-order-v2)
+  * [Decrease Order (V2)](/api-reference/orders/decrease-order-v2)
+  * [Batch Create Orders (V2)](/api-reference/orders/batch-create-orders-v2)
+  * [Batch Cancel Orders (V2)](/api-reference/orders/batch-cancel-orders-v2)
+
+  **Affected endpoints:**
+
+  * `POST /trade-api/v2/portfolio/orders` - cost `50` to `100`
+  * `DELETE /trade-api/v2/portfolio/orders/{order_id}` - cost `10` to `20`
+  * `POST /trade-api/v2/portfolio/orders/{order_id}/amend` - cost `50` to `100`
+  * `POST /trade-api/v2/portfolio/orders/{order_id}/decrease` - cost `50` to `100`
+  * `POST /trade-api/v2/portfolio/orders/batched` - cost `50` to `100`
+  * `DELETE /trade-api/v2/portfolio/orders/batched` - cost `10` to `20`
+</Update>
+
+<Update
+  label="June 4, 2026"
+  tags={["Change", "Upcoming"]}
+  rss={{
+title: "Post Only Cross Cancel update reason added",
+description: "Post Only Cross Cancel update reason added"
+}}
+>
+  When a post-only order would cross the book, the `last_update_reason` field is
+  now reported as `PostOnlyCrossCancel` instead of `Decrease`.
+
+  **Affected surfaces:**
+
+  * `GET /portfolio/orders`
+  * `GET /portfolio/order/{orderId}`
+  * `orderbook_delta` WebSocket channel
 </Update>
 
 <Update

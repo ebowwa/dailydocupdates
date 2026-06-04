@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/create-order-v2.md
-Downloaded: 2026-06-02T21:08:39.840Z
+Downloaded: 2026-06-04T20:46:33.754Z
 -->
 
 > ## Documentation Index
@@ -115,6 +115,19 @@ components:
         - price
         - time_in_force
         - self_trade_prevention_type
+      example:
+        ticker: HIGHNY-24JAN01-T60
+        client_order_id: 8c35ecb3-328f-4f52-8c7c-0f4b9862f8d1
+        side: bid
+        count: '10.00'
+        price: '0.5600'
+        time_in_force: good_till_canceled
+        self_trade_prevention_type: taker_at_cross
+        post_only: false
+        cancel_order_on_pause: false
+        reduce_only: false
+        subaccount: 0
+        exchange_index: 0
       properties:
         ticker:
           type: string
@@ -213,6 +226,12 @@ components:
         - fill_count
         - remaining_count
         - ts_ms
+      example:
+        order_id: 3b23c1c7-f4ef-4f0d-8b9a-9e53c61f1a0d
+        client_order_id: 8c35ecb3-328f-4f52-8c7c-0f4b9862f8d1
+        fill_count: '0.00'
+        remaining_count: '10.00'
+        ts_ms: 1715793600123
       properties:
         order_id:
           type: string

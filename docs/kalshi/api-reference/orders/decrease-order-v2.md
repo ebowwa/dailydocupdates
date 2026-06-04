@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/orders/decrease-order-v2.md
+Downloaded: 2026-06-04T20:46:33.754Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -116,6 +121,9 @@ components:
   schemas:
     DecreaseOrderV2Request:
       type: object
+      example:
+        reduce_by: '2.00'
+        exchange_index: 0
       properties:
         reduce_by:
           $ref: '#/components/schemas/FixedPointCount'
@@ -140,6 +148,11 @@ components:
         - order_id
         - remaining_count
         - ts_ms
+      example:
+        order_id: 3b23c1c7-f4ef-4f0d-8b9a-9e53c61f1a0d
+        client_order_id: 8c35ecb3-328f-4f52-8c7c-0f4b9862f8d1
+        remaining_count: '8.00'
+        ts_ms: 1715793680789
       properties:
         order_id:
           type: string

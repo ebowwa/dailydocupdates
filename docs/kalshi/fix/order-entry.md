@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/order-entry.md
-Downloaded: 2026-06-02T21:08:39.845Z
+Downloaded: 2026-06-04T20:46:33.759Z
 -->
 
 > ## Documentation Index
@@ -119,6 +119,7 @@ Sent by the exchange to reflect order state changes.
 * **Partially Filled\<1>**: Some quantity filled
 * **Filled\<2>**: Completely filled
 * **Canceled\<4>**: Canceled (may have partial fills)
+* **Replaced\<5>**: Order modified via Cancel/Replace
 * **Pending Cancel\<6>**: Cancel pending
 * **Rejected\<8>**: Order rejected
 * **Pending New\<A>**: Order pending acceptance
@@ -178,7 +179,7 @@ Common values for the Text field in Execution Reports:
 * **CUSTOMER\_ACCOUNT\_NOT\_FOUND** - maps to OrdRejReason "Unknown account"
 * **PERMISSION\_DENIED\_FOR\_CUSTOMER\_ACCOUNT** - maps to OrdRejReason "Unknown account"
 * **FOK\_INSUFFICIENT\_VOLUME** - maps to ExecutionType "Canceled"
-* **POST\_ONLY\_CROSS** - maps to OrdRejReason "Other"
+* **POST\_ONLY\_CROSS** - maps to ExecutionType "Canceled"
 * **ORDER\_GROUP\_CANCEL** - maps to ExecutionType "Canceled"
 * **TAKER\_CANCEL\_FOR\_SELF\_TRADE\_PREVENTION** - maps to ExecutionType "Canceled"
 * **MAKER\_CANCEL\_FOR\_SELF\_TRADE\_PREVENTION** - maps to ExecutionType "Canceled"

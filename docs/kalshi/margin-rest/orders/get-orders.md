@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/orders/get-orders.md
-Downloaded: 2026-06-01T21:14:09.222Z
+Downloaded: 2026-06-04T20:46:33.766Z
 -->
 
 > ## Documentation Index
@@ -253,6 +253,7 @@ components:
         - SelfTradeCancel
         - ExpiryCancel
         - Trade
+        - PostOnlyCrossCancel
     FixedPointDollars:
       type: string
       description: >-
