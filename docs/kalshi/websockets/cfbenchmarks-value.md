@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/cfbenchmarks-value.md
-Downloaded: 2026-06-02T21:08:39.853Z
+Downloaded: 2026-06-05T20:39:40.506Z
 -->
 
 > ## Documentation Index
@@ -171,6 +171,7 @@ Example `cfbenchmarks_value` payload:
 * If you subscribe to the channel without any `index_ids`, no value events flow until you add indices or switch to `"all"`.
 * Duplicate or out-of-order upstream source timestamps are ignored.
 * `sid` identifies the subscription stream; use it for `update_subscription` and `unsubscribe`.
+* tick frequency is once a second
 
 ## Common errors
 

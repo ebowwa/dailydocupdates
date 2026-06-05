@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/portfolio/get-fills.md
+Downloaded: 2026-06-05T20:39:40.493Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -116,6 +121,8 @@ components:
       description: Filter by order ID
       schema:
         type: string
+        format: uuid
+        x-go-type: string
         x-go-type-skip-optional-pointer: true
     MinTsQuery:
       name: min_ts
@@ -200,6 +207,8 @@ components:
           description: Unique identifier for this fill (legacy field name, same as fill_id)
         order_id:
           type: string
+          format: uuid
+          x-go-type: string
           description: Unique identifier for the order that resulted in this fill
         ticker:
           type: string

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/plugins-reference.md
-Downloaded: 2026-06-02T21:08:38.800Z
+Downloaded: 2026-06-05T20:39:50.136Z
 -->
 
 > ## Documentation Index
@@ -1030,6 +1030,8 @@ claude plugin list [options]
 | `--json`      | Output as JSON                                                 |         |
 | `--available` | Include available plugins from marketplaces. Requires `--json` |         |
 | `-h, --help`  | Display help for command                                       |         |
+
+Within an interactive session, `/plugin list` prints the same listing inline. The interactive form accepts `--enabled` or `--disabled` to show only plugins in that state, and `ls` as a shorthand for `list`.
 
 ### plugin details
 

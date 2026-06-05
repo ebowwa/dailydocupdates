@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/project/building-windows.md
-Downloaded: 2026-05-28T20:51:20.012Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

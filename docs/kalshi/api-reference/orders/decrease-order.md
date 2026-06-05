@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/orders/decrease-order.md
+Downloaded: 2026-06-05T20:39:40.492Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -103,6 +108,8 @@ components:
       description: Order ID
       schema:
         type: string
+        format: uuid
+        x-go-type: string
   schemas:
     DecreaseOrderRequest:
       type: object
@@ -201,6 +208,8 @@ components:
       properties:
         order_id:
           type: string
+          format: uuid
+          x-go-type: string
         user_id:
           type: string
           description: Unique identifier for users

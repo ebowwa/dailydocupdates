@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/discover-plugins.md
-Downloaded: 2026-06-01T21:14:10.103Z
+Downloaded: 2026-06-05T20:39:50.129Z
 -->
 
 > ## Documentation Index
@@ -302,6 +302,14 @@ From the list you can:
 When you install a plugin that declares dependencies, the install output lists which dependencies were auto-installed alongside it.
 
 You can also manage plugins with direct commands.
+
+List installed plugins without opening the menu:
+
+```shell theme={null}
+/plugin list
+```
+
+Pass `--enabled` or `--disabled` to show only plugins in that state.
 
 Disable a plugin without uninstalling:
 

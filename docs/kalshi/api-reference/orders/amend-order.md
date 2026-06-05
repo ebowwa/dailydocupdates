@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/amend-order.md
-Downloaded: 2026-05-30T20:25:51.504Z
+Downloaded: 2026-06-05T20:39:40.490Z
 -->
 
 > ## Documentation Index
@@ -111,6 +111,8 @@ components:
       description: Order ID
       schema:
         type: string
+        format: uuid
+        x-go-type: string
   schemas:
     AmendOrderRequest:
       type: object
@@ -253,6 +255,8 @@ components:
       properties:
         order_id:
           type: string
+          format: uuid
+          x-go-type: string
         user_id:
           type: string
           description: Unique identifier for users

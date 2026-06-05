@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-ws/websockets/order-group-updates.md
-Downloaded: 2026-06-01T21:14:09.223Z
+Downloaded: 2026-06-05T20:39:40.505Z
 -->
 
 > ## Documentation Index
@@ -124,7 +124,7 @@ operations:
             type:
               type: string
               const: order_group_updates
-              x-parser-schema-id: <anonymous-schema-101>
+              x-parser-schema-id: <anonymous-schema-104>
             sid:
               type: integer
               minimum: 1
@@ -151,25 +151,25 @@ operations:
                     - reset
                     - deleted
                     - limit_updated
-                  x-parser-schema-id: <anonymous-schema-103>
+                  x-parser-schema-id: <anonymous-schema-106>
                 order_group_id:
                   type: string
                   description: Order group identifier
-                  x-parser-schema-id: <anonymous-schema-104>
+                  x-parser-schema-id: <anonymous-schema-107>
                 contracts_limit_fp:
                   type: string
                   description: >-
                     Updated contracts limit in fixed-point (2 decimals). Present
                     for "created" and "limit_updated" events only.
-                  x-parser-schema-id: <anonymous-schema-105>
+                  x-parser-schema-id: <anonymous-schema-108>
                 ts_ms:
                   type: integer
                   format: int64
                   description: >-
                     Matching engine timestamp at which the event was processed,
                     as Unix epoch milliseconds.
-                  x-parser-schema-id: <anonymous-schema-106>
-              x-parser-schema-id: <anonymous-schema-102>
+                  x-parser-schema-id: <anonymous-schema-109>
+              x-parser-schema-id: <anonymous-schema-105>
           x-parser-schema-id: orderGroupUpdatesPayload
         title: Order Group Updates
         description: Order group lifecycle and limit updates for authenticated user

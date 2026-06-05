@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/batch-create-orders-v2.md
-Downloaded: 2026-06-04T20:46:33.754Z
+Downloaded: 2026-06-05T20:39:40.491Z
 -->
 
 > ## Documentation Index
@@ -161,6 +161,8 @@ components:
             properties:
               order_id:
                 type: string
+                format: uuid
+                x-go-type: string
               client_order_id:
                 type: string
                 nullable: true

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-04T20:46:33.757Z
+Downloaded: 2026-06-05T20:39:40.495Z
 -->
 
 > ## Documentation Index
@@ -31,6 +31,27 @@ description: "GET /trade-api/v2/margin/fee_tiers now returns active maker and ta
   **Affected endpoints:**
 
   * `GET /trade-api/v2/margin/fee_tiers`
+</Update>
+
+<Update
+  label="June 11, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Perps volume and open interest notional fields",
+description: "Perps REST and WebSocket market data now include dollar notional companions for lifetime volume, 24h volume, and open interest contract counts."
+}}
+>
+  Perps market data now includes dollar notional companions for lifetime volume,
+  24h volume, and open interest contract-count fields. Perps candlesticks also include a
+  period-specific volume notional field. These fields are additive and preserve
+  the existing contract-count fields.
+
+  **Affected endpoints and channels:**
+
+  * `GET /trade-api/v2/margin/markets`
+  * `GET /trade-api/v2/margin/markets/{ticker}`
+  * `GET /trade-api/v2/margin/markets/{ticker}/candlesticks`
+  * WebSocket `margin_ticker`
 </Update>
 
 <Update

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/headless.md
-Downloaded: 2026-06-03T21:09:00.460Z
+Downloaded: 2026-06-05T20:39:50.131Z
 -->
 
 > ## Documentation Index
@@ -66,6 +66,10 @@ Bare mode skips OAuth and keychain reads. Anthropic authentication must come fro
 <Note>
   `--bare` is the recommended mode for scripted and SDK calls, and will become the default for `-p` in a future release.
 </Note>
+
+### Background tasks at exit
+
+If Claude starts a [background Bash task](/en/tools-reference#bash-tool-behavior) during a `claude -p` run, for example a dev server or a watch build, that task is terminated about five seconds after Claude returns its final result and stdin closes. The grace period lets a task that finishes right after the result still deliver its output. Before v2.1.163, a never-exiting background process would hold the `claude -p` invocation open indefinitely.
 
 ## Examples
 

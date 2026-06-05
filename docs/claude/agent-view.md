@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-view.md
-Downloaded: 2026-06-03T21:09:00.448Z
+Downloaded: 2026-06-05T20:39:50.122Z
 -->
 
 > ## Documentation Index
@@ -448,7 +448,7 @@ Every background session has a short ID you can use from the shell. The ID is pr
 | :--------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `claude agents`              | Open agent view                                                                                                                                                                                                                                                                                                                         |
 | `claude agents --cwd <path>` | Open agent view scoped to sessions started under `<path>`                                                                                                                                                                                                                                                                               |
-| `claude agents --json`       | Print live sessions as a JSON array and exit. Each entry has `pid`, `cwd`, `kind`, and `startedAt`, plus `sessionId`, `name`, and `status` when set. Combine with `--cwd <path>` to filter                                                                                                                                              |
+| `claude agents --json`       | Print live sessions as a JSON array and exit. Each entry has `pid`, `cwd`, `kind`, and `startedAt`, plus `sessionId`, `name`, and `status` when set. When `status` is `waiting`, `waitingFor` says what the session is blocked on, such as `permission prompt` or `input needed`. Combine with `--cwd <path>` to filter                 |
 | `claude attach <id>`         | Attach to a session in this terminal                                                                                                                                                                                                                                                                                                    |
 | `claude logs <id>`           | Print the session's recent output                                                                                                                                                                                                                                                                                                       |
 | `claude stop <id>`           | Stop a session. Also accepts `claude kill`                                                                                                                                                                                                                                                                                              |
