@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/whats-new/index.md
-Downloaded: 2026-05-30T20:25:59.569Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

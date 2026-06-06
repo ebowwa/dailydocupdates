@@ -1,21 +1,21 @@
 <!--
-Source: https://docs.kalshi.com/api-reference/account/get-account-api-limits.md
-Downloaded: 2026-06-06T20:29:26.264Z
+Source: https://docs.kalshi.com/api-reference/account/get-perps-account-api-limits.md
+Downloaded: 2026-06-06T20:29:26.265Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Get Account API Limits
+# Get Perps Account API Limits
 
->  Endpoint to retrieve the API tier limits associated with the authenticated user.
+>  Endpoint to retrieve the Perps (margin) API tier limits associated with the authenticated user.
 
 
 
 ## OpenAPI
 
-````yaml /openapi.yaml get /account/limits
+````yaml /openapi.yaml get /account/limits/perps
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -65,16 +65,16 @@ tags:
   - name: structured-targets
     description: Structured targets endpoints
 paths:
-  /account/limits:
+  /account/limits/perps:
     get:
       tags:
         - account
-      summary: Get Account API Limits
-      description: ' Endpoint to retrieve the API tier limits associated with the authenticated user.'
-      operationId: GetAccountApiLimits
+      summary: Get Perps Account API Limits
+      description: ' Endpoint to retrieve the Perps (margin) API tier limits associated with the authenticated user.'
+      operationId: GetPerpsAccountApiLimits
       responses:
         '200':
-          description: Account API tier limits retrieved successfully
+          description: Perps account API tier limits retrieved successfully
           content:
             application/json:
               schema:

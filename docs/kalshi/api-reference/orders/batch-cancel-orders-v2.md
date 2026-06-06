@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/batch-cancel-orders-v2.md
-Downloaded: 2026-06-05T20:39:40.491Z
+Downloaded: 2026-06-06T20:29:26.271Z
 -->
 
 > ## Documentation Index
@@ -132,8 +132,6 @@ components:
             properties:
               order_id:
                 type: string
-                format: uuid
-                x-go-type: string
                 description: Order ID to cancel.
               subaccount:
                 type: integer
@@ -173,8 +171,6 @@ components:
             properties:
               order_id:
                 type: string
-                format: uuid
-                x-go-type: string
                 description: >-
                   The order ID identifying which order this entry corresponds
                   to.

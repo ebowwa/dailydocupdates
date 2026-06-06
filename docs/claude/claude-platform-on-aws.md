@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/claude-platform-on-aws.md
+Downloaded: 2026-06-06T20:29:17.594Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -264,7 +269,7 @@ Claude Platform on AWS is opt-in even when AWS credentials are present in your e
 
 ### 3. Pin model versions
 
-Claude Platform on AWS uses the same model IDs as the direct Claude API. The default aliases `opus`, `sonnet`, and `haiku` resolve to the latest versions available in your workspace.
+Claude Platform on AWS uses the same model IDs as the direct Claude API. The default aliases `opus`, `sonnet`, and `haiku` resolve to Claude Code's built-in defaults for Claude Platform on AWS, which can lag the newest release. Without `ANTHROPIC_DEFAULT_OPUS_MODEL`, the `opus` alias resolves to Opus 4.7.
 
 If you deploy Claude Code to a team, pin the model IDs explicitly so a new release doesn't move everyone at once:
 

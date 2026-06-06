@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/cancel-order-v2.md
-Downloaded: 2026-06-05T20:39:40.491Z
+Downloaded: 2026-06-06T20:29:26.272Z
 -->
 
 > ## Documentation Index
@@ -105,8 +105,6 @@ components:
       description: Order ID
       schema:
         type: string
-        format: uuid
-        x-go-type: string
     SubaccountQueryDefaultPrimary:
       name: subaccount
       in: query
@@ -134,8 +132,6 @@ components:
       properties:
         order_id:
           type: string
-          format: uuid
-          x-go-type: string
         client_order_id:
           type: string
         reduced_by:

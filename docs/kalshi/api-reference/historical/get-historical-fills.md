@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-fills.md
-Downloaded: 2026-06-05T20:39:40.487Z
+Downloaded: 2026-06-06T20:29:26.268Z
 -->
 
 > ## Documentation Index
@@ -173,8 +173,6 @@ components:
           description: Unique identifier for this fill (legacy field name, same as fill_id)
         order_id:
           type: string
-          format: uuid
-          x-go-type: string
           description: Unique identifier for the order that resulted in this fill
         ticker:
           type: string

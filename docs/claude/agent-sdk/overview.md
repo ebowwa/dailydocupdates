@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/agent-sdk/overview.md
-Downloaded: 2026-05-29T20:51:46.076Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-orders.md
-Downloaded: 2026-06-05T20:39:40.487Z
+Downloaded: 2026-06-06T20:29:26.268Z
 -->
 
 > ## Documentation Index
@@ -170,8 +170,6 @@ components:
       properties:
         order_id:
           type: string
-          format: uuid
-          x-go-type: string
         user_id:
           type: string
           description: Unique identifier for users

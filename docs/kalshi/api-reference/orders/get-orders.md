@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/get-orders.md
-Downloaded: 2026-06-05T20:39:40.493Z
+Downloaded: 2026-06-06T20:29:26.274Z
 -->
 
 > ## Documentation Index
@@ -212,8 +212,6 @@ components:
       properties:
         order_id:
           type: string
-          format: uuid
-          x-go-type: string
         user_id:
           type: string
           description: Unique identifier for users

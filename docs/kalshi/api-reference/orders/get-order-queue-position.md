@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/get-order-queue-position.md
-Downloaded: 2026-06-05T20:39:40.493Z
+Downloaded: 2026-06-06T20:29:26.273Z
 -->
 
 > ## Documentation Index
@@ -100,8 +100,6 @@ components:
       description: Order ID
       schema:
         type: string
-        format: uuid
-        x-go-type: string
   schemas:
     GetOrderQueuePositionResponse:
       type: object
