@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/rate_limits.md
-Downloaded: 2026-06-06T20:29:26.281Z
+Downloaded: 2026-06-07T20:30:44.478Z
 -->
 
 > ## Documentation Index
@@ -81,7 +81,7 @@ Once a day, Kalshi reviews your trading volume and grants Premier, Paragon, or P
 
 `volume share = your trailing 30-day volume ÷ (previous month's exchange volume × 2)`
 
-Qualifying grants the tier for **30 days**, so a slow day never drops you right away. The daily review renews that window for as long as you keep qualifying, and each tier has two thresholds (a higher bar to **earn** it and a lower **Keep** bar to hold it), so a small dip doesn't cost you the tier:
+Qualifying grants the tier for **30 days**, so a slow day never drops you right away. The daily review renews that window for as long as you keep qualifying, and each tier has two thresholds (a higher bar to **earn** it and a lower **keep** bar to hold it), so a small dip doesn't cost you the tier:
 
 | Tier    | Earn  | Keep  |
 | ------- | ----- | ----- |

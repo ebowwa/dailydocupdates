@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/user-orders.md
+Downloaded: 2026-06-07T20:30:44.485Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -229,7 +234,7 @@ operations:
             type:
               type: string
               const: user_order
-              x-parser-schema-id: <anonymous-schema-231>
+              x-parser-schema-id: <anonymous-schema-239>
             sid:
               type: integer
               description: >-
@@ -264,12 +269,12 @@ operations:
                   type: string
                   description: Unique order identifier
                   format: uuid
-                  x-parser-schema-id: <anonymous-schema-233>
+                  x-parser-schema-id: <anonymous-schema-241>
                 user_id:
                   type: string
                   description: User identifier
                   format: uuid
-                  x-parser-schema-id: <anonymous-schema-234>
+                  x-parser-schema-id: <anonymous-schema-242>
                 ticker:
                   type: string
                   description: Unique market identifier
@@ -283,7 +288,7 @@ operations:
                     - resting
                     - canceled
                     - executed
-                  x-parser-schema-id: <anonymous-schema-235>
+                  x-parser-schema-id: <anonymous-schema-243>
                 side: &ref_1
                   type: string
                   description: Market side
@@ -298,7 +303,7 @@ operations:
                     Deprecated. Use `outcome_side` (or `book_side`) instead. See
                     [Order direction](/getting_started/order_direction). This
                     field will not be removed before May 14, 2026.
-                  x-parser-schema-id: <anonymous-schema-236>
+                  x-parser-schema-id: <anonymous-schema-244>
                 outcome_side: *ref_1
                 book_side:
                   type: string
@@ -313,50 +318,50 @@ operations:
                 yes_price_dollars:
                   type: string
                   description: Yes price in fixed-point dollars (4 decimals)
-                  x-parser-schema-id: <anonymous-schema-237>
+                  x-parser-schema-id: <anonymous-schema-245>
                 fill_count_fp:
                   type: string
                   description: Number of contracts filled in fixed-point (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-238>
+                  x-parser-schema-id: <anonymous-schema-246>
                 remaining_count_fp:
                   type: string
                   description: Number of contracts remaining in fixed-point (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-239>
+                  x-parser-schema-id: <anonymous-schema-247>
                 initial_count_fp:
                   type: string
                   description: Initial number of contracts in fixed-point (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-240>
+                  x-parser-schema-id: <anonymous-schema-248>
                 taker_fill_cost_dollars:
                   type: string
                   description: Taker fill cost in fixed-point dollars (4 decimals)
-                  x-parser-schema-id: <anonymous-schema-241>
+                  x-parser-schema-id: <anonymous-schema-249>
                 maker_fill_cost_dollars:
                   type: string
                   description: Maker fill cost in fixed-point dollars (4 decimals)
-                  x-parser-schema-id: <anonymous-schema-242>
+                  x-parser-schema-id: <anonymous-schema-250>
                 taker_fees_dollars:
                   type: string
                   description: Taker fees in fixed-point dollars (4 decimals).
-                  x-parser-schema-id: <anonymous-schema-243>
+                  x-parser-schema-id: <anonymous-schema-251>
                 maker_fees_dollars:
                   type: string
                   description: Maker fees in fixed-point dollars (4 decimals).
-                  x-parser-schema-id: <anonymous-schema-244>
+                  x-parser-schema-id: <anonymous-schema-252>
                 client_order_id:
                   type: string
                   description: Client-provided order identifier
-                  x-parser-schema-id: <anonymous-schema-245>
+                  x-parser-schema-id: <anonymous-schema-253>
                 order_group_id:
                   type: string
                   description: Order group identifier, if applicable
-                  x-parser-schema-id: <anonymous-schema-246>
+                  x-parser-schema-id: <anonymous-schema-254>
                 self_trade_prevention_type:
                   type: string
                   description: Self-trade prevention type
                   enum:
                     - taker_at_cross
                     - maker
-                  x-parser-schema-id: <anonymous-schema-247>
+                  x-parser-schema-id: <anonymous-schema-255>
                 created_time:
                   type: string
                   deprecated: true
@@ -364,12 +369,12 @@ operations:
                     Deprecated - Order creation time in RFC3339 format. Use
                     created_ts_ms instead.
                   format: date-time
-                  x-parser-schema-id: <anonymous-schema-248>
+                  x-parser-schema-id: <anonymous-schema-256>
                 created_ts_ms:
                   type: integer
                   description: Order creation time as a Unix timestamp in milliseconds
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-249>
+                  x-parser-schema-id: <anonymous-schema-257>
                 last_update_time:
                   type: string
                   deprecated: true
@@ -377,12 +382,12 @@ operations:
                     Deprecated - Last update time in RFC3339 format. Use
                     last_updated_ts_ms instead.
                   format: date-time
-                  x-parser-schema-id: <anonymous-schema-250>
+                  x-parser-schema-id: <anonymous-schema-258>
                 last_updated_ts_ms:
                   type: integer
                   description: Last update time as a Unix timestamp in milliseconds
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-251>
+                  x-parser-schema-id: <anonymous-schema-259>
                 expiration_time:
                   type: string
                   deprecated: true
@@ -390,17 +395,17 @@ operations:
                     Deprecated - Order expiration time in RFC3339 format. Use
                     expiration_ts_ms instead.
                   format: date-time
-                  x-parser-schema-id: <anonymous-schema-252>
+                  x-parser-schema-id: <anonymous-schema-260>
                 expiration_ts_ms:
                   type: integer
                   description: Order expiration time as a Unix timestamp in milliseconds
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-253>
+                  x-parser-schema-id: <anonymous-schema-261>
                 subaccount_number:
                   type: integer
                   description: Subaccount number (0 for primary, 1-32 for subaccounts)
-                  x-parser-schema-id: <anonymous-schema-254>
-              x-parser-schema-id: <anonymous-schema-232>
+                  x-parser-schema-id: <anonymous-schema-262>
+              x-parser-schema-id: <anonymous-schema-240>
           x-parser-schema-id: userOrderPayload
         title: User Order Update
         description: Real-time order updates for authenticated user

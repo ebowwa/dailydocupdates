@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/changelog.md
-Downloaded: 2026-06-06T20:29:17.591Z
+Downloaded: 2026-06-07T20:30:53.461Z
 -->
 
 > ## Documentation Index
@@ -14,6 +14,10 @@ Downloaded: 2026-06-06T20:29:17.591Z
 This page is generated from the [CHANGELOG.md on GitHub](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md).
 
 Run `claude --version` to check your installed version.
+
+<Update label="2.1.168" description="June 6, 2026">
+  * Bug fixes and reliability improvements
+</Update>
 
 <Update label="2.1.167" description="June 6, 2026">
   * Bug fixes and reliability improvements
