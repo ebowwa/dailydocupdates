@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-06T20:29:26.276Z
+Downloaded: 2026-06-08T20:56:40.537Z
 -->
 
 > ## Documentation Index
@@ -16,6 +16,22 @@ You can subscribe to the RSS changelog at `/changelog/rss.xml` if you'd like to 
 This changelog is a work in progress. As always, we welcome any feedback in our Discord #dev channel!
 
 ## Recent Updates
+
+<Update
+  label="June 11, 2026"
+  tags={["New Feature", "Upcoming"]}
+  rss={{
+title: "Self-serve Advanced API usage tier upgrade",
+description: "Users can now self-promote to the Advanced API tier by calling POST /trade-api/v2/account/api_usage_level/upgrade."
+}}
+>
+  Users can now self-promote to the Advanced API tier by calling
+  `POST /trade-api/v2/account/api_usage_level/upgrade`.
+
+  **Affected endpoints:**
+
+  * `POST /trade-api/v2/account/api_usage_level/upgrade`
+</Update>
 
 <Update
   label="June 11, 2026"

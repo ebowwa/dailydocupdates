@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/create-order-v2.md
-Downloaded: 2026-06-06T20:29:26.273Z
+Downloaded: 2026-06-08T20:56:40.534Z
 -->
 
 > ## Documentation Index
@@ -343,9 +343,8 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     RateLimitError:
       description: >-
-        Rate limit exceeded. The default cost is 10 tokens per request;
-        endpoints that deviate show a **Rate limit** callout at the top of their
-        own page. See [Rate Limits and Tiers](/getting_started/rate_limits).
+        Rate limit exceeded. The default cost is 10 tokens per request. Use GET
+        /trade-api/v2/account/endpoint_costs to list non-default endpoint costs.
       content:
         application/json:
           schema:

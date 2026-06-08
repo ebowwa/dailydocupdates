@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/market/get-market-candlesticks.md
-Downloaded: 2026-06-05T20:39:40.501Z
+Downloaded: 2026-06-08T20:56:40.544Z
 -->
 
 > ## Documentation Index
@@ -30,6 +30,8 @@ servers:
     description: Demo perps REST API server
 security: []
 tags:
+  - name: account
+    description: Account information endpoints
   - name: exchange
     description: Exchange status and information endpoints
   - name: market

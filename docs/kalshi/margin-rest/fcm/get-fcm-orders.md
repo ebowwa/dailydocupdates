@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/fcm/get-fcm-orders.md
-Downloaded: 2026-06-04T20:46:33.762Z
+Downloaded: 2026-06-08T20:56:40.543Z
 -->
 
 > ## Documentation Index
@@ -32,6 +32,8 @@ servers:
     description: Demo perps REST API server
 security: []
 tags:
+  - name: account
+    description: Account information endpoints
   - name: exchange
     description: Exchange status and information endpoints
   - name: market
@@ -75,7 +77,7 @@ paths:
         - $ref: '#/components/parameters/MinTsQuery'
         - $ref: '#/components/parameters/MaxTsQuery'
         - $ref: '#/components/parameters/StatusQuery'
-        - $ref: '#/components/parameters/LimitQuery'
+        - $ref: '#/components/parameters/MarginOrdersLimitQuery'
         - $ref: '#/components/parameters/CursorQuery'
       responses:
         '200':
@@ -123,18 +125,18 @@ components:
       description: Filter by status. Possible values depend on the endpoint.
       schema:
         type: string
-    LimitQuery:
+    MarginOrdersLimitQuery:
       name: limit
       in: query
-      description: Number of results per page. Defaults to 100.
+      description: Number of margin orders per page. Defaults to 100.
       schema:
         type: integer
         format: int64
         minimum: 1
-        maximum: 1000
+        maximum: 10000
         default: 100
         x-oapi-codegen-extra-tags:
-          validate: omitempty,min=1,max=1000
+          validate: omitempty,min=1,max=10000
     CursorQuery:
       name: cursor
       in: query

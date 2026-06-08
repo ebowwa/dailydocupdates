@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/market/get-market.md
-Downloaded: 2026-06-05T20:39:40.501Z
+Downloaded: 2026-06-08T20:56:40.544Z
 -->
 
 > ## Documentation Index
@@ -30,6 +30,8 @@ servers:
     description: Demo perps REST API server
 security: []
 tags:
+  - name: account
+    description: Account information endpoints
   - name: exchange
     description: Exchange status and information endpoints
   - name: market
@@ -121,6 +123,16 @@ components:
             retail-sized notional position. Actual leverage may be lower for
             larger positions as the liquidation margin rate grows with size.
             Null when margin config or price data is unavailable.
+        leverage_estimates:
+          type: object
+          additionalProperties:
+            type: number
+            format: double
+          description: >
+            Leverage estimates (1 / margin_rate) keyed by notional position size
+            in dollars ("1000", "10000", "100000", "1000000"). Leverage
+            decreases at larger notionals as the liquidation margin rate grows
+            with size. Null when margin config or price data is unavailable.
         price:
           $ref: '#/components/schemas/FixedPointDollars'
           description: Last trade price in dollars.
@@ -206,9 +218,8 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     RateLimitError:
       description: >-
-        Rate limit exceeded. The default cost is 10 tokens per request;
-        endpoints that deviate show a **Rate limit** callout at the top of their
-        own page. See [Rate Limits and Tiers](/getting_started/rate_limits).
+        Rate limit exceeded. The default cost is 10 tokens per request. Use GET
+        /trade-api/v2/account/endpoint_costs to list non-default endpoint costs.
       content:
         application/json:
           schema:

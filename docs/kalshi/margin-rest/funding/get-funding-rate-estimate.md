@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/funding/get-funding-rate-estimate.md
-Downloaded: 2026-06-01T21:14:09.219Z
+Downloaded: 2026-06-08T20:56:40.544Z
 -->
 
 > ## Documentation Index
@@ -31,6 +31,8 @@ servers:
     description: Demo perps REST API server
 security: []
 tags:
+  - name: account
+    description: Account information endpoints
   - name: exchange
     description: Exchange status and information endpoints
   - name: market

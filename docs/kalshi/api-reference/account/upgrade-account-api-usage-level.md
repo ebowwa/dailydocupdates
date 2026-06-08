@@ -1,24 +1,24 @@
 <!--
-Source: https://docs.kalshi.com/api-reference/communications/delete-quote.md
-Downloaded: 2026-06-08T20:56:40.528Z
+Source: https://docs.kalshi.com/api-reference/account/upgrade-account-api-usage-level.md
+Downloaded: 2026-06-08T20:56:40.527Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Delete Quote
+# Upgrade Account API Usage Level
 
->  Endpoint for deleting a quote, which means it can no longer be accepted.
+> Grants a permanent Advanced API usage-level grant. Currently only the Predictions exchange instance is supported. Criteria: at least 1 of the user's last 100 Predictions orders was created via API. Use Get Account API Limits to inspect the resulting usage tier and grants.
 
 <Note>
-  **Rate limit:** 2 tokens per request. See `GET /trade-api/v2/account/endpoint_costs` for current non-default endpoint costs.
+  **Rate limit:** 30 tokens per request. See `GET /trade-api/v2/account/endpoint_costs` for current non-default endpoint costs.
 </Note>
 
 
 ## OpenAPI
 
-````yaml /openapi.yaml delete /communications/quotes/{quote_id}
+````yaml /openapi.yaml post /account/api_usage_level/upgrade
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -68,72 +68,37 @@ tags:
   - name: structured-targets
     description: Structured targets endpoints
 paths:
-  /communications/quotes/{quote_id}:
-    delete:
+  /account/api_usage_level/upgrade:
+    post:
       tags:
-        - communications
-      summary: Delete Quote
-      description: ' Endpoint for deleting a quote, which means it can no longer be accepted.'
-      operationId: DeleteQuote
-      parameters:
-        - $ref: '#/components/parameters/QuoteIdPath'
+        - account
+      summary: Upgrade Account API Usage Level
+      description: >-
+        Grants a permanent Advanced API usage-level grant. Currently only the
+        Predictions exchange instance is supported. Criteria: at least 1 of the
+        user's last 100 Predictions orders was created via API. Use Get Account
+        API Limits to inspect the resulting usage tier and grants.
+      operationId: UpgradeAccountApiUsageLevel
       responses:
-        '204':
-          description: Quote deleted successfully
+        '201':
+          description: Advanced API usage-level grant created or refreshed successfully
         '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '404':
-          $ref: '#/components/responses/NotFoundError'
+          description: Unauthorized
+        '403':
+          description: >-
+            No API-created order was found in the user's latest 100 Predictions
+            orders
+        '429':
+          description: >-
+            Rate limit exceeded. This endpoint costs 30 tokens and uses the
+            Predictions Write bucket.
         '500':
-          $ref: '#/components/responses/InternalServerError'
+          description: Internal server error
       security:
         - kalshiAccessKey: []
           kalshiAccessSignature: []
           kalshiAccessTimestamp: []
 components:
-  parameters:
-    QuoteIdPath:
-      name: quote_id
-      in: path
-      required: true
-      description: Quote ID
-      schema:
-        type: string
-  responses:
-    UnauthorizedError:
-      description: Unauthorized - authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFoundError:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-  schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        message:
-          type: string
-          description: Human-readable error message
-        details:
-          type: string
-          description: Additional details about the error, if available
-        service:
-          type: string
-          description: The name of the service that generated the error
   securitySchemes:
     kalshiAccessKey:
       type: apiKey

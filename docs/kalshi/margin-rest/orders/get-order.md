@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/orders/get-order.md
-Downloaded: 2026-06-04T20:46:33.766Z
+Downloaded: 2026-06-08T20:56:40.546Z
 -->
 
 > ## Documentation Index
@@ -30,6 +30,8 @@ servers:
     description: Demo perps REST API server
 security: []
 tags:
+  - name: account
+    description: Account information endpoints
   - name: exchange
     description: Exchange status and information endpoints
   - name: market

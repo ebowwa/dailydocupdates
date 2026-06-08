@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/dev-tooling/typescript.md
+Downloaded: 2026-06-08T20:56:19.507Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -404,7 +409,7 @@ Use discovery methods to browse events, markets, teams, tags, comments, sports m
     });
 
     const userComments = client.listCommentsByUserAddress({
-      address: "0x1234...",
+      address: "0x1234…",
       pageSize: 10,
       order: "DESC",
     });
@@ -472,6 +477,15 @@ for await (const event of stream) {
 ## Authenticated Client
 
 Create a secure client when you need wallet-scoped reads or trading.
+
+By default, `createSecureClient` uses the signer's deterministic Deposit Wallet
+as the account wallet. The SDK deploys that wallet if needed during client
+creation. Pass `wallet` only when you want to authenticate an existing wallet,
+such as an existing Deposit Wallet, Poly Safe, Poly Proxy, or the signer address
+itself for EOA trading.
+
+The examples below pass `wallet` to make account selection explicit. Omit
+`wallet` to use the default Deposit Wallet flow.
 
 ### Wallet Integrations
 
@@ -595,17 +609,20 @@ The SDK is intended to support a variety of wallet libraries. At launch, we supp
 
 ### Trading Setup
 
-Before placing orders, configure API key authentication if you need gasless wallet setup, then make sure the authenticated wallet has the required trading approvals.
+Before placing orders, make sure the authenticated wallet is deployed and has
+the required trading approvals. `createSecureClient` resolves the signer's
+deterministic Deposit Wallet by default and deploys it if needed.
 
 <Steps>
-  <Step title="Configure API Key Authentication">
-    Configure an API key when the SDK needs to set up gasless wallet operations.
+  <Step title="Configure API Key Authorization">
+    Configure API key authorization when the SDK needs to deploy a Deposit Wallet or
+    submit approval transactions.
 
     <CodeGroup>
       ```ts Relayer API Key theme={null}
       import { createSecureClient, relayerApiKey } from "@polymarket/client";
 
-      let secureClient = await createSecureClient({
+      const secureClient = await createSecureClient({
         wallet: "YOUR_POLYMARKET_WALLET_ADDRESS",
         signer,
         apiKey: relayerApiKey({
@@ -619,7 +636,7 @@ Before placing orders, configure API key authentication if you need gasless wall
       import { createSecureClient } from "@polymarket/client";
       import { builderApiKey } from "@polymarket/client/node";
 
-      let secureClient = await createSecureClient({
+      const secureClient = await createSecureClient({
         wallet: "YOUR_POLYMARKET_WALLET_ADDRESS",
         signer,
         apiKey: builderApiKey({
@@ -633,36 +650,21 @@ Before placing orders, configure API key authentication if you need gasless wall
 
     <Note>
       Builder API keys are supported for backwards compatibility with builders that
-      still use them for gasless workflows. They are not used for order attribution.
+      still use them for wallet operations. They are not used for order attribution.
       Use `builderCode` on orders for attribution.
     </Note>
   </Step>
 
-  <Step title="Check Gasless Readiness">
-    Check whether the authenticated wallet is already ready for gasless transactions.
-
-    ```ts theme={null}
-    const isGaslessReady = await secureClient.isGaslessReady();
-    ```
-  </Step>
-
-  <Step title="Set Up Gasless Wallet">
-    If needed, set up the gasless wallet and continue with the returned secure client.
-
-    ```ts theme={null}
-    if (!isGaslessReady) {
-      secureClient = await secureClient.setupGaslessWallet();
-    }
-    ```
-  </Step>
-
   <Step title="Set Up Trading Approvals">
-    Set up the approvals required for trading and wait for the setup transaction to complete.
+    Then set up trading approvals.
 
     ```ts theme={null}
-    const handle = await secureClient.setupTradingApprovals();
-    await handle.wait();
+    await secureClient.setupTradingApprovals();
     ```
+
+    `setupTradingApprovals()` waits for the setup transaction internally and is
+    idempotent. If the wallet already has the required approvals, it returns without
+    submitting a transaction.
   </Step>
 </Steps>
 
@@ -766,7 +768,7 @@ Order placement returns a discriminated response. Check `response.ok` before rea
       side: OrderSide.BUY,
       price: 0.52,
       size: 10,
-      builderCode: "0xabc123...",
+      builderCode: "0xabc123…",
     });
 
     if (response.ok) {
@@ -840,7 +842,9 @@ Create signed orders separately when you want to review, store, or batch them be
 
 ### Position Lifecycle
 
-Use position lifecycle methods to split collateral into outcome tokens, merge complete sets back into collateral, or redeem resolved positions. These examples assume the secure client is configured with API key authentication as shown in [Trading Setup](#trading-setup).
+Use position lifecycle methods to split collateral into outcome tokens, merge
+complete sets back into collateral, or redeem resolved positions. These examples
+assume you created a secure client and set up trading approvals as shown above.
 
 <Tabs>
   <Tab title="Split Position">
@@ -884,7 +888,8 @@ Use position lifecycle methods to split collateral into outcome tokens, merge co
 
 ### Wallet Operations
 
-Use wallet operation methods for direct token movements from the authenticated wallet. These examples assume the secure client is configured with API key authentication as shown in [Trading Setup](#trading-setup).
+Use wallet operation methods for direct token movements from the authenticated
+wallet. These examples assume you created a secure client as shown above.
 
 ```ts theme={null}
 const handle = await secureClient.transferErc20({
@@ -1100,3 +1105,64 @@ Secure clients expose the API credentials created for the authenticated session.
     ```
   </Tab>
 </Tabs>
+
+## Changelog
+
+### `0.1.0-beta.3`
+
+**Secure client setup now defaults to the Deposit Wallet flow**
+
+`createSecureClient` can now derive and use the signer's deterministic Deposit
+Wallet when you omit `wallet`. If you already know which Polymarket wallet you
+want to use, keep passing `wallet`.
+
+```diff theme={null}
+const secureClient = await createSecureClient({
+-  wallet: "YOUR_POLYMARKET_WALLET_ADDRESS",
+   signer,
+});
+```
+
+If you want to keep account selection explicit, no change is required:
+
+```ts theme={null}
+const secureClient = await createSecureClient({
+  wallet: "YOUR_POLYMARKET_WALLET_ADDRESS",
+  signer,
+});
+```
+
+**`setupTradingApprovals()` now waits internally**
+
+You no longer need to wait on the returned handle. Call the method once before
+trading; it is safe to call again if approvals are already set.
+
+```diff theme={null}
+-const handle = await secureClient.setupTradingApprovals();
+-await handle.wait();
++await secureClient.setupTradingApprovals();
+```
+
+**Gasless setup helpers are deprecated**
+
+You no longer need to call `isGaslessReady()` or `setupGaslessWallet()` in the
+normal setup path. Create the secure client, then set up trading approvals.
+
+```diff theme={null}
+-const ready = await secureClient.isGaslessReady();
+-
+-if (!ready) {
+-  secureClient = await secureClient.setupGaslessWallet();
+-}
+-
+ await secureClient.setupTradingApprovals();
+```
+
+### `0.1.0-beta.2`
+
+First beta release of the unified TypeScript SDK. Install the beta package with
+your package manager:
+
+```bash theme={null}
+pnpm add @polymarket/client@beta
+```

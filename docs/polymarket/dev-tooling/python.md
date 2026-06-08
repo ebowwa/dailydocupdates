@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/dev-tooling/python.md
+Downloaded: 2026-06-08T20:56:19.507Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -517,16 +522,23 @@ async with await AsyncSecureClient.create(
 Create a secure client when you need wallet-scoped reads or trading.
 
 <Note>
-  Secure clients own multiple network transports. Wrap them in `async with`,
-  or call `await secure_client.close()` when you are done, to release the
-  underlying connections. The snippets below show client creation and
-  subsequent calls as a flat sequence for readability — in real code, keep
-  the client inside an `async with` block or close it explicitly.
+  Secure clients own multiple network transports. Wrap them in `async with`, or
+  call `await secure_client.close()` when you are done, to release the
+  underlying connections. The snippets below show client creation and subsequent
+  calls as a flat sequence for readability — in real code, keep the client
+  inside an `async with` block or close it explicitly.
 </Note>
 
 ### Private Key Setup
 
-The Python SDK authenticates with a local private key. Pass `wallet` when you want to operate on a Polymarket wallet address that differs from the signer address; if omitted, the client uses the signer address as the account wallet.
+The Python SDK authenticates with a local private key. By default,
+`AsyncSecureClient.create` uses the signer's deterministic Deposit Wallet as the
+account wallet. Pass `wallet` when you want to authenticate an existing wallet,
+such as an existing Deposit Wallet, Poly Safe, Poly Proxy, or the signer address
+itself for EOA trading.
+
+The examples below pass `wallet` to make account selection explicit. Omit
+`wallet` to use the default Deposit Wallet flow.
 
 ```python theme={null}
 import os
@@ -543,9 +555,10 @@ async with await AsyncSecureClient.create(
 
 Keep private keys and API credentials in your secret manager or local environment. Do not commit them to source control.
 
-### API Key Authentication
+### API Key Authorization
 
-Configure an API key when the SDK needs to set up gasless wallet operations.
+Configure API key authorization when the SDK needs to deploy a Deposit Wallet or
+submit approval transactions.
 
 <CodeGroup>
   ```python Relayer API Key theme={null}
@@ -584,51 +597,32 @@ Configure an API key when the SDK needs to set up gasless wallet operations.
 
 <Note>
   Builder API keys are supported for backwards compatibility with builders that
-  still use them for gasless workflows. They are not used for order attribution.
+  still use them for wallet operations. They are not used for order attribution.
   Use `builder_code` on orders for attribution.
 </Note>
 
 ### Trading Setup
 
-Before placing orders, make sure the authenticated wallet has the required trading approvals. If you use gasless wallet operations, configure API key authentication first.
+Before placing orders, make sure the authenticated wallet is deployed and has
+the required trading approvals. `AsyncSecureClient.create` resolves the signer's
+deterministic Deposit Wallet by default and deploys it if needed.
 
 <Note>
   From this point forward, snippets in Trading Setup, Trading, Position
-  Lifecycle, and Wallet Operations submit real on-chain transactions or
-  live orders against the configured environment when executed. Review
-  each call before running it against a wallet that holds funds.
+  Lifecycle, and Wallet Operations submit real on-chain transactions or live
+  orders against the configured environment when executed. Review each call
+  before running it against a wallet that holds funds.
 </Note>
 
-<Steps>
-  <Step title="Check Gasless Readiness">
-    Optionally check whether the deposit wallet for the authenticated EOA is already deployed. The result is informational — call `setup_gasless_wallet()` in the next step regardless, since it is idempotent on deployment and is the call that binds the client to the deposit wallet.
+Set up the approvals required for trading.
 
-    ```python theme={null}
-    is_gasless_ready = await secure_client.is_gasless_ready()
-    ```
-  </Step>
+```python theme={null}
+await secure_client.setup_trading_approvals()
+```
 
-  <Step title="Set Up Gasless Wallet">
-    Always call `setup_gasless_wallet()` for gasless workflows. It deploys the deposit wallet if needed and returns a new client bound to the deposit wallet address. Close the previous client when you replace it.
-
-    ```python theme={null}
-    gasless_client = await secure_client.setup_gasless_wallet()
-    await secure_client.close()
-    secure_client = gasless_client
-    ```
-  </Step>
-
-  <Step title="Set Up Trading Approvals">
-    Set up the approvals required for trading and wait for the setup transaction to complete.
-
-    ```python theme={null}
-    handle = await secure_client.setup_trading_approvals()
-    outcome = await handle.wait()
-
-    # outcome.transaction_hash: TransactionHash
-    ```
-  </Step>
-</Steps>
+`setup_trading_approvals()` waits for the setup transaction internally and is
+idempotent. If the wallet already has the required approvals, it returns without
+submitting a transaction.
 
 ### Trading
 
@@ -828,7 +822,11 @@ Create signed orders separately when you want to review, store, or batch them be
 
 ### Position Lifecycle
 
-Use position lifecycle methods to split collateral into outcome tokens, merge complete sets back into collateral, or redeem resolved positions. These examples assume the secure client is configured with API key authentication as shown in [API Key Authentication](#api-key-authentication).
+Use position lifecycle methods to split collateral into outcome tokens, merge
+complete sets back into collateral, or redeem resolved positions. These examples
+assume the secure client is configured with API key authorization as shown in
+[API Key Authorization](#api-key-authorization), and that you set up trading
+approvals as shown above.
 
 <Tabs>
   <Tab title="Split Position">
@@ -880,7 +878,10 @@ Use position lifecycle methods to split collateral into outcome tokens, merge co
 
 ### Wallet Operations
 
-Use wallet operation methods for direct token movements from the authenticated wallet. Amounts are in base units. These examples assume the secure client is configured with API key authentication as shown in [API Key Authentication](#api-key-authentication).
+Use wallet operation methods for direct token movements from the authenticated
+wallet. Amounts are in base units. These examples assume the secure client is
+configured with API key authorization as shown in [API Key
+Authorization](#api-key-authorization).
 
 ```python theme={null}
 import os
@@ -1103,3 +1104,63 @@ Secure clients expose the API credentials created for the authenticated session.
     ```
   </Tab>
 </Tabs>
+
+## Changelog
+
+### `0.1.0b4`
+
+**Secure client setup now defaults to the Deposit Wallet flow**
+
+`AsyncSecureClient.create` can now derive and use the signer's deterministic
+Deposit Wallet when you omit `wallet`. If you already know which Polymarket
+wallet you want to use, keep passing `wallet`.
+
+```diff theme={null}
+secure_client = await AsyncSecureClient.create(
+    private_key=os.environ["POLYMARKET_PRIVATE_KEY"],
+-    wallet=os.environ["POLYMARKET_WALLET_ADDRESS"],
+)
+```
+
+If you want to keep account selection explicit, no change is required:
+
+```python theme={null}
+secure_client = await AsyncSecureClient.create(
+    private_key=os.environ["POLYMARKET_PRIVATE_KEY"],
+    wallet=os.environ["POLYMARKET_WALLET_ADDRESS"],
+)
+```
+
+**`setup_trading_approvals()` now waits internally**
+
+You no longer need to wait on the returned handle. Call the method once before
+trading; it is safe to call again if approvals are already set.
+
+```diff theme={null}
+-handle = await secure_client.setup_trading_approvals()
+-await handle.wait()
++await secure_client.setup_trading_approvals()
+```
+
+**Gasless setup helpers are deprecated**
+
+You no longer need to call `is_gasless_ready()` or `setup_gasless_wallet()` in
+the normal setup path. Create the secure client, then set up trading approvals.
+
+```diff theme={null}
+-ready = await secure_client.is_gasless_ready()
+-
+-if not ready:
+-    secure_client = await secure_client.setup_gasless_wallet()
+-
+ await secure_client.setup_trading_approvals()
+```
+
+### `0.1.0b1`
+
+First beta release of the unified Python SDK. Install the beta package with your
+package manager:
+
+```bash theme={null}
+uv add polymarket-client
+```
