@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/order-groups/get-order-groups.md
-Downloaded: 2026-06-08T20:56:40.545Z
+Downloaded: 2026-06-09T20:44:56.921Z
 -->
 
 > ## Documentation Index
@@ -86,7 +86,7 @@ components:
       in: query
       required: false
       description: >-
-        Subaccount number (0 for primary, 1-32 for subaccounts). If omitted,
+        Subaccount number (0 for primary, 1-63 for subaccounts). If omitted,
         defaults to all subaccounts.
       schema:
         type: integer

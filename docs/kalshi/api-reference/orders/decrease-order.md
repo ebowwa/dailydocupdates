@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/decrease-order.md
-Downloaded: 2026-06-08T20:56:40.534Z
+Downloaded: 2026-06-09T20:44:56.910Z
 -->
 
 > ## Documentation Index
@@ -120,7 +120,7 @@ components:
           minimum: 0
           description: >-
             Optional subaccount number to use for this decrease (0 for primary,
-            1-32 for subaccounts)
+            1-63 for subaccounts)
           default: 0
           x-go-type-skip-optional-pointer: true
         reduce_by:
@@ -339,7 +339,7 @@ components:
           type: integer
           nullable: true
           x-omitempty: true
-          description: Subaccount number (0 for primary, 1-32 for subaccounts).
+          description: Subaccount number (0 for primary, 1-63 for subaccounts).
         exchange_index:
           allOf:
             - $ref: '#/components/schemas/ExchangeIndex'

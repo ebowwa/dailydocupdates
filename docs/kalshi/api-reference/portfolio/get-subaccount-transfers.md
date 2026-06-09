@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/portfolio/get-subaccount-transfers.md
+Downloaded: 2026-06-09T20:44:56.912Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -138,10 +143,10 @@ components:
           description: Unique identifier for this transfer.
         from_subaccount:
           type: integer
-          description: Source subaccount number (0 for primary, 1-32 for subaccounts).
+          description: Source subaccount number (0 for primary, 1-63 for subaccounts).
         to_subaccount:
           type: integer
-          description: Destination subaccount number (0 for primary, 1-32 for subaccounts).
+          description: Destination subaccount number (0 for primary, 1-63 for subaccounts).
         amount_cents:
           type: integer
           format: int64

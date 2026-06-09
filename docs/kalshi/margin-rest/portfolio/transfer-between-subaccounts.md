@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/portfolio/transfer-between-subaccounts.md
-Downloaded: 2026-06-08T20:56:40.547Z
+Downloaded: 2026-06-09T20:44:56.924Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,7 @@ Downloaded: 2026-06-08T20:56:40.547Z
 
 # Transfer Between Subaccounts
 
-> Transfers funds between the authenticated user's margin subaccounts. Use 0 for the primary account, or 1-32 for numbered subaccounts.
+> Transfers funds between the authenticated user's margin subaccounts. Use 0 for the primary account, or 1-63 for numbered subaccounts.
 
 
 
@@ -58,7 +58,7 @@ paths:
       summary: Transfer Between Subaccounts
       description: >-
         Transfers funds between the authenticated user's margin subaccounts. Use
-        0 for the primary account, or 1-32 for numbered subaccounts.
+        0 for the primary account, or 1-63 for numbered subaccounts.
       operationId: ApplyMarginSubaccountTransfer
       requestBody:
         required: true
@@ -102,12 +102,12 @@ components:
         from_subaccount:
           type: integer
           description: >-
-            Source subaccount number (0 for primary, 1-32 for numbered
+            Source subaccount number (0 for primary, 1-63 for numbered
             subaccounts).
         to_subaccount:
           type: integer
           description: >-
-            Destination subaccount number (0 for primary, 1-32 for numbered
+            Destination subaccount number (0 for primary, 1-63 for numbered
             subaccounts).
         amount_cents:
           type: integer

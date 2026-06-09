@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/cancel-order-v2.md
-Downloaded: 2026-06-08T20:56:40.534Z
+Downloaded: 2026-06-09T20:44:56.909Z
 -->
 
 > ## Documentation Index
@@ -111,7 +111,7 @@ components:
     SubaccountQueryDefaultPrimary:
       name: subaccount
       in: query
-      description: Subaccount number (0 for primary, 1-32 for subaccounts). Defaults to 0.
+      description: Subaccount number (0 for primary, 1-63 for subaccounts). Defaults to 0.
       schema:
         type: integer
     ExchangeIndexQuery:

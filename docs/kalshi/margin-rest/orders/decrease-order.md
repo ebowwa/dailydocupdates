@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/orders/decrease-order.md
-Downloaded: 2026-06-08T20:56:40.546Z
+Downloaded: 2026-06-09T20:44:56.922Z
 -->
 
 > ## Documentation Index
@@ -102,7 +102,7 @@ components:
       name: subaccount
       in: query
       required: false
-      description: Subaccount number (0 for primary, 1-32 for subaccounts). Defaults to 0.
+      description: Subaccount number (0 for primary, 1-63 for subaccounts). Defaults to 0.
       schema:
         type: integer
         minimum: 0

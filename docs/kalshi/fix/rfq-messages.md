@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/rfq-messages.md
-Downloaded: 2026-06-05T20:39:40.497Z
+Downloaded: 2026-06-09T20:44:56.917Z
 -->
 
 > ## Documentation Index
@@ -73,7 +73,7 @@ This message is used bidirectionally:
 | 55    | Symbol                           | String  | C        | Market ticker. Required unless MVE legs are specified                                                                                                             |
 | 38    | OrderQty                         | Decimal | C        | Number of contracts as a fixed-point decimal. Supports `0.01`-contract increments (for example `5`, `5.00`, or `5.25`). Required unless CashOrderQty is specified |
 | 152   | CashOrderQty                     | Decimal | C        | Target cost in dollars. Required unless OrderQty is specified                                                                                                     |
-| 79    | AllocAccount                     | Integer | N        | Subaccount number (0-32) for direct members. Alternative to NoPartyIDs; omit or set to 0 for the primary account                                                  |
+| 79    | AllocAccount                     | Integer | N        | Subaccount number (0-63) for direct members. Alternative to NoPartyIDs; omit or set to 0 for the primary account                                                  |
 | 453   | NoPartyIDs                       | Integer | N        | Number of parties (only 1 supported)                                                                                                                              |
 | 448   | PartyId                          | String  | N        | FCM SubtraderId for the customer on whose behalf the RFQ is submitted                                                                                             |
 | 452   | PartyRole                        | Integer | N        | 24 (CustomerAccount) - required when using PartyId                                                                                                                |
@@ -143,7 +143,7 @@ If a new Quote is created when an existing quote for the same market already exi
 | 55    | Symbol        | String  | Y        | Market ticker                                                                                  |
 | 132   | BidPx         | Integer | C        | Yes price in cents (1-99)                                                                      |
 | 133   | OfferPx       | Integer | C        | No price in cents (1-99)                                                                       |
-| 79    | AllocAccount  | Integer | N        | Subaccount number (0-32). If provided, the quote will be created for the specified subaccount. |
+| 79    | AllocAccount  | Integer | N        | Subaccount number (0-63). If provided, the quote will be created for the specified subaccount. |
 | 21015 | RestRemainder | Char    | N        | Y/N - Allow partial fills (default: N)                                                         |
 
 ### Exchange → Creator (Quote Notification)
@@ -175,7 +175,7 @@ A QuoteStatusReport is sent by the exchange:
 | --- | ------------ | ------- | -------- | --------------------------------------------------------------------------- |
 | 117 | QuoteId      | String  | Y        | Quote identifier (empty if rejected)                                        |
 | 131 | QuoteReqId   | String  | Y        | Request reference                                                           |
-| 79  | AllocAccount | Integer | C        | Subaccount number (0-32). Present if the quote was created for a subaccount |
+| 79  | AllocAccount | Integer | C        | Subaccount number (0-63). Present if the quote was created for a subaccount |
 | 297 | QuoteStatus  | Integer | Y        | Current status                                                              |
 | 38  | OrderQty     | Decimal | C        | Original RFQ contract size if specified.                                    |
 | 132 | BidPx        | Integer | C        | Yes price in cents. Only integer part considered. Not present if REJECTED   |

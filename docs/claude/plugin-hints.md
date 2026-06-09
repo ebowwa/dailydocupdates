@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/plugin-hints.md
+Downloaded: 2026-06-09T20:44:48.832Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -82,7 +87,7 @@ When the hint passes all checks, Claude Code shows a prompt like the following:
 
 ```text theme={null}
 ─────────────────────────────────────────────────────────────
-  Plugin Recommendation
+  Plugin recommendation
 
     The example-cli command suggests installing a plugin.
 

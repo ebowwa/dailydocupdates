@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/create-rfq.md
-Downloaded: 2026-06-05T20:39:40.484Z
+Downloaded: 2026-06-09T20:44:56.902Z
 -->
 
 > ## Documentation Index
@@ -149,7 +149,7 @@ components:
           type: integer
           description: >-
             The subaccount number to create the RFQ for (direct members only; 0
-            for primary, 1-32 for subaccounts)
+            for primary, 1-63 for subaccounts)
           x-go-type-skip-optional-pointer: true
     CreateRFQResponse:
       type: object

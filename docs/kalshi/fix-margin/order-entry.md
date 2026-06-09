@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix-margin/order-entry.md
-Downloaded: 2026-06-02T21:08:39.843Z
+Downloaded: 2026-06-09T20:44:56.915Z
 -->
 
 > ## Documentation Index
@@ -27,7 +27,7 @@ Downloaded: 2026-06-02T21:08:39.843Z
 | 448   | PartyID                 | String       | N        | Only applicable for FCM entities. Customer-account or subaccount identifier.                                             |
 | 452   | PartyRole               | Integer      | N        | Only applicable for FCM entities. Supported value: `24 = Customer Account`                                               |
 | 453   | NoPartyIDs              | Integer      | N        | Only applicable for FCM entities. Currently only `1` is supported.                                                       |
-| 79    | AllocAccount            | Integer      | N        | Subaccount number (0-32). Alternative to NoPartyIDs.                                                                     |
+| 79    | AllocAccount            | Integer      | N        | Subaccount number (0-63). Alternative to NoPartyIDs.                                                                     |
 | 526   | SecondaryClOrdID        | UUID         | N        | [Order group](/getting_started/order_groups) identifier.                                                                 |
 | 2964  | SelfTradePreventionType | Integer      | N        | Supported values: `1 = Taker At Cross`, `2 = Maker`                                                                      |
 | 21006 | CancelOrderOnPause      | Boolean      | N        | Cancel the order if trading pauses                                                                                       |

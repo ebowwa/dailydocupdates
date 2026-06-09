@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/batch-cancel-orders-v2.md
-Downloaded: 2026-06-08T20:56:40.533Z
+Downloaded: 2026-06-09T20:44:56.908Z
 -->
 
 > ## Documentation Index
@@ -139,7 +139,7 @@ components:
                 default: 0
                 description: >-
                   Optional subaccount number to use for this cancellation (0 for
-                  primary, 1-32 for subaccounts).
+                  primary, 1-63 for subaccounts).
                 x-go-type-skip-optional-pointer: true
               exchange_index:
                 allOf:

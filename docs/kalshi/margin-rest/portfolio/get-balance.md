@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/portfolio/get-balance.md
-Downloaded: 2026-06-08T20:56:40.547Z
+Downloaded: 2026-06-09T20:44:56.923Z
 -->
 
 > ## Documentation Index
@@ -124,7 +124,7 @@ components:
       properties:
         subaccount:
           type: integer
-          description: The subaccount number (0 for primary, 1-32 for subaccounts)
+          description: The subaccount number (0 for primary, 1-63 for subaccounts)
         position_value:
           $ref: '#/components/schemas/FixedPointDollars'
           description: >-

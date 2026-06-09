@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-08T20:56:40.537Z
+Downloaded: 2026-06-09T20:44:56.914Z
 -->
 
 > ## Documentation Index
@@ -397,7 +397,7 @@ title: "Order group creation response includes subaccount",
 description: "CreateOrderGroup now returns the subaccount that owns the created order group."
 }}
 >
-  `CreateOrderGroup` now returns `subaccount`, the subaccount number that owns the created order group. The value is `0` for the primary account and `1-32` for subaccounts.
+  `CreateOrderGroup` now returns `subaccount`, the subaccount number that owns the created order group. The value is `0` for the primary account and `1-63` for subaccounts.
 
   Affected endpoint: `POST /portfolio/order_groups/create`.
 </Update>
@@ -1091,7 +1091,7 @@ description: "New endpoints to get and update netting settings per subaccount.",
   * **`GET /portfolio/subaccounts/netting`**: returns the netting enabled status for all subaccounts
   * **`PUT /portfolio/subaccounts/netting`**: updates the netting enabled status for a specific subaccount (pass `subaccount_number` and `enabled` in the request body)
 
-  Use `subaccount_number=0` for the primary account or `1`–`32` for numbered subaccounts. New subaccounts inherit the primary account's netting setting at creation time.
+  Use `subaccount_number=0` for the primary account or `1`–`63` for numbered subaccounts. New subaccounts inherit the primary account's netting setting at creation time.
 </Update>
 
 <Update
@@ -1399,7 +1399,7 @@ title: "Orders return subaccount number",
 description: "Order responses now include subaccount_number for direct users."
 }}
 >
-  Order responses now include `subaccount_number` (0 for primary, 1-32 for subaccounts) for direct users.
+  Order responses now include `subaccount_number` (0 for primary, 1-63 for subaccounts) for direct users.
 
   **Affected endpoints:**
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/agent-sdk/session-storage.md
+Downloaded: 2026-06-09T20:44:48.815Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -145,6 +150,8 @@ The SDK ships an `InMemorySessionStore` for development and testing. The example
   asyncio.run(main())
   ```
 </CodeGroup>
+
+The second query prints a summary of the files from the first query, which shows the agent resumed with full context from the store.
 
 ## Write your own adapter
 

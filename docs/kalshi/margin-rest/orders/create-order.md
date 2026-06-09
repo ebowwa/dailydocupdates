@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/orders/create-order.md
-Downloaded: 2026-06-08T20:56:40.546Z
+Downloaded: 2026-06-09T20:44:56.922Z
 -->
 
 > ## Documentation Index
@@ -145,7 +145,9 @@ components:
           type: boolean
           description: >-
             Specifies whether the order place count should be capped by the
-            member's current position.
+            member's current position. Orders with reduce_only set to true will
+            be rejected unless time_in_force is immediate_or_cancel or
+            fill_or_kill.
         subaccount:
           type: integer
           minimum: 0

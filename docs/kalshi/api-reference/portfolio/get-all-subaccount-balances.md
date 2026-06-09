@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/portfolio/get-all-subaccount-balances.md
+Downloaded: 2026-06-09T20:44:56.911Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -102,7 +107,7 @@ components:
       properties:
         subaccount_number:
           type: integer
-          description: Subaccount number (0 for primary, 1-32 for subaccounts).
+          description: Subaccount number (0 for primary, 1-63 for subaccounts).
         balance:
           $ref: '#/components/schemas/FixedPointDollars'
           description: Balance in dollars.

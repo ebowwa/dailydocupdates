@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/create-quote.md
-Downloaded: 2026-06-08T20:56:40.527Z
+Downloaded: 2026-06-09T20:44:56.902Z
 -->
 
 > ## Documentation Index
@@ -131,7 +131,7 @@ components:
           type: integer
           description: >-
             Optional subaccount number to place the quote under (0 for primary,
-            1-32 for subaccounts)
+            1-63 for subaccounts)
     CreateQuoteResponse:
       type: object
       required:

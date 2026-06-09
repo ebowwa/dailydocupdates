@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/user-orders.md
-Downloaded: 2026-06-07T20:30:44.485Z
+Downloaded: 2026-06-09T20:44:56.926Z
 -->
 
 > ## Documentation Index
@@ -221,7 +221,7 @@ operations:
                     required: false
                   - name: subaccount_number
                     type: integer
-                    description: Subaccount number (0 for primary, 1-32 for subaccounts)
+                    description: Subaccount number (0 for primary, 1-63 for subaccounts)
                     required: false
         headers: []
         jsonPayloadSchema:
@@ -403,7 +403,7 @@ operations:
                   x-parser-schema-id: <anonymous-schema-261>
                 subaccount_number:
                   type: integer
-                  description: Subaccount number (0 for primary, 1-32 for subaccounts)
+                  description: Subaccount number (0 for primary, 1-63 for subaccounts)
                   x-parser-schema-id: <anonymous-schema-262>
               x-parser-schema-id: <anonymous-schema-240>
           x-parser-schema-id: userOrderPayload

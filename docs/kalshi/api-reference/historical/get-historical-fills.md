@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-fills.md
-Downloaded: 2026-06-06T20:29:26.268Z
+Downloaded: 2026-06-09T20:44:56.904Z
 -->
 
 > ## Documentation Index
@@ -261,7 +261,7 @@ components:
           nullable: true
           x-omitempty: true
           description: >-
-            Subaccount number (0 for primary, 1-32 for subaccounts). Present for
+            Subaccount number (0 for primary, 1-63 for subaccounts). Present for
             direct users.
         ts:
           type: integer

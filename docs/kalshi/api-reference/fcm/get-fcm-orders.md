@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/fcm/get-fcm-orders.md
-Downloaded: 2026-06-06T20:29:26.267Z
+Downloaded: 2026-06-09T20:44:56.904Z
 -->
 
 > ## Documentation Index
@@ -335,7 +335,7 @@ components:
           type: integer
           nullable: true
           x-omitempty: true
-          description: Subaccount number (0 for primary, 1-32 for subaccounts).
+          description: Subaccount number (0 for primary, 1-63 for subaccounts).
         exchange_index:
           allOf:
             - $ref: '#/components/schemas/ExchangeIndex'

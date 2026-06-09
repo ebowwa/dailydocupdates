@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/order-groups/delete-order-group.md
+Downloaded: 2026-06-09T20:44:56.907Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -100,7 +105,7 @@ components:
     SubaccountQueryDefaultPrimary:
       name: subaccount
       in: query
-      description: Subaccount number (0 for primary, 1-32 for subaccounts). Defaults to 0.
+      description: Subaccount number (0 for primary, 1-63 for subaccounts). Defaults to 0.
       schema:
         type: integer
     ExchangeIndexQuery:

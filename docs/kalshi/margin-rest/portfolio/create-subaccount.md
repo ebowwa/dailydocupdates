@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/portfolio/create-subaccount.md
-Downloaded: 2026-06-08T20:56:40.547Z
+Downloaded: 2026-06-09T20:44:56.923Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,7 @@ Downloaded: 2026-06-08T20:56:40.547Z
 
 # Create Subaccount
 
-> Creates a new subaccount for the authenticated user in the margin exchange. Subaccounts are numbered sequentially starting from 1. Maximum 32 subaccounts per user.
+> Creates a new subaccount for the authenticated user in the margin exchange. Subaccounts are numbered sequentially starting from 1. Maximum 63 numbered subaccounts per user (64 including the primary account).
 
 
 
@@ -59,7 +59,7 @@ paths:
       description: >-
         Creates a new subaccount for the authenticated user in the margin
         exchange. Subaccounts are numbered sequentially starting from 1. Maximum
-        32 subaccounts per user.
+        63 numbered subaccounts per user (64 including the primary account).
       operationId: CreateMarginSubaccount
       responses:
         '201':
@@ -89,7 +89,7 @@ components:
       properties:
         subaccount_number:
           type: integer
-          description: The sequential number assigned to this subaccount (1-32).
+          description: The sequential number assigned to this subaccount (1-63).
     ErrorResponse:
       type: object
       properties:

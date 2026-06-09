@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/portfolio/get-settlements.md
+Downloaded: 2026-06-09T20:44:56.912Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -148,7 +153,7 @@ components:
       name: subaccount
       in: query
       description: >-
-        Subaccount number (0 for primary, 1-32 for subaccounts). If omitted,
+        Subaccount number (0 for primary, 1-63 for subaccounts). If omitted,
         defaults to all subaccounts.
       schema:
         type: integer
@@ -190,12 +195,10 @@ components:
             - 'yes'
             - 'no'
             - scalar
-            - void
           description: >-
             The outcome of the market settlement. 'yes' = market resolved to
             YES, 'no' = market resolved to NO, 'scalar' = scalar market settled
-            at a specific value, 'void' = market was voided/cancelled and all
-            positions returned at original cost.
+            at a specific value.
         yes_count_fp:
           $ref: '#/components/schemas/FixedPointCount'
           description: >-
