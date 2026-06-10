@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/sql.md
+Downloaded: 2026-06-10T20:56:59.294Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -1033,14 +1038,15 @@ try {
 <Accordion title="PostgreSQL-Specific Error Codes">
   ### PostgreSQL Connection Errors
 
-  | Connection Errors                 | Description                                          |
-  | --------------------------------- | ---------------------------------------------------- |
-  | `ERR_POSTGRES_CONNECTION_CLOSED`  | Connection was terminated or never established       |
-  | `ERR_POSTGRES_CONNECTION_TIMEOUT` | Failed to establish connection within timeout period |
-  | `ERR_POSTGRES_IDLE_TIMEOUT`       | Connection closed due to inactivity                  |
-  | `ERR_POSTGRES_LIFETIME_TIMEOUT`   | Connection exceeded maximum lifetime                 |
-  | `ERR_POSTGRES_TLS_NOT_AVAILABLE`  | SSL/TLS connection not available                     |
-  | `ERR_POSTGRES_TLS_UPGRADE_FAILED` | Failed to upgrade connection to SSL/TLS              |
+  | Connection Errors                 | Description                                                                                                                                                                                                                             |
+  | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | `ERR_POSTGRES_CONNECTION_CLOSED`  | An established connection was terminated                                                                                                                                                                                                |
+  | `ERR_POSTGRES_CONNECTION_FAILED`  | Connection could not be established (refused, or socket closed before the handshake completed, e.g. an intermediary accepted then closed); errors the server sends during startup, like `57P03`, surface as `ERR_POSTGRES_SERVER_ERROR` |
+  | `ERR_POSTGRES_CONNECTION_TIMEOUT` | Failed to establish connection within timeout period                                                                                                                                                                                    |
+  | `ERR_POSTGRES_IDLE_TIMEOUT`       | Connection closed due to inactivity                                                                                                                                                                                                     |
+  | `ERR_POSTGRES_LIFETIME_TIMEOUT`   | Connection exceeded maximum lifetime                                                                                                                                                                                                    |
+  | `ERR_POSTGRES_TLS_NOT_AVAILABLE`  | SSL/TLS connection not available                                                                                                                                                                                                        |
+  | `ERR_POSTGRES_TLS_UPGRADE_FAILED` | Failed to upgrade connection to SSL/TLS                                                                                                                                                                                                 |
 
   ### Authentication Errors
 

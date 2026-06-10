@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix-margin/connectivity.md
+Downloaded: 2026-06-10T20:57:00.361Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -64,10 +69,12 @@ Contact [institutional@kalshi.com](mailto:institutional@kalshi.com) to provision
 
 ## Rate Limits
 
-* **Limit**: Your account-level rate limits are applicable
+* **Limit**: FIX application messages use the same token model, token costs, and margin Read/Write buckets as the equivalent REST API operations.
 * **Scope**: Application messages only (from client to server)
 * **Excluded**: Logout (35=5), Heartbeat (35=0), TestRequest (35=1)
 * Logon (35=A) **is** rate-limited.
+* Order-entry messages use the margin Write bucket. See [Rate Limits and Tiers](/getting_started/rate_limits) for tier budgets and token-cost behavior.
+* Mass Cancel Request (35=q) is limited to 1 request/second.
 
 ## Maintenance Window
 

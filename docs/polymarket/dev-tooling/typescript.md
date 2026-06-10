@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/typescript.md
-Downloaded: 2026-06-08T20:56:19.507Z
+Downloaded: 2026-06-10T20:56:52.922Z
 -->
 
 > ## Documentation Index
@@ -1107,6 +1107,22 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0-beta.6`
+
+* Point Combos RFQ endpoints at the production domains: `combos-rfq-api.polymarket.com` (REST) and `combos-rfq-gateway-quoter.polymarket.com` (quoter WebSocket).
+
+### `0.1.0-beta.5`
+
+* Added `listComboMarkets` for fetching the Combo market catalog with typed bindings and SDK-owned pagination. See [Combos](/market-makers/combos).
+* Parse RFQ quote rejections that use the `SUBMISSION_WINDOW_CLOSED` gateway error code.
+
+### `0.1.0-beta.4`
+
+* Added Combos support for multi-leg RFQ positions. See [Combos](/market-makers/combos).
+* Reject whitespace-only search queries and trim leading or trailing search input.
+* `ConditionId` is now deprecated in favor of `CtfConditionId`; existing
+  `ConditionId` exports remain available as deprecated aliases.
 
 ### `0.1.0-beta.3`
 

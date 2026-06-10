@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/tools-reference.md
-Downloaded: 2026-06-05T20:39:50.140Z
+Downloaded: 2026-06-10T20:57:04.340Z
 -->
 
 > ## Documentation Index
@@ -320,6 +320,10 @@ What tools do you have access to?
 ```
 
 Claude gives a conversational summary. For exact MCP tool names, run `/mcp`.
+
+<Note>
+  The [advisor tool](/en/advisor) is a [server tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/advisor-tool) that the API runs, rather than a tool that Claude Code implements. It has no name you can reference in permission rules or hook matchers.
+</Note>
 
 ## See also
 
