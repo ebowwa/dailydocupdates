@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/connectivity.md
-Downloaded: 2026-06-10T20:57:00.362Z
+Downloaded: 2026-06-11T20:53:02.651Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,9 @@ Downloaded: 2026-06-10T20:57:00.362Z
 
 <Tabs>
   <Tab title="Production">
-    **Host:** `mm.fix.elections.kalshi.com`
+    **Order Entry Host:** `mm.fix.elections.kalshi.com`
+
+    **Market Data Host:** `marketdata.fix.elections.kalshi.com`
 
     | Purpose                              | Port | TargetCompID | Description                                                                                                                                                                                                                                          |
     | ------------------------------------ | ---- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

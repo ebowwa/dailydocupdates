@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-markets.md
-Downloaded: 2026-06-10T20:57:00.350Z
+Downloaded: 2026-06-11T20:53:02.644Z
 -->
 
 > ## Documentation Index
@@ -18,7 +18,7 @@ Downloaded: 2026-06-10T20:57:00.350Z
  | min_created_ts, max_created_ts | `unopened`, `open`, *empty* | |
  | min_close_ts, max_close_ts | `closed`, *empty* | |
  | min_settled_ts, max_settled_ts | `settled`, *empty* | |
- | min_updated_ts | *empty* | Incompatible with all filters besides `mve_filter=exclude` |
+ | min_updated_ts | *empty* | Incompatible with all filters besides `mve_filter=exclude`. May be combined with `series_ticker`, which requires `mve_filter=exclude` |
 
  Markets that settled before the historical cutoff are only available via `GET /historical/markets`. See [Historical Data](https://docs.kalshi.com/getting_started/historical_data) for details.
 
@@ -93,7 +93,7 @@ paths:
          | min_created_ts, max_created_ts | `unopened`, `open`, *empty* | |
          | min_close_ts, max_close_ts | `closed`, *empty* | |
          | min_settled_ts, max_settled_ts | `settled`, *empty* | |
-         | min_updated_ts | *empty* | Incompatible with all filters besides `mve_filter=exclude` |
+         | min_updated_ts | *empty* | Incompatible with all filters besides `mve_filter=exclude`. May be combined with `series_ticker`, which requires `mve_filter=exclude` |
 
          Markets that settled before the historical cutoff are only available via `GET /historical/markets`. See [Historical Data](https://docs.kalshi.com/getting_started/historical_data) for details.
       operationId: GetMarkets
@@ -182,7 +182,9 @@ components:
       in: query
       description: >-
         Return markets with metadata updated later than this Unix timestamp.
-        Tracks non-trading changes only. Incompatible with any other filters.
+        Tracks non-trading changes only. Incompatible with any other filters
+        except mve_filter=exclude. May be combined with series_ticker, which
+        requires mve_filter=exclude.
       schema:
         type: integer
         format: int64

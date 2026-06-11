@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/portfolio/get-positions.md
-Downloaded: 2026-06-09T20:44:56.923Z
+Downloaded: 2026-06-11T20:53:02.657Z
 -->
 
 > ## Documentation Index
@@ -103,6 +103,7 @@ components:
     MarginPosition:
       type: object
       required:
+        - subaccount
         - market_ticker
         - position
         - entry_price
@@ -110,6 +111,11 @@ components:
         - margin_used
         - fees
       properties:
+        subaccount:
+          type: integer
+          description: >-
+            The subaccount number that holds this position (0 for primary, 1-63
+            for subaccounts)
         market_ticker:
           type: string
           description: Market ticker symbol

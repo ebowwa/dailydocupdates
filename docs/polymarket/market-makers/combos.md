@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/combos.md
-Downloaded: 2026-06-10T20:56:52.923Z
+Downloaded: 2026-06-11T20:53:00.796Z
 -->
 
 > ## Documentation Index
@@ -37,7 +37,7 @@ sequenceDiagram
     deactivate Quoter
     RFQ->>Requester: Return best quote
     activate Requester
-    Note left of Requester: 5 seconds max
+    Note left of Requester: 10 seconds max
     Requester->>RFQ: Accept quote
     deactivate Requester
     opt Last Look enabled
@@ -56,7 +56,7 @@ sequenceDiagram
 2. **RFQ system sends the Request** to connected market makers.
 3. **Market makers submit signed Quotes** within the 400 ms submission window.
 4. **RFQ system returns the best Quote** to the user.
-5. **User accepts the Quote** by signing the trade within the 5-second
+5. **User accepts the Quote** by signing the trade within the 10-second
    acceptance window.
 6. **RFQ system requests Last Look confirmation** when Last Look is enabled.
 7. **Market maker confirms or declines** within the 1-second confirmation window.
@@ -2031,7 +2031,7 @@ Combo legs. Markets are ordered by volume descending.
           "outcome_prices": ["0.685", "0.315"],
           "image": "https://...",
           "volume": 330327.7128580074,
-          "tags": ["sports", "soccer", "games", "fifa-world-cup"]
+          "tags": ["sports", "soccer", "games", "world-cup"]
         }
       ],
       "next_cursor": "Mg"
@@ -2841,16 +2841,19 @@ In this section, we will talk you through how to handle errors with the RFQ syst
 
     Common error codes include:
 
-    | Code                       | Meaning                                                  |
-    | -------------------------- | -------------------------------------------------------- |
-    | `INVALID_MESSAGE`          | Message JSON or message type is invalid                  |
-    | `UNKNOWN_RFQ`              | RFQ ID is not active or no longer exists                 |
-    | `EXPIRED_RFQ`              | RFQ has expired                                          |
-    | `SUBMISSION_WINDOW_CLOSED` | Quote arrived after the submission window closed         |
-    | `INVALID_QUOTE`            | Quote payload or signed order is invalid                 |
-    | `INVALID_RFQ_STATE`        | RFQ is not in a state that accepts the requested command |
-    | `INVALID_CONFIRMATION`     | Last Look confirmation payload is invalid                |
-    | `SERVICE_UNAVAILABLE`      | RFQ service dependency is temporarily unavailable        |
+    | Code                                       | Meaning                                                  |
+    | ------------------------------------------ | -------------------------------------------------------- |
+    | `INVALID_MESSAGE`                          | Message JSON or message type is invalid                  |
+    | `UNKNOWN_RFQ`                              | RFQ ID is not active or no longer exists                 |
+    | `EXPIRED_RFQ`                              | RFQ has expired                                          |
+    | `SUBMISSION_WINDOW_CLOSED`                 | Quote arrived after the submission window closed         |
+    | `ALLOWANCE_VALIDATION_FAILED`              | Maker allowance is insufficient for the quoted order     |
+    | `BALANCE_VALIDATION_FAILED`                | Maker balance is insufficient for the quoted order       |
+    | `PRE_EXECUTION_BALANCE_RESERVATION_FAILED` | Balance reservation failed before execution              |
+    | `INVALID_QUOTE`                            | Quote payload or signed order is invalid                 |
+    | `INVALID_RFQ_STATE`                        | RFQ is not in a state that accepts the requested command |
+    | `INVALID_CONFIRMATION`                     | Last Look confirmation payload is invalid                |
+    | `SERVICE_UNAVAILABLE`                      | RFQ service dependency is temporarily unavailable        |
 
     Treat these errors as command-level failures. Keep the WebSocket session alive
     unless the connection itself closes or authentication fails.

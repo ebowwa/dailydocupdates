@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/margin.md
+Downloaded: 2026-06-11T20:53:02.654Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -34,12 +39,12 @@ Use the `external-api` hosts for perps REST. WebSocket and FIX use the separate 
 
 The margin FIX gateway uses a **separate host** from event contract FIX.
 
-| Environment | Type                      | Host                                      |
-| ----------- | ------------------------- | ----------------------------------------- |
-| Demo        | Order entry and drop copy | `margin-fix.demo.kalshi.co`               |
-| Demo        | Market data               | `margin-marketdata.fix.demo.kalshi.co`    |
-| Production  | Order entry and drop copy | `margin-fix-api.fix.elections.kalshi.com` |
-| Production  | Market data               | Coming soon                               |
+| Environment | Type                      | Host                                         |
+| ----------- | ------------------------- | -------------------------------------------- |
+| Demo        | Order entry and drop copy | `margin-fix.demo.kalshi.co`                  |
+| Demo        | Market data               | `margin-marketdata.fix.demo.kalshi.co`       |
+| Production  | Order entry and drop copy | `margin-fix-api.fix.elections.kalshi.com`    |
+| Production  | Market data               | `margin-marketdata.fix.elections.kalshi.com` |
 
 Available session types:
 

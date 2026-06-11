@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/bundler/index.md
-Downloaded: 2026-06-10T20:56:59.267Z
+Downloaded: 2026-06-11T20:53:09.647Z
 -->
 
 > ## Documentation Index
@@ -10,6 +10,8 @@ Downloaded: 2026-06-10T20:56:59.267Z
 # Bundler
 
 > Bun's fast native bundler for JavaScript, TypeScript, JSX, and more
+
+export const name_0 = undefined
 
 Bun's fast native bundler can be used via the `bun build` CLI command or the `Bun.build()` JavaScript API.
 

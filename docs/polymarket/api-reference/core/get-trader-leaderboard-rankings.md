@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/core/get-trader-leaderboard-rankings.md
+Downloaded: 2026-06-11T20:53:00.786Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -41,6 +46,7 @@ paths:
               - OVERALL
               - POLITICS
               - SPORTS
+              - ESPORTS
               - CRYPTO
               - CULTURE
               - MENTIONS

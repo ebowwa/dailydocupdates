@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/fix/error-handling.md
-Downloaded: 2026-06-04T20:46:33.759Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

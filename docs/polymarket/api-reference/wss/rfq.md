@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/wss/rfq.md
-Downloaded: 2026-06-10T20:56:52.920Z
+Downloaded: 2026-06-11T20:53:00.794Z
 -->
 
 > ## Documentation Index
@@ -1303,18 +1303,34 @@ operations:
                 type: string
                 description: Stable machine-readable error code.
                 enumValues:
-                  - INVALID_MESSAGE
-                  - UNAUTHORIZED_ROLE
                   - ADDRESS_MISMATCH
-                  - UNKNOWN_RFQ
+                  - ALLOWANCE_VALIDATION_FAILED
+                  - BALANCE_VALIDATION_FAILED
+                  - CONTRADICTORY_LEGS
                   - EXPIRED_RFQ
-                  - COMPETITION_WINDOW_CLOSED
-                  - INVALID_QUOTE
-                  - INVALID_RFQ_STATE
+                  - INVALID_ACCEPTANCE
                   - INVALID_CONFIRMATION
-                  - MAKER_NOT_REQUIRED
+                  - INVALID_EXECUTION_RESULT
+                  - INVALID_IDENTITY
+                  - INVALID_MESSAGE
+                  - INVALID_QUOTE
+                  - INVALID_RFQ
+                  - INVALID_RFQ_STATE
+                  - INVALID_ROLE
+                  - LEG_METADATA_UNAVAILABLE
                   - MAKER_ALREADY_RESPONDED
+                  - MAKER_NOT_REQUIRED
+                  - PRE_EXECUTION_BALANCE_RESERVATION_FAILED
+                  - QUOTE_MISMATCH
+                  - QUOTE_UNAVAILABLE
+                  - RATE_LIMITED
+                  - REQUEST_FAILED
                   - SERVICE_UNAVAILABLE
+                  - SUBMISSION_WINDOW_CLOSED
+                  - TRADE_SUBMISSION_FAILED
+                  - UNAUTHENTICATED
+                  - UNAUTHORIZED_ROLE
+                  - UNKNOWN_RFQ
                 required: true
               - name: error
                 type: string
@@ -1349,18 +1365,34 @@ operations:
               type: string
               description: Stable machine-readable error code.
               enum:
-                - INVALID_MESSAGE
-                - UNAUTHORIZED_ROLE
                 - ADDRESS_MISMATCH
-                - UNKNOWN_RFQ
+                - ALLOWANCE_VALIDATION_FAILED
+                - BALANCE_VALIDATION_FAILED
+                - CONTRADICTORY_LEGS
                 - EXPIRED_RFQ
-                - COMPETITION_WINDOW_CLOSED
-                - INVALID_QUOTE
-                - INVALID_RFQ_STATE
+                - INVALID_ACCEPTANCE
                 - INVALID_CONFIRMATION
-                - MAKER_NOT_REQUIRED
+                - INVALID_EXECUTION_RESULT
+                - INVALID_IDENTITY
+                - INVALID_MESSAGE
+                - INVALID_QUOTE
+                - INVALID_RFQ
+                - INVALID_RFQ_STATE
+                - INVALID_ROLE
+                - LEG_METADATA_UNAVAILABLE
                 - MAKER_ALREADY_RESPONDED
+                - MAKER_NOT_REQUIRED
+                - PRE_EXECUTION_BALANCE_RESERVATION_FAILED
+                - QUOTE_MISMATCH
+                - QUOTE_UNAVAILABLE
+                - RATE_LIMITED
+                - REQUEST_FAILED
                 - SERVICE_UNAVAILABLE
+                - SUBMISSION_WINDOW_CLOSED
+                - TRADE_SUBMISSION_FAILED
+                - UNAUTHENTICATED
+                - UNAUTHORIZED_ROLE
+                - UNKNOWN_RFQ
               x-parser-schema-id: <anonymous-schema-79>
             error:
               type: string
@@ -1374,8 +1406,8 @@ operations:
             "type": "RFQ_ERROR",
             "request_type": "RFQ_QUOTE",
             "rfq_id": "rfq_<id>",
-            "code": "COMPETITION_WINDOW_CLOSED",
-            "error": "competition window closed"
+            "code": "SUBMISSION_WINDOW_CLOSED",
+            "error": "submission window closed"
           }
         bindings: []
         extensions:

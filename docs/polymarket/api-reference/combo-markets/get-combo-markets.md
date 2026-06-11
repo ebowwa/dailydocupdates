@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/combo-markets/get-combo-markets.md
-Downloaded: 2026-06-10T20:56:52.908Z
+Downloaded: 2026-06-11T20:53:00.785Z
 -->
 
 > ## Documentation Index
@@ -134,7 +134,7 @@ paths:
                       - sports
                       - soccer
                       - games
-                      - fifa-world-cup
+                      - world-cup
                 next_cursor: Mg
         '400':
           $ref: '#/components/responses/BadRequest'
