@@ -1,28 +1,21 @@
 <!--
-Source: https://docs.kalshi.com/api-reference/multivariate/lookup-tickers-for-market-in-multivariate-event-collection.md
-Downloaded: 2026-06-12T20:48:42.424Z
+Source: https://docs.kalshi.com/api-reference/communications/accept-block-trade-proposal.md
+Downloaded: 2026-06-12T20:48:42.418Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Lookup Tickers For Market In Multivariate Event Collection
+# Accept Block Trade Proposal
 
-> DEPRECATED: This endpoint predates RFQs and should not be used for new integrations. Endpoint for looking up an individual market in a multivariate event collection. If CreateMarketInMultivariateEventCollection has never been hit with that variable combination before, this will return a 404.
+>  Endpoint for accepting a block trade proposal.
 
-<Warning>
-  This endpoint is deprecated and predates RFQs. Do not use it for new integrations.
-</Warning>
-
-<Note>
-  **Rate limit:** 2 tokens per request. See `GET /trade-api/v2/account/endpoint_costs` for current non-default endpoint costs.
-</Note>
 
 
 ## OpenAPI
 
-````yaml /openapi.yaml put /multivariate_event_collections/{collection_ticker}/lookup
+````yaml /openapi.yaml post /communications/block-trade-proposals/{block_trade_proposal_id}/accept
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -72,40 +65,29 @@ tags:
   - name: structured-targets
     description: Structured targets endpoints
 paths:
-  /multivariate_event_collections/{collection_ticker}/lookup:
-    put:
+  /communications/block-trade-proposals/{block_trade_proposal_id}/accept:
+    post:
       tags:
-        - multivariate
-      summary: Lookup Tickers For Market In Multivariate Event Collection
-      description: >-
-        DEPRECATED: This endpoint predates RFQs and should not be used for new
-        integrations. Endpoint for looking up an individual market in a
-        multivariate event collection. If
-        CreateMarketInMultivariateEventCollection has never been hit with that
-        variable combination before, this will return a 404.
-      operationId: LookupTickersForMarketInMultivariateEventCollection
+        - communications
+      summary: Accept Block Trade Proposal
+      description: ' Endpoint for accepting a block trade proposal.'
+      operationId: AcceptBlockTradeProposal
       parameters:
-        - name: collection_ticker
+        - name: block_trade_proposal_id
           in: path
           required: true
-          description: Collection ticker
+          description: Block trade proposal ID
           schema:
             type: string
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
-              $ref: >-
-                #/components/schemas/LookupTickersForMarketInMultivariateEventCollectionRequest
+              $ref: '#/components/schemas/AcceptBlockTradeProposalRequest'
       responses:
-        '200':
-          description: Market looked up successfully
-          content:
-            application/json:
-              schema:
-                $ref: >-
-                  #/components/schemas/LookupTickersForMarketInMultivariateEventCollectionResponse
+        '204':
+          description: Block trade proposal accepted successfully
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
@@ -114,58 +96,29 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
-      deprecated: true
       security:
         - kalshiAccessKey: []
           kalshiAccessSignature: []
           kalshiAccessTimestamp: []
 components:
   schemas:
-    LookupTickersForMarketInMultivariateEventCollectionRequest:
+    AcceptBlockTradeProposalRequest:
       type: object
-      required:
-        - selected_markets
       properties:
-        selected_markets:
-          type: array
-          items:
-            $ref: '#/components/schemas/TickerPair'
+        subtrader_id:
+          type: string
           description: >-
-            List of selected markets that act as parameters to determine which
-            market is produced.
-    LookupTickersForMarketInMultivariateEventCollectionResponse:
-      type: object
-      required:
-        - event_ticker
-        - market_ticker
-      properties:
-        event_ticker:
-          type: string
-          description: Event ticker for the looked up market.
-        market_ticker:
-          type: string
-          description: Market ticker for the looked up market.
-    TickerPair:
-      type: object
-      required:
-        - market_ticker
-        - event_ticker
-        - side
-      properties:
-        market_ticker:
-          type: string
-          description: Market ticker identifier.
-        event_ticker:
-          type: string
-          description: Event ticker identifier.
-        side:
-          type: string
-          enum:
-            - 'yes'
-            - 'no'
-          description: Side of the market (yes or no).
-          x-oapi-codegen-extra-tags:
-            validate: required,oneof=yes no
+            Subtrader ID to accept as. Provide either this or subaccount, not
+            both.
+          x-go-type-skip-optional-pointer: true
+        subaccount:
+          type: integer
+          minimum: 0
+          maximum: 63
+          description: >-
+            User-managed subaccount number to accept as (0 for primary, 1-63 for
+            numbered subaccounts). Provide either this or subtrader_id, not
+            both.
     ErrorResponse:
       type: object
       properties:

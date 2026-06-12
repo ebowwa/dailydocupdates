@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/public-trades.md
-Downloaded: 2026-06-07T20:30:44.484Z
+Downloaded: 2026-06-12T20:48:42.438Z
 -->
 
 > ## Documentation Index
@@ -146,7 +146,7 @@ operations:
             type:
               type: string
               const: trade
-              x-parser-schema-id: <anonymous-schema-88>
+              x-parser-schema-id: <anonymous-schema-90>
             sid:
               type: integer
               description: >-
@@ -172,7 +172,7 @@ operations:
                   type: string
                   description: Unique identifier for the trade
                   format: uuid
-                  x-parser-schema-id: <anonymous-schema-90>
+                  x-parser-schema-id: <anonymous-schema-92>
                 market_ticker:
                   type: string
                   description: Unique market identifier
@@ -182,15 +182,15 @@ operations:
                 yes_price_dollars:
                   type: string
                   description: Yes side price in dollars
-                  x-parser-schema-id: <anonymous-schema-91>
+                  x-parser-schema-id: <anonymous-schema-93>
                 no_price_dollars:
                   type: string
                   description: No side price in dollars
-                  x-parser-schema-id: <anonymous-schema-92>
+                  x-parser-schema-id: <anonymous-schema-94>
                 count_fp:
                   type: string
                   description: Fixed-point contracts traded (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-93>
+                  x-parser-schema-id: <anonymous-schema-95>
                 taker_side: &ref_1
                   type: string
                   description: Market side
@@ -214,13 +214,13 @@ operations:
                   deprecated: true
                   description: Deprecated - Unix timestamp in seconds. Use ts_ms instead.
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-94>
+                  x-parser-schema-id: <anonymous-schema-96>
                 ts_ms:
                   type: integer
                   description: Unix timestamp in milliseconds
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-95>
-              x-parser-schema-id: <anonymous-schema-89>
+                  x-parser-schema-id: <anonymous-schema-97>
+              x-parser-schema-id: <anonymous-schema-91>
           x-parser-schema-id: tradePayload
         title: Trade Update
         description: Public trade information

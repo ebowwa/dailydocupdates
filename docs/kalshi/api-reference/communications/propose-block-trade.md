@@ -1,28 +1,21 @@
 <!--
-Source: https://docs.kalshi.com/api-reference/multivariate/lookup-tickers-for-market-in-multivariate-event-collection.md
-Downloaded: 2026-06-12T20:48:42.424Z
+Source: https://docs.kalshi.com/api-reference/communications/propose-block-trade.md
+Downloaded: 2026-06-12T20:48:42.420Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Lookup Tickers For Market In Multivariate Event Collection
+# Propose Block Trade
 
-> DEPRECATED: This endpoint predates RFQs and should not be used for new integrations. Endpoint for looking up an individual market in a multivariate event collection. If CreateMarketInMultivariateEventCollection has never been hit with that variable combination before, this will return a 404.
+>  Endpoint for creating a block trade proposal.
 
-<Warning>
-  This endpoint is deprecated and predates RFQs. Do not use it for new integrations.
-</Warning>
-
-<Note>
-  **Rate limit:** 2 tokens per request. See `GET /trade-api/v2/account/endpoint_costs` for current non-default endpoint costs.
-</Note>
 
 
 ## OpenAPI
 
-````yaml /openapi.yaml put /multivariate_event_collections/{collection_ticker}/lookup
+````yaml /openapi.yaml post /communications/block-trade-proposals
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -72,100 +65,130 @@ tags:
   - name: structured-targets
     description: Structured targets endpoints
 paths:
-  /multivariate_event_collections/{collection_ticker}/lookup:
-    put:
+  /communications/block-trade-proposals:
+    post:
       tags:
-        - multivariate
-      summary: Lookup Tickers For Market In Multivariate Event Collection
-      description: >-
-        DEPRECATED: This endpoint predates RFQs and should not be used for new
-        integrations. Endpoint for looking up an individual market in a
-        multivariate event collection. If
-        CreateMarketInMultivariateEventCollection has never been hit with that
-        variable combination before, this will return a 404.
-      operationId: LookupTickersForMarketInMultivariateEventCollection
-      parameters:
-        - name: collection_ticker
-          in: path
-          required: true
-          description: Collection ticker
-          schema:
-            type: string
+        - communications
+      summary: Propose Block Trade
+      description: ' Endpoint for creating a block trade proposal.'
+      operationId: ProposeBlockTrade
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: >-
-                #/components/schemas/LookupTickersForMarketInMultivariateEventCollectionRequest
+              $ref: '#/components/schemas/ProposeBlockTradeRequest'
       responses:
-        '200':
-          description: Market looked up successfully
+        '201':
+          description: Block trade proposal created successfully
           content:
             application/json:
               schema:
-                $ref: >-
-                  #/components/schemas/LookupTickersForMarketInMultivariateEventCollectionResponse
+                $ref: '#/components/schemas/ProposeBlockTradeResponse'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
-        '404':
-          $ref: '#/components/responses/NotFoundError'
+        '403':
+          $ref: '#/components/responses/ForbiddenError'
         '500':
           $ref: '#/components/responses/InternalServerError'
-      deprecated: true
       security:
         - kalshiAccessKey: []
           kalshiAccessSignature: []
           kalshiAccessTimestamp: []
 components:
   schemas:
-    LookupTickersForMarketInMultivariateEventCollectionRequest:
+    ProposeBlockTradeRequest:
       type: object
       required:
-        - selected_markets
+        - buyer_user_id
+        - seller_user_id
+        - market_ticker
+        - price_centi_cents
+        - centicount
+        - maker_side
+        - expiration_ts
       properties:
-        selected_markets:
-          type: array
-          items:
-            $ref: '#/components/schemas/TickerPair'
+        buyer_user_id:
+          type: string
+          description: User ID of the buyer
+          x-oapi-codegen-extra-tags:
+            validate: required
+        buyer_subtrader_id:
+          type: string
           description: >-
-            List of selected markets that act as parameters to determine which
-            market is produced.
-    LookupTickersForMarketInMultivariateEventCollectionResponse:
-      type: object
-      required:
-        - event_ticker
-        - market_ticker
-      properties:
-        event_ticker:
+            Subtrader ID of the buyer. Provide either this or buyer_subaccount,
+            not both.
+          x-go-type-skip-optional-pointer: true
+        buyer_subaccount:
+          type: integer
+          minimum: 0
+          maximum: 63
+          description: >-
+            User-managed subaccount number of the buyer (0 for primary, 1-63 for
+            numbered subaccounts). Provide either this or buyer_subtrader_id,
+            not both.
+        seller_user_id:
           type: string
-          description: Event ticker for the looked up market.
+          description: User ID of the seller
+          x-oapi-codegen-extra-tags:
+            validate: required
+        seller_subtrader_id:
+          type: string
+          description: >-
+            Subtrader ID of the seller. Provide either this or
+            seller_subaccount, not both.
+          x-go-type-skip-optional-pointer: true
+        seller_subaccount:
+          type: integer
+          minimum: 0
+          maximum: 63
+          description: >-
+            User-managed subaccount number of the seller (0 for primary, 1-63
+            for numbered subaccounts). Provide either this or
+            seller_subtrader_id, not both.
         market_ticker:
           type: string
-          description: Market ticker for the looked up market.
-    TickerPair:
-      type: object
-      required:
-        - market_ticker
-        - event_ticker
-        - side
-      properties:
-        market_ticker:
+          description: The ticker of the market for this block trade
+          x-oapi-codegen-extra-tags:
+            validate: required
+        price_centi_cents:
+          type: integer
+          format: int64
+          minimum: 1
+          description: Price in centi-cents
+          x-oapi-codegen-extra-tags:
+            validate: required,gt=0
+        centicount:
+          type: integer
+          format: int64
+          minimum: 1
+          description: Number of contracts in centicounts
+          x-oapi-codegen-extra-tags:
+            validate: required,gt=0
+        maker_side:
           type: string
-          description: Market ticker identifier.
-        event_ticker:
-          type: string
-          description: Event ticker identifier.
-        side:
-          type: string
+          description: The maker side of the trade
           enum:
             - 'yes'
             - 'no'
-          description: Side of the market (yes or no).
           x-oapi-codegen-extra-tags:
             validate: required,oneof=yes no
+        expiration_ts:
+          type: string
+          format: date-time
+          description: Expiration time of the proposal
+          x-oapi-codegen-extra-tags:
+            validate: required
+    ProposeBlockTradeResponse:
+      type: object
+      required:
+        - block_trade_proposal_id
+      properties:
+        block_trade_proposal_id:
+          type: string
+          description: The ID of the newly created block trade proposal
     ErrorResponse:
       type: object
       properties:
@@ -194,8 +217,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFoundError:
-      description: Resource not found
+    ForbiddenError:
+      description: Forbidden - insufficient permissions
       content:
         application/json:
           schema:

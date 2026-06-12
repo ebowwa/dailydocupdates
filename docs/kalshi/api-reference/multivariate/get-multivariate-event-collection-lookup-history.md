@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/multivariate/get-multivariate-event-collection-lookup-history.md
-Downloaded: 2026-06-10T20:57:00.352Z
+Downloaded: 2026-06-12T20:48:42.424Z
 -->
 
 > ## Documentation Index
@@ -181,6 +181,8 @@ components:
             - 'yes'
             - 'no'
           description: Side of the market (yes or no).
+          x-oapi-codegen-extra-tags:
+            validate: required,oneof=yes no
   responses:
     BadRequestError:
       description: Bad request - invalid input

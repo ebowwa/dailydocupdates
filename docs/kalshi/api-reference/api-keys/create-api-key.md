@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/api-keys/create-api-key.md
-Downloaded: 2026-06-10T20:57:00.342Z
+Downloaded: 2026-06-12T20:48:42.418Z
 -->
 
 > ## Documentation Index
@@ -117,9 +117,9 @@ components:
           type: array
           description: >-
             List of scopes to grant to the API key. If the broad `write` parent
-            scope is included, `read` must also be included. Child write scopes
-            may be granted without the broad parent scope. Defaults to full
-            access (`read`, `write`) if not provided.
+            scope is included, `read` must also be included. Child scopes may be
+            granted without the broad parent scope. Defaults to full access
+            (`read`, `write`) if not provided.
           items:
             $ref: '#/components/schemas/ApiKeyScope'
     CreateApiKeyResponse:
@@ -135,16 +135,24 @@ components:
       enum:
         - read
         - write
+        - read::block_trade_accept
+        - read::portfolio_balance
         - write::transfer
+        - write::block_trade_accept
       x-enum-varnames:
         - ApiKeyScopeRead
         - ApiKeyScopeWrite
+        - ApiKeyScopeReadBlockTradeAccept
+        - ApiKeyScopeReadPortfolioBalance
         - ApiKeyScopeWriteTransfer
+        - ApiKeyScopeWriteBlockTradeAccept
       description: >-
         Scope granted to an API key. Parent scopes grant broad access; for
         example, `read` grants all read endpoints and `write` grants all write
-        endpoints. Child scopes such as `write::transfer` grant only their
-        specific endpoint group and can be granted without the parent scope.
+        endpoints. Child scopes such as `read::block_trade_accept`,
+        `read::portfolio_balance`, `write::transfer`, and
+        `write::block_trade_accept` grant only their specific endpoint group and
+        can be granted without the parent scope.
   securitySchemes:
     kalshiAccessKey:
       type: apiKey

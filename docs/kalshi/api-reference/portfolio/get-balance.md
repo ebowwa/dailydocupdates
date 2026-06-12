@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-balance.md
-Downloaded: 2026-06-10T20:57:00.357Z
+Downloaded: 2026-06-12T20:48:42.427Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,7 @@ Downloaded: 2026-06-10T20:57:00.357Z
 
 # Get Balance
 
->  Endpoint for getting the balance and portfolio value of a member. Both values are returned in cents.
+> Endpoint for getting the balance and portfolio value of a member. Both values are returned in cents. This endpoint also accepts API keys with the 'read::portfolio_balance' scope.
 
 
 
@@ -70,7 +70,10 @@ paths:
       tags:
         - portfolio
       summary: Get Balance
-      description: ' Endpoint for getting the balance and portfolio value of a member. Both values are returned in cents.'
+      description: >-
+        Endpoint for getting the balance and portfolio value of a member. Both
+        values are returned in cents. This endpoint also accepts API keys with
+        the 'read::portfolio_balance' scope.
       operationId: GetBalance
       parameters:
         - $ref: '#/components/parameters/SubaccountQueryDefaultPrimary'

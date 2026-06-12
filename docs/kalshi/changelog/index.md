@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-11T20:53:02.649Z
+Downloaded: 2026-06-12T20:48:42.429Z
 -->
 
 > ## Documentation Index
@@ -37,6 +37,44 @@ description: "Each position returned by GET /trade-api/v2/margin/positions now i
   **Affected endpoints:**
 
   * `GET /trade-api/v2/margin/positions`
+</Update>
+
+<Update
+  label="June 18, 2026"
+  tags={["REST", "Predictions", "Margin"]}
+  rss={{
+title: "Block-trade accept API key permissions",
+description: "API keys can use narrow block-trade accept scopes for proposal viewing, balance checks, and proposal acceptance."
+}}
+>
+  API keys can use `read::block_trade_accept` and
+  `write::block_trade_accept` to grant narrow block-trade proposal viewing and
+  acceptance permissions without granting broad account `read` or `write`
+  access. Use `read::portfolio_balance` for narrow balance checks. Parent
+  scopes still grant broad access, so standard `read` and `write` keys continue
+  to work.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/communications/block-trade-proposals`
+  * `POST /trade-api/v2/communications/block-trade-proposals/{block_trade_proposal_id}/accept`
+  * `GET /trade-api/v2/portfolio/balance`
+</Update>
+
+<Update
+  label="June 18, 2026"
+  tags={["WebSocket", "Predictions"]}
+  rss={{
+title: "Sanity limits enforced on orderbook subscriptions",
+description: "Sanity limits enforced on orderbook subscriptions."
+}}
+>
+  Sanity limits enforced on orderbook subscriptions:
+
+  * Max 500k market subscriptions per session.
+  * Max 10k/s commands per second enforced.
+
+  Additionally, an error message will be returned when attempting to subscribe to an unknown market ticker on the `orderbook_delta` channel.
 </Update>
 
 <Update

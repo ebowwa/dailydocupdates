@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/jetbrains.md
+Downloaded: 2026-06-12T20:48:49.474Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -34,6 +39,8 @@ The Claude Code plugin works with most JetBrains IDEs, including:
 Find and install the [Claude Code plugin](https://plugins.jetbrains.com/plugin/27310-claude-code-beta-) from the JetBrains marketplace and restart your IDE.
 
 If you haven't installed Claude Code yet, see the [quickstart guide](/en/quickstart) for installation instructions.
+
+Claude Code works with any paid Claude subscription (Pro, Max, Team, or Enterprise) or a Claude Console account, and no API key is required. You'll be prompted to [log in](/en/authentication#log-in-to-claude-code) the first time you run `claude`.
 
 <Note>
   After installing the plugin, you may need to restart your IDE completely for it to take effect.

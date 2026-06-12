@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix-margin/connectivity.md
-Downloaded: 2026-06-11T20:53:02.650Z
+Downloaded: 2026-06-12T20:48:42.429Z
 -->
 
 > ## Documentation Index
@@ -15,7 +15,7 @@ Downloaded: 2026-06-11T20:53:02.650Z
 
 <Tabs>
   <Tab title="Production">
-    **Order Entry Host:** `margin-fix-api.fix.elections.kalshi.com`
+    **Order Entry Host:** `margin-mm.fix.elections.kalshi.com`
 
     **Market Data Host:** `margin-marketdata.fix.elections.kalshi.com`
 
