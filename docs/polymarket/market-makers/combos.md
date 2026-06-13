@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/combos.md
-Downloaded: 2026-06-11T20:53:00.796Z
+Downloaded: 2026-06-13T20:32:14.863Z
 -->
 
 > ## Documentation Index
@@ -1287,6 +1287,8 @@ fresh outside the quote path.
           "shares_balance": "10",
           "entry_avg_price_usdc": "0.45",
           "entry_cost_usdc": "4.5",
+          "realized_payout_usdc": "0.00",
+          "total_cost_usdc": "4.50",
           "status": "OPEN",
           "first_entry_at": "2026-06-08T00:00:00Z",
           "resolved_at": null,
@@ -1317,6 +1319,20 @@ fresh outside the quote path.
     ```
   </Tab>
 </Tabs>
+
+<Note>
+  **Displaying closed (redeemed) positions.** `entry_cost_usdc` is the
+  *remaining* cost basis (`entry_avg_price × shares_balance`), so it reads `~0`
+  once a winning combo is redeemed — and `shares_balance` does too. Two fields
+  carry the closed-position economics instead:
+
+  * `realized_payout_usdc` — gross redemption proceeds (winning shares redeem
+    1:1 at \$1; accumulates under `PARTIAL`)
+  * `total_cost_usdc` — original cost basis, reconstructed as
+    `entry_avg_price × (shares_balance + realized_payout)`
+
+  Net result of a finished combo = `realized_payout_usdc − total_cost_usdc`.
+</Note>
 
 ### Inventory Management
 

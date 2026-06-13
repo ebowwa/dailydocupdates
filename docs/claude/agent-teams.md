@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-teams.md
-Downloaded: 2026-06-09T20:44:48.817Z
+Downloaded: 2026-06-13T20:32:22.186Z
 -->
 
 > ## Documentation Index
@@ -398,7 +398,7 @@ The lead may decide the team is finished before all tasks are actually complete.
 
 ### Orphaned tmux sessions
 
-If a tmux session persists after the team ends, it may not have been fully cleaned up. List sessions and kill the one created by the team:
+If a tmux session persists after the team ends, it may not have been fully cleaned up. List sessions and end the one created by the team:
 
 ```bash theme={null}
 tmux ls

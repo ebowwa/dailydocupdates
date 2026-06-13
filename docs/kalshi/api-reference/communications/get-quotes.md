@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/get-quotes.md
-Downloaded: 2026-06-10T20:57:00.344Z
+Downloaded: 2026-06-13T20:32:16.024Z
 -->
 
 > ## Documentation Index
@@ -76,6 +76,22 @@ paths:
         - $ref: '#/components/parameters/CursorQuery'
         - $ref: '#/components/parameters/SingleEventTickerQuery'
         - $ref: '#/components/parameters/MarketTickerQuery'
+        - name: min_ts
+          in: query
+          description: >-
+            Restricts the response to quotes last updated after a timestamp,
+            formatted as a Unix Timestamp
+          schema:
+            type: integer
+            format: int64
+        - name: max_ts
+          in: query
+          description: >-
+            Restricts the response to quotes last updated before a timestamp,
+            formatted as a Unix Timestamp
+          schema:
+            type: integer
+            format: int64
         - name: limit
           in: query
           description: >-
