@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-13T20:32:16.035Z
+Downloaded: 2026-06-16T21:06:09.866Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,32 @@ surface (`REST`, `WebSocket`, `FIX`) or exchange (`Predictions`, `Margin`).
 FIX API changes, previously tracked on a separate page, now live here under
 the `FIX` tag.
 
-{/* changelog-tags: ["New Feature", "Upcoming"] */}
+{/* changelog-tags: ["Upcoming"] */}
+
+<Update
+  label="June 18, 2026"
+  tags={["FIX", "Predictions"]}
+  rss={{
+title: "RFQ quote identity on FIX",
+description: "FIX RFQ Quote notifications now include the quoter public communications ID."
+}}
+>
+  FIX RFQ `Quote (35=S)` notifications sent to RFQ creators now include the
+  quoter's public communications ID in `NoPartyIDs` with `PartyRole=35`
+  (Liquidity Provider).
+</Update>
+
+<Update
+  label="June 18, 2026"
+  tags={["FIX", "Predictions", "Margin"]}
+  rss={{
+title: "Trade entries in FIX market data",
+description: "FIX market data incremental refreshes now include trade entries"
+}}
+>
+  FIX market data incremental refreshes now include trades as `MDEntryType<269>=2`.
+  See FIX docs for more information.
+</Update>
 
 <Update
   label="June 18, 2026"

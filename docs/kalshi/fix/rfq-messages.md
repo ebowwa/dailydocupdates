@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/rfq-messages.md
-Downloaded: 2026-06-09T20:44:56.917Z
+Downloaded: 2026-06-16T21:06:09.868Z
 -->
 
 > ## Documentation Index
@@ -148,16 +148,19 @@ If a new Quote is created when an existing quote for the same market already exi
 
 ### Exchange → Creator (Quote Notification)
 
-| Tag | Name       | Type    | Required | Description                                               |
-| --- | ---------- | ------- | -------- | --------------------------------------------------------- |
-| 117 | QuoteId    | UUID    | Y        | Quote identifier (use this to accept)                     |
-| 131 | QuoteReqId | UUID    | Y        | Server-assigned RFQ ID                                    |
-| 55  | Symbol     | String  | Y        | Market ticker                                             |
-| 132 | BidPx      | Decimal | C        | Yes price in dollars (e.g. 0.4500). Not present when zero |
-| 133 | OfferPx    | Decimal | C        | No price in dollars (e.g. 0.5500). Not present when zero  |
-| 38  | OrderQty   | Decimal | N        | Number of contracts as a fixed-point decimal              |
-| 134 | BidSize    | Decimal | N        | Quantity offered on the Yes side                          |
-| 135 | OfferSize  | Decimal | N        | Quantity offered on the No side                           |
+| Tag | Name       | Type    | Required | Description                                                                                     |
+| --- | ---------- | ------- | -------- | ----------------------------------------------------------------------------------------------- |
+| 117 | QuoteId    | UUID    | Y        | Quote identifier (use this to accept)                                                           |
+| 131 | QuoteReqId | UUID    | Y        | Server-assigned RFQ ID                                                                          |
+| 55  | Symbol     | String  | Y        | Market ticker                                                                                   |
+| 132 | BidPx      | Decimal | C        | Yes price in dollars (e.g. 0.4500). Not present when zero                                       |
+| 133 | OfferPx    | Decimal | C        | No price in dollars (e.g. 0.5500). Not present when zero                                        |
+| 38  | OrderQty   | Decimal | N        | Number of contracts as a fixed-point decimal                                                    |
+| 134 | BidSize    | Decimal | N        | Quantity offered on the Yes side                                                                |
+| 135 | OfferSize  | Decimal | N        | Quantity offered on the No side                                                                 |
+| 453 | NoPartyIDs | Integer | N        | Number of parties (always 1)                                                                    |
+| 448 | PartyId    | String  | N        | Quoter public communications ID. This value is pseudonymous and is not the quoter's SubtraderId |
+| 452 | PartyRole  | Integer | N        | 35 (Liquidity Provider)                                                                         |
 
 <Warning>
   Either BidPx or OfferPx can be zero, but not both. Zero indicates no quote for that side.
@@ -321,7 +324,7 @@ Exchange notifies that an RFQ creation request was rejected or that a quote requ
   ```
 
   ```fix Quote Notification (Exchange → Creator) theme={null}
-  8=FIXT.1.1|35=S|117=quote-789|131=server-rfq-456|55=HIGHNY-23DEC31|132=0.7500|133=0.2500|38=100|
+  8=FIXT.1.1|35=S|117=quote-789|131=server-rfq-456|55=HIGHNY-23DEC31|132=0.7500|133=0.2500|38=100|453=1|448=quoter-public-id|452=35|
   ```
 
   ```fix Accept Quote (Creator → Exchange) theme={null}

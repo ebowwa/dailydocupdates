@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/plugins-reference.md
-Downloaded: 2026-06-09T20:44:48.833Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
