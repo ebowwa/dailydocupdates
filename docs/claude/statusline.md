@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/statusline.md
+Downloaded: 2026-06-17T20:47:46.323Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,6 +19,8 @@ Status lines are useful when you:
 * Need to track session costs
 * Work across multiple sessions and need to distinguish them
 * Want git branch and status always visible
+
+Claude Code can also render [footer link badges](/en/settings#footer-link-badges): clickable chips that appear in the footer when a configured regex matches text in the conversation. These are independent of the status line and do not interact with your script; configure them with the [`footerLinksRegexes`](/en/settings#footer-link-badges) setting instead.
 
 Here's an example of a [multi-line status line](#display-multiple-lines) that displays git info on the first line and a color-coded context bar on the second.
 

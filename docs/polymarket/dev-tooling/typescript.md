@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/typescript.md
-Downloaded: 2026-06-10T20:56:52.922Z
+Downloaded: 2026-06-17T20:47:37.299Z
 -->
 
 > ## Documentation Index
@@ -1107,6 +1107,17 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0-beta.7`
+
+* Added `parentEventId` to `Event` so child events can link back to their parent event.
+* Added `maxPrice` and `minPrice` protection fields to market order requests.
+* Handle legacy multi-outcome markets more safely: `listMarkets` skips markets that cannot be represented by the binary market model, and `fetchMarket` returns a typed SDK error for unsupported markets.
+* Normalize empty-string order and activity fields to SDK values: decimal amounts become `"0"`, missing maker order fee rates become `null`, and missing trade or position market icons become `null`.
+* Parse Combo trade activity rows with an `isCombo` discriminated union.
+* Support new Combos RFQ websocket error codes for balance, allowance, and pre-execution reservation failures.
+* Broad user websocket subscriptions now omit market filters so all-market streams receive trade events.
+* Retry rejected JSON-RPC `eth_call` batches by splitting them into smaller batches.
 
 ### `0.1.0-beta.6`
 

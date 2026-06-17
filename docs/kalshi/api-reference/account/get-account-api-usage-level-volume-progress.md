@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/account/get-account-api-usage-level-volume-progress.md
-Downloaded: 2026-06-10T20:57:00.342Z
+Downloaded: 2026-06-17T20:47:37.722Z
 -->
 
 > ## Documentation Index
@@ -103,7 +103,8 @@ components:
           type: array
           description: >-
             Latest cron-computed trading volume progress toward volume-based API
-            usage tiers for the predictions (event_contract) lane.
+            usage tiers for the predictions (event_contract) lane. Volume-based
+            public tiers are Expert, Premier, Paragon, Prime, and Prestige.
           items:
             $ref: '#/components/schemas/AccountApiUsageLevelVolumeProgress'
     AccountApiUsageLevelVolumeProgress:
@@ -146,7 +147,8 @@ components:
       properties:
         level:
           type: string
-          description: API usage level for this volume goal.
+          description: API usage level for this Predictions volume goal.
+          example: expert
         earn_volume_goal_fp:
           $ref: '#/components/schemas/FixedPointCount'
         keep_volume_goal_fp:

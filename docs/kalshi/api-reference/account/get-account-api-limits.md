@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/account/get-account-api-limits.md
-Downloaded: 2026-06-10T20:57:00.341Z
+Downloaded: 2026-06-17T20:47:37.722Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,7 @@ Downloaded: 2026-06-10T20:57:00.341Z
 
 # Get Account API Limits
 
->  Endpoint to retrieve the API tier limits associated with the authenticated user.
+> Endpoint to retrieve the authenticated user's Predictions API usage tier and token-bucket limits. Public Predictions tiers include Basic, Advanced, Expert, Premier, Paragon, Prime, and Prestige.
 
 
 
@@ -70,7 +70,10 @@ paths:
       tags:
         - account
       summary: Get Account API Limits
-      description: ' Endpoint to retrieve the API tier limits associated with the authenticated user.'
+      description: >-
+        Endpoint to retrieve the authenticated user's Predictions API usage tier
+        and token-bucket limits. Public Predictions tiers include Basic,
+        Advanced, Expert, Premier, Paragon, Prime, and Prestige.
       operationId: GetAccountApiLimits
       responses:
         '200':
@@ -99,7 +102,11 @@ components:
       properties:
         usage_tier:
           type: string
-          description: User's API usage tier.
+          description: >-
+            User's effective Predictions API usage tier for these limits (for
+            example, basic, advanced, expert, premier, paragon, prime, or
+            prestige).
+          example: expert
         read:
           $ref: '#/components/schemas/BucketLimit'
         write:
@@ -146,7 +153,10 @@ components:
           $ref: '#/components/schemas/ExchangeInstance'
         level:
           type: string
-          description: API usage level this grant confers (e.g. premier, paragon, prime).
+          description: >-
+            API usage level this grant confers (for example, expert, premier,
+            paragon, prime, or prestige).
+          example: prestige
         expires_ts:
           type: integer
           format: int64

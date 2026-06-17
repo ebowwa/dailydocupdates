@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-16T21:06:09.866Z
+Downloaded: 2026-06-17T20:47:37.733Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,27 @@ surface (`REST`, `WebSocket`, `FIX`) or exchange (`Predictions`, `Margin`).
 FIX API changes, previously tracked on a separate page, now live here under
 the `FIX` tag.
 
-{/* changelog-tags: ["Upcoming"] */}
+{/* changelog-tags: ["New Feature", "Upcoming"] */}
+
+<Update
+  label="June 18, 2026"
+  tags={["WebSocket", "Predictions"]}
+  rss={{
+title: "Strike type and cap strike on market_lifecycle_v2 metadata_updated",
+description: "metadata_updated events on the market_lifecycle_v2 channel now include strike_type and cap_strike alongside floor_strike."
+}}
+>
+  `metadata_updated` events on the `market_lifecycle_v2` channel now include
+  `strike_type` and `cap_strike` (plus `custom_strike` for custom/structured
+  markets) alongside `floor_strike`. Consumers can reconstruct a market's full
+  strike range directly from the push — e.g. a `between` band needs both floor
+  and cap, and `less` markets are cap-only — without a follow-up fetch against
+  the eventually-consistent read model.
+
+  `metadata_updated` is now also emitted when a market's `cap_strike` or
+  `strike_type` changes; previously only `floor_strike` and `yes_sub_title`
+  changes triggered it.
+</Update>
 
 <Update
   label="June 18, 2026"
