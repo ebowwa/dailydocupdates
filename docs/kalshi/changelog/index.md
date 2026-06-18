@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-17T20:47:37.733Z
+Downloaded: 2026-06-18T20:54:15.666Z
 -->
 
 > ## Documentation Index
@@ -22,6 +22,24 @@ FIX API changes, previously tracked on a separate page, now live here under
 the `FIX` tag.
 
 {/* changelog-tags: ["New Feature", "Upcoming"] */}
+
+<Update
+  label="June 18, 2026"
+  tags={["REST", "Predictions"]}
+  rss={{
+title: "settlement_sources added to the events API",
+description: "GET /events and GET /events/{event_ticker} now include settlement_sources for each event."
+}}
+>
+  The events API now returns `settlement_sources` on each event, mirroring the
+  field already available on series. Each entry has a `name` and `url`
+  identifying an official source used to determine the event's markets.
+
+  **Affected endpoints:**
+
+  * `GET /events`
+  * `GET /events/{event_ticker}`
+</Update>
 
 <Update
   label="June 18, 2026"
@@ -66,6 +84,38 @@ description: "FIX market data incremental refreshes now include trade entries"
 >
   FIX market data incremental refreshes now include trades as `MDEntryType<269>=2`.
   See FIX docs for more information.
+</Update>
+
+<Update
+  label="June 18, 2026"
+  tags={["REST", "Predictions"]}
+  rss={{
+title: "Legacy order mutation endpoints deprecated",
+description: "Legacy /portfolio/orders mutation endpoints will be deprecated sometime between June 18 and June 25. Use the V2 /portfolio/events/orders endpoints instead."
+}}
+>
+  Legacy `/portfolio/orders` mutation endpoints will be deprecated sometime
+  between June 18 and June 25. Once deprecated, calls to these endpoints will return
+  `Please switch to the V2 endpoints` with a link to the V2 order API
+  reference.
+
+  Use the V2 event-order endpoints:
+
+  * [Create Order (V2)](/api-reference/orders/create-order-v2)
+  * [Cancel Order (V2)](/api-reference/orders/cancel-order-v2)
+  * [Decrease Order (V2)](/api-reference/orders/decrease-order-v2)
+  * [Batch Create Orders (V2)](/api-reference/orders/batch-create-orders-v2)
+  * [Batch Cancel Orders (V2)](/api-reference/orders/batch-cancel-orders-v2)
+  * [Amend Order (V2)](/api-reference/orders/amend-order-v2)
+
+  **Affected endpoints:**
+
+  * `POST /trade-api/v2/portfolio/orders`
+  * `DELETE /trade-api/v2/portfolio/orders/{order_id}`
+  * `POST /trade-api/v2/portfolio/orders/{order_id}/decrease`
+  * `POST /trade-api/v2/portfolio/orders/batched`
+  * `DELETE /trade-api/v2/portfolio/orders/batched`
+  * `POST /trade-api/v2/portfolio/orders/{order_id}/amend`
 </Update>
 
 <Update
@@ -134,8 +184,6 @@ description: "Sanity limits enforced on orderbook subscriptions."
 
   * Max 500k market subscriptions per session.
   * Max 10k/s commands per second enforced.
-
-  Additionally, an error message will be returned when attempting to subscribe to an unknown market ticker on the `orderbook_delta` channel.
 </Update>
 
 <Update

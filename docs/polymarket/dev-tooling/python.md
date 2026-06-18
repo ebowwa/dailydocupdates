@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/python.md
-Downloaded: 2026-06-17T20:47:37.299Z
+Downloaded: 2026-06-18T20:53:59.772Z
 -->
 
 > ## Documentation Index
@@ -1038,7 +1038,7 @@ Secure clients read account-scoped data for the authenticated wallet by default.
                     ...
                 case _:
                     # SPLIT / MERGE / REDEEM / CONVERSION / MAKER_REBATE
-                    # / REFERRAL_REWARD / YIELD
+                    # / TAKER_REBATE / REFERRAL_REWARD / YIELD
                     ...
     ```
   </Tab>

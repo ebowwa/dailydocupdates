@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/web-quickstart.md
-Downloaded: 2026-06-10T20:57:04.342Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

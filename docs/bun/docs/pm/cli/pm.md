@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/pm.md
+Downloaded: 2026-06-18T20:54:07.157Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -153,6 +158,19 @@ bun list --all
 ├── ajv@6.12.6
 ├── ansi-regex@5.0.1
 ├── ...
+```
+
+To print only trusted dependencies (those allowed to run lifecycle scripts). When `trustedDependencies` is set in `package.json`, packages from that list are shown; otherwise packages from Bun's [default trusted dependencies](https://github.com/oven-sh/bun/blob/main/src/install/default-trusted-dependencies.txt) list are shown.
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun pm ls --trusted
+# or
+bun list --trusted
+```
+
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
+/path/to/project node_modules (135)
+└── esbuild@0.21.5
 ```
 
 ## whoami

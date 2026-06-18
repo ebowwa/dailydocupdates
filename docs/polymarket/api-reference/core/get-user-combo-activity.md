@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/api-reference/core/get-user-combo-activity.md
-Downloaded: 2026-06-10T20:56:52.910Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

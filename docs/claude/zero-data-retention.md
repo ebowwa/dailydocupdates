@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/zero-data-retention.md
+Downloaded: 2026-06-18T20:54:08.526Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -49,11 +54,12 @@ ZDR does not extend to the following, even for organizations with ZDR enabled. T
 
 When ZDR is enabled for a Claude Code organization on Claude for Enterprise, certain features that require storing prompts or completions are automatically disabled at the backend level:
 
-| Feature                                                           | Reason                                                                  |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| [Claude Code on the Web](/en/claude-code-on-the-web)              | Requires server-side storage of conversation history.                   |
-| [Cloud sessions](/en/desktop#cloud-sessions) from the Desktop app | Requires persistent session data that includes prompts and completions. |
-| Feedback submission (`/feedback`)                                 | Submitting feedback sends conversation data to Anthropic.               |
+| Feature                                                           | Reason                                                                        |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| [Claude Code on the Web](/en/claude-code-on-the-web)              | Requires server-side storage of conversation history.                         |
+| [Cloud sessions](/en/desktop#cloud-sessions) from the Desktop app | Requires persistent session data that includes prompts and completions.       |
+| [Artifacts](/en/artifacts)                                        | Requires storing published page content on Anthropic-operated infrastructure. |
+| Feedback submission (`/feedback`)                                 | Submitting feedback sends conversation data to Anthropic.                     |
 
 These features are blocked in the backend regardless of client-side display. If you see a disabled feature in the Claude Code terminal during startup, attempting to use it returns an error indicating the organization's policies do not allow that action.
 
