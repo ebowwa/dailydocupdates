@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/get-quotes.md
-Downloaded: 2026-06-13T20:32:16.024Z
+Downloaded: 2026-06-20T20:32:46.771Z
 -->
 
 > ## Documentation Index
@@ -74,8 +74,6 @@ paths:
       operationId: GetQuotes
       parameters:
         - $ref: '#/components/parameters/CursorQuery'
-        - $ref: '#/components/parameters/SingleEventTickerQuery'
-        - $ref: '#/components/parameters/MarketTickerQuery'
         - name: min_ts
           in: query
           description: >-
@@ -179,20 +177,6 @@ components:
         Pagination cursor. Use the cursor value returned from the previous
         response to get the next page of results. Leave empty for the first
         page.
-      schema:
-        type: string
-        x-go-type-skip-optional-pointer: true
-    SingleEventTickerQuery:
-      name: event_ticker
-      in: query
-      description: Event ticker to filter by. Only a single event ticker is supported.
-      schema:
-        type: string
-        x-go-type-skip-optional-pointer: true
-    MarketTickerQuery:
-      name: market_ticker
-      in: query
-      description: Filter by market ticker
       schema:
         type: string
         x-go-type-skip-optional-pointer: true

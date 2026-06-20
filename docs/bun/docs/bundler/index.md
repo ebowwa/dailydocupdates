@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/index.md
+Downloaded: 2026-06-20T20:32:50.380Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -1987,6 +1992,11 @@ bun build <entry points>
 
 <ParamField path="--react-fast-refresh" type="boolean">
   Enable React Fast Refresh transform (for development testing)
+</ParamField>
+
+<ParamField path="--react-compiler" type="boolean">
+  Run the React Compiler over `.jsx`/`.tsx` files, automatically memoizing components and hooks. Output mode is derived
+  from `--target` (`browser` → client, `bun`/`node` → ssr). Experimental.
 </ParamField>
 
 ### Standalone Executables

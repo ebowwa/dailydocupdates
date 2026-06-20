@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/chrome.md
+Downloaded: 2026-06-20T20:32:41.616Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -168,7 +173,7 @@ Claude records the interaction sequence and saves it as a GIF file.
 
 ### Extension not detected
 
-If Claude Code's setup-issues line lists `chrome`:
+If Claude Code can't detect the Chrome extension:
 
 1. Verify the Chrome extension is installed and enabled in `chrome://extensions`
 2. Verify Claude Code is up to date by running `claude --version`

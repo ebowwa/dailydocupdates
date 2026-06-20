@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-18T20:54:15.666Z
+Downloaded: 2026-06-20T20:32:46.782Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,24 @@ surface (`REST`, `WebSocket`, `FIX`) or exchange (`Predictions`, `Margin`).
 FIX API changes, previously tracked on a separate page, now live here under
 the `FIX` tag.
 
-{/* changelog-tags: ["New Feature", "Upcoming"] */}
+{/* changelog-tags: ["Breaking Change", "Released"] */}
+
+<Update
+  label="June 20, 2026"
+  tags={["REST", "Predictions"]}
+  rss={{
+title: "RFQ quote market and event filters removed",
+description: "GET /trade-api/v2/communications/quotes no longer supports the market_ticker or event_ticker query parameters, effective immediately."
+}}
+>
+  `GET /trade-api/v2/communications/quotes` no longer supports filtering by
+  `market_ticker` or `event_ticker`, effective immediately. Requests should
+  filter quotes by user, RFQ, status, or update time instead.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/communications/quotes`
+</Update>
 
 <Update
   label="June 18, 2026"

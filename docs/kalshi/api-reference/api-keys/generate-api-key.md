@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/api-reference/api-keys/generate-api-key.md
-Downloaded: 2026-06-12T20:48:42.418Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

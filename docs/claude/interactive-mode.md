@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/interactive-mode.md
-Downloaded: 2026-06-13T20:32:22.196Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
