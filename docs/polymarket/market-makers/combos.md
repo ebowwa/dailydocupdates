@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-makers/combos.md
+Downloaded: 2026-06-21T20:36:01.410Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -70,7 +75,8 @@ confirm fills through Last Look, and monitor execution updates.
 
 ## Start Quoting
 
-Start by preparing an authenticated quoting session with the RFQ system.
+Start by preparing an authenticated quoting session with the RFQ system. You
+need a Polymarket account; create one at [polymarket.com](https://polymarket.com).
 
 <Tabs>
   <Tab title="TypeScript">
@@ -239,12 +245,29 @@ Start by preparing an authenticated quoting session with the RFQ system.
   </Tab>
 
   <Tab title="API">
+    <Note>
+      Use Polygon mainnet chain ID `137` for CLOB authentication and Exchange v3
+      order signing.
+    </Note>
+
     <Steps>
       <Step title="Open the WebSocket">
         Connect to the RFQ system WebSocket.
 
         ```text theme={null}
         wss://combos-rfq-gateway-quoter.polymarket.com/ws/rfq
+        ```
+
+        To inspect the stream before integrating:
+
+        ```bash theme={null}
+        wscat -c "wss://combos-rfq-gateway-quoter.polymarket.com/ws/rfq"
+        ```
+
+        Some write operations are also available through the REST API.
+
+        ```text theme={null}
+        https://combos-rfq-api.polymarket.com
         ```
       </Step>
 
@@ -275,7 +298,7 @@ Start by preparing an authenticated quoting session with the RFQ system.
         credentials and the `signer_address`, `maker_address`, and `signature_type`
         values resolved in the previous step. This example uses a Deposit Wallet.
 
-        ```json Deposit Wallet theme={null}
+        ```json theme={null}
         {
           "type": "auth",
           "auth": {
@@ -291,25 +314,220 @@ Start by preparing an authenticated quoting session with the RFQ system.
         }
         ```
 
-        A successful authentication response looks like:
+        Authentication returns a success or failure response.
 
-        ```json Deposit Wallet theme={null}
+        <CodeGroup>
+          ```json Success theme={null}
+          {
+            "type": "auth",
+            "success": true,
+            "address": "0xAuthenticatedAddress",
+            "role": "maker"
+          }
+          ```
+
+          ```json Failure theme={null}
+          {
+            "type": "auth",
+            "success": false,
+            "error": "unauthenticated"
+          }
+          ```
+        </CodeGroup>
+
+        <Note>
+          The RFQ system uses WebSocket protocol heartbeat frames to keep the connection
+          alive. It sends a ping frame every 30 seconds with payload `rfq`; your client
+          must respond with a pong frame that echoes the same payload. Most WebSocket
+          clients handle this automatically. These are protocol frames, not JSON
+          messages in the RFQ event stream. The gateway closes stale connections after 2
+          minutes without an inbound message or pong.
+        </Note>
+      </Step>
+
+      <Step title="Check Approval Requirements">
+        Before posting quotes, `maker_address` must approve the contracts that may
+        transfer assets during RFQ execution.
+
+        | Approval                    | Required when                                 | Contract call                                           |
+        | --------------------------- | --------------------------------------------- | ------------------------------------------------------- |
+        | pUSD collateral             | The quoted order transfers pUSD               | `CollateralToken.approve(ExchangeV3, maxUint256)`       |
+        | Combo positions             | The quoted order transfers Combo positions    | `PositionManager.setApprovalForAll(ExchangeV3, true)`   |
+        | AutoRedeemer Combo operator | You want automatic redemption flows to use it | `PositionManager.setApprovalForAll(AutoRedeemer, true)` |
+
+        Use these contract addresses to build the approval calls.
+
+        | Contract              | Address                                      |
+        | --------------------- | -------------------------------------------- |
+        | pUSD collateral token | `0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB` |
+        | Exchange v3           | `0xe3333700cA9d93003F00f0F71f8515005F6c00Aa` |
+        | PositionManager       | `0x006F54F7f9A22e0000CC2AB60031000000ae9fEF` |
+        | AutoRedeemer          | `0xa1200000d0002264C9a1698e001292D00E1b00af` |
+
+        <Note>
+          The following steps show the Deposit Wallet
+          [batch](/trading/deposit-wallets#submit-a-deposit-wallet-batch) path. If you
+          are trading with an EOA, submit the approvals directly from `maker_address`.
+          For Safe or Poly Proxy wallet flows, use an SDK.
+        </Note>
+      </Step>
+
+      <Step title="Build the Approval Call List">
+        Encode the approval calls that are not already in place.
+
+        <CodeGroup>
+          ```solidity ERC-20 Approval theme={null}
+          function approve(address spender, uint256 amount) returns (bool);
+          ```
+
+          ```solidity ERC-1155 Approval theme={null}
+          function setApprovalForAll(address operator, bool approved);
+          ```
+        </CodeGroup>
+
+        Build a relayer call list from the encoded calldata.
+
+        ```json theme={null}
+        [
+          {
+            "target": "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB",
+            "value": "0",
+            "data": "<approve_exchange_v3_calldata>"
+          },
+          {
+            "target": "0x006F54F7f9A22e0000CC2AB60031000000ae9fEF",
+            "value": "0",
+            "data": "<approve_exchange_v3_operator_calldata>"
+          },
+          {
+            "target": "0x006F54F7f9A22e0000CC2AB60031000000ae9fEF",
+            "value": "0",
+            "data": "<approve_auto_redeemer_operator_calldata>"
+          }
+        ]
+        ```
+      </Step>
+
+      <Step title="Fetch the Nonce">
+        Fetch a fresh `WALLET` nonce before signing the batch.
+
+        ```bash theme={null}
+        curl -G "https://relayer-v2.polymarket.com/v1/account/transactions/params" \
+          -H "RELAYER_API_KEY: $RELAYER_API_KEY" \
+          -H "RELAYER_API_KEY_ADDRESS: $RELAYER_API_KEY_ADDRESS" \
+          --data-urlencode "address=$RELAYER_API_KEY_ADDRESS" \
+          --data-urlencode "type=WALLET"
+        ```
+
+        The response includes the nonce to sign with the transaction.
+
+        ```json theme={null}
         {
-          "type": "auth",
-          "success": true,
-          "address": "0xAuthenticatedAddress",
-          "role": "maker"
+          "address": "<RELAYER_API_KEY_ADDRESS>",
+          "nonce": "<wallet_nonce>"
         }
         ```
       </Step>
 
-      <Step title="Keep the Connection Alive">
-        The RFQ system uses WebSocket protocol heartbeat frames to keep the connection
-        alive. It sends a ping frame every 30 seconds with payload `rfq`; your client
-        must respond with a pong frame that echoes the same payload. Most WebSocket
-        clients handle this automatically.
+      <Step title="Submit the Transaction">
+        Build and sign a Deposit Wallet `Batch` with the owner. Use the approval calls
+        from the call-list step as `calls`.
 
-        These are protocol frames, not JSON messages in the RFQ event stream.
+        ```json EIP-712 Batch theme={null}
+        {
+          "domain": {
+            "name": "DepositWallet",
+            "version": "1",
+            "chainId": 137,
+            "verifyingContract": "<maker_address>"
+          },
+          "types": {
+            "Call": [
+              { "name": "target", "type": "address" },
+              { "name": "value", "type": "uint256" },
+              { "name": "data", "type": "bytes" }
+            ],
+            "Batch": [
+              { "name": "wallet", "type": "address" },
+              { "name": "nonce", "type": "uint256" },
+              { "name": "deadline", "type": "uint256" },
+              { "name": "calls", "type": "Call[]" }
+            ]
+          },
+          "primaryType": "Batch",
+          "message": {
+            "wallet": "<maker_address>",
+            "nonce": "<wallet_nonce>",
+            "deadline": "<unix_seconds>",
+            "calls": [
+              {
+                "target": "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB",
+                "value": "0",
+                "data": "<approval_calldata>"
+              }
+            ]
+          }
+        }
+        ```
+
+        Submit the signed batch to the relayer.
+
+        ```bash theme={null}
+        curl -X POST "https://relayer-v2.polymarket.com/submit" \
+          -H "Content-Type: application/json" \
+          -H "RELAYER_API_KEY: $RELAYER_API_KEY" \
+          -H "RELAYER_API_KEY_ADDRESS: $RELAYER_API_KEY_ADDRESS" \
+          -d '{
+            "type": "WALLET",
+            "from": "<relayer_api_key_address>",
+            "to": "0x00000000000Fb5C9ADea0298D729A0CB3823Cc07",
+            "nonce": "<wallet_nonce>",
+            "signature": "<wallet_batch_signature>",
+            "metadata": "Approve Combo RFQ contracts",
+            "depositWalletParams": {
+              "depositWallet": "<maker_address>",
+              "deadline": "<unix_seconds>",
+              "calls": [
+                {
+                  "target": "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB",
+                  "value": "0",
+                  "data": "<approval_calldata>"
+                }
+              ]
+            }
+          }'
+        ```
+
+        The response includes the relayer transaction ID.
+
+        ```json theme={null}
+        {
+          "transactionID": "<transaction_id>",
+          "state": "STATE_NEW"
+        }
+        ```
+      </Step>
+
+      <Step title="Poll the Transaction">
+        Poll the relayer transaction until it reaches `STATE_CONFIRMED` before posting
+        quotes that rely on those approvals.
+
+        ```bash theme={null}
+        curl "https://relayer-v2.polymarket.com/v1/account/transactions/<transaction_id>" \
+          -H "RELAYER_API_KEY: $RELAYER_API_KEY" \
+          -H "RELAYER_API_KEY_ADDRESS: $RELAYER_API_KEY_ADDRESS"
+        ```
+
+        ```json theme={null}
+        {
+          "transaction_id": "<transaction_id>",
+          "transaction_hash": "<transaction_hash>",
+          "state": "STATE_CONFIRMED",
+          "error_msg": null
+        }
+        ```
+
+        Treat `STATE_FAILED` and `STATE_INVALID` as terminal failures.
       </Step>
     </Steps>
   </Tab>
@@ -332,9 +550,36 @@ request using collateral or inventory.
 See [Combinatorial Positions](/trading/ctf/combinatorial) for more detail on the
 YES/NO position model.
 
-Quoters should respond within the **400 ms** submission window.
+The diagram below shows the maker-side quote lifecycle, from receiving a quote
+request through its terminal outcome.
+
+```mermaid theme={null}
+flowchart TD
+    A[Receive request] --> B[Send quote]
+    B --> C[Active quote]
+    C --> D[Canceled]
+    C --> E[Selected]
+    E --> F{Last Look?}
+    F -->|No| G[Execution]
+
+    subgraph lastLook["Last Look"]
+        F -->|Yes| H[Review fill]
+        H --> I[Confirm]
+        H --> J[Decline]
+        H --> K[Timeout]
+    end
+
+    I --> G
+    G --> L[Confirmed]
+    G --> M[Failed]
+
+    style lastLook fill:#165DFC14,stroke:#165DFC66,stroke-width:1px
+```
 
 ### Authorize the Quote
+
+Authorize each quote by pricing the request and returning a signed order to the
+RFQ system. Quoters should respond within the **400 ms** submission window.
 
 <Tabs>
   <Tab title="TypeScript">
@@ -610,10 +855,13 @@ Quoters should respond within the **400 ms** submission window.
       </Step>
 
       <Step title="Build EIP-712 Typed Data">
-        Build the EIP-712 typed-data payload for your wallet type.
+        Build the EIP-712 typed-data payload for your wallet type:
+
+        * Use `depositWalletTypedData` when `signature_type` is `3`.
+        * Use `exchangeV3OrderTypedData` when `signature_type` is `0`, `1`, or `2`.
 
         <CodeGroup>
-          ```json Deposit Wallet theme={null}
+          ```json depositWalletTypedData theme={null}
           {
             "domain": {
               "name": "Polymarket CTF Exchange",
@@ -668,7 +916,7 @@ Quoters should respond within the **400 ms** submission window.
           }
           ```
 
-          ```json Safe Wallet, Proxy Wallet, and EOA theme={null}
+          ```json exchangeV3OrderTypedData theme={null}
           {
             "domain": {
               "name": "Polymarket CTF Exchange",
@@ -706,7 +954,7 @@ Quoters should respond within the **400 ms** submission window.
               "makerAmount": "450000",
               "takerAmount": "1000000",
               "side": 0,
-              "signatureType": 3, // <signature_type>
+              "signatureType": 0, // <signature_type>
               "timestamp": "<unix_seconds>",
               "metadata": "0x0000000000000000000000000000000000000000000000000000000000000000",
               "builder": "0x0000000000000000000000000000000000000000000000000000000000000000"
@@ -714,61 +962,255 @@ Quoters should respond within the **400 ms** submission window.
           }
           ```
         </CodeGroup>
+
+        Both payloads use the Exchange v3 EIP-712 domain. `exchangeV3OrderTypedData` is
+        the direct Exchange v3 `Order` payload. `depositWalletTypedData` is a
+        `TypedDataSign` wrapper whose `contents` field is the Exchange v3 order and
+        whose message includes the Deposit Wallet validation fields.
       </Step>
 
       <Step title="Sign the Order">
-        Sign the typed-data payload from the previous step. The final signature format
-        depends on the wallet type.
+        Sign the typed-data payload for the wallet type you authenticated with. The
+        normal Exchange v3 payload and the Deposit Wallet payload are different:
 
-        | Wallet Type    | `signatureType` | Signature Format                    |
-        | -------------- | --------------- | ----------------------------------- |
-        | Deposit Wallet | `3`             | ERC-7739-wrapped ERC-1271 signature |
-        | Safe Wallet    | `2`             | Standard EVM signature              |
-        | Poly Proxy     | `1`             | Standard EVM signature              |
-        | EOA            | `0`             | Standard EVM signature              |
+        | Wallet Type    | `signatureType` | Payload to sign            | `signed_order.signature`       |
+        | -------------- | --------------- | -------------------------- | ------------------------------ |
+        | Deposit Wallet | `3`             | `depositWalletTypedData`   | ERC-7739-wrapped signature     |
+        | Safe Wallet    | `2`             | `exchangeV3OrderTypedData` | Standard 65-byte EVM signature |
+        | Poly Proxy     | `1`             | `exchangeV3OrderTypedData` | Standard 65-byte EVM signature |
+        | EOA            | `0`             | `exchangeV3OrderTypedData` | Standard 65-byte EVM signature |
+
+        The example below shows how to produce `signature` with Viem for both signing
+        paths.
+
+        <CodeGroup>
+          ```ts sign.ts theme={null}
+          import { privateKeyToAccount } from "viem/accounts";
+          import { wrapDepositWalletSignature } from "./wrapDepositWalletSignature";
+
+          const signer = privateKeyToAccount("<SIGNER_PRIVATE_KEY>");
+
+          const signature =
+            signatureType === 3
+              ? wrapDepositWalletSignature(
+                  await signer.signTypedData(depositWalletTypedData),
+                  depositWalletTypedData,
+                )
+              : await signer.signTypedData(exchangeV3OrderTypedData);
+          ```
+
+          ```ts wrapDepositWalletSignature.ts theme={null}
+          import {
+            concatHex,
+            encodeAbiParameters,
+            keccak256,
+            toHex,
+            type Address,
+            type Hex,
+          } from "viem";
+          import type { DepositWalletTypedData } from "./types";
+
+          const ORDER_TYPE =
+            "Order(uint256 salt,address maker,address signer,uint256 tokenId,uint256 makerAmount,uint256 takerAmount,uint8 side,uint8 signatureType,uint256 timestamp,bytes32 metadata,bytes32 builder)";
+          const EIP712_DOMAIN_TYPE =
+            "EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)";
+
+          export function wrapDepositWalletSignature(
+            innerSignature: Hex,
+            depositWalletTypedData: DepositWalletTypedData,
+          ): Hex {
+            const order = depositWalletTypedData.message.contents;
+            const exchangeV3Domain = depositWalletTypedData.domain;
+
+            const appDomainSeparator = keccak256(
+              encodeAbiParameters(
+                [
+                  { type: "bytes32" },
+                  { type: "bytes32" },
+                  { type: "bytes32" },
+                  { type: "uint256" },
+                  { type: "address" },
+                ],
+                [
+                  keccak256(toHex(EIP712_DOMAIN_TYPE)),
+                  keccak256(toHex(exchangeV3Domain.name)),
+                  keccak256(toHex(exchangeV3Domain.version)),
+                  BigInt(exchangeV3Domain.chainId),
+                  exchangeV3Domain.verifyingContract,
+                ],
+              ),
+            );
+            const contentsHash = keccak256(
+              encodeAbiParameters(
+                [
+                  { type: "bytes32" },
+                  { type: "uint256" },
+                  { type: "address" },
+                  { type: "address" },
+                  { type: "uint256" },
+                  { type: "uint256" },
+                  { type: "uint256" },
+                  { type: "uint8" },
+                  { type: "uint8" },
+                  { type: "uint256" },
+                  { type: "bytes32" },
+                  { type: "bytes32" },
+                ],
+                [
+                  keccak256(toHex(ORDER_TYPE)),
+                  BigInt(order.salt),
+                  order.maker,
+                  order.signer,
+                  BigInt(order.tokenId),
+                  BigInt(order.makerAmount),
+                  BigInt(order.takerAmount),
+                  order.side,
+                  order.signatureType,
+                  BigInt(order.timestamp),
+                  order.metadata,
+                  order.builder,
+                ],
+              ),
+            );
+
+            return concatHex([
+              innerSignature,
+              appDomainSeparator,
+              contentsHash,
+              toHex(ORDER_TYPE),
+              toHex(ORDER_TYPE.length, { size: 2 }),
+            ]);
+          }
+          ```
+
+          ```ts types.ts theme={null}
+          import type { Address, Hex } from "viem";
+
+          export type DepositWalletTypedData = {
+            domain: {
+              name: string;
+              version: string;
+              chainId: number;
+              verifyingContract: Address;
+            };
+            message: {
+              contents: {
+                salt: string;
+                maker: Address;
+                signer: Address;
+                tokenId: string;
+                makerAmount: string;
+                takerAmount: string;
+                side: number;
+                signatureType: number;
+                timestamp: string;
+                metadata: Hex;
+                builder: Hex;
+              };
+            };
+            types: Record<string, readonly { name: string; type: string }[]>;
+            primaryType: "TypedDataSign";
+          };
+          ```
+        </CodeGroup>
       </Step>
 
       <Step title="Submit the Quote">
-        Before `submission_deadline`, send `RFQ_QUOTE` with the RFQ ID, quote price,
-        fillable size, and signed order. Add the signature from the previous step to the
-        order as `signed_order.signature`. This example continues with the `SELL`
-        request order above.
+        Before `submission_deadline`, submit the RFQ ID, quote price, fillable size, and
+        signed order. Add the signature from the previous step as
+        `signed_order.signature`.
 
-        ```json theme={null}
-        {
-          "type": "RFQ_QUOTE",
-          "rfq_id": "<rfq_id>",
-          "price_e6": "450000",
-          "size_e6": "1000000",
-          "signed_order": {
-            "salt": "<order_salt>",
-            "maker": "<maker_address>",
-            "signer": "<signer_address>",
-            "tokenId": "<yes_position_id>",
-            "makerAmount": "450000",
-            "takerAmount": "1000000",
-            "side": 0,
-            "signatureType": 3, // <signature_type>
-            "timestamp": "<unix_seconds>",
-            "metadata": "0x0000000000000000000000000000000000000000000000000000000000000000",
-            "builder": "0x0000000000000000000000000000000000000000000000000000000000000000",
-            "signature": "<signature>"
+        <CodeGroup>
+          ```json WebSocket theme={null}
+          {
+            "type": "RFQ_QUOTE",
+            "rfq_id": "<rfq_id>",
+            "price_e6": "450000",
+            "size_e6": "1000000",
+            "signed_order": {
+              "salt": "<order_salt>",
+              "maker": "<maker_address>",
+              "signer": "<signer_address>",
+              "tokenId": "<yes_position_id>",
+              "makerAmount": "450000",
+              "takerAmount": "1000000",
+              "side": 0,
+              "signatureType": 3, // <signature_type>
+              "timestamp": "<unix_seconds>",
+              "metadata": "0x0000000000000000000000000000000000000000000000000000000000000000",
+              "builder": "0x0000000000000000000000000000000000000000000000000000000000000000",
+              "signature": "<signature>"
+            }
           }
-        }
-        ```
+          ```
+
+          ```bash REST theme={null}
+          curl -X POST "https://combos-rfq-api.polymarket.com/v1/maker/quotes" \
+            -H "Content-Type: application/json" \
+            -H "POLY_ADDRESS: <clob_credentials_address>" \
+            -H "POLY_SIGNATURE: <clob_l2_signature>" \
+            -H "POLY_TIMESTAMP: <timestamp>" \
+            -H "POLY_API_KEY: <clob_api_key>" \
+            -H "POLY_PASSPHRASE: <clob_passphrase>" \
+            -d '{
+              "quote_id": "<client_quote_id>",
+              "rfq_id": "<rfq_id>",
+              "signer_address": "<signer_address>",
+              "maker_address": "<maker_address>",
+              "signature_type": 3,
+              "price_e6": "450000",
+              "size_e6": "1000000",
+              "signed_order": {
+                "salt": "<order_salt>",
+                "maker": "<maker_address>",
+                "signer": "<signer_address>",
+                "tokenId": "<yes_position_id>",
+                "makerAmount": "450000",
+                "takerAmount": "1000000",
+                "side": 0,
+                "signatureType": 3,
+                "timestamp": "<unix_seconds>",
+                "metadata": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "builder": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "signature": "<signature>"
+              }
+            }'
+          ```
+        </CodeGroup>
+
+        <Note>
+          REST submissions require a client-generated `quote_id`. Use an opaque unique
+          value; the RFQ system uses the `quote_` prefix followed by 32 lowercase hex
+          characters.
+        </Note>
       </Step>
 
       <Step title="Store the Quote Reference">
-        If the RFQ system accepts the quote, it returns `ACK_RFQ_QUOTE` with the quote
-        reference. Store the RFQ ID and quote ID together.
+        After submitting a quote, store the RFQ ID and quote ID together. WebSocket
+        submissions receive both values in the acknowledgement. REST submissions return
+        the current RFQ snapshot, so use the client-generated `quote_id` from the request.
 
-        ```json theme={null}
-        {
-          "type": "ACK_RFQ_QUOTE",
-          "rfq_id": "<rfq_id>",
-          "quote_id": "<quote_id>"
-        }
-        ```
+        <CodeGroup>
+          ```json WebSocket theme={null}
+          {
+            "type": "ACK_RFQ_QUOTE",
+            "rfq_id": "<rfq_id>",
+            "quote_id": "<quote_id>"
+          }
+          ```
+
+          ```json REST theme={null}
+          {
+            "request": {
+              "rfq_id": "<rfq_id>"
+              // …
+            },
+            "status": "COLLECTING_QUOTES",
+            "competition_started_at": 1780963200000,
+            "competition_ends_at": 1780963200400
+          }
+          ```
+        </CodeGroup>
 
         This reference identifies the submitted quote.
       </Step>
@@ -1023,6 +1465,390 @@ Quoters should respond within the **400 ms** submission window.
         ```
       </Step>
     </Steps>
+  </Tab>
+</Tabs>
+
+### Cancel Quotes
+
+After you submit a quote, keep the returned quote reference. If your price,
+inventory, or risk changes before the quote is selected, use that reference to
+request cancellation.
+
+<Note>
+  A cancellation acknowledgement means the RFQ system processed the cancellation
+  request. It does not guarantee the quote was withdrawn from an RFQ that was
+  already selected.
+</Note>
+
+<Tabs>
+  <Tab title="TypeScript">
+    <Steps>
+      <Step title="Store the Quote Reference">
+        First, keep the quote reference returned by `event.quote(…)`. It contains the
+        `rfqId` and `quoteId` needed to cancel the quote.
+
+        ```ts theme={null}
+        const reference = await event.quote({ price: 0.45 });
+
+        // reference.rfqId: RfqId
+        // reference.quoteId: RfqQuoteId
+        ```
+      </Step>
+
+      <Step title="Cancel the Quote">
+        Then, pass that reference to `session.cancelQuote(…)` on the same live RFQ
+        session.
+
+        ```ts theme={null}
+        if (shouldCancelQuote) {
+          const ack = await session.cancelQuote(reference);
+
+          // ack.rfqId: RfqId
+          // ack.quoteId: RfqQuoteId
+        }
+        ```
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Python">
+    <Steps>
+      <Step title="Store the Quote Reference">
+        First, keep the quote reference returned by `event.quote(...)`. It contains the
+        `rfq_id` and `quote_id` needed to cancel the quote.
+
+        ```python theme={null}
+        from decimal import Decimal
+
+
+        reference = await event.quote(price=Decimal("0.45"))
+
+        # reference.rfq_id: RfqId
+        # reference.quote_id: RfqQuoteId
+        ```
+      </Step>
+
+      <Step title="Cancel the Quote">
+        Then, pass that reference to `session.cancel_quote(...)` on the same live RFQ
+        session.
+
+        ```python theme={null}
+        if should_cancel_quote:
+            ack = await session.cancel_quote(reference)
+
+            # ack.rfq_id: RfqId
+            # ack.quote_id: RfqQuoteId
+        ```
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="API">
+    Send a cancellation request with the RFQ ID and quote ID. On the WebSocket, the
+    RFQ system acknowledges a processed cancellation request with
+    `ACK_RFQ_QUOTE_CANCEL`.
+
+    <CodeGroup>
+      ```json Send theme={null}
+      {
+        "type": "RFQ_QUOTE_CANCEL",
+        "rfq_id": "<rfq_id>",
+        "quote_id": "<quote_id>",
+        "signer_address": "<signer_address>",
+        "maker_address": "<maker_address>"
+      }
+      ```
+
+      ```json Receive theme={null}
+      {
+        "type": "ACK_RFQ_QUOTE_CANCEL",
+        "rfq_id": "<rfq_id>",
+        "quote_id": "<quote_id>"
+      }
+      ```
+    </CodeGroup>
+
+    Alternatively, cancel the quote through the REST API.
+
+    <CodeGroup>
+      ```bash Request theme={null}
+      curl -X POST "https://combos-rfq-api.polymarket.com/v1/maker/quotes/cancel" \
+        -H "Content-Type: application/json" \
+        -H "POLY_ADDRESS: <clob_credentials_address>" \
+        -H "POLY_SIGNATURE: <clob_l2_signature>" \
+        -H "POLY_TIMESTAMP: <timestamp>" \
+        -H "POLY_API_KEY: <clob_api_key>" \
+        -H "POLY_PASSPHRASE: <clob_passphrase>" \
+        -d '{
+          "rfq_id": "<rfq_id>",
+          "quote_id": "<quote_id>",
+          "signer_address": "<signer_address>",
+          "maker_address": "<maker_address>",
+          "signature_type": 3
+        }'
+      ```
+
+      ```json Response theme={null}
+      {
+        "request": {
+          "rfq_id": "<rfq_id>"
+          // …
+        },
+        "status": "COLLECTING_QUOTES",
+        "competition_started_at": 1780963200000,
+        "competition_ends_at": 1780963200400
+      }
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+### Last Look
+
+Last Look is a separate confirmation step for makers that have it enabled. If a
+selected quote requires confirmation, run a final risk check before the
+confirmation deadline and either confirm or decline the quote.
+
+<Tabs>
+  <Tab title="TypeScript">
+    <Steps>
+      <Step title="Switch on the Event Type">
+        First, switch on `event.type` to handle confirmation requests from the same
+        session stream.
+
+        ```ts theme={null}
+        switch (event.type) {
+          case "confirmation_request":
+            // event: RfqConfirmationRequestEvent
+            void handleConfirmationRequest(event);
+            break;
+
+          // …
+        }
+        ```
+      </Step>
+
+      <Step title="Inspect the Confirmation Request">
+        Then, inspect the confirmation request before running your final risk check. It
+        includes the selected quote, the final fill size, and the `event.confirmBy`
+        deadline for your Last Look response.
+
+        ```ts theme={null}
+        type RfqConfirmationRequestEvent = {
+          type: "confirmation_request";
+          rfqId: RfqId;
+          quoteId: RfqQuoteId;
+          conditionId: ComboConditionId;
+          direction: RfqDirection;
+          side: RfqSide.Yes;
+          price: DecimalString;
+          fillSize: DecimalString;
+          yesPositionId: PositionId;
+          noPositionId: PositionId;
+          legPositionIds: PositionId[];
+          confirmBy: EpochMilliseconds;
+          confirm(): Promise<RfqConfirmationAck>;
+          decline(): Promise<RfqConfirmationAck>;
+        };
+        ```
+      </Step>
+
+      <Step title="Confirm or Decline">
+        Finally, run your final risk check outside the session loop and respond before
+        the `event.confirmBy` deadline.
+
+        ```ts theme={null}
+        async function handleConfirmationRequest(event: RfqConfirmationRequestEvent) {
+          const canStillFill = runFinalRiskCheck(event);
+
+          if (canStillFill) {
+            await event.confirm();
+            return;
+          }
+
+          await event.decline();
+        }
+        ```
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="Python">
+    <Steps>
+      <Step title="Check Event Type">
+        First, use `isinstance(...)` to handle confirmation requests from the same
+        session stream.
+
+        ```python theme={null}
+        from polymarket import RfqConfirmationRequestEvent
+
+
+        async for event in session:
+            if isinstance(event, RfqConfirmationRequestEvent):
+                await handle_confirmation_request(event)
+        ```
+      </Step>
+
+      <Step title="Inspect the Confirmation Request">
+        Then, inspect the confirmation request before running your final risk check. It
+        includes the selected quote, the final fill size, and the `event.confirm_by`
+        deadline for your Last Look response.
+
+        ```python theme={null}
+        class RfqConfirmationRequestEvent:
+            type: "confirmation_request"
+            rfq_id: RfqId
+            quote_id: RfqQuoteId
+            signer_address: EvmAddress
+            maker_address: EvmAddress
+            signature_type: int
+            condition_id: ComboConditionId
+            direction: RfqDirection
+            side: RfqSide
+            price: Decimal
+            fill_size: Decimal
+            yes_position_id: PositionId
+            no_position_id: PositionId
+            leg_position_ids: tuple[PositionId, ...]
+            confirm_by: int
+
+            async def confirm(self) -> RfqConfirmationAck: ...
+            async def decline(self) -> RfqConfirmationAck: ...
+        ```
+      </Step>
+
+      <Step title="Confirm or Decline">
+        Finally, run your final risk check outside the session loop and respond before
+        the `event.confirm_by` deadline.
+
+        ```python theme={null}
+        from polymarket import RfqConfirmationRequestEvent
+
+
+        async def handle_confirmation_request(
+            event: RfqConfirmationRequestEvent,
+        ) -> None:
+            can_still_fill = run_final_risk_check(event)
+
+            if can_still_fill:
+                await event.confirm()
+                return
+
+            await event.decline()
+        ```
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="API">
+    If Last Look is enabled for your maker, the RFQ WebSocket sends
+    `RFQ_CONFIRMATION_REQUEST` after your quote is selected.
+
+    ```json theme={null}
+    {
+      "type": "RFQ_CONFIRMATION_REQUEST",
+      "rfq_id": "<rfq_id>",
+      "quote_id": "<quote_id>",
+      "signer_address": "<signer_address>",
+      "maker_address": "<maker_address>",
+      "signature_type": 3, // <signature_type>
+      "leg_position_ids": ["<leg_position_id_1>", "<leg_position_id_2>"],
+      "condition_id": "<combo_condition_id>",
+      "yes_position_id": "<yes_position_id>",
+      "no_position_id": "<no_position_id>",
+      "direction": "BUY",
+      "side": "YES",
+      "fill_size_e6": "1000000",
+      "price_e6": "450000",
+      "confirm_by": 1780963200000
+    }
+    ```
+
+    Respond before `confirm_by` with `CONFIRM` or `DECLINE`.
+
+    <CodeGroup>
+      ```json Confirm theme={null}
+      {
+        "type": "RFQ_CONFIRMATION_RESPONSE",
+        "rfq_id": "<rfq_id>",
+        "quote_id": "<quote_id>",
+        "decision": "CONFIRM"
+      }
+      ```
+
+      ```json Decline theme={null}
+      {
+        "type": "RFQ_CONFIRMATION_RESPONSE",
+        "rfq_id": "<rfq_id>",
+        "quote_id": "<quote_id>",
+        "decision": "DECLINE"
+      }
+      ```
+    </CodeGroup>
+
+    The RFQ system acknowledges the response with
+    `ACK_RFQ_CONFIRMATION_RESPONSE`.
+
+    ```json theme={null}
+    {
+      "type": "ACK_RFQ_CONFIRMATION_RESPONSE",
+      "rfq_id": "<rfq_id>",
+      "quote_id": "<quote_id>",
+      "decision": "CONFIRM"
+    }
+    ```
+
+    Do not include `signer_address`, `maker_address`, or `signature_type` in
+    `RFQ_CONFIRMATION_RESPONSE`. The RFQ system applies identity from the
+    authenticated session.
+
+    Alternatively, send the Last Look decision through the REST API. The response
+    returns `execution` when your confirmation completes the bundle. If the RFQ is
+    still waiting on another maker confirmation, or if you decline, it returns
+    `snapshot`.
+
+    <CodeGroup>
+      ```bash Request theme={null}
+      curl -X POST "https://combos-rfq-api.polymarket.com/v1/maker/confirmations" \
+        -H "Content-Type: application/json" \
+        -H "POLY_ADDRESS: <clob_credentials_address>" \
+        -H "POLY_SIGNATURE: <clob_l2_signature>" \
+        -H "POLY_TIMESTAMP: <timestamp>" \
+        -H "POLY_API_KEY: <clob_api_key>" \
+        -H "POLY_PASSPHRASE: <clob_passphrase>" \
+        -d '{
+          "rfq_id": "<rfq_id>",
+          "quote_id": "<quote_id>",
+          "signer_address": "<signer_address>",
+          "maker_address": "<maker_address>",
+          "signature_type": 3,
+          "decision": "CONFIRM"
+        }'
+      ```
+
+      ```json Execution Response theme={null}
+      {
+        "execution": {
+          "execution_id": "<execution_id>",
+          "quote_id": "<quote_id>",
+          "request": {
+            "rfq_id": "<rfq_id>"
+          }
+        }
+      }
+      ```
+
+      ```json Snapshot Response theme={null}
+      {
+        "snapshot": {
+          "request": {
+            "rfq_id": "<rfq_id>"
+          },
+          "status": "AWAITING_MAKER_CONFIRMATION"
+        }
+      }
+      ```
+    </CodeGroup>
   </Tab>
 </Tabs>
 
@@ -2304,309 +3130,6 @@ outcomes in your own systems.
   </Tab>
 </Tabs>
 
-## Cancel Quotes
-
-After you submit a quote, keep the returned quote reference. If your price,
-inventory, or risk changes before the quote is selected, use that reference to
-request cancellation.
-
-<Note>
-  A cancellation acknowledgement means the RFQ system processed the cancellation
-  request. It does not guarantee the quote was withdrawn from an RFQ that was
-  already selected.
-</Note>
-
-<Tabs>
-  <Tab title="TypeScript">
-    <Steps>
-      <Step title="Store the Quote Reference">
-        First, keep the quote reference returned by `event.quote(…)`. It contains the
-        `rfqId` and `quoteId` needed to cancel the quote.
-
-        ```ts theme={null}
-        const reference = await event.quote({ price: 0.45 });
-
-        // reference.rfqId: RfqId
-        // reference.quoteId: RfqQuoteId
-        ```
-      </Step>
-
-      <Step title="Cancel the Quote">
-        Then, pass that reference to `session.cancelQuote(…)` on the same live RFQ
-        session.
-
-        ```ts theme={null}
-        if (shouldCancelQuote) {
-          const ack = await session.cancelQuote(reference);
-
-          // ack.rfqId: RfqId
-          // ack.quoteId: RfqQuoteId
-        }
-        ```
-      </Step>
-    </Steps>
-  </Tab>
-
-  <Tab title="Python">
-    <Steps>
-      <Step title="Store the Quote Reference">
-        First, keep the quote reference returned by `event.quote(...)`. It contains the
-        `rfq_id` and `quote_id` needed to cancel the quote.
-
-        ```python theme={null}
-        from decimal import Decimal
-
-
-        reference = await event.quote(price=Decimal("0.45"))
-
-        # reference.rfq_id: RfqId
-        # reference.quote_id: RfqQuoteId
-        ```
-      </Step>
-
-      <Step title="Cancel the Quote">
-        Then, pass that reference to `session.cancel_quote(...)` on the same live RFQ
-        session.
-
-        ```python theme={null}
-        if should_cancel_quote:
-            ack = await session.cancel_quote(reference)
-
-            # ack.rfq_id: RfqId
-            # ack.quote_id: RfqQuoteId
-        ```
-      </Step>
-    </Steps>
-  </Tab>
-
-  <Tab title="API">
-    Send `RFQ_QUOTE_CANCEL` on the RFQ WebSocket with the quote reference you stored
-    from `ACK_RFQ_QUOTE`.
-
-    ```json theme={null}
-    {
-      "type": "RFQ_QUOTE_CANCEL",
-      "rfq_id": "<rfq_id>",
-      "quote_id": "<quote_id>",
-      "signer_address": "<signer_address>",
-      "maker_address": "<maker_address>"
-    }
-    ```
-
-    The RFQ system acknowledges a processed cancellation request with
-    `ACK_RFQ_QUOTE_CANCEL`.
-
-    ```json theme={null}
-    {
-      "type": "ACK_RFQ_QUOTE_CANCEL",
-      "rfq_id": "<rfq_id>",
-      "quote_id": "<quote_id>"
-    }
-    ```
-  </Tab>
-</Tabs>
-
-## Last Look
-
-Last Look is a separate confirmation step for makers that have it enabled. If a
-selected quote requires confirmation, run a final risk check before the
-confirmation deadline and either confirm or decline the quote.
-
-<Tabs>
-  <Tab title="TypeScript">
-    <Steps>
-      <Step title="Switch on the Event Type">
-        First, switch on `event.type` to handle confirmation requests from the same
-        session stream.
-
-        ```ts theme={null}
-        switch (event.type) {
-          case "confirmation_request":
-            // event: RfqConfirmationRequestEvent
-            void handleConfirmationRequest(event);
-            break;
-
-          // …
-        }
-        ```
-      </Step>
-
-      <Step title="Inspect the Confirmation Request">
-        Then, inspect the confirmation request before running your final risk check. It
-        includes the selected quote, the final fill size, and the `event.confirmBy`
-        deadline for your Last Look response.
-
-        ```ts theme={null}
-        type RfqConfirmationRequestEvent = {
-          type: "confirmation_request";
-          rfqId: RfqId;
-          quoteId: RfqQuoteId;
-          conditionId: ComboConditionId;
-          direction: RfqDirection;
-          side: RfqSide.Yes;
-          price: DecimalString;
-          fillSize: DecimalString;
-          yesPositionId: PositionId;
-          noPositionId: PositionId;
-          legPositionIds: PositionId[];
-          confirmBy: EpochMilliseconds;
-          confirm(): Promise<RfqConfirmationAck>;
-          decline(): Promise<RfqConfirmationAck>;
-        };
-        ```
-      </Step>
-
-      <Step title="Confirm or Decline">
-        Finally, run your final risk check outside the session loop and respond before
-        the `event.confirmBy` deadline.
-
-        ```ts theme={null}
-        async function handleConfirmationRequest(event: RfqConfirmationRequestEvent) {
-          const canStillFill = runFinalRiskCheck(event);
-
-          if (canStillFill) {
-            await event.confirm();
-            return;
-          }
-
-          await event.decline();
-        }
-        ```
-      </Step>
-    </Steps>
-  </Tab>
-
-  <Tab title="Python">
-    <Steps>
-      <Step title="Check Event Type">
-        First, use `isinstance(...)` to handle confirmation requests from the same
-        session stream.
-
-        ```python theme={null}
-        from polymarket import RfqConfirmationRequestEvent
-
-
-        async for event in session:
-            if isinstance(event, RfqConfirmationRequestEvent):
-                await handle_confirmation_request(event)
-        ```
-      </Step>
-
-      <Step title="Inspect the Confirmation Request">
-        Then, inspect the confirmation request before running your final risk check. It
-        includes the selected quote, the final fill size, and the `event.confirm_by`
-        deadline for your Last Look response.
-
-        ```python theme={null}
-        class RfqConfirmationRequestEvent:
-            type: "confirmation_request"
-            rfq_id: RfqId
-            quote_id: RfqQuoteId
-            signer_address: EvmAddress
-            maker_address: EvmAddress
-            signature_type: int
-            condition_id: ComboConditionId
-            direction: RfqDirection
-            side: RfqSide
-            price: Decimal
-            fill_size: Decimal
-            yes_position_id: PositionId
-            no_position_id: PositionId
-            leg_position_ids: tuple[PositionId, ...]
-            confirm_by: int
-
-            async def confirm(self) -> RfqConfirmationAck: ...
-            async def decline(self) -> RfqConfirmationAck: ...
-        ```
-      </Step>
-
-      <Step title="Confirm or Decline">
-        Finally, run your final risk check outside the session loop and respond before
-        the `event.confirm_by` deadline.
-
-        ```python theme={null}
-        from polymarket import RfqConfirmationRequestEvent
-
-
-        async def handle_confirmation_request(
-            event: RfqConfirmationRequestEvent,
-        ) -> None:
-            can_still_fill = run_final_risk_check(event)
-
-            if can_still_fill:
-                await event.confirm()
-                return
-
-            await event.decline()
-        ```
-      </Step>
-    </Steps>
-  </Tab>
-
-  <Tab title="API">
-    If Last Look is enabled for your maker, the RFQ WebSocket sends
-    `RFQ_CONFIRMATION_REQUEST` after your quote is selected.
-
-    ```json theme={null}
-    {
-      "type": "RFQ_CONFIRMATION_REQUEST",
-      "rfq_id": "<rfq_id>",
-      "quote_id": "<quote_id>",
-      "signer_address": "<signer_address>",
-      "maker_address": "<maker_address>",
-      "signature_type": 3, // <signature_type>
-      "leg_position_ids": ["<leg_position_id_1>", "<leg_position_id_2>"],
-      "condition_id": "<combo_condition_id>",
-      "yes_position_id": "<yes_position_id>",
-      "no_position_id": "<no_position_id>",
-      "direction": "BUY",
-      "side": "YES",
-      "fill_size_e6": "1000000",
-      "price_e6": "450000",
-      "confirm_by": 1780963200000
-    }
-    ```
-
-    Respond before `confirm_by` with `CONFIRM` or `DECLINE`.
-
-    <CodeGroup>
-      ```json Confirm theme={null}
-      {
-        "type": "RFQ_CONFIRMATION_RESPONSE",
-        "rfq_id": "<rfq_id>",
-        "quote_id": "<quote_id>",
-        "decision": "CONFIRM"
-      }
-      ```
-
-      ```json Decline theme={null}
-      {
-        "type": "RFQ_CONFIRMATION_RESPONSE",
-        "rfq_id": "<rfq_id>",
-        "quote_id": "<quote_id>",
-        "decision": "DECLINE"
-      }
-      ```
-    </CodeGroup>
-
-    The RFQ system acknowledges the response with
-    `ACK_RFQ_CONFIRMATION_RESPONSE`.
-
-    ```json theme={null}
-    {
-      "type": "ACK_RFQ_CONFIRMATION_RESPONSE",
-      "rfq_id": "<rfq_id>",
-      "quote_id": "<quote_id>",
-      "decision": "CONFIRM"
-    }
-    ```
-
-    Do not include `signer_address`, `maker_address`, or `signature_type` in
-    `RFQ_CONFIRMATION_RESPONSE`. The RFQ system applies identity from the
-    authenticated session.
-  </Tab>
-</Tabs>
-
 ## Handle Errors
 
 In this section, we will talk you through how to handle errors with the RFQ system.
@@ -2844,27 +3367,42 @@ In this section, we will talk you through how to handle errors with the RFQ syst
     Use `request_type`, `rfq_id`, and `quote_id` to correlate the error with the
     command you sent.
 
+    | Field          | Description                                     |
+    | -------------- | ----------------------------------------------- |
+    | `type`         | Always `RFQ_ERROR`                              |
+    | `request_type` | Inbound command that failed, when parsed        |
+    | `rfq_id`       | RFQ ID, when present on the failed command      |
+    | `quote_id`     | Quote ID, when present on the failed command    |
+    | `code`         | Stable machine-readable error code              |
+    | `error`        | Human-readable detail for logging and debugging |
+
+    The `request_type` value identifies the command that failed.
+
     | `request_type`              | Failed command                    |
     | --------------------------- | --------------------------------- |
     | `RFQ_QUOTE`                 | Quote submission                  |
     | `RFQ_QUOTE_CANCEL`          | Quote cancellation                |
     | `RFQ_CONFIRMATION_RESPONSE` | Last Look confirmation or decline |
 
-    Common error codes include:
+    Error codes include:
 
-    | Code                                       | Meaning                                                  |
-    | ------------------------------------------ | -------------------------------------------------------- |
-    | `INVALID_MESSAGE`                          | Message JSON or message type is invalid                  |
-    | `UNKNOWN_RFQ`                              | RFQ ID is not active or no longer exists                 |
-    | `EXPIRED_RFQ`                              | RFQ has expired                                          |
-    | `SUBMISSION_WINDOW_CLOSED`                 | Quote arrived after the submission window closed         |
-    | `ALLOWANCE_VALIDATION_FAILED`              | Maker allowance is insufficient for the quoted order     |
-    | `BALANCE_VALIDATION_FAILED`                | Maker balance is insufficient for the quoted order       |
-    | `PRE_EXECUTION_BALANCE_RESERVATION_FAILED` | Balance reservation failed before execution              |
-    | `INVALID_QUOTE`                            | Quote payload or signed order is invalid                 |
-    | `INVALID_RFQ_STATE`                        | RFQ is not in a state that accepts the requested command |
-    | `INVALID_CONFIRMATION`                     | Last Look confirmation payload is invalid                |
-    | `SERVICE_UNAVAILABLE`                      | RFQ service dependency is temporarily unavailable        |
+    | Code                                       | Meaning                                                        |
+    | ------------------------------------------ | -------------------------------------------------------------- |
+    | `INVALID_MESSAGE`                          | Message JSON or message type is invalid                        |
+    | `UNAUTHORIZED_ROLE`                        | Message is not allowed for the authenticated gateway role      |
+    | `ADDRESS_MISMATCH`                         | Message identity does not match the authenticated session      |
+    | `UNKNOWN_RFQ`                              | RFQ ID is not active or no longer exists                       |
+    | `EXPIRED_RFQ`                              | RFQ has expired                                                |
+    | `SUBMISSION_WINDOW_CLOSED`                 | Quote arrived after the submission window closed               |
+    | `ALLOWANCE_VALIDATION_FAILED`              | Maker allowance is insufficient for the quoted order           |
+    | `BALANCE_VALIDATION_FAILED`                | Maker balance is insufficient for the quoted order             |
+    | `PRE_EXECUTION_BALANCE_RESERVATION_FAILED` | Balance reservation failed before execution                    |
+    | `INVALID_QUOTE`                            | Quote payload or signed order is invalid                       |
+    | `INVALID_RFQ_STATE`                        | RFQ is not in a state that accepts the requested command       |
+    | `INVALID_CONFIRMATION`                     | Last Look confirmation payload is invalid                      |
+    | `MAKER_NOT_REQUIRED`                       | This quote maker is not required for last-look confirmation    |
+    | `MAKER_ALREADY_RESPONDED`                  | This quote maker already responded to the confirmation request |
+    | `SERVICE_UNAVAILABLE`                      | RFQ service dependency is temporarily unavailable              |
 
     Treat these errors as command-level failures. Keep the WebSocket session alive
     unless the connection itself closes or authentication fails.
