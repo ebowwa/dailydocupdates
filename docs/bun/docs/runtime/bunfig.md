@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/bunfig.md
+Downloaded: 2026-06-22T21:04:36.121Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -717,14 +722,20 @@ Configure a security scanner to scan packages for vulnerabilities before install
 First, install a security scanner from npm:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun add -d @acme/bun-security-scanner
+bun add -d @oven/bun-security-scanner
 ```
+
+<Note>
+  `@oven/bun-security-scanner` is an example package name, not a real package. Replace it with the scanner you want to
+  use, and consult that scanner's documentation for the exact package name and installation instructions. Most scanners
+  are installed with `bun add`.
+</Note>
 
 Then configure it in your `bunfig.toml`:
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install.security]
-scanner = "@acme/bun-security-scanner"
+scanner = "@oven/bun-security-scanner" # example name, replace with your scanner's package
 ```
 
 When a security scanner is configured:

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/orders/create-order-v2.md
+Downloaded: 2026-06-22T21:04:14.691Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -213,6 +218,9 @@ components:
           allOf:
             - $ref: '#/components/schemas/ExchangeIndex'
           default: 0
+          description: >-
+            Exchange shard index. Defaults to 0. Use -1 to auto-route by market
+            ticker.
           x-go-type-skip-optional-pointer: true
     CreateOrderV2Response:
       type: object

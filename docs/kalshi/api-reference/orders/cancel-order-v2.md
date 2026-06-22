@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/orders/cancel-order-v2.md
+Downloaded: 2026-06-22T21:04:14.691Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -77,6 +82,12 @@ paths:
         - $ref: '#/components/parameters/OrderIdPath'
         - $ref: '#/components/parameters/SubaccountQueryDefaultPrimary'
         - $ref: '#/components/parameters/ExchangeIndexQuery'
+        - name: market_ticker
+          in: query
+          description: Market ticker. Required when exchange_index is -1 (auto).
+          schema:
+            type: string
+            x-go-type-skip-optional-pointer: true
       responses:
         '200':
           description: Order cancelled successfully

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/typescript.md
-Downloaded: 2026-06-17T20:47:37.299Z
+Downloaded: 2026-06-22T21:04:12.513Z
 -->
 
 > ## Documentation Index
@@ -1107,6 +1107,11 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0-beta.8`
+
+* RFQ quoter sessions now emit typed `trade` events for confirmed Combos fills.
+* RFQ rejection errors now expose `errorId` values and parse `INVALID_SIGNATURE` and `INTERNAL_ERROR` codes.
 
 ### `0.1.0-beta.7`
 

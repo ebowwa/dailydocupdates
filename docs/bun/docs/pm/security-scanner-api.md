@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/security-scanner-api.md
+Downloaded: 2026-06-22T21:04:36.120Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,7 +19,7 @@ Configure a security scanner in your `bunfig.toml`:
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install.security]
-scanner = "@acme/bun-security-scanner"
+scanner = "@oven/bun-security-scanner" # example name, replace with your scanner's package
 ```
 
 When configured, Bun will:
@@ -53,12 +58,13 @@ Many security companies publish Bun security scanners as npm packages that you c
 Install a security scanner from npm:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun add -d @acme/bun-security-scanner
+bun add -d @oven/bun-security-scanner
 ```
 
 <Note>
-  Consult your security scanner's documentation for their specific package name and installation instructions. Most
-  scanners will be installed with `bun add`.
+  `@oven/bun-security-scanner` is an example package name, not a real package. Replace it with the scanner you want to
+  use, and consult that scanner's documentation for the exact package name and installation instructions. Most scanners
+  are installed with `bun add`.
 </Note>
 
 ### Configuring the Scanner
@@ -67,7 +73,7 @@ After installation, configure it in your `bunfig.toml`:
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install.security]
-scanner = "@acme/bun-security-scanner"
+scanner = "@oven/bun-security-scanner" # example name, replace with your scanner's package
 ```
 
 ### Enterprise Configuration

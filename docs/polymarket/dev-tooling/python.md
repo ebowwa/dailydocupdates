@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/python.md
-Downloaded: 2026-06-18T20:53:59.772Z
+Downloaded: 2026-06-22T21:04:12.513Z
 -->
 
 > ## Documentation Index
@@ -1106,6 +1106,11 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0b9`
+
+* RFQ quoter sessions now emit typed `RfqTradeEvent` events for confirmed Combos fills.
+* RFQ rejection errors now expose `error_id` values and parse `INVALID_SIGNATURE` and `INTERNAL_ERROR` codes.
 
 ### `0.1.0b8`
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/executables.md
+Downloaded: 2026-06-22T21:04:36.099Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -894,6 +899,20 @@ export default {
 ```
 
 This is honestly a workaround, and we expect to improve this in the future with a more direct API.
+
+### Detecting standalone mode at runtime
+
+Use `Bun.isStandaloneExecutable` to check whether the current process is running from a compiled binary:
+
+```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
+if (Bun.isStandaloneExecutable) {
+  // Running from `bun build --compile` output
+} else {
+  // Running via `bun <file>` or as a library
+}
+```
+
+Unlike `Bun.embeddedFiles.length > 0`, this check does not allocate `Blob` objects for each embedded file, so it is safe to call at startup in binaries that embed large assets.
 
 ### Listing embedded files
 
