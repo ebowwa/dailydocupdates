@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/prompt-library.md
+Downloaded: 2026-06-23T20:47:48.560Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -1217,7 +1222,7 @@ export const text = {
   "review-your-changes-before": {
     title: "Review your changes before you commit",
     teaches: "Catch problems while they're still cheap to fix. Claude reads the changed files in full, not just the diff lines, so it spots issues a quick self-review misses.",
-    next: "Run `/review` for the same check in one command"
+    next: "Run `/code-review` for the same check in one command"
   },
   "review-a-pull-request": {
     title: "Review a pull request",

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-20T20:32:46.782Z
+Downloaded: 2026-06-23T20:47:54.138Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,34 @@ surface (`REST`, `WebSocket`, `FIX`) or exchange (`Predictions`, `Margin`).
 FIX API changes, previously tracked on a separate page, now live here under
 the `FIX` tag.
 
-{/* changelog-tags: ["Breaking Change", "Released"] */}
+{/* changelog-tags: ["Upcoming"] */}
+
+<Update
+  label="June 25, 2026"
+  tags={["REST", "Predictions"]}
+  rss={{
+title: "API usage tier qualification requirements halved",
+description: "Qualification requirements for all tiers has been halved."
+}}
+>
+  Qualification requirements for all tiers has been halved.
+</Update>
+
+<Update
+  label="June 23, 2026"
+  tags={["REST", "Predictions"]}
+  rss={{
+title: "Get Quote rate-limit cost reduced to 2 tokens",
+description: "GET /trade-api/v2/communications/quotes/{quote_id} will cost 2 tokens per request, matching create and delete quote."
+}}
+>
+  `GET /trade-api/v2/communications/quotes/{quote_id}` will cost 2 tokens per
+  request, matching the non-default cost for quote create and delete.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/communications/quotes/{quote_id}`
+</Update>
 
 <Update
   label="June 20, 2026"

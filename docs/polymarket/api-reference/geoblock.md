@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/geoblock.md
+Downloaded: 2026-06-23T20:47:36.326Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -76,6 +81,7 @@ The following countries are restricted from placing orders on Polymarket. Countr
 | PL           | Poland                               | Close-only             |
 | RU           | Russia                               | Blocked                |
 | SG           | Singapore                            | Close-only             |
+| SK           | Slovakia                             | Blocked                |
 | SO           | Somalia                              | Blocked                |
 | SS           | South Sudan                          | Blocked                |
 | SD           | Sudan                                | Blocked                |
@@ -97,6 +103,7 @@ In addition to fully blocked countries, the following specific regions within ot
 | Country      | Region  | Region Code |
 | ------------ | ------- | ----------- |
 | Canada (CA)  | Ontario | ON          |
+| Canada (CA)  | Quebec  | QC          |
 | Ukraine (UA) | Crimea  | 43          |
 | Ukraine (UA) | Donetsk | 14          |
 | Ukraine (UA) | Luhansk | 09          |

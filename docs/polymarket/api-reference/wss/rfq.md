@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/wss/rfq.md
+Downloaded: 2026-06-23T20:47:36.334Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -16,8 +21,8 @@ title: Quoter Gateway
 description: >-
   Authenticated quoter channel. Send the `auth` message as the first message
   within 30 seconds. The gateway broadcasts active RFQ requests, accepts signed
-  quotes and cancellations, issues last-look confirmation requests, and streams
-  execution updates.
+  quotes and cancellations, issues last-look confirmation requests, streams
+  execution updates, and sends confirmed trade broadcasts.
 servers:
   - id: production
     protocol: wss
@@ -34,7 +39,7 @@ operations:
     description: Authenticate the connection (send as the first message)
     type: receive
     messages:
-      - &ref_16
+      - &ref_17
         id: auth
         contentType: application/json
         payload:
@@ -180,7 +185,7 @@ operations:
     description: Gateway response to the auth message
     type: send
     messages:
-      - &ref_20
+      - &ref_21
         id: authResponse
         contentType: application/json
         payload:
@@ -247,7 +252,7 @@ operations:
     description: Broadcast of an active RFQ request to quote
     type: send
     messages:
-      - &ref_21
+      - &ref_22
         id: rfqRequest
         contentType: application/json
         payload:
@@ -446,7 +451,7 @@ operations:
     description: Submit a signed maker quote before the submission deadline
     type: receive
     messages:
-      - &ref_17
+      - &ref_18
         id: rfqQuote
         contentType: application/json
         payload:
@@ -660,7 +665,7 @@ operations:
     description: Returns the server-generated quote ID
     type: send
     messages:
-      - &ref_22
+      - &ref_23
         id: ackRfqQuote
         contentType: application/json
         payload:
@@ -720,7 +725,7 @@ operations:
     description: Cancel an active maker quote before it is selected
     type: receive
     messages:
-      - &ref_18
+      - &ref_19
         id: rfqQuoteCancel
         contentType: application/json
         payload:
@@ -800,7 +805,7 @@ operations:
     description: Confirms quote cancellation
     type: send
     messages:
-      - &ref_23
+      - &ref_24
         id: ackRfqQuoteCancel
         contentType: application/json
         payload:
@@ -858,7 +863,7 @@ operations:
     description: Last-look confirmation request for a selected quote
     type: send
     messages:
-      - &ref_24
+      - &ref_25
         id: rfqConfirmationRequest
         contentType: application/json
         payload:
@@ -1041,7 +1046,7 @@ operations:
     description: Confirm or decline a selected quote during last look
     type: receive
     messages:
-      - &ref_19
+      - &ref_20
         id: rfqConfirmationResponse
         contentType: application/json
         payload:
@@ -1117,7 +1122,7 @@ operations:
     description: Confirms the maker's last-look response
     type: send
     messages:
-      - &ref_25
+      - &ref_26
         id: ackRfqConfirmationResponse
         contentType: application/json
         payload:
@@ -1189,7 +1194,7 @@ operations:
     description: Execution progress for selected makers
     type: send
     messages:
-      - &ref_26
+      - &ref_27
         id: rfqExecutionUpdate
         contentType: application/json
         payload:
@@ -1265,12 +1270,157 @@ operations:
     bindings: []
     extensions: *ref_0
   - &ref_15
+    id: receiveTradeBroadcast
+    title: Trade Broadcast
+    description: Confirmed Combo RFQ trade broadcast
+    type: send
+    messages:
+      - &ref_28
+        id: rfqTrade
+        contentType: application/json
+        payload:
+          - name: RFQ_TRADE
+            description: Confirmed Combo RFQ trade broadcast
+            type: object
+            properties:
+              - name: type
+                type: string
+                description: RFQ_TRADE
+                required: true
+              - name: rfq_id
+                type: string
+                description: RFQ ID for deduplication and reconciliation.
+                required: true
+              - name: requester_id
+                type: string
+                description: Opaque public ID for the RFQ source.
+                required: true
+              - name: condition_id
+                type: string
+                description: Derived combinatorial condition ID.
+                required: true
+              - name: leg_position_ids
+                type: array
+                description: Canonical leg position IDs in the combo.
+                required: true
+                properties:
+                  - name: item
+                    type: string
+                    required: false
+              - name: direction
+                type: string
+                description: Requester trade direction.
+                enumValues:
+                  - BUY
+                  - SELL
+                required: true
+              - name: side
+                type: string
+                description: Combinatorial position side. Currently only YES is supported.
+                enumValues:
+                  - 'YES'
+                  - 'NO'
+                required: true
+              - name: price_e6
+                type: string
+                description: Accepted blended price in six-decimal fixed-point units.
+                required: true
+              - name: size_e6
+                type: string
+                description: Matched Combo share size in six-decimal fixed-point units.
+                required: true
+              - name: executed_at
+                type: integer
+                description: Execution timestamp in Unix milliseconds.
+                required: true
+        headers: []
+        jsonPayloadSchema:
+          type: object
+          description: >-
+            Confirmed Combo RFQ trade broadcast. Excludes maker identity and
+            per-maker fill allocations.
+          required:
+            - type
+            - rfq_id
+            - requester_id
+            - condition_id
+            - leg_position_ids
+            - direction
+            - side
+            - price_e6
+            - size_e6
+            - executed_at
+          properties:
+            type:
+              type: string
+              const: RFQ_TRADE
+              x-parser-schema-id: <anonymous-schema-75>
+            rfq_id:
+              type: string
+              description: RFQ ID for deduplication and reconciliation.
+              x-parser-schema-id: <anonymous-schema-76>
+            requester_id:
+              type: string
+              description: Opaque public ID for the RFQ source.
+              x-parser-schema-id: <anonymous-schema-77>
+            condition_id:
+              type: string
+              description: Derived combinatorial condition ID.
+              x-parser-schema-id: <anonymous-schema-78>
+            leg_position_ids:
+              type: array
+              description: Canonical leg position IDs in the combo.
+              items:
+                type: string
+                x-parser-schema-id: <anonymous-schema-80>
+              x-parser-schema-id: <anonymous-schema-79>
+            direction: *ref_2
+            side: *ref_3
+            price_e6:
+              type: string
+              description: Accepted blended price in six-decimal fixed-point units.
+              x-parser-schema-id: <anonymous-schema-81>
+            size_e6:
+              type: string
+              description: Matched Combo share size in six-decimal fixed-point units.
+              x-parser-schema-id: <anonymous-schema-82>
+            executed_at:
+              type: integer
+              format: int64
+              description: Execution timestamp in Unix milliseconds.
+              x-parser-schema-id: <anonymous-schema-83>
+          x-parser-schema-id: RfqTrade
+        title: RFQ_TRADE
+        description: Confirmed Combo RFQ trade broadcast
+        example: |-
+          {
+            "type": "RFQ_TRADE",
+            "rfq_id": "rfq_<id>",
+            "requester_id": "req_<public_id>",
+            "condition_id": "0x<condition_id>",
+            "leg_position_ids": [
+              "<leg_position_id_1>",
+              "<leg_position_id_2>"
+            ],
+            "direction": "BUY",
+            "side": "YES",
+            "price_e6": "125000",
+            "size_e6": "800000",
+            "executed_at": 1780854786039
+          }
+        bindings: []
+        extensions:
+          - id: x-parser-unique-object-id
+            value: rfqTrade
+    bindings: []
+    extensions: *ref_0
+  - &ref_16
     id: receiveError
     title: Error
     description: Sent when a command fails validation or cannot be applied
     type: send
     messages:
-      - &ref_27
+      - &ref_29
         id: rfqError
         contentType: application/json
         payload:
@@ -1343,19 +1493,19 @@ operations:
             type:
               type: string
               const: RFQ_ERROR
-              x-parser-schema-id: <anonymous-schema-75>
+              x-parser-schema-id: <anonymous-schema-84>
             request_type:
               type: string
               description: Inbound command that failed, when parsed.
-              x-parser-schema-id: <anonymous-schema-76>
+              x-parser-schema-id: <anonymous-schema-85>
             rfq_id:
               type: string
               description: RFQ ID, when present on the failed command.
-              x-parser-schema-id: <anonymous-schema-77>
+              x-parser-schema-id: <anonymous-schema-86>
             quote_id:
               type: string
               description: Quote ID, when present on the failed command.
-              x-parser-schema-id: <anonymous-schema-78>
+              x-parser-schema-id: <anonymous-schema-87>
             code:
               type: string
               description: Stable machine-readable error code.
@@ -1388,11 +1538,11 @@ operations:
                 - UNAUTHENTICATED
                 - UNAUTHORIZED_ROLE
                 - UNKNOWN_RFQ
-              x-parser-schema-id: <anonymous-schema-79>
+              x-parser-schema-id: <anonymous-schema-88>
             error:
               type: string
               description: Human-readable error detail for logging and debugging.
-              x-parser-schema-id: <anonymous-schema-80>
+              x-parser-schema-id: <anonymous-schema-89>
           x-parser-schema-id: RfqError
         title: RFQ_ERROR
         description: Sent when a command fails validation or cannot be applied
@@ -1424,13 +1574,13 @@ receiveOperations:
   - *ref_13
   - *ref_14
   - *ref_15
-sendMessages:
   - *ref_16
+sendMessages:
   - *ref_17
   - *ref_18
   - *ref_19
-receiveMessages:
   - *ref_20
+receiveMessages:
   - *ref_21
   - *ref_22
   - *ref_23
@@ -1438,6 +1588,8 @@ receiveMessages:
   - *ref_25
   - *ref_26
   - *ref_27
+  - *ref_28
+  - *ref_29
 extensions:
   - id: x-parser-unique-object-id
     value: quoter

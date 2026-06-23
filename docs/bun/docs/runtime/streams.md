@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/streams.md
+Downloaded: 2026-06-23T20:48:08.112Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -72,6 +77,29 @@ const stream = new ReadableStream({
 ```
 
 When using a direct `ReadableStream`, the destination handles all chunk queueing. The consumer of the stream receives exactly what is passed to `controller.write()`, without any encoding or modification.
+
+### Handling backpressure
+
+`controller.write()` returns the number of bytes written. When the destination's internal buffer is full (for example, a slow HTTP client), it returns a **negative number** instead. The chunk is still accepted — the negative return is a signal to pause and wait for the destination to drain.
+
+To wait for the drain, `await controller.flush(true)`:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const stream = new ReadableStream({
+  type: "direct",
+  async pull(controller) {
+    for (const chunk of chunks) {
+      if (controller.write(chunk) < 0) {
+        // destination is backed up; wait for it to drain before writing more
+        await controller.flush(true);
+      }
+    }
+    controller.close();
+  },
+});
+```
+
+For default (non-`direct`) `ReadableStream`s and async-generator response bodies, Bun applies this backpressure automatically — the producer is paused while the destination is backed up.
 
 ***
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/communications/get-quote.md
+Downloaded: 2026-06-23T20:47:54.123Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,6 +11,9 @@
 
 >  Endpoint for getting a particular quote
 
+<Note>
+  **Rate limit:** 2 tokens per request. See `GET /trade-api/v2/account/endpoint_costs` for current non-default endpoint costs.
+</Note>
 
 
 ## OpenAPI
@@ -14,7 +22,7 @@
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.21.0
+  version: 3.22.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
