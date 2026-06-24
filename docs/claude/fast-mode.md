@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/fast-mode.md
-Downloaded: 2026-06-17T20:47:46.314Z
+Downloaded: 2026-06-24T20:38:33.802Z
 -->
 
 > ## Documentation Index
@@ -110,7 +110,7 @@ Fast mode requires all of the following:
 * **Admin enablement for Team and Enterprise**: fast mode is disabled by default for Team and Enterprise organizations. An admin must explicitly [enable fast mode](#enable-fast-mode-for-your-organization) before users can access it.
 
 <Note>
-  If your admin has not enabled fast mode for your organization, the `/fast` command will show "Fast mode has been disabled by your organization." If your organization's [`availableModels`](/en/model-config#restrict-model-selection) allowlist excludes the fast-mode Opus model, `/fast` is refused with "is not in your organization's allowed models".
+  If your admin has not enabled fast mode for your organization, the `/fast` command will show "Fast mode has been disabled by your organization." If your organization's [`availableModels`](/en/model-config#restrict-model-selection) allowlist excludes the fast-mode Opus model, `/fast` is refused with "is not in your organization's allowed models". The exception is a session already running on an allowed Opus model that supports fast mode: `/fast` then applies to that model.
 </Note>
 
 ### Enable fast mode for your organization

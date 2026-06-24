@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-23T20:47:54.138Z
+Downloaded: 2026-06-24T20:38:32.685Z
 -->
 
 > ## Documentation Index
@@ -35,6 +35,18 @@ description: "Qualification requirements for all tiers has been halved."
 </Update>
 
 <Update
+  label="June 24, 2026"
+  tags={["FIX", "Predictions"]}
+  rss={{
+title: "RFQ quotes support post-only on FIX",
+description: "FIX RFQ Quote creation supports ExecInst=6 to request post-only behavior."
+}}
+>
+  FIX RFQ `Quote (35=S)` creation now supports `ExecInst<18>=6`
+  (ParticipantDontInitiate) to request post-only quote behavior.
+</Update>
+
+<Update
   label="June 23, 2026"
   tags={["REST", "Predictions"]}
   rss={{
@@ -65,6 +77,24 @@ description: "GET /trade-api/v2/communications/quotes no longer supports the mar
   **Affected endpoints:**
 
   * `GET /trade-api/v2/communications/quotes`
+</Update>
+
+<Update
+  label="June 19, 2026"
+  tags={["REST", "Predictions"]}
+  rss={{
+title: "Communications RFQ and quote retention window reduced",
+description: "Closed RFQs and cancelled quotes will be retained for 7 days instead of 14 days."
+}}
+>
+  Closed RFQs and cancelled quotes returned by the communications APIs will be
+  retained for 7 days after their last update, reduced from the previous
+  14-day retention window.
+
+  **Affected endpoints:**
+
+  * `GET /communications/rfqs`
+  * `GET /communications/quotes`
 </Update>
 
 <Update

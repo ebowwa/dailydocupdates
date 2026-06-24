@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/streams.md
-Downloaded: 2026-06-23T20:48:08.112Z
+Downloaded: 2026-06-24T20:38:26.935Z
 -->
 
 > ## Documentation Index
@@ -89,7 +89,8 @@ const stream = new ReadableStream({
   type: "direct",
   async pull(controller) {
     for (const chunk of chunks) {
-      if (controller.write(chunk) < 0) {
+      const n = controller.write(chunk);
+      if (typeof n === "number" && n < 0) {
         // destination is backed up; wait for it to drain before writing more
         await controller.flush(true);
       }

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/margin-rest/fcm/get-fcm-orders.md
+Downloaded: 2026-06-24T20:38:32.690Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -123,13 +128,13 @@ components:
     MarginOrdersLimitQuery:
       name: limit
       in: query
-      description: Number of margin orders per page. Defaults to 100.
+      description: Number of margin orders per page. Defaults to 10000.
       schema:
         type: integer
         format: int64
         minimum: 1
         maximum: 10000
-        default: 100
+        default: 10000
         x-oapi-codegen-extra-tags:
           validate: omitempty,min=1,max=10000
     CursorQuery:

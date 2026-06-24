@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/authentication.md
-Downloaded: 2026-06-16T21:06:14.386Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-data/websocket/user-channel.md
+Downloaded: 2026-06-24T20:38:21.441Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -64,7 +69,7 @@ Emitted when:
     }
   ],
   "market": "0xbd31dc8a20211944f6b70f31557f1001557b59905b7738480ca09bd4532f84af",
-  "matchtime": "1672290701",
+  "match_time": "1672290701",
   "outcome": "YES",
   "owner": "9180014b-33c8-9240-a14b-bdca11c0a465",
   "price": "0.57",

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/wss/user.md
+Downloaded: 2026-06-24T20:38:21.439Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -549,7 +554,7 @@ operations:
                   - RETRYING
                   - FAILED
                 required: true
-              - name: matchtime
+              - name: match_time
                 type: string
                 required: false
               - name: last_update
@@ -684,7 +689,7 @@ operations:
                 - RETRYING
                 - FAILED
               x-parser-schema-id: <anonymous-schema-42>
-            matchtime:
+            match_time:
               type: string
               x-parser-schema-id: <anonymous-schema-43>
             last_update:
@@ -780,7 +785,7 @@ operations:
             "price": "0.57",
             "fee_rate_bps": "0",
             "status": "MATCHED",
-            "matchtime": "1672290701",
+            "match_time": "1672290701",
             "last_update": "1672290701",
             "outcome": "YES",
             "owner": "9180014b-33c8-9240-a14b-bdca11c0a465",
