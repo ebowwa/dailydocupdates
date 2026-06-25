@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/builders/overview.md
+Downloaded: 2026-06-25T20:43:40.151Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -84,6 +89,13 @@ A **builder** is a person, group, or organization that routes orders from users 
     Leaderboard](https://builders.polymarket.com).
   </Step>
 </Steps>
+
+<Note>
+  Bridging user funds in or out via the Bridge API? Also pass your code via the
+  optional `X-Builder-Code` header on [`/deposit`](/trading/bridge/deposit) and
+  [`/withdraw`](/trading/bridge/withdraw) so bridge traffic is attributed to your
+  integration.
+</Note>
 
 ## SDKs and Libraries
 

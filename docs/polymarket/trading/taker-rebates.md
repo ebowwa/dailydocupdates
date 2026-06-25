@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/taker-rebates.md
+Downloaded: 2026-06-25T20:43:40.158Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -171,6 +176,11 @@ Your tier shows on your Polymarket profile and on the leaderboards. As you climb
     All fee-enabled categories earn Weighted Volume at the weight shown in the
     table above. Geopolitical and world events markets are free to trade and
     earn no Weighted Volume.
+  </Accordion>
+
+  <Accordion title="Are third-party integrations using omnibus wallets eligible">
+    No. Third-party integrations using omnibus wallets are not eligible for the
+    Taker Rebate Program.
   </Accordion>
 </AccordionGroup>
 

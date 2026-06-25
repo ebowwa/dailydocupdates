@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/monitoring-usage.md
-Downloaded: 2026-06-24T20:38:33.806Z
+Downloaded: 2026-06-25T20:43:40.296Z
 -->
 
 > ## Documentation Index
@@ -441,7 +441,7 @@ Incremented at the start of each session.
 **Attributes**:
 
 * All [standard attributes](#standard-attributes)
-* `start_type`: How the session was started. One of `"fresh"`, `"resume"`, or `"continue"`
+* `start_type`: How the session was started. One of `"fresh"`, `"resume"`, `"continue"`, or `"agents_view"`. The `"agents_view"` value identifies the `claude agents` dashboard process, a user-launched local UI rather than a conversational session. Filter on this value to separate UI process launches from conversational sessions in your dashboards.
 
 #### Lines of code counter
 

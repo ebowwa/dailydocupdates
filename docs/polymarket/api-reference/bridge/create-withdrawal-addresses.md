@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/bridge/create-withdrawal-addresses.md
+Downloaded: 2026-06-25T20:43:40.139Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -27,6 +32,8 @@ paths:
       tags:
         - Bridge
       summary: Create withdrawal addresses
+      parameters:
+        - $ref: '#/components/parameters/BuilderCodeHeader'
       requestBody:
         required: true
         content:
@@ -54,7 +61,7 @@ paths:
                   Send funds to these addresses to bridge to your destination
                   chain and token.
         '400':
-          description: Bad Request - Invalid or missing parameters
+          description: Bad Request - Invalid/missing parameters or malformed X-Builder-Code
           content:
             application/json:
               schema:
@@ -66,6 +73,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    BuilderCodeHeader:
+      name: X-Builder-Code
+      in: header
+      required: false
+      description: >
+        Optional builder code (bytes32 hex) attributing this request to your
+        integration so transfer issues can be traced to your app. Omitting it
+        still succeeds but returns a `missing_builder_code` warning; a malformed
+        code returns 400. Get your code at
+        https://polymarket.com/settings?tab=builder
+      schema:
+        type: string
+        pattern: ^0x[a-fA-F0-9]{64}$
+        example: '0x00000000000000000000000000000000000000000000000000000000abcd1234'
   schemas:
     WithdrawalRequest:
       type: object

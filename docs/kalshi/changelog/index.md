@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-24T20:38:32.685Z
+Downloaded: 2026-06-25T20:43:40.320Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,84 @@ surface (`REST`, `WebSocket`, `FIX`) or exchange (`Predictions`, `Margin`).
 FIX API changes, previously tracked on a separate page, now live here under
 the `FIX` tag.
 
-{/* changelog-tags: ["Upcoming"] */}
+{/* changelog-tags: ["Breaking Change", "Upcoming"] */}
+
+<Update
+  label="July 2, 2026"
+  tags={["REST", "Predictions"]}
+  rss={{
+title: "Per-index subaccount balances",
+description: "GET /trade-api/v2/portfolio/subaccounts/balances now returns a balance per exchange index, each with an exchange_index field."
+}}
+>
+  `GET /trade-api/v2/portfolio/subaccounts/balances` now returns one balance per
+  exchange index. Each entry includes an `exchange_index` field, so a subaccount
+  with funds on multiple indexes appears as multiple entries rather than a single
+  combined row.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/portfolio/subaccounts/balances`
+</Update>
+
+<Update
+  label="June 25, 2026"
+  tags={["REST", "FIX", "Predictions"]}
+  rss={{
+title: "RFQ quote retention and RFQ-scoped quote actions",
+description: "RFQ quotes are only durably queryable after acceptance, and quote actions now support including the RFQ ID alongside the quote ID."
+}}
+>
+  Effective immediately, RFQ quotes are no longer guaranteed to remain queryable
+  unless they have reached a post-acceptance state: `accepted`, `confirmed`, or
+  `executed`. Open quotes and cancelled quotes may still be returned on a
+  best-effort basis, but clients should not treat them as durable records. If an
+  open quote is cleared during a server roll or restart, it should be treated as
+  effectively cancelled and no longer actionable, even if there is no queryable
+  cancelled quote record. Later requests for that quote may return
+  `404 Not Found`.
+
+  Clients should store the RFQ ID returned for each RFQ and include it alongside
+  the quote ID when performing quote actions. REST now supports RFQ-scoped quote
+  action endpoints using `rfq_id` as a path parameter:
+
+  * `DELETE /trade-api/v2/communications/rfqs/{rfq_id}/quotes/{quote_id}`
+  * `PUT /trade-api/v2/communications/rfqs/{rfq_id}/quotes/{quote_id}/accept`
+  * `PUT /trade-api/v2/communications/rfqs/{rfq_id}/quotes/{quote_id}/confirm`
+
+  The existing quote-ID-only endpoints remain supported for now:
+
+  * `DELETE /trade-api/v2/communications/quotes/{quote_id}`
+  * `PUT /trade-api/v2/communications/quotes/{quote_id}/accept`
+  * `PUT /trade-api/v2/communications/quotes/{quote_id}/confirm`
+
+  For FIX, quote actions now accept optional `RfqId<21023>` together with
+  `QuoteId<117>` on `QuoteCancel (35=Z)`, `QuoteConfirm (35=U7)`, and
+  `AcceptQuote (35=UA)`. When `RfqId<21023>` is provided, the quote must belong
+  to that RFQ; when it is omitted, the exchange will continue to resolve the RFQ
+  from `QuoteId<117>` on a best-effort basis.
+
+  We expect `rfq_id` / `RfqId<21023>` to become required for quote actions in a
+  future migration, but this requirement will not take effect within the next
+  7 days. Start sending the RFQ ID now to avoid future migration work.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/communications/quotes`
+  * `GET /trade-api/v2/communications/quotes/{quote_id}`
+  * `DELETE /trade-api/v2/communications/quotes/{quote_id}`
+  * `PUT /trade-api/v2/communications/quotes/{quote_id}/accept`
+  * `PUT /trade-api/v2/communications/quotes/{quote_id}/confirm`
+  * `DELETE /trade-api/v2/communications/rfqs/{rfq_id}/quotes/{quote_id}`
+  * `PUT /trade-api/v2/communications/rfqs/{rfq_id}/quotes/{quote_id}/accept`
+  * `PUT /trade-api/v2/communications/rfqs/{rfq_id}/quotes/{quote_id}/confirm`
+
+  **Affected FIX messages:**
+
+  * `QuoteCancel (35=Z)`
+  * `QuoteConfirm (35=U7)`
+  * `AcceptQuote (35=UA)`
+</Update>
 
 <Update
   label="June 25, 2026"
@@ -32,6 +109,25 @@ description: "Qualification requirements for all tiers has been halved."
 }}
 >
   Qualification requirements for all tiers has been halved.
+</Update>
+
+<Update
+  label="June 25, 2026"
+  tags={["FIX", "Predictions"]}
+  rss={{
+title: "FIX exchange index routing",
+description: "FIX order entry supports ExDestination for exchange index selection, including auto-routing for new orders and cancels."
+}}
+>
+  FIX order entry now supports `ExDestination<100>` for exchange index
+  selection. `NewOrderSingle (35=D)` and `OrderCancelRequest (35=F)` may use
+  `ExDestination=-1` to auto-route by market ticker.
+
+  ExecutionReport `ExecID<17>` values for non-default exchange indexes include
+  the exchange index as `clock;event;exchange_index`.
+
+  Note: exchange index `0` is currently the only exchange index available in
+  production.
 </Update>
 
 <Update

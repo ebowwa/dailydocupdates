@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/geoblock.md
-Downloaded: 2026-06-23T20:47:36.326Z
+Downloaded: 2026-06-25T20:43:40.142Z
 -->
 
 > ## Documentation Index
@@ -61,6 +61,7 @@ The following countries are restricted from placing orders on Polymarket. Countr
 | BE           | Belgium                              | Blocked                |
 | BY           | Belarus                              | Blocked                |
 | BI           | Burundi                              | Blocked                |
+| BR           | Brazil                               | Blocked                |
 | CF           | Central African Republic             | Blocked                |
 | CD           | Congo (Kinshasa)                     | Blocked                |
 | CU           | Cuba                                 | Blocked                |

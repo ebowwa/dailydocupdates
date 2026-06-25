@@ -1,21 +1,21 @@
 <!--
-Source: https://docs.kalshi.com/api-reference/portfolio/get-all-subaccount-balances.md
-Downloaded: 2026-06-25T20:43:40.317Z
+Source: https://docs.kalshi.com/api-reference/communications/accept-rfq-quote.md
+Downloaded: 2026-06-25T20:43:40.309Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Get All Subaccount Balances
+# Accept RFQ Quote
 
-> Gets balances for all subaccounts including the primary account.
+>  Endpoint for accepting a quote scoped to its RFQ. This will require the quoter to confirm.
 
 
 
 ## OpenAPI
 
-````yaml /openapi.yaml get /portfolio/subaccounts/balances
+````yaml /openapi.yaml put /communications/rfqs/{rfq_id}/quotes/{quote_id}/accept
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -65,22 +65,31 @@ tags:
   - name: structured-targets
     description: Structured targets endpoints
 paths:
-  /portfolio/subaccounts/balances:
-    get:
+  /communications/rfqs/{rfq_id}/quotes/{quote_id}/accept:
+    put:
       tags:
-        - portfolio
-      summary: Get All Subaccount Balances
-      description: Gets balances for all subaccounts including the primary account.
-      operationId: GetSubaccountBalances
+        - communications
+      summary: Accept RFQ Quote
+      description: ' Endpoint for accepting a quote scoped to its RFQ. This will require the quoter to confirm.'
+      operationId: AcceptRFQQuote
+      parameters:
+        - $ref: '#/components/parameters/RfqIdPath'
+        - $ref: '#/components/parameters/QuoteIdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcceptQuoteRequest'
       responses:
-        '200':
-          description: Balances retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetSubaccountBalancesResponse'
+        '204':
+          description: Quote accepted successfully
+        '400':
+          $ref: '#/components/responses/BadRequestError'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
       security:
@@ -88,37 +97,33 @@ paths:
           kalshiAccessSignature: []
           kalshiAccessTimestamp: []
 components:
+  parameters:
+    RfqIdPath:
+      name: rfq_id
+      in: path
+      required: true
+      description: RFQ ID
+      schema:
+        type: string
+    QuoteIdPath:
+      name: quote_id
+      in: path
+      required: true
+      description: Quote ID
+      schema:
+        type: string
   schemas:
-    GetSubaccountBalancesResponse:
+    AcceptQuoteRequest:
       type: object
       required:
-        - subaccount_balances
+        - accepted_side
       properties:
-        subaccount_balances:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubaccountBalance'
-    SubaccountBalance:
-      type: object
-      required:
-        - subaccount_number
-        - exchange_index
-        - balance
-        - updated_ts
-      properties:
-        subaccount_number:
-          type: integer
-          description: Subaccount number (0 for primary, 1-63 for subaccounts).
-        exchange_index:
-          type: integer
-          description: Exchange index the balance is held on.
-        balance:
-          $ref: '#/components/schemas/FixedPointDollars'
-          description: Balance in dollars.
-        updated_ts:
-          type: integer
-          format: int64
-          description: Unix timestamp of last balance update.
+        accepted_side:
+          type: string
+          description: The side of the quote to accept (yes or no)
+          enum:
+            - 'yes'
+            - 'no'
     ErrorResponse:
       type: object
       properties:
@@ -134,17 +139,21 @@ components:
         service:
           type: string
           description: The name of the service that generated the error
-    FixedPointDollars:
-      type: string
-      description: >-
-        US dollar amount as a fixed-point decimal string with up to 6 decimal
-        places of precision. This is the maximum supported precision; valid
-        quote intervals for a given market are constrained by that market's
-        price level structure.
-      example: '0.5600'
   responses:
+    BadRequestError:
+      description: Bad request - invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     UnauthorizedError:
       description: Unauthorized - authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFoundError:
+      description: Resource not found
       content:
         application/json:
           schema:

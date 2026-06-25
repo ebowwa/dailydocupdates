@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix/order-groups.md
+Downloaded: 2026-06-25T20:43:40.322Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -20,9 +25,10 @@ Manage order groups with Create, Reset, Delete, Trigger, and Update operations.
 
 ### Optional Fields
 
-| Tag | Name         | Description                                                                                                                                                                    | Type/Values |
-| --- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
-| 79  | AllocAccount | Subaccount number (0-63). When provided on any action, the request targets the order group belonging to that subaccount. Omit (or set to 0) to operate on the primary account. | Integer     |
+| Tag | Name          | Description                                                                                                                                                                    | Type/Values |
+| --- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| 79  | AllocAccount  | Subaccount number (0-63). When provided on any action, the request targets the order group belonging to that subaccount. Omit (or set to 0) to operate on the primary account. | Integer     |
+| 100 | ExDestination | Exchange index. Omit for exchange index `0`.                                                                                                                                   | Integer     |
 
 <Note>
   Order groups are scoped per subaccount. An `OrderGroupID` created under `AllocAccount=2` cannot be reset, updated, deleted, or triggered without also passing `AllocAccount=2` on the follow-up request. If the AllocAccount value does not match the group's owning subaccount, the exchange returns an `ORDER_GROUP_NOT_FOUND` business reject.

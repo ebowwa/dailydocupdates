@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix/drop-copy.md
+Downloaded: 2026-06-25T20:43:40.321Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -20,10 +25,12 @@ Lookback window is limited to the last 3 hours. Only ExecutionReport (35=8) mess
 
 Request execution reports within a specified ExecID range.
 
-| Tag   | Name        | Description                                                      | Required |
-| ----- | ----------- | ---------------------------------------------------------------- | -------- |
-| 21001 | BeginExecID | Starting ExecID (inclusive)                                      | Yes      |
-| 21002 | EndExecID   | Ending ExecID (inclusive). Defaults to latest ExecID if omitted. | No       |
+ExecID format is `clock;event` for exchange index `0` and `clock;event;exchange_index` for other indexes. Resend ranges are scoped to one exchange index; `EndExecID`, if provided, must use the same exchange index as `BeginExecID`.
+
+| Tag   | Name        | Description                                                                                 | Required |
+| ----- | ----------- | ------------------------------------------------------------------------------------------- | -------- |
+| 21001 | BeginExecID | Starting ExecID (inclusive)                                                                 | Yes      |
+| 21002 | EndExecID   | Ending ExecID (inclusive). Defaults to latest ExecID on the same exchange index if omitted. | No       |
 
 **Example:**
 

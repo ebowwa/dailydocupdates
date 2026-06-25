@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-view.md
-Downloaded: 2026-06-24T20:38:33.793Z
+Downloaded: 2026-06-25T20:43:40.280Z
 -->
 
 > ## Documentation Index
@@ -299,7 +299,7 @@ Carrying `--allow-dangerously-skip-permissions` through keeps `bypassPermissions
 
 ### From your shell
 
-Pass `--bg` to start a session that goes straight to the background:
+Pass `--bg` or its long form `--background` to start a session that goes straight to the background:
 
 ```bash theme={null}
 claude --bg "investigate the flaky SettingsChangeDetector test"

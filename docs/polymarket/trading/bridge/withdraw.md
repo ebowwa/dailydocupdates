@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/bridge/withdraw.md
+Downloaded: 2026-06-25T20:43:40.155Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -42,9 +47,20 @@ Withdraw pUSD from your Polymarket wallet to any supported chain and token. Fund
 
 Generate bridge addresses configured for your withdrawal destination. See the [Bridge API Reference](/api-reference/introduction) for full request and response schemas.
 
+<Tip>
+  **Builders: attach your code.** If you route user funds through this endpoint,
+  pass your builder code via the optional `X-Builder-Code` header (bytes32 hex;
+  `0x` + 64 hex chars). It lets our bridge provider attribute traffic to your
+  app, so stuck or delayed transfers can be traced and prioritized. The header is
+  optional. Requests without it still succeed but return a `missing_builder_code`
+  warning, and a malformed code returns `400`. Get your code at [Settings →
+  Builder](https://polymarket.com/settings?tab=builder).
+</Tip>
+
 ```bash theme={null}
 curl -X POST https://bridge.polymarket.com/withdraw \
   -H "Content-Type: application/json" \
+  -H "X-Builder-Code: <YOUR_BUILDER_CODE>" \
   -d '{
     "address": "0x9156dd10bea4c8d7e2d591b633d1694b1d764756",
     "toChainId": "1",

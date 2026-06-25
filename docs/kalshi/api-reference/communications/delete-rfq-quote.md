@@ -1,21 +1,24 @@
 <!--
-Source: https://docs.kalshi.com/api-reference/portfolio/get-all-subaccount-balances.md
-Downloaded: 2026-06-25T20:43:40.317Z
+Source: https://docs.kalshi.com/api-reference/communications/delete-rfq-quote.md
+Downloaded: 2026-06-25T20:43:40.310Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Get All Subaccount Balances
+# Delete RFQ Quote
 
-> Gets balances for all subaccounts including the primary account.
+>  Endpoint for deleting a quote scoped to its RFQ, which means it can no longer be accepted.
 
+<Note>
+  **Rate limit:** 2 tokens per request. See `GET /trade-api/v2/account/endpoint_costs` for current non-default endpoint costs.
+</Note>
 
 
 ## OpenAPI
 
-````yaml /openapi.yaml get /portfolio/subaccounts/balances
+````yaml /openapi.yaml delete /communications/rfqs/{rfq_id}/quotes/{quote_id}
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -65,22 +68,23 @@ tags:
   - name: structured-targets
     description: Structured targets endpoints
 paths:
-  /portfolio/subaccounts/balances:
-    get:
+  /communications/rfqs/{rfq_id}/quotes/{quote_id}:
+    delete:
       tags:
-        - portfolio
-      summary: Get All Subaccount Balances
-      description: Gets balances for all subaccounts including the primary account.
-      operationId: GetSubaccountBalances
+        - communications
+      summary: Delete RFQ Quote
+      description: ' Endpoint for deleting a quote scoped to its RFQ, which means it can no longer be accepted.'
+      operationId: DeleteRFQQuote
+      parameters:
+        - $ref: '#/components/parameters/RfqIdPath'
+        - $ref: '#/components/parameters/QuoteIdPath'
       responses:
-        '200':
-          description: Balances retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetSubaccountBalancesResponse'
+        '204':
+          description: Quote deleted successfully
         '401':
           $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
       security:
@@ -88,37 +92,41 @@ paths:
           kalshiAccessSignature: []
           kalshiAccessTimestamp: []
 components:
+  parameters:
+    RfqIdPath:
+      name: rfq_id
+      in: path
+      required: true
+      description: RFQ ID
+      schema:
+        type: string
+    QuoteIdPath:
+      name: quote_id
+      in: path
+      required: true
+      description: Quote ID
+      schema:
+        type: string
+  responses:
+    UnauthorizedError:
+      description: Unauthorized - authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFoundError:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    GetSubaccountBalancesResponse:
-      type: object
-      required:
-        - subaccount_balances
-      properties:
-        subaccount_balances:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubaccountBalance'
-    SubaccountBalance:
-      type: object
-      required:
-        - subaccount_number
-        - exchange_index
-        - balance
-        - updated_ts
-      properties:
-        subaccount_number:
-          type: integer
-          description: Subaccount number (0 for primary, 1-63 for subaccounts).
-        exchange_index:
-          type: integer
-          description: Exchange index the balance is held on.
-        balance:
-          $ref: '#/components/schemas/FixedPointDollars'
-          description: Balance in dollars.
-        updated_ts:
-          type: integer
-          format: int64
-          description: Unix timestamp of last balance update.
     ErrorResponse:
       type: object
       properties:
@@ -134,27 +142,6 @@ components:
         service:
           type: string
           description: The name of the service that generated the error
-    FixedPointDollars:
-      type: string
-      description: >-
-        US dollar amount as a fixed-point decimal string with up to 6 decimal
-        places of precision. This is the maximum supported precision; valid
-        quote intervals for a given market are constrained by that market's
-        price level structure.
-      example: '0.5600'
-  responses:
-    UnauthorizedError:
-      description: Unauthorized - authentication required
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     kalshiAccessKey:
       type: apiKey
