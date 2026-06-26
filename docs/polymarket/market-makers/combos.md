@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/combos.md
-Downloaded: 2026-06-23T20:47:36.337Z
+Downloaded: 2026-06-26T20:37:51.560Z
 -->
 
 > ## Documentation Index
@@ -74,6 +74,11 @@ sequenceDiagram
 This guide shows market makers how to handle Combo RFQs. You will open a quoting
 session, respond to incoming requests, cancel submitted quotes when needed,
 confirm fills through Last Look, and monitor execution updates.
+
+<Note>
+  For development updates on market making for Combos, join the [Combos market
+  maker Telegram group](https://t.me/+eyMtdtKasWZjYTMx).
+</Note>
 
 ## Start Quoting
 
@@ -1607,9 +1612,26 @@ request cancellation.
 
 ### Last Look
 
-Last Look is a separate confirmation step for makers that have it enabled. If a
-selected quote requires confirmation, run a final risk check before the
-confirmation deadline and either confirm or decline the quote.
+Last Look is a separate final review step for makers that have it enabled. If a
+selected quote requires Last Look, run a final risk check before the deadline and
+accept or reject the fill.
+
+Last Look is offered to makers with approximately \$2,500 in Combo notional
+volume and an established line of communication with Polymarket. This keeps the
+program reliable and helps Polymarket resolve system issues quickly.
+
+To request access, complete the [Last Look request
+form](https://forms.gle/dk5A1DRw8EN5uP9z5).
+
+<Warning>
+  Makers are expected to accept most selected quotes. We track acceptance rates,
+  and makers who reject more than 15% of selected quotes over a one-hour lookback
+  window may be paused from quoting for a few minutes.
+</Warning>
+
+Once access is enabled, your quoting system will immediately be asked to review
+selected fills. Make sure it is ready to evaluate and answer them before approval
+is activated.
 
 <Tabs>
   <Tab title="TypeScript">

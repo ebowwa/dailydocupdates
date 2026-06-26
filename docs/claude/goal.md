@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/goal.md
+Downloaded: 2026-06-26T20:38:01.618Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -18,13 +23,6 @@ Use a goal for substantial work with a verifiable end state:
 * Implementing a design doc until all acceptance criteria hold
 * Splitting a large file into focused modules until each is under a size budget
 * Working through a labeled issue backlog until the queue is empty
-
-This page covers how to:
-
-* [Compare ways to keep a session running](#compare-ways-to-keep-a-session-running): `/loop`, Stop hooks, and auto mode
-* [Set a goal](#set-a-goal) and [write an effective condition](#write-an-effective-condition)
-* [Check status](#check-status), [clear early](#clear-a-goal), and [run non-interactively](#run-non-interactively)
-* See [how evaluation works](#how-evaluation-works) and [requirements](#requirements)
 
 ## Compare ways to keep a session running
 

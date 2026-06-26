@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/python.md
-Downloaded: 2026-06-22T21:04:12.513Z
+Downloaded: 2026-06-26T20:37:51.558Z
 -->
 
 > ## Documentation Index
@@ -1106,6 +1106,10 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0b10`
+
+* Preserve `group_item_title` on market responses so grouped market titles remain available after normalization.
 
 ### `0.1.0b9`
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-25T20:43:40.320Z
+Downloaded: 2026-06-26T20:37:52.488Z
 -->
 
 > ## Documentation Index
@@ -39,6 +39,33 @@ description: "GET /trade-api/v2/portfolio/subaccounts/balances now returns a bal
   **Affected endpoints:**
 
   * `GET /trade-api/v2/portfolio/subaccounts/balances`
+</Update>
+
+<Update
+  label="July 2, 2026"
+  tags={["FIX", "Predictions"]}
+  rss={{
+title: "More specific FIX rejects for cancel/replace failures",
+description: "OrderCancelReject (35=9) responses now carry the specific reason in Text<58> and CxlRejReason<102> instead of INTERNAL_ERROR."
+}}
+>
+  Previously, some `OrderCancelReplaceRequest (35=G)` and
+  `OrderCancelRequest (35=F)` failures came back as an `OrderCancelReject (35=9)`
+  with `Text<58>=INTERNAL_ERROR`, even though the exchange had cleanly rejected
+  the request for a specific reason. The most common case was replacing an order
+  with a price the market does not accept, for example a sub-tick price on a
+  market that does not support fractional prices.
+
+  These rejects now report the underlying reason in `Text<58>`, with a
+  corresponding `CxlRejReason<102>`:
+
+  * Invalid price (off-tick, out-of-band, `$0`, or `$1`): `Text<58>=INVALID_PRICE`, `CxlRejReason<102>=99` (Other)
+  * Unknown market: `Text<58>=MARKET_NOT_FOUND`, `CxlRejReason<102>=99` (Other)
+  * Duplicate client order ID: `Text<58>=ORDER_ALREADY_EXISTS`, `CxlRejReason<102>=6` (Duplicate ClOrdID)
+
+  A rejected cancel or replace does not change the original order; it continues
+  to rest unchanged. Clients that branched on `Text<58>=INTERNAL_ERROR` for these
+  cases should switch to reading the specific reason text.
 </Update>
 
 <Update

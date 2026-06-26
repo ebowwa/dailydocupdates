@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/workflows.md
-Downloaded: 2026-06-23T20:47:48.566Z
+Downloaded: 2026-06-26T20:38:01.631Z
 -->
 
 > ## Documentation Index
@@ -20,13 +20,6 @@ Downloaded: 2026-06-23T20:47:48.566Z
 A dynamic workflow is a JavaScript script that orchestrates [subagents](/en/sub-agents) at scale. Claude writes the script for the task you describe, and a runtime executes it in the background while your session stays responsive.
 
 Reach for a workflow when a task needs more agents than one conversation can coordinate, or when you want the orchestration codified as a script you can read and rerun. Examples include a codebase-wide bug sweep, a 500-file migration, a research question that needs sources cross-checked against each other, and a hard plan worth drafting from several independent angles before you commit to one.
-
-This page covers how to:
-
-* Decide [when to use a workflow](#when-to-use-a-workflow) instead of subagents or skills
-* [Run a bundled workflow](#run-a-bundled-workflow) with `/deep-research`
-* [Have Claude write a workflow](#have-claude-write-a-workflow) for your task and save it
-* Understand [how a workflow runs](#how-a-workflow-runs) and [manage runs](#manage-runs)
 
 ## When to use a workflow
 

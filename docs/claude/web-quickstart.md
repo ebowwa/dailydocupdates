@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/web-quickstart.md
-Downloaded: 2026-06-25T20:43:40.304Z
+Downloaded: 2026-06-26T20:38:01.629Z
 -->
 
 > ## Documentation Index
@@ -189,7 +189,7 @@ Cloud sessions require a connected GitHub account. Connect via the browser flow 
 
 ### "Not available for the selected organization"
 
-Enterprise organizations may need an admin to enable Claude Code on the web. Contact your Anthropic account team.
+Enterprise organizations may need an Owner to enable Claude Code on the web. Contact your Anthropic account team.
 
 ### `/web-setup` shows "No commands match" or "Unknown command"
 
