@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/core/get-user-activity.md
+Downloaded: 2026-06-27T20:27:33.881Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -88,6 +93,9 @@ paths:
                 - REDEEM
                 - REWARD
                 - CONVERSION
+                - DEPOSIT
+                - WITHDRAWAL
+                - YIELD
                 - MAKER_REBATE
                 - TAKER_REBATE
                 - REFERRAL_REWARD
@@ -96,6 +104,10 @@ paths:
           schema:
             type: integer
             minimum: 0
+          description: >-
+            Lower-bound timestamp (epoch seconds) for the activity window. Omit
+            or pass `0` for the default window (most recent ~3 years); pass a
+            positive epoch (e.g. `1`) to retrieve full history.
         - in: query
           name: end
           schema:
@@ -183,6 +195,9 @@ components:
             - REDEEM
             - REWARD
             - CONVERSION
+            - DEPOSIT
+            - WITHDRAWAL
+            - YIELD
             - MAKER_REBATE
             - TAKER_REBATE
             - REFERRAL_REWARD
