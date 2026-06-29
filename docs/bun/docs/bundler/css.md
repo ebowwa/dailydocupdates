@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/css.md
+Downloaded: 2026-06-29T20:40:27.165Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -17,7 +22,7 @@ Bun's bundler has built-in support for CSS with the following features:
 
 Bun's CSS bundler lets you use modern/future CSS features without having to worry about browser compatibility — all thanks to its transpiling and vendor prefixing features which are enabled by default.
 
-Bun's CSS parser and bundler is a direct Rust → Zig port of LightningCSS, with a bundling approach inspired by esbuild. The transpiler converts modern CSS syntax into backwards-compatible equivalents that work across browsers.
+Bun's CSS parser and bundler is a direct port of LightningCSS, with a bundling approach inspired by esbuild. The transpiler converts modern CSS syntax into backwards-compatible equivalents that work across browsers.
 
 <Note>A huge thanks goes to the amazing work from the authors of LightningCSS and esbuild.</Note>
 

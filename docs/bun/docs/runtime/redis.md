@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/redis.md
+Downloaded: 2026-06-29T20:40:27.190Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -569,7 +574,7 @@ async function getSession(sessionId) {
 
 ## Implementation Notes
 
-Bun's Redis client is implemented in Zig and uses the Redis Serialization Protocol (RESP3). It manages connections efficiently and provides automatic reconnection with exponential backoff.
+Bun's Redis client is implemented in Rust and uses the Redis Serialization Protocol (RESP3). It manages connections efficiently and provides automatic reconnection with exponential backoff.
 
 The client supports pipelining commands, meaning multiple commands can be sent without waiting for the replies to previous commands. This significantly improves performance when sending multiple commands in succession.
 

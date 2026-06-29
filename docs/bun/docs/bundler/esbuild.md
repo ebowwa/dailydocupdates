@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/esbuild.md
+Downloaded: 2026-06-29T20:40:27.165Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -23,7 +28,7 @@ There are a few behavioral differences to note.
 
 ## Performance
 
-With a performance-minded API coupled with the extensively optimized Zig-based JS/TS parser, Bun's bundler is 1.75x faster than esbuild on esbuild's three.js benchmark.
+With a performance-minded API coupled with the extensively optimized Rust-based JS/TS parser, Bun's bundler is 1.75x faster than esbuild on esbuild's three.js benchmark.
 
 <Info>Bundling 10 copies of three.js from scratch, with sourcemaps and minification</Info>
 

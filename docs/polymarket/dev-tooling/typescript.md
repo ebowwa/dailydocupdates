@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/typescript.md
-Downloaded: 2026-06-26T20:37:51.559Z
+Downloaded: 2026-06-29T20:40:13.465Z
 -->
 
 > ## Documentation Index
@@ -1107,6 +1107,10 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0-beta.10`
+
+* Preserve already-deployed legacy UUPS Deposit Wallets when `createSecureClient` resolves the default wallet, while new Deposit Wallet deployments use the beacon factory path.
 
 ### `0.1.0-beta.9`
 

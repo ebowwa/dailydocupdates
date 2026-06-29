@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/utils.md
+Downloaded: 2026-06-29T20:40:27.191Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -352,7 +357,7 @@ benchmark                                          time (avg)             (min â
 npm/string-width    500 chars ascii             249,710 ns/iter (239,970 ns â€¦ 293,180 ns) 250,930 ns  276,700 ns 281,450 ns
 ```
 
-To make `Bun.stringWidth` fast, we've implemented it in Zig using optimized SIMD instructions, accounting for Latin1, UTF-16, and UTF-8 encodings. It passes `string-width`'s tests.
+To make `Bun.stringWidth` fast, we've implemented it in native code using optimized SIMD instructions, accounting for Latin1, UTF-16, and UTF-8 encodings. It passes `string-width`'s tests.
 
 <Accordion title="View full benchmark">
   As a reminder, 1 nanosecond (ns) is 1 billionth of a second. Here's a reference for converting between units:

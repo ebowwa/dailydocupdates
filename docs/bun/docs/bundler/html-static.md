@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/html-static.md
+Downloaded: 2026-06-29T20:40:27.166Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -151,7 +156,7 @@ Learn more about module resolution in Bun.
 
 ## CSS
 
-Bun's CSS parser is also natively implemented (clocking in around 58,000 lines of Zig).
+Bun's CSS parser is also natively implemented (clocking in around 70,000 lines of Rust).
 
 It's also a CSS bundler. You can use `@import` in your CSS files to import other CSS files.
 

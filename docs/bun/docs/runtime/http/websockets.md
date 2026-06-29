@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/http/websockets.md
+Downloaded: 2026-06-29T20:40:27.189Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -355,7 +360,7 @@ namespace Bun {
 
       maxPayloadLength?: number; // default: 16 * 1024 * 1024 = 16 MB
       idleTimeout?: number; // default: 120 (seconds)
-      backpressureLimit?: number; // default: 1024 * 1024 = 1 MB
+      backpressureLimit?: number; // default: 16 * 1024 * 1024 = 16 MB
       closeOnBackpressureLimit?: boolean; // default: false
       sendPings?: boolean; // default: true
       publishToSelf?: boolean; // default: false

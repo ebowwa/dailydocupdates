@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/api-keys/get-api-keys.md
-Downloaded: 2026-06-23T20:47:54.121Z
+Downloaded: 2026-06-29T20:40:09.653Z
 -->
 
 > ## Documentation Index
@@ -117,6 +117,15 @@ components:
           description: List of scopes granted to this API key.
           items:
             $ref: '#/components/schemas/ApiKeyScope'
+        subaccount:
+          type: integer
+          nullable: true
+          minimum: 0
+          maximum: 63
+          description: >-
+            If set, the API key is restricted to this single sub-account and may
+            only read and trade on it. Absent/null means the key is
+            unrestricted.
     ApiKeyScope:
       type: string
       enum:

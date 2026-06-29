@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/python.md
-Downloaded: 2026-06-26T20:37:51.558Z
+Downloaded: 2026-06-29T20:40:13.464Z
 -->
 
 > ## Documentation Index
@@ -1106,6 +1106,12 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0b11`
+
+* Preserve already-deployed legacy UUPS Deposit Wallets when secure clients resolve the default wallet, while new Deposit Wallet deployments use the beacon factory path.
+* Retry rejected JSON-RPC batches by splitting them into smaller batches.
+* Added typed Gamma search sort fields for search requests.
 
 ### `0.1.0b10`
 

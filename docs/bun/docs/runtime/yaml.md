@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/yaml.md
+Downloaded: 2026-06-29T20:40:27.192Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -16,7 +21,7 @@ In Bun, YAML is a first-class citizen alongside JSON and TOML. You can:
 
 ## Conformance
 
-Bun's YAML parser currently passes over 90% of the official YAML test suite. While we're actively working on reaching 100% conformance, the current implementation covers the vast majority of real-world use cases. The parser is written in Zig for optimal performance and is continuously being improved.
+Bun's YAML parser currently passes over 90% of the official YAML test suite. While we're actively working on reaching 100% conformance, the current implementation covers the vast majority of real-world use cases. The parser is written in Rust for optimal performance and is continuously being improved.
 
 ***
 

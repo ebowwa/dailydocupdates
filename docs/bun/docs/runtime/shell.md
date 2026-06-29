@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/shell.md
+Downloaded: 2026-06-29T20:40:27.191Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -30,7 +35,7 @@ await $`cat < ${response} | wc -c`; // 1256
 * **Safety**: Bun Shell escapes all strings by default, preventing shell injection attacks.
 * **JavaScript interop**: Use `Response`, `ArrayBuffer`, `Blob`, `Bun.file(path)` and other JavaScript objects as stdin, stdout, and stderr.
 * **Shell scripting**: Bun Shell can be used to run shell scripts (`.bun.sh` files).
-* **Custom interpreter**: Bun Shell is written in Zig, along with its lexer, parser, and interpreter. Bun Shell is a small programming language.
+* **Custom interpreter**: Bun Shell is written in Rust, along with its lexer, parser, and interpreter. Bun Shell is a small programming language.
 
 ***
 
@@ -560,7 +565,7 @@ Hello World! pwd=C:\Users\Demo
 
 ## Implementation notes
 
-Bun Shell is a small programming language in Bun that is implemented in Zig. It includes a handwritten lexer, parser, and interpreter. Unlike bash, zsh, and other shells, Bun Shell runs operations concurrently.
+Bun Shell is a small programming language in Bun that is implemented in Rust. It includes a handwritten lexer, parser, and interpreter. Unlike bash, zsh, and other shells, Bun Shell runs operations concurrently.
 
 ***
 

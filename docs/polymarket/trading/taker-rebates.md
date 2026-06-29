@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/taker-rebates.md
-Downloaded: 2026-06-25T20:43:40.158Z
+Downloaded: 2026-06-29T20:40:13.469Z
 -->
 
 > ## Documentation Index
@@ -104,6 +104,7 @@ Your tier updates every day based on your last 30 days of Weighted Volume. Movin
 
 * You can watch your rebates add up **live** as you trade, the same way referral earnings work.
 * Rebates are **paid every day at midnight UTC** in pUSD, straight to your account.
+* A minimum accrued rebate of **\$1 pUSD** is required for a payout.
 
 ***
 
@@ -159,7 +160,8 @@ Your tier shows on your Polymarket profile and on the leaderboards. As you climb
 
   <Accordion title="When are rebates paid">
     Rebates are paid once a day at midnight UTC in pUSD, directly to your
-    account.
+    account. You must accrue at least **\$1** in rebates before a payout is
+    issued.
   </Accordion>
 
   <Accordion title="How often does my tier update">

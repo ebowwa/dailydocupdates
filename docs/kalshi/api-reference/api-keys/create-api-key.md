@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/api-keys/create-api-key.md
-Downloaded: 2026-06-23T20:47:54.121Z
+Downloaded: 2026-06-29T20:40:09.652Z
 -->
 
 > ## Documentation Index
@@ -122,6 +122,16 @@ components:
             (`read`, `write`) if not provided.
           items:
             $ref: '#/components/schemas/ApiKeyScope'
+        subaccount:
+          type: integer
+          minimum: 0
+          maximum: 63
+          description: >-
+            If set, restricts the API key to a single sub-account (0-63) that
+            you own. A restricted key may only read and trade on that
+            sub-account; it cannot act on other sub-accounts, transfer funds
+            between sub-accounts, or create sub-accounts. Omit to leave the key
+            unrestricted.
     CreateApiKeyResponse:
       type: object
       required:

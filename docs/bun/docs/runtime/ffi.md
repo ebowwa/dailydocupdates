@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/ffi.md
+Downloaded: 2026-06-29T20:40:27.187Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -119,7 +124,11 @@ extern "C" int32_t add(int32_t a, int32_t b) {
 To compile:
 
 ```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
-zig build-lib add.cpp -dynamic -lc -lc++
+# Linux
+clang++ -shared -fPIC add.cpp -o libadd.so
+
+# macOS
+clang++ -dynamiclib add.cpp -o libadd.dylib
 ```
 
 ***

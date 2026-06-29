@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/markdown.md
+Downloaded: 2026-06-29T20:40:27.189Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,7 +15,7 @@
   **Unstable API** — This API is under active development and may change in future versions of Bun.
 </Callout>
 
-Bun includes a fast, built-in Markdown parser written in Zig. It supports GitHub Flavored Markdown (GFM) extensions and provides three APIs:
+Bun includes a fast, built-in Markdown parser written in Rust. It supports GitHub Flavored Markdown (GFM) extensions and provides three APIs:
 
 * `Bun.markdown.html()` — render Markdown to an HTML string
 * `Bun.markdown.render()` — render Markdown with custom callbacks for each element

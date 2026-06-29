@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/json5.md
+Downloaded: 2026-06-29T20:40:27.189Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -16,7 +21,7 @@ In Bun, JSON5 is a first-class citizen alongside JSON, TOML, and YAML. You can:
 
 ## Conformance
 
-Bun's JSON5 parser passes 100% of the [official JSON5 test suite](https://github.com/json5/json5-tests). The parser is written in Zig for optimal performance. You can view our [translated test suite](https://github.com/oven-sh/bun/blob/main/test/js/bun/json5/json5-test-suite.test.ts) to see every test case.
+Bun's JSON5 parser passes 100% of the [official JSON5 test suite](https://github.com/json5/json5-tests). The parser is written in Rust for optimal performance. You can view our [translated test suite](https://github.com/oven-sh/bun/blob/main/test/js/bun/json5/json5-test-suite.test.ts) to see every test case.
 
 ***
 
