@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/prisma-postgres.md
+Downloaded: 2026-06-30T20:44:18.801Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -5,8 +10,8 @@
 # Use Prisma Postgres with Bun
 
 <Note>
-  **Note** — At the moment Prisma needs Node.js to be installed to run certain generation code. Make sure Node.js is
-  installed in the environment where you're running `bunx prisma` commands.
+  Prisma needs Node.js to run certain generation code, so make sure Node.js is installed in the environment where you
+  run `bunx prisma` commands.
 </Note>
 
 <Steps>
@@ -30,13 +35,13 @@
   </Step>
 
   <Step title="Initialize Prisma with PostgreSQL">
-    We'll use the Prisma CLI with `bunx` to initialize our schema and migration directory. We'll be using PostgreSQL as our database.
+    Use the Prisma CLI with `bunx` to initialize the schema and migration directory, with PostgreSQL as the database.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     bunx --bun prisma init --db
     ```
 
-    This creates a basic schema. We need to update it to use the new Rust-free client with Bun optimization. Open `prisma/schema.prisma` and modify the generator block, then add a `User` model.
+    This creates a basic schema. Update it to use the Rust-free client optimized for Bun: open `prisma/schema.prisma` and modify the generator block, then add a `User` model.
 
     ```prisma prisma/schema.prisma icon="https://mintcdn.com/bun-1dd33a4e/nIz6GtMH5K-dfXeV/icons/ecosystem/prisma.svg?fit=max&auto=format&n=nIz6GtMH5K-dfXeV&q=85&s=c37203455320f85a20a7b29ce374661c" theme={"theme":{"light":"github-light","dark":"dracula"}}
     generator client {
@@ -68,9 +73,9 @@
   </Step>
 
   <Step title="Create and run database migration">
-    Then generate and run initial migration.
+    Then generate and run the initial migration.
 
-    This will generate a `.sql` migration file in `prisma/migrations`, and execute the migration against your Postgres database.
+    The command writes a `.sql` migration file to `prisma/migrations` and executes it against your Postgres database.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     bunx --bun prisma migrate dev --name init
@@ -96,7 +101,7 @@
   </Step>
 
   <Step title="Generate Prisma Client">
-    As indicated in the output, Prisma re-generates our *Prisma client* whenever we execute a new migration. The client provides a fully typed API for reading and writing from our database. You can manually re-generate the client with the Prisma CLI.
+    As the output shows, Prisma re-generates the *Prisma client* whenever you run a new migration. The client provides a fully typed API for reading and writing to the database. To re-generate the client manually, use the Prisma CLI.
 
     ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     bunx --bun prisma generate
@@ -104,7 +109,7 @@
   </Step>
 
   <Step title="Initialize Prisma Client with Accelerate">
-    Now we need to create a Prisma client instance. Create a new file `prisma/db.ts` to initialize the PrismaClient with the Postgres adapter.
+    Create a new file `prisma/db.ts` that initializes the PrismaClient with the Postgres adapter.
 
     ```ts prisma/db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
     import { PrismaClient } from "./generated/client";
@@ -115,7 +120,7 @@
   </Step>
 
   <Step title="Create a test script">
-    Let's write a script to create a new user, then count the number of users in the database.
+    Write a script that creates a new user, then counts the users in the database.
 
     ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
     import { prisma } from "./prisma/db";
@@ -135,7 +140,7 @@
   </Step>
 
   <Step title="Run and test the application">
-    Let's run this script with `bun run`. Each time we run it, a new user is created.
+    Run the script with `bun run`. Each run creates a new user.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     bun run index.ts
@@ -165,4 +170,4 @@
 
 ***
 
-That's it! Now that you've set up Prisma Postgres using Bun, we recommend referring to the [official Prisma Postgres docs](https://www.prisma.io/docs/postgres) as you continue to develop your application.
+Prisma Postgres is now set up with Bun. Refer to the [official Prisma Postgres docs](https://www.prisma.io/docs/postgres) as you continue to develop your application.

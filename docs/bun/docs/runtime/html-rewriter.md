@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/html-rewriter.md
+Downloaded: 2026-06-30T20:44:18.833Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,13 +11,13 @@
 
 > Use Bun's HTMLRewriter to transform HTML documents with CSS selectors
 
-HTMLRewriter lets you use CSS selectors to transform HTML documents. It works with `Request`, `Response`, as well as `string`. Bun's implementation is based on Cloudflare's [lol-html](https://github.com/cloudflare/lol-html).
+HTMLRewriter transforms HTML documents with CSS selectors. It works with `Request`, `Response`, and `string` inputs. Bun's implementation is based on Cloudflare's [lol-html](https://github.com/cloudflare/lol-html).
 
 ***
 
 ## Usage
 
-A common usecase is rewriting URLs in HTML content. Here's an example that rewrites image sources and link URLs to use a CDN domain:
+A common use case is rewriting URLs in HTML content:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Replace all images with a rickroll
@@ -47,7 +52,7 @@ const result = rewriter.transform(html);
 console.log(result);
 ```
 
-This replaces all images with a thumbnail of Rick Astley and wraps each `<img>` in a link, producing a diff like this:
+The rewriter replaces every image with a thumbnail of Rick Astley and wraps each `<img>` in a link, producing a diff like this:
 
 ```html theme={"theme":{"light":"github-light","dark":"dracula"}}
 <html>
@@ -68,11 +73,11 @@ This replaces all images with a thumbnail of Rick Astley and wraps each `<img>` 
 </html>
 ```
 
-Now every image on the page will be replaced with a thumbnail of Rick Astley, and clicking any image will lead to [a very famous video](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+Clicking any image now leads to [a very famous video](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
 
 ### Input types
 
-HTMLRewriter can transform HTML from various sources. The input is automatically handled based on its type:
+HTMLRewriter can transform HTML from several input types:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // From Response
@@ -91,11 +96,11 @@ rewriter.transform(new Blob(["<div>content</div>"]));
 rewriter.transform(Bun.file("index.html"));
 ```
 
-Note that Cloudflare Workers implementation of HTMLRewriter only supports `Response` objects.
+The Cloudflare Workers implementation of HTMLRewriter only supports `Response` objects.
 
 ### Element Handlers
 
-The `on(selector, handlers)` method allows you to register handlers for HTML elements that match a CSS selector. The handlers are called for each matching element during parsing:
+The `on(selector, handlers)` method registers handlers for HTML elements that match a CSS selector. The handlers run for each matching element during parsing:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("div.content", {
@@ -115,7 +120,7 @@ rewriter.on("div.content", {
 });
 ```
 
-The handlers can be asynchronous and return a Promise. Note that async operations will block the transformation until they complete:
+Handlers can be asynchronous and return a Promise. Async operations block the transformation until they complete:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("div", {
@@ -168,7 +173,7 @@ rewriter.on("*", handler);
 
 ### Element Operations
 
-Elements provide various methods for manipulation. All modification methods return the element instance for chaining:
+All element modification methods return the element instance, so calls can be chained:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("div", {
@@ -223,7 +228,7 @@ rewriter.on("div", {
 
 ### Text Operations
 
-Text handlers provide methods for text manipulation. Text chunks represent portions of text content and provide information about their position in the text node:
+Text chunks represent portions of text content and report their position in the text node:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("p", {
@@ -247,7 +252,7 @@ rewriter.on("p", {
 
 ### Comment Operations
 
-Comment handlers allow comment manipulation with similar methods to text nodes:
+Comments support similar methods to text nodes:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("*", {
@@ -271,7 +276,7 @@ rewriter.on("*", {
 
 ### Document Handlers
 
-The `onDocument(handlers)` method allows you to handle document-level events. These handlers are called for events that occur at the document level rather than within specific elements:
+The `onDocument(handlers)` method registers handlers for events at the document level rather than within specific elements:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.onDocument({
@@ -314,10 +319,10 @@ HTMLRewriter operations can throw errors in several cases:
 * Invalid HTML content in transformation methods
 * Stream errors when processing Response bodies
 * Memory allocation failures
-* Invalid input types (e.g., passing Symbol)
+* Invalid input types (for example, passing a Symbol)
 * Body already used errors
 
-Errors should be caught and handled appropriately:
+Catch and handle these errors:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 try {

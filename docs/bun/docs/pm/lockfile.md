@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/lockfile.md
+Downloaded: 2026-06-30T20:44:18.828Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Bun's lockfile format and configuration
 
-Running `bun install` will create a lockfile called `bun.lock`.
+`bun install` creates a lockfile called `bun.lock`.
 
 #### Should it be committed to git?
 
@@ -14,15 +19,14 @@ Yes
 
 #### Generate a lockfile without installing?
 
-To generate a lockfile without installing to `node_modules` you can use the `--lockfile-only` flag. The lockfile will always be saved to disk, even if it is up-to-date with the `package.json`(s) for your project.
+To generate a lockfile without installing to `node_modules`, use the `--lockfile-only` flag. The lockfile is always saved to disk, even if it is already up to date with your project's `package.json`(s).
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun install --lockfile-only
 ```
 
 <Note>
-  Using `--lockfile-only` will still populate the global install cache with registry metadata and git/tarball
-  dependencies.
+  `--lockfile-only` still populates the global install cache with registry metadata and git/tarball dependencies.
 </Note>
 
 #### Can I opt out?
@@ -33,7 +37,7 @@ To install without creating a lockfile:
 bun install --no-save
 ```
 
-To install a Yarn lockfile *in addition* to `bun.lock`.
+To write a Yarn lockfile *in addition* to `bun.lock`:
 
 <CodeGroup>
   ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -50,9 +54,9 @@ To install a Yarn lockfile *in addition* to `bun.lock`.
 
 #### Text-based lockfile
 
-Bun v1.2 changed the default lockfile format to the text-based `bun.lock`. Existing binary `bun.lockb` lockfiles can be migrated to the new format by running `bun install --save-text-lockfile --frozen-lockfile --lockfile-only` and deleting `bun.lockb`.
+Bun v1.2 changed the default lockfile format to the text-based `bun.lock`. To migrate an existing binary `bun.lockb`, run `bun install --save-text-lockfile --frozen-lockfile --lockfile-only` and delete `bun.lockb`.
 
-More information about the new lockfile format can be found on [our blogpost](https://bun.com/blog/bun-lock-text-lockfile).
+For more on the format, see [the blog post](https://bun.com/blog/bun-lock-text-lockfile).
 
 #### Automatic lockfile migration
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/binary/arraybuffer-to-buffer.md
+Downloaded: 2026-06-30T20:44:18.795Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -15,7 +20,7 @@ const nodeBuffer = Buffer.from(arrBuffer);
 
 ***
 
-To create a `Buffer` that only views a portion of the underlying buffer, pass the offset and length to the constructor.
+To create a `Buffer` that only views a portion of the underlying buffer, pass the offset and length to `Buffer.from()`.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arrBuffer = new ArrayBuffer(64);
@@ -24,4 +29,4 @@ const nodeBuffer = Buffer.from(arrBuffer, 0, 16); // view first 16 bytes
 
 ***
 
-See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Binary Data](/runtime/binary-data#conversion).

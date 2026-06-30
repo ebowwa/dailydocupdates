@@ -1,16 +1,21 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/nextjs.md
+Downloaded: 2026-06-30T20:44:18.801Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Build an app with Next.js and Bun
 
-[Next.js](https://nextjs.org/) is a React framework for building full-stack web applications. It supports server-side rendering, static site generation, API routes, and more. Bun provides fast package installation and can run Next.js development and production servers.
+[Next.js](https://nextjs.org/) is a React framework for building full-stack web applications. It supports server-side rendering, static site generation, and API routes. Bun installs packages fast and can run Next.js development and production servers.
 
 ***
 
 <Steps>
   <Step title="Create a new Next.js app">
-    Use the interactive CLI to create a new Next.js app. This will scaffold a new Next.js project and automatically install dependencies.
+    Use the interactive CLI to scaffold a new Next.js project and install its dependencies.
 
     ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     bun create next-app@latest my-bun-app
@@ -27,11 +32,11 @@
 
     This starts the Next.js dev server with Bun's runtime.
 
-    Open [`http://localhost:3000`](http://localhost:3000) with your browser to see the result. Any changes you make to `app/page.tsx` will be hot-reloaded in the browser.
+    Open [`http://localhost:3000`](http://localhost:3000) in your browser to see the result. Changes you make to `app/page.tsx` are hot-reloaded in the browser.
   </Step>
 
   <Step title="Update scripts in package.json">
-    Modify the scripts field in your `package.json` by prefixing the Next.js CLI commands with `bun --bun`. This ensures that Bun executes the Next.js CLI for common tasks like `dev`, `build`, and `start`.
+    Prefix the Next.js CLI commands in your `package.json` scripts with `bun --bun` so that Bun executes the Next.js CLI for `dev`, `build`, and `start`.
 
     ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
     {
@@ -48,8 +53,6 @@
 ***
 
 ## Hosting
-
-Next.js applications on Bun can be deployed to various platforms.
 
 <Columns cols={3}>
   <Card title="Vercel" href="/guides/deployment/vercel" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/ecosystem/vercel.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=165bc9841eef2a62f3951be494dbc89a" width="24" height="24" data-path="icons/ecosystem/vercel.svg">
@@ -93,4 +96,4 @@ Next.js applications on Bun can be deployed to various platforms.
 
 ***
 
-[→ See Next.js's official documentation](https://nextjs.org/docs) for more information on building and deploying Next.js applications.
+Refer to the [Next.js documentation](https://nextjs.org/docs) for more on building and deploying Next.js applications.

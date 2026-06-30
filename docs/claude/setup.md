@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/setup.md
-Downloaded: 2026-06-25T20:43:40.301Z
+Downloaded: 2026-06-30T20:44:12.259Z
 -->
 
 > ## Documentation Index
@@ -35,7 +35,7 @@ Claude Code runs on the following platforms and configurations:
 ## Install Claude Code
 
 <Tip>
-  Prefer a graphical interface? The [Desktop app](/en/desktop-quickstart) lets you use Claude Code without the terminal. Download it for [macOS](https://claude.ai/api/desktop/darwin/universal/dmg/latest/redirect?utm_source=claude_code\&utm_medium=docs) or [Windows](https://claude.com/download?utm_source=claude_code\&utm_medium=docs).
+  Prefer a graphical interface? The [Desktop app](/en/desktop-quickstart) lets you use Claude Code without the terminal. Download it for [macOS](https://claude.ai/api/desktop/darwin/universal/dmg/latest/redirect?utm_source=claude_code\&utm_medium=docs), [Windows](https://claude.com/download?utm_source=claude_code\&utm_medium=docs), or [Linux](https://claude.com/download?utm_source=claude_code\&utm_medium=docs).
 
   New to the terminal? See the [terminal guide](/en/terminal-guide) for step-by-step instructions.
 </Tip>

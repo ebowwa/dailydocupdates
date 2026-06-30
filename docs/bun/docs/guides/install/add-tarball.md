@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/install/add-tarball.md
+Downloaded: 2026-06-30T20:44:18.807Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ bun add zod@https://registry.npmjs.org/zod/-/zod-3.21.4.tgz
 
 ***
 
-Running this command will download, extract, and install the tarball to your project's `node_modules` directory. It will also add the following line to your `package.json`:
+This command downloads, extracts, and installs the tarball into your project's `node_modules` directory, and adds the following line to your `package.json`:
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -24,7 +29,7 @@ Running this command will download, extract, and install the tarball to your pro
 
 ***
 
-The package `"zod"` can now be imported as usual.
+You can now import `zod` as usual.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { z } from "zod";
@@ -32,4 +37,4 @@ import { z } from "zod";
 
 ***
 
-See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
+See [`bun install`](/pm/cli/install).

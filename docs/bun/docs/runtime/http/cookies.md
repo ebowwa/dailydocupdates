@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/http/cookies.md
+Downloaded: 2026-06-30T20:44:18.833Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Work with cookies in HTTP requests and responses using Bun's built-in Cookie API.
 
-Bun provides a built-in API for working with cookies in HTTP requests and responses. The `BunRequest` object includes a `cookies` property that provides a `CookieMap` for accessing and manipulating cookies. When using `routes`, `Bun.serve()` automatically tracks `request.cookies.set` and applies them to the response.
+Bun has a built-in API for working with cookies in HTTP requests and responses. The `BunRequest` object exposes a `cookies` property, a `CookieMap` for reading and modifying cookies. When using `routes`, `Bun.serve()` automatically tracks calls to `request.cookies.set` and applies them to the response.
 
 ## Reading cookies
 
@@ -57,8 +62,6 @@ Bun.serve({
   },
 });
 ```
-
-`Bun.serve()` automatically tracks modified cookies from the request and applies them to the response.
 
 ## Deleting cookies
 

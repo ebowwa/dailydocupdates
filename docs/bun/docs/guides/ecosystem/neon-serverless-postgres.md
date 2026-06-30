@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/neon-serverless-postgres.md
+Downloaded: 2026-06-30T20:44:18.801Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Use Neon's Serverless Postgres with Bun
 
-[Neon](https://neon.tech/) is a fully managed serverless Postgres. Neon separates compute and storage to offer modern developer features such as autoscaling, branching, bottomless storage, and more.
+[Neon](https://neon.tech/) is a fully managed serverless Postgres. Neon separates compute and storage to offer features such as autoscaling, branching, and bottomless storage.
 
 ***
 
@@ -43,7 +48,7 @@ console.log(rows[0].version);
 
 ***
 
-Start the program using `bun ./index.ts`. The Postgres version should be printed to the console.
+Start the program with `bun ./index.ts`. It prints the Postgres version to the console.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun ./index.ts

@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/typescript.md
+Downloaded: 2026-06-30T20:44:18.815Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Install TypeScript declarations for Bun
 
-To install TypeScript definitions for Bun's built-in APIs in your project, install `@types/bun`.
+To add TypeScript definitions for Bun's built-in APIs to your project, install `@types/bun`.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun add -d @types/bun # dev dependency
@@ -12,7 +17,7 @@ bun add -d @types/bun # dev dependency
 
 ***
 
-Below is the full set of recommended `compilerOptions` for a Bun project. With this `tsconfig.json`, you can use top-level await, extensioned or extensionless imports, and JSX.
+Here is the full set of recommended `compilerOptions` for a Bun project. With this `tsconfig.json`, you can use top-level await, extensioned or extensionless imports, and JSX.
 
 ```json tsconfig.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -49,8 +54,8 @@ Below is the full set of recommended `compilerOptions` for a Bun project. With t
 
 ***
 
-If you're using TypeScript 6.0 or later, you'll also need to add `"types": ["bun"]` to your `compilerOptions`. See [TypeScript 6 and 7](/typescript-6) for details.
+If you're using TypeScript 6.0 or later, you also need `"types": ["bun"]` in your `compilerOptions`. See [TypeScript 6 and 7](/typescript-6) for details.
 
 ***
 
-Refer to [Ecosystem > TypeScript](/runtime/typescript) for a complete guide to TypeScript support in Bun.
+See [TypeScript](/runtime/typescript).

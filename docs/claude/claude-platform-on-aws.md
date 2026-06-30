@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/claude-platform-on-aws.md
-Downloaded: 2026-06-23T20:47:48.550Z
+Downloaded: 2026-06-30T20:44:12.244Z
 -->
 
 > ## Documentation Index
@@ -278,7 +278,7 @@ If you deploy Claude Code to a team, pin the model IDs explicitly so a new relea
 ```bash theme={null}
 export ANTHROPIC_DEFAULT_FABLE_MODEL=claude-fable-5
 export ANTHROPIC_DEFAULT_OPUS_MODEL=claude-opus-4-7
-export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-4-6
+export ANTHROPIC_DEFAULT_SONNET_MODEL=claude-sonnet-5
 export ANTHROPIC_DEFAULT_HAIKU_MODEL=claude-haiku-4-5
 ```
 

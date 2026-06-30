@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/test/coverage-threshold.md
+Downloaded: 2026-06-30T20:44:18.818Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Set a code coverage threshold with the Bun test runner
 
-Bun's test runner supports built-in code coverage reporting via the `--coverage` flag.
+Bun's test runner has built-in code coverage reporting. Enable it with the `--coverage` flag.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --coverage
@@ -30,7 +35,7 @@ All files    |   66.67 |   77.78 |
 
 ***
 
-To set a minimum coverage threshold, add the following line to your `bunfig.toml`. This requires that 90% of your codebase is covered by tests.
+To set a minimum coverage threshold, add the following to your `bunfig.toml`. A threshold of `0.9` requires that tests cover 90% of your codebase.
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [test]
@@ -40,7 +45,7 @@ coverageThreshold = 0.9
 
 ***
 
-If your test suite does not meet this threshold, `bun test` will exit with a non-zero exit code to signal a failure.
+If your test suite does not meet this threshold, `bun test` exits with a non-zero exit code to signal a failure.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --coverage
@@ -54,7 +59,7 @@ $ echo $?
 
 ***
 
-Different thresholds can be set for line-level and function-level coverage.
+You can set different thresholds for line-level and function-level coverage.
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [test]
@@ -64,4 +69,4 @@ coverageThreshold = { lines = 0.5, functions = 0.7 }
 
 ***
 
-See [Docs > Test runner > Coverage](/test/code-coverage) for complete documentation on code coverage reporting in Bun.
+See [Code coverage](/test/code-coverage).

@@ -1,16 +1,21 @@
+<!--
+Source: https://bun.com/docs/runtime/networking/tcp.md
+Downloaded: 2026-06-30T20:44:18.836Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # TCP
 
-> Use Bun's native TCP API to implement performance sensitive systems like database clients, game servers, or anything that needs to communicate over TCP (instead of HTTP)
+> Use Bun's native TCP API to implement performance-sensitive systems like database clients, game servers, or anything that needs to communicate over TCP (instead of HTTP)
 
-This is a low-level API intended for library authors and for advanced use cases.
+Bun's TCP API is low-level, intended for library authors and advanced use cases.
 
 ## Start a server (`Bun.listen()`)
 
-To start a TCP server with `Bun.listen`:
+Start a TCP server with `Bun.listen`:
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.listen({
@@ -27,7 +32,7 @@ Bun.listen({
 ```
 
 <Accordion title="An API designed for speed">
-  In Bun, a set of handlers are declared once per server instead of assigning callbacks to each socket, as with Node.js `EventEmitters` or the web-standard `WebSocket` API.
+  In Bun, you declare one set of handlers per server instead of assigning callbacks to each socket, as with Node.js `EventEmitters` or the web-standard `WebSocket` API.
 
   ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
   Bun.listen({
@@ -46,7 +51,7 @@ Bun.listen({
   For performance-sensitive servers, assigning listeners to each socket can cause significant garbage collector pressure and increase memory usage. By contrast, Bun only allocates one handler function for each event and shares it among all sockets. This is a small optimization, but it adds up.
 </Accordion>
 
-Contextual data can be attached to a socket in the `open` handler.
+Attach contextual data to a socket in the `open` handler.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 type SocketData = { sessionId: string };
@@ -96,7 +101,7 @@ Bun.listen({
 });
 ```
 
-The result of `Bun.listen` is a server that conforms to the `TCPSocket` interface.
+`Bun.listen` returns a server that conforms to the `TCPSocket` interface.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.listen({
@@ -115,7 +120,7 @@ server.unref();
 
 ## Create a connection (`Bun.connect()`)
 
-Use `Bun.connect` to connect to a TCP server. Specify the server to connect to with `hostname` and `port`. TCP clients can define the same set of handlers as `Bun.listen`, plus a couple client-specific handlers.
+Use `Bun.connect` to connect to a TCP server. Specify the server with `hostname` and `port`. TCP clients can define the same set of handlers as `Bun.listen`, plus a few client-specific handlers.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // The client
@@ -187,7 +192,7 @@ Both TCP servers and sockets can be hot reloaded with new handlers.
 
 ## Buffering
 
-Currently, TCP sockets in Bun do not buffer data. For performance-sensitive code, it's important to consider buffering carefully. For example, this:
+TCP sockets in Bun do not buffer data, so performance-sensitive code should buffer writes itself. For example, this:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 socket.write("h");
@@ -203,7 +208,7 @@ socket.write("o");
 socket.write("hello");
 ```
 
-To simplify this for now, consider using Bun's `ArrayBufferSink` with the `{stream: true}` option:
+To buffer writes, use Bun's `ArrayBufferSink` with the `{stream: true}` option:
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { ArrayBufferSink } from "bun";

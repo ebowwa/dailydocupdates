@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/dates-times.md
+Downloaded: 2026-06-30T20:44:18.840Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -32,7 +37,7 @@ test("it is 2020", () => {
 });
 ```
 
-To support existing tests that use Jest's `useFakeTimers` and `useRealTimers`, you can use `useFakeTimers` and `useRealTimers`:
+Jest's `useFakeTimers` and `useRealTimers` are also supported, so existing tests that use them keep working:
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 test("just like in jest", () => {
@@ -59,9 +64,7 @@ test("unlike in jest", () => {
 });
 ```
 
-<Warning>
-  **Timers** — Note that we have not implemented builtin support for mocking timers yet, but this is on the roadmap.
-</Warning>
+<Warning>**Timers** — Built-in timer mocking is not implemented yet, but it is on the roadmap.</Warning>
 
 ## Reset the system time
 
@@ -84,7 +87,7 @@ test("it was 2020, for a moment.", () => {
 
 ## Get mocked time with jest.now()
 
-When you're using mocked time (with `setSystemTime` or `useFakeTimers`), you can use `jest.now()` to get the current mocked timestamp:
+When the time is mocked (with `setSystemTime` or `useFakeTimers`), `jest.now()` returns the current mocked timestamp:
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect, jest } from "bun:test";
@@ -100,11 +103,11 @@ test("get the current mocked time", () => {
 });
 ```
 
-This is useful when you need to access the mocked time directly without creating a new Date object.
+Use it to read the mocked time without creating a new `Date` object.
 
 ## Set the time zone
 
-By default, the time zone for all `bun test` runs is set to UTC (`Etc/UTC`) unless overridden. To change the time zone, either pass the `$TZ` environment variable to `bun test`:
+By default, `bun test` runs in UTC (`Etc/UTC`). To change the time zone, either pass the `TZ` environment variable to `bun test`:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 TZ=America/Los_Angeles bun test
@@ -129,4 +132,4 @@ test("Welcome to New York!", () => {
 });
 ```
 
-<Info>Unlike in Jest, you can set the timezone multiple times at runtime and it will work.</Info>
+<Info>Unlike in Jest, you can change the time zone multiple times at runtime.</Info>

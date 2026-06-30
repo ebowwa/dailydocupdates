@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/http/simple.md
+Downloaded: 2026-06-30T20:44:18.805Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Write a simple HTTP server
 
-This starts an HTTP server listening on port `3000`. It responds to all requests with a `Response` with status `200` and body `"Welcome to Bun!"`.
+This code starts an HTTP server listening on port `3000`. It responds to every request with a `200` status and the body `"Welcome to Bun!"`.
 
 See [`Bun.serve`](/runtime/http/server) for details.
 

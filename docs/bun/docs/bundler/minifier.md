@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/minifier.md
+Downloaded: 2026-06-30T20:44:18.794Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -18,7 +23,7 @@ Use the `--minify` flag to enable all minification modes:
 bun build ./index.ts --minify --outfile=out.js
 ```
 
-The `--minify` flag automatically enables:
+The `--minify` flag enables:
 
 * Whitespace minification
 * Syntax minification
@@ -39,7 +44,7 @@ The `--production` flag also:
 
 ### Granular control
 
-You can enable specific minification modes individually:
+Enable specific minification modes individually:
 
 ```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Only remove whitespace
@@ -83,7 +88,7 @@ await Bun.build({
 
 ## Minification Modes
 
-Bun's minifier has three independent modes that can be enabled separately or combined.
+Bun's minifier has three independent modes that you can enable separately or together.
 
 ### Whitespace minification (`--minify-whitespace`)
 
@@ -339,7 +344,7 @@ Evaluates template literals with constant expressions.
 
 **Mode:** `--minify-syntax`
 
-Converts simple template literals to regular strings.
+Converts template literals with no substitutions to regular strings.
 
 ```ts Input theme={"theme":{"light":"github-light","dark":"dracula"}}
 `Hello World`
@@ -668,7 +673,7 @@ const x=0;
 
 **Mode:** Always active
 
-Respects `/*@__PURE__*/` annotations for tree shaking.
+Respects `/*@__PURE__*/` annotations for tree shaking (removing unused code).
 
 ```ts Input theme={"theme":{"light":"github-light","dark":"dracula"}}
 const x = /*@__PURE__*/ expensive();
@@ -1226,7 +1231,7 @@ void 0;
 
 ## Keep Names
 
-When minifying identifiers, you may want to preserve original function and class names for debugging purposes. Use the `--keep-names` flag:
+To keep original function and class names for debugging while minifying identifiers, use the `--keep-names` flag:
 
 ```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build ./index.ts --minify --keep-names --outfile=out.js
@@ -1245,7 +1250,7 @@ await Bun.build({
 });
 ```
 
-This preserves the `.name` property on functions and classes while still minifying the actual identifier names in the code.
+`--keep-names` preserves the `.name` property on functions and classes while still minifying the identifiers themselves.
 
 ## Combined Example
 
@@ -1278,7 +1283,7 @@ const a=42,b=()=>{const c=!0,d=void 0;return c?a:d},e=b();
 
 **Use individual modes for:**
 
-* **`--minify-whitespace`:** Quick size reduction without semantic changes
+* **`--minify-whitespace`:** Size reduction without semantic changes
 * **`--minify-syntax`:** Smaller output while keeping readable identifiers for debugging
 * **`--minify-identifiers`:** Maximum size reduction (combine with `--keep-names` for better stack traces)
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/install/add-peer.md
+Downloaded: 2026-06-30T20:44:18.806Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ bun add @types/bun --peer
 
 ***
 
-This will add the package to `peerDependencies` in `package.json`.
+This adds the package to `peerDependencies` in `package.json`.
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -24,7 +29,7 @@ This will add the package to `peerDependencies` in `package.json`.
 
 ***
 
-Running `bun install` will install peer dependencies by default, unless marked optional in `peerDependenciesMeta`.
+`bun install` installs peer dependencies by default, unless they are marked optional in `peerDependenciesMeta`.
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -41,4 +46,4 @@ Running `bun install` will install peer dependencies by default, unless marked o
 
 ***
 
-See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
+See [`bun install`](/pm/cli/install).

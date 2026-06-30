@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/project/license.md
-Downloaded: 2026-06-29T20:40:27.186Z
+Downloaded: 2026-06-30T20:44:18.829Z
 -->
 
 > ## Documentation Index
@@ -15,17 +15,17 @@ Bun itself is MIT-licensed.
 
 ## JavaScriptCore
 
-Bun statically links JavaScriptCore (and WebKit) which is LGPL-2 licensed. WebCore files from WebKit are also licensed under LGPL2. Per LGPL2:
+Bun statically links JavaScriptCore (and WebKit), which is LGPL-2 licensed. WebCore files from WebKit are also licensed under LGPL-2. Per LGPL-2:
 
 > (1) If you statically link against an LGPL'd library, you must also provide your application in an object (not necessarily source) format, so that a user has the opportunity to modify the library and relink the application.
 
-You can find the patched version of WebKit used by Bun here: [https://github.com/oven-sh/webkit](https://github.com/oven-sh/webkit). If you would like to relink Bun with changes:
+Bun's patched version of WebKit lives at [https://github.com/oven-sh/webkit](https://github.com/oven-sh/webkit). To relink Bun with changes:
 
 * `git clone https://github.com/oven-sh/WebKit vendor/WebKit`
 * `git -C vendor/WebKit checkout <commit>` (the commit hash in `WEBKIT_VERSION` in `scripts/build/deps/webkit.ts`)
 * `bun run build:local`
 
-This compiles JavaScriptCore, compiles Bun's `.cpp` bindings for JavaScriptCore (which are the object files using JavaScriptCore) and outputs a new `bun` binary with your changes.
+`bun run build:local` compiles JavaScriptCore, compiles Bun's `.cpp` bindings for JavaScriptCore (the object files that use JavaScriptCore), and outputs a new `bun` binary with your changes.
 
 ## Linked libraries
 
@@ -54,7 +54,7 @@ Bun statically links these libraries:
 
 ## Polyfills
 
-For compatibility reasons, the following packages are embedded into Bun's binary and injected if imported.
+For compatibility, Bun embeds the following packages into its binary and injects them if imported.
 
 | Package                                                                  | License |
 | ------------------------------------------------------------------------ | ------- |
@@ -83,4 +83,4 @@ For compatibility reasons, the following packages are embedded into Bun's binary
 ## Additional credits
 
 * Bun's JS transpiler, CSS lexer, and Node.js module resolver source code is a port of [@evanw](https://github.com/evanw)’s [esbuild](https://github.com/evanw/esbuild) project.
-* Credit to [@kipply](https://github.com/kipply) for the name "Bun"!
+* Credit to [@kipply](https://github.com/kipply) for the name "Bun".

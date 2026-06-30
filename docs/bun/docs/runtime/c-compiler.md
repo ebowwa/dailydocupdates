@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/c-compiler.md
+Downloaded: 2026-06-30T20:44:18.830Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@
 
 ## Usage (cc in `bun:ffi`)
 
-See the [introduction blog post](https://bun.com/blog/compile-and-run-c-in-js) for more information.
+See the [introduction blog post](https://bun.com/blog/compile-and-run-c-in-js) for background.
 
 JavaScript:
 
@@ -43,18 +48,18 @@ int hello() {
 }
 ```
 
-When you run `hello.js`, it will print:
+Running `hello.js` prints:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun hello.js
 What is the answer to the universe? 42
 ```
 
-Under the hood, `cc` uses [TinyCC](https://bellard.org/tcc/) to compile the C code and then link it with the JavaScript runtime, efficiently converting types in-place.
+`cc` uses [TinyCC](https://bellard.org/tcc/) to compile the C code, then links it with the JavaScript runtime, converting types in-place.
 
 ### Primitive types
 
-The same `FFIType` values in [`dlopen`](/runtime/ffi) are supported in `cc`.
+`cc` supports the same `FFIType` values as [`dlopen`](/runtime/ffi).
 
 | `FFIType`   | C Type         | Aliases                     |
 | ----------- | -------------- | --------------------------- |
@@ -80,15 +85,15 @@ The same `FFIType` values in [`dlopen`](/runtime/ffi) are supported in `cc`.
 
 ### Strings, objects, and non-primitive types
 
-To make it easier to work with strings, objects, and other non-primitive types that don't map 1:1 to C types, `cc` supports N-API.
+For strings, objects, and other non-primitive types that don't map 1:1 to C types, `cc` supports N-API.
 
-To pass or receive a JavaScript values without any type conversions from a C function, you can use `napi_value`.
+Use `napi_value` to pass or receive JavaScript values from a C function without any type conversions.
 
 You can also pass a `napi_env` to receive the N-API environment used to call the JavaScript function.
 
 #### Returning a C string to JavaScript
 
-For example, if you have a string in C, you can return it to JavaScript like this:
+For example, to return a string from C to JavaScript:
 
 ```ts hello.ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { cc } from "bun:ffi";
@@ -121,7 +126,7 @@ napi_value hello(napi_env env) {
 }
 ```
 
-You can also use this to return other types like objects and arrays:
+The same approach returns other types like objects and arrays:
 
 ```c hello.c theme={"theme":{"light":"github-light","dark":"dracula"}}
 #include <node/node_api.h>
@@ -163,7 +168,7 @@ type Symbols = {
 
 #### `source`
 
-The `source` is a file path to the C code that should be compiled and linked with the JavaScript runtime.
+`source` is the path to the C code to compile and link with the JavaScript runtime.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 type Source = string | URL | BunFile;
@@ -181,7 +186,7 @@ cc({
 
 #### `flags: string | string[]`
 
-The `flags` is an optional array of strings that should be passed to the TinyCC compiler.
+`flags` is an optional array of strings passed to the TinyCC compiler.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 type Flags = string | string[];
@@ -191,7 +196,7 @@ These are flags like `-I` for include directories and `-D` for preprocessor defi
 
 #### `define: Record<string, string>`
 
-The `define` is an optional object that should be passed to the TinyCC compiler.
+`define` is an optional object of preprocessor definitions passed to the TinyCC compiler.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 type Defines = Record<string, string>;
@@ -203,5 +208,3 @@ cc({
   },
 });
 ```
-
-These are preprocessor definitions passed to the TinyCC compiler.

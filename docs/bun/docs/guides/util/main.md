@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/util/main.md
+Downloaded: 2026-06-30T20:44:18.821Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -18,7 +23,7 @@ The `Bun.main` property contains the absolute path to the current entrypoint.
 
 ***
 
-The printed path corresponds to the file that is executed with `bun run`.
+The printed path is the file executed with `bun run`.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run index.ts
@@ -38,4 +43,4 @@ bun run foo.ts
 
 ***
 
-See [Docs > API > Utils](/runtime/utils) for more useful utilities.
+See [Utils](/runtime/utils).

@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/http/server.md
+Downloaded: 2026-06-30T20:44:18.805Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Common HTTP server usage
 
-This starts an HTTP server listening on port `3000`. It demonstrates basic routing with a number of common responses and also handles POST data from standard forms or as JSON.
+This code starts an HTTP server listening on port `3000`. It demonstrates basic routing with common responses and handles POST data from standard forms or as JSON.
 
 See [`Bun.serve`](/runtime/http/server) for details.
 

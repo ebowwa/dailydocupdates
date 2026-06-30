@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/build-time-constants.md
+Downloaded: 2026-06-30T20:44:18.812Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Build-time constants with --define
 
-The `--define` flag can be used with `bun build` and `bun build --compile` to inject build-time constants into your application. This is especially useful for embedding metadata like build versions, timestamps, or configuration flags directly into your compiled executables.
+Pass `--define` to `bun build` or `bun build --compile` to inject build-time constants into your application. Use it to embed metadata like build versions, timestamps, or configuration flags directly into your compiled executables.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build --compile --define BUILD_VERSION='"1.2.3"' --define BUILD_TIME='"2024-01-15T10:30:00Z"' src/index.ts --outfile myapp
@@ -171,7 +176,7 @@ bun build --compile \
 
 ### Build automation script
 
-Create a build script that automatically injects build metadata:
+Create a build script that injects build metadata:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // build.ts
@@ -200,7 +205,7 @@ console.log(`Built with version ${version.trim()}`);
 
 ### Value format
 
-Values must be valid JSON that will be parsed and inlined as JavaScript expressions:
+Values must be valid JSON. Bun parses each value and inlines it as a JavaScript expression:
 
 ```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 # ✅ Strings must be JSON-quoted
@@ -224,7 +229,7 @@ Values must be valid JSON that will be parsed and inlined as JavaScript expressi
 
 ### Property keys
 
-You can use property access patterns as keys, not just simple identifiers:
+Keys can be property access patterns, not just simple identifiers:
 
 ```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 # ✅ Replace process.env.NODE_ENV with "production"
@@ -240,7 +245,7 @@ You can use property access patterns as keys, not just simple identifiers:
 --define 'process.argv[2]="--production"'
 ```
 
-This is particularly useful for environment variables:
+Use this to inline environment variables at build time:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Before compilation

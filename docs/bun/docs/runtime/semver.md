@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/semver.md
+Downloaded: 2026-06-30T20:44:18.837Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,13 +11,13 @@
 
 > Use Bun's semantic versioning API
 
-Bun implements a semantic versioning API which can be used to compare versions and determine if a version is compatible with another range of versions. The versions and ranges are designed to be compatible with `node-semver`, which is used by npm clients.
+`Bun.semver` compares semantic versions and checks whether a version is compatible with a range of versions. Versions and ranges are designed to be compatible with `node-semver`, which npm clients use.
 
 It's about 20x faster than `node-semver`.
 
 <Frame>![Benchmark](https://github.com/oven-sh/bun/assets/709451/94746adc-8aba-4baf-a143-3c355f8e0f78)</Frame>
 
-Currently, this API provides two functions:
+The API provides two functions:
 
 ## `Bun.semver.satisfies(version: string, range: string): boolean`
 
@@ -37,7 +42,7 @@ semver.satisfies("1.0.0", "1.0.0 - 2.0.0"); // true
 semver.satisfies("1.0.0", "1.0.0 - 1.0.1"); // true
 ```
 
-If `range` is invalid, it returns false. If `version` is invalid, it returns false.
+If `range` or `version` is invalid, it returns `false`.
 
 ## `Bun.semver.order(versionA: string, versionB: string): 0 | 1 | -1`
 

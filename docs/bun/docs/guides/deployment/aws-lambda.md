@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/deployment/aws-lambda.md
+Downloaded: 2026-06-30T20:44:18.798Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 [AWS Lambda](https://aws.amazon.com/lambda/) is a serverless compute service that lets you run code without provisioning or managing servers.
 
-In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfile`.
+This guide deploys a Bun HTTP server to AWS Lambda using a `Dockerfile`.
 
 <Note>
   Before continuing, make sure you have:
@@ -21,7 +26,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
 
 <Steps>
   <Step title="Create a new Dockerfile">
-    Make sure you're in the directory containing your project, then create a new `Dockerfile` in the root of your project. This file contains the instructions to initialize the container, copy your local project files into it, install dependencies, and start the application.
+    Create a new `Dockerfile` in the root of your project. This file contains the instructions to initialize the container, copy your local project files into it, install dependencies, and start the application.
 
     ```docker Dockerfile icon="docker" theme={"theme":{"light":"github-light","dark":"dracula"}}
     # Use the official AWS Lambda adapter image to handle the Lambda runtime
@@ -55,10 +60,10 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     <Note>
       Make sure that the start command corresponds to your application's entry point. This can also be `CMD ["bun", "run", "start"]` if you have a start script in your `package.json`.
 
-      This image installs dependencies and runs your app with Bun inside a container. If your app doesn't have dependencies, you can omit the `RUN bun install --production --frozen-lockfile` line.
+      If your app doesn't have dependencies, you can omit the `RUN bun install --production --frozen-lockfile` line.
     </Note>
 
-    Create a new `.dockerignore` file in the root of your project. This file contains the files and directories that should be *excluded* from the container image, such as `node_modules`. This makes your builds faster and smaller:
+    Create a new `.dockerignore` file in the root of your project. It lists the files and directories to *exclude* from the container image, such as `node_modules`, which keeps builds faster and smaller:
 
     ```docker .dockerignore icon="Docker" theme={"theme":{"light":"github-light","dark":"dracula"}}
     node_modules
@@ -75,7 +80,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
   </Step>
 
   <Step title="Build the Docker image">
-    Make sure you're in the directory containing your `Dockerfile`, then build the Docker image. In this case, we'll call the image `bun-lambda-demo` and tag it as `latest`.
+    Make sure you're in the directory containing your `Dockerfile`, then build the Docker image. This example names the image `bun-lambda-demo` and tags it as `latest`.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     # cd /path/to/your/app
@@ -84,12 +89,12 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
   </Step>
 
   <Step title="Create an ECR repository">
-    To push the image to AWS Lambda, we first need to create an [ECR repository](https://aws.amazon.com/ecr/) to push the image to.
+    Before pushing the image, create an [ECR repository](https://aws.amazon.com/ecr/) to push it to.
 
-    By running the following command, we:
+    The following command:
 
-    * Create an ECR repository named `bun-lambda-demo` in the `us-east-1` region
-    * Get the repository URI, and export the repository URI as an environment variable. This is optional, but make the next steps easier.
+    * Creates an ECR repository named `bun-lambda-demo` in the `us-east-1` region
+    * Exports the repository URI as an environment variable. This is optional, but makes the next steps easier.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     export ECR_URI=$(aws ecr create-repository --repository-name bun-lambda-demo --region us-east-1 --query 'repository.repositoryUri' --output text)
@@ -101,9 +106,9 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     ```
 
     <Note>
-      If you're using IAM Identity Center (SSO) or have configured AWS CLI with profiles, you'll need to add the `--profile` flag to your AWS CLI commands.
+      If you're using IAM Identity Center (SSO) or have configured AWS CLI with profiles, add the `--profile` flag to your AWS CLI commands.
 
-      For example, if your profile is named `my-sso-app`, use `--profile my-sso-app`. Check your AWS CLI configuration with `aws configure list-profiles` to see available profiles.
+      For example, if your profile is named `my-sso-app`, use `--profile my-sso-app`. Run `aws configure list-profiles` to see your available profiles.
 
       ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
       export ECR_URI=$(aws ecr create-repository --repository-name bun-lambda-demo --region us-east-1 --profile my-sso-app --query 'repository.repositoryUri' --output text)
@@ -133,7 +138,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
   </Step>
 
   <Step title="Tag and push the docker image to the ECR repository">
-    Make sure you're in the directory containing your `Dockerfile`, then tag the docker image with the ECR repository URI.
+    Make sure you're in the directory containing your `Dockerfile`, then tag the Docker image with the ECR repository URI.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     docker tag bun-lambda-demo:latest ${ECR_URI}:latest
@@ -149,7 +154,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
   <Step title="Create an AWS Lambda function">
     Go to **AWS Console** > **Lambda** > [**Create Function**](https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/create/function?intent=authorFromImage) > Select **Container image**
 
-    <Warning>Make sure you've selected the right region, this URL defaults to `us-east-1`.</Warning>
+    <Warning>Make sure you've selected the right region. This URL defaults to `us-east-1`.</Warning>
 
     <Frame>
       <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=56e8b0e323726544e2a88c7e39cb2d50" alt="Create Function" width="3116" height="2084" data-path="images/guides/lambda1.png" />
@@ -159,13 +164,13 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
   </Step>
 
   <Step title="Select the container image">
-    Then, go to the **Container image URI** section, click on **Browse images**. Select the image we just pushed to the ECR repository.
+    Go to the **Container image URI** section and click **Browse images**. Select the image you pushed to the ECR repository.
 
     <Frame>
       <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=89ab4c81547ef562733fb29b704a9e24" alt="Select Container Repository" width="4128" height="2412" data-path="images/guides/lambda2.png" />
     </Frame>
 
-    Then, select the `latest` image, and click on **Select image**.
+    Then, select the `latest` image and click **Select image**.
 
     <Frame>
       <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=70906fbda8b366e972615bd297335e9d" alt="Select Container Image" width="4128" height="2172" data-path="images/guides/lambda3.png" />
@@ -173,7 +178,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
   </Step>
 
   <Step title="Configure the function">
-    To get a public URL for the function, we need to go to **Additional configurations** > **Networking** > **Function URL**.
+    To get a public URL for the function, go to **Additional configurations** > **Networking** > **Function URL**.
 
     Set this to **Enable**, with Auth Type **NONE**.
 
@@ -183,7 +188,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
   </Step>
 
   <Step title="Create the function">
-    Click on **Create function** at the bottom of the page, this will create the function.
+    Click **Create function** at the bottom of the page.
 
     <Frame>
       <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f615eda922b34ac37bc5e39a8f08ef25" alt="Create Function" width="4836" height="2516" data-path="images/guides/lambda6.png" />
@@ -191,7 +196,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
   </Step>
 
   <Step title="Get the function URL">
-    Once the function has been created you'll be redirected to the function's page, where you can see the function URL in the **"Function URL"** section.
+    Once the function is created, you're redirected to its page. The function URL is in the **"Function URL"** section.
 
     <Frame>
       <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=5bc860978a6c636d49c1a73603d0655a" alt="Function URL" width="4792" height="2500" data-path="images/guides/lambda5.png" />
@@ -199,7 +204,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
   </Step>
 
   <Step title="Test the function">
-    🥳 Your app is now live! To test the function, you can either go to the **Test** tab, or call the function URL directly.
+    Your app is now live. To test the function, either go to the **Test** tab or call the function URL directly.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     curl -X GET https://[your-function-id].lambda-url.us-east-1.on.aws/

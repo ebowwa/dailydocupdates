@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/console.md
+Downloaded: 2026-06-30T20:44:18.831Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -15,10 +20,10 @@
 
 ## Object inspection depth
 
-Bun allows you to configure how deeply nested objects are displayed in `console.log()` output:
+You can configure how deeply `console.log()` prints nested objects:
 
 * **CLI flag**: Use `--console-depth <number>` to set the depth for a single run
-* **Configuration**: Set `console.depth` in your `bunfig.toml` for persistent configuration
+* **Configuration**: Set `console.depth` in your `bunfig.toml` to persist it across runs
 * **Default**: Objects are inspected to a depth of `2` levels
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -34,7 +39,7 @@ The CLI flag takes precedence over the configuration file setting.
 
 ## Reading from stdin
 
-In Bun, the `console` object can be used as an `AsyncIterable` to sequentially read lines from `process.stdin`.
+In Bun, the `console` object is also an `AsyncIterable` that reads `process.stdin` line by line.
 
 ```ts adder.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 for await (const line of console) {
@@ -42,7 +47,7 @@ for await (const line of console) {
 }
 ```
 
-This is useful for implementing interactive programs, like the following addition calculator.
+Use this for interactive programs, like the following addition calculator.
 
 ```ts adder.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(`Let's add some numbers!`);

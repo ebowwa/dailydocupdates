@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/import-yaml.md
+Downloaded: 2026-06-30T20:44:18.814Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -35,7 +40,7 @@ config.features.auth; // => true
 
 ***
 
-You can also use named imports to destructure top-level properties:
+You can also destructure top-level properties with named imports:
 
 ```ts config.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { database, server, features } from "./config.yaml";
@@ -77,7 +82,7 @@ console.log(data.hobbies); // => ["reading", "coding"]
 
 ## TypeScript Support
 
-To add TypeScript support for your YAML imports, create a declaration file with `.d.ts` appended to the YAML filename (e.g., `config.yaml` → `config.yaml.d.ts`);
+To add TypeScript support for your YAML imports, create a declaration file with `.d.ts` appended to the YAML filename (for example, `config.yaml` → `config.yaml.d.ts`):
 
 ```ts config.yaml.d.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const contents: {
@@ -101,4 +106,4 @@ export = contents;
 
 ***
 
-See [Docs > API > YAML](/runtime/yaml) for complete documentation on YAML support in Bun.
+See [YAML](/runtime/yaml).

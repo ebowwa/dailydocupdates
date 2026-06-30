@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/http/routing.md
+Downloaded: 2026-06-30T20:44:18.834Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,9 +11,9 @@
 
 > Define routes in `Bun.serve` using static paths, parameters, and wildcards
 
-You can add routes to `Bun.serve()` by using the `routes` property (for static paths, parameters, and wildcards) or by handling unmatched requests with the [`fetch`](#fetch) method.
+Add routes to `Bun.serve()` with the `routes` property (static paths, parameters, and wildcards), or handle unmatched requests with the [`fetch`](#fetch) method.
 
-`Bun.serve()`'s router builds on top uWebSocket's [tree-based approach](https://github.com/oven-sh/bun/blob/0d1a00fa0f7830f8ecd99c027fce8096c9d459b6/packages/bun-uws/src/HttpRouter.h#L57-L64) to add [SIMD-accelerated route parameter decoding](https://github.com/oven-sh/bun/blob/main/src/jsc/bindings/decodeURIComponentSIMD.cpp#L21-L271) and [JavaScriptCore structure caching](https://github.com/oven-sh/bun/blob/main/src/jsc/bindings/ServerRouteList.cpp#L100-L101) to push the performance limits of what modern hardware allows.
+`Bun.serve()`'s router builds on top of uWebSocket's [tree-based approach](https://github.com/oven-sh/bun/blob/0d1a00fa0f7830f8ecd99c027fce8096c9d459b6/packages/bun-uws/src/HttpRouter.h#L57-L64) to add [SIMD-accelerated route parameter decoding](https://github.com/oven-sh/bun/blob/main/src/jsc/bindings/decodeURIComponentSIMD.cpp#L21-L271) and [JavaScriptCore structure caching](https://github.com/oven-sh/bun/blob/main/src/jsc/bindings/ServerRouteList.cpp#L100-L101) to push the performance limits of what modern hardware allows.
 
 ## Basic Setup
 
@@ -39,7 +44,7 @@ interface BunRequest<T extends string> extends Request {
 
 ### Async/await
 
-You can use async/await in route handlers to return a `Promise<Response>`.
+Use async/await in route handlers to return a `Promise<Response>`.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { sql, serve } from "bun";
@@ -103,7 +108,7 @@ Bun.serve({
 
 ## Type-safe route parameters
 
-TypeScript parses route parameters when passed as a string literal, so that your editor will show autocomplete when accessing `request.params`.
+TypeScript parses route parameters when passed as a string literal, so your editor shows autocomplete when accessing `request.params`.
 
 ```ts title="index.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import type { BunRequest } from "bun";
@@ -127,11 +132,11 @@ Bun.serve({
 });
 ```
 
-Percent-encoded route parameter values are automatically decoded. Unicode characters are supported. Invalid unicode is replaced with the unicode replacement character `&0xFFFD;`.
+Bun automatically decodes percent-encoded route parameter values, including Unicode characters. Invalid Unicode is replaced with the replacement character `&0xFFFD;`.
 
 ### Static responses
 
-Routes can also be `Response` objects (without the handler function). Bun.serve() optimizes it for zero-allocation dispatch - perfect for health checks, redirects, and fixed content:
+Routes can also be `Response` objects (without the handler function). `Bun.serve()` optimizes them for zero-allocation dispatch, which suits health checks, redirects, and fixed content:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
@@ -163,7 +168,7 @@ Static route responses are cached for the lifetime of the server object. To relo
 
 ### File Responses vs Static Responses
 
-When serving files in routes, there are two distinct behaviors depending on whether you buffer the file content or serve it directly:
+Serving a file from a route behaves differently depending on whether you buffer the file content or serve it directly:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
@@ -216,7 +221,7 @@ Bun.serve({
   system call when possible, enabling zero-copy file transfers in the kernel—the fastest way to send files.
 </Info>
 
-You can send part of a file using the [`slice(start, end)`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice) method on the `Bun.file` object. This automatically sets the `Content-Range` and `Content-Length` headers on the `Response` object.
+To send part of a file, use the [`slice(start, end)`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice) method on the `Bun.file` object. Bun sets the `Content-Range` and `Content-Length` headers on the `Response` object automatically.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
@@ -240,7 +245,7 @@ Bun.serve({
 
 ## `fetch` request handler
 
-The `fetch` handler handles incoming requests that weren't matched by any route. It receives a [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object and returns a [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) or [`Promise<Response>`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+The `fetch` handler runs for incoming requests that no route matched. It receives a [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object and returns a [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) or [`Promise<Response>`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
@@ -279,7 +284,7 @@ Bun.serve({
 });
 ```
 
-You can also access the `Server` object from the `fetch` handler. It's the second argument passed to the `fetch` function.
+The `fetch` handler also receives the `Server` object as its second argument.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // `server` is passed in as the second argument to `fetch`.

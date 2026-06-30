@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/pm.md
+Downloaded: 2026-06-30T20:44:18.826Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Package manager utilities
 
-The `bun pm` command group provides a set of utilities for working with Bun's package manager.
+The `bun pm` command group is a set of utilities for working with Bun's package manager.
 
 ## pack
 
@@ -16,7 +21,7 @@ To create a tarball of the current workspace:
 bun pm pack
 ```
 
-This command creates a `.tgz` file containing all files that would be published to npm, following the same rules as `npm pack`.
+`bun pm pack` creates a `.tgz` file containing all files that would be published to npm, following the same rules as `npm pack`.
 
 ## Examples
 
@@ -48,11 +53,11 @@ bun pm pack --destination ./dist
 ## Options
 
 * `--dry-run`: Perform all tasks except writing the tarball to disk. Shows what would be included.
-* `--destination <dir>`: Specify the directory where the tarball will be saved.
-* `--filename <name>`: Specify an exact file name for the tarball to be saved at.
+* `--destination <dir>`: The directory to save the tarball in.
+* `--filename <name>`: An exact file name for the tarball.
 * `--ignore-scripts`: Skip running pre/postpack and prepare scripts.
-* `--gzip-level <0-9>`: Set a custom compression level for gzip, ranging from 0 to 9 (default is 9).
-* `--quiet`: Only output the tarball filename, suppressing verbose output. Ideal for scripts and automation.
+* `--gzip-level <0-9>`: Set the gzip compression level, from 0 to 9 (default 9).
+* `--quiet`: Print only the tarball filename, suppressing the rest of the output. Useful in scripts.
 
 > **Note:** `--filename` and `--destination` cannot be used at the same time.
 
@@ -88,8 +93,6 @@ bun pm pack --quiet
 my-package-1.0.0.tgz
 ```
 
-The `--quiet` flag is particularly useful for automation workflows where you need to capture the generated tarball filename for further processing.
-
 ## bin
 
 To print the path to the `bin` directory for the local project:
@@ -114,7 +117,7 @@ bun pm bin -g
 
 ## ls
 
-To print a list of installed dependencies in the current project and their resolved versions, excluding their dependencies.
+To print a list of installed dependencies in the current project and their resolved versions, excluding their dependencies:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun pm ls
@@ -131,7 +134,7 @@ bun list
 └── zod@3.21.4
 ```
 
-To print all installed dependencies, including nth-order dependencies.
+To print all installed dependencies, including nth-order dependencies:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun pm ls --all
@@ -155,7 +158,7 @@ bun list --all
 ├── ...
 ```
 
-To print only trusted dependencies (those allowed to run lifecycle scripts). When `trustedDependencies` is set in `package.json`, packages from that list are shown; otherwise packages from Bun's [default trusted dependencies](https://github.com/oven-sh/bun/blob/main/src/install/default-trusted-dependencies.txt) list are shown.
+To print only trusted dependencies (those allowed to run [lifecycle scripts](/pm/lifecycle)). When `trustedDependencies` is set in `package.json`, Bun shows the packages from that list; otherwise it shows packages from its [default trusted dependencies](https://github.com/oven-sh/bun/blob/main/src/install/default-trusted-dependencies.txt) list.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun pm ls --trusted
@@ -253,7 +256,7 @@ To print the default trusted dependencies list:
 bun pm default-trusted
 ```
 
-see the current list on GitHub [here](https://github.com/oven-sh/bun/blob/main/src/install/default-trusted-dependencies.txt)
+See the [current list on GitHub](https://github.com/oven-sh/bun/blob/main/src/install/default-trusted-dependencies.txt).
 
 ## version
 
@@ -301,7 +304,7 @@ bun pm version patch
 v1.0.1
 ```
 
-Supports `patch`, `minor`, `major`, `premajor`, `preminor`, `prepatch`, `prerelease`, `from-git`, or specific versions like `1.2.3`. By default creates git commit and tag unless `--no-git-tag-version` was used to skip.
+Supports `patch`, `minor`, `major`, `premajor`, `preminor`, `prepatch`, `prerelease`, `from-git`, or specific versions like `1.2.3`. By default it creates a git commit and tag; pass `--no-git-tag-version` to skip them.
 
 ## pkg
 

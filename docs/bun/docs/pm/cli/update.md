@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/update.md
+Downloaded: 2026-06-30T20:44:18.827Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -22,14 +27,14 @@ bun update [package]
 
 ## `--interactive`
 
-For a more controlled update experience, use the `--interactive` flag to select which packages to update:
+Use the `--interactive` flag to choose which packages to update:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun update --interactive
 bun update -i
 ```
 
-This launches an interactive terminal interface that shows all outdated packages with their current and target versions. You can then select which packages to update.
+The flag opens a terminal interface that lists every outdated package with its current and target versions.
 
 ### Interactive Interface
 
@@ -57,7 +62,7 @@ The interface displays packages grouped by dependency type:
 
 **Columns:**
 
-* **Package**: Package name (may have suffix like ` dev`, ` peer`, ` optional` for clarity)
+* **Package**: Package name (may have a suffix such as ` dev`, ` peer`, or ` optional`)
 * **Current**: Currently installed version
 * **Target**: Version that would be installed (respects semver constraints)
 * **Latest**: Latest available version
@@ -98,7 +103,7 @@ Packages are organized in sections by dependency type:
 * **peerDependencies** - Peer dependencies
 * **optionalDependencies** - Optional dependencies
 
-Within each section, individual packages may have additional suffixes (` dev`, ` peer`, ` optional`) for extra clarity.
+Within each section, individual packages may have a suffix (` dev`, ` peer`, ` optional`).
 
 ## `--recursive`
 
@@ -109,19 +114,19 @@ bun update --interactive --recursive
 bun update -i -r
 ```
 
-This displays an additional "Workspace" column showing which workspace each dependency belongs to.
+With `--recursive`, the interface adds a "Workspace" column showing which workspace each dependency belongs to.
 
 ## `--latest`
 
-By default, `bun update` will update to the latest version of a dependency that satisfies the version range specified in your `package.json`.
+By default, `bun update` updates each dependency to the latest version that satisfies the version range in your `package.json`.
 
-To update to the latest version, regardless of if it's compatible with the current version range, use the `--latest` flag:
+To update to the latest version regardless of whether it satisfies that range, use the `--latest` flag:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun update --latest
 ```
 
-In interactive mode, you can toggle individual packages between their target version (respecting semver) and latest version using the **l** key.
+In interactive mode, press **l** to toggle a package between its target version (respecting semver) and the latest version.
 
 For example, with the following `package.json`:
 

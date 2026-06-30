@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/delete-directory.md
+Downloaded: 2026-06-30T20:44:18.813Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -20,7 +25,7 @@ These options configure the deletion behavior:
 * `recursive: true` - Delete subdirectories and their contents
 * `force: true` - Don't throw errors if the directory doesn't exist
 
-You can also use it without `force` to ensure the directory exists:
+Omit `force` to get an error if the directory doesn't exist:
 
 ```ts delete-directory.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 try {
@@ -36,4 +41,4 @@ try {
 
 ***
 
-See [Docs > API > FileSystem](/runtime/file-io) for more filesystem operations.
+See [File I/O](/runtime/file-io) for more filesystem operations.

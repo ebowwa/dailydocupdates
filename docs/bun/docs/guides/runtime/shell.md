@@ -1,12 +1,17 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/shell.md
+Downloaded: 2026-06-30T20:44:18.814Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Run a Shell Command
 
-Bun Shell is a cross-platform bash-like shell built in to Bun.
+Bun Shell is a cross-platform bash-like shell built into Bun.
 
-It runs shell commands in JavaScript and TypeScript. To get started, import the `$` function from the `bun` package and use it to run shell commands.
+It runs shell commands from JavaScript and TypeScript. To get started, import the `$` function from the `bun` package.
 
 ```ts foo.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -39,4 +44,4 @@ for await (const line of $`ls -l`.lines()) {
 
 ***
 
-See [Docs > API > Shell](/runtime/shell) for complete documentation.
+See [Bun Shell](/runtime/shell).

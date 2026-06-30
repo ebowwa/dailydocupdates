@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/why.md
+Downloaded: 2026-06-30T20:44:18.827Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Explain why a package is installed
 
-The `bun why` command explains why a package is installed in your project by showing the dependency chain that led to its installation.
+`bun why` explains why a package is installed in your project by showing the dependency chain that led to it.
 
 ## Usage
 
@@ -36,7 +41,7 @@ react@18.2.0
   └─ my-app@1.0.0 (requires ^18.0.0)
 ```
 
-Check why all packages with a specific pattern are installed:
+Check why all packages matching a pattern are installed:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun why "@types/*"

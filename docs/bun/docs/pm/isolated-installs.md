@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/isolated-installs.md
+Downloaded: 2026-06-30T20:44:18.828Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,9 +11,9 @@
 
 > Strict dependency isolation similar to pnpm's approach
 
-Bun provides an alternative package installation strategy called **isolated installs** that creates strict dependency isolation similar to pnpm's approach. This mode prevents phantom dependencies and ensures reproducible, deterministic builds.
+Bun provides an alternative package installation strategy called **isolated installs** that creates strict dependency isolation similar to pnpm's approach. This mode prevents phantom dependencies (packages importing dependencies they never declared) and makes builds reproducible and deterministic.
 
-This is the default installation strategy for **new** workspace/monorepo projects (with `configVersion = 1` in the lockfile). Existing projects continue using hoisted installs unless explicitly configured.
+Isolated installs are the default for **new** workspace/monorepo projects (with `configVersion = 1` in the lockfile). Existing projects continue using hoisted installs unless explicitly configured.
 
 ## What are isolated installs?
 
@@ -64,7 +69,7 @@ The default linker strategy depends on your project's lockfile `configVersion`:
 * From pnpm: `configVersion = 1` (using isolated installs in workspaces)
 * From npm or yarn: `configVersion = 0` (using hoisted installs)
 
-You can override the default behavior by explicitly specifying the `--linker` flag or setting it in your configuration file.
+Override the default by passing the `--linker` flag or setting it in your configuration file.
 
 ## How isolated installs work
 
@@ -99,7 +104,7 @@ In monorepos, workspace dependencies are handled specially:
 
 * **Workspace packages** — Symlinked directly to their source directories, not the store
 * **Workspace dependencies** — Can access other workspace packages in the monorepo
-* **External dependencies** — Installed in the isolated store with proper isolation
+* **External dependencies** — Installed in the isolated store
 
 ## Comparison with hoisted installs
 
@@ -116,14 +121,14 @@ In monorepos, workspace dependencies are handled specially:
 
 ### Peer dependency handling
 
-Isolated installs handle peer dependencies through sophisticated resolution:
+Isolated installs encode peer dependencies in the store path:
 
 ```bash tree layout of node_modules icon="list-tree" theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Package with peer dependencies creates specialized paths
 node_modules/.bun/package@1.0.0_react@18.2.0/
 ```
 
-The directory name encodes both the package version and its peer dependency versions, ensuring each unique combination gets its own installation.
+The directory name includes both the package version and its peer dependency versions, so each unique combination gets its own installation.
 
 ### Global virtual store
 
@@ -133,19 +138,19 @@ When [`install.globalStore`](/runtime/bunfig#install-globalstore) is enabled, st
 
 When the global store is disabled (the default) or an entry isn't eligible for it, Bun materializes the entry under the project using one of:
 
-* **Clonefile** (macOS) — Copy-on-write filesystem clones for maximum efficiency
+* **Clonefile** (macOS) — Copy-on-write filesystem clones
 * **Hardlink** (Linux/Windows) — Hardlinks to save disk space
 * **Copyfile** (fallback) — Full file copies when other methods aren't available
 
 ### Debugging isolated installs
 
-Enable verbose logging to understand the installation process:
+Enable verbose logging to see what an install is doing:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun install --linker isolated --verbose
 ```
 
-This shows:
+The verbose output shows:
 
 * Store entry creation
 * Symlink operations

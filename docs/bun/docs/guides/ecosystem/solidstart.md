@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/solidstart.md
+Downloaded: 2026-06-30T20:44:18.802Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Build an app with SolidStart and Bun
 
-Initialize a SolidStart app with `create-solid`. You can specify the `--solidstart` flag to create a SolidStart project, and `--ts` for TypeScript support. When prompted for a template, select `basic` for a minimal starter app.
+Initialize a SolidStart app with `create-solid`. Pass the `--solidstart` flag to create a SolidStart project and `--ts` for TypeScript support. When prompted for a template, select `basic` for a minimal starter app.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun create solid my-app --solidstart --ts
@@ -33,7 +38,7 @@ bun create solid my-app --solidstart --ts
 
 ***
 
-As instructed by the `create-solid` CLI, install the dependencies.
+Install the dependencies.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 cd my-app
@@ -55,8 +60,8 @@ vinxi starting dev server
   ➜ Network:  use --host to expose
 ```
 
-Open [localhost:3000](http://localhost:3000). Any changes you make to `src/routes/index.tsx` will be hot-reloaded automatically.
+Open [localhost:3000](http://localhost:3000). Changes you make to `src/routes/index.tsx` are hot-reloaded automatically.
 
 ***
 
-Refer to the [SolidStart website](https://docs.solidjs.com/solid-start) for complete framework documentation.
+See the [SolidStart docs](https://docs.solidjs.com/solid-start) to learn more.

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/import-html.md
+Downloaded: 2026-06-30T20:44:18.813Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,4 +17,4 @@ import html from "./file.html" with { type: "text" };
 console.log(html); // <!DOCTYPE html><html><head>...
 ```
 
-This can also be used with hot module reloading and/or watch mode to force Bun to reload whenever the `./file.html` file changes.
+With hot module reloading or watch mode, Bun reloads whenever `./file.html` changes.

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/http/server.md
+Downloaded: 2026-06-30T20:44:18.834Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -53,11 +58,11 @@ console.log(`Server running at ${server.url}`);
 
 ## HTML imports
 
-Bun supports importing HTML files directly into your server code, enabling full-stack applications with both server-side and client-side code. HTML imports work in two modes:
+Import HTML files directly into your server code to build full-stack applications with both server-side and client-side code. HTML imports work in two modes:
 
-**Development (`bun --hot`):** Assets are bundled on-demand at runtime, enabling hot module replacement (HMR) for a fast, iterative development experience. When you change your frontend code, the browser automatically updates without a full page reload.
+**Development (`bun --hot`):** Bun bundles assets on demand at runtime and enables hot module replacement (HMR): when you change your frontend code, the browser updates without a full page reload.
 
-**Production (`bun build`):** When building with `bun build --target=bun`, the `import index from "./index.html"` statement resolves to a pre-built manifest object containing all bundled client assets. `Bun.serve` consumes this manifest to serve optimized assets with zero runtime bundling overhead. This is ideal for deploying to production.
+**Production (`bun build`):** When you build with `bun build --target=bun`, the `import index from "./index.html"` statement resolves to a pre-built manifest object containing all bundled client assets. `Bun.serve` serves the assets from this manifest with no bundling at runtime.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import myReactSinglePageApp from "./index.html";
@@ -69,9 +74,9 @@ Bun.serve({
 });
 ```
 
-HTML imports don't just serve HTML — it's a full-featured frontend bundler, transpiler, and toolkit built using Bun's [bundler](/bundler), JavaScript transpiler and CSS parser. You can use this to build full-featured frontends with React, TypeScript, Tailwind CSS, and more.
+HTML imports don't just serve HTML: they run Bun's [bundler](/bundler), JavaScript transpiler, and CSS parser, so you can build frontends with React, TypeScript, and Tailwind CSS.
 
-For a complete guide on building full-stack applications with HTML imports, including detailed examples and best practices, see [/docs/bundler/fullstack](/bundler/fullstack).
+For a complete guide to building full-stack applications with HTML imports, see [fullstack dev server](/bundler/fullstack).
 
 ***
 
@@ -79,7 +84,7 @@ For a complete guide on building full-stack applications with HTML imports, incl
 
 ### Changing the `port` and `hostname`
 
-To configure which port and hostname the server will listen on, set `port` and `hostname` in the options object.
+To configure which port and hostname the server listens on, set `port` and `hostname` in the options object.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
@@ -105,7 +110,7 @@ const server = Bun.serve({
 console.log(server.port);
 ```
 
-You can view the chosen port by accessing the `port` property on the server object, or by accessing the `url` property.
+Read the chosen port from the server's `port` or `url` property.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(server.port); // 3000
@@ -114,7 +119,7 @@ console.log(server.url); // http://localhost:3000
 
 ### Configuring a default port
 
-Bun supports several options and environment variables to configure the default port. The default port is used when the `port` option is not set.
+Several flags and environment variables set the default port, which Bun uses when the `port` option is not set.
 
 * `--port` CLI flag
 
@@ -157,7 +162,7 @@ Bun.serve({
 
 ### Abstract namespace sockets
 
-Bun supports Linux abstract namespace sockets. To use an abstract namespace socket, prefix the `unix` path with a null byte.
+On Linux, Bun also supports abstract namespace sockets: prefix the `unix` path with a null byte.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
@@ -176,7 +181,7 @@ Unlike unix domain sockets, abstract namespace sockets are not bound to the file
 
 <Note>HTTP/3 support in `Bun.serve` is **experimental** and may change in future releases.</Note>
 
-`Bun.serve` can also listen for HTTP/3 over QUIC. Set `http3: true` together with [`tls`](./tls) — HTTP/3 always requires TLS.
+`Bun.serve` can also listen for HTTP/3 over QUIC. Set `http3: true` together with [`tls`](./tls); HTTP/3 requires TLS.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
@@ -217,7 +222,7 @@ Bun.serve({
 
 ## idleTimeout
 
-By default, `Bun.serve` closes connections after **10 seconds** of inactivity. A connection is considered idle when there is no data being sent or received — this includes in-flight requests where your handler is still running but hasn't written any bytes to the response yet. Browsers and `fetch()` clients will see this as a connection reset.
+By default, `Bun.serve` closes connections after **10 seconds** of inactivity. A connection is idle when no data is being sent or received, including in-flight requests where your handler is still running but hasn't written any bytes to the response yet. Browsers and `fetch()` clients see this as a connection reset.
 
 To configure this, set the `idleTimeout` field (in seconds). The maximum value is `255`, and `0` disables the timeout entirely.
 
@@ -234,7 +239,7 @@ Bun.serve({
 
 <Note>
   **Streaming & Server-Sent Events** — The idle timer applies while a response is being streamed. If your stream goes
-  quiet for longer than `idleTimeout`, the connection will be closed mid-response. For long-lived streams, disable the
+  quiet for longer than `idleTimeout`, Bun closes the connection mid-response. For long-lived streams, disable the
   timeout for that request with [`server.timeout(req, 0)`](#server-timeout-request-seconds).
 </Note>
 
@@ -242,7 +247,7 @@ Bun.serve({
 
 ## export default syntax
 
-Thus far, the examples on this page have used the explicit `Bun.serve` API. Bun also supports an alternate syntax.
+Instead of passing the server options into `Bun.serve`, you can `export default` them.
 
 ```ts server.ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import type { Serve } from "bun";
@@ -254,9 +259,9 @@ export default {
 } satisfies Serve.Options<undefined>;
 ```
 
-The type parameter `<undefined>` represents WebSocket data — if you add a `websocket` handler with custom data attached via `server.upgrade(req, { data: ... })`, replace `undefined` with your data type.
+The type parameter `<undefined>` is the WebSocket data type. If you add a `websocket` handler that attaches custom data with `server.upgrade(req, { data: ... })`, replace `undefined` with your data type.
 
-Instead of passing the server options into `Bun.serve`, `export default` it. This file can be executed as-is; when Bun sees a file with a `default` export containing a `fetch` handler, it passes it into `Bun.serve` under the hood.
+You can run this file as-is: when Bun sees a file with a `default` export containing a `fetch` handler, it passes it into `Bun.serve`.
 
 ***
 
@@ -340,7 +345,7 @@ server.reload({
 });
 ```
 
-This is useful for development and hot reloading. Only `fetch`, `error`, and `routes` can be updated.
+Use this for development and hot reloading. Only `fetch`, `error`, and `routes` can be updated.
 
 ***
 
@@ -364,7 +369,7 @@ const server = Bun.serve({
 });
 ```
 
-This is the recommended way to keep long-lived streaming responses (like Server-Sent Events) alive without raising the global `idleTimeout` for every request:
+Use `server.timeout(req, 0)` to keep a long-lived streaming response (like Server-Sent Events) alive without raising the global `idleTimeout` for every request:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
@@ -445,7 +450,7 @@ const server = Bun.serve({
 
 ## Benchmarks
 
-Below are Bun and Node.js implementations of an HTTP server that responds `Bun!` to each incoming `Request`.
+The following Bun and Node.js servers respond `Bun!` to each incoming `Request`.
 
 ```ts Bun theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({

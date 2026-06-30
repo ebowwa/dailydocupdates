@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/http/fetch-unix.md
+Downloaded: 2026-06-30T20:44:18.804Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # fetch with unix domain sockets in Bun
 
-In Bun, the `unix` option in `fetch()` lets you send HTTP requests over a [unix domain socket](https://en.wikipedia.org/wiki/Unix_domain_socket).
+In Bun, `fetch()` can send HTTP requests over a [unix domain socket](https://en.wikipedia.org/wiki/Unix_domain_socket) with the `unix` option.
 
 ```ts fetch-unix.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const unix = "/var/run/docker.sock";
@@ -17,7 +22,7 @@ console.log(body); // { ... }
 
 ***
 
-The `unix` option is a string that specifies the local file path to a unix domain socket. The `fetch()` function will use the socket to send the request to the server instead of using a TCP network connection. `https` is also supported by using the `https://` protocol in the URL instead of `http://`.
+The `unix` option is the local file path to a unix domain socket. `fetch()` sends the request over that socket instead of a TCP connection. HTTPS is also supported: use the `https://` protocol in the URL instead of `http://`.
 
 To send a `POST` request to an API endpoint over a unix domain socket:
 

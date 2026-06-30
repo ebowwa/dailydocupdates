@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/remix.md
+Downloaded: 2026-06-30T20:44:18.802Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -5,8 +10,8 @@
 # Build an app with Remix and Bun
 
 <Note>
-  Currently the Remix development server (`remix dev`) relies on Node.js APIs that Bun does not yet implement. The guide
-  below uses Bun to initialize a project and install dependencies, but it uses Node.js to run the dev server.
+  The Remix development server (`remix dev`) relies on Node.js APIs that Bun does not implement. This guide uses Bun to
+  initialize the project and install dependencies, and Node.js to run the dev server.
 </Note>
 
 ***
@@ -42,7 +47,7 @@ bun create remix
 
 ***
 
-To start the dev server, run `bun run dev` from the project root. This will start the dev server using the `remix dev` command. Note that Node.js will be used to run the dev server.
+To start the dev server, run `bun run dev` from the project root. This runs the `remix dev` command with Node.js.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 cd my-app
@@ -61,7 +66,7 @@ Remix App Server started at http://localhost:3000 (http://172.20.0.143:3000)
 
 ***
 
-Open [http://localhost:3000](http://localhost:3000) to see the app. Any changes you make to `app/routes/_index.tsx` will be hot-reloaded in the browser.
+Open [http://localhost:3000](http://localhost:3000) to see the app. Changes you make to `app/routes/_index.tsx` are hot-reloaded in the browser.
 
 <Frame>
   ![Remix app running on localhost](https://github.com/oven-sh/bun/assets/3084745/c26f1059-a5d4-4c0b-9a88-d9902472fd77)
@@ -69,7 +74,7 @@ Open [http://localhost:3000](http://localhost:3000) to see the app. Any changes 
 
 ***
 
-To build and start your app, run `bun run build`
+To build your app, run `bun run build`.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run build
@@ -81,7 +86,7 @@ info  building... (NODE_ENV=production)
 info  built (158ms)
 ```
 
-Then `bun run start` from the project root.
+Then start the app from the project root.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun start
@@ -94,4 +99,4 @@ $ remix-serve ./build/index.js
 
 ***
 
-Read the [Remix docs](https://remix.run/) for more information on how to build apps with Remix.
+See the [Remix docs](https://remix.run/) to learn more.

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/deployment/google-cloud-run.md
+Downloaded: 2026-06-30T20:44:18.798Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 [Google Cloud Run](https://cloud.google.com/run) is a managed platform for deploying and scaling serverless applications. Google handles the infrastructure for you.
 
-In this guide, we will deploy a Bun HTTP server to Google Cloud Run using a `Dockerfile`.
+This guide deploys a Bun HTTP server to Google Cloud Run using a `Dockerfile`.
 
 <Note>
   Before continuing, make sure you have:
@@ -20,7 +25,7 @@ In this guide, we will deploy a Bun HTTP server to Google Cloud Run using a `Doc
 
 <Steps>
   <Step title={<span>Initialize <code>gcloud</code> by select/creating a project</span>}>
-    Make sure that you've initialized the Google Cloud CLI. This command logs you in, and prompts you to either select an existing project or create a new one.
+    Make sure that you've initialized the Google Cloud CLI. `gcloud init` logs you in and prompts you to either select an existing project or create a new one.
 
     For more help with the Google Cloud CLI, see the [official documentation](https://docs.cloud.google.com/sdk/gcloud/reference/init).
 
@@ -99,7 +104,7 @@ In this guide, we will deploy a Bun HTTP server to Google Cloud Run using a `Doc
     ```
 
     <Note>
-      These commands enable Cloud Run (`run.googleapis.com`) and Cloud Build (`cloudbuild.googleapis.com`), which are required for deploying from source. Cloud Run runs your containerized app, while Cloud Build handles building and packaging it.
+      These commands enable Cloud Run (`run.googleapis.com`) and Cloud Build (`cloudbuild.googleapis.com`), which are required for deploying from source. Cloud Run runs your containerized app, while Cloud Build builds and packages it.
 
       The IAM binding grants the Compute Engine service account (`$PROJECT_NUMBER-compute@developer.gserviceaccount.com`) permission to build and deploy images on your behalf.
     </Note>
@@ -128,10 +133,10 @@ In this guide, we will deploy a Bun HTTP server to Google Cloud Run using a `Doc
     <Note>
       Make sure that the start command corresponds to your application's entry point. This can also be `CMD ["bun", "run", "start"]` if you have a start script in your `package.json`.
 
-      This image installs dependencies and runs your app with Bun inside a container. If your app doesn't have dependencies, you can omit the `RUN bun install --production --frozen-lockfile` line.
+      If your app doesn't have dependencies, you can omit the `RUN bun install --production --frozen-lockfile` line.
     </Note>
 
-    Create a new `.dockerignore` file in the root of your project. This file contains the files and directories that should be *excluded* from the container image, such as `node_modules`. This makes your builds faster and smaller:
+    Create a new `.dockerignore` file in the root of your project. It lists the files and directories to *exclude* from the container image, such as `node_modules`, which keeps builds faster and smaller:
 
     ```docker .dockerignore icon="Docker" theme={"theme":{"light":"github-light","dark":"dracula"}}
     node_modules
@@ -150,10 +155,7 @@ In this guide, we will deploy a Bun HTTP server to Google Cloud Run using a `Doc
   <Step title="Deploy your service">
     Make sure you're in the directory containing your `Dockerfile`, then deploy directly from your local source:
 
-    <Note>
-      Update the `--region` flag to your preferred region. You can also omit this flag to get an interactive prompt to
-      select a region.
-    </Note>
+    <Note>Update the `--region` flag to your preferred region, or omit it to select a region interactively.</Note>
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     gcloud run deploy my-bun-app --source . --region=us-west1 --allow-unauthenticated
@@ -180,7 +182,7 @@ In this guide, we will deploy a Bun HTTP server to Google Cloud Run using a `Doc
   </Step>
 
   <Step title="Visit your live application">
-    🎉 Your Bun application is now live!
+    Your Bun application is now live.
 
     Visit the Service URL (`https://my-bun-app-....us-west1.run.app`) to confirm everything works as expected.
   </Step>

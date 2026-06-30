@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/redis.md
-Downloaded: 2026-06-29T20:40:27.190Z
+Downloaded: 2026-06-30T20:44:18.836Z
 -->
 
 > ## Documentation Index
@@ -13,7 +13,7 @@ Downloaded: 2026-06-29T20:40:27.190Z
 
 <Note>Bun's Redis client supports Redis server versions 7.2 and up.</Note>
 
-Bun provides native bindings for working with Redis databases with a modern, Promise-based API. The interface is designed to be performant, with built-in connection management, fully typed responses, and TLS support.
+Bun's native Redis client has a Promise-based API with built-in connection management, fully typed responses, and TLS support.
 
 ```ts redis.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { redis } from "bun";
@@ -185,19 +185,16 @@ const poppedTag = await redis.spop("tags");
 
 ## Pub/Sub
 
-Bun provides native bindings for the [Redis
-Pub/Sub](https://redis.io/docs/latest/develop/pubsub/) protocol. **New in Bun
-1.2.23**
+Bun provides native bindings for the [Redis Pub/Sub](https://redis.io/docs/latest/develop/pubsub/) protocol, added in Bun 1.2.23.
 
 <Warning>
-  The Redis Pub/Sub feature is experimental. Although we expect it to be stable, we're currently actively looking for
-  feedback and areas for improvement.
+  Redis Pub/Sub is experimental. We expect it to be stable, but we're still looking for feedback and areas for
+  improvement.
 </Warning>
 
 ### Basic Usage
 
-To get started publishing messages, you can set up a publisher in
-`publisher.ts`:
+Create a publisher in `publisher.ts`:
 
 ```typescript publisher.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { RedisClient } from "bun";
@@ -236,10 +233,9 @@ bun run publisher.ts
 ```
 
 <Note>
-  The subscription mode takes over the `RedisClient` connection. A
-  client with subscriptions can only call `RedisClient.prototype.subscribe()`. In
-  other words, applications which need to message Redis need a separate
-  connection, acquirable through `.duplicate()`:
+  Subscribing takes over the `RedisClient` connection: a client with
+  subscriptions can only call `RedisClient.prototype.subscribe()`. To send other
+  commands to Redis, create a separate connection with `.duplicate()`:
 
   ```ts redis.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
   import { RedisClient } from "bun";
@@ -255,7 +251,7 @@ bun run publisher.ts
 
 ### Publishing
 
-Publishing messages is done through the `publish()` method:
+Publish messages with the `publish()` method:
 
 ```typescript redis.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 await client.publish(channelName, message);
@@ -263,14 +259,13 @@ await client.publish(channelName, message);
 
 ### Subscriptions
 
-The Bun `RedisClient` allows you to subscribe to channels through the
-`.subscribe()` method:
+Subscribe to channels with the `.subscribe()` method:
 
 ```typescript redis.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 await client.subscribe(channel, (message, channel) => {});
 ```
 
-You can unsubscribe through the `.unsubscribe()` method:
+Unsubscribe with the `.unsubscribe()` method:
 
 ```typescript redis.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 await client.unsubscribe(); // Unsubscribe from all channels.
@@ -289,7 +284,7 @@ The client automatically pipelines commands, improving performance by sending mu
 const [infoResult, listResult] = await Promise.all([redis.get("user:1:name"), redis.get("user:2:email")]);
 ```
 
-To disable automatic pipelining, you can set the `enableAutoPipelining` option to `false`:
+To disable automatic pipelining, set the `enableAutoPipelining` option to `false`:
 
 ```ts redis.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const client = new RedisClient("redis://localhost:6379", {
@@ -299,7 +294,7 @@ const client = new RedisClient("redis://localhost:6379", {
 
 ### Raw Commands
 
-When you need to use commands that don't have convenience methods, you can use the `send` method:
+Use the `send` method to run any Redis command, including ones without a dedicated method. The first argument is the command name, and the second is an array of string arguments.
 
 ```ts redis.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Run any Redis command
@@ -311,8 +306,6 @@ await redis.send("LPUSH", ["mylist", "value1", "value2"]);
 // Get list range
 const list = await redis.send("LRANGE", ["mylist", "0", "-1"]);
 ```
-
-The `send` method allows you to use any Redis command, even ones that don't have dedicated methods in the client. The first argument is the command name, and the second argument is an array of string arguments.
 
 ### Connection Events
 
@@ -348,7 +341,7 @@ console.log(client.bufferedAmount);
 
 ### Type Conversion
 
-The Redis client handles automatic type conversion for Redis responses:
+The client automatically converts Redis responses to JavaScript values:
 
 * Integer responses are returned as JavaScript numbers
 * Bulk strings are returned as JavaScript strings
@@ -387,7 +380,7 @@ The following commands disable automatic pipelining:
 
 ## Connection Options
 
-When creating a client, you can pass various options to configure the connection:
+When creating a client, you can pass options to configure the connection:
 
 ```ts redis.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const client = new RedisClient("redis://localhost:6379", {
@@ -574,15 +567,13 @@ async function getSession(sessionId) {
 
 ## Implementation Notes
 
-Bun's Redis client is implemented in Rust and uses the Redis Serialization Protocol (RESP3). It manages connections efficiently and provides automatic reconnection with exponential backoff.
-
-The client supports pipelining commands, meaning multiple commands can be sent without waiting for the replies to previous commands. This significantly improves performance when sending multiple commands in succession.
+Bun's Redis client is implemented in Rust and uses the Redis Serialization Protocol (RESP3). It reconnects automatically with exponential backoff and pipelines commands, so multiple commands can be sent without waiting for replies to previous ones.
 
 ## Limitations and Future Plans
 
-Current limitations of the Redis client we are planning to address in future versions:
+Limitations we plan to address in future versions:
 
-* Transactions (MULTI/EXEC) must be done through raw commands for now
+* Transactions (MULTI/EXEC) must be done through raw commands
 
 Unsupported features:
 

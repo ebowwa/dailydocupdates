@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/read-file/watch.md
+Downloaded: 2026-06-30T20:44:18.812Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 Bun implements the `node:fs` module, including the `fs.watch` function for listening for file system changes.
 
-This code block listens for changes to files in the current directory. By default this operation is *shallow*, meaning that changes to files in subdirectories will not be detected.
+The following code listens for changes to files in the current directory. By default the watch is *shallow*: changes to files in subdirectories are not detected.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { watch } from "fs";
@@ -18,7 +23,7 @@ const watcher = watch(import.meta.dir, (event, filename) => {
 
 ***
 
-To listen to changes in subdirectories, pass the `recursive: true` option to `fs.watch`.
+To listen for changes in subdirectories, pass the `recursive: true` option to `fs.watch`.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { watch } from "fs";
@@ -30,7 +35,7 @@ const watcher = watch(import.meta.dir, { recursive: true }, (event, relativePath
 
 ***
 
-Using the `node:fs/promises` module, you can listen for changes using `for await...of` instead of a callback.
+With the `node:fs/promises` module, you can listen for changes with `for await...of` instead of a callback.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { watch } from "fs/promises";

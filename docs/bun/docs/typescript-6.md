@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/typescript-6.md
+Downloaded: 2026-06-30T20:44:18.842Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -24,7 +29,7 @@ In your `tsconfig.json`, add `"types": ["bun"]` to `compilerOptions`:
 }
 ```
 
-This tells TypeScript to load type definitions from `@types/bun`. If you use other `@types/*` packages, include them too:
+The `types` array tells TypeScript to load type definitions from `@types/bun`. If you use other `@types/*` packages, include them too:
 
 ```jsonc tsconfig.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {

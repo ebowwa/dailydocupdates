@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/typescript.md
+Downloaded: 2026-06-30T20:44:18.842Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,17 +11,17 @@
 
 > Using TypeScript with Bun, including type definitions and compiler options
 
-To install the TypeScript definitions for Bun's built-in APIs, install `@types/bun`.
+To get TypeScript definitions for Bun's built-in APIs, install `@types/bun`.
 
 ```zsh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun add -d @types/bun # dev dependency
 ```
 
-At this point, you should be able to reference the `Bun` global in your TypeScript files without seeing errors in your editor.
+You can now reference the `Bun` global in your TypeScript files without errors in your editor.
 
 ## Suggested `compilerOptions`
 
-Bun supports things like top-level await, JSX, and extensioned `.ts` imports, which TypeScript doesn't allow by default. Below is a set of recommended `compilerOptions` for a Bun project, so you can use these features without seeing compiler warnings from TypeScript.
+Bun supports top-level await, JSX, and imports with `.ts` extensions, which TypeScript doesn't allow by default. Use these `compilerOptions` in a Bun project so TypeScript doesn't warn about those features.
 
 ```json tsconfig.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -51,7 +56,7 @@ Bun supports things like top-level await, JSX, and extensioned `.ts` imports, wh
 }
 ```
 
-If you run `bun init` in a new directory, this `tsconfig.json` will be generated for you. (The stricter flags are disabled by default.)
+Running `bun init` in a new directory generates this `tsconfig.json` for you.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun init
@@ -59,4 +64,4 @@ bun init
 
 ## TypeScript 6 and 7
 
-If you're using TypeScript 6.0 or later, you'll also need to add `"types": ["bun"]` to your `compilerOptions`. See [TypeScript 6 and 7](/typescript-6) for details.
+If you're using TypeScript 6.0 or later, you also need `"types": ["bun"]` in your `compilerOptions`. See [TypeScript 6 and 7](/typescript-6).

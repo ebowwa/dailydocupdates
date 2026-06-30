@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/test/update-snapshots.md
+Downloaded: 2026-06-30T20:44:18.820Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Update snapshots in `bun test`
 
-Bun's test runner supports Jest-style snapshot testing via `.toMatchSnapshot()`.
+Bun's test runner supports Jest-style snapshot testing with `.toMatchSnapshot()`.
 
 ```ts snap.test.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect } from "bun:test";
@@ -16,7 +21,7 @@ test("snapshot", () => {
 
 ***
 
-The first time this test is executed, Bun will write a snapshot file to disk in a directory called `__snapshots__` that lives alongside the test file.
+The first time this test runs, Bun writes a snapshot file to a `__snapshots__` directory alongside the test file.
 
 ```txt File Tree icon="folder-tree" theme={"theme":{"light":"github-light","dark":"dracula"}}
 test
@@ -46,4 +51,4 @@ Ran 1 tests across 1 files. [102.00ms]
 
 ***
 
-See [Docs > Test Runner > Snapshots](/test/snapshots) for complete documentation on snapshots with the Bun test runner.
+See [Snapshots](/test/snapshots).

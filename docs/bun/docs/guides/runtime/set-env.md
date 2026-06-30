@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/set-env.md
+Downloaded: 2026-06-30T20:44:18.814Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Set environment variables
 
-The current environment variables can be accessed via `process.env` or `Bun.env`.
+Access the current environment variables with `process.env` or `Bun.env`.
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.env.API_TOKEN; // => "secret"
@@ -28,7 +33,7 @@ BAR=world
 
 ***
 
-Variables can also be set via the command line.
+You can also set variables on the command line.
 
 <CodeGroup>
   ```sh Linux/macOS icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -46,4 +51,4 @@ Variables can also be set via the command line.
 
 ***
 
-See [Docs > Runtime > Environment variables](/runtime/environment-variables) for more information on using environment variables with Bun.
+See [Environment variables](/runtime/environment-variables).

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/jsonl.md
+Downloaded: 2026-06-30T20:44:18.835Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Parse newline-delimited JSON (JSONL) with Bun's built-in streaming parser
 
-Bun has built-in support for parsing [JSONL](https://jsonlines.org/) (newline-delimited JSON), where each line is a separate JSON value. The parser is implemented in C++ using JavaScriptCore's optimized JSON parser and supports streaming use cases.
+Bun has built-in support for parsing [JSONL](https://jsonlines.org/) (newline-delimited JSON), where each line is a separate JSON value. The parser is implemented in C++ using JavaScriptCore's optimized JSON parser and supports streaming.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const results = Bun.JSONL.parse('{"name":"Alice"}\n{"name":"Bob"}\n');
@@ -40,7 +45,7 @@ const results = Bun.JSONL.parse(buffer);
 // [{ a: 1 }, { b: 2 }]
 ```
 
-When passed a `Uint8Array`, a UTF-8 BOM at the start of the buffer is automatically skipped.
+With `Uint8Array` input, Bun skips a UTF-8 BOM at the start of the buffer.
 
 ### Error handling
 
@@ -58,7 +63,7 @@ try {
 
 ## `Bun.JSONL.parseChunk()`
 
-For streaming scenarios, `parseChunk` parses as many complete values as possible from the input and reports how far it got. This is useful when receiving data incrementally (e.g., from a network stream) and you need to know where to resume parsing.
+For streaming, `parseChunk` parses as many complete values as it can from the input and reports how far it got, so you know where to resume when data arrives incrementally (for example, from a network stream).
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const chunk = '{"id":1}\n{"id":2}\n{"id":3';

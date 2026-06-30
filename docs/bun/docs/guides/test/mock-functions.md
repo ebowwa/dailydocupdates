@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/mock-functions.md
+Downloaded: 2026-06-30T20:44:18.818Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -24,7 +29,7 @@ const random = mock((multiplier: number) => multiplier * Math.random());
 
 ***
 
-The result of `mock()` is a new function that's been decorated with some additional properties.
+The result of `mock()` is a new function decorated with extra properties.
 
 ```ts test.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { mock } from "bun:test";
@@ -46,7 +51,7 @@ random.mock.results;
 
 ***
 
-These extra properties make it possible to write `expect` assertions about usage of the mock function, including how many times it was called, the arguments, and the return values.
+Use these properties to write `expect` assertions about how the mock was used: how many times it was called, with which arguments, and what it returned.
 
 ```ts test.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect, mock } from "bun:test";
@@ -67,4 +72,4 @@ test("random", async () => {
 
 ***
 
-See [Docs > Test Runner > Mocks](/test/mocks) for complete documentation on mocking with the Bun test runner.
+See [Mocks](/test/mocks).

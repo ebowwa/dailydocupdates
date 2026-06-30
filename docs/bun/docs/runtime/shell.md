@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/shell.md
-Downloaded: 2026-06-29T20:40:27.191Z
+Downloaded: 2026-06-30T20:44:18.837Z
 -->
 
 > ## Documentation Index
@@ -11,7 +11,7 @@ Downloaded: 2026-06-29T20:40:27.191Z
 
 > Use Bun's shell scripting API to run shell commands from JavaScript
 
-Bun Shell makes shell scripting with JavaScript & TypeScript fun. It's a cross-platform bash-like shell with seamless JavaScript interop.
+Bun Shell makes shell scripting with JavaScript & TypeScript fun. It's a cross-platform bash-like shell with JavaScript interop.
 
 Quickstart:
 
@@ -28,14 +28,14 @@ await $`cat < ${response} | wc -c`; // 1256
 
 ## Features
 
-* **Cross-platform**: works on Windows, Linux & macOS. Instead of `rimraf` or `cross-env`', you can use Bun Shell without installing extra dependencies. Common shell commands like `ls`, `cd`, `rm` are implemented natively.
-* **Familiar**: Bun Shell is a bash-like shell, supporting redirection, pipes, environment variables and more.
-* **Globs**: Glob patterns are supported natively, including `**`, `*`, `{expansion}`, and more.
-* **Template literals**: Template literals execute shell commands, allowing interpolation of variables and expressions.
+* **Cross-platform**: works on Windows, Linux & macOS. Instead of installing `rimraf` or `cross-env`, you can use Bun Shell. Common shell commands like `ls`, `cd`, and `rm` are implemented natively.
+* **Familiar**: Bun Shell is a bash-like shell that supports redirection, pipes, and environment variables.
+* **Globs**: Glob patterns are supported natively, including `**`, `*`, and `{expansion}`.
+* **Template literals**: Template literals execute shell commands and interpolate variables and expressions.
 * **Safety**: Bun Shell escapes all strings by default, preventing shell injection attacks.
 * **JavaScript interop**: Use `Response`, `ArrayBuffer`, `Blob`, `Bun.file(path)` and other JavaScript objects as stdin, stdout, and stderr.
-* **Shell scripting**: Bun Shell can be used to run shell scripts (`.bun.sh` files).
-* **Custom interpreter**: Bun Shell is written in Rust, along with its lexer, parser, and interpreter. Bun Shell is a small programming language.
+* **Shell scripting**: Bun Shell runs shell scripts (`.bun.sh` files).
+* **Custom interpreter**: Bun Shell is a small programming language with its own lexer, parser, and interpreter, written in Rust.
 
 ***
 
@@ -57,7 +57,7 @@ import { $ } from "bun";
 await $`echo "Hello World!"`.quiet(); // No output
 ```
 
-What if you want to access the output of the command as text? Use `.text()`:
+To read the output of the command as text, use `.text()`:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -68,7 +68,7 @@ const welcome = await $`echo "Hello World!"`.text();
 console.log(welcome); // Hello World!\n
 ```
 
-By default, `await`ing will return stdout and stderr as `Buffer`s.
+By default, `await`ing returns stdout and stderr as `Buffer`s.
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -83,7 +83,7 @@ console.log(stderr); // Buffer(0) []
 
 ## Error handling
 
-By default, non-zero exit codes will throw an error. This `ShellError` contains information about the command run.
+By default, a non-zero exit code throws an error. The `ShellError` contains information about the command that ran.
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -98,7 +98,7 @@ try {
 }
 ```
 
-Throwing can be disabled with `.nothrow()`. The result's `exitCode` will need to be checked manually.
+`.nothrow()` disables throwing. Check the result's `exitCode` yourself.
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -113,7 +113,7 @@ console.log(stdout);
 console.log(stderr);
 ```
 
-The default handling of non-zero exit codes can be configured by calling `.nothrow()` or `.throws(boolean)` on the `$` function itself.
+To change the default for all commands, call `.nothrow()` or `.throws(boolean)` on the `$` function itself.
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -134,7 +134,7 @@ await $`something-that-may-fail`; // No exception thrown
 
 ## Redirection
 
-A command's *input* or *output* may be *redirected* using the typical Bash operators:
+Redirect a command's *input* or *output* with the typical Bash operators:
 
 * `<` redirect stdin
 * `>` or `1>` redirect stdout
@@ -143,8 +143,8 @@ A command's *input* or *output* may be *redirected* using the typical Bash opera
 * `>>` or `1>>` redirect stdout, *appending* to the destination, instead of overwriting
 * `2>>` redirect stderr, *appending* to the destination, instead of overwriting
 * `&>>` redirect both stdout and stderr, *appending* to the destination, instead of overwriting
-* `1>&2` redirect stdout to stderr (all writes to stdout will instead be in stderr)
-* `2>&1` redirect stderr to stdout (all writes to stderr will instead be in stdout)
+* `1>&2` redirect stdout to stderr (writes to stdout go to stderr instead)
+* `2>&1` redirect stderr to stdout (writes to stderr go to stdout instead)
 
 Bun Shell also supports redirecting from and to JavaScript objects.
 
@@ -161,14 +161,14 @@ await $`echo "Hello World!" > ${buffer}`;
 console.log(buffer.toString()); // Hello World!\n
 ```
 
-The following JavaScript objects are supported for redirection to:
+You can redirect output to these JavaScript objects:
 
 * `Buffer`, `Uint8Array`, `Uint16Array`, `Uint32Array`, `Int8Array`, `Int16Array`, `Int32Array`, `Float32Array`, `Float64Array`, `ArrayBuffer`, `SharedArrayBuffer` (writes to the underlying buffer)
 * `Bun.file(path)`, `Bun.file(fd)` (writes to the file)
 
 ### Example: Redirect input from JavaScript objects (`<`)
 
-To redirect the output from JavaScript objects to stdin, use the `<` operator:
+To use a JavaScript object as stdin, use the `<` operator:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -180,7 +180,7 @@ const result = await $`cat < ${response}`.text();
 console.log(result); // hello i am a response body
 ```
 
-The following JavaScript objects are supported for redirection from:
+You can redirect from these JavaScript objects:
 
 * `Buffer`, `Uint8Array`, `Uint16Array`, `Uint32Array`, `Int8Array`, `Int16Array`, `Int32Array`, `Float32Array`, `Float64Array`, `ArrayBuffer`, `SharedArrayBuffer` (reads from the underlying buffer)
 * `Bun.file(path)`, `Bun.file(fd)` (reads from the file)
@@ -256,7 +256,7 @@ console.log(result); // 6\n
 
 ## Command substitution (`$(...)`)
 
-Command substitution allows you to substitute the output of another script into the current script:
+Command substitution inserts the output of another command into the current script:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -265,7 +265,7 @@ import { $ } from "bun";
 await $`echo Hash of current commit: $(git rev-parse HEAD)`;
 ```
 
-This is a textual insertion of the command's output and can be used to, for example, declare a shell variable:
+The output is inserted as text, so you can use it to declare a shell variable:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -292,20 +292,20 @@ await $`
   hi
   ```
 
-  The above will print out:
+  It prints:
 
   ```
   echo hi
   ```
 
-  We instead recommend sticking to the `$(...)` syntax.
+  Use the `$(...)` syntax instead.
 </Note>
 
 ***
 
 ## Environment variables
 
-Environment variables can be set like in bash:
+Set environment variables like in bash:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -313,7 +313,7 @@ import { $ } from "bun";
 await $`FOO=foo bun -e 'console.log(process.env.FOO)'`; // foo\n
 ```
 
-You can use string interpolation to set environment variables:
+Use string interpolation to set the value:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -335,9 +335,9 @@ await $`FOO=${foo} bun -e 'console.log(process.env.FOO)'`; // bar123; rm -rf /tm
 
 ### Changing the environment variables
 
-By default, `process.env` is used as the environment variables for all commands.
+By default, all commands use `process.env` as their environment variables.
 
-You can change the environment variables for a single command by calling `.env()`:
+To change the environment variables for a single command, call `.env()`:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -345,7 +345,7 @@ import { $ } from "bun";
 await $`echo $FOO`.env({ ...process.env, FOO: "bar" }); // bar
 ```
 
-You can change the default environment variables for all commands by calling `$.env`:
+To change the default environment variables for all commands, call `$.env`:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -359,7 +359,7 @@ await $`echo $FOO`; // bar
 await $`echo $FOO`.env({ FOO: "baz" }); // baz
 ```
 
-You can reset the environment variables to the default by calling `$.env()` with no arguments:
+To reset the environment variables to the default, call `$.env()` with no arguments:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -375,7 +375,7 @@ await $`echo $FOO`.env(undefined); // ""
 
 ### Changing the working directory
 
-You can change the working directory of a command by passing a string to `.cwd()`:
+To change the working directory of a command, pass a string to `.cwd()`:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -383,7 +383,7 @@ import { $ } from "bun";
 await $`pwd`.cwd("/tmp"); // /tmp
 ```
 
-You can change the default working directory for all commands by calling `$.cwd`:
+To change the default working directory for all commands, call `$.cwd`:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -463,7 +463,7 @@ console.log(result); // Blob(13) { size: 13, type: "text/plain" }
 
 ## Builtin Commands
 
-For cross-platform compatibility, Bun Shell implements a set of builtin commands, in addition to reading commands from the PATH environment variable.
+For cross-platform compatibility, Bun Shell implements a set of builtin commands, in addition to reading commands from the `PATH` environment variable.
 
 * `cd`: change the working directory
 * `ls`: list files in a directory (supports `-l` for long listing format)
@@ -500,7 +500,7 @@ Bun Shell also implements a set of utilities for working with shells.
 
 ### `$.braces` (brace expansion)
 
-This function implements simple [brace expansion](https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html) for shell commands:
+`$.braces` implements [brace expansion](https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html) for shell commands:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -520,7 +520,7 @@ console.log($.escape('$(foo) `bar` "baz"'));
 // => \$(foo) \`bar\` \"baz\"
 ```
 
-If you do not want your string to be escaped, wrap it in a `{ raw: 'str' }` object:
+To skip escaping, wrap the string in a `{ raw: 'str' }` object:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -535,9 +535,7 @@ await $`echo ${{ raw: '$(foo) `bar` "baz"' }}`;
 
 ## `.sh` file loader
 
-For simple shell scripts, instead of `/bin/sh`, you can use Bun Shell to run shell scripts.
-
-To do so, run the script with `bun` on a file with the `.sh` extension.
+For simple shell scripts, you can use Bun Shell instead of `/bin/sh`. Pass a file with the `.sh` extension to `bun`:
 
 ```sh script.sh icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 echo "Hello World! pwd=$(pwd)"
@@ -551,7 +549,7 @@ bun ./script.sh
 Hello World! pwd=/home/demo
 ```
 
-Scripts with Bun Shell are cross platform, which means they work on Windows:
+Bun Shell scripts are cross-platform, so they work on Windows:
 
 ```powershell powershell icon="windows" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun .\script.sh
@@ -565,19 +563,18 @@ Hello World! pwd=C:\Users\Demo
 
 ## Implementation notes
 
-Bun Shell is a small programming language in Bun that is implemented in Rust. It includes a handwritten lexer, parser, and interpreter. Unlike bash, zsh, and other shells, Bun Shell runs operations concurrently.
+Bun Shell is a small programming language implemented in Rust, with a handwritten lexer, parser, and interpreter. Unlike bash, zsh, and other shells, Bun Shell runs operations concurrently.
 
 ***
 
 ## Security in the Bun shell
 
-By design, the Bun shell *does not invoke a system shell* (like `/bin/sh`) and
-is instead a re-implementation of bash that runs in the same Bun process,
-designed with security in mind.
+By design, Bun Shell *does not invoke a system shell* like `/bin/sh`. It's a
+re-implementation of bash that runs in the same Bun process.
 
 When parsing command arguments, it treats all *interpolated variables* as single, literal strings.
 
-This protects the Bun shell against **command injection**:
+This protects against **command injection**:
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
@@ -588,17 +585,16 @@ const userInput = "my-file.txt; rm -rf /";
 await $`ls ${userInput}`;
 ```
 
-In the above example, `userInput` is treated as a single string. This causes
-the `ls` command to try to read the contents of a single directory named
-"my-file; rm -rf /".
+Here, `userInput` is treated as a single string, so `ls` tries to read the
+contents of a single directory named `my-file.txt; rm -rf /`.
 
 ### Security considerations
 
-While command injection is prevented by default, developers are still
+While command injection is prevented by default, you are still
 responsible for security in certain scenarios.
 
 Similar to the `Bun.spawn` or `node:child_process.exec()` APIs, you can intentionally
-execute a command which spawns a new shell (e.g. `bash -c`) with arguments.
+execute a command which spawns a new shell (for example, `bash -c`) with arguments.
 
 When you do this, you hand off control, and Bun's built-in protections no
 longer apply to the string interpreted by that new shell.
@@ -616,7 +612,7 @@ await $`bash -c "echo ${userInput}"`;
 
 ### Argument injection
 
-The Bun shell cannot know how an external command interprets its own
+Bun Shell cannot know how an external command interprets its own
 command-line arguments. An attacker can supply input that the target program
 recognizes as one of its own options or flags, leading to unintended behavior.
 
@@ -632,8 +628,8 @@ await $`git ls-remote origin ${branch}`;
 ```
 
 <Note>
-  **Recommendation** — As is best practice in every language, always sanitize user-provided input before passing it as
-  an argument to an external command. The responsibility for validating arguments rests with your application code.
+  **Recommendation**: Always sanitize user-provided input before passing it as an argument to an external command.
+  Validating arguments is your application's responsibility.
 </Note>
 
 ***

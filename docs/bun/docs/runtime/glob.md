@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/glob.md
+Downloaded: 2026-06-30T20:44:18.833Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -32,7 +37,7 @@ glob.match("index.ts"); // => true
 glob.match("index.js"); // => false
 ```
 
-`Glob` is a class which implements the following interface:
+The `Glob` class implements the following interface:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 class Glob {
@@ -123,7 +128,7 @@ glob.match("baz.ts"); // => true
 glob.match("bat.ts"); // => false
 ```
 
-You can use character ranges (e.g `[0-9]`, `[a-z]`) as well as the negation operators `^` or `!` to match anything *except* the characters contained within the braces (e.g `[^ab]`, `[!a-z]`)
+You can use character ranges (for example `[0-9]`, `[a-z]`) and the negation operators `^` or `!` to match anything *except* the characters in the brackets (for example `[^ab]`, `[!a-z]`).
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const glob = new Glob("ba[a-z][0-9][^4-9].ts");
@@ -144,7 +149,7 @@ glob.match("c.ts"); // => true
 glob.match("d.ts"); // => false
 ```
 
-These match patterns can be deeply nested (up to 10 levels), and contain any of the wildcards from above.
+These patterns can be nested up to 10 levels deep and contain any of the earlier wildcards.
 
 ### `!` - Negates the result at the start of a pattern
 

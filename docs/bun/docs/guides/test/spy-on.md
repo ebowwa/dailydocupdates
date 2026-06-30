@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/spy-on.md
+Downloaded: 2026-06-30T20:44:18.819Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -21,7 +26,7 @@ const spy = spyOn(leo, "sayHi");
 
 ***
 
-Once the spy is created, it can be used to write `expect` assertions relating to method calls.
+Once you've created the spy, use it in `expect` assertions about method calls.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect, spyOn } from "bun:test";
@@ -45,4 +50,4 @@ test("turtles", () => { // [!code ++]
 
 ***
 
-See [Docs > Test Runner > Mocks](/test/mocks) for complete documentation on mocking with the Bun test runner.
+See [Mocks](/test/mocks).

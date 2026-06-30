@@ -1,12 +1,17 @@
+<!--
+Source: https://bun.com/docs/guides/write-file/filesink.md
+Downloaded: 2026-06-30T20:44:18.824Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Write a file incrementally
 
-Bun provides an API for incrementally writing to a file. This is useful for writing large files, or for writing to a file over a long period of time.
+Bun provides an API for incrementally writing to a file. Use it for large files, or when writing to a file over a long period of time.
 
-Call `.writer()` on a `BunFile` to retrieve a `FileSink` instance. This instance can be used to efficiently buffer data and periodically "flush" it to disk. You can write & flush many times.
+Call `.writer()` on a `BunFile` to retrieve a `FileSink` instance. It buffers data; call `.flush()` to write the buffer to disk. You can write & flush many times.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const file = Bun.file("/path/to/file.txt");
@@ -23,7 +28,7 @@ writer.flush();
 
 ***
 
-The `.write()` method can accept strings or binary data.
+The `.write()` method accepts strings or binary data.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 w.write("hello");
@@ -34,7 +39,7 @@ writer.flush();
 
 ***
 
-The `FileSink` will also auto-flush when its internal buffer is full. You can configure the buffer size with the `highWaterMark` option.
+The `FileSink` also auto-flushes when its internal buffer is full. You can configure the buffer size with the `highWaterMark` option.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const file = Bun.file("/path/to/file.txt");
@@ -43,7 +48,7 @@ const writer = file.writer({ highWaterMark: 1024 * 1024 }); // 1MB
 
 ***
 
-When you're done writing to the file, call `.end()` to auto-flush the buffer and close the file.
+When you're done writing, call `.end()` to flush the buffer and close the file.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 writer.end();

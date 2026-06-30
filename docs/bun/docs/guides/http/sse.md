@@ -1,12 +1,17 @@
+<!--
+Source: https://bun.com/docs/guides/http/sse.md
+Downloaded: 2026-06-30T20:44:18.805Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Server-Sent Events (SSE) with Bun
 
-[Server-Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) let you push a stream of text events to the browser over a single HTTP response. The client consumes them via [`EventSource`](https://developer.mozilla.org/en-US/docs/Web/API/EventSource).
+[Server-Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) let you push a stream of text events to the browser over a single HTTP response. The client consumes them with [`EventSource`](https://developer.mozilla.org/en-US/docs/Web/API/EventSource).
 
-In Bun, you can implement an SSE endpoint by returning a `Response` whose body is a streaming source and setting the `Content-Type` header to `text/event-stream`.
+To implement an SSE endpoint in Bun, return a `Response` whose body is a streaming source and set the `Content-Type` header to `text/event-stream`.
 
 <Note>
   `Bun.serve` closes idle connections after **10 seconds** by default. A quiet SSE stream counts as idle, so the
@@ -16,7 +21,7 @@ In Bun, you can implement an SSE endpoint by returning a `Response` whose body i
 
 ## Using an async generator
 
-In Bun, `new Response` accepts an async generator function directly. This is usually the simplest way to write an SSE endpoint — each `yield` flushes a chunk to the client, and if the client disconnects, the generator's `finally` block runs so you can clean up.
+In Bun, `new Response` accepts an async generator function directly; this is usually the simplest way to write an SSE endpoint. Each `yield` flushes a chunk to the client, and if the client disconnects, the generator's `finally` block runs so you can clean up.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
@@ -55,7 +60,7 @@ Bun.serve({
 
 ## Using a `ReadableStream`
 
-If your events originate from callbacks — message brokers, timers, external pushes — rather than a linear `await` flow, a `ReadableStream` often fits better. When the client disconnects, Bun calls the stream's `cancel()` method automatically, so you can release any resources you set up in `start()`.
+If your events originate from callbacks (message brokers, timers, external pushes) rather than a linear `await` flow, a `ReadableStream` often fits better. When the client disconnects, Bun calls the stream's `cancel()` method automatically, so you can release any resources you set up in `start()`.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({

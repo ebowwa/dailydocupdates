@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/markdown.md
-Downloaded: 2026-06-29T20:40:27.189Z
+Downloaded: 2026-06-30T20:44:18.835Z
 -->
 
 > ## Documentation Index
@@ -263,7 +263,7 @@ const result = Bun.markdown.render("```js\nconsole.log('hi')\n```", {
 
 ### Parser options
 
-Parser options are passed as a separate third argument:
+Pass parser options as a separate third argument:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const result = Bun.markdown.render(
@@ -379,7 +379,7 @@ function Markdown({ text }: { text: string }) {
 
 ### Parser options
 
-All [parser options](#options) are passed as the third argument:
+Pass any of the [parser options](#options) as the third argument:
 
 ```tsx theme={"theme":{"light":"github-light","dark":"dracula"}}
 const el = Bun.markdown.react("## Hello World", undefined, {

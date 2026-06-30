@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/pm/security-scanner-api.md
-Downloaded: 2026-06-22T21:04:36.120Z
+Downloaded: 2026-06-30T20:44:18.828Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,7 @@ Downloaded: 2026-06-22T21:04:36.120Z
 
 # Security Scanner API
 
-Bun's package manager can scan packages for security vulnerabilities before installation, helping protect your applications from supply chain attacks and known vulnerabilities.
+Bun's package manager can scan packages before installing them, to catch supply chain attacks and known vulnerabilities.
 
 ***
 
@@ -22,12 +22,12 @@ Configure a security scanner in your `bunfig.toml`:
 scanner = "@oven/bun-security-scanner" # example name, replace with your scanner's package
 ```
 
-When configured, Bun will:
+With a scanner configured, Bun:
 
-* Scan all packages before installation
-* Display security warnings and advisories
-* Cancel installation if critical vulnerabilities are found
-* Automatically disable auto-install for security
+* Scans all packages before installation
+* Displays security warnings and advisories
+* Cancels installation if critical vulnerabilities are found
+* Disables [auto-install](/runtime/auto-install)
 
 ***
 
@@ -38,7 +38,6 @@ Security scanners analyze packages during `bun install`, `bun add`, and other pa
 * Known security vulnerabilities (CVEs)
 * Malicious packages
 * License compliance issues
-* ...and more!
 
 ### Security Levels
 
@@ -51,7 +50,7 @@ Scanners report issues at two severity levels:
 
 ## Using Pre-built Scanners
 
-Many security companies publish Bun security scanners as npm packages that you can install and use immediately.
+Security companies publish Bun security scanners as npm packages.
 
 ### Installing a Scanner
 
@@ -78,7 +77,7 @@ scanner = "@oven/bun-security-scanner" # example name, replace with your scanner
 
 ### Enterprise Configuration
 
-Some enterprise scanners might support authentication and/or configuration through environment variables:
+Some enterprise scanners take authentication and other configuration from environment variables:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 # This might go in ~/.bashrc, for example
@@ -88,7 +87,7 @@ export SECURITY_API_KEY="your-api-key"
 bun install
 ```
 
-Consult your security scanner's documentation to learn which environment variables to set and if any additional configuration is required.
+Consult your scanner's documentation for which environment variables to set and any other required configuration.
 
 ### Authoring your own scanner
 

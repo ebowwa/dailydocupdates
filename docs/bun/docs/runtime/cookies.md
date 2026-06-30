@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/cookies.md
+Downloaded: 2026-06-30T20:44:18.831Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,11 +11,11 @@
 
 > Use Bun's native APIs for working with HTTP cookies
 
-Bun provides native APIs for working with HTTP cookies through `Bun.Cookie` and `Bun.CookieMap`. These APIs offer fast methods for parsing, generating, and manipulating cookies in HTTP requests and responses.
+Bun provides two native APIs for working with HTTP cookies: `Bun.Cookie` and `Bun.CookieMap`. They parse, generate, and manipulate cookies in HTTP requests and responses.
 
 ## CookieMap class
 
-`Bun.CookieMap` provides a Map-like interface for working with collections of cookies. It implements the `Iterable` interface, allowing you to use it with `for...of` loops and other iteration methods.
+`Bun.CookieMap` is a Map-like collection of cookies. It implements `Iterable`, so it works with `for...of` loops and the other iteration methods.
 
 ```ts title="cookies.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Empty cookie map
@@ -120,7 +125,7 @@ cookies.set(cookie);
 
 #### `delete(options: CookieStoreDeleteOptions): void`
 
-Removes a cookie from the map. When applied to a Response, this adds a cookie with an empty string value and an expiry date in the past. A cookie will only delete successfully on the browser if the domain and path is the same as it was when the cookie was created.
+Removes a cookie from the map. When applied to a Response, this adds a cookie with an empty string value and an expiry date in the past. The browser only deletes the cookie if the domain and path match the ones it was created with.
 
 ```ts title="delete-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Delete by name using default domain and path.
@@ -144,9 +149,9 @@ const json = cookies.toJSON();
 
 #### `toSetCookieHeaders(): string[]`
 
-Returns an array of values for Set-Cookie headers that can be used to apply all cookie changes.
+Returns an array of values for Set-Cookie headers that apply all cookie changes.
 
-When using `Bun.serve()`, you don't need to call this method explicitly. Any changes made to the `req.cookies` map are automatically applied to the response headers. This method is primarily useful when working with other HTTP server implementations.
+Use this with HTTP servers other than `Bun.serve()`. In `Bun.serve()`, you don't need to call it: any changes made to the `req.cookies` map are automatically applied to the response headers.
 
 ```js title="node-server.js" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { createServer } from "node:http";

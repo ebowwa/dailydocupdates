@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/outdated.md
+Downloaded: 2026-06-30T20:44:18.826Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Check for outdated dependencies
 
-Use `bun outdated` to check for outdated dependencies in your project. This command displays a table of dependencies that have newer versions available.
+`bun outdated` displays a table of the dependencies in your project that have newer versions available.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun outdated
@@ -37,9 +42,7 @@ The output table shows three version columns:
 
 ### Dependency Filters
 
-`bun outdated` supports searching for outdated dependencies by package names and glob patterns.
-
-To check if specific dependencies are outdated, pass the package names as positional arguments:
+To check specific dependencies, pass their names as positional arguments:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun outdated eslint-plugin-security eslint-plugin-sonarjs
@@ -53,7 +56,7 @@ bun outdated eslint-plugin-security eslint-plugin-sonarjs
 
 ```
 
-You can also pass glob patterns to check for outdated packages:
+Glob patterns work too:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun outdated 'eslint*'
@@ -113,7 +116,7 @@ bun outdated --filter='@monorepo/types'
 | typescript (dev)   | 5.7.2   | 5.7.3  | 5.7.3  |
 ```
 
-You can pass multiple `--filter` flags to check multiple workspaces:
+Pass `--filter` more than once to check multiple workspaces:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun outdated --filter @monorepo/types --filter @monorepo/cli
@@ -130,7 +133,7 @@ bun outdated --filter @monorepo/types --filter @monorepo/cli
 | typescript (dev)               | 5.7.2   | 5.7.3  | 5.7.3      |
 ```
 
-You can also pass glob patterns to filter by workspace names:
+`--filter` also accepts glob patterns for workspace names:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun outdated --filter='@monorepo/{types,cli}'
@@ -149,7 +152,7 @@ bun outdated --filter='@monorepo/{types,cli}'
 
 ### Catalog Dependencies
 
-`bun outdated` supports checking catalog dependencies defined in`package.json`:
+`bun outdated` also checks [catalog](/pm/catalogs) dependencies defined in `package.json`:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun outdated -r

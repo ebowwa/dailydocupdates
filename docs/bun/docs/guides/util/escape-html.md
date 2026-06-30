@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/util/escape-html.md
+Downloaded: 2026-06-30T20:44:18.820Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Escape an HTML string
 
-The `Bun.escapeHTML()` utility can be used to escape HTML characters in a string. The following replacements are made.
+`Bun.escapeHTML()` escapes HTML characters in a string. It makes the following replacements.
 
 * `"` becomes `"&quot;"`
 * `&` becomes `"&amp;"`
@@ -12,7 +17,7 @@ The `Bun.escapeHTML()` utility can be used to escape HTML characters in a string
 * `<` becomes `"&lt;"`
 * `>` becomes `"&gt;"`
 
-This function is optimized for large input. Non-string types will be converted to a string before escaping.
+This function is optimized for large input. Non-string values are converted to a string before escaping.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.escapeHTML("<script>alert('Hello World!')</script>");
@@ -21,4 +26,4 @@ Bun.escapeHTML("<script>alert('Hello World!')</script>");
 
 ***
 
-See [Docs > API > Utils](/runtime/utils) for more useful utilities.
+See [Utils](/runtime/utils).

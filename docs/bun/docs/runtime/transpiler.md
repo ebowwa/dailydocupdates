@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/transpiler.md
+Downloaded: 2026-06-30T20:44:18.838Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Use Bun's transpiler to transpile JavaScript and TypeScript code
 
-Bun exposes its internal transpiler via the `Bun.Transpiler` class. To create an instance of Bun's transpiler:
+Bun exposes its internal transpiler as the `Bun.Transpiler` class. To create an instance:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const transpiler = new Bun.Transpiler({
@@ -61,9 +66,9 @@ transpiler.transformSync("<div>hi!</div>", "tsx");
 ```
 
 <Accordion title="Nitty gritty">
-  When `.transformSync` is called, the transpiler is run in the same thread as the currently executed code.
+  `.transformSync` runs the transpiler in the same thread as the calling code.
 
-  If a macro is used, it will be run in the same thread as the transpiler, but in a separate event loop from the rest of your application. Currently, globals between macros and regular code are shared, which means it is possible (but not recommended) to share states between macros and regular code. Attempting to use AST nodes outside of a macro is undefined behavior.
+  [Macros](/bundler/macros) run in the same thread as the transpiler, but in a separate event loop from the rest of your application. Macros and regular code share globals, so it is possible (but not recommended) to share state between them. Using AST nodes outside of a macro is undefined behavior.
 </Accordion>
 
 ***
@@ -78,21 +83,21 @@ const result = await transpiler.transform("<div>hi!</div>");
 console.log(result);
 ```
 
-Unless you're transpiling *many* large files, you should probably use `Bun.Transpiler.transformSync`. The cost of the threadpool will often take longer than actually transpiling code.
+Unless you're transpiling *many* large files, use `Bun.Transpiler.transformSync`. The threadpool overhead often costs more than the transpilation itself.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await transpiler.transform("<div>hi!</div>", "tsx");
 ```
 
 <Accordion title="Nitty gritty">
-  The `.transform()` method runs the transpiler in Bun's worker threadpool, so if you run it 100 times, it will run it across `Math.floor($cpu_count * 0.8)` threads, without blocking the main JavaScript thread.
+  The `.transform()` method runs the transpiler in Bun's worker threadpool, so running it 100 times spreads the work across `Math.floor($cpu_count * 0.8)` threads without blocking the main JavaScript thread.
 
-  If your code uses a macro, it will potentially spawn a new copy of Bun's JavaScript runtime environment in that new thread.
+  If your code uses a macro, it may spawn a new copy of Bun's JavaScript runtime environment in that new thread.
 </Accordion>
 
 ## `.scan()`
 
-The `Transpiler` instance can also scan some source code and return a list of its imports and exports, plus additional metadata about each one. [Type-only](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export) imports and exports are ignored.
+The `.scan()` method scans source code and returns a list of its imports and exports, plus metadata about each one. [Type-only](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-8.html#type-only-imports-and-export) imports and exports are ignored.
 
 <CodeGroup>
   ```ts example.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -133,7 +138,7 @@ The `Transpiler` instance can also scan some source code and return a list of it
   ```
 </CodeGroup>
 
-Each import in the `imports` array has a `path` and `kind`. Bun categories imports into the following kinds:
+Each import in the `imports` array has a `path` and `kind`. Bun categorizes imports into the following kinds:
 
 * `import-statement`: `import React from 'react'`
 * `require-call`: `const val = require('./cjs.js')`
@@ -146,7 +151,7 @@ Each import in the `imports` array has a `path` and `kind`. Bun categories impor
 
 ## `.scanImports()`
 
-For performance-sensitive code, you can use the `.scanImports()` method to get a list of imports. It's faster than `.scan()` (especially for large files) but marginally less accurate due to some performance optimizations.
+In performance-sensitive code, use the `.scanImports()` method to get a list of imports. It's faster than `.scan()` (especially for large files) but marginally less accurate due to its performance optimizations.
 
 <CodeGroup>
   ```ts example.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/file-system-router.md
+Downloaded: 2026-06-30T20:44:18.832Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,11 +11,11 @@
 
 > Bun provides a fast API for resolving routes against file-system paths
 
-This API is primarily intended for library authors. At the moment only Next.js-style file-system routing is supported, but other styles may be added in the future.
+This API is intended primarily for library authors. It supports only Next.js-style file-system routing.
 
 ## Next.js-style
 
-The `FileSystemRouter` class can resolve routes against a `pages` directory. (The Next.js 13 `app` directory is not yet supported.) Consider the following `pages` directory:
+The `FileSystemRouter` class resolves routes against a `pages` directory. (The Next.js 13 `app` directory is not supported.) Consider the following `pages` directory:
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 pages
@@ -22,7 +27,7 @@ pages
 └── [[...catchall]].tsx
 ```
 
-The `FileSystemRouter` can be used to resolve routes against this directory:
+To resolve routes against this directory:
 
 ```ts router.ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const router = new Bun.FileSystemRouter({
@@ -44,7 +49,7 @@ router.match("/");
 }
 ```
 
-Query parameters will be parsed and returned in the `query` property.
+Query parameters are parsed and returned in the `query` property.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 router.match("/settings?foo=bar");
@@ -62,7 +67,7 @@ router.match("/settings?foo=bar");
 }
 ```
 
-The router will automatically parse URL parameters and return them in the `params` property:
+The router parses URL parameters and returns them in the `params` property:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 router.match("/blog/my-cool-post");
@@ -80,13 +85,13 @@ router.match("/blog/my-cool-post");
 }
 ```
 
-The `.match()` method also accepts `Request` and `Response` objects. The `url` property will be used to resolve the route.
+The `.match()` method also accepts `Request` and `Response` objects; their `url` property is used to resolve the route.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 router.match(new Request("https://example.com/blog/my-cool-post"));
 ```
 
-The router will read the directory contents on initialization. To re-scan the files, use the `.reload()` method.
+The router reads the directory contents on initialization. To re-scan the files, use the `.reload()` method.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 router.reload();

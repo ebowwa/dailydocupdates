@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/drizzle.md
+Downloaded: 2026-06-30T20:44:18.799Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,7 +13,7 @@ Drizzle is an ORM that supports both a SQL-like "query builder" API and an ORM-l
 
 ***
 
-Let's get started by creating a fresh project with `bun init` and installing Drizzle.
+Create a fresh project with `bun init` and install Drizzle.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun init -y
@@ -18,7 +23,7 @@ bun add -D drizzle-kit
 
 ***
 
-Then we'll connect to a SQLite database using the `bun:sqlite` module and create the Drizzle database instance.
+Then connect to a SQLite database with the `bun:sqlite` module and create the Drizzle database instance.
 
 ```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { drizzle } from "drizzle-orm/bun-sqlite";
@@ -43,7 +48,7 @@ console.log(result);
 
 ***
 
-Then run `index.ts` with Bun. Bun will automatically create `sqlite.db` and execute the query.
+Then run `index.ts` with Bun. Bun creates `sqlite.db` and executes the query.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run index.ts
@@ -57,7 +62,7 @@ bun run index.ts
 
 ***
 
-Lets give our database a proper schema. Create a `schema.ts` file and define a `movies` table.
+Now give the database a schema. Create a `schema.ts` file and define a `movies` table.
 
 ```ts schema.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
@@ -71,7 +76,7 @@ export const movies = sqliteTable("movies", {
 
 ***
 
-We can use the `drizzle-kit` CLI to generate an initial SQL migration.
+Generate an initial SQL migration with the `drizzle-kit` CLI.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bunx drizzle-kit generate --dialect sqlite --schema ./schema.ts
@@ -79,7 +84,7 @@ bunx drizzle-kit generate --dialect sqlite --schema ./schema.ts
 
 ***
 
-This creates a new `drizzle` directory containing a `.sql` migration file and `meta` directory.
+The command creates a `drizzle` directory containing a `.sql` migration file and a `meta` directory.
 
 ```txt File Tree icon="folder-tree" theme={"theme":{"light":"github-light","dark":"dracula"}}
 drizzle
@@ -91,9 +96,7 @@ drizzle
 
 ***
 
-We can execute these migrations with a `migrate.ts` script.
-
-This script creates a new connection to a SQLite database that writes to `sqlite.db`, then executes all unexecuted migrations in the `drizzle` directory.
+Execute these migrations with a `migrate.ts` script. It connects to `sqlite.db`, then executes all unexecuted migrations in the `drizzle` directory.
 
 ```ts migrate.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { migrate } from "drizzle-orm/bun-sqlite/migrator";
@@ -108,7 +111,7 @@ migrate(db, { migrationsFolder: "./drizzle" });
 
 ***
 
-We can run this script with `bun` to execute the migration.
+Run the script with `bun` to execute the migration.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run migrate.ts
@@ -116,7 +119,7 @@ bun run migrate.ts
 
 ***
 
-Now that we have a database, let's add some data to it. Create a `seed.ts` file with the following contents.
+Now add some data to the database. Create a `seed.ts` file with the following contents.
 
 ```ts seed.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { db } from "./db";
@@ -154,7 +157,7 @@ Seeding complete.
 
 ***
 
-We finally have a database with a schema and some sample data. Let's use Drizzle to query it. Replace the contents of `index.ts` with the following.
+The database now has a schema and some sample data. Query it with Drizzle by replacing the contents of `index.ts` with the following.
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import * as schema from "./schema";
@@ -166,7 +169,7 @@ console.log(result);
 
 ***
 
-Then run the file. You should see the three movies we inserted.
+Then run the file. You should see the three movies you inserted.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run index.ts
@@ -192,4 +195,4 @@ bun run index.ts
 
 ***
 
-Refer to the [Drizzle website](https://orm.drizzle.team/docs/overview) for complete documentation.
+See the [Drizzle docs](https://orm.drizzle.team/docs/overview).

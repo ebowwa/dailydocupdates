@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/process/os-signals.md
+Downloaded: 2026-06-30T20:44:18.809Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,7 +19,7 @@ process.on("SIGINT", () => {
 
 ***
 
-If you don't know which signal to listen for, you listen to the [`"beforeExit"`](https://nodejs.org/api/process.html#event-beforeexit) and [`"exit"`](https://nodejs.org/api/process.html#event-exit) events.
+If you don't know which signal to listen for, listen for the [`"beforeExit"`](https://nodejs.org/api/process.html#event-beforeexit) and [`"exit"`](https://nodejs.org/api/process.html#event-exit) events.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 process.on("beforeExit", code => {
@@ -28,4 +33,4 @@ process.on("exit", code => {
 
 ***
 
-See [Docs > API > Utils](/runtime/utils) for more useful utilities.
+See [Utils](/runtime/utils) for more utilities.

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/skip-tests.md
+Downloaded: 2026-06-30T20:44:18.819Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -16,7 +21,7 @@ test.skip("unimplemented feature", () => {
 
 ***
 
-Running `bun test` will not execute this test. It will be marked as skipped in the terminal output.
+Running `bun test` doesn't execute this test. The terminal output marks it as skipped.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test
@@ -40,4 +45,4 @@ Ran 3 tests across 1 files. [74.00ms]
 See also:
 
 * [Mark a test as a todo](/guides/test/todo-tests)
-* [Docs > Test runner > Writing tests](/test/writing-tests)
+* [Writing tests](/test/writing-tests)

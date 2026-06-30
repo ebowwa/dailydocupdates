@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/stric.md
+Downloaded: 2026-06-30T20:44:18.802Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,9 +11,9 @@
 
 [StricJS](https://github.com/bunsvr) is a Bun framework for building high-performance web applications and APIs.
 
-* **Fast** — Stric is one of the fastest Bun frameworks. See [benchmark](https://github.com/bunsvr/benchmark) for more details.
-* **Minimal** — The basic components like `@stricjs/router` and `@stricjs/utils` are under 50kB and require no external dependencies.
-* **Extensible** — Stric includes with a plugin system, dependency injection, and optional optimizations for handling requests.
+* **Fast** — Stric is one of the fastest Bun frameworks. See the [benchmark](https://github.com/bunsvr/benchmark).
+* **Minimal** — Core components like `@stricjs/router` and `@stricjs/utils` are under 50kB and require no external dependencies.
+* **Extensible** — Stric includes a plugin system, dependency injection, and optional optimizations for handling requests.
 
 ***
 

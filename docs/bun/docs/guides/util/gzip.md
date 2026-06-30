@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/util/gzip.md
+Downloaded: 2026-06-30T20:44:18.821Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -17,4 +22,4 @@ const decompressed = Bun.gunzipSync(compressed);
 
 ***
 
-See [Docs > API > Utils](/runtime/utils) for more useful utilities.
+See [Utils](/runtime/utils).

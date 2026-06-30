@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/binary/buffer-to-typedarray.md
+Downloaded: 2026-06-30T20:44:18.797Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -13,4 +18,4 @@ buf instanceof Uint8Array; // => true
 
 ***
 
-See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Binary Data](/runtime/binary-data#conversion).

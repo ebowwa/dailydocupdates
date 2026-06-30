@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/index.md
+Downloaded: 2026-06-30T20:44:18.841Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Bun's fast, built-in, Jest-compatible test runner with TypeScript support, lifecycle hooks, mocking, and watch mode
 
-Bun ships with a fast, built-in, Jest-compatible test runner. Tests are executed with the Bun runtime, and support the following features.
+Bun ships with a fast, built-in, Jest-compatible test runner. Tests run in the Bun runtime and support the following features.
 
 * TypeScript and JSX
 * Lifecycle hooks
@@ -26,7 +31,7 @@ Bun ships with a fast, built-in, Jest-compatible test runner. Tests are executed
 bun test
 ```
 
-Tests are written in JavaScript or TypeScript with a Jest-like API. Refer to [Writing tests](/test/writing-tests) for full documentation.
+Tests are written in JavaScript or TypeScript with a Jest-like API. See [Writing tests](/test/writing-tests).
 
 ```ts math.test.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { expect, test } from "bun:test";
@@ -43,7 +48,7 @@ The runner recursively searches the working directory for files that match the f
 * `*.spec.{js|jsx|ts|tsx}`
 * `*_spec.{js|jsx|ts|tsx}`
 
-You can filter the set of *test files* to run by passing additional positional arguments to `bun test`. Any test file with a path that matches one of the filters will run. Commonly, these filters will be file or directory names; glob patterns are not yet supported.
+To filter the set of *test files* to run, pass additional positional arguments to `bun test`. Any test file with a path that matches one of the filters runs. Filters are commonly file or directory names; glob patterns are not yet supported.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test <filter> <filter> ...
@@ -62,7 +67,7 @@ To run a specific file in the test runner, make sure the path starts with `./` o
 bun test ./test/specific-file.test.ts
 ```
 
-The test runner runs all tests in a single process. It loads all `--preload` scripts (see [Lifecycle](/test/lifecycle) for details), then runs all tests. If a test fails, the test runner will exit with a non-zero exit code.
+The test runner runs all tests in a single process. It loads all `--preload` scripts (see [Lifecycle](/test/lifecycle)), then runs all tests. If a test fails, the test runner exits with a non-zero exit code.
 
 ## CI/CD integration
 
@@ -70,7 +75,7 @@ The test runner runs all tests in a single process. It loads all `--preload` scr
 
 ### GitHub Actions
 
-`bun test` automatically detects if it's running inside GitHub Actions and will emit GitHub Actions annotations to the console directly.
+`bun test` automatically detects when it's running inside GitHub Actions and emits GitHub Actions annotations to the console directly.
 
 No configuration is needed, other than installing `bun` in the workflow and running `bun test`.
 
@@ -94,24 +99,21 @@ jobs:
         run: bun test
 ```
 
-From there, you'll get GitHub Actions annotations.
-
 ### JUnit XML reports (GitLab, etc.)
 
-To use `bun test` with a JUnit XML reporter, you can use the `--reporter=junit` in combination with `--reporter-outfile`.
+To write a JUnit XML report, pass `--reporter=junit` together with `--reporter-outfile`.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --reporter=junit --reporter-outfile=./bun.xml
 ```
 
-This will continue to output to stdout/stderr as usual, and also write a JUnit
-XML report to the given path at the very end of the test run.
+`bun test` still writes to stdout/stderr as usual, and writes the JUnit XML report to the given path at the end of the run.
 
 JUnit XML is a popular format for reporting test results in CI/CD pipelines.
 
 ## Timeouts
 
-Use the `--timeout` flag to specify a *per-test* timeout in milliseconds. If a test times out, it will be marked as failed. The default value is `5000`.
+Use the `--timeout` flag to specify a *per-test* timeout in milliseconds. If a test times out, it is marked as failed. The default value is `5000`.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 # default value is 5000
@@ -120,7 +122,7 @@ bun test --timeout 20
 
 ## Concurrent test execution
 
-By default, Bun runs all tests sequentially within each test file. You can enable concurrent execution to run async tests in parallel, significantly speeding up test suites with independent tests.
+By default, Bun runs all tests sequentially within each test file. Concurrent execution runs async tests in parallel, which speeds up test suites with independent tests.
 
 ### `--concurrent` flag
 
@@ -130,7 +132,7 @@ Use the `--concurrent` flag to run all tests concurrently within their respectiv
 bun test --concurrent
 ```
 
-When this flag is enabled, all tests will run in parallel unless explicitly marked with `test.serial`.
+When this flag is enabled, all tests run in parallel unless marked with `test.serial`.
 
 ### `--max-concurrency` flag
 
@@ -233,7 +235,7 @@ retry = 3
 
 ## Rerun tests
 
-Use the `--rerun-each` flag to run each test multiple times. This is useful for detecting flaky or non-deterministic test failures.
+Use the `--rerun-each` flag to run each test multiple times. This surfaces flaky or non-deterministic test failures.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --rerun-each 100
@@ -247,7 +249,7 @@ Use the `--randomize` flag to run tests in a random order. This helps detect tes
 bun test --randomize
 ```
 
-When using `--randomize`, the seed used for randomization will be displayed in the test summary:
+With `--randomize`, the seed used for randomization is displayed in the test summary:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --randomize
@@ -263,18 +265,18 @@ Ran 10 tests across 2 files. [50.00ms]
 
 ### Reproducible random order with `--seed`
 
-Use the `--seed` flag to specify a seed for the randomization. This allows you to reproduce the same test order when debugging order-dependent failures.
+Use the `--seed` flag to specify the randomization seed and reproduce the same test order when debugging order-dependent failures.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Reproduce a previous randomized run
 bun test --seed 123456
 ```
 
-The `--seed` flag implies `--randomize`, so you don't need to specify both. Using the same seed value will always produce the same test execution order, making it easier to debug intermittent failures caused by test interdependencies.
+The `--seed` flag implies `--randomize`, so you don't need to specify both. The same seed always produces the same test execution order.
 
 ## Bail out with `--bail`
 
-Use the `--bail` flag to abort the test run early after a pre-determined number of test failures. By default Bun will run all tests and report all failures, but sometimes in CI environments it's preferable to terminate earlier to reduce CPU usage.
+Use the `--bail` flag to abort the test run after a given number of test failures. By default, Bun runs all tests and reports all failures, but in CI it can be preferable to stop early and reduce CPU usage.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 # bail after 1 failure
@@ -286,7 +288,7 @@ bun test --bail=10
 
 ## Watch mode
 
-Similar to `bun run`, you can pass the `--watch` flag to `bun test` to watch for changes and re-run tests.
+Like `bun run`, `bun test` accepts the `--watch` flag to watch for changes and re-run tests.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --watch
@@ -303,13 +305,13 @@ Bun supports the following lifecycle hooks:
 | `afterEach`  | Runs after each test.       |
 | `afterAll`   | Runs once after all tests.  |
 
-These hooks can be defined inside test files, or in a separate file that is preloaded with the `--preload` flag.
+Define hooks inside test files, or in a separate file preloaded with the `--preload` flag.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --preload ./setup.ts
 ```
 
-See [Test > Lifecycle](/test/lifecycle) for complete documentation.
+See [Lifecycle](/test/lifecycle).
 
 ## Mocks
 
@@ -327,7 +329,7 @@ test("random", () => {
 });
 ```
 
-Alternatively, you can use `jest.fn()`, it behaves identically.
+Alternatively, use `jest.fn()`; it behaves identically.
 
 ```ts title="math.test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect, mock } from "bun:test"; // [!code --]
@@ -337,11 +339,11 @@ const random = mock(() => Math.random()); // [!code --]
 const random = jest.fn(() => Math.random()); // [!code ++]
 ```
 
-See [Test > Mocks](/test/mocks) for complete documentation.
+See [Mocks](/test/mocks).
 
 ## Snapshot testing
 
-Snapshots are supported by `bun test`.
+`bun test` supports snapshot testing.
 
 ```ts title="math.test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // example usage of toMatchSnapshot
@@ -358,7 +360,7 @@ To update snapshots, use the `--update-snapshots` flag.
 bun test --update-snapshots
 ```
 
-See [Test > Snapshots](/test/snapshots) for complete documentation.
+See [Snapshots](/test/snapshots).
 
 ## UI & DOM testing
 
@@ -368,7 +370,7 @@ Bun is compatible with popular UI testing libraries:
 * [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro/)
 * [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 
-See [Test > DOM Testing](/test/dom) for complete documentation.
+See [DOM testing](/test/dom).
 
 ## Performance
 
@@ -380,7 +382,7 @@ Bun's test runner is fast.
 
 ## AI Agent Integration
 
-When using Bun's test runner with AI coding assistants, you can enable quieter output to improve readability and reduce context noise. This feature minimizes test output verbosity while preserving essential failure information.
+When you use Bun's test runner with an AI coding assistant, you can enable quieter output that keeps failure details but drops the rest of the noise.
 
 ### Environment Variables
 
@@ -405,8 +407,6 @@ CLAUDECODE=1 bun test
 # Still shows failures and summary, but hides verbose passing test output
 ```
 
-This feature is particularly useful in AI-assisted development workflows where reduced output verbosity improves context efficiency while maintaining visibility into test failures.
-
 ***
 
 # CLI Usage
@@ -422,12 +422,11 @@ bun test <patterns>
 </ParamField>
 
 <ParamField path="--rerun-each" type="number">
-  Re-run each test file <code>NUMBER</code> times, helps catch certain bugs
+  Re-run each test file <code>NUMBER</code> times to help catch certain bugs
 </ParamField>
 
 <ParamField path="--retry" type="number">
-  Default retry count for all tests. Failed tests will be retried up to <code>NUMBER</code> times. Overridden by
-  per-test <code>{`{ retry: N }`}</code>
+  Retry failed tests up to <code>NUMBER</code> times. Overridden by per-test <code>{`{ retry: N }`}</code>
 </ParamField>
 
 <ParamField path="--concurrent" type="boolean">
@@ -509,7 +508,7 @@ Run all test files with "foo" or "bar" in the file name:
 bun test foo bar
 ```
 
-Run all test files, only including tests whose names includes "baz":
+Run all test files, only including tests whose name includes "baz":
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --test-name-pattern baz

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/http/tls.md
+Downloaded: 2026-06-30T20:44:18.834Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Enable TLS in Bun.serve
 
-Bun supports TLS out of the box, powered by [BoringSSL](https://boringssl.googlesource.com/boringssl). Enable TLS by passing in a value for `key` and `cert`; both are required to enable TLS.
+Bun's TLS support is built in, powered by [BoringSSL](https://boringssl.googlesource.com/boringssl). To enable TLS, pass both `key` and `cert`.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
@@ -17,7 +22,7 @@ Bun.serve({
 });
 ```
 
-The `key` and `cert` fields expect the *contents* of your TLS key and certificate, *not a path to it*. This can be a string, `BunFile`, `TypedArray`, or `Buffer`.
+The `key` and `cert` fields expect the *contents* of your TLS key and certificate, *not a path to it*. Each can be a string, `BunFile`, `TypedArray`, or `Buffer`.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
@@ -46,7 +51,7 @@ Bun.serve({
 
 ### CA Certificates
 
-Optionally, you can override the trusted CA certificates by passing a value for `ca`. By default, the server will trust the list of well-known CAs curated by Mozilla. When `ca` is specified, the Mozilla list is overwritten.
+Pass `ca` to override the trusted CA certificates. By default, the server trusts the list of well-known CAs curated by Mozilla; setting `ca` replaces that list.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/link.md
+Downloaded: 2026-06-30T20:44:18.826Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -25,14 +30,14 @@ Or add it in dependencies in your package.json file:
   "cool-pkg": "link:cool-pkg"
 ```
 
-This package can now be "linked" into other projects using `bun link cool-pkg`. This will create a symlink in the `node_modules` directory of the target project, pointing to the local directory.
+This package can now be "linked" into other projects using `bun link cool-pkg`, which creates a symlink in the target project's `node_modules` directory pointing to the local directory.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 cd /path/to/my-app
 bun link cool-pkg
 ```
 
-In addition, the `--save` flag can be used to add `cool-pkg` to the `dependencies` field of your app's package.json with a special version specifier that tells Bun to load from the registered local directory instead of installing from `npm`:
+The `--save` flag also adds `cool-pkg` to the `dependencies` field of your app's package.json, with a version specifier that tells Bun to load from the registered local directory instead of installing from `npm`:
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -104,7 +109,7 @@ bun link <packages>
 </ParamField>
 
 <ParamField path="--save" type="boolean" default="true">
-  Save to <code>package.json</code> (true by default)
+  Save to <code>package.json</code>
 </ParamField>
 
 <ParamField path="--trust" type="boolean">
@@ -122,8 +127,8 @@ bun link <packages>
 </ParamField>
 
 <ParamField path="--backend" type="string" default="clonefile">
-  Platform-specific optimizations for installing dependencies. Possible values: <code>clonefile</code> (default),{" "}
-  <code>hardlink</code>, <code>symlink</code>, <code>copyfile</code>
+  Platform-specific optimizations for installing dependencies. One of <code>clonefile</code>, <code>hardlink</code>,{" "}
+  <code>symlink</code>, or <code>copyfile</code>
 </ParamField>
 
 <ParamField path="--linker" type="string">
@@ -154,13 +159,13 @@ bun link <packages>
 </ParamField>
 
 <ParamField path="--network-concurrency" type="number" default="48">
-  Maximum number of concurrent network requests (default 48)
+  Maximum number of concurrent network requests
 </ParamField>
 
 ### Performance & Resource
 
 <ParamField path="--concurrent-scripts" type="number" default="5">
-  Maximum number of concurrent jobs for lifecycle scripts (default 5)
+  Maximum number of concurrent jobs for lifecycle scripts
 </ParamField>
 
 ### Caching

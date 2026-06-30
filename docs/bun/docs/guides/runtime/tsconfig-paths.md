@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/tsconfig-paths.md
+Downloaded: 2026-06-30T20:44:18.815Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -19,7 +24,7 @@ Bun reads the `paths` field in your `tsconfig.json` to re-write import paths. Th
 
 ***
 
-With the above `tsconfig.json`, the following imports will be re-written:
+With this `tsconfig.json`, the following imports are re-written:
 
 ```ts tsconfig.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { z } from "my-custom-name"; // imports from "zod"
@@ -28,4 +33,4 @@ import { Button } from "@components/Button"; // imports from "./src/components/B
 
 ***
 
-See [Docs > Runtime > TypeScript](/runtime/typescript) for more information on using TypeScript with Bun.
+See [TypeScript](/runtime/typescript).

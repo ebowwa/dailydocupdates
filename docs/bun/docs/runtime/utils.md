@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/utils.md
-Downloaded: 2026-06-29T20:40:27.191Z
+Downloaded: 2026-06-30T20:44:18.839Z
 -->
 
 > ## Documentation Index
@@ -42,7 +42,7 @@ Bun.main;
 // /path/to/script.ts
 ```
 
-This is particular useful for determining whether a script is being directly executed, as opposed to being imported by another script.
+Use this to determine whether a script is being executed directly, as opposed to being imported by another script.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 if (import.meta.path === Bun.main) {
@@ -108,7 +108,7 @@ const ls = Bun.which("ls", {
 console.log(ls); // "/usr/bin/ls"
 ```
 
-Pass a `cwd` option to resolve for executable from within a specific directory.
+Pass a `cwd` option to resolve the executable from within a specific directory.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const ls = Bun.which("ls", {
@@ -119,7 +119,7 @@ const ls = Bun.which("ls", {
 console.log(ls); // null
 ```
 
-You can think of this as a builtin alternative to the [`which`](https://www.npmjs.com/package/which) npm package.
+This is a built-in alternative to the [`which`](https://www.npmjs.com/package/which) npm package.
 
 ## `Bun.randomUUIDv7()`
 
@@ -134,7 +134,7 @@ const id = randomUUIDv7();
 
 A UUID v7 is a 128-bit value that encodes the current timestamp, a random value, and a counter. The timestamp is encoded using the lowest 48 bits, and the random value and counter are encoded using the remaining bits.
 
-The `timestamp` parameter defaults to the current time in milliseconds. When the timestamp changes, the counter is reset to a pseudo-random integer wrapped to 4096. This counter is atomic and threadsafe, meaning that using `Bun.randomUUIDv7()` in many Workers within the same process running at the same timestamp will not have colliding counter values.
+The `timestamp` parameter defaults to the current time in milliseconds. When the timestamp changes, the counter is reset to a pseudo-random integer wrapped to 4096. This counter is atomic and threadsafe, so calls to `Bun.randomUUIDv7()` from many Workers in the same process at the same timestamp don't produce colliding counter values.
 
 The final 8 bytes of the UUID are a cryptographically secure random value. It uses the same random number generator used by `crypto.randomUUID()` (which comes from BoringSSL, which in turn comes from the platform-specific system random number generator usually provided by the underlying hardware).
 
@@ -151,7 +151,7 @@ namespace Bun {
 }
 ```
 
-You can optionally set encoding to `"buffer"` to get a 16-byte buffer instead of a string. This can sometimes avoid string conversion overhead.
+Pass `"buffer"` as the encoding to get a 16-byte buffer instead of a string. This can avoid string conversion overhead.
 
 ```ts buffer.ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buffer = Bun.randomUUIDv7("buffer");
@@ -180,7 +180,7 @@ const result = peek(promise);
 console.log(result); // "hi"
 ```
 
-This is important when attempting to reduce the number of extraneous microticks in performance-sensitive code. It's an advanced API — review the examples below before using it in production.
+Use it to avoid extraneous microticks in performance-sensitive code. It's an advanced API; review the following examples before using it in production.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { peek } from "bun";
@@ -212,7 +212,7 @@ test("peek", () => {
 });
 ```
 
-The `peek.status` function lets you read the status of a promise without resolving it.
+`peek.status` reads the status of a promise without resolving it.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { peek } from "bun";
@@ -232,14 +232,14 @@ test("peek.status", () => {
 
 ## `Bun.openInEditor()`
 
-Opens a file in your default editor. Bun auto-detects your editor via the `$VISUAL` or `$EDITOR` environment variables.
+Opens a file in your default editor. Bun auto-detects your editor from the `$VISUAL` or `$EDITOR` environment variables.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const currentFile = import.meta.url;
 Bun.openInEditor(currentFile);
 ```
 
-You can override this via the `debug.editor` setting in your [`bunfig.toml`](/runtime/bunfig).
+You can override this with the `debug.editor` setting in your [`bunfig.toml`](/runtime/bunfig).
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [debug] # [!code ++]
@@ -312,8 +312,8 @@ Escapes the following characters from an input string:
 * `>` becomes `&gt;`
 
 This function is optimized for large input. On an M1X, it processes 480 MB/s -
-20 GB/s, depending on how much data is being escaped and whether there is non-ascii
-text. Non-string types will be converted to a string before escaping.
+20 GB/s, depending on how much data is being escaped and whether there is non-ASCII
+text. Non-string types are converted to a string before escaping.
 
 ## `Bun.stringWidth()`
 
@@ -330,16 +330,11 @@ Bun.stringWidth("\u001b[31mhello\u001b[0m"); // => 5
 Bun.stringWidth("\u001b[31mhello\u001b[0m", { countAnsiEscapeCodes: true }); // => 12
 ```
 
-This is useful for:
+Use it to align text in a terminal or to check whether a string contains ANSI escape codes.
 
-* Aligning text in a terminal
-* Quickly checking if a string contains ANSI escape codes
-* Measuring the width of a string in a terminal
+The API matches the "string-width" npm package, so existing code can be ported to Bun and vice versa.
 
-This API is designed to match the popular "string-width" package, so that
-existing code can be ported to Bun and vice versa.
-
-[In this benchmark](https://github.com/oven-sh/bun/blob/5147c0ba7379d85d4d1ed0714b84d6544af917eb/bench/snippets/string-width.mjs#L13), `Bun.stringWidth` is a \~6,756x faster than the `string-width` npm package for input larger than about 500 characters. Big thanks to [sindresorhus](https://github.com/sindresorhus) for their work on `string-width`!
+[In this benchmark](https://github.com/oven-sh/bun/blob/5147c0ba7379d85d4d1ed0714b84d6544af917eb/bench/snippets/string-width.mjs#L13), `Bun.stringWidth` is \~6,756x faster than the `string-width` npm package for input larger than about 500 characters. Big thanks to [sindresorhus](https://github.com/sindresorhus) for their work on `string-width`.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 ❯ bun string-width.mjs
@@ -357,10 +352,10 @@ benchmark                                          time (avg)             (min �
 npm/string-width    500 chars ascii             249,710 ns/iter (239,970 ns … 293,180 ns) 250,930 ns  276,700 ns 281,450 ns
 ```
 
-To make `Bun.stringWidth` fast, we've implemented it in native code using optimized SIMD instructions, accounting for Latin1, UTF-16, and UTF-8 encodings. It passes `string-width`'s tests.
+`Bun.stringWidth` is implemented in native code with SIMD instructions and accounts for Latin1, UTF-16, and UTF-8 encodings. It passes `string-width`'s tests.
 
 <Accordion title="View full benchmark">
-  As a reminder, 1 nanosecond (ns) is 1 billionth of a second. Here's a reference for converting between units:
+  1 nanosecond (ns) is 1 billionth of a second. For converting between units:
 
   | Unit | 1 Millisecond |
   | ---- | ------------- |
@@ -667,7 +662,7 @@ const str = Bun.inspect(arr);
 
 ### `Bun.inspect.custom`
 
-This is the symbol that Bun uses to implement `Bun.inspect`. You can override this to customize how your objects are printed. It is identical to `util.inspect.custom` in Node.js.
+The symbol Bun uses to implement `Bun.inspect`. Override it to customize how your objects are printed. It is identical to `util.inspect.custom` in Node.js.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 class Foo {
@@ -702,7 +697,7 @@ console.log(
 // └───┴───┴───┴───┘
 ```
 
-Additionally, you can pass an array of property names to display only a subset of properties.
+Pass an array of property names to display only those properties.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(
@@ -723,7 +718,7 @@ console.log(
 // └───┴───┴───┘
 ```
 
-You can also conditionally enable ANSI colors by passing `{ colors: true }`.
+Pass `{ colors: true }` to enable ANSI colors.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(
@@ -790,7 +785,7 @@ await Bun.readableStreamToFormData(stream, multipartFormBoundary);
 
 ## `Bun.resolveSync()`
 
-Resolves a file path or module specifier using Bun's internal module resolution algorithm. The first argument is the path to resolve, and the second argument is the "root". If no match is found, an `Error` is thrown.
+Resolves a file path or module specifier using Bun's internal [module resolution](/runtime/module-resolution) algorithm. The first argument is the path to resolve, and the second argument is the "root". If no match is found, it throws an `Error`.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.resolveSync("./foo.ts", "/path/to/project");
@@ -821,7 +816,7 @@ Bun.resolveSync("./foo.ts", import.meta.dir);
 
 `Bun.stripANSI(text: string): string`
 
-Strip ANSI escape codes from a string. This is useful for removing colors and formatting from terminal output.
+Strip ANSI escape codes from a string. Use it to remove colors and formatting from terminal output.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const coloredText = "\u001b[31mHello\u001b[0m \u001b[32mWorld\u001b[0m";
@@ -833,7 +828,7 @@ const formatted = "\u001b[1m\u001b[4mBold and underlined\u001b[0m";
 console.log(Bun.stripANSI(formatted)); // => "Bold and underlined"
 ```
 
-`Bun.stripANSI` is significantly faster than the popular [`strip-ansi`](https://www.npmjs.com/package/strip-ansi) npm package:
+`Bun.stripANSI` is faster than the [`strip-ansi`](https://www.npmjs.com/package/strip-ansi) npm package:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun bench/snippets/strip-ansi.mjs
@@ -890,7 +885,7 @@ npm/strip-ansi 212,992 chars long-ansi      1.36 ms/iter   1.38 ms
 
 `Bun.wrapAnsi(input: string, columns: number, options?: WrapAnsiOptions): string`
 
-Wrap text to a specified column width while preserving ANSI escape codes, hyperlinks, and handling Unicode/emoji width correctly. This is a native, high-performance alternative to the popular [`wrap-ansi`](https://www.npmjs.com/package/wrap-ansi) npm package.
+Wrap text to a specified column width. It preserves ANSI escape codes and hyperlinks and handles Unicode/emoji width correctly. This is a native alternative to the [`wrap-ansi`](https://www.npmjs.com/package/wrap-ansi) npm package.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Basic wrapping at 20 columns

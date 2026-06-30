@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/mongoose.md
+Downloaded: 2026-06-30T20:44:18.800Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Read and write data to MongoDB using Mongoose and Bun
 
-MongoDB and Mongoose work out of the box with Bun. This guide assumes you've already installed MongoDB and are running it as background process/service on your development machine. Follow [this guide](https://www.mongodb.com/docs/manual/installation/) for details.
+MongoDB and Mongoose work with Bun with no extra configuration. This guide assumes you've already installed MongoDB and are running it as a background process or service on your development machine. See the [MongoDB installation guide](https://www.mongodb.com/docs/manual/installation/) for details.
 
 ***
 
@@ -26,7 +31,7 @@ bun add mongoose
 
 ***
 
-In `schema.ts` we'll declare and export an `Animal` model.
+In `schema.ts`, declare and export an `Animal` model.
 
 ```ts schema.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import * as mongoose from "mongoose";
@@ -51,7 +56,7 @@ export const Animal = mongoose.model("Animal", animalSchema);
 
 ***
 
-Now from `index.ts` we can import `Animal`, connect to MongoDB, and add some data to our database.
+In `index.ts`, import `Animal`, connect to MongoDB, and add some data to the database.
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import * as mongoose from "mongoose";
@@ -77,7 +82,7 @@ await mongoose.disconnect();
 
 ***
 
-Let's run this with `bun run`.
+Run the file with `bun run`.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run index.ts
@@ -89,4 +94,4 @@ Moo!
 
 ***
 
-This is an introduction to using Mongoose with TypeScript and Bun. As you build your application, refer to the official [MongoDB](https://www.mongodb.com/docs) and [Mongoose](https://mongoosejs.com/docs/) sites for complete documentation.
+As you build your application, refer to the official [MongoDB](https://www.mongodb.com/docs) and [Mongoose](https://mongoosejs.com/docs/) docs.

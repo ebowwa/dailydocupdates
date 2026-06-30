@@ -1,14 +1,19 @@
+<!--
+Source: https://bun.com/docs/guides/deployment/railway.md
+Downloaded: 2026-06-30T20:44:18.799Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Deploy a Bun application on Railway
 
-> Deploy Bun applications to Railway with this step-by-step guide covering CLI and dashboard methods, optional PostgreSQL setup, and automatic SSL configuration.
+> Deploy a Bun application to Railway from the CLI or dashboard, with optional PostgreSQL setup and automatic SSL
 
-Railway is an infrastructure platform where you can provision infrastructure, develop with that infrastructure locally, and then deploy to the cloud. It enables instant deployments from GitHub with zero configuration, automatic SSL, and built-in database provisioning.
+Railway is an infrastructure platform: you provision infrastructure, develop against it locally, then deploy to the cloud. It deploys from GitHub with zero configuration, handles SSL automatically, and provisions databases.
 
-This guide walks through deploying a Bun application with a PostgreSQL database (optional), which is exactly what the template below provides.
+This guide deploys a Bun application with an optional PostgreSQL database, the same setup the following template provides.
 
 You can either follow this guide step-by-step or deploy the pre-configured template with one click:
 
@@ -31,7 +36,7 @@ You can either follow this guide step-by-step or deploy the pre-configured templ
 
 <Steps>
   <Step title="Step 1">
-    Ensure sure you have the Railway CLI installed.
+    Install the Railway CLI.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     bun install -g @railway/cli
@@ -47,7 +52,7 @@ You can either follow this guide step-by-step or deploy the pre-configured templ
   </Step>
 
   <Step title="Step 3">
-    After successfully authenticating, initialize a new project.
+    After authenticating, initialize a new project.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     railway init
@@ -69,7 +74,7 @@ You can either follow this guide step-by-step or deploy the pre-configured templ
   </Step>
 
   <Step title="Step 5">
-    After the services have been created and connected, deploy the application to Railway. By default, services are only accessible within Railway's private network. To make your app publicly accessible, you need to generate a public domain.
+    After the services have been created and connected, deploy the application to Railway. By default, services are only accessible within Railway's private network, so generate a public domain to make your app publicly accessible.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     # Deploy your application
@@ -81,7 +86,7 @@ You can either follow this guide step-by-step or deploy the pre-configured templ
   </Step>
 </Steps>
 
-Your app is now live! Railway auto-deploys on every GitHub push.
+Your app is now live. Railway auto-deploys on every GitHub push.
 
 ***
 
@@ -117,7 +122,7 @@ Your app is now live! Railway auto-deploys on every GitHub push.
   </Step>
 </Steps>
 
-Your app is now live! Railway auto-deploys on every GitHub push.
+Your app is now live. Railway auto-deploys on every GitHub push.
 
 ***
 
@@ -125,7 +130,7 @@ Your app is now live! Railway auto-deploys on every GitHub push.
 
 By default, Railway uses [Nixpacks](https://docs.railway.com/guides/build-configuration#nixpacks-options) to automatically detect and build your Bun application with zero configuration.
 
-However, using the [Railpack](https://docs.railway.com/guides/build-configuration#railpack) application builder provides better Bun support, and will always support the latest version of Bun. The pre-configured templates use Railpack by default.
+However, the [Railpack](https://docs.railway.com/guides/build-configuration#railpack) application builder has better Bun support and always supports the latest version of Bun. The pre-configured templates use Railpack by default.
 
 To enable Railpack in a custom project, add the following to your `railway.json`:
 
@@ -138,4 +143,4 @@ To enable Railpack in a custom project, add the following to your `railway.json`
 }
 ```
 
-For more build configuration settings, check out the [Railway documentation](https://docs.railway.com/guides/build-configuration).
+For more build configuration settings, see the [Railway documentation](https://docs.railway.com/guides/build-configuration).

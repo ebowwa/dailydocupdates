@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/csrf.md
+Downloaded: 2026-06-30T20:44:18.831Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Generate and verify CSRF tokens with Bun's built-in API
 
-Bun provides a built-in API for generating and verifying [CSRF (Cross-Site Request Forgery)](https://owasp.org/www-community/attacks/csrf) tokens through `Bun.CSRF`. Tokens are signed with HMAC and include expiration timestamps to limit the token validity window.
+`Bun.CSRF` generates and verifies [CSRF (Cross-Site Request Forgery)](https://owasp.org/www-community/attacks/csrf) tokens. Tokens are signed with HMAC and include an expiration timestamp.
 
 ```ts title="csrf.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Generate a token bound to the requester's session
@@ -38,12 +43,12 @@ const token = Bun.CSRF.generate("my-secret-key");
 * `secret` (string, optional) — The secret key used to sign the token. If not provided, Bun generates a random in-memory default secret (unique per thread).
 * `options` (object, optional):
 
-| Option      | Type     | Default       | Description                                                                                                                                                     |
-| ----------- | -------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `expiresIn` | `number` | `86400000`    | Milliseconds until the token expires. Defaults to 24 hours.                                                                                                     |
-| `encoding`  | `string` | `"base64url"` | Token encoding format: `"base64"`, `"base64url"`, or `"hex"`.                                                                                                   |
-| `algorithm` | `string` | `"sha256"`    | HMAC algorithm: `"sha256"`, `"sha384"`, `"sha512"`, `"sha512-256"`, `"blake2b256"`, or `"blake2b512"`.                                                          |
-| `sessionId` | `string` | (none)        | Binds the token to the requesting principal (session ID, user ID, or equivalent). The token will only verify when the same `sessionId` is passed to `verify()`. |
+| Option      | Type     | Default       | Description                                                                                                                                                  |
+| ----------- | -------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `expiresIn` | `number` | `86400000`    | Milliseconds until the token expires. Defaults to 24 hours.                                                                                                  |
+| `encoding`  | `string` | `"base64url"` | Token encoding format: `"base64"`, `"base64url"`, or `"hex"`.                                                                                                |
+| `algorithm` | `string` | `"sha256"`    | HMAC algorithm: `"sha256"`, `"sha384"`, `"sha512"`, `"sha512-256"`, `"blake2b256"`, or `"blake2b512"`.                                                       |
+| `sessionId` | `string` | (none)        | Binds the token to the requesting principal (session ID, user ID, or equivalent). The token only verifies when the same `sessionId` is passed to `verify()`. |
 
 **Returns:** `string` — the encoded token.
 
@@ -165,7 +170,7 @@ console.log(`Listening on ${server.url}`);
 
 ## Default secret
 
-If you omit the `secret` parameter in both `generate()` and `verify()`, Bun uses a random secret generated once per thread. This is convenient for single-thread applications but won't work across multiple servers, workers, or after a restart.
+If you omit the `secret` parameter in both `generate()` and `verify()`, Bun uses a random secret generated once per thread. This is convenient for single-threaded applications, but tokens won't verify across servers or workers, or after a restart.
 
 ```ts title="default-secret.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Both calls use the same per-thread default secret within this runtime context.

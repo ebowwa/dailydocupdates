@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/audit.md
+Downloaded: 2026-06-30T20:44:18.825Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ Run the command in a project with a `bun.lock` file:
 bun audit
 ```
 
-Bun sends the list of installed packages and versions to NPM, and prints a report of any vulnerabilities that were found. Packages installed from registries other than the default registry are skipped.
+Bun sends the list of installed packages and versions to npm, and prints a report of any vulnerabilities found. Packages installed from registries other than the default registry are skipped.
 
 If no vulnerabilities are found, the command prints:
 
@@ -20,7 +25,7 @@ If no vulnerabilities are found, the command prints:
 No vulnerabilities found
 ```
 
-When vulnerabilities are detected, each affected package is listed along with the severity, a short description and a link to the advisory. At the end of the report Bun prints a summary and hints for updating:
+When vulnerabilities are detected, Bun lists each affected package with the severity, a short description, and a link to the advisory. At the end of the report it prints a summary and hints for updating:
 
 ```
 3 vulnerabilities (1 high, 2 moderate)
@@ -44,7 +49,7 @@ bun audit --audit-level=high
 bun audit --prod
 ```
 
-**`--ignore <CVE>`** - Ignore specific CVEs (can be used multiple times):
+**`--ignore <CVE>`** - Ignore specific CVEs (repeat the flag to ignore several):
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun audit --ignore CVE-2022-25883 --ignore CVE-2023-26136
@@ -60,4 +65,4 @@ bun audit --json
 
 ### Exit code
 
-`bun audit` will exit with code `0` if no vulnerabilities are found and `1` if the report lists any vulnerabilities. This will still happen even if `--json` is passed.
+`bun audit` exits with code `0` if no vulnerabilities are found and `1` if the report lists any, including when `--json` is passed.

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/run-tests.md
+Downloaded: 2026-06-30T20:44:18.818Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,7 +13,7 @@ Bun has a built-in [test runner](/test) with a Jest-like `expect` API.
 
 ***
 
-To use it, run the `bun test` command from your project directory. The test runner will recursively search for all files in the directory that match the following patterns and execute the tests they contain.
+To use it, run `bun test` from your project directory. The test runner recursively searches for files matching the following patterns and runs the tests they contain.
 
 ```txt File Tree icon="folder-tree" theme={"theme":{"light":"github-light","dark":"dracula"}}
 *.test.{js|jsx|ts|tsx}
@@ -19,7 +24,7 @@ To use it, run the `bun test` command from your project directory. The test runn
 
 ***
 
-Here's what the output of a typical test run looks like. In this case, there are three tests files (`test.test.js`, `test2.test.js`, and `test3.test.js`) containing two tests each (`add` and `multiply`).
+Here's the output of a typical run: three test files (`test.test.js`, `test2.test.js`, and `test3.test.js`), each containing two tests (`add` and `multiply`).
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test
@@ -46,7 +51,7 @@ Ran 6 tests across 3 files. [9.00ms]
 
 ***
 
-To only run certain test files, pass a positional argument to `bun test`. The runner will only execute files that contain that argument in their path.
+To only run certain test files, pass a positional argument to `bun test`. The runner only executes files with that argument in their path.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test test3
@@ -65,7 +70,7 @@ Ran 2 tests across 1 files. [15.00ms]
 
 ***
 
-All tests have a name, defined using the first parameter to the `test` function. Tests can also be grouped into suites with `describe`.
+Every test has a name: the first argument to the `test` function. Tests can also be grouped into suites with `describe`.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect, describe } from "bun:test";
@@ -83,9 +88,9 @@ describe("math", () => {
 
 ***
 
-To filter which tests are executed by name, use the `-t`/`--test-name-pattern` flag.
+To filter tests by name, use the `-t`/`--test-name-pattern` flag.
 
-Adding `-t add` will only run tests with "add" in the name. This works with test names defined with `test` or test suite names defined with `describe`.
+`-t add` only runs tests with "add" in the name. The pattern matches test names defined with `test` and suite names defined with `describe`.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test -t add
@@ -113,4 +118,4 @@ Ran 6 tests across 3 files. [59.00ms]
 
 ***
 
-See [Docs > Test Runner](/test) for complete documentation on the test runner.
+See [`bun test`](/test).

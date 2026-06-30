@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/image.md
+Downloaded: 2026-06-30T20:44:18.834Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -28,7 +33,7 @@ Bun.s3("bucket/photo.jpg").image(); // S3File
 
 The format is sniffed from the bytes — extensions and `Content-Type` are ignored.
 
-**Path strings are filesystem paths.** Don't pass user-controlled strings directly to the constructor — that's an arbitrary-file-read primitive. Read untrusted input into a `Buffer` (e.g. via `fetch`/`Bun.file` with your own validation) and pass the bytes.
+**Path strings are filesystem paths.** Don't pass user-controlled strings directly to the constructor — that's an arbitrary-file-read primitive. Read untrusted input into a `Buffer` (with `fetch` or `Bun.file` and your own validation) and pass the bytes.
 
 When passing a `TypedArray`/`ArrayBuffer`, don't mutate it while a terminal is pending — decode runs off-thread and borrows the bytes. `SharedArrayBuffer` and resizable buffers are refused; use `buf.slice()` to pass a fixed view.
 
@@ -166,7 +171,7 @@ Bun.serve({
 });
 ```
 
-Passing the pipeline directly (`new Response(img)`) also works, but currently runs the encode synchronously during body init.
+Passing the pipeline directly (`new Response(img)`) also works, but runs the encode synchronously during body init.
 
 ## Clipboard
 

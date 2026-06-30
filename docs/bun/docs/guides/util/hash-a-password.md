@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/util/hash-a-password.md
+Downloaded: 2026-06-30T20:44:18.821Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Hash a password
 
-The `Bun.password.hash()` function provides a fast, built-in mechanism for securely hashing passwords in Bun. No third-party dependencies are required.
+Use `Bun.password.hash()` to securely hash passwords. It's built into Bun, with no third-party dependencies.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const password = "super-secure-pa$$word";
@@ -15,7 +20,7 @@ const hash = await Bun.password.hash(password);
 
 ***
 
-By default, this uses the [Argon2id](https://en.wikipedia.org/wiki/Argon2) algorithm. Pass a second argument to `Bun.password.hash()` to use a different algorithm or configure the hashing parameters.
+By default, `Bun.password.hash()` uses the [Argon2id](https://en.wikipedia.org/wiki/Argon2) algorithm. Pass a second argument to use a different algorithm or configure the hashing parameters.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const password = "super-secure-pa$$word";
@@ -42,7 +47,7 @@ const bcryptHash = await Bun.password.hash(password, {
 
 ***
 
-Use `Bun.password.verify()` to verify a password. The algorithm and its parameters are stored in the hash itself, so re-specifying configuration is unnecessary.
+Use `Bun.password.verify()` to verify a password. The hash stores the algorithm and its parameters, so you don't need to specify them again.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const password = "super-secure-pa$$word";
@@ -54,4 +59,4 @@ const isMatch = await Bun.password.verify(password, hash);
 
 ***
 
-See [Docs > API > Hashing](/runtime/hashing#bun-password) for complete documentation.
+See [`Bun.password`](/runtime/hashing#bun-password).

@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/agent-sdk/agent-loop.md
+Downloaded: 2026-06-30T20:44:12.233Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -200,7 +205,7 @@ For interactive applications, use `"default"` with a tool approval callback to s
 
 ### Model
 
-If you don't set `model`, the SDK uses Claude Code's default, which depends on your authentication method and subscription. Set it explicitly (for example, `model="claude-sonnet-4-6"`) to pin a specific model or to use a smaller model for faster, cheaper agents. See [models](https://platform.claude.com/docs/en/about-claude/models) for available IDs.
+If you don't set `model`, the SDK uses Claude Code's default, which depends on your authentication method and subscription. Set it explicitly (for example, `model="claude-sonnet-5"`) to pin a specific model or to use a smaller model for faster, cheaper agents. See [models](https://platform.claude.com/docs/en/about-claude/models) for available IDs.
 
 ## The context window
 

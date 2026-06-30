@@ -1,16 +1,21 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/sentry.md
+Downloaded: 2026-06-30T20:44:18.802Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Add Sentry to a Bun app
 
-[Sentry](https://sentry.io) is a developer-first error tracking and performance monitoring platform. Sentry has a first-class SDK for Bun, `@sentry/bun`, that instruments your Bun application to automatically collect error and performance data.
+[Sentry](https://sentry.io) is an error tracking and performance monitoring platform. Its Bun SDK, `@sentry/bun`, instruments your application to automatically collect error and performance data.
 
-Don't already have an account and Sentry project established? Head over to [sentry.io](https://sentry.io/signup/), then return to this page.
+If you don't have a Sentry account and project yet, create one at [sentry.io](https://sentry.io/signup/), then return to this page.
 
 ***
 
-To start using Sentry with Bun, first install the Sentry Bun SDK.
+First, install the Sentry Bun SDK.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun add @sentry/bun
@@ -18,7 +23,7 @@ bun add @sentry/bun
 
 ***
 
-Then, initialize the Sentry SDK with your Sentry DSN in your app's entry file. You can find your DSN in your Sentry project settings.
+Then initialize the SDK with your Sentry DSN in your app's entry file. You can find your DSN in your Sentry project settings.
 
 ```ts sentry.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import * as Sentry from "@sentry/bun";
@@ -35,7 +40,7 @@ Sentry.init({
 
 ***
 
-You can verify that Sentry is working by capturing a test error:
+Verify that Sentry is working by capturing a test error:
 
 ```ts sentry.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 setTimeout(() => {
@@ -47,8 +52,8 @@ setTimeout(() => {
 }, 99);
 ```
 
-To view and resolve the recorded error, log into [sentry.io](https://sentry.io/) and open your project. Clicking on the error's title will open a page where you can see detailed information and mark it as resolved.
+To view and resolve the recorded error, log into [sentry.io](https://sentry.io/) and open your project. Clicking the error's title opens a page with details, where you can mark it as resolved.
 
 ***
 
-To learn more about Sentry and using the Sentry Bun SDK, view the [Sentry documentation](https://docs.sentry.io/platforms/javascript/guides/bun).
+To learn more about the Sentry Bun SDK, see the [Sentry documentation](https://docs.sentry.io/platforms/javascript/guides/bun).

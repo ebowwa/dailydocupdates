@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/html-rewriter/extract-links.md
+Downloaded: 2026-06-30T20:44:18.803Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 ## Extract links from a webpage
 
-Bun's [HTMLRewriter](/runtime/html-rewriter) API can be used to efficiently extract links from HTML content. It works by chaining together CSS selectors to match the elements, text, and attributes you want to process. Here is an example of how to extract links from a webpage. You can pass `.transform` a `Response`, `Blob`, or `string`.
+Bun's [HTMLRewriter](/runtime/html-rewriter) API extracts links from HTML. Chain CSS selectors to match the elements, text, and attributes you want to process, then pass `.transform` a `Response`, `Blob`, or `string`.
 
 ```ts extract-links.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 async function extractLinks(url: string) {
@@ -35,7 +40,7 @@ await extractLinks("https://bun.com");
 
 ## Convert relative URLs to absolute
 
-When scraping websites, you often want to convert relative URLs (like `/docs`) to absolute URLs. Here's how to handle URL resolution:
+When scraping websites, you often want to convert relative URLs (like `/docs`) to absolute URLs:
 
 ```ts extract-links.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 async function extractLinksFromURL(url: string) {
@@ -67,4 +72,4 @@ const websiteLinks = await extractLinksFromURL("https://example.com");
 
 ***
 
-See [Docs > API > HTMLRewriter](/runtime/html-rewriter) for complete documentation on HTML transformation with Bun.
+See [`HTMLRewriter`](/runtime/html-rewriter).

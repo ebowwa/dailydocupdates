@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/install/add-optional.md
+Downloaded: 2026-06-30T20:44:18.806Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ bun add zod --optional
 
 ***
 
-This will add the package to `optionalDependencies` in `package.json`.
+This adds the package to `optionalDependencies` in `package.json`.
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -24,4 +29,4 @@ This will add the package to `optionalDependencies` in `package.json`.
 
 ***
 
-See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
+See [`bun install`](/pm/cli/install).

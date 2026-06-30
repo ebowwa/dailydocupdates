@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/codesign-macos-executable.md
+Downloaded: 2026-06-30T20:44:18.812Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,7 +19,7 @@ bun build --compile ./path/to/entry.ts --outfile myapp
 
 ***
 
-List your available signing identities. One of these will be your signing identity that you pass to the `codesign` command. This command requires macOS.
+List your available signing identities. You'll pass one of these to `codesign` in a later step. This command requires macOS.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 security find-identity -v -p codesigning

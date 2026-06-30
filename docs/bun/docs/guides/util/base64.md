@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/util/base64.md
-Downloaded: 2026-06-29T20:40:27.180Z
+Downloaded: 2026-06-30T20:44:18.820Z
 -->
 
 > ## Documentation Index
@@ -53,4 +53,4 @@ const text = bytes.toString("utf8");
 
 ***
 
-See [Docs > Web APIs](/runtime/web-apis) for a complete breakdown of the Web APIs implemented in Bun.
+See [Web APIs](/runtime/web-apis).

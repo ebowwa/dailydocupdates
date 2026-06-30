@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/troubleshoot-install.md
-Downloaded: 2026-06-26T20:38:01.628Z
+Downloaded: 2026-06-30T20:44:12.261Z
 -->
 
 > ## Documentation Index
@@ -48,7 +48,7 @@ Match the error message or symptom you're seeing to a fix:
 If your issue isn't listed, work through the diagnostic checks below to narrow down the cause.
 
 <Tip>
-  If you'd rather skip the terminal entirely, the [Claude Code Desktop app](/en/desktop-quickstart) lets you install and use Claude Code through a graphical interface. Download it for [macOS](https://claude.ai/api/desktop/darwin/universal/dmg/latest/redirect?utm_source=claude_code\&utm_medium=docs) or [Windows](https://claude.com/download?utm_source=claude_code\&utm_medium=docs) and start coding without any command-line setup.
+  If you'd rather skip the terminal entirely, the [Claude Code Desktop app](/en/desktop-quickstart) lets you install and use Claude Code through a graphical interface. Download it for [macOS](https://claude.ai/api/desktop/darwin/universal/dmg/latest/redirect?utm_source=claude_code\&utm_medium=docs), [Windows](https://claude.com/download?utm_source=claude_code\&utm_medium=docs), or [Linux](https://claude.com/download?utm_source=claude_code\&utm_medium=docs) and start coding without any command-line setup.
 </Tip>
 
 ## Run diagnostic checks

@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/index.md
+Downloaded: 2026-06-30T20:44:18.806Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Guides
 
-> A collection of code samples and walkthroughs for performing common tasks with Bun.
+> Code samples and walkthroughs for common tasks with Bun
 
 export const GuidesList = () => {
   const guidesData = {

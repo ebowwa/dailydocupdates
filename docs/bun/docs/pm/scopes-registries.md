@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/scopes-registries.md
+Downloaded: 2026-06-30T20:44:18.828Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Configure private registries and scoped packages
 
-The default registry is `registry.npmjs.org`. This can be globally configured in `bunfig.toml`:
+The default registry is `registry.npmjs.org`. To change it globally, set it in `bunfig.toml`:
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]
@@ -35,4 +40,4 @@ To configure a private registry scoped to a particular organization:
 
 ### `.npmrc`
 
-Bun also reads `.npmrc` files, [learn more](/pm/npmrc).
+Bun also reads [`.npmrc`](/pm/npmrc) files.

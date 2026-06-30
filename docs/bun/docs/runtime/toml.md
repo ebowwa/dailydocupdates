@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/toml.md
+Downloaded: 2026-06-30T20:44:18.838Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,7 +15,7 @@ In Bun, TOML is a first-class citizen alongside JSON, JSON5, and YAML. You can:
 
 * Parse TOML strings with `Bun.TOML.parse`
 * `import` & `require` TOML files as modules at runtime (including hot reloading & watch mode support)
-* `import` & `require` TOML files in frontend apps via Bun's bundler
+* `import` & `require` TOML files in frontend apps with Bun's bundler
 
 ***
 
@@ -101,7 +106,7 @@ try {
 
 ### ES Modules
 
-You can import TOML files directly as ES modules. The TOML content is parsed and made available as both default and named exports:
+Import TOML files directly as ES modules. Bun parses the TOML and exposes it as both default and named exports:
 
 ```toml config.toml theme={"theme":{"light":"github-light","dark":"dracula"}}
 [database]
@@ -156,7 +161,7 @@ if (features.rateLimit) {
 
 #### Import Attributes
 
-You can also use import attributes to load any file as TOML:
+Use an import attribute to load any file as TOML:
 
 ```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import myConfig from "./my.config" with { type: "toml" };
@@ -164,7 +169,7 @@ import myConfig from "./my.config" with { type: "toml" };
 
 ### CommonJS
 
-TOML files can also be required in CommonJS:
+You can also `require` TOML files in CommonJS:
 
 ```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const config = require("./config.toml");
@@ -179,7 +184,7 @@ console.log(database.port); // 5432
 
 ## Hot Reloading with TOML
 
-When you run your application with `bun --hot`, changes to TOML files are automatically detected and reloaded without restarting:
+When you run your application with `bun --hot`, Bun detects changes to TOML files and reloads them without restarting:
 
 ```toml config.toml theme={"theme":{"light":"github-light","dark":"dracula"}}
 [server]
@@ -214,13 +219,11 @@ Run with hot reloading:
 bun --hot server.ts
 ```
 
-Now when you modify `config.toml`, the changes are immediately reflected in your running application.
-
 ***
 
 ## Bundler Integration
 
-When you import TOML files and bundle with Bun, the TOML is parsed at build time and included as a JavaScript module:
+When you bundle with Bun, the bundler parses imported TOML at build time and includes it as a JavaScript module:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build app.ts --outdir=dist
@@ -230,11 +233,11 @@ This means:
 
 * Zero runtime TOML parsing overhead in production
 * Smaller bundle sizes
-* Tree-shaking support for unused properties (named imports)
+* Tree shaking of unused properties (named imports)
 
 ### Dynamic Imports
 
-TOML files can be dynamically imported:
+You can also dynamically import TOML files:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const config = await import("./config.toml");

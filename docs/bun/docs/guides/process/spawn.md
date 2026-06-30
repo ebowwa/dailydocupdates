@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/process/spawn.md
+Downloaded: 2026-06-30T20:44:18.810Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -15,7 +20,7 @@ await proc.exited;
 
 ***
 
-The second argument accepts a configuration object.
+The second argument is a configuration object.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["echo", "Hello, world!"], {
@@ -29,7 +34,7 @@ const proc = Bun.spawn(["echo", "Hello, world!"], {
 
 ***
 
-By default, the `stdout` of the child process can be consumed as a `ReadableStream` using `proc.stdout`.
+By default, `proc.stdout` is a `ReadableStream` of the child process's `stdout`.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["echo", "hello"]);
@@ -40,4 +45,4 @@ output; // => "hello\n"
 
 ***
 
-See [Docs > API > Child processes](/runtime/child-process) for complete documentation.
+See [Child processes](/runtime/child-process).

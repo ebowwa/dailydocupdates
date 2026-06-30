@@ -1,19 +1,24 @@
+<!--
+Source: https://bun.com/docs/guides/deployment/vercel.md
+Downloaded: 2026-06-30T20:44:18.799Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Deploy a Bun application on Vercel
 
-[Vercel](https://vercel.com/) is a cloud platform that lets you build, deploy, and scale your apps.
+[Vercel](https://vercel.com/) is a cloud platform for building, deploying, and scaling apps.
 
 <Warning>
-  The Bun runtime is in Beta; certain features (e.g., automatic source maps, byte-code caching, metrics on
-  `node:http/https`) are not yet supported.
+  The Bun runtime is in Beta. Some features are not yet supported — for example, automatic source maps, byte-code
+  caching, and metrics on `node:http/https`.
 </Warning>
 
 <Note>
-  `Bun.serve` is currently not supported on Vercel Functions. Use Bun with frameworks supported by Vercel, like Next.js,
-  Express, Hono, or Nitro.
+  `Bun.serve` is not supported on Vercel Functions. Use Bun with frameworks supported by Vercel, like Next.js, Express,
+  Hono, or Nitro.
 </Note>
 
 ***
@@ -28,7 +33,7 @@
     }
     ```
 
-    Vercel automatically detects this configuration and runs your application on Bun. The value has to be `"1.x"`, Vercel handles the minor version internally.
+    Vercel automatically detects this configuration and runs your application on Bun. The value must be `"1.x"`; Vercel handles the minor version internally.
 
     For best results, match your local Bun version with the version used by Vercel.
   </Step>
@@ -46,10 +51,10 @@
     ```
 
     <Note>
-      The `--bun` flag runs the Next.js CLI under Bun. Bundling (via Turbopack or Webpack) remains unchanged, but all commands execute within the Bun runtime.
+      The `--bun` flag runs the Next.js CLI under Bun. Bundling (with Turbopack or Webpack) is unchanged.
     </Note>
 
-    This ensures both local development and builds use Bun.
+    With these scripts, both local development and builds use Bun.
   </Step>
 
   <Step title="Deploy your app">

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/util/entrypoint.md
+Downloaded: 2026-06-30T20:44:18.820Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -16,4 +21,4 @@ if (import.meta.main) {
 
 ***
 
-See [Docs > API > import.meta](/runtime/module-resolution#import-meta) for complete documentation.
+See [`import.meta`](/runtime/module-resolution#import-meta).

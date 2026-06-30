@@ -1,14 +1,17 @@
+<!--
+Source: https://bun.com/docs/guides/http/cluster.md
+Downloaded: 2026-06-30T20:44:18.804Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Start a cluster of HTTP servers
 
-> Run multiple HTTP servers concurrently via the "reusePort" option to share the same port across multiple processes
+> Run multiple HTTP servers concurrently with the "reusePort" option to share the same port across multiple processes
 
-To run multiple HTTP servers concurrently, use the `reusePort` option in `Bun.serve()` which shares the same port across multiple processes.
-
-This automatically load balances incoming requests across multiple instances of Bun.
+To run multiple HTTP servers concurrently, use the `reusePort` option in `Bun.serve()`. It shares one port across multiple processes, and incoming requests are load balanced across them.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { serve } from "bun";
@@ -33,12 +36,12 @@ serve({
 
 <Note>
   **Linux only** — Windows and macOS ignore the `reusePort` option. This is an operating system limitation with
-  `SO_REUSEPORT`, unfortunately.
+  `SO_REUSEPORT`.
 </Note>
 
 After saving the file, start your servers on the same port.
 
-Under the hood, this uses the Linux `SO_REUSEPORT` and `SO_REUSEADDR` socket options to ensure fair load balancing across multiple processes. [Learn more about `SO_REUSEPORT` and `SO_REUSEADDR`](https://lwn.net/Articles/542629/)
+`reusePort` uses the Linux `SO_REUSEPORT` and `SO_REUSEADDR` socket options to ensure fair load balancing across processes. [Learn more about `SO_REUSEPORT` and `SO_REUSEADDR`](https://lwn.net/Articles/542629/)
 
 ```ts cluster.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { spawn } from "bun";
@@ -67,4 +70,4 @@ process.on("exit", kill);
 
 ***
 
-Bun has also implemented the `node:cluster` module, but this is a faster and more limited alternative.
+Bun also implements the `node:cluster` module; `reusePort` is a faster but more limited alternative.

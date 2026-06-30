@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/info.md
+Downloaded: 2026-06-30T20:44:18.826Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,7 +19,7 @@
 bun info react
 ```
 
-This will display information about the `react` package, including its latest version, description, homepage, dependencies, and more.
+`bun info react` prints the package's latest version, description, homepage, dependencies, and other metadata.
 
 ## Viewing specific versions
 
@@ -26,7 +31,7 @@ bun info react@18.0.0
 
 ## Viewing specific properties
 
-You can also query specific properties from the package metadata:
+To print specific properties from the package metadata:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun info react version

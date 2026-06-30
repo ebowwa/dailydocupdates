@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/elysia.md
+Downloaded: 2026-06-30T20:44:18.800Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Build an HTTP server using Elysia and Bun
 
-[Elysia](https://elysiajs.com) is a Bun-first performance focused web framework that takes full advantage of Bun's HTTP, file system, and hot reloading APIs. Get started with `bun create`.
+[Elysia](https://elysiajs.com) is a Bun-first web framework built on Bun's HTTP, file system, and hot reloading APIs. Get started with `bun create`.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun create elysia myapp
@@ -26,6 +31,6 @@ console.log(`🦊 Elysia is running at on port ${app.server?.port}...`);
 
 ***
 
-Elysia is a full-featured server framework with Express-like syntax, type inference, middleware, file uploads, and plugins for JWT authentication, tRPC, and more. It's also is one of the [fastest Bun web frameworks](https://github.com/SaltyAom/bun-http-framework-benchmark).
+Elysia is a server framework with Express-like syntax, type inference, middleware, file uploads, and plugins for JWT authentication and tRPC. It's one of the [fastest Bun web frameworks](https://github.com/SaltyAom/bun-http-framework-benchmark).
 
-Refer to the Elysia [documentation](https://elysiajs.com/quick-start.html) for more information.
+See the Elysia [documentation](https://elysiajs.com/quick-start.html).

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/runtime-behavior.md
+Downloaded: 2026-06-30T20:44:18.842Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@
 
 ### NODE\_ENV
 
-`bun test` automatically sets `$NODE_ENV` to `"test"` unless it's already set in the environment or via `.env` files. This is standard behavior for most test runners and helps ensure consistent test behavior.
+`bun test` sets `$NODE_ENV` to `"test"` unless it's already set in the environment or in `.env` files. Most test runners do the same.
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect } from "bun:test";
@@ -30,7 +35,7 @@ NODE_ENV=development bun test
 
 ### TZ (Timezone)
 
-By default, all `bun test` runs use UTC (`Etc/UTC`) as the time zone unless overridden by the `TZ` environment variable. This ensures consistent date and time behavior across different development environments.
+`bun test` uses UTC (`Etc/UTC`) as the time zone unless the `TZ` environment variable overrides it. This keeps date and time behavior consistent across machines.
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect } from "bun:test";
@@ -41,7 +46,7 @@ test("timezone is UTC by default", () => {
 });
 ```
 
-To test with a specific timezone:
+To test with a specific time zone:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 TZ=America/New_York bun test
@@ -49,7 +54,7 @@ TZ=America/New_York bun test
 
 ## Test Timeouts
 
-Each test has a default timeout of 5000ms (5 seconds) if not explicitly overridden. Tests that exceed this timeout will fail.
+Each test has a default timeout of 5000ms (5 seconds). Tests that exceed it fail.
 
 ### Global Timeout
 
@@ -61,7 +66,7 @@ bun test --timeout 10000  # 10 seconds
 
 ### Per-Test Timeout
 
-Set timeout per test as the third parameter to the test function:
+Set a per-test timeout as the third argument to the test function:
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect } from "bun:test";
@@ -77,7 +82,7 @@ test("slow test", async () => {
 
 ### Infinite Timeout
 
-Use `0` or `Infinity` to disable timeout:
+Use `0` or `Infinity` to disable the timeout:
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 test("test without timeout", async () => {
@@ -90,7 +95,7 @@ test("test without timeout", async () => {
 
 ### Unhandled Errors
 
-`bun test` tracks unhandled promise rejections and errors that occur between tests. If such errors occur, the final exit code will be non-zero (specifically, the count of such errors), even if all tests pass.
+`bun test` tracks unhandled promise rejections and errors that occur between tests. If any occur, the final exit code is non-zero (the count of such errors), even if all tests pass.
 
 This helps catch errors in asynchronous code that might otherwise go unnoticed:
 
@@ -149,7 +154,7 @@ process.on("unhandledRejection", (reason, promise) => {
 
 ## CLI Flags Integration
 
-Several Bun CLI flags can be used with `bun test` to modify its behavior:
+Several Bun CLI flags also work with `bun test`:
 
 ### Memory Usage
 
@@ -200,13 +205,13 @@ bun test --frozen-lockfile
 
 ### Watch Mode
 
-When running `bun test` with the `--watch` flag, the test runner will watch for file changes and re-run affected tests.
+With the `--watch` flag, the test runner watches for file changes and re-runs affected tests.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --watch
 ```
 
-The test runner is smart about which tests to re-run:
+Only affected tests re-run:
 
 ```ts title="math.test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { add } from "./math.js";
@@ -217,21 +222,21 @@ test("addition", () => {
 });
 ```
 
-If you modify `math.js`, only `math.test.ts` will re-run, not all tests.
+If you modify `math.js`, only `math.test.ts` re-runs, not all tests.
 
 ### Hot Reloading
 
-The `--hot` flag provides similar functionality but is more aggressive about trying to preserve state between runs:
+The `--hot` flag is similar, but more aggressive about preserving state between runs:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --hot
 ```
 
-For most test scenarios, `--watch` is the recommended option as it provides better isolation between test runs.
+For most tests, use `--watch`: it gives better isolation between runs.
 
 ## Global Variables
 
-The following globals are automatically available in test files without importing (though they can be imported from `bun:test` if preferred):
+The following globals are available in test files without importing:
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // All of these are available globally
@@ -256,7 +261,7 @@ jest.fn();
 vi.fn();
 ```
 
-You can also import them explicitly if you prefer:
+You can also import them explicitly:
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, it, describe, expect, beforeAll, beforeEach, afterAll, afterEach, jest, vi } from "bun:test";
@@ -274,7 +279,7 @@ import { test, it, describe, expect, beforeAll, beforeEach, afterAll, afterEach,
 
 ### Signal Handling
 
-The test runner properly handles common signals:
+The test runner handles common signals:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Gracefully stops test execution

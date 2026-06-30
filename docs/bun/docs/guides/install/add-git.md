@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/install/add-git.md
+Downloaded: 2026-06-30T20:44:18.806Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ bun add github:lodash/lodash
 
 ***
 
-This will add the following line to your `package.json`:
+This adds the following line to your `package.json`:
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -33,8 +38,8 @@ bun add git@github.com:lodash/lodash.git
 bun add github:colinhacks/zod
 ```
 
-**Note:** GitHub dependencies download via HTTP tarball when possible for faster installation.
+When possible, Bun downloads GitHub dependencies as HTTP tarballs, which is faster.
 
 ***
 
-See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
+See [`bun install`](/pm/cli/install).

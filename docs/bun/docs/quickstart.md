@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/quickstart.md
+Downloaded: 2026-06-30T20:44:18.830Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -22,7 +27,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     bun init my-app
     ```
 
-    It'll prompt you to pick a template, either `Blank`, `React`, or `Library`. For this guide, we'll pick `Blank`.
+    `bun init` prompts you to pick a template: `Blank`, `React`, or `Library`. For this guide, pick `Blank`.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     bun init my-app
@@ -39,11 +44,11 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     - README.md
     ```
 
-    This automatically creates a `my-app` directory with a basic Bun app.
+    The new `my-app` directory contains a basic Bun app.
   </Step>
 
   <Step title="Step 2">
-    Run the `index.ts` file using `bun run index.ts`.
+    Run `index.ts` with `bun run`.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     cd my-app
@@ -53,8 +58,6 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Hello via Bun!
     ```
-
-    You should see a console output saying `"Hello via Bun!"`.
   </Step>
 
   <Step title="Step 3">
@@ -71,7 +74,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     console.log(`Listening on ${server.url}`);
     ```
 
-    Run the `index.ts` file again using `bun run index.ts`.
+    Run `index.ts` again.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     bun run index.ts
@@ -84,7 +87,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     Visit [`http://localhost:3000`](http://localhost:3000) to test the server. You should see a page that says `"Bun!"`.
 
     <Accordion title="Seeing TypeScript errors on Bun?">
-      If you used `bun init`, Bun will have automatically installed Bun's TypeScript declarations and configured your `tsconfig.json`. If you're trying out Bun in an existing project, you may see a type error on the `Bun` global.
+      `bun init` installs Bun's TypeScript declarations and configures your `tsconfig.json`. If you're trying out Bun in an existing project, you may see a type error on the `Bun` global.
 
       To fix this, first install `@types/bun` as a dev dependency.
 
@@ -138,7 +141,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     console.log(`Listening on ${server.url}`);
     ```
 
-    Run the `index.ts` file again using `bun run index.ts`.
+    Run `index.ts` again.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     bun run index.ts
@@ -160,7 +163,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
   </Step>
 
   <Step title="Step 5">
-    Let's add some HTML. Create a new file called `index.html` and add the following code:
+    Now add some HTML. Create a new file called `index.html`:
 
     ```html index.html icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
     <!DOCTYPE html>
@@ -196,7 +199,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     console.log(`Listening on ${server.url}`);
     ```
 
-    Run the `index.ts` file again using `bun run index.ts`.
+    Run `index.ts` again.
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
     bun run index.ts
@@ -210,7 +213,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
   </Step>
 </Steps>
 
-🎉 Congratulations! You've built an HTTP server with Bun and installed a package.
+You've built an HTTP server with Bun and installed a package.
 
 ***
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/macros.md
+Downloaded: 2026-06-30T20:44:18.794Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,9 +11,9 @@
 
 > Run JavaScript functions at bundle-time with Bun macros
 
-Macros are a mechanism for running JavaScript functions at bundle-time. The value returned from these functions are directly inlined into your bundle.
+Macros are JavaScript functions that run at bundle-time. Their return values are inlined directly into your bundle.
 
-As a toy example, consider this simple function that returns a random number.
+As a toy example, consider this function that returns a random number.
 
 ```ts title="random.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 export function random() {
@@ -16,7 +21,7 @@ export function random() {
 }
 ```
 
-This is a regular function in a regular file, but you can use it as a macro like so:
+This is a regular function in a regular file, but you can use it as a macro:
 
 ```tsx title="cli.tsx" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { random } from "./random.ts" with { type: "macro" };
@@ -25,11 +30,11 @@ console.log(`Your random number is ${random()}`);
 ```
 
 <Note>
-  Macros are indicated using import attribute syntax. If you haven't seen this syntax before, it's a Stage 3 TC39
-  proposal that lets you attach additional metadata to import statements.
+  Macros are marked with import attribute syntax, a Stage 3 TC39 proposal for attaching additional metadata to import
+  statements.
 </Note>
 
-Now we'll bundle this file with `bun build`. The bundled file will be printed to stdout.
+Bundle the file with `bun build`. The bundled file is printed to stdout.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build ./cli.tsx
@@ -39,26 +44,26 @@ bun build ./cli.tsx
 console.log(`Your random number is ${0.6805550949689833}`);
 ```
 
-As you can see, the source code of the `random` function occurs nowhere in the bundle. Instead, it is executed during bundling and function call (`random()`) is replaced with the result of the function. Since the source code will never be included in the bundle, macros can safely perform privileged operations like reading from a database.
+The source code of the `random` function occurs nowhere in the bundle. Instead, it runs during bundling and the call (`random()`) is replaced with its result. Since the source code is never included in the bundle, macros can safely perform privileged operations like reading from a database.
 
 ## When to use macros
 
-If you have several build scripts for small things where you would otherwise have a one-off build script, bundle-time code execution can be easier to maintain. It lives with the rest of your code, it runs with the rest of the build, it is automatically parallelized, and if it fails, the build fails too.
+For small things you would otherwise write a one-off build script for, bundle-time code execution can be easier to maintain. It lives with the rest of your code, it runs with the rest of the build, it is automatically parallelized, and if it fails, the build fails too.
 
 If you find yourself running a lot of code at bundle-time though, consider running a server instead.
 
 ## Import attributes
 
-Bun Macros are import statements annotated using either:
+Macros are import statements annotated with either:
 
-* `with { type: 'macro' }` — an import attribute, a Stage 3 ECMA Script proposal
+* `with { type: 'macro' }` — an import attribute, a Stage 3 ECMAScript proposal
 * `assert { type: 'macro' }` — an import assertion, an earlier incarnation of import attributes that has now been abandoned (but is already supported by a number of browsers and runtimes)
 
 ## Security considerations
 
-Macros must explicitly be imported with `{ type: "macro" }` in order to be executed at bundle-time. These imports have no effect if they are not called, unlike regular JavaScript imports which may have side effects.
+Macros must be explicitly imported with `{ type: "macro" }` to run at bundle-time. These imports have no effect if they are not called, unlike regular JavaScript imports which may have side effects.
 
-You can disable macros entirely by passing the `--no-macros` flag to Bun. It produces a build error like this:
+You can disable macros entirely with the `--no-macros` flag. It produces a build error like this:
 
 ```
 error: Macros are disabled
@@ -88,7 +93,7 @@ macro();
 
 ## Export condition "macro"
 
-When shipping a library containing a macro to npm or another package registry, use the `"macro"` export condition to provide a special version of your package exclusively for the macro environment.
+When shipping a library containing a macro to npm or another package registry, use the `"macro"` export condition to provide a version of your package exclusively for the macro environment.
 
 ```json title="package.json" icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -109,19 +114,19 @@ import pkg from "my-package"; // runtime import
 import { macro } from "my-package" with { type: "macro" }; // macro import
 ```
 
-The first import will resolve to `./node_modules/my-package/index.js`, while the second will be resolved by Bun's bundler to `./node_modules/my-package/index.macro.js`.
+The first import resolves to `./node_modules/my-package/index.js`; Bun's bundler resolves the second to `./node_modules/my-package/index.macro.js`.
 
 ## Execution
 
-When Bun's transpiler sees a macro import, it calls the function inside the transpiler using Bun's JavaScript runtime and converts the return value from JavaScript into an AST node. These JavaScript functions are called at bundle-time, not runtime.
+When Bun's transpiler sees a macro import, it calls the function using Bun's JavaScript runtime and converts the return value into an AST node.
 
-Macros are executed synchronously in the transpiler during the visiting phase—before plugins and before the transpiler generates the AST. They are executed in the order they are imported. The transpiler will wait for the macro to finish executing before continuing. The transpiler will also await any Promise returned by a macro.
+Macros run synchronously in the transpiler during the visiting phase, before plugins and before the transpiler generates the AST. They run in the order they are imported. The transpiler waits for each macro to finish before continuing, and awaits any Promise a macro returns.
 
-Bun's bundler is multi-threaded. As such, macros execute in parallel inside of multiple spawned JavaScript "workers".
+Bun's bundler is multi-threaded, so macros execute in parallel in multiple spawned JavaScript "workers".
 
 ## Dead code elimination
 
-The bundler performs dead code elimination after running and inlining macros. So given the following macro:
+The bundler performs dead code elimination after running and inlining macros. Given the following macro:
 
 ```ts title="returnFalse.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 export function returnFalse() {
@@ -129,7 +134,7 @@ export function returnFalse() {
 }
 ```
 
-...then bundling the following file will produce an empty bundle, provided that the minify syntax option is enabled.
+...bundling the following file produces an empty bundle, provided that the minify syntax option is enabled.
 
 ```ts title="index.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { returnFalse } from "./returnFalse.ts" with { type: "macro" };
@@ -141,7 +146,7 @@ if (returnFalse()) {
 
 ## Serializability
 
-Bun's transpiler needs to be able to serialize the result of the macro so it can be inlined into the AST. All JSON-compatible data structures are supported:
+Bun's transpiler must be able to serialize the result of the macro to inline it into the AST. All JSON-compatible data structures are supported:
 
 ```ts title="macro.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 export function getObject() {
@@ -153,7 +158,7 @@ export function getObject() {
 }
 ```
 
-Macros can be async, or return Promise instances. Bun's transpiler will automatically await the Promise and inline the result.
+Macros can be async, or return Promise instances. Bun's transpiler awaits the Promise and inlines the result.
 
 ```ts title="macro.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 export async function getText() {
@@ -164,7 +169,7 @@ export async function getText() {
 The transpiler implements special logic for serializing common data formats like `Response`, `Blob`, `TypedArray`.
 
 * **TypedArray**: Resolves to a base64-encoded string.
-* **Response**: Bun will read the `Content-Type` and serialize accordingly; for instance, a Response with type `application/json` will be automatically parsed into an object and `text/plain` will be inlined as a string. Responses with an unrecognized or undefined type will be base-64 encoded.
+* **Response**: Bun reads the `Content-Type` and serializes accordingly; for example, a Response with type `application/json` is parsed into an object and `text/plain` is inlined as a string. Responses with an unrecognized or undefined type are base64-encoded.
 * **Blob**: As with Response, the serialization depends on the `type` property.
 
 The result of `fetch` is `Promise<Response>`, so it can be directly returned.
@@ -175,7 +180,7 @@ export function getObject() {
 }
 ```
 
-Functions and instances of most classes (except those mentioned above) are not serializable.
+Functions and instances of most classes (except those listed earlier) are not serializable.
 
 ```ts title="macro.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 export function getText(url: string) {
@@ -200,7 +205,7 @@ export function howLong() {
 }
 ```
 
-However, if the value of `foo` is known at bundle-time (say, if it's a constant or the result of another macro) then it's allowed:
+However, if the value of `foo` is known at bundle-time (say, if it's a constant or the result of another macro), then it's allowed:
 
 ```ts title="index.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { getText } from "./getText.ts" with { type: "macro" };
@@ -238,7 +243,7 @@ export function getGitCommitHash() {
 }
 ```
 
-When we build it, the `getGitCommitHash` is replaced with the result of calling the function:
+When you build it, the `getGitCommitHash` call is replaced with the result of calling the function:
 
 <CodeGroup>
   ```ts input theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -259,7 +264,7 @@ When we build it, the `getGitCommitHash` is replaced with the result of calling 
 
 ### Make fetch() requests at bundle-time
 
-In this example, we make an outgoing HTTP request using `fetch()`, parse the HTML response using `HTMLRewriter`, and return an object containing the title and meta tags–all at bundle-time.
+This example makes an outgoing HTTP request with `fetch()`, parses the HTML response with `HTMLRewriter`, and returns an object containing the title and meta tags, all at bundle-time.
 
 ```ts title="meta.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 export async function extractMetaTags(url: string) {
@@ -287,7 +292,7 @@ export async function extractMetaTags(url: string) {
 }
 ```
 
-The `extractMetaTags` function is erased at bundle-time and replaced with the result of the function call. This means that the fetch request happens at bundle-time, and the result is embedded in the bundle. Also, the branch throwing the error is eliminated since it's unreachable.
+The `extractMetaTags` function is erased at bundle-time and replaced with the result of the function call: the fetch request happens at bundle-time, and the result is embedded in the bundle. The branch throwing the error is also eliminated since it's unreachable.
 
 <CodeGroup>
   ```jsx input theme={"theme":{"light":"github-light","dark":"dracula"}}

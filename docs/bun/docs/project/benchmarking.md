@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/project/benchmarking.md
+Downloaded: 2026-06-30T20:44:18.829Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,20 +11,18 @@
 
 > How to benchmark Bun
 
-Bun is designed for speed. Hot paths are extensively profiled and benchmarked. The source code for all of Bun's public benchmarks can be found in the [`/bench`](https://github.com/oven-sh/bun/tree/main/bench) directory of the Bun repo.
+Bun is designed for speed. Hot paths are extensively profiled and benchmarked. The source code for all of Bun's public benchmarks is in the [`/bench`](https://github.com/oven-sh/bun/tree/main/bench) directory of the Bun repo.
 
 ## Measuring time
 
-To precisely measure time, Bun offers two runtime APIs functions:
+To measure time precisely, Bun offers two runtime APIs:
 
 1. The Web-standard [`performance.now()`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now) function
-2. `Bun.nanoseconds()` which is similar to `performance.now()` except it returns the current time since the application started in nanoseconds. You can use `performance.timeOrigin` to convert this to a Unix timestamp.
+2. `Bun.nanoseconds()`, which is like `performance.now()` except it returns the time since the application started in nanoseconds. Use `performance.timeOrigin` to convert this to a Unix timestamp.
 
 ## Benchmarking tools
 
-When writing your own benchmarks, it's important to choose the right tool.
-
-* For microbenchmarks, a great general-purpose tool is [`mitata`](https://github.com/evanwashere/mitata).
+* For microbenchmarks, we recommend [`mitata`](https://github.com/evanwashere/mitata).
 * For load testing, you *must use* an HTTP benchmarking tool that is at least as fast as `Bun.serve()`, or your results will be skewed. Some popular Node.js-based benchmarking tools like [`autocannon`](https://github.com/mcollina/autocannon) are not fast enough. We recommend one of the following:
   * [`bombardier`](https://github.com/codesenberg/bombardier)
   * [`oha`](https://github.com/hatoo/oha)
@@ -28,7 +31,7 @@ When writing your own benchmarks, it's important to choose the right tool.
 
 ## Measuring memory usage
 
-Bun has two heaps. One heap is for the JavaScript runtime and the other heap is for everything else.
+Bun has two heaps: one for the JavaScript runtime, and one for everything else.
 
 ### JavaScript heap stats
 
@@ -153,7 +156,7 @@ Bun.gc(true); // synchronous
 Bun.gc(false); // asynchronous
 ```
 
-Heap snapshots let you inspect what objects are not being freed. You can use the `bun:jsc` module to take a heap snapshot and then view it with Safari or WebKit GTK developer tools. To generate a heap snapshot:
+Heap snapshots show which objects are not being freed. Use the `bun:jsc` module to take a heap snapshot, then view it with Safari or WebKit GTK developer tools. To generate a heap snapshot:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { generateHeapSnapshot } from "bun";
@@ -162,7 +165,7 @@ const snapshot = generateHeapSnapshot();
 await Bun.write("heap.json", JSON.stringify(snapshot, null, 2));
 ```
 
-To view the snapshot, open the `heap.json` file in Safari's Developer Tools (or WebKit GTK)
+To view the snapshot, open the `heap.json` file in Safari's Developer Tools (or WebKit GTK):
 
 1. Open the Developer Tools
 2. Click "Timeline"
@@ -179,11 +182,11 @@ Once imported, you should see something like this:
   <img alt="Viewing heap snapshot in Safari" src="https://user-images.githubusercontent.com/709451/204429337-b0d8935f-3509-4071-b991-217794d1fb27.png" caption="Viewing heap snapshot in Safari Dev Tools" />
 </Frame>
 
-> The [web debugger](/runtime/debugger#inspect) also offers the timeline feature which allows you to track and examine the memory usage of the running debug session.
+> The [web debugger](/runtime/debugger#inspect) timeline also tracks the memory usage of the running debug session.
 
 ### Native heap stats
 
-Bun uses mimalloc for the other heap. To report a summary of non-JavaScript memory usage, set the `MIMALLOC_SHOW_STATS=1` environment variable. and stats will print on exit.
+Bun uses mimalloc for the other heap. To print a summary of non-JavaScript memory usage on exit, set the `MIMALLOC_SHOW_STATS=1` environment variable.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 MIMALLOC_SHOW_STATS=1 bun script.js
@@ -219,7 +222,7 @@ Profile JavaScript execution to identify performance bottlenecks with the `--cpu
 bun --cpu-prof script.js
 ```
 
-This generates a `.cpuprofile` file you can open in Chrome DevTools (Performance tab → Load profile) or VS Code's CPU profiler.
+`--cpu-prof` writes a `.cpuprofile` file you can open in Chrome DevTools (Performance tab → Load profile) or VS Code's CPU profiler.
 
 ### Markdown output
 
@@ -229,13 +232,13 @@ Use `--cpu-prof-md` to generate a markdown CPU profile, which is grep-friendly a
 bun --cpu-prof-md script.js
 ```
 
-Both `--cpu-prof` and `--cpu-prof-md` can be used together to generate both formats at once:
+Combine `--cpu-prof` and `--cpu-prof-md` to generate both formats at once:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun --cpu-prof --cpu-prof-md script.js
 ```
 
-You can also trigger profiling via the `BUN_OPTIONS` environment variable:
+You can also pass the flag through the `BUN_OPTIONS` environment variable:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 BUN_OPTIONS="--cpu-prof-md" bun script.js
@@ -263,7 +266,7 @@ Generate heap snapshots on exit to analyze memory usage and find memory leaks.
 bun --heap-prof script.js
 ```
 
-This generates a V8 `.heapsnapshot` file that can be loaded in Chrome DevTools (Memory tab → Load).
+`--heap-prof` writes a V8 `.heapsnapshot` file you can load in Chrome DevTools (Memory tab → Load).
 
 ### Markdown output
 

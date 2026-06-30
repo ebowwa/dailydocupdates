@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/installation.md
+Downloaded: 2026-06-30T20:44:18.824Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,7 +13,7 @@
 
 ## Overview
 
-Bun ships as a single, dependency-free executable. You can install it via script, package manager, or Docker across macOS, Linux, and Windows.
+Bun ships as a single, dependency-free executable. Install it with the install script, a package manager, or Docker on macOS, Linux, and Windows.
 
 <Tip>After installation, verify with `bun --version` and `bun --revision`.</Tip>
 
@@ -23,7 +28,7 @@ Bun ships as a single, dependency-free executable. You can install it via script
     </CodeGroup>
 
     <Note>
-      **Linux users**  The `unzip` package is required to install Bun. Use `sudo apt install unzip` to install the unzip package. Kernel version 5.6 or higher is recommended; Bun runs on kernels as old as 3.10 (RHEL 7) with graceful degradation of newer syscalls. Use `uname -r` to check your kernel version.
+      **Linux users**  The `unzip` package is required to install Bun (`sudo apt install unzip`). Kernel version 5.6 or higher is recommended; Bun runs on kernels as old as 3.10 (RHEL 7) with graceful degradation of newer syscalls. Use `uname -r` to check your kernel version.
     </Note>
   </Tab>
 
@@ -38,7 +43,7 @@ Bun ships as a single, dependency-free executable. You can install it via script
       Bun requires Windows 10 version 1809 or later.
     </Warning>
 
-    For support and discussion, please join the **#windows** channel on our [Discord](https://bun.com/discord).
+    For support and discussion, join the **#windows** channel on the [Discord](https://bun.com/discord).
   </Tab>
 
   <Tab title="Package Managers">
@@ -67,7 +72,7 @@ Bun ships as a single, dependency-free executable. You can install it via script
 
     ### Image Variants
 
-    There are also image variants for different operating systems:
+    Bun also publishes image variants for different operating systems:
 
     ```bash Docker icon="docker" theme={"theme":{"light":"github-light","dark":"dracula"}}
     docker pull oven/bun:debian
@@ -135,7 +140,7 @@ bun --revision
           & "$env:USERPROFILE\.bun\bin\bun" --version
           ```
 
-          If the command runs successfully but `bun --version` is not recognized, it means that bun is not in your system's PATH. To fix this, open a Powershell terminal and run the following command:
+          If the command runs successfully but `bun --version` is not recognized, bun is not in your system's PATH. To fix this, open a PowerShell terminal and run the following command:
 
           ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
           [System.Environment]::SetEnvironmentVariable(
@@ -147,7 +152,7 @@ bun --revision
         </Step>
 
         <Step title="Restart your terminal">
-          After running the command, restart your terminal and test with `bun --version`
+          Restart your terminal and test with `bun --version`.
 
           ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
           bun --version
@@ -192,7 +197,7 @@ bun upgrade --canary
 bun upgrade --stable
 ```
 
-The canary build is useful for testing new features and bug fixes before they're released in a stable build. To help the Bun team fix bugs faster, canary builds automatically upload crash reports to Bun's team.
+Use a canary build to test new features and bug fixes before they reach a stable release. To help the Bun team fix bugs faster, canary builds automatically upload crash reports.
 
 ***
 
@@ -278,7 +283,7 @@ For distributions without `glibc` (Alpine Linux, Void Linux):
 
 ## CPU Requirements
 
-Bun has specific CPU requirements based on the binary you're using:
+CPU requirements depend on which binary you're using:
 
 <Tabs>
   <Tab title="Standard Builds">
@@ -304,8 +309,8 @@ Bun has specific CPU requirements based on the binary you're using:
 </Tabs>
 
 <Note>
-  Bun does not support CPUs older than the baseline target, which mandates the SSE4.2 extension. macOS requires version
-  13.0 or later.
+  Bun does not support CPUs older than the baseline target, which requires the SSE4.2 extension. Bun requires macOS 13.0
+  or later.
 </Note>
 
 ***

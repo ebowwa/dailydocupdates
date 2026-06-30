@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/vite.md
+Downloaded: 2026-06-30T20:44:18.803Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -11,7 +16,7 @@
 
 ***
 
-Vite works out of the box with Bun. Get started with one of Vite's templates.
+Vite works with Bun with no extra configuration. Get started with one of Vite's templates.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun create vite my-app
@@ -66,7 +71,7 @@ bun run dev
 
 ***
 
-The following command will build your app for production.
+Build your app for production.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bunx --bun vite build
@@ -74,4 +79,4 @@ bunx --bun vite build
 
 ***
 
-This is a stripped down guide to get you started with Vite + Bun. For more information, see the [Vite documentation](https://vite.dev/guide/).
+For more information, see the [Vite documentation](https://vite.dev/guide/).

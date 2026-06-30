@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/lifecycle.md
+Downloaded: 2026-06-30T20:44:18.841Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Learn how to use beforeAll, beforeEach, afterEach, and afterAll lifecycle hooks in Bun tests
 
-The test runner supports the following lifecycle hooks. This is useful for loading test fixtures, mocking data, and configuring the test environment.
+The test runner supports the following lifecycle hooks. Use them to load test fixtures, mock data, and configure the test environment.
 
 | Hook             | Description                                                |
 | ---------------- | ---------------------------------------------------------- |
@@ -137,7 +142,7 @@ Then use `--preload` to run the setup script before any test files.
 bun test --preload ./setup.ts
 ```
 
-To avoid typing `--preload` every time you run tests, it can be added to your `bunfig.toml`:
+To avoid typing `--preload` every time you run tests, add it to your `bunfig.toml`:
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [test]
@@ -242,7 +247,7 @@ test("async test", async () => {
 
 ## Nested Hooks
 
-Hooks can be nested and will run in the appropriate order:
+Hooks can be nested. They run in the following order:
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { describe, beforeAll, beforeEach, afterEach, afterAll, test } from "bun:test";
@@ -286,7 +291,7 @@ describe("outer describe", () => {
 
 ## Error Handling
 
-If a lifecycle hook throws an error, it will affect test execution:
+If a `beforeAll` hook throws, every test in its scope is skipped:
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { beforeAll, test } from "bun:test";
@@ -301,7 +306,7 @@ test("this test will be skipped", () => {
 });
 ```
 
-For better error handling:
+To log a setup failure and still fail the suite:
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { beforeAll, test, expect } from "bun:test";

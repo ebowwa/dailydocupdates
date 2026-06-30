@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/deployment/digital-ocean.md
+Downloaded: 2026-06-30T20:44:18.798Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 [DigitalOcean](https://www.digitalocean.com/) is a cloud platform that provides a range of services for building and deploying applications.
 
-In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerfile`.
+This guide deploys a Bun HTTP server to DigitalOcean using a `Dockerfile`.
 
 <Note>
   Before continuing, make sure you have:
@@ -54,7 +59,7 @@ In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerf
   </Step>
 
   <Step title="Create a new Dockerfile">
-    Make sure you're in the directory containing your project, then create a new `Dockerfile` in the root of your project. This file contains the instructions to initialize the container, copy your local project files into it, install dependencies, and start the application.
+    Create a new `Dockerfile` in the root of your project. This file contains the instructions to initialize the container, copy your local project files into it, install dependencies, and start the application.
 
     ```docker Dockerfile icon="docker" theme={"theme":{"light":"github-light","dark":"dracula"}}
     # Use the official Bun image to run the application
@@ -82,10 +87,10 @@ In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerf
     <Note>
       Make sure that the start command corresponds to your application's entry point. This can also be `CMD ["bun", "run", "start"]` if you have a start script in your `package.json`.
 
-      This image installs dependencies and runs your app with Bun inside a container. If your app doesn't have dependencies, you can omit the `RUN bun install --production --frozen-lockfile` line.
+      If your app doesn't have dependencies, you can omit the `RUN bun install --production --frozen-lockfile` line.
     </Note>
 
-    Create a new `.dockerignore` file in the root of your project. This file contains the files and directories that should be *excluded* from the container image, such as `node_modules`. This makes your builds faster and smaller:
+    Create a new `.dockerignore` file in the root of your project. It lists the files and directories to *exclude* from the container image, such as `node_modules`, which keeps builds faster and smaller:
 
     ```docker .dockerignore icon="Docker" theme={"theme":{"light":"github-light","dark":"dracula"}}
     node_modules
@@ -113,7 +118,7 @@ In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerf
     ```
 
     <Note>
-      This command authenticates Docker with DigitalOcean's registry using your DigitalOcean credentials. Without this step, the build and push command will fail with a 401 authentication error.
+      This command authenticates Docker with DigitalOcean's registry using your DigitalOcean credentials. Without this step, the build and push command fails with a 401 authentication error.
     </Note>
   </Step>
 
@@ -125,7 +130,7 @@ In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerf
     ```
 
     <Note>
-      If you're building on an ARM Mac (M1/M2), you must use `docker buildx` with `--platform=linux/amd64` to ensure compatibility with DigitalOcean's infrastructure. Using `docker build` without the platform flag will create an ARM64 image that won't run on DigitalOcean.
+      If you're building on an ARM Mac (M1/M2), you must use `docker buildx` with `--platform=linux/amd64` for compatibility with DigitalOcean's infrastructure. Using `docker build` without the platform flag creates an ARM64 image that won't run on DigitalOcean.
     </Note>
 
     Once the image is pushed, you should see it in the [**DigitalOcean registry dashboard**](https://cloud.digitalocean.com/registry):
@@ -136,7 +141,7 @@ In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerf
   </Step>
 
   <Step title="Create a new DigitalOcean App Platform project">
-    In the DigitalOcean dashboard, go to [**App Platform**](https://cloud.digitalocean.com/apps) > **Create App**. We can create a project directly from the container image.
+    In the DigitalOcean dashboard, go to [**App Platform**](https://cloud.digitalocean.com/apps) > **Create App**. You can create a project directly from the container image.
 
     <Frame>
       <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-3.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=b5cec0c6e18eaa1ca0f664bbd8edbbea" alt="DigitalOcean App Platform project dashboard" width="5272" height="2828" data-path="images/guides/digitalocean-3.png" />
@@ -156,7 +161,7 @@ In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerf
   </Step>
 
   <Step title="Visit your live application">
-    🥳 Your app is now live! Once the app is created, you should see it in the App Platform dashboard with the public URL.
+    Your app is now live. Once the app is created, you should see it in the App Platform dashboard with its public URL.
 
     <Frame>
       <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-5.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=155602e07d2a55d62fc2c1ccf01a3903" alt="DigitalOcean App Platform app dashboard" width="5036" height="2688" data-path="images/guides/digitalocean-5.png" />

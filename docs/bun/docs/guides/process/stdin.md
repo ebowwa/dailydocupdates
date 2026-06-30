@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/process/stdin.md
+Downloaded: 2026-06-30T20:44:18.810Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Read from stdin
 
-For CLI tools, it's often useful to read from `stdin`. In Bun, the `console` object is an `AsyncIterable` that yields lines from `stdin`.
+In Bun, the `console` object is an `AsyncIterable` that yields lines from `stdin`.
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const prompt = "Type something: ";
@@ -17,7 +22,7 @@ for await (const line of console) {
 
 ***
 
-Running this file results in a never-ending interactive prompt that echoes whatever the user types.
+Running this file starts a never-ending interactive prompt that echoes whatever you type.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run index.ts
@@ -32,9 +37,9 @@ You typed: hello again
 
 ***
 
-Bun also exposes stdin as a `BunFile` via `Bun.stdin`. This is useful for incrementally reading large inputs that are piped into the `bun` process.
+Bun also exposes `stdin` as a `BunFile`, `Bun.stdin`. Use it to incrementally read large inputs piped into the `bun` process.
 
-There is no guarantee that the chunks will be split line-by-line.
+Chunks aren't guaranteed to be split line-by-line.
 
 ```ts stdin.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 for await (const chunk of Bun.stdin.stream()) {
@@ -47,7 +52,7 @@ for await (const chunk of Bun.stdin.stream()) {
 
 ***
 
-This will print the input that is piped into the `bun` process.
+Running `stdin.ts` prints whatever is piped into it.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 echo "hello" | bun run stdin.ts
@@ -59,4 +64,4 @@ Chunk: hello
 
 ***
 
-See [Docs > API > Utils](/runtime/utils) for more useful utilities.
+See [Utils](/runtime/utils) for more utilities.

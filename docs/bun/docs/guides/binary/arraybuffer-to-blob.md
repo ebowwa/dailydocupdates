@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/binary/arraybuffer-to-blob.md
+Downloaded: 2026-06-30T20:44:18.795Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -13,7 +18,7 @@ const blob = new Blob([buf]);
 
 ***
 
-By default the `type` of the resulting `Blob` will be unset. This can be set manually.
+By default the `type` of the resulting `Blob` is unset. Set it with the `type` option.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = new ArrayBuffer(64);
@@ -23,4 +28,4 @@ blob.type; // => "application/octet-stream"
 
 ***
 
-See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Binary Data](/runtime/binary-data#conversion).

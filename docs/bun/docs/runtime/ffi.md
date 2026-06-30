@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/ffi.md
-Downloaded: 2026-06-29T20:40:27.187Z
+Downloaded: 2026-06-30T20:44:18.832Z
 -->
 
 > ## Documentation Index
@@ -16,7 +16,7 @@ Downloaded: 2026-06-29T20:40:27.187Z
   stable way to interact with native code from Bun is to write a [Node-API module](/runtime/node-api).
 </Warning>
 
-Use the built-in `bun:ffi` module to efficiently call native libraries from JavaScript. It works with languages that support the C ABI (Zig, Rust, C/C++, C#, Nim, Kotlin, etc).
+Use the built-in `bun:ffi` module to efficiently call native libraries from JavaScript. It works with any language that supports the C ABI, including Zig, Rust, C/C++, C#, Nim, and Kotlin.
 
 ***
 
@@ -53,11 +53,11 @@ console.log(`SQLite 3 version: ${sqlite3_libversion()}`);
 
 ## Performance
 
-According to [our benchmark](https://github.com/oven-sh/bun/tree/main/bench/ffi), `bun:ffi` is roughly 2-6x faster than Node.js FFI via `Node-API`.
+According to [our benchmark](https://github.com/oven-sh/bun/tree/main/bench/ffi), `bun:ffi` is roughly 2-6x faster than Node.js FFI through `Node-API`.
 
 <Image src="/images/ffi.png" height="400" />
 
-Bun generates & just-in-time compiles C bindings that efficiently convert values between JavaScript types and native types. To compile C, Bun embeds [TinyCC](https://github.com/TinyCC/tinycc), a small and fast C compiler.
+Bun generates and just-in-time compiles C bindings that efficiently convert values between JavaScript types and native types. To compile C, Bun embeds [TinyCC](https://github.com/TinyCC/tinycc), a small and fast C compiler.
 
 ***
 
@@ -160,7 +160,7 @@ The following `FFIType` values are supported.
 | napi\_env   | `napi_env`     |                             |
 | napi\_value | `napi_value`   |                             |
 
-Note: `buffer` arguments must be a `TypedArray` or `DataView`.
+`buffer` arguments must be a `TypedArray` or `DataView`.
 
 ***
 
@@ -178,7 +178,7 @@ JavaScript strings and C-like strings are different, and that complicates using 
   C strings:
 
   * UTF8 (1 byte per letter), usually
-  * The length is not stored. Instead, the string is null-terminated which means the length is the index of the first `\0` it finds
+  * The length is not stored. Instead, the string is null-terminated: its length is the index of the first `\0`
   * Mutable
 </Accordion>
 
@@ -231,9 +231,9 @@ When used in `returns`, `FFIType.cstring` coerces the pointer to a JavaScript `s
 
 ## Function pointers
 
-<Note>Async functions are not yet supported</Note>
+<Note>Async functions are not supported</Note>
 
-To call a function pointer from JavaScript, use `CFunction`. This is useful if using Node-API (napi) with Bun, and you've already loaded some symbols.
+To call a function pointer from JavaScript, use `CFunction`, for example with a pointer you got from a Node-API (napi) module you've already loaded.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { CFunction } from "bun:ffi";
@@ -248,7 +248,7 @@ const getVersion = new CFunction({
 getVersion();
 ```
 
-If you have multiple function pointers, you can define them all at once with `linkSymbols`:
+To define multiple function pointers at once, use `linkSymbols`:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { linkSymbols } from "bun:ffi";
@@ -286,7 +286,7 @@ const [major, minor, patch] = [lib.symbols.getMajor(), lib.symbols.getMinor(), l
 
 ## Callbacks
 
-Use `JSCallback` to create JavaScript callback functions that can be passed to C/FFI functions. The C/FFI function can call into the JavaScript/TypeScript code. This is useful for asynchronous code or whenever you want to call into JavaScript code from C.
+Use `JSCallback` to create JavaScript callback functions that you can pass to C/FFI functions, so native code can call back into your JavaScript or TypeScript. This is useful for asynchronous code.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { dlopen, JSCallback, ptr, CString } from "bun:ffi";
@@ -318,13 +318,13 @@ setTimeout(() => {
 }, 5000);
 ```
 
-When you're done with a JSCallback, you should call `close()` to free the memory.
+When you're done with a `JSCallback`, call `close()` to free the memory.
 
 ### Experimental thread-safe callbacks
 
-`JSCallback` has experimental support for thread-safe callbacks. This will be needed if you pass a callback function into a different thread from its instantiation context. You can enable it with the optional `threadsafe` parameter.
+`JSCallback` has experimental support for thread-safe callbacks. You need this if you pass a callback function into a different thread from the one that created it. Enable it with the optional `threadsafe` parameter.
 
-Currently, thread-safe callbacks work best when run from another thread that is running JavaScript code, i.e. a [`Worker`](/runtime/workers). A future version of Bun will enable them to be called from any thread (such as new threads spawned by your native library that Bun is not aware of).
+Thread-safe callbacks work best when run from another thread that is running JavaScript code, that is, a [`Worker`](/runtime/workers). A future version of Bun will enable them to be called from any thread, such as new threads spawned by your native library that Bun is not aware of.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const searchIterator = new JSCallback((ptr, length) => /hello/.test(new CString(ptr, length)), {
@@ -335,7 +335,7 @@ const searchIterator = new JSCallback((ptr, length) => /hello/.test(new CString(
 ```
 
 <Note>
-  **⚡️ Performance tip** — For a slight performance boost, directly pass `JSCallback.prototype.ptr` instead of the `JSCallback` object:
+  **⚡️ Performance tip**: For a slight performance boost, pass `JSCallback.prototype.ptr` directly instead of the `JSCallback` object:
 
   ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
   const onResolve = new JSCallback(arg => arg === 42, {
@@ -363,11 +363,11 @@ const searchIterator = new JSCallback((ptr, length) => /hello/.test(new CString(
 Bun represents [pointers](https://en.wikipedia.org/wiki/Pointer_\(computer_programming\)) as a `number` in JavaScript.
 
 <Accordion title="How does a 64 bit pointer fit in a JavaScript number?">
-  64-bit processors support up to [52 bits of addressable space](https://en.wikipedia.org/wiki/64-bit_computing#Limits_of_processors). [JavaScript numbers](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#IEEE_754_double-precision_binary_floating-point_format:_binary64) support 53 bits of usable space, so that leaves us with about 11 bits of extra space.
+  64-bit processors support up to [52 bits of addressable space](https://en.wikipedia.org/wiki/64-bit_computing#Limits_of_processors). [JavaScript numbers](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#IEEE_754_double-precision_binary_floating-point_format:_binary64) support 53 bits of usable space, which leaves about 11 bits of extra space.
 
-  **Why not `BigInt`?** `BigInt` is slower. JavaScript engines allocate a separate `BigInt` which means they can't fit into a regular JavaScript value. If you pass a `BigInt` to a function, it will be converted to a `number`
+  **Why not `BigInt`?** `BigInt` is slower. JavaScript engines allocate `BigInt`s separately, so they can't fit into a regular JavaScript value. If you pass a `BigInt` to a function, it is converted to a `number`.
 
-  **Windows Note**: The Windows API type HANDLE does not represent a virtual address, and using `ptr` for it will *not* work as expected. Use `u64` to safely represent HANDLE values.
+  **Windows Note**: The Windows API type HANDLE does not represent a virtual address, and using `ptr` for it does *not* work as expected. Use `u64` to safely represent HANDLE values.
 </Accordion>
 
 To convert from a `TypedArray` to a pointer:
@@ -440,11 +440,11 @@ The `read` function behaves similarly to `DataView`, but it's usually faster bec
 
 #### From JavaScript
 
-If you want to track when a `TypedArray` is no longer in use from JavaScript, you can use a [FinalizationRegistry](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/FinalizationRegistry).
+To track when a `TypedArray` is no longer in use from JavaScript, use a [FinalizationRegistry](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/FinalizationRegistry).
 
 #### From C, Rust, Zig, etc
 
-If you want to track when a `TypedArray` is no longer in use from C or FFI, you can pass a callback and an optional context pointer to `toArrayBuffer` or `toBuffer`. This function is called at some point later, once the garbage collector frees the underlying `ArrayBuffer` JavaScript object.
+To track when a `TypedArray` is no longer in use from C or FFI, pass a callback and an optional context pointer to `toArrayBuffer` or `toBuffer`. The callback is called later, once the garbage collector frees the underlying `ArrayBuffer` JavaScript object.
 
 The expected signature is the same as in [JavaScriptCore's C API](https://developer.apple.com/documentation/javascriptcore/jstypedarraybytesdeallocator?language=objc):
 
@@ -483,7 +483,7 @@ toArrayBuffer(
 
 ### Memory safety
 
-Using raw pointers outside of FFI is extremely not recommended. A future version of Bun may add a CLI flag to disable `bun:ffi`.
+Don't use raw pointers outside of FFI. A future version of Bun may add a CLI flag to disable `bun:ffi`.
 
 ### Pointer alignment
 
@@ -522,7 +522,7 @@ const out = encode_png(
 The [auto-generated wrapper](https://github.com/oven-sh/bun/blob/6a65631cbdcae75bfa1e64323a6ad613a922cd1a/src/bun.js/ffi.exports.js#L180-L182) converts the pointer to a `TypedArray`.
 
 <Accordion title="Hardmode">
-  If you don't want the automatic conversion or you want a pointer to a specific byte offset within the `TypedArray`, you can also directly get the pointer to the `TypedArray`:
+  If you don't want the automatic conversion, or you want a pointer to a specific byte offset within the `TypedArray`, get the pointer to the `TypedArray` directly:
 
   ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
   import { dlopen, FFIType, ptr } from "bun:ffi";

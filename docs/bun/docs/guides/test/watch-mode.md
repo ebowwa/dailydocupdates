@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/watch-mode.md
+Downloaded: 2026-06-30T20:44:18.820Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ bun test --watch
 
 ***
 
-This will restart the running Bun process whenever a file change is detected. It's fast. In this example, the editor is configured to save the file on every keystroke.
+Watch mode restarts the running Bun process whenever a file changes. It's fast. In this example, the editor saves the file on every keystroke.
 
 <Frame>
   ![Running tests in watch mode in
@@ -21,4 +26,4 @@ This will restart the running Bun process whenever a file change is detected. It
 
 ***
 
-See [Docs > Test Runner](/test) for complete documentation on the test runner.
+See [`bun test`](/test).

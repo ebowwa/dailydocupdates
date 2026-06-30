@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/util/javascript-uuid.md
+Downloaded: 2026-06-30T20:44:18.821Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Generate a UUID
 
-Use `crypto.randomUUID()` to generate a UUID v4. This API works in Bun, Node.js, and browsers. It requires no dependencies.
+Use `crypto.randomUUID()` to generate a UUID v4. It works in Bun, Node.js, and browsers, with no dependencies.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 crypto.randomUUID();
@@ -13,7 +18,7 @@ crypto.randomUUID();
 
 ***
 
-In Bun, you can also use `Bun.randomUUIDv7()` to generate a [UUID v7](https://www.ietf.org/archive/id/draft-peabody-dispatch-new-uuid-format-01.html).
+Bun also provides `Bun.randomUUIDv7()`, which generates a [UUID v7](https://www.ietf.org/archive/id/draft-peabody-dispatch-new-uuid-format-01.html).
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.randomUUIDv7();
@@ -22,4 +27,4 @@ Bun.randomUUIDv7();
 
 ***
 
-See [Docs > API > Utils](/runtime/utils) for more useful utilities.
+See [Utils](/runtime/utils).

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/write-file/append.md
+Downloaded: 2026-06-30T20:44:18.823Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,7 +13,7 @@ Bun implements the `node:fs` module, which includes the `fs.appendFile` and `fs.
 
 ***
 
-You can use `fs.appendFile` to asynchronously append data to a file, creating the file if it does not yet exist. The content can be a string or a `Buffer`.
+`fs.appendFile` asynchronously appends data to a file, creating the file if it does not yet exist. The content can be a string or a `Buffer`.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { appendFile } from "node:fs/promises";
@@ -51,4 +56,4 @@ appendFileSync("message.txt", "data to append", "utf8");
 
 ***
 
-See the [Node.js documentation](https://nodejs.org/api/fs.html#fspromisesappendfilepath-data-options) for more information.
+See the [Node.js documentation](https://nodejs.org/api/fs.html#fspromisesappendfilepath-data-options) for `fs.appendFile`.

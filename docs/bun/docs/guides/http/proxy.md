@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/http/proxy.md
+Downloaded: 2026-06-30T20:44:18.804Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Proxy HTTP requests using fetch()
 
-In Bun, `fetch` supports sending requests through an HTTP or HTTPS proxy. This is useful on corporate networks or when you need to ensure a request is sent through a specific IP address.
+In Bun, `fetch` supports sending requests through an HTTP or HTTPS proxy. Use it on corporate networks or when a request must come from a specific IP address.
 
 ```ts proxy.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 await fetch("https://example.com", {
@@ -21,7 +26,7 @@ The `proxy` option can be a URL string or an object with `url` and optional `hea
 
 ## Custom proxy headers
 
-To send custom headers to the proxy server (useful for proxy authentication tokens, custom routing, etc.), use the object format:
+To send custom headers to the proxy server (for proxy authentication tokens or custom routing), use the object format:
 
 ```ts proxy-headers.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 await fetch("https://example.com", {
@@ -37,13 +42,13 @@ await fetch("https://example.com", {
 
 The `headers` property accepts a plain object or a `Headers` instance. These headers are sent directly to the proxy server in `CONNECT` requests (for HTTPS targets) or in the proxy request (for HTTP targets).
 
-If you provide a `Proxy-Authorization` header, it will override any credentials specified in the proxy URL.
+If you provide a `Proxy-Authorization` header, it overrides any credentials in the proxy URL.
 
 ***
 
 ## Environment variables
 
-You can also set the `$HTTP_PROXY` or `$HTTPS_PROXY` environment variable to the proxy URL. This is useful when you want to use the same proxy for all requests.
+To use the same proxy for all requests, set the `$HTTP_PROXY` or `$HTTPS_PROXY` environment variable to the proxy URL.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 HTTPS_PROXY=https://username:password@proxy.example.com:8080 bun run index.ts

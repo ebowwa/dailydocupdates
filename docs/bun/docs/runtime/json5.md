@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/json5.md
-Downloaded: 2026-06-29T20:40:27.189Z
+Downloaded: 2026-06-30T20:44:18.834Z
 -->
 
 > ## Documentation Index
@@ -15,13 +15,13 @@ In Bun, JSON5 is a first-class citizen alongside JSON, TOML, and YAML. You can:
 
 * Parse and stringify JSON5 with `Bun.JSON5.parse` and `Bun.JSON5.stringify`
 * `import` & `require` JSON5 files as modules at runtime (including hot reloading & watch mode support)
-* `import` & `require` JSON5 files in frontend apps via Bun's bundler
+* `import` & `require` JSON5 files in frontend apps with Bun's bundler
 
 ***
 
 ## Conformance
 
-Bun's JSON5 parser passes 100% of the [official JSON5 test suite](https://github.com/json5/json5-tests). The parser is written in Rust for optimal performance. You can view our [translated test suite](https://github.com/oven-sh/bun/blob/main/test/js/bun/json5/json5-test-suite.test.ts) to see every test case.
+Bun's JSON5 parser is written in Rust and passes 100% of the [official JSON5 test suite](https://github.com/json5/json5-tests). The [translated test suite](https://github.com/oven-sh/bun/blob/main/test/js/bun/json5/json5-test-suite.test.ts) lists every test case.
 
 ***
 
@@ -59,7 +59,7 @@ JSON5 is a superset of JSON based on ECMAScript 5.1 syntax. It supports:
 
 * **Comments**: single-line (`//`) and multi-line (`/* */`)
 * **Trailing commas**: in objects and arrays
-* **Unquoted keys**: valid ECMAScript 5.1 identifiers can be used as keys
+* **Unquoted keys**: any valid ECMAScript 5.1 identifier
 * **Single-quoted strings**: in addition to double-quoted strings
 * **Multi-line strings**: using backslash line continuations
 * **Hex numbers**: `0xFF`
@@ -204,7 +204,7 @@ console.log(features.rateLimit); // true
 
 ### CommonJS
 
-JSON5 files can also be required in CommonJS:
+You can also `require` JSON5 files in CommonJS:
 
 ```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const config = require("./config.json5");
@@ -218,7 +218,7 @@ const { database, features } = require("./config.json5");
 
 ## Hot Reloading with JSON5
 
-When you run your application with `bun --hot`, changes to JSON5 files are automatically detected and reloaded:
+When you run your application with `bun --hot`, Bun reloads JSON5 files when they change:
 
 ```json5 config.json5 theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -258,17 +258,17 @@ bun --hot server.ts
 
 ## Bundler Integration
 
-When you import JSON5 files and bundle with Bun, the JSON5 is parsed at build time and included as a JavaScript module:
+When you bundle with Bun, imported JSON5 files are parsed at build time and included as JavaScript modules:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build app.ts --outdir=dist
 ```
 
-This means:
+Parsing at build time means:
 
 * Zero runtime JSON5 parsing overhead in production
 * Smaller bundle sizes
-* Tree-shaking support for unused properties (named imports)
+* Tree shaking of unused properties (named imports)
 
 ### Dynamic Imports
 

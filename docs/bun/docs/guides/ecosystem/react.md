@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/react.md
+Downloaded: 2026-06-30T20:44:18.802Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Build a React app with Bun
 
-Bun supports `.jsx` and `.tsx` files out of the box. React works with Bun.
+Bun has built-in support for `.jsx` and `.tsx` files. React works with Bun.
 
 Create a new React app with `bun init --react`. This gives you a template with a React app and an API server together in one full-stack app.
 
@@ -26,7 +31,7 @@ bun start
 
 ### Hot Reloading
 
-Run `bun dev` to start the app in development mode. This will start the API server and the React app with hot reloading.
+Run `bun dev` to start the app in development mode. This starts the API server and the React app with hot reloading.
 
 ### Full-Stack App
 
@@ -34,7 +39,7 @@ Run `bun start` to start the API server and frontend together in one process.
 
 ### Static Site
 
-Run `bun run build` to build the app as a static site. This will create a `dist` directory with the built app and all the assets.
+Run `bun run build` to build the app as a static site. This creates a `dist` directory with the built app and its assets.
 
 ```txt File Tree icon="folder-tree" theme={"theme":{"light":"github-light","dark":"dracula"}}
 ├── src/

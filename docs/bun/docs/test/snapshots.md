@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/snapshots.md
+Downloaded: 2026-06-30T20:44:18.842Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Learn how to use snapshot testing in Bun to save and compare output between test runs
 
-Snapshot testing saves the output of a value and compares it against future test runs. This is particularly useful for UI components, complex objects, or any output that needs to remain consistent.
+Snapshot testing saves the output of a value and compares it against future test runs. Use it for UI components, complex objects, or any output that needs to remain consistent.
 
 ## Basic Snapshots
 
@@ -20,11 +25,11 @@ test("snap", () => {
 });
 ```
 
-The first time this test is run, the argument to `expect` will be serialized and written to a special snapshot file in a `__snapshots__` directory alongside the test file.
+The first time this test runs, Bun serializes the argument to `expect` and writes it to a snapshot file in a `__snapshots__` directory alongside the test file.
 
 ### Snapshot Files
 
-After running the test above, Bun will create:
+After the first run, Bun creates:
 
 ```text title="directory structure" icon="file-directory" theme={"theme":{"light":"github-light","dark":"dracula"}}
 your-project/
@@ -41,25 +46,21 @@ The snapshot file contains:
 exports[`snap 1`] = `"foo"`;
 ```
 
-On future runs, the argument is compared against the snapshot on disk.
+On future runs, Bun compares the argument against the snapshot on disk.
 
 ## Updating Snapshots
 
-Snapshots can be re-generated with the following command:
+Regenerate snapshots with:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --update-snapshots
 ```
 
-This is useful when:
-
-* You've intentionally changed the output
-* You're adding new snapshot tests
-* The expected output has legitimately changed
+Do this when you've intentionally changed the output or added new snapshot tests.
 
 ## Inline Snapshots
 
-For smaller values, you can use inline snapshots with `.toMatchInlineSnapshot()`. These snapshots are stored directly in your test file:
+For smaller values, use `.toMatchInlineSnapshot()`. Inline snapshots are stored directly in your test file:
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect } from "bun:test";
@@ -89,13 +90,11 @@ test("inline snapshot", () => {
 1. Write your test with `.toMatchInlineSnapshot()`
 2. Run the test once
 3. Bun automatically updates your test file with the snapshot
-4. On subsequent runs, the value will be compared against the inline snapshot
-
-Inline snapshots are particularly useful for small, simple values where it's helpful to see the expected output right in the test file.
+4. On subsequent runs, Bun compares the value against the inline snapshot
 
 ## Error Snapshots
 
-You can also snapshot error messages using `.toThrowErrorMatchingSnapshot()` and `.toThrowErrorMatchingInlineSnapshot()`:
+You can also snapshot error messages with `.toThrowErrorMatchingSnapshot()` and `.toThrowErrorMatchingInlineSnapshot()`:
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect } from "bun:test";
@@ -193,7 +192,7 @@ test("report generation", () => {
 
 ## React Component Snapshots
 
-Snapshots are particularly useful for React components:
+Snapshots work well for React components:
 
 ```tsx title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect } from "bun:test";
@@ -233,7 +232,7 @@ test("snapshot with dynamic values", () => {
 });
 ```
 
-The snapshot will store:
+The snapshot file stores:
 
 ```txt title="snapshot file" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 exports[`snapshot with dynamic values 1`] = `
@@ -372,7 +371,7 @@ git commit -m "Update snapshots after UI changes"
 
 ### Cleaning Up Unused Snapshots
 
-Bun will warn about unused snapshots:
+Bun warns about unused snapshots:
 
 ```txt title="warning" icon="warning" theme={"theme":{"light":"github-light","dark":"dracula"}}
 Warning: 1 unused snapshot found:
