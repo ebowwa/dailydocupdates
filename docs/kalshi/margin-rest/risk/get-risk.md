@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/margin-rest/risk/get-risk.md
+Downloaded: 2026-07-01T21:38:52.735Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -122,6 +127,7 @@ components:
         - position
         - mark_price
         - position_notional
+        - is_portfolio
       properties:
         subaccount:
           type: integer
@@ -160,6 +166,13 @@ components:
             Estimated portfolio-aware liquidation price for this position within
             the subaccount. Null when no valid liquidation price exists.
           nullable: true
+        is_portfolio:
+          type: boolean
+          description: >-
+            True when this position is hedged within a portfolio, so
+            maintenance_margin_required, position_leverage, and
+            estimated_liquidation_price cannot be attributed to it individually
+            and are not reported.
     ErrorResponse:
       type: object
       properties:

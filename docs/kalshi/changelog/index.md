@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-06-30T20:42:18.991Z
+Downloaded: 2026-07-01T21:38:52.726Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,44 @@ surface (`REST`, `WebSocket`, `FIX`) or exchange (`Predictions`, `Margin`).
 FIX API changes, previously tracked on a separate page, now live here under
 the `FIX` tag.
 
-{/* changelog-tags: ["Upcoming"] */}
+{/* changelog-tags: ["Change", "Upcoming"] */}
+
+<Update
+  label="July 2, 2026"
+  tags={["REST", "Margin"]}
+  rss={{
+title: "Margin positions now include an is_portfolio flag",
+description: "GET /trade-api/v2/margin/risk and GET /trade-api/v2/margin/positions now return an is_portfolio flag on each position. When true, the position is hedged within a portfolio, so its per-position risk metrics cannot be attributed to it individually and are not reported."
+}}
+>
+  Each position returned by `GET /trade-api/v2/margin/risk` and
+  `GET /trade-api/v2/margin/positions` now includes an `is_portfolio` flag. When it
+  is `true`, the position is hedged within a portfolio, so its per-position risk
+  metrics cannot be attributed to it individually and are not reported — on
+  `/margin/risk` that means `maintenance_margin_required`, `position_leverage`, and
+  `estimated_liquidation_price`, and on `/margin/positions` that means `margin_used`
+  and the derived `roe`. When it is `false`, those per-position values are populated
+  as before.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/margin/risk`
+  * `GET /trade-api/v2/margin/positions`
+</Update>
+
+<Update
+  label="June 30, 2026"
+  tags={["REST", "Predictions", "Margin"]}
+  rss={{
+title: "Trade-scoped API key permissions",
+description: "API keys can use write::trade for order, order-group, and RFQ/quote write endpoint access without granting transfer-write access."
+}}
+>
+  API keys can use `write::trade` to grant access to order, order-group, and
+  RFQ/quote write endpoints without granting transfer-write access. Parent
+  `write` keys continue to grant broad write access, including trade and transfer
+  child scopes.
+</Update>
 
 <Update
   label="July 2, 2026"

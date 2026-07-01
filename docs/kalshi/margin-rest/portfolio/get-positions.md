@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/portfolio/get-positions.md
-Downloaded: 2026-06-30T20:42:18.999Z
+Downloaded: 2026-07-01T21:38:52.734Z
 -->
 
 > ## Documentation Index
@@ -109,6 +109,7 @@ components:
         - entry_price
         - unrealized_pnl
         - fees
+        - is_portfolio
       properties:
         subaccount:
           type: integer
@@ -150,6 +151,12 @@ components:
             Return on equity as a percentage (unrealized_pnl / margin_used *
             100). Null when margin_used is zero or not attributable to this
             market.
+        is_portfolio:
+          type: boolean
+          description: >-
+            True when this position is hedged within a portfolio, so margin_used
+            and roe cannot be attributed to it individually and are not
+            reported.
     ErrorResponse:
       type: object
       properties:

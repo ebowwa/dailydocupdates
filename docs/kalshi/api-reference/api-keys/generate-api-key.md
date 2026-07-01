@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/api-keys/generate-api-key.md
-Downloaded: 2026-06-29T20:40:09.653Z
+Downloaded: 2026-07-01T21:38:52.708Z
 -->
 
 > ## Documentation Index
@@ -19,7 +19,7 @@ Downloaded: 2026-06-29T20:40:09.653Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.22.0
+  version: 3.23.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -145,6 +145,7 @@ components:
         - write
         - read::block_trade_accept
         - read::portfolio_balance
+        - write::trade
         - write::transfer
         - write::block_trade_accept
       x-enum-varnames:
@@ -152,13 +153,14 @@ components:
         - ApiKeyScopeWrite
         - ApiKeyScopeReadBlockTradeAccept
         - ApiKeyScopeReadPortfolioBalance
+        - ApiKeyScopeWriteTrade
         - ApiKeyScopeWriteTransfer
         - ApiKeyScopeWriteBlockTradeAccept
       description: >-
         Scope granted to an API key. Parent scopes grant broad access; for
         example, `read` grants all read endpoints and `write` grants all write
         endpoints. Child scopes such as `read::block_trade_accept`,
-        `read::portfolio_balance`, `write::transfer`, and
+        `read::portfolio_balance`, `write::trade`, `write::transfer`, and
         `write::block_trade_accept` grant only their specific endpoint group and
         can be granted without the parent scope.
   securitySchemes:

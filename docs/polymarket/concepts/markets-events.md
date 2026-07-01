@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/concepts/markets-events.md
+Downloaded: 2026-07-01T21:38:51.370Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -46,7 +51,7 @@ A simple market might be:
 This creates two outcome tokens:
 
 * **Yes token** - Redeemable for `$1` if Bitcoin reaches `$150k`
-* **No token** - Redeemable for `$1` if Bitcoin doesn't reach `$100k`
+* **No token** - Redeemable for `$1` if Bitcoin doesn't reach `$150k`
 
 ## Events
 
