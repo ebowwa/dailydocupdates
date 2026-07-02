@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/margin-rest/fcm/get-fcm-orders.md
+Downloaded: 2026-07-02T21:07:44.797Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -222,6 +227,9 @@ components:
           description: >-
             The source of the order. Indicates whether the order was placed by
             the user or by the system on behalf of the user.
+        order_reason:
+          $ref: '#/components/schemas/OrderReason'
+          description: The reason for a system-generated order, when applicable.
     ErrorResponse:
       type: object
       properties:
@@ -291,7 +299,15 @@ components:
         - system
       description: >-
         The source of the order. 'user' indicates a user-placed order, 'system'
-        indicates a system-generated liquidation order.
+        indicates a system-generated order.
+    OrderReason:
+      type: string
+      enum:
+        - liquidation
+        - take_profit_stop_loss
+      description: >-
+        The reason for a system-generated order. Present for liquidation and
+        TP/SL orders.
   responses:
     BadRequestError:
       description: Bad request - invalid input

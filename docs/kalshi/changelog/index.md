@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-07-01T21:38:52.726Z
+Downloaded: 2026-07-02T21:07:44.792Z
 -->
 
 > ## Documentation Index
@@ -24,6 +24,35 @@ the `FIX` tag.
 {/* changelog-tags: ["Change", "Upcoming"] */}
 
 <Update
+  label="July 9, 2026"
+  tags={["REST", "Margin"]}
+  rss={{
+title: "Margin orders now identify system order reasons",
+description: "GET /trade-api/v2/margin/orders now includes order_reason when order_source is system, distinguishing liquidation orders from take-profit/stop-loss orders."
+}}
+>
+  `GET /trade-api/v2/margin/orders` now includes an `order_reason` field when
+  `order_source` is `system`. The field is `liquidation` for liquidation orders
+  and `take_profit_stop_loss` for take-profit/stop-loss orders. User-placed
+  orders continue to omit `order_reason`.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/margin/orders`
+</Update>
+
+<Update
+  label="July 2, 2026"
+  tags={["REST", "Predictions"]}
+  rss={{
+title: "Multivariate lookup history endpoints are fully deprecated",
+description: "Multivariate lookup history endpoints are fully deprecated."
+}}
+>
+  Multivariate lookup history endpoints are fully deprecated.
+</Update>
+
+<Update
   label="July 2, 2026"
   tags={["REST", "Margin"]}
   rss={{
@@ -44,6 +73,20 @@ description: "GET /trade-api/v2/margin/risk and GET /trade-api/v2/margin/positio
 
   * `GET /trade-api/v2/margin/risk`
   * `GET /trade-api/v2/margin/positions`
+</Update>
+
+<Update
+  label="July 9, 2026"
+  tags={["REST", "Predictions"]}
+  rss={{
+title: "Subaccount position transfers",
+description: "New POST /trade-api/v2/portfolio/subaccounts/positions/transfer moves a position between your own subaccounts; GET /trade-api/v2/portfolio/subaccounts/transfers now includes a transfer_type discriminator."
+}}
+>
+  Direct accounts can now move a position between their own subaccounts with the new
+  `POST /trade-api/v2/portfolio/subaccounts/positions/transfer`. These transfers also appear in
+  `GET /trade-api/v2/portfolio/subaccounts/transfers`, now discriminated by a `transfer_type` field.
+  See the [Subaccounts](/getting_started/subaccounts) concept page.
 </Update>
 
 <Update

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/typescript.md
-Downloaded: 2026-06-29T20:40:13.465Z
+Downloaded: 2026-07-02T21:07:40.408Z
 -->
 
 > ## Documentation Index
@@ -1107,6 +1107,11 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0-beta.11`
+
+* Support CLOB order tick sizes `0.005` and `0.0025`.
+* Pagination request cursors now infer the branded pagination cursor type.
 
 ### `0.1.0-beta.10`
 

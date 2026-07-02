@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-subaccount-transfers.md
-Downloaded: 2026-07-01T21:38:52.724Z
+Downloaded: 2026-07-02T21:07:44.790Z
 -->
 
 > ## Documentation Index
@@ -137,6 +137,8 @@ components:
         - to_subaccount
         - amount_cents
         - created_ts
+        - exchange_index
+        - transfer_type
       properties:
         transfer_id:
           type: string
@@ -150,11 +152,38 @@ components:
         amount_cents:
           type: integer
           format: int64
-          description: Transfer amount in cents.
+          description: Cash transfer amount in cents. Zero for position transfers.
         created_ts:
           type: integer
           format: int64
           description: Unix timestamp when the transfer was created.
+        exchange_index:
+          type: integer
+          description: Exchange index the transfer was applied on.
+        transfer_type:
+          type: string
+          enum:
+            - cash
+            - position
+          x-enum-varnames:
+            - TransferTypeCash
+            - TransferTypePosition
+          description: Whether this row is a cash or position transfer.
+        market_ticker:
+          type: string
+          description: Market ticker (position transfers only).
+        side:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+          description: Position side (position transfers only).
+        count:
+          type: integer
+          description: Number of contracts moved (position transfers only).
+        price_cents:
+          type: integer
+          description: Per-contract price in cents (position transfers only).
     ErrorResponse:
       type: object
       properties:

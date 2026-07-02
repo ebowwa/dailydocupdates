@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/python.md
-Downloaded: 2026-06-29T20:40:13.464Z
+Downloaded: 2026-07-02T21:07:40.408Z
 -->
 
 > ## Documentation Index
@@ -1106,6 +1106,10 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0b12`
+
+* Support CLOB order tick sizes `0.005` and `0.0025`.
 
 ### `0.1.0b11`
 

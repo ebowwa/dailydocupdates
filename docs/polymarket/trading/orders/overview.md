@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/orders/overview.md
+Downloaded: 2026-07-02T21:07:40.414Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -58,6 +63,11 @@ Markets have different minimum price increments (tick sizes). Your order price m
 | `0.01`    | 2 decimals      | 0.01, 0.50, 0.99       |
 | `0.001`   | 3 decimals      | 0.001, 0.500, 0.999    |
 | `0.0001`  | 4 decimals      | 0.0001, 0.5000, 0.9999 |
+| `0.0025`  | 0.25¢ steps     | 0.0025, 0.5000, 0.9975 |
+
+<Note>
+  The `0.0025` (0.25¢) tick size applies only to World Cup *to advance*, *moneyline*, *spreads*, and *totals* markets. Always fetch the market's tick size before quoting rather than assuming a value.
+</Note>
 
 Retrieve the tick size for a market using the SDK:
 

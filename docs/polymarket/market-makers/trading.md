@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-makers/trading.md
+Downloaded: 2026-07-02T21:07:40.410Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -301,6 +306,10 @@ See [Cancel Orders](/trading/orders/cancel) for full details.
 ## Tick Sizes
 
 Your order price must conform to the market's tick size, or it will be rejected. Look it up with the SDK before quoting:
+
+<Note>
+  World Cup *to advance*, *moneyline*, *spreads*, and *totals* markets are decimalized to a finer `0.0025` (0.25¢) tick size. This applies only to those markets, so always fetch the tick size rather than assuming a value.
+</Note>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}

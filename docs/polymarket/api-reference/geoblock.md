@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/geoblock.md
-Downloaded: 2026-06-28T20:29:56.652Z
+Downloaded: 2026-07-02T21:07:40.399Z
 -->
 
 > ## Documentation Index
@@ -51,64 +51,76 @@ GET https://polymarket.com/api/geoblock
 
 ***
 
-## Blocked Countries
+## Restricted Jurisdictions
 
-The following countries are restricted from placing orders on Polymarket. Countries marked as **close-only** can close existing positions but cannot open new ones. Countries marked as **frontend UI restricted** are blocked only on the Polymarket frontend; the API itself is not restricted:
+Restrictions fall into three groups. **Block completely** means no new orders and no closing of existing positions. **Close-only** means users can close existing positions but cannot open new ones. Each group notes whether it applies on the frontend, the API, or both. Codes are ISO 3166-1 alpha-2 for countries and ISO 3166-2 for sub-national regions.
 
-| Country Code | Country Name                         | Status                            |
-| ------------ | ------------------------------------ | --------------------------------- |
-| AU           | Australia                            | Blocked                           |
-| BE           | Belgium                              | Blocked                           |
-| BY           | Belarus                              | Blocked                           |
-| BI           | Burundi                              | Blocked                           |
-| BR           | Brazil                               | Blocked                           |
-| CF           | Central African Republic             | Blocked                           |
-| CD           | Congo (Kinshasa)                     | Blocked                           |
-| CU           | Cuba                                 | Blocked                           |
-| DE           | Germany                              | Blocked                           |
-| ET           | Ethiopia                             | Blocked                           |
-| FR           | France                               | Blocked                           |
-| GB           | United Kingdom                       | Blocked                           |
-| IR           | Iran                                 | Blocked                           |
-| IQ           | Iraq                                 | Blocked                           |
-| IT           | Italy                                | Blocked                           |
-| JP           | Japan                                | Frontend UI restricted            |
-| KP           | North Korea                          | Blocked                           |
-| LB           | Lebanon                              | Blocked                           |
-| LY           | Libya                                | Blocked                           |
-| MM           | Myanmar                              | Blocked                           |
-| MT           | Malta                                | Frontend restricted (sports only) |
-| NI           | Nicaragua                            | Blocked                           |
-| NL           | Netherlands                          | Blocked                           |
-| PL           | Poland                               | Close-only                        |
-| RU           | Russia                               | Blocked                           |
-| SG           | Singapore                            | Close-only                        |
-| SK           | Slovakia                             | Blocked                           |
-| SO           | Somalia                              | Blocked                           |
-| SS           | South Sudan                          | Blocked                           |
-| SD           | Sudan                                | Blocked                           |
-| SY           | Syria                                | Blocked                           |
-| TH           | Thailand                             | Close-only                        |
-| TW           | Taiwan                               | Close-only                        |
-| UM           | United States Minor Outlying Islands | Blocked                           |
-| US           | United States                        | Blocked                           |
-| VE           | Venezuela                            | Blocked                           |
-| YE           | Yemen                                | Blocked                           |
-| ZW           | Zimbabwe                             | Blocked                           |
+### OFAC-Sanctioned Jurisdictions (Block Completely)
 
-***
+Blocked on both the frontend and the API. No new orders, and existing positions cannot be closed.
 
-## Blocked Regions
+| Jurisdiction      | Code  |
+| ----------------- | ----- |
+| Iran              | IR    |
+| Syria             | SY    |
+| Cuba              | CU    |
+| North Korea       | KP    |
+| Ukraine — Crimea  | UA-43 |
+| Ukraine — Donetsk | UA-14 |
+| Ukraine — Luhansk | UA-09 |
 
-In addition to fully blocked countries, the following specific regions within otherwise accessible countries are also restricted:
+### Regulatory-Restricted Jurisdictions (Close-Only on Frontend and API)
 
-| Country      | Region  | Region Code |
-| ------------ | ------- | ----------- |
-| Canada (CA)  | Ontario | ON          |
-| Canada (CA)  | Quebec  | QC          |
-| Ukraine (UA) | Crimea  | 43          |
-| Ukraine (UA) | Donetsk | 14          |
-| Ukraine (UA) | Luhansk | 09          |
+Users can close existing positions but cannot open new ones, on both the frontend and the API.
+
+| Jurisdiction                         | Code  |
+| ------------------------------------ | ----- |
+| Australia                            | AU    |
+| Belarus                              | BY    |
+| Belgium                              | BE    |
+| Burundi                              | BI    |
+| Brazil                               | BR    |
+| Canada — British Columbia            | CA-BC |
+| Canada — Ontario                     | CA-ON |
+| Canada — Alberta                     | CA-AB |
+| Canada — Quebec                      | CA-QC |
+| Central African Republic             | CF    |
+| Congo (Kinshasa)                     | CD    |
+| Ethiopia                             | ET    |
+| France                               | FR    |
+| Germany                              | DE    |
+| Iraq                                 | IQ    |
+| Italy                                | IT    |
+| Lebanon                              | LB    |
+| Libya                                | LY    |
+| Myanmar                              | MM    |
+| Nicaragua                            | NI    |
+| North Korea                          | KP    |
+| Poland                               | PL    |
+| Russia                               | RU    |
+| Singapore                            | SG    |
+| Somalia                              | SO    |
+| Slovakia                             | SK    |
+| South Sudan                          | SS    |
+| Sudan                                | SD    |
+| Taiwan                               | TW    |
+| Thailand                             | TH    |
+| United Kingdom                       | GB    |
+| United States                        | US    |
+| United States Minor Outlying Islands | UM    |
+| Venezuela                            | VE    |
+| Yemen                                | YE    |
+| Zimbabwe                             | ZW    |
+
+### Regulatory-Restricted Jurisdictions (Close-Only on Frontend)
+
+Close-only on the Polymarket frontend; the API itself is not restricted.
+
+| Jurisdiction        | Code |
+| ------------------- | ---- |
+| Japan               | JP   |
+| Netherlands         | NL   |
+| Malta (Sports Only) | MT   |
 
 ***
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/market/get-market-candlesticks.md
-Downloaded: 2026-07-01T21:38:52.717Z
+Downloaded: 2026-07-02T21:07:44.786Z
 -->
 
 > ## Documentation Index
@@ -125,6 +125,10 @@ paths:
               - 1
               - 60
               - 1440
+            x-enum-varnames:
+              - GetMarketCandlesticksParamsPeriodIntervalN1
+              - GetMarketCandlesticksParamsPeriodIntervalN60
+              - GetMarketCandlesticksParamsPeriodIntervalN1440
           x-oapi-codegen-extra-tags:
             validate: required,oneof=1 60 1440
         - name: include_latest_before_start

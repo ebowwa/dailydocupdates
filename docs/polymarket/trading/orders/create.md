@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/orders/create.md
+Downloaded: 2026-07-02T21:07:40.414Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -511,12 +516,17 @@ details on signature types (`0` = EOA, `1` = POLY\_PROXY, `2` = GNOSIS\_SAFE,
 
 Your order price must conform to the market's tick size, or the order is rejected.
 
-| Tick Size | Precision  | Example Prices         |
-| --------- | ---------- | ---------------------- |
-| `0.1`     | 1 decimal  | 0.1, 0.2, 0.5          |
-| `0.01`    | 2 decimals | 0.01, 0.50, 0.99       |
-| `0.001`   | 3 decimals | 0.001, 0.500, 0.999    |
-| `0.0001`  | 4 decimals | 0.0001, 0.5000, 0.9999 |
+| Tick Size | Precision   | Example Prices         |
+| --------- | ----------- | ---------------------- |
+| `0.1`     | 1 decimal   | 0.1, 0.2, 0.5          |
+| `0.01`    | 2 decimals  | 0.01, 0.50, 0.99       |
+| `0.001`   | 3 decimals  | 0.001, 0.500, 0.999    |
+| `0.0001`  | 4 decimals  | 0.0001, 0.5000, 0.9999 |
+| `0.0025`  | 0.25¢ steps | 0.0025, 0.5000, 0.9975 |
+
+<Note>
+  The `0.0025` (0.25¢) tick size applies only to World Cup *to advance*, *moneyline*, *spreads*, and *totals* markets. Always fetch the market's tick size before quoting rather than assuming a value.
+</Note>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}

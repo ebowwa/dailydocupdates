@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/keybindings.md
+Downloaded: 2026-07-02T21:07:49.191Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -77,13 +82,13 @@ Actions follow a `namespace:action` format, such as `chat:submit` to send a mess
 
 Actions available in the `Global` context:
 
-| Action                 | Default   | Description                 |
-| :--------------------- | :-------- | :-------------------------- |
-| `app:interrupt`        | Ctrl+C    | Cancel current operation    |
-| `app:exit`             | Ctrl+D    | Exit Claude Code            |
-| `app:redraw`           | (unbound) | Force terminal redraw       |
-| `app:toggleTodos`      | Ctrl+T    | Toggle task list visibility |
-| `app:toggleTranscript` | Ctrl+O    | Toggle verbose transcript   |
+| Action                 | Default   | Description                                                                                                  |
+| :--------------------- | :-------- | :----------------------------------------------------------------------------------------------------------- |
+| `app:interrupt`        | Ctrl+C    | Cancel current operation                                                                                     |
+| `app:exit`             | Ctrl+D    | Exit Claude Code                                                                                             |
+| `app:redraw`           | (unbound) | Force terminal redraw                                                                                        |
+| `app:toggleTodos`      | Ctrl+T    | Toggle visibility of Claude's to-do checklist. This is not the [`/tasks`](/en/commands) background-task view |
+| `app:toggleTranscript` | Ctrl+O    | Toggle verbose transcript                                                                                    |
 
 ### History actions
 

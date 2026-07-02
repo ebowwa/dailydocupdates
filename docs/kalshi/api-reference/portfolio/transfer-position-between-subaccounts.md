@@ -1,21 +1,21 @@
 <!--
-Source: https://docs.kalshi.com/api-reference/portfolio/create-subaccount.md
-Downloaded: 2026-07-02T21:07:44.789Z
+Source: https://docs.kalshi.com/api-reference/portfolio/transfer-position-between-subaccounts.md
+Downloaded: 2026-07-02T21:07:44.790Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Create Subaccount
+# Transfer Position Between Subaccounts
 
-> Creates a new subaccount for the authenticated user. This endpoint is currently only available to institutions and market makers. Subaccounts are numbered sequentially starting from 1. Maximum 63 numbered subaccounts per user (64 including the primary account).
+> Moves an existing position between two of the authenticated user's own subaccounts. Use 0 for the primary account, or 1-63 for numbered subaccounts. The transfer is idempotent on `client_transfer_id`: retrying with the same value returns 409. `price_cents` is the per-contract transfer price — see the [Subaccounts](/getting_started/subaccounts) page for how it sets cost basis and P&L.
 
 
 
 ## OpenAPI
 
-````yaml /openapi.yaml post /portfolio/subaccounts
+````yaml /openapi.yaml post /portfolio/subaccounts/positions/transfer
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -65,34 +65,39 @@ tags:
   - name: structured-targets
     description: Structured targets endpoints
 paths:
-  /portfolio/subaccounts:
+  /portfolio/subaccounts/positions/transfer:
     post:
       tags:
         - portfolio
-      summary: Create Subaccount
+      summary: Transfer Position Between Subaccounts
       description: >-
-        Creates a new subaccount for the authenticated user. This endpoint is
-        currently only available to institutions and market makers. Subaccounts
-        are numbered sequentially starting from 1. Maximum 63 numbered
-        subaccounts per user (64 including the primary account).
-      operationId: CreateSubaccount
+        Moves an existing position between two of the authenticated user's own
+        subaccounts. Use 0 for the primary account, or 1-63 for numbered
+        subaccounts. The transfer is idempotent on `client_transfer_id`:
+        retrying with the same value returns 409. `price_cents` is the
+        per-contract transfer price — see the
+        [Subaccounts](/getting_started/subaccounts) page for how it sets cost
+        basis and P&L.
+      operationId: ApplySubaccountPositionTransfer
       requestBody:
-        required: false
+        required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateSubaccountRequest'
+              $ref: '#/components/schemas/ApplySubaccountPositionTransferRequest'
       responses:
-        '201':
-          description: Subaccount created successfully
+        '200':
+          description: Position transfer completed successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateSubaccountResponse'
+                $ref: '#/components/schemas/ApplySubaccountPositionTransferResponse'
         '400':
           $ref: '#/components/responses/BadRequestError'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
         '500':
           $ref: '#/components/responses/InternalServerError'
       security:
@@ -101,30 +106,78 @@ paths:
           kalshiAccessTimestamp: []
 components:
   schemas:
-    CreateSubaccountRequest:
-      type: object
-      properties:
-        exchange_index:
-          allOf:
-            - $ref: '#/components/schemas/ExchangeIndex'
-          description: Identifier for an exchange shard. Defaults to 0 if unspecified.
-          x-go-type-skip-optional-pointer: true
-          x-oapi-codegen-extra-tags:
-            validate: gte=0
-    CreateSubaccountResponse:
+    ApplySubaccountPositionTransferRequest:
       type: object
       required:
-        - subaccount_number
+        - client_transfer_id
+        - from_subaccount
+        - to_subaccount
+        - market_ticker
+        - side
+        - count
+        - price_cents
       properties:
-        subaccount_number:
+        client_transfer_id:
+          type: string
+          format: uuid
+          description: >-
+            Unique client-provided transfer ID for idempotency. Retrying with
+            the same value returns 409.
+          x-oapi-codegen-extra-tags:
+            validate: required
+        from_subaccount:
           type: integer
-          description: The sequential number assigned to this subaccount (1-63).
-    ExchangeIndex:
-      type: integer
-      description: >-
-        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
-        currently only 0 supported.
-      example: 0
+          nullable: true
+          description: >-
+            Source subaccount number (0 for primary, 1-63 for numbered
+            subaccounts).
+          x-oapi-codegen-extra-tags:
+            validate: required
+        to_subaccount:
+          type: integer
+          nullable: true
+          description: >-
+            Destination subaccount number (0 for primary, 1-63 for numbered
+            subaccounts).
+          x-oapi-codegen-extra-tags:
+            validate: required
+        market_ticker:
+          type: string
+          description: >-
+            Ticker of the market whose position is being moved. The market must
+            be on exchange shard 0; markets on any other shard are rejected.
+          x-oapi-codegen-extra-tags:
+            validate: required
+        side:
+          type: string
+          enum:
+            - 'yes'
+            - 'no'
+          description: Side of the position to move.
+          x-oapi-codegen-extra-tags:
+            validate: required
+        count:
+          type: integer
+          nullable: true
+          description: Number of contracts to move (must be greater than 0).
+          x-oapi-codegen-extra-tags:
+            validate: required
+        price_cents:
+          type: integer
+          nullable: true
+          description: >-
+            Per-contract price in cents (0-100) used to set cost basis and
+            realized P&L.
+          x-oapi-codegen-extra-tags:
+            validate: required
+    ApplySubaccountPositionTransferResponse:
+      type: object
+      required:
+        - position_transfer_id
+      properties:
+        position_transfer_id:
+          type: string
+          description: Server-generated identifier for the position transfer.
     ErrorResponse:
       type: object
       properties:
@@ -149,6 +202,12 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     UnauthorizedError:
       description: Unauthorized - authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ConflictError:
+      description: Conflict - resource already exists or cannot be modified
       content:
         application/json:
           schema:

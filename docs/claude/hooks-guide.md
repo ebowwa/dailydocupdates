@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/hooks-guide.md
-Downloaded: 2026-06-25T20:43:40.292Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
