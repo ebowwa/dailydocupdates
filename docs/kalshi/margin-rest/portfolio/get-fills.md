@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/portfolio/get-fills.md
-Downloaded: 2026-07-02T21:07:44.800Z
+Downloaded: 2026-07-03T21:07:24.013Z
 -->
 
 > ## Documentation Index
@@ -206,12 +206,10 @@ components:
       type: string
       description: >-
         Fixed-point contract count string (2 decimals, e.g., "10.00"; referred
-        to as "fp" in field names). Requests accept 0–2 decimal places (e.g.,
+        to as "fp" in field names). Requests accept 0-2 decimal places (e.g.,
         "10", "10.0", "10.00"); responses always emit 2 decimals. Fractional
-        contract values (e.g., "2.50") are supported on markets with fractional
-        trading enabled; the minimum granularity is 0.01 contracts. Integer
-        contract count fields are legacy and will be deprecated; when both
-        integer and fp fields are provided, they must match.
+        contract values (e.g., "2.50") are supported; the minimum granularity is
+        0.01 contracts.
       example: '10.00'
     OrderSource:
       type: string

@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/agent-sdk/todo-tracking.md
+Downloaded: 2026-07-03T21:07:36.119Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -31,6 +36,8 @@ The SDK automatically creates todos for:
 * **Explicit requests** when users ask for todo organization
 
 ## Examples
+
+Before running these examples, install the Claude Agent SDK by following the [quickstart](/en/agent-sdk/quickstart).
 
 ### Monitoring Todo Changes
 

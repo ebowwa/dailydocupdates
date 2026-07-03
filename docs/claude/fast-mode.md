@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/fast-mode.md
-Downloaded: 2026-06-26T20:38:01.617Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

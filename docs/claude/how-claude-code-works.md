@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/how-claude-code-works.md
+Downloaded: 2026-07-03T21:07:36.135Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -174,7 +179,6 @@ Claude Code can teach you how to use it. Ask questions like "how do I set up hoo
 Built-in commands also guide you through setup:
 
 * `/init` walks you through creating a CLAUDE.md for your project
-* `/agents` helps you configure custom subagents
 * `/doctor` diagnoses common issues with your installation
 
 ### It's a conversation

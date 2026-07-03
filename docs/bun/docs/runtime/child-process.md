@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/child-process.md
-Downloaded: 2026-06-30T20:44:18.831Z
+Downloaded: 2026-07-03T21:07:40.989Z
 -->
 
 > ## Documentation Index
@@ -232,6 +232,10 @@ const result = Bun.spawnSync({
 });
 // process exits
 ```
+
+Bun stops reading as soon as the limit is passed, so the returned output can
+exceed `maxBuffer` only by the single read that passed it, never by whatever
+the process manages to write before the kill lands. This matches Node.js.
 
 ## Inter-process communication (IPC)
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/multivariate/create-market-in-multivariate-event-collection.md
-Downloaded: 2026-07-01T21:38:52.718Z
+Downloaded: 2026-07-03T21:07:23.999Z
 -->
 
 > ## Documentation Index
@@ -196,7 +196,6 @@ components:
         - open_interest_fp
         - result
         - can_close_early
-        - fractional_trading_enabled
         - expiration_value
         - rules_primary
         - rules_secondary
@@ -270,13 +269,6 @@ components:
             - amended
             - finalized
           description: The current status of the market in its lifecycle.
-        response_price_units:
-          type: string
-          enum:
-            - usd_cent
-          deprecated: true
-          description: 'DEPRECATED: Use price_level_structure and price_ranges instead.'
-          x-go-type-skip-optional-pointer: true
         yes_bid_dollars:
           $ref: '#/components/schemas/FixedPointDollars'
           description: Price for the highest YES buy offer on this market in dollars
@@ -317,12 +309,6 @@ components:
             - ''
         can_close_early:
           type: boolean
-        fractional_trading_enabled:
-          type: boolean
-          deprecated: true
-          description: >-
-            Deprecated. This flag is always `true` and carries no information.
-            Will be removed after a pre-announcement with the removal date.
         open_interest_fp:
           $ref: '#/components/schemas/FixedPointCount'
           description: >-
@@ -494,12 +480,10 @@ components:
       type: string
       description: >-
         Fixed-point contract count string (2 decimals, e.g., "10.00"; referred
-        to as "fp" in field names). Requests accept 0–2 decimal places (e.g.,
+        to as "fp" in field names). Requests accept 0-2 decimal places (e.g.,
         "10", "10.0", "10.00"); responses always emit 2 decimals. Fractional
-        contract values (e.g., "2.50") are supported on markets with fractional
-        trading enabled; the minimum granularity is 0.01 contracts. Integer
-        contract count fields are legacy and will be deprecated; when both
-        integer and fp fields are provided, they must match.
+        contract values (e.g., "2.50") are supported; the minimum granularity is
+        0.01 contracts.
       example: '10.00'
     MveSelectedLeg:
       type: object

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/admin-setup.md
-Downloaded: 2026-06-30T20:44:12.232Z
+Downloaded: 2026-07-03T21:07:36.114Z
 -->
 
 > ## Documentation Index
@@ -88,6 +88,8 @@ Managed settings can lock down tools, sandbox execution, restrict MCP servers an
 | [Model restrictions](/en/model-config#restrict-model-selection)                        | `availableModels` filters which models appear in the picker. Adding `enforceAvailableModels` also constrains the auto-selected default model. See [surface coverage](/en/model-config#surface-coverage) for how this setting reaches the CLI, web, and IDE | `availableModels`, `enforceAvailableModels`                                                                  |
 | [Version floor](/en/settings)                                                          | Prevent auto-update from installing below an org-wide minimum                                                                                                                                                                                              | `minimumVersion`                                                                                             |
 | [Required version range](/en/settings)                                                 | Refuse to start at all when the running version is outside an org-approved range. Stronger than `minimumVersion`, which only blocks downgrades                                                                                                             | `requiredMinimumVersion`, `requiredMaximumVersion`                                                           |
+
+Organizations whose members authenticate through claude.ai or the Anthropic API can also govern models without deploying settings: [organization model restrictions](/en/model-config#organization-model-restrictions) disable individual models, an [organization default model](/en/model-config#organization-default-model) sets which model new sessions start on, and [organization effort limits](/en/model-config#organization-effort-limits) cap effort levels per role. All three controls require a Claude Enterprise plan. Model restrictions and effort limits are enforced server-side; the default model is a starting point that users can change, unless the organization enforces it. Enforcement is available to a limited set of organizations; ask your Anthropic account team about availability. None of these controls reach sessions on Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry, or [Claude Platform on AWS](/en/claude-platform-on-aws); on those providers, use `availableModels` above for restrictions and the `model` key in managed settings for a default.
 
 Permission rules and sandboxing cover different layers. Denying WebFetch blocks Claude's fetch tool, but if Bash is allowed, `curl` and `wget` can still reach any URL. Sandboxing closes that gap with a network domain allowlist enforced at the OS level.
 
