@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/changelog.md
-Downloaded: 2026-07-03T21:07:36.124Z
+Downloaded: 2026-07-04T20:58:40.446Z
 -->
 
 > ## Documentation Index
@@ -14,6 +14,10 @@ Downloaded: 2026-07-03T21:07:36.124Z
 This page is generated from the [CHANGELOG.md on GitHub](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md).
 
 Run `claude --version` to check your installed version.
+
+<Update label="2.1.201" description="July 3, 2026">
+  * Claude Sonnet 5 sessions no longer use the mid-conversation system role for harness reminders
+</Update>
 
 <Update label="2.1.200" description="July 3, 2026">
   * Changed `AskUserQuestion` dialogs to no longer auto-continue by default; opt into an idle timeout via `/config`

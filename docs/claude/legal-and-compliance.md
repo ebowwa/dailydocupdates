@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/legal-and-compliance.md
+Downloaded: 2026-07-04T20:58:40.458Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -17,7 +22,7 @@ Your use of Claude Code is subject to:
 
 ### Commercial agreements
 
-Whether you're using the Claude API directly (1P) or accessing it through Amazon Bedrock or Google Vertex (3P), your existing commercial agreement will apply to Claude Code usage, unless we've mutually agreed otherwise.
+Whether you're using the Claude API directly (1P) or accessing it through Amazon Bedrock or Google Cloud's Agent Platform (3P), your existing commercial agreement will apply to Claude Code usage, unless we've mutually agreed otherwise.
 
 ## Compliance
 

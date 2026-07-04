@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/headless.md
+Downloaded: 2026-07-04T20:58:40.456Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -52,7 +57,7 @@ In bare mode Claude has access to the Bash, file read, and file edit tools. Pass
 | Custom agents           | `--agents <json>`                                       |
 | A plugin                | `--plugin-dir <path>`, `--plugin-url <url>`             |
 
-Bare mode skips OAuth and keychain reads. Anthropic authentication must come from `ANTHROPIC_API_KEY` or an `apiKeyHelper` in the JSON passed to `--settings`. Bedrock, Vertex, and Foundry use their usual provider credentials.
+Bare mode skips OAuth and keychain reads. Anthropic authentication must come from `ANTHROPIC_API_KEY` or an `apiKeyHelper` in the JSON passed to `--settings`. Amazon Bedrock, Google Cloud's Agent Platform, and Microsoft Foundry use their usual provider credentials.
 
 <Note>
   `--bare` is the recommended mode for scripted and SDK calls, and will become the default for `-p` in a future release.

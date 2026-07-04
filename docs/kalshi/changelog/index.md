@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-07-03T21:07:24.006Z
+Downloaded: 2026-07-04T20:58:28.548Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,24 @@ surface (`REST`, `WebSocket`, `FIX`) or exchange (`Predictions`, `Margin`).
 FIX API changes, previously tracked on a separate page, now live here under
 the `FIX` tag.
 
-{/* changelog-tags: ["Change", "Upcoming"] */}
+{/* changelog-tags: ["Breaking Change", "Upcoming"] */}
+
+<Update
+  label="July 4, 2026"
+  tags={["REST", "Predictions"]}
+  rss={{
+title: "Exchange announcements endpoint removed",
+description: "GET /trade-api/v2/exchange/announcements has been removed from the Predictions REST API."
+}}
+>
+  `GET /trade-api/v2/exchange/announcements` has been removed from the Predictions
+  REST API. Exchange schedule remains available through
+  `GET /trade-api/v2/exchange/schedule`.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/exchange/announcements`
+</Update>
 
 <Update
   label="July 9, 2026"

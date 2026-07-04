@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/user-input.md
-Downloaded: 2026-07-01T21:39:02.581Z
+Downloaded: 2026-07-04T20:58:40.443Z
 -->
 
 > ## Documentation Index
@@ -672,6 +672,8 @@ This example handles those questions in a terminal application. Here's what happ
 3. **Collect input**: The user can enter a number to select an option, or type free text directly (e.g., "jquery", "i don't know")
 4. **Map answers**: The code checks if input is numeric (uses the option's label) or free text (uses the text directly)
 5. **Return to Claude**: The response includes both the original `questions` array and the `answers` mapping
+
+Save the TypeScript version as `ask.ts` and run it with `npx tsx ask.ts`, or save the Python version as `ask.py` and run it with `python ask.py`.
 
 <CodeGroup>
   ```python Python theme={null}
