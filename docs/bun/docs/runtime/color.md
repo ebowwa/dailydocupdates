@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/color.md
-Downloaded: 2026-06-30T20:44:18.831Z
+Downloaded: 2026-07-05T21:01:09.971Z
 -->
 
 > ## Documentation Index
@@ -17,7 +17,7 @@ Downloaded: 2026-06-30T20:44:18.831Z
 | ------------ | -------------------------------- |
 | `"css"`      | `"red"`                          |
 | `"ansi"`     | `"\x1b[38;2;255;0;0m"`           |
-| `"ansi-16"`  | `"\x1b[38;5;\tm"`                |
+| `"ansi-16"`  | `"\x1b[91m"`                     |
 | `"ansi-256"` | `"\x1b[38;5;196m"`               |
 | `"ansi-16m"` | `"\x1b[38;2;255;0;0m"`           |
 | `"number"`   | `0x1a2b3c`                       |
@@ -132,10 +132,10 @@ To convert from RGBA to one of the 256 ANSI colors, we ported the algorithm that
 The `"ansi-16"` format approximates the input color to the nearest of the 16 ANSI colors supported by most terminals.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
-Bun.color("red", "ansi-16"); // "\u001b[38;5;\tm"
-Bun.color(0xff0000, "ansi-16"); // "\u001b[38;5;\tm"
-Bun.color("#f00", "ansi-16"); // "\u001b[38;5;\tm"
-Bun.color("#ff0000", "ansi-16"); // "\u001b[38;5;\tm"
+Bun.color("red", "ansi-16"); // "\u001b[91m"
+Bun.color(0xff0000, "ansi-16"); // "\u001b[91m"
+Bun.color("#f00", "ansi-16"); // "\u001b[91m"
+Bun.color("#ff0000", "ansi-16"); // "\u001b[91m"
 ```
 
 Bun converts the input to a 24-bit RGB color space, then to `ansi-256`, then to the nearest of the 16 ANSI colors.
