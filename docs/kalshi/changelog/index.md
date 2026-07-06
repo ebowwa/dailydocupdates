@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-07-04T20:58:28.548Z
+Downloaded: 2026-07-06T21:37:52.405Z
 -->
 
 > ## Documentation Index
@@ -119,7 +119,9 @@ description: "New POST /trade-api/v2/portfolio/subaccounts/positions/transfer mo
 }}
 >
   Direct accounts can now move a position between their own subaccounts with the new
-  `POST /trade-api/v2/portfolio/subaccounts/positions/transfer`. These transfers also appear in
+  `POST /trade-api/v2/portfolio/subaccounts/positions/transfer`. The per-contract transfer
+  `price` is a fixed-point dollar string (e.g. `"0.4050"`, supporting sub-penny precision)
+  and is always the YES-side price, regardless of `side`. These transfers also appear in
   `GET /trade-api/v2/portfolio/subaccounts/transfers`, now discriminated by a `transfer_type` field.
   See the [Subaccounts](/getting_started/subaccounts) concept page.
 </Update>

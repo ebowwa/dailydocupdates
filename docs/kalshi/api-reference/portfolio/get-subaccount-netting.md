@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-subaccount-netting.md
-Downloaded: 2026-07-01T21:38:52.724Z
+Downloaded: 2026-07-06T21:37:52.403Z
 -->
 
 > ## Documentation Index
@@ -103,6 +103,7 @@ components:
       required:
         - subaccount_number
         - enabled
+        - exchange_index
       properties:
         subaccount_number:
           type: integer
@@ -110,6 +111,9 @@ components:
         enabled:
           type: boolean
           description: Whether netting is enabled for this subaccount.
+        exchange_index:
+          type: integer
+          description: Exchange index of the subaccount.
     ErrorResponse:
       type: object
       properties:

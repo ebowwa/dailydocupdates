@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/transfer-position-between-subaccounts.md
-Downloaded: 2026-07-02T21:07:44.790Z
+Downloaded: 2026-07-06T21:37:52.404Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,7 @@ Downloaded: 2026-07-02T21:07:44.790Z
 
 # Transfer Position Between Subaccounts
 
-> Moves an existing position between two of the authenticated user's own subaccounts. Use 0 for the primary account, or 1-63 for numbered subaccounts. The transfer is idempotent on `client_transfer_id`: retrying with the same value returns 409. `price_cents` is the per-contract transfer price — see the [Subaccounts](/getting_started/subaccounts) page for how it sets cost basis and P&L.
+> Moves an existing position between two of the authenticated user's own subaccounts. Use 0 for the primary account, or 1-63 for numbered subaccounts. The transfer is idempotent on `client_transfer_id`: retrying with the same value returns 409. `price` is the per-contract transfer price as a fixed-point dollar string, and is always the YES-side price regardless of `side` — see the [Subaccounts](/getting_started/subaccounts) page for how it sets cost basis and P&L.
 
 
 
@@ -74,8 +74,9 @@ paths:
         Moves an existing position between two of the authenticated user's own
         subaccounts. Use 0 for the primary account, or 1-63 for numbered
         subaccounts. The transfer is idempotent on `client_transfer_id`:
-        retrying with the same value returns 409. `price_cents` is the
-        per-contract transfer price — see the
+        retrying with the same value returns 409. `price` is the per-contract
+        transfer price as a fixed-point dollar string, and is always the
+        YES-side price regardless of `side` — see the
         [Subaccounts](/getting_started/subaccounts) page for how it sets cost
         basis and P&L.
       operationId: ApplySubaccountPositionTransfer
@@ -115,7 +116,7 @@ components:
         - market_ticker
         - side
         - count
-        - price_cents
+        - price
       properties:
         client_transfer_id:
           type: string
@@ -162,14 +163,14 @@ components:
           description: Number of contracts to move (must be greater than 0).
           x-oapi-codegen-extra-tags:
             validate: required
-        price_cents:
-          type: integer
-          nullable: true
+        price:
+          $ref: '#/components/schemas/FixedPointDollars'
           description: >-
-            Per-contract price in cents (0-100) used to set cost basis and
-            realized P&L.
-          x-oapi-codegen-extra-tags:
-            validate: required
+            Per-contract price in fixed-point dollars (0 to 1.00 inclusive) used
+            to set cost basis and realized P&L. Always the YES-side price, even
+            when `side` is `no`; a NO position transferred at `price` p carries
+            a per-contract NO-side value of 1.00 − p.
+          x-go-type-skip-optional-pointer: true
     ApplySubaccountPositionTransferResponse:
       type: object
       required:
@@ -178,6 +179,14 @@ components:
         position_transfer_id:
           type: string
           description: Server-generated identifier for the position transfer.
+    FixedPointDollars:
+      type: string
+      description: >-
+        US dollar amount as a fixed-point decimal string with up to 6 decimal
+        places of precision. This is the maximum supported precision; valid
+        quote intervals for a given market are constrained by that market's
+        price level structure.
+      example: '0.5600'
     ErrorResponse:
       type: object
       properties:

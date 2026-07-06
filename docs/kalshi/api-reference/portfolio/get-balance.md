@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-balance.md
-Downloaded: 2026-07-01T21:38:52.723Z
+Downloaded: 2026-07-06T21:37:52.402Z
 -->
 
 > ## Documentation Index
@@ -77,6 +77,7 @@ paths:
       operationId: GetBalance
       parameters:
         - $ref: '#/components/parameters/SubaccountQueryDefaultPrimary'
+        - $ref: '#/components/parameters/ExchangeIndexQuery'
       responses:
         '200':
           description: Balance retrieved successfully
@@ -100,6 +101,12 @@ components:
       description: Subaccount number (0 for primary, 1-63 for subaccounts). Defaults to 0.
       schema:
         type: integer
+    ExchangeIndexQuery:
+      name: exchange_index
+      in: query
+      schema:
+        $ref: '#/components/schemas/ExchangeIndex'
+      x-go-type-skip-optional-pointer: true
   schemas:
     GetBalanceResponse:
       type: object
@@ -135,6 +142,12 @@ components:
           items:
             $ref: '#/components/schemas/IndexedBalance'
           description: Balance broken down per exchange index.
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
     FixedPointDollars:
       type: string
       description: >-
@@ -168,12 +181,6 @@ components:
         service:
           type: string
           description: The name of the service that generated the error
-    ExchangeIndex:
-      type: integer
-      description: >-
-        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
-        currently only 0 supported.
-      example: 0
   responses:
     UnauthorizedError:
       description: Unauthorized - authentication required

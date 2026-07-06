@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/cookies.md
-Downloaded: 2026-06-30T20:44:18.831Z
+Downloaded: 2026-07-06T21:38:05.566Z
 -->
 
 > ## Documentation Index
@@ -284,7 +284,7 @@ cookie.httpOnly; // boolean - Accessible only via HTTP (not JavaScript)
 
 #### `isExpired(): boolean`
 
-Checks if the cookie has expired.
+Checks if the cookie has expired. When both `maxAge` and `expires` are set, `maxAge` takes precedence, as required by [RFC 6265](https://datatracker.ietf.org/doc/html/rfc6265#section-5.3).
 
 ```ts title="is-expired.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Expired cookie (Date in the past)
@@ -298,6 +298,10 @@ const validCookie = new Bun.Cookie("name", "value", {
   maxAge: 3600, // 1 hour in seconds
 });
 console.log(validCookie.isExpired()); // false
+
+// A non-positive maxAge expires the cookie immediately
+const deletedCookie = new Bun.Cookie("name", "value", { maxAge: 0 });
+console.log(deletedCookie.isExpired()); // true
 
 // Session cookie (no expiration)
 const sessionCookie = new Bun.Cookie("name", "value");
