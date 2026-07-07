@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/websockets/order-group-updates.md
-Downloaded: 2026-06-30T20:42:19.001Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

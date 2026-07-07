@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/market-and-event-lifecycle.md
-Downloaded: 2026-06-30T20:42:19.001Z
+Downloaded: 2026-07-07T21:24:49.037Z
 -->
 
 > ## Documentation Index
@@ -185,6 +185,13 @@ operations:
                       - linear_cent
                       - deci_cent
                       - tapered_deci_cent
+                      - center_whole_edge_half_cent
+                      - center_whole_edge_quint_cent
+                      - center_half_edge_half_cent
+                      - center_half_edge_quint_cent
+                      - center_half_edge_deci_cent
+                      - center_quint_edge_quint_cent
+                      - center_quint_edge_deci_cent
                     required: false
                   - name: price_ranges
                     type: array
@@ -416,6 +423,13 @@ operations:
                     - linear_cent
                     - deci_cent
                     - tapered_deci_cent
+                    - center_whole_edge_half_cent
+                    - center_whole_edge_quint_cent
+                    - center_half_edge_half_cent
+                    - center_half_edge_quint_cent
+                    - center_half_edge_deci_cent
+                    - center_quint_edge_quint_cent
+                    - center_quint_edge_deci_cent
                   x-parser-schema-id: <anonymous-schema-129>
                 price_ranges:
                   type: array

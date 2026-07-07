@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/websockets/cfbenchmarks-value.md
-Downloaded: 2026-06-30T20:42:19.000Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

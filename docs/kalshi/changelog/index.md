@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-07-06T21:37:52.405Z
+Downloaded: 2026-07-07T21:24:49.027Z
 -->
 
 > ## Documentation Index
@@ -74,6 +74,39 @@ description: "GET /trade-api/v2/margin/orders now includes order_reason when ord
   **Affected endpoints:**
 
   * `GET /trade-api/v2/margin/orders`
+</Update>
+
+<Update
+  label="July 23, 2026"
+  tags={["REST", "WebSocket", "Predictions"]}
+  rss={{
+title: "New price level structures",
+description: "Seven new price_level_structure values are being introduced, with center ticks of 1¢, 0.5¢, or 0.2¢ and edge ticks down to 0.1¢. Pilot markets switch the week of July 27, expanding to higher-volume markets the week of August 3. No new fields or precision: consume the price_ranges array on the market object to determine valid order prices."
+}}
+>
+  Seven new `price_level_structure` values are being introduced:
+  `center_whole_edge_half_cent`, `center_whole_edge_quint_cent`,
+  `center_half_edge_half_cent`, `center_half_edge_quint_cent`,
+  `center_half_edge_deci_cent`, `center_quint_edge_quint_cent`, and
+  `center_quint_edge_deci_cent`. Naming follows
+  `center_{center}_edge_{edge}_cent`, where `whole` = 1¢, `half` = 0.5¢,
+  `quint` = 0.2¢, and `deci` = 0.1¢. Edge bands are \$0.00–\$0.10 and
+  \$0.90–\$1.00; the center band is \$0.10–\$0.90. Existing values
+  (`linear_cent`, `tapered_deci_cent`, `deci_cent`) are unchanged.
+
+  There are no new fields and no new decimal precision. The source of truth
+  for a market's valid prices remains the `price_ranges` array on the market
+  object (`{ start, end, step }` bands in fixed-point dollars) — consume it
+  dynamically per market rather than keying logic off the
+  `price_level_structure` label. Structure changes are delivered on the
+  existing `market_lifecycle_v2` WebSocket channel via the existing
+  `price_level_structure_updated` event, which includes the updated
+  `price_ranges`. When a market moves to a finer tick, resting orders are
+  preserved and carried over to the new grid.
+
+  Rollout: pilot markets switch to the new structures the week of
+  July 27, 2026, scheduled to avoid disrupting actively-trading markets,
+  with expansion to higher-volume markets the week of August 3, 2026.
 </Update>
 
 <Update

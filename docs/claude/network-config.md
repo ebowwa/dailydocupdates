@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/network-config.md
-Downloaded: 2026-07-04T20:58:40.461Z
+Downloaded: 2026-07-07T21:25:03.900Z
 -->
 
 > ## Documentation Index
@@ -102,6 +102,8 @@ export CLAUDE_CODE_CLIENT_KEY=/path/to/client-key.pem
 # Optional: Passphrase for encrypted private key
 export CLAUDE_CODE_CLIENT_KEY_PASSPHRASE="your-passphrase"
 ```
+
+Claude Code reads the certificate and key files at startup and re-reads them each time it applies settings, including when settings change during a session. To rotate the certificate and key, replace the files at the same paths.
 
 ## Network access requirements
 

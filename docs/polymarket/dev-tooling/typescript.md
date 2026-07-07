@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/typescript.md
-Downloaded: 2026-07-03T21:07:19.709Z
+Downloaded: 2026-07-07T21:24:50.540Z
 -->
 
 > ## Documentation Index
@@ -1107,6 +1107,13 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0-beta.13`
+
+* Added `listMarketClarifications` for reading market clarification text with SDK-owned pagination and market, event, state, question, and transaction filters.
+* Fixed legacy Proxy wallet gasless execution and added live Safe and Proxy wallet coverage.
+* Resolve closed markets when preparing market position redemptions.
+* Gasless transaction handles now wait for relayer transactions to reach confirmed state before resolving.
 
 ### `0.1.0-beta.12`
 

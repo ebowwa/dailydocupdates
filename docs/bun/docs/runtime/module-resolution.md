@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/module-resolution.md
-Downloaded: 2026-06-30T20:44:18.835Z
+Downloaded: 2026-07-07T21:25:14.169Z
 -->
 
 > ## Documentation Index
@@ -11,7 +11,7 @@ Downloaded: 2026-06-30T20:44:18.835Z
 
 > How Bun resolves modules and handles imports in JavaScript and TypeScript
 
-The JavaScript ecosystem is in a years-long transition from CommonJS modules to native ES modules (ESM). TypeScript enforces its own rules around import extensions that aren't compatible with ESM, and build tools re-map paths through incompatible mechanisms. Bun aims to provide a consistent and predictable module resolution system that works without configuration.
+The JavaScript ecosystem is in a years-long transition from CommonJS modules to native ES modules (ESM), and different runtimes and build tools have historically disagreed on how import specifiers map to files on disk. Bun aims to provide a consistent and predictable module resolution system that works without configuration.
 
 ## Syntax
 
@@ -42,27 +42,37 @@ Here `./hello` is a relative path with no extension. **Extensioned imports are o
 
 * `./hello.tsx`
 * `./hello.jsx`
+* `./hello.mts`
 * `./hello.ts`
 * `./hello.mjs`
 * `./hello.js`
+* `./hello.cts`
 * `./hello.cjs`
 * `./hello.json`
 * `./hello/index.tsx`
 * `./hello/index.jsx`
+* `./hello/index.mts`
 * `./hello/index.ts`
 * `./hello/index.mjs`
 * `./hello/index.js`
+* `./hello/index.cts`
 * `./hello/index.cjs`
 * `./hello/index.json`
 
-If the import path includes an extension, Bun only checks for a file with that exact extension.
+<Note>
+  The exact order varies by context: `require()` tries CommonJS extensions (`.cts`, `.cjs`) before ESM ones (`.mts`,
+  `.mjs`), and imports inside `node_modules` try JavaScript extensions before TypeScript ones. The list above shows the
+  order for a local ESM `import`.
+</Note>
+
+If the import path includes an extension, Bun checks for that exact file first. If no exact match exists, Bun falls back to trying the extension list above appended to the full path (so `./hello.world` can resolve to `./hello.world.ts`).
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { hello } from "./hello";
 import { hello } from "./hello.ts"; // this works
 ```
 
-If you import `from "*.js{x}"`, Bun also checks for a matching `*.ts{x}` file, to be compatible with TypeScript's [ES module support](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#new-file-extensions).
+There's one additional rule for TypeScript compatibility: if you import `from "*.js"` or `from "*.jsx"`, Bun also checks for a matching `*.ts` or `*.tsx` file, and outside `node_modules` `from "*.mjs"` also matches `*.mts`. This follows the TypeScript compiler's [file extension substitution](https://www.typescriptlang.org/docs/handbook/modules/reference.html#file-extension-substitution), which lets source files reference each other by their compiled output paths. Note that unlike TypeScript, Bun doesn't rewrite `.cjs` to `.cts`.
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { hello } from "./hello";
@@ -201,9 +211,10 @@ Once it finds the `foo` package, Bun reads its `package.json` to determine the p
   "name": "foo",
   "exports": {
     "bun": "./index.js",
+    "node-addons": "./index.js", // unless --no-addons was passed
     "node": "./index.js",
-    "require": "./index.js", // if importer is CommonJS
-    "import": "./index.mjs", // if importer is ES module
+    "require": "./index.js", // if the importer uses require()
+    "import": "./index.mjs", // if the importer uses import
     "default": "./index.js"
   }
 }
@@ -249,7 +260,7 @@ import stuff from "foo/index.mjs"; // this doesn't
   in the `"bun"` condition, Bun imports and executes your TypeScript source files directly.
 </Note>
 
-If `exports` is not defined, Bun falls back to `"module"` (ESM imports only) then [`"main"`](https://nodejs.org/api/packages.html#main).
+If `exports` is not defined, Bun falls back to the legacy top-level entrypoint fields. At runtime Bun prefers [`"main"`](https://nodejs.org/api/packages.html#main) (or an implicit `index.*` file) when present, and uses `"module"` otherwise.
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -300,7 +311,7 @@ Bun supports import path re-mapping through TypeScript's [`compilerOptions.paths
 }
 ```
 
-Bun also supports [Node.js-style subpath imports](https://nodejs.org/api/packages.html#subpath-imports) in `package.json`, where mapped paths must start with `#`. This approach doesn’t work as well with editors, but you can use both options together.
+Bun also supports [Node.js-style subpath imports](https://nodejs.org/api/packages.html#subpath-imports) in `package.json`, where mapped paths must start with `#`. TypeScript and editors resolve these too, and you can use both mechanisms together.
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {

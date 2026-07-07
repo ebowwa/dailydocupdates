@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/python.md
-Downloaded: 2026-07-04T20:58:40.439Z
+Downloaded: 2026-07-07T21:25:03.880Z
 -->
 
 > ## Documentation Index
@@ -1079,6 +1079,7 @@ PermissionMode = Literal[
     "plan",  # Planning mode - explore without editing
     "dontAsk",  # Deny anything not pre-approved instead of prompting
     "bypassPermissions",  # Bypass permission checks; explicit ask rules still prompt (use with caution)
+    "auto",  # A model classifier approves or denies each tool call
 ]
 ```
 
@@ -2154,14 +2155,18 @@ class PermissionRequestHookInput(BaseHookInput):
     tool_name: str
     tool_input: dict[str, Any]
     permission_suggestions: NotRequired[list[Any]]
+    agent_id: NotRequired[str]
+    agent_type: NotRequired[str]
 ```
 
-| Field                    | Type                           | Description                               |
-| :----------------------- | :----------------------------- | :---------------------------------------- |
-| `hook_event_name`        | `Literal["PermissionRequest"]` | Always "PermissionRequest"                |
-| `tool_name`              | `str`                          | Name of the tool requesting permission    |
-| `tool_input`             | `dict[str, Any]`               | Input parameters for the tool             |
-| `permission_suggestions` | `list[Any]` (optional)         | Suggested permission updates from the CLI |
+| Field                    | Type                           | Description                                                        |
+| :----------------------- | :----------------------------- | :----------------------------------------------------------------- |
+| `hook_event_name`        | `Literal["PermissionRequest"]` | Always "PermissionRequest"                                         |
+| `tool_name`              | `str`                          | Name of the tool requesting permission                             |
+| `tool_input`             | `dict[str, Any]`               | Input parameters for the tool                                      |
+| `permission_suggestions` | `list[Any]` (optional)         | Suggested permission updates from the CLI                          |
+| `agent_id`               | `str` (optional)               | Subagent identifier, present when the hook fires inside a subagent |
+| `agent_type`             | `str` (optional)               | Subagent type, present when the hook fires inside a subagent       |
 
 ### `HookJSONOutput`
 

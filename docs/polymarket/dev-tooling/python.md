@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/python.md
-Downloaded: 2026-07-03T21:07:19.708Z
+Downloaded: 2026-07-07T21:24:50.540Z
 -->
 
 > ## Documentation Index
@@ -1106,6 +1106,18 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0b15`
+
+* Added support for Perps.
+
+### `0.1.0b14`
+
+* Added builder API key management for creating, fetching, and revoking builder API keys.
+* Added support for merging multiple positions in one request.
+* Added runnable Python SDK examples for common integration workflows.
+* Resolve closed markets when redeeming positions.
+* Gasless transaction handles now wait for relayer transactions to reach confirmed state before resolving.
 
 ### `0.1.0b13`
 

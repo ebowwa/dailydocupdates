@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/guides/http/proxy.md
-Downloaded: 2026-06-30T20:44:18.804Z
+Downloaded: 2026-07-07T21:25:14.137Z
 -->
 
 > ## Documentation Index
@@ -20,7 +20,7 @@ await fetch("https://example.com", {
 
 ***
 
-The `proxy` option can be a URL string or an object with `url` and optional `headers`. The URL can include the username and password if the proxy requires authentication. It can be `http://` or `https://`.
+The `proxy` option can be a URL string, or an object with `url` (a string or a `URL`) and optional `headers`. The URL can include the username and password if the proxy requires authentication. It can be `http://` or `https://`.
 
 ***
 
