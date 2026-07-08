@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/add.md
+Downloaded: 2026-07-08T21:08:09.497Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -291,8 +296,8 @@ bun add <package> <@version>
   <code>symlink</code>, or <code>copyfile</code>
 </ParamField>
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
-  Maximum number of concurrent jobs for lifecycle scripts
+<ParamField path="--concurrent-scripts" type="number">
+  Maximum number of concurrent jobs for lifecycle scripts (default: 2x CPU cores)
 </ParamField>
 
 ### Caching

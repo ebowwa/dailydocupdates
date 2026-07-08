@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/templating/init.md
+Downloaded: 2026-07-08T21:08:09.510Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -117,14 +122,6 @@ bun init <folder?>
   {" "}
 
   Initializes project files and configuration for the chosen options. Exact files vary by template.{" "}
-</ParamField>
-
-### Global Configuration & Context
-
-<ParamField path="--cwd" type="string">
-  {" "}
-
-  Run <code>bun init</code> as if started in a different working directory (useful in scripts).{" "}
 </ParamField>
 
 ### Help

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/writing-tests.md
+Downloaded: 2026-07-08T21:08:09.513Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -79,7 +84,7 @@ test("wat", async () => {
 
 In `bun:test`, a timeout throws an uncatchable exception to force the test to stop running and fail. Bun also kills any child processes spawned in the test, so they don't linger as zombie processes.
 
-The default timeout for each test is 5000ms (5 seconds) if not overridden by this timeout option or `jest.setDefaultTimeout()`.
+The default timeout for each test is 5000ms (5 seconds) if not overridden by this timeout option or `jest.setTimeout()`.
 
 ## Retries and Repeats
 
@@ -193,12 +198,6 @@ The following command runs only tests #2 and #3.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --only
-```
-
-The following command runs tests #1, #2 and #3.
-
-```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun test
 ```
 
 ### test.if

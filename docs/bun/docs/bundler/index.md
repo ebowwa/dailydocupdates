@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/index.md
+Downloaded: 2026-07-08T21:08:09.475Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -370,8 +375,8 @@ Depending on the target, Bun applies different module resolution rules and optim
 </Card>
 
 <Card title="node" icon="node">
-  For bundles that run in Node.js. Prioritizes the `"node"` export condition when resolving imports, and outputs `.mjs`.
-  Bun does not polyfill the `Bun` global or the built-in `bun:*` modules.
+  For bundles that run in Node.js. Prioritizes the `"node"` export condition when resolving imports. Bun does not
+  polyfill the `Bun` global or the built-in `bun:*` modules.
 </Card>
 
 ### format
@@ -690,8 +695,6 @@ The associated `*.js.map` sourcemap is a JSON file containing an equivalent `deb
 ### minify
 
 Whether to enable minification. Default `false`.
-
-<Note>When targeting `bun`, identifiers are minified by default.</Note>
 
 To enable all minification options:
 
@@ -1455,7 +1458,7 @@ interface BuildOutput {
 }
 
 interface BuildArtifact extends Blob {
-  kind: "entry-point" | "chunk" | "asset" | "sourcemap";
+  kind: "entry-point" | "chunk" | "asset" | "sourcemap" | "bytecode";
   path: string;
   loader: Loader;
   hash: string | null;
@@ -1691,7 +1694,7 @@ interface BuildConfig {
         asset?: string;
       };
   root?: string; // project root
-  splitting?: boolean; // default true, enable code splitting
+  splitting?: boolean; // default false, enable code splitting
   plugins?: BunPlugin[];
   external?: string[];
   packages?: "bundle" | "external";
@@ -1994,7 +1997,7 @@ bun build <entry points>
 ### Standalone Executables
 
 <ParamField path="--compile" type="boolean">
-  Generate a standalone Bun executable containing the bundle. Implies <code>--production</code>
+  Generate a standalone Bun executable containing the bundle
 </ParamField>
 
 <ParamField path="--compile-exec-argv" type="string">

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/binary/typedarray-to-arraybuffer.md
+Downloaded: 2026-07-08T21:08:09.478Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -16,7 +21,7 @@ arr.buffer; // => ArrayBuffer(64)
 The `Uint8Array` may be a view over a *subset* of the data in the underlying `ArrayBuffer`. In this case, the `buffer` property returns the entire buffer, and the `byteOffset` and `byteLength` properties indicate the subset.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
-const arr = new Uint8Array(64, 16, 32);
+const arr = new Uint8Array(new ArrayBuffer(64), 16, 32);
 arr.buffer; // => ArrayBuffer(64)
 arr.byteOffset; // => 16
 arr.byteLength; // => 32

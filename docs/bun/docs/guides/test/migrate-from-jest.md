@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/migrate-from-jest.md
+Downloaded: 2026-07-08T21:08:09.491Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -62,15 +67,9 @@ describe("my test suite", () => {
 
 Bun implements most of Jest's matchers, but compatibility isn't 100%. See the compatibility table in [Writing tests](/test/writing-tests#matchers).
 
-Notably missing:
-
-* `expect().toHaveReturned()`
-
 ***
 
 If you use `testEnvironment: "jsdom"` to run your tests in a browser-like environment, follow the [DOM testing with Bun and happy-dom](/guides/test/happy-dom) guide to inject browser APIs into the global scope. That guide uses [`happy-dom`](https://github.com/capricorn86/happy-dom), a leaner and faster alternative to [`jsdom`](https://github.com/jsdom/jsdom).
-
-jsdom does not work in Bun because it uses V8 APIs internally. Track support in [issue #3554](https://github.com/oven-sh/bun/issues/3554).
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [test]
@@ -95,7 +94,7 @@ bun test --coverage
 
 ***
 
-Replace `testTimeout` with the `--test-timeout` CLI flag.
+Replace `testTimeout` with the `--timeout` CLI flag.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --timeout 10000

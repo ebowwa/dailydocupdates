@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/cron.md
+Downloaded: 2026-07-08T21:08:09.503Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -207,7 +212,7 @@ job.ref(); // keep the process alive (default)
 
 ### Fake timers
 
-In-process cron is anchored to the real wall clock. `jest.useFakeTimers()`, `setSystemTime()`, `advanceTimersByTime()`, and `runAllTimers()` do not affect when it fires.
+In-process cron honors `jest.useFakeTimers()`. `setSystemTime()`, `advanceTimersByTime()`, and `runAllTimers()` control when it fires, so you can test scheduled callbacks without waiting on the real clock.
 
 ***
 

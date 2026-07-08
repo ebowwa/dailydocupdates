@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/macros.md
+Downloaded: 2026-07-08T21:08:09.476Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -161,9 +166,8 @@ export async function getText() {
 }
 ```
 
-The transpiler implements special logic for serializing common data formats like `Response`, `Blob`, `TypedArray`.
+The transpiler implements special logic for serializing common data formats like `Response` and `Blob`.
 
-* **TypedArray**: Resolves to a base64-encoded string.
 * **Response**: Bun reads the `Content-Type` and serializes accordingly; for example, a Response with type `application/json` is parsed into an object and `text/plain` is inlined as a string. Responses with an unrecognized or undefined type are base64-encoded.
 * **Blob**: As with Response, the serialization depends on the `type` property.
 

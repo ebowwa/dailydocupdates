@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/cookies.md
-Downloaded: 2026-07-06T21:38:05.566Z
+Downloaded: 2026-07-08T21:08:09.503Z
 -->
 
 > ## Documentation Index
@@ -272,7 +272,7 @@ cookie.name; // string - Cookie name
 cookie.value; // string - Cookie value
 cookie.domain; // string | null - Domain scope (null if not specified)
 cookie.path; // string - URL path scope (defaults to "/")
-cookie.expires; // number | undefined - Expiration timestamp (ms since epoch)
+cookie.expires; // Date | undefined - Expiration date
 cookie.secure; // boolean - Require HTTPS
 cookie.sameSite; // "strict" | "lax" | "none" - SameSite setting
 cookie.partitioned; // boolean - Whether the cookie is partitioned (CHIPS)
@@ -325,9 +325,9 @@ const cookie = new Bun.Cookie("session", "abc123", {
 });
 
 console.log(cookie.serialize());
-// => "session=abc123; Domain=example.com; Path=/admin; Expires=Sun, 19 Mar 2025 15:03:26 GMT; Secure; HttpOnly; SameSite=strict"
+// => "session=abc123; Domain=example.com; Path=/admin; Expires=Sun, 19 Mar 2025 15:03:26 GMT; Secure; HttpOnly; SameSite=Strict"
 console.log(cookie.toString());
-// => "session=abc123; Domain=example.com; Path=/admin; Expires=Sun, 19 Mar 2025 15:03:26 GMT; Secure; HttpOnly; SameSite=strict"
+// => "session=abc123; Domain=example.com; Path=/admin; Expires=Sun, 19 Mar 2025 15:03:26 GMT; Secure; HttpOnly; SameSite=Strict"
 ```
 
 #### `toJSON(): CookieInit`

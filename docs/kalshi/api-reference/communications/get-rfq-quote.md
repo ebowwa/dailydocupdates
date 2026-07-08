@@ -1,5 +1,5 @@
 <!--
-Source: https://docs.kalshi.com/api-reference/communications/get-quote.md
+Source: https://docs.kalshi.com/api-reference/communications/get-rfq-quote.md
 Downloaded: 2026-07-08T21:08:18.215Z
 -->
 
@@ -7,13 +7,9 @@ Downloaded: 2026-07-08T21:08:18.215Z
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Get Quote
+# Get RFQ Quote
 
-> DEPRECATED: Use GET /communications/rfqs/{rfq_id}/quotes/{quote_id} instead. Endpoint for getting a particular quote.
-
-<Warning>
-  This endpoint is deprecated. Use `GET /communications/rfqs/{rfq_id}/quotes/{quote_id}` instead.
-</Warning>
+>  Endpoint for getting a particular quote scoped to its RFQ.
 
 <Note>
   **Rate limit:** 2 tokens per request. See `GET /trade-api/v2/account/endpoint_costs` for current non-default endpoint costs.
@@ -22,7 +18,7 @@ Downloaded: 2026-07-08T21:08:18.215Z
 
 ## OpenAPI
 
-````yaml /openapi.yaml get /communications/quotes/{quote_id}
+````yaml /openapi.yaml get /communications/rfqs/{rfq_id}/quotes/{quote_id}
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -72,16 +68,15 @@ tags:
   - name: structured-targets
     description: Structured targets endpoints
 paths:
-  /communications/quotes/{quote_id}:
+  /communications/rfqs/{rfq_id}/quotes/{quote_id}:
     get:
       tags:
         - communications
-      summary: Get Quote
-      description: >-
-        DEPRECATED: Use GET /communications/rfqs/{rfq_id}/quotes/{quote_id}
-        instead. Endpoint for getting a particular quote.
-      operationId: GetQuote
+      summary: Get RFQ Quote
+      description: ' Endpoint for getting a particular quote scoped to its RFQ.'
+      operationId: GetRFQQuote
       parameters:
+        - $ref: '#/components/parameters/RfqIdPath'
         - $ref: '#/components/parameters/QuoteIdPath'
       responses:
         '200':
@@ -96,13 +91,19 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
-      deprecated: true
       security:
         - kalshiAccessKey: []
           kalshiAccessSignature: []
           kalshiAccessTimestamp: []
 components:
   parameters:
+    RfqIdPath:
+      name: rfq_id
+      in: path
+      required: true
+      description: RFQ ID
+      schema:
+        type: string
     QuoteIdPath:
       name: quote_id
       in: path

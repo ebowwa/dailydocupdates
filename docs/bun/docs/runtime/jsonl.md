@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/jsonl.md
+Downloaded: 2026-07-08T21:08:09.506Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -44,11 +49,11 @@ With `Uint8Array` input, Bun skips a UTF-8 BOM at the start of the buffer.
 
 ### Error handling
 
-If the input contains invalid JSON, `Bun.JSONL.parse()` throws a `SyntaxError`:
+If the input contains invalid JSON and no values were successfully parsed, `Bun.JSONL.parse()` throws a `SyntaxError`. If at least one value was parsed before the error, the parsed values are returned without throwing.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 try {
-  Bun.JSONL.parse('{"valid":true}\n{invalid}\n');
+  Bun.JSONL.parse("{invalid}\n");
 } catch (error) {
   console.error(error); // SyntaxError: Failed to parse JSONL
 }
@@ -124,7 +129,7 @@ const buf = new TextEncoder().encode('{"a":1}\n{"b":2}\n{"c":3}\n');
 // Parse starting from byte 8
 const result = Bun.JSONL.parseChunk(buf, 8);
 console.log(result.values); // [{ b: 2 }, { c: 3 }]
-console.log(result.read); // 24
+console.log(result.read); // 23
 
 // Parse a specific range
 const partial = Bun.JSONL.parseChunk(buf, 0, 8);

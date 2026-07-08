@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/write-file/basic.md
+Downloaded: 2026-07-08T21:08:09.496Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -13,7 +18,7 @@ await Bun.write(path, "Lorem ipsum");
 
 ***
 
-Bun resolves relative paths from the project root (the nearest directory containing a `package.json` file).
+Bun resolves relative paths from the current working directory.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = "./file.txt";

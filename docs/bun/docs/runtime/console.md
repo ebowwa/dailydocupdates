@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/console.md
+Downloaded: 2026-07-08T21:08:09.503Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -24,7 +29,7 @@ You can configure how deeply `console.log()` prints nested objects:
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 const nested = { a: { b: { c: { d: "deep" } } } };
 console.log(nested);
-// Default (depth 2): { a: { b: [Object] } }
+// Default (depth 2): { a: { b: { c: [Object ...] } } }
 // With depth 4: { a: { b: { c: { d: 'deep' } } } }
 ```
 

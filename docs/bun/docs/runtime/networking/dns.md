@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/networking/dns.md
+Downloaded: 2026-07-08T21:08:09.507Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -13,7 +18,7 @@ import * as dns from "node:dns";
 
 const addrs = await dns.promises.resolve4("bun.com", { ttl: true });
 console.log(addrs);
-// => [{ address: "172.67.161.226", family: 4, ttl: 0 }, ...]
+// => [{ address: "172.67.161.226", ttl: 0 }, ...]
 ```
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -28,7 +33,7 @@ dns.prefetch("bun.com", 443);
 
 Bun caches DNS lookups, which makes repeated connections to the same hosts faster.
 
-The cache holds up to 255 entries for a maximum of 30 seconds each. If a connection to a host fails, Bun removes that host's entry from the cache. Simultaneous connections to the same host share one DNS lookup.
+The cache holds up to 256 entries for a maximum of 30 seconds each. If a connection to a host fails, Bun removes that host's entry from the cache. Simultaneous connections to the same host share one DNS lookup.
 
 This cache is automatically used by:
 
@@ -58,7 +63,7 @@ A database driver is a good example: prefetch the database host's DNS entry when
 `dns.prefetch` resolves a hostname before you need it.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
-dns.prefetch(hostname: string, port: number): void;
+dns.prefetch(hostname: string, port?: number): void;
 ```
 
 Here's an example:

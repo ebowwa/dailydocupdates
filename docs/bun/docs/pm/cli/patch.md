@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/patch.md
+Downloaded: 2026-07-08T21:08:09.498Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -174,8 +179,8 @@ bun patch <package>@<version>
 
 ### Performance & Resource
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
-  Maximum number of concurrent jobs for lifecycle scripts (default 5)
+<ParamField path="--concurrent-scripts" type="number">
+  Maximum number of concurrent jobs for lifecycle scripts (default: 2x CPU cores)
 </ParamField>
 
 ### Caching

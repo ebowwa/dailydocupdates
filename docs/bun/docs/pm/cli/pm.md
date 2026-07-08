@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/pm.md
+Downloaded: 2026-07-08T21:08:09.498Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -326,7 +331,7 @@ bun pm pkg get scripts.build                      # nested property
 # set
 bun pm pkg set name="my-package"                  # simple property
 bun pm pkg set scripts.test="jest" version=2.0.0  # multiple properties
-bun pm pkg set {"private":"true"} --json          # JSON values with --json flag
+bun pm pkg set private=true --json                # JSON values with --json flag
 
 # delete
 bun pm pkg delete description                     # single property

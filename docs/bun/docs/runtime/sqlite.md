@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/sqlite.md
+Downloaded: 2026-07-08T21:08:09.509Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -308,7 +313,7 @@ query.all({ $message: "Hello world" });
 ```
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
-[{ message: "Hello world" }]
+[{ $message: "Hello world" }]
 ```
 
 Internally, this calls [`sqlite3_reset`](https://www.sqlite.org/capi3ref.html#sqlite3_reset) and repeatedly calls [`sqlite3_step`](https://www.sqlite.org/capi3ref.html#sqlite3_step) until it returns `SQLITE_DONE`.
@@ -326,7 +331,7 @@ query.get({ $message: "Hello world" });
 { $message: "Hello world" }
 ```
 
-Internally, this calls [`sqlite3_reset`](https://www.sqlite.org/capi3ref.html#sqlite3_reset) followed by [`sqlite3_step`](https://www.sqlite.org/capi3ref.html#sqlite3_step) until it no longer returns `SQLITE_ROW`. If the query returns no rows, `undefined` is returned.
+Internally, this calls [`sqlite3_reset`](https://www.sqlite.org/capi3ref.html#sqlite3_reset) followed by [`sqlite3_step`](https://www.sqlite.org/capi3ref.html#sqlite3_step) until it no longer returns `SQLITE_ROW`. If the query returns no rows, `null` is returned.
 
 ### `.run()`
 
@@ -463,7 +468,7 @@ const results = query.all({
 ```
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
-[{ "$bar": "bar" }]
+[{ "bar": "bar" }]
 ```
 
 Numbered (positional) parameters work too:

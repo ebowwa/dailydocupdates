@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/process/argv.md
+Downloaded: 2026-07-08T21:08:09.484Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -19,7 +24,7 @@ bun run cli.ts --flag1 --flag2 value
 ```
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
-[ '/path/to/bun', '/path/to/cli.ts', '--flag1', '--flag2', 'value' ]
+[ "/path/to/bun", "/path/to/cli.ts", "--flag1", "--flag2", "value" ]
 ```
 
 ***
@@ -56,7 +61,7 @@ bun run cli.ts --flag1 --flag2 value
 ```
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
-{
+[Object: null prototype] {
   flag1: true,
   flag2: "value",
 }

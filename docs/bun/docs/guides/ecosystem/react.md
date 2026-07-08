@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/react.md
+Downloaded: 2026-07-08T21:08:09.480Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -38,7 +43,7 @@ Run `bun run build` to build the app as a static site. This creates a `dist` dir
 
 ```txt File Tree icon="folder-tree" theme={"theme":{"light":"github-light","dark":"dracula"}}
 ├── src/
-│   ├── index.tsx       # Server entry point with API routes
+│   ├── index.ts        # Server entry point with API routes
 │   ├── frontend.tsx    # React app entry point with HMR
 │   ├── App.tsx         # Main React component
 │   ├── APITester.tsx   # Component for testing API endpoints

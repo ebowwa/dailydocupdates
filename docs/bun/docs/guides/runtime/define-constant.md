@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/define-constant.md
+Downloaded: 2026-07-08T21:08:09.487Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -113,7 +118,7 @@ console.log(AWS.ACCESS_KEY); // => "abc"
 To:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
-console.log("abc");
+console.log({ ACCESS_KEY: "abc", SECRET_KEY: "def" }.ACCESS_KEY);
 ```
 
 ### Replace values with other properties

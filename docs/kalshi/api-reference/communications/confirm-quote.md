@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/communications/confirm-quote.md
-Downloaded: 2026-07-01T21:38:52.709Z
+Downloaded: 2026-07-08T21:08:18.214Z
 -->
 
 > ## Documentation Index
@@ -9,8 +9,11 @@ Downloaded: 2026-07-01T21:38:52.709Z
 
 # Confirm Quote
 
->  Endpoint for confirming a quote. This will start a timer for order execution
+> DEPRECATED: Use PUT /communications/rfqs/{rfq_id}/quotes/{quote_id}/confirm instead. Endpoint for confirming a quote. This will start a timer for order execution.
 
+<Warning>
+  This endpoint is deprecated. Use `PUT /communications/rfqs/{rfq_id}/quotes/{quote_id}/confirm` instead.
+</Warning>
 
 
 ## OpenAPI
@@ -70,7 +73,11 @@ paths:
       tags:
         - communications
       summary: Confirm Quote
-      description: ' Endpoint for confirming a quote. This will start a timer for order execution'
+      description: >-
+        DEPRECATED: Use PUT
+        /communications/rfqs/{rfq_id}/quotes/{quote_id}/confirm instead.
+        Endpoint for confirming a quote. This will start a timer for order
+        execution.
       operationId: ConfirmQuote
       parameters:
         - $ref: '#/components/parameters/QuoteIdPath'
@@ -89,6 +96,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      deprecated: true
       security:
         - kalshiAccessKey: []
           kalshiAccessSignature: []

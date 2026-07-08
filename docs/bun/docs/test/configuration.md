@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/configuration.md
+Downloaded: 2026-07-08T21:08:09.511Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -140,31 +145,6 @@ pathIgnorePatterns = [
 <Note>
   Command-line `--path-ignore-patterns` flags override the `bunfig.toml` value entirely -- the two are not merged.
 </Note>
-
-## Timeouts
-
-### Default Timeout
-
-Set the default timeout for all tests:
-
-```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
-[test]
-timeout = 10000  # 10 seconds (default is 5000ms)
-```
-
-This applies to all tests unless overridden by individual test timeouts:
-
-```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
-// This test will use the default timeout from bunfig.toml
-test("uses default timeout", () => {
-  // test implementation
-});
-
-// This test overrides the default timeout
-test("custom timeout", () => {
-  // test implementation
-}, 30000); // 30 seconds
-```
 
 ## Reporters
 
@@ -424,23 +404,16 @@ prefer = "offline"
 [test]
 # Test-specific configuration
 coverage = true
-timeout = 10000
 ```
 
 ## Environment Variables
 
-Set environment variables for tests with `.env` files, which Bun loads from your project root automatically. For test-specific variables, create a `.env.test` file:
+Set environment variables for tests with `.env` files, which Bun loads from your project root automatically. For test-specific variables, create a `.env.test` file, which `bun test` loads automatically:
 
 ```ini title=".env.test" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 NODE_ENV=test
 DATABASE_URL=postgresql://localhost:5432/test_db
 LOG_LEVEL=error
-```
-
-Then load it with `--env-file`:
-
-```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun test --env-file=.env.test
 ```
 
 ## Complete Configuration Example
@@ -460,7 +433,6 @@ preload = ["./test-setup.ts", "./global-mocks.ts"]
 pathIgnorePatterns = ["vendor/**", "submodules/**"]
 
 # Execution settings
-timeout = 10000
 smol = true
 
 # Coverage configuration
@@ -490,74 +462,11 @@ Command-line options always override configuration file settings:
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [test]
-timeout = 5000
 coverage = false
 ```
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-# These CLI flags override the config file
-bun test --timeout 10000 --coverage
-# timeout will be 10000ms and coverage will be enabled
-```
-
-## Conditional Configuration
-
-You can use different configurations for different environments:
-
-```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
-[test]
-# Default test configuration
-coverage = false
-timeout = 5000
-
-# Override for CI environment
-[test.ci]
-coverage = true
-coverageThreshold = 0.8
-timeout = 30000
-```
-
-Then in CI:
-
-```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-# Use CI-specific settings
-bun test --config=ci
-```
-
-## Validation and Troubleshooting
-
-### Invalid Configuration
-
-Bun warns about invalid configuration options:
-
-```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
-[test]
-invalidOption = true  # This will generate a warning
-```
-
-### Common Configuration Issues
-
-1. **Path Resolution**: Relative paths in config are resolved relative to the config file location
-2. **Pattern Matching**: Glob patterns use standard glob syntax
-3. **Type Mismatches**: Ensure numeric values are not quoted unless they should be strings
-
-```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
-[test]
-# Correct
-timeout = 10000
-
-# Incorrect - will be treated as string
-timeout = "10000"
-```
-
-### Debugging Configuration
-
-To see what configuration is being used:
-
-```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-# Show effective configuration
-bun test --dry-run
-
-# Verbose output to see configuration loading
-bun test --verbose
+# This CLI flag overrides the config file
+bun test --coverage
+# coverage will be enabled
 ```

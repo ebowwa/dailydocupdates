@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/ffi.md
+Downloaded: 2026-07-08T21:08:09.504Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -514,7 +519,7 @@ const out = encode_png(
 );
 ```
 
-The [auto-generated wrapper](https://github.com/oven-sh/bun/blob/6a65631cbdcae75bfa1e64323a6ad613a922cd1a/src/bun.js/ffi.exports.js#L180-L182) converts the pointer to a `TypedArray`.
+The [auto-generated wrapper](https://github.com/oven-sh/bun/blob/6a65631cbdcae75bfa1e64323a6ad613a922cd1a/src/bun.js/ffi.exports.js#L180-L182) converts the `TypedArray` to a pointer.
 
 <Accordion title="Hardmode">
   If you don't want the automatic conversion, or you want a pointer to a specific byte offset within the `TypedArray`, get the pointer to the `TypedArray` directly:

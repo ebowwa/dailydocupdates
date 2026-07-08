@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/executables.md
+Downloaded: 2026-07-08T21:08:09.474Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -680,14 +685,14 @@ import icon from "./icon.png" with { type: "file" };
 
 console.log(icon);
 // During development: "./icon.png"
-// After compilation: "$bunfs/icon-a1b2c3d4.png" (internal path)
+// After compilation: "/$bunfs/root/icon-a1b2c3d4.png" (internal path)
 ```
 
 The import returns a **path string** that points to the embedded file. At build time, Bun:
 
 1. Reads the file contents
 2. Embeds the data into the executable
-3. Replaces the import with an internal path (prefixed with `$bunfs/`)
+3. Replaces the import with an internal path (prefixed with `/$bunfs/`)
 
 You can then read this embedded file using `Bun.file()` or Node.js `fs` APIs.
 
@@ -1131,7 +1136,7 @@ Standalone executables support code splitting. Use `--compile` with `--splitting
 <Tabs>
   <Tab title="CLI">
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-    bun build --compile --splitting ./src/entry.ts --outdir ./build
+    bun build --compile --splitting ./src/entry.ts --outfile ./build/entry
     ```
   </Tab>
 
@@ -1218,9 +1223,9 @@ Plugins can perform any transformation: compile YAML/TOML configs, inline SQL qu
 
 ## Unsupported CLI arguments
 
-The `--compile` flag can only accept a single entrypoint at a time and does not support the following flags:
+The `--compile` flag does not support the following flags:
 
-* `--outdir` — use `outfile` instead (except when using with `--splitting`).
+* `--outdir` — use `outfile` instead.
 * `--public-path`
 * `--target=node`
 * `--target=browser` (without HTML entrypoints — see [Standalone HTML](/bundler/standalone-html) for `--compile --target=browser` with `.html` files)
@@ -1235,12 +1240,12 @@ The `compile` option in `Bun.build()` accepts three forms:
 ```ts title="types" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 interface BuildConfig {
   entrypoints: string[];
-  compile: boolean | Bun.Build.Target | CompileBuildOptions;
+  compile: boolean | Bun.Build.CompileTarget | CompileBuildOptions;
   // ... other BuildConfig options (minify, sourcemap, define, plugins, etc.)
 }
 
 interface CompileBuildOptions {
-  target?: Bun.Build.Target; // Cross-compilation target
+  target?: Bun.Build.CompileTarget; // Cross-compilation target
   outfile?: string; // Output executable path
   execArgv?: string[]; // Runtime arguments (process.execArgv)
   autoloadTsconfig?: boolean; // Load tsconfig.json (default: false)
@@ -1277,8 +1282,8 @@ compile: {
 
 ### Supported targets
 
-```ts title="Bun.Build.Target" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
-type Target =
+```ts title="Bun.Build.CompileTarget" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
+type CompileTarget =
   | "bun-darwin-x64"
   | "bun-darwin-x64-baseline"
   | "bun-darwin-arm64"

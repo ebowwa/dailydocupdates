@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/secrets.md
+Downloaded: 2026-07-08T21:08:09.509Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -84,7 +89,7 @@ const password = await Bun.secrets.get("my-app", "alice@example.com");
 
 * `Promise<string | null>` - The stored password, or `null` if not found
 
-### `Bun.secrets.set(options, value)`
+### `Bun.secrets.set(options)`
 
 Store or update a credential.
 
@@ -102,7 +107,7 @@ await secrets.set({
 
 * `options.service` (string, required) - The service or application name
 * `options.name` (string, required) - The username or account identifier
-* `value` (string, required) - The password or secret to store
+* `options.value` (string, required) - The password or secret to store
 
 **Notes:**
 
@@ -117,7 +122,6 @@ Delete a stored credential.
 const deleted = await Bun.secrets.delete({
   service: "my-app",
   name: "alice@example.com",
-  value: "super-secret-password",
 });
 // Returns: boolean
 ```
@@ -334,7 +338,7 @@ namespace Bun {
 
   interface Secrets {
     get(options: SecretsOptions): Promise<string | null>;
-    set(options: SecretsOptions, value: string): Promise<void>;
+    set(options: SecretsOptions & { value: string }): Promise<void>;
     delete(options: SecretsOptions): Promise<boolean>;
   }
 

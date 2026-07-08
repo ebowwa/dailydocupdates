@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/link.md
+Downloaded: 2026-07-08T21:08:09.498Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -55,6 +60,7 @@ bun unlink
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun unlink v1.3.3 (7416672e)
+success: unlinked package "cool-pkg"
 ```
 
 ***
@@ -159,8 +165,8 @@ bun link <packages>
 
 ### Performance & Resource
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
-  Maximum number of concurrent jobs for lifecycle scripts
+<ParamField path="--concurrent-scripts" type="number">
+  Maximum number of concurrent jobs for lifecycle scripts (default: 2x CPU cores)
 </ParamField>
 
 ### Caching

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/outdated.md
+Downloaded: 2026-07-08T21:08:09.498Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -37,17 +42,16 @@ The output table shows three version columns:
 
 ### Dependency Filters
 
-To check specific dependencies, pass their names as positional arguments:
+To check a specific dependency, pass its name as a positional argument:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun outdated eslint-plugin-security eslint-plugin-sonarjs
+bun outdated eslint-plugin-security
 ```
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 | Package                        | Current | Update | Latest    |
 | ------------------------------ | ------- | ------ | --------- |
 | eslint-plugin-security (dev)   | 2.1.1   | 2.1.1  | 3.0.1     |
-| eslint-plugin-sonarjs (dev)    | 0.23.0  | 0.23.0 | 3.0.1     |
 
 ```
 
@@ -111,24 +115,7 @@ bun outdated --filter='@monorepo/types'
 | typescript (dev)   | 5.7.2   | 5.7.3  | 5.7.3  |
 ```
 
-Pass `--filter` more than once to check multiple workspaces:
-
-```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun outdated --filter @monorepo/types --filter @monorepo/cli
-```
-
-```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
-| Package                        | Current | Update | Latest     |
-| ------------------------------ | ------- | ------ | ---------- |
-| eslint (dev)                 	 | 8.57.1  | 8.57.1 | 9.20.0     |
-| eslint-plugin-security (dev)   | 2.1.1   | 2.1.1  | 3.0.1      |
-| eslint-plugin-sonarjs (dev)    | 0.23.0  | 0.23.0 | 3.0.1      |
-| expect-type (dev)              | 0.16.0  | 0.16.0 | 1.1.0      |
-| tsup (dev)                     | 8.3.5   | 8.3.6  | 8.3.6      |
-| typescript (dev)               | 5.7.2   | 5.7.3  | 5.7.3      |
-```
-
-`--filter` also accepts glob patterns for workspace names:
+`--filter` accepts glob patterns to match multiple workspaces:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun outdated --filter='@monorepo/{types,cli}'
@@ -330,6 +317,6 @@ bun outdated <filter>
   <code>hardlink</code>, <code>symlink</code>, <code>copyfile</code>
 </ParamField>
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
-  Maximum number of concurrent jobs for lifecycle scripts (default 5)
+<ParamField path="--concurrent-scripts" type="number">
+  Maximum number of concurrent jobs for lifecycle scripts (default: 2x CPU cores)
 </ParamField>

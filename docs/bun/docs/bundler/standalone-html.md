@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/standalone-html.md
+Downloaded: 2026-07-08T21:08:09.476Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -89,7 +94,7 @@ Bun inlines every local asset it finds in your HTML: anything with a relative pa
 | `<img src="./logo.png">`                         | `<img src="data:image/png;base64,...">`                                  |
 | `<img src="./icon.svg">`                         | `<img src="data:image/svg+xml;base64,...">`                              |
 | `<video src="./demo.mp4">`                       | `<video src="data:video/mp4;base64,...">`                                |
-| `<audio src="./click.wav">`                      | `<audio src="data:audio/wav;base64,...">`                                |
+| `<audio src="./click.wav">`                      | `<audio src="data:audio/x-wav;base64,...">`                              |
 | `<source src="./clip.webm">`                     | `<source src="data:video/webm;base64,...">`                              |
 | `<video poster="./thumb.jpg">`                   | `<video poster="data:image/jpeg;base64,...">`                            |
 | `<link rel="icon" href="./favicon.ico">`         | `<link rel="icon" href="data:image/x-icon;base64,...">`                  |

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/binary-data.md
+Downloaded: 2026-07-08T21:08:09.501Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -234,10 +239,10 @@ See the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScr
 In Bun, it has methods for converting between byte arrays and their base64 or hex string representations.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
-new Uint8Array([1, 2, 3, 4, 5]).toBase64(); // "AQIDBA=="
-Uint8Array.fromBase64("AQIDBA=="); // Uint8Array(4) [1, 2, 3, 4, 5]
+new Uint8Array([1, 2, 3, 4, 5]).toBase64(); // "AQIDBAU="
+Uint8Array.fromBase64("AQIDBAU="); // Uint8Array(5) [1, 2, 3, 4, 5]
 
-new Uint8Array([255, 254, 253, 252, 251]).toHex(); // "fffefdfcfb=="
+new Uint8Array([255, 254, 253, 252, 251]).toHex(); // "fffefdfcfb"
 Uint8Array.fromHex("fffefdfcfb"); // Uint8Array(5) [255, 254, 253, 252, 251]
 ```
 
@@ -283,7 +288,7 @@ const blob = new Blob(["<html>Hello</html>"], {
 });
 
 blob.type; // => text/html
-blob.size; // => 19
+blob.size; // => 18
 ```
 
 These parts can be `string`, `ArrayBuffer`, `TypedArray`, `DataView`, or other `Blob` instances. The parts are concatenated in the order they're given.
@@ -303,7 +308,7 @@ Read the contents of a `Blob` asynchronously in various formats.
 await blob.text(); // => <html><body>hello</body></html>
 await blob.bytes(); // => Uint8Array (copies contents)
 await blob.arrayBuffer(); // => ArrayBuffer (copies contents)
-await blob.stream(); // => ReadableStream
+blob.stream(); // => ReadableStream
 ```
 
 ### `BunFile`
@@ -316,8 +321,6 @@ const file = Bun.file("index.txt");
 ```
 
 ### `File`
-
-<Warning>Browser only. Experimental support in Node.js 20.</Warning>
 
 [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) is a subclass of `Blob` that adds a `name` and `lastModified` property. It's commonly used in the browser to represent files uploaded with an `<input type="file">` element. Node.js and Bun implement `File`.
 

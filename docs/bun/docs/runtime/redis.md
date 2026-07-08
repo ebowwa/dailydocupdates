@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/redis.md
+Downloaded: 2026-07-08T21:08:09.508Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -368,6 +373,7 @@ The following commands disable automatic pipelining:
 * `UNWATCH`
 * `PIPELINE`
 * `SUBSCRIBE`
+* `PSUBSCRIBE`
 * `UNSUBSCRIBE`
 * `UNPSUBSCRIBE`
 
@@ -388,7 +394,7 @@ const client = new RedisClient("redis://localhost:6379", {
   // Whether to automatically reconnect on disconnection (default: true)
   autoReconnect: true,
 
-  // Maximum number of reconnection attempts (default: 10)
+  // Maximum number of reconnection attempts (default: 20)
   maxRetries: 10,
 
   // Whether to queue commands when disconnected (default: true)
@@ -415,7 +421,7 @@ When a connection is lost, the client automatically attempts to reconnect with e
 
 1. The client starts with a small delay (50ms) and doubles it with each attempt
 2. Reconnection delay is capped at 2000ms (2 seconds)
-3. The client attempts to reconnect up to `maxRetries` times (default: 10)
+3. The client attempts to reconnect up to `maxRetries` times (default: 20)
 4. Commands executed during disconnection are:
    * Queued if `enableOfflineQueue` is true (default)
    * Rejected immediately if `enableOfflineQueue` is false

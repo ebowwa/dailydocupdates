@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/child-process.md
-Downloaded: 2026-07-03T21:07:40.989Z
+Downloaded: 2026-07-08T21:08:09.502Z
 -->
 
 > ## Documentation Index
@@ -599,8 +599,6 @@ interface TerminalOptions {
 }
 
 interface Terminal extends AsyncDisposable {
-  readonly stdin: number;
-  readonly stdout: number;
   readonly closed: boolean;
   write(data: string | BufferSource): number;
   resize(cols: number, rows: number): void;

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/project/contributing.md
+Downloaded: 2026-07-08T21:08:09.501Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -16,9 +21,6 @@ The repository includes a Nix flake as an alternative to installing dependencies
 
 ```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 nix develop
-# or explicitly use the pure shell
-# nix develop .#pure
-export CMAKE_SYSTEM_PROCESSOR=$(uname -m)
 bun bd
 ```
 
@@ -152,7 +154,7 @@ If not, add it manually:
 
 ## Building Bun
 
-After cloning the repository, run the following command to build. This can take a while: it clones submodules and builds dependencies.
+After cloning the repository, run the following command to build. This can take a while: it downloads and builds dependencies.
 
 ```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run build
@@ -306,7 +308,7 @@ If you make changes to Bun's [WebKit fork](https://github.com/oven-sh/WebKit), y
 
 Clang uses `libstdc++`, the C++ standard library implementation provided by the GNU Compiler Collection (GCC), by default. Clang can link against `libc++` instead, but that requires explicitly passing the `-stdlib` flag.
 
-Bun relies on C++20 features like `std::span`, which are not available in GCC versions lower than 11. As a result, running `make setup` may fail with the following error:
+Bun relies on C++20 features like `std::span`, which are not available in GCC versions lower than 11. As a result, running `bun run build` may fail with the following error:
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 fatal error: 'span' file not found
@@ -314,7 +316,7 @@ fatal error: 'span' file not found
          ^~~~~~
 ```
 
-The issue may also surface when first running `bun setup`, with Clang unable to compile a simple program:
+The issue may also surface when first running `bun run build`, with Clang unable to compile a simple program:
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 The C++ compiler
@@ -364,7 +366,7 @@ xcode-select --install
 Bun defaults to linking `libatomic` statically, as not all systems have it. If you are building on a distro that does not have a static libatomic available, enable dynamic linking with:
 
 ```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun run build -DUSE_STATIC_LIBATOMIC=OFF
+bun run build --static-libatomic=off
 ```
 
 The built version of Bun may not work on other systems if compiled this way.

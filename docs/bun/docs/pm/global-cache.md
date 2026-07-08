@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/global-cache.md
+Downloaded: 2026-07-08T21:08:09.499Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -67,5 +72,5 @@ The same applies on macOS, with a caveat. There Bun uses `clonefile`, which is c
   node --preserve-symlinks ./foo.js
   ```
 
-  Bun's runtime does not expose an equivalent of `--preserve-symlinks`.
+  Bun's runtime also supports `--preserve-symlinks`.
 </Accordion>

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/run-tests.md
+Downloaded: 2026-07-08T21:08:09.491Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -94,21 +99,18 @@ bun test -t add
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 test.test.js:
 ✓ add [1.79ms]
-» multiply
 
 test2.test.js:
 ✓ add [2.30ms]
-» multiply
 
 test3.test.js:
 ✓ add [0.32ms]
-» multiply
 
  3 pass
- 3 skip
+ 3 filtered out
  0 fail
  3 expect() calls
-Ran 6 tests across 3 files. [59.00ms]
+Ran 3 tests across 3 files. [59.00ms]
 ```
 
 ***

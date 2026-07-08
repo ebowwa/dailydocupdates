@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/hashing.md
+Downloaded: 2026-07-08T21:08:09.504Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -100,8 +105,8 @@ The format is composed of:
 
 * `bcrypt`: `$2b`
 * `rounds`: `$10` - rounds (log2 of the actual number of rounds)
-* `salt`: `$Lyj9kHYZtiyfxh2G60TEfeqs7xkkGiEFFDi3iJGc50ZG/XJ1sxIFi`
-* `hash`: `$GzJ8PuBi+K+BVojzPfS5mjnC8OpLGtv8KJqF99eP6a4`
+* `salt`: `Lyj9kHYZtiyfxh2G60TEfe`
+* `hash`: `qs7xkkGiEFFDi3iJGc50ZG/XJ1sxIFi`
 
 By default, the bcrypt library truncates passwords longer than 72 bytes. Instead of silently truncating, `Bun.password.hash` with the `bcrypt` algorithm hashes any password longer than 72 bytes with SHA-512 before passing it to bcrypt.
 
@@ -195,6 +200,7 @@ Bun.hash.rapidhash("data", 1234);
 
 * `"blake2b256"`
 * `"blake2b512"`
+* `"blake2s256"`
 * `"md4"`
 * `"md5"`
 * `"ripemd160"`
@@ -288,15 +294,22 @@ console.log(hasher.digest("hex"));
 
 HMAC supports a more limited set of algorithms:
 
+* `"blake2b256"`
 * `"blake2b512"`
+* `"md4"`
 * `"md5"`
+* `"ripemd160"`
 * `"sha1"`
 * `"sha224"`
 * `"sha256"`
 * `"sha384"`
+* `"sha512"`
 * `"sha512-224"`
 * `"sha512-256"`
-* `"sha512"`
+* `"sha3-224"`
+* `"sha3-256"`
+* `"sha3-384"`
+* `"sha3-512"`
 
 Unlike the non-HMAC `Bun.CryptoHasher`, the HMAC `Bun.CryptoHasher` instance is not reset after `.digest()` is called, and using the same instance again throws an error.
 

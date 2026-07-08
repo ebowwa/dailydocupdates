@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/test/mocks.md
-Downloaded: 2026-07-06T21:38:05.572Z
+Downloaded: 2026-07-08T21:08:09.512Z
 -->
 
 > ## Documentation Index
@@ -78,7 +78,7 @@ Mock functions implement the following properties and methods:
 | `mockFn.getMockName()`                    | Returns the mock name                          |
 | `mockFn.mock.calls`                       | Array of call arguments for each invocation    |
 | `mockFn.mock.results`                     | Array of return values for each invocation     |
-| `mockFn.mock.instances`                   | Array of `this` contexts for each invocation   |
+| `mockFn.mock.instances`                   | Array of instances created with `new`          |
 | `mockFn.mock.contexts`                    | Array of `this` contexts for each invocation   |
 | `mockFn.mock.lastCall`                    | Arguments of the most recent call              |
 | `mockFn.mockClear()`                      | Clears call history                            |

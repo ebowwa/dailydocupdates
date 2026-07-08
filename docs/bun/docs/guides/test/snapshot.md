@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/snapshot.md
+Downloaded: 2026-07-08T21:08:09.491Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -49,7 +54,7 @@ test
 The `snap.test.ts.snap` file is a JavaScript file that exports a serialized version of the value passed into `expect()`. The `{foo: "bar"}` object has been serialized to JSON.
 
 ```js snap.test.ts.snap icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
-// Bun Snapshot v1, https://bun.com/docs/test/snapshots
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
 
 exports[`snapshot 1`] = `
 {

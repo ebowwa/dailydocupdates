@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/tsconfig-paths.md
+Downloaded: 2026-07-08T21:08:09.488Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,7 +15,7 @@ Bun reads the `paths` field in your `tsconfig.json` to re-write import paths. Th
 {
   "compilerOptions": {
     "paths": {
-      "my-custom-name": ["zod"],
+      "my-custom-name": ["./node_modules/zod"],
       "@components/*": ["./src/components/*"]
     }
   }

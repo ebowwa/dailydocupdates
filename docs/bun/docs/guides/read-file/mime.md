@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/read-file/mime.md
+Downloaded: 2026-07-08T21:08:09.486Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,10 +13,10 @@ The `Bun.file()` function accepts a path and returns a `BunFile` instance. The `
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const file = Bun.file("./package.json");
-file.type; // application/json
+file.type; // application/json;charset=utf-8
 
 const file = Bun.file("./index.html");
-file.type; // text/html
+file.type; // text/html;charset=utf-8
 
 const file = Bun.file("./image.png");
 file.type; // image/png

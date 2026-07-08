@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/markdown.md
+Downloaded: 2026-07-08T21:08:09.506Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -57,9 +62,9 @@ All available options:
 
 | Option                 | Default | Description                                                 |
 | ---------------------- | ------- | ----------------------------------------------------------- |
-| `tables`               | `false` | GFM tables                                                  |
-| `strikethrough`        | `false` | GFM strikethrough (`~~text~~`)                              |
-| `tasklists`            | `false` | GFM task lists (`- [x] item`)                               |
+| `tables`               | `true`  | GFM tables                                                  |
+| `strikethrough`        | `true`  | GFM strikethrough (`~~text~~`)                              |
+| `tasklists`            | `true`  | GFM task lists (`- [x] item`)                               |
 | `autolinks`            | `false` | Enable autolinks — see [Autolinks](#autolinks)              |
 | `headings`             | `false` | Heading IDs and autolinks — see [Heading IDs](#heading-ids) |
 | `hardSoftBreaks`       | `false` | Treat soft line breaks as hard breaks                       |

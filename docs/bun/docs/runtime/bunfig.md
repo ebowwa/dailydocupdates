@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/bunfig.md
+Downloaded: 2026-07-08T21:08:09.502Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -237,7 +242,7 @@ You can set separate thresholds for line, function, and statement coverage.
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [test]
-coverageThreshold = { line = 0.7, function = 0.8, statement = 0.9 }
+coverageThreshold = { lines = 0.7, functions = 0.8, statements = 0.9 }
 ```
 
 ### `test.coverageSkipTestFiles`

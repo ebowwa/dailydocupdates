@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/runtime-behavior.md
+Downloaded: 2026-07-08T21:08:09.512Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -90,7 +95,7 @@ test("test without timeout", async () => {
 
 ### Unhandled Errors
 
-`bun test` tracks unhandled promise rejections and errors that occur between tests. If any occur, the final exit code is non-zero (the count of such errors), even if all tests pass.
+`bun test` tracks unhandled promise rejections and errors that occur between tests. If any occur, the final exit code is non-zero, even if all tests pass.
 
 This helps catch errors in asynchronous code that might otherwise go unnoticed:
 
@@ -175,8 +180,8 @@ bun test --preload ./setup.ts
 # Sets compile-time constants
 bun test --define "process.env.API_URL='http://localhost:3000'"
 
-# Configures custom loaders
-bun test --loader .special:special-loader
+# Maps file extensions to built-in loaders
+bun test --loader .svg:text
 
 # Uses a different tsconfig
 bun test --tsconfig-override ./test-tsconfig.json
@@ -200,24 +205,11 @@ bun test --frozen-lockfile
 
 ### Watch Mode
 
-With the `--watch` flag, the test runner watches for file changes and re-runs affected tests.
+With the `--watch` flag, the test runner watches for file changes and re-runs tests.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --watch
 ```
-
-Only affected tests re-run:
-
-```ts title="math.test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
-import { add } from "./math.js";
-import { test, expect } from "bun:test";
-
-test("addition", () => {
-  expect(add(2, 3)).toBe(5);
-});
-```
-
-If you modify `math.js`, only `math.test.ts` re-runs, not all tests.
 
 ### Hot Reloading
 
@@ -269,8 +261,7 @@ import { test, it, describe, expect, beforeAll, beforeEach, afterAll, afterEach,
 `bun test` uses standard exit codes:
 
 * `0`: All tests passed, no unhandled errors
-* `1`: Test failures occurred
-* `>1`: Number of unhandled errors (even if tests passed)
+* `1`: Test failures or unhandled errors occurred
 
 ### Signal Handling
 
@@ -339,7 +330,7 @@ afterEach(() => {
   global.myGlobalVar = undefined;
   delete process.env.TEST_VAR;
 
-  // Reset modules if needed
-  jest.resetModules();
+  // Restore mocked functions if needed
+  jest.restoreAllMocks();
 });
 ```

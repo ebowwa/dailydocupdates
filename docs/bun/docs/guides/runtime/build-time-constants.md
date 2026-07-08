@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/build-time-constants.md
+Downloaded: 2026-07-08T21:08:09.486Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -235,9 +240,6 @@ Keys can be property access patterns, not just simple identifiers:
 
 # ✅ Replace nested properties
 --define 'window.myApp.version="1.0.0"'
-
-# ✅ Replace array access
---define 'process.argv[2]="--production"'
 ```
 
 Use this to inline environment variables at build time:

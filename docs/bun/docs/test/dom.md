@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/dom.md
+Downloaded: 2026-07-08T21:08:09.512Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -76,7 +81,7 @@ dom.test.ts:
  1 pass
  0 fail
  1 expect() calls
-Ran 1 tests across 1 files. 1 total [125.00ms]
+Ran 1 test across 1 file. [125.00ms]
 ```
 
 ## React Testing Library

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/publish.md
+Downloaded: 2026-07-08T21:08:09.498Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -173,7 +178,7 @@ bun publish dist
   ```
 </ParamField>
 
-<ParamField path="--dry-run=<val>" type="string">
+<ParamField path="--dry-run" type="boolean">
   Simulate the publish process without publishing the package, to verify its contents first.
 
   ```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -198,7 +203,7 @@ bun publish dist
   ```
 </ParamField>
 
-<ParamField path="--otp" type="string" default="web">
+<ParamField path="--otp" type="string">
   Provide a one-time password directly to the CLI. A valid password skips the extra one-time password prompt before publishing.
 
   ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -298,8 +303,8 @@ bun publish --registry https://my-private-registry.com
   Maximum concurrent network requests
 </ParamField>
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
-  Maximum concurrent lifecycle scripts
+<ParamField path="--concurrent-scripts" type="number">
+  Maximum concurrent lifecycle scripts (default: 2x CPU cores)
 </ParamField>
 
 #### Output Control

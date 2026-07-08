@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/bytecode.md
+Downloaded: 2026-07-08T21:08:09.473Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -21,12 +26,12 @@ bun build ./index.ts --target=bun --bytecode --outdir=./dist
 The build writes two files:
 
 * `dist/index.js` - Your bundled JavaScript (CommonJS)
-* `dist/index.jsc` - The bytecode cache file
+* `dist/index.js.jsc` - The bytecode cache file
 
 At runtime, Bun automatically detects and uses the `.jsc` file:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun ./dist/index.js  # Automatically uses index.jsc
+bun ./dist/index.js  # Automatically uses index.js.jsc
 ```
 
 ### With standalone executables
@@ -155,13 +160,12 @@ RUN bun install --frozen-lockfile
 COPY . .
 RUN bun build --bytecode --minify --sourcemap \
   --target=bun \
-  --outdir=./dist \
   --compile \
   ./src/server.ts --outfile=./dist/server
 
 FROM oven/bun:1 AS runner
 WORKDIR /app
-COPY --from=builder /dist/server /app/server
+COPY --from=builder /app/dist/server /app/server
 CMD ["./server"]
 ```
 
@@ -194,7 +198,7 @@ ls -lh dist/
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 -rw-r--r--  1 user  staff   245K  index.js
--rw-r--r--  1 user  staff   1.1M  index.jsc
+-rw-r--r--  1 user  staff   1.1M  index.js.jsc
 ```
 
 The `.jsc` file should be 2-8x larger than the `.js` file.
@@ -204,13 +208,13 @@ To log whether the bytecode is used, set `BUN_JSC_verboseDiskCache=1` in your en
 On a cache hit, Bun logs:
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
-[Disk cache] cache hit for sourceCode
+[Disk Cache] Cache hit for sourceCode
 ```
 
 On a cache miss:
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
-[Disk cache] cache miss for sourceCode
+[Disk Cache] Cache miss for sourceCode
 ```
 
 Several cache-miss lines are normal: Bun doesn't bytecode-cache the JavaScript in its builtin modules.

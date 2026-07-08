@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/project/building-windows.md
+Downloaded: 2026-07-08T21:08:09.500Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -120,9 +125,6 @@ Add this folder to `$Env:PATH`: open the Start menu, type "Path", and use the en
 Run the test suite with `bun test <path>` or with the wrapper script `bun node:test <path>`. The `bun node:test` command runs every test file in a separate instance of `bun.exe`, so a crash in the test runner does not stop the entire suite.
 
 ```ps1 theme={"theme":{"light":"github-light","dark":"dracula"}}
-# Setup
-bun i --cwd packages\bun-internal-test
-
 # Run the entire test suite with reporter
 # the package.json script "test" uses "build/debug/bun-debug.exe" by default
 bun run test
@@ -185,7 +187,7 @@ Cross-compiled executables are not run on the host (the `--revision` smoke test 
 
 ### LTO
 
-x64 release cross builds support ThinLTO with cross-language (Rust↔C++) LTO, and CI's windows x64 cross lane builds with it by default. Locally it's opt-in:
+x64 release cross builds support ThinLTO with cross-language (Rust↔C++) LTO. It's opt-in:
 
 ```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run build --profile=windows-x64-release --lto=on

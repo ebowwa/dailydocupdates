@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/discovery.md
+Downloaded: 2026-07-08T21:08:09.512Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,10 +17,10 @@
 
 By default, `bun test` recursively searches the project directory for files that match these patterns:
 
-* `*.test.{js|jsx|ts|tsx}` - Files ending with `.test.js`, `.test.jsx`, `.test.ts`, or `.test.tsx`
-* `*_test.{js|jsx|ts|tsx}` - Files ending with `_test.js`, `_test.jsx`, `_test.ts`, or `_test.tsx`
-* `*.spec.{js|jsx|ts|tsx}` - Files ending with `.spec.js`, `.spec.jsx`, `.spec.ts`, or `.spec.tsx`
-* `*_spec.{js|jsx|ts|tsx}` - Files ending with `_spec.js`, `_spec.jsx`, `_spec.ts`, or `_spec.tsx`
+* `*.test.{js|jsx|ts|tsx|mjs|cjs|mts|cts}` - Files ending with `.test.js`, `.test.jsx`, `.test.ts`, `.test.tsx`, `.test.mjs`, `.test.cjs`, `.test.mts`, or `.test.cts`
+* `*_test.{js|jsx|ts|tsx|mjs|cjs|mts|cts}` - Files ending with `_test.js`, `_test.jsx`, `_test.ts`, `_test.tsx`, `_test.mjs`, `_test.cjs`, `_test.mts`, or `_test.cts`
+* `*.spec.{js|jsx|ts|tsx|mjs|cjs|mts|cts}` - Files ending with `.spec.js`, `.spec.jsx`, `.spec.ts`, `.spec.tsx`, `.spec.mjs`, `.spec.cjs`, `.spec.mts`, or `.spec.cts`
+* `*_spec.{js|jsx|ts|tsx|mjs|cjs|mts|cts}` - Files ending with `_spec.js`, `_spec.jsx`, `_spec.ts`, `_spec.tsx`, `_spec.mjs`, `_spec.cjs`, `_spec.mts`, or `_spec.cts`
 
 ## Exclusions
 

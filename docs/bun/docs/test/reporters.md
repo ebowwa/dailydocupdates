@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/reporters.md
+Downloaded: 2026-07-08T21:08:09.512Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -44,7 +49,7 @@ Ran 4 tests across 1 files. [0.66ms]
 
 ### Dots Reporter
 
-The dots reporter shows `.` for passing tests and `F` for failures, useful for large test suites.
+The dots reporter shows `.` for passing tests and prints full error details for failures, useful for large test suites.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --dots

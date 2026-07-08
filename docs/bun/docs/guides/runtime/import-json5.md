@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/import-json5.md
+Downloaded: 2026-07-08T21:08:09.487Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -56,7 +61,7 @@ console.log(features.rateLimit); // => true
 For parsing JSON5 strings at runtime, use `Bun.JSON5.parse()`:
 
 ```ts config.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
-const data = JSON5.parse(`{
+const data = Bun.JSON5.parse(`{
   name: 'John Doe',
   age: 30,
   hobbies: [

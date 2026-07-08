@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/transpiler.md
+Downloaded: 2026-07-08T21:08:09.510Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -37,20 +42,12 @@ Transpile code synchronously with the `.transformSync()` method. Modules are not
   ```
 
   ```ts output theme={"theme":{"light":"github-light","dark":"dracula"}}
-  import { __require as require } from "bun:wrap";
-  import * as JSX from "react/jsx-dev-runtime";
-  var jsx = require(JSX).jsxDEV;
-
-  export default jsx(
-    "div",
-    {
-      children: "hi!",
-    },
-    undefined,
-    false,
-    undefined,
-    this,
-  );
+  import * as whatever from "./whatever.ts";
+  export function Home(props) {
+    return jsxDEV_7x81h0kn("p", {
+      children: props.title
+    }, undefined, false, undefined, this);
+  }
   ```
 </CodeGroup>
 
@@ -119,10 +116,6 @@ The `.scan()` method scans source code and returns a list of its imports and exp
       {
         "kind": "import-statement",
         "path": "react"
-      },
-      {
-        "kind": "import-statement",
-        "path": "remix"
       },
       {
         "kind": "dynamic-import",
@@ -230,7 +223,7 @@ interface TranspilerOptions {
 
   // Whether to inline constant values
   // Typically improves performance and decreases bundle size
-  // Default: true
+  // Default: false
   inline?: boolean,
 }
 

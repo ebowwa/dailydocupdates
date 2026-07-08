@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/skip-tests.md
+Downloaded: 2026-07-08T21:08:09.491Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -32,7 +37,7 @@ test.test.ts:
  1 skip
  0 fail
  2 expect() calls
-Ran 3 tests across 1 files. [74.00ms]
+Ran 3 tests across 1 file. [74.00ms]
 ```
 
 ***

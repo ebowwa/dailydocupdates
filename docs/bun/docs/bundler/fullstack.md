@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/fullstack.md
+Downloaded: 2026-07-08T21:08:09.475Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -209,7 +214,6 @@ When `development` is `true`, Bun:
 * Disables minification
 * Re-bundles assets on each request to a `.html` file
 * Enables hot module reloading (unless `hmr: false` is set)
-* Echoes console logs from the browser to the terminal
 
 ### Advanced Development Configuration
 
@@ -995,7 +999,7 @@ FROM oven/bun:1 as base
 WORKDIR /usr/src/app
 
 # Install dependencies
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 # Copy source code
@@ -1067,13 +1071,11 @@ export default function handler(req, res) {
 
 ### Current Limitations
 
-* `bun build` CLI integration is not yet available for fullstack apps
 * Auto-discovery of API routes is not implemented
 * Server-side rendering (SSR) is not built-in
 
 ### Planned Features
 
-* Integration with `bun build` CLI
 * File-based routing for API endpoints
 * Built-in SSR support
 * Enhanced plugin ecosystem

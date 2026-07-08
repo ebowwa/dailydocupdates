@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/todo-tests.md
+Downloaded: 2026-07-08T21:08:09.493Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -31,7 +36,7 @@ test.test.ts:
  1 todo
  0 fail
  2 expect() calls
-Ran 3 tests across 1 files. [74.00ms]
+Ran 3 tests across 1 file. [74.00ms]
 ```
 
 ***
@@ -57,7 +62,7 @@ bun test --todo
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 my.test.ts:
 ✗ unimplemented feature
-  ^ this test is marked as todo but passes. Remove `.todo` or check that test is correct.
+  ^ this test is marked as todo but passes. Remove `.todo` if tested behavior now works
 
  0 pass
  1 fail

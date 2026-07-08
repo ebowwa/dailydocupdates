@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/update.md
+Downloaded: 2026-07-08T21:08:09.499Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -83,9 +88,9 @@ The interface displays packages grouped by dependency type:
 
 ### Visual Indicators
 
-* **☑** Selected packages (will be updated)
+* **■** Selected packages (will be updated)
 * **□** Unselected packages
-* **>** Current cursor position
+* **❯** Current cursor position
 * **Colors**: Red (major), yellow (minor), green (patch) version changes
 * **Underlined**: Currently selected update target
 
@@ -141,7 +146,7 @@ For example, with the following `package.json`:
 ## CLI Usage
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun update <package> <version>
+bun update <name>@<version>
 ```
 
 ### Update Strategy
@@ -246,8 +251,8 @@ bun update <package> <version>
   Skip lifecycle scripts in the project's <code>package.json</code> (dependency scripts are never run)
 </ParamField>
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
-  Maximum number of concurrent jobs for lifecycle scripts (default 5)
+<ParamField path="--concurrent-scripts" type="number">
+  Maximum number of concurrent jobs for lifecycle scripts (default: 2x CPU cores)
 </ParamField>
 
 ### Installation Controls

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/streams.md
+Downloaded: 2026-07-08T21:08:09.509Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -187,7 +192,7 @@ sink.write(Buffer.from("lo").buffer);
 sink.end();
 ```
 
-Once `.end()` is called, no more data can be written to the `ArrayBufferSink`. However, when buffering a stream you may want to keep writing data and periodically `.flush()` the contents (say, into a `WritableStream`). To support this, pass `stream: true` to the constructor.
+Once `.end()` is called, no more data can be written to the `ArrayBufferSink`. However, when buffering a stream you may want to keep writing data and periodically `.flush()` the contents (say, into a `WritableStream`). To support this, pass `stream: true` to the `start` method.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const sink = new Bun.ArrayBufferSink();
@@ -199,12 +204,12 @@ sink.write("h");
 sink.write("e");
 sink.write("l");
 sink.flush();
-// ArrayBuffer(5) [ 104, 101, 108 ]
+// ArrayBuffer(3) [ 104, 101, 108 ]
 
 sink.write("l");
 sink.write("o");
 sink.flush();
-// ArrayBuffer(5) [ 108, 111 ]
+// ArrayBuffer(2) [ 108, 111 ]
 ```
 
 The `.flush()` method returns the buffered data as an `ArrayBuffer` (or `Uint8Array` if `asUint8Array: true`) and clears the internal buffer.

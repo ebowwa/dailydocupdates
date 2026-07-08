@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/quickstart.md
-Downloaded: 2026-07-05T21:01:09.970Z
+Downloaded: 2026-07-08T21:08:09.501Z
 -->
 
 > ## Documentation Index
@@ -36,12 +36,12 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     ✓ Select a project template: Blank
 
-    - .gitignore
-    - CLAUDE.md
-    - .cursor/rules/use-bun-instead-of-node-vite-npm-pnpm.mdc -> CLAUDE.md
-    - index.ts
-    - tsconfig.json (for editor autocomplete)
-    - README.md
+    + .gitignore
+    + CLAUDE.md
+    + .cursor/rules/use-bun-instead-of-node-vite-npm-pnpm.mdc -> CLAUDE.md
+    + index.ts
+    + tsconfig.json (for editor autocomplete)
+    + README.md
     ```
 
     The new `my-app` directory contains a basic Bun app.
@@ -81,7 +81,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     ```
 
     ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
-    Listening on http://localhost:3000
+    Listening on http://localhost:3000/
     ```
 
     Visit [`http://localhost:3000`](http://localhost:3000) to test the server. You should see a page that says `"Bun!"`.
@@ -148,7 +148,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     ```
 
     ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
-    Listening on http://localhost:3000
+    Listening on http://localhost:3000/
     ```
 
     Visit [`http://localhost:3000/figlet`](http://localhost:3000/figlet) to test the server. You should see a page that says `"Bun!"` in ASCII art.
@@ -206,7 +206,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     ```
 
     ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
-    Listening on http://localhost:3000
+    Listening on http://localhost:3000/
     ```
 
     Visit [`http://localhost:3000`](http://localhost:3000) to test the server. You should see the static HTML page.
@@ -223,7 +223,7 @@ Bun can also execute `"scripts"` from your `package.json`. Add the following scr
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
-  "name": "quickstart",
+  "name": "my-app",
   "module": "index.ts",
   "type": "module",
   "private": true,
@@ -246,7 +246,7 @@ bun run start
 ```
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
-Listening on http://localhost:3000
+Listening on http://localhost:3000/
 ```
 
 <Note>⚡️ **Performance** — `bun run` is roughly 28x faster than `npm run` (6ms vs 170ms of overhead).</Note>

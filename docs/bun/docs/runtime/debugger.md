@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/debugger.md
+Downloaded: 2026-07-08T21:08:09.503Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -28,13 +33,12 @@ bun --inspect server.ts
 ```
 
 ```txt id="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
------------------- Bun Inspector ------------------
-Listening at:
+--------------------- Bun Inspector ---------------------
+Listening:
   ws://localhost:6499/0tqxs9exrgrm
-
 Inspect in browser:
   https://debug.bun.sh/#localhost:6499/0tqxs9exrgrm
------------------- Bun Inspector ------------------
+--------------------- Bun Inspector ---------------------
 ```
 
 ### `--inspect-brk`

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/toml.md
+Downloaded: 2026-07-08T21:08:09.510Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -52,7 +57,7 @@ Bun's TOML parser supports the [TOML v1.0 specification](https://toml.io/en/v1.0
 
 * **Strings**: basic (`"..."`) and literal (`'...'`), including multi-line
 * **Integers**: decimal, hex (`0x`), octal (`0o`), and binary (`0b`)
-* **Floats**: including `inf` and `nan`
+* **Floats**
 * **Booleans**: `true` and `false`
 * **Arrays**: including mixed types and nested arrays
 * **Tables**: standard (`[table]`) and inline (`{ key = "value" }`)

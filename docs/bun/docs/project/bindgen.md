@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/project/bindgen.md
+Downloaded: 2026-07-08T21:08:09.500Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -129,11 +134,11 @@ export const action = fn({
 Each variant gets a numbered Rust function:
 
 ```rust theme={"theme":{"light":"github-light","dark":"dracula"}}
-pub fn action_1(a: i32) -> i32 {
+pub fn action1(a: i32) -> i32 {
     a
 }
 
-pub fn action_2(a: bun_core::String) -> bun_core::String {
+pub fn action2(a: bun_core::String) -> bun_core::String {
     a
 }
 ```

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/install/cicd.md
+Downloaded: 2026-07-08T21:08:09.483Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -35,7 +40,7 @@ jobs:
       # ...
       - uses: oven-sh/setup-bun@v2
          with: # [!code ++]
-          version: "latest" # or "canary" # [!code ++]
+          bun-version: "latest" # or "canary" # [!code ++]
 ```
 
 ***

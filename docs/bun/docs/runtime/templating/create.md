@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/templating/create.md
+Downloaded: 2026-07-08T21:08:09.510Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -138,7 +143,6 @@ Bun then:
 * Copies all template files into the destination folder
 * Installs dependencies with `bun install`
 * Initializes a fresh Git repo. Opt out with the `--no-git` flag.
-* Runs the template's configured `start` script, if defined
 
 <Note>By default Bun does *not overwrite* existing files. Use the `--force` flag to overwrite them.</Note>
 
@@ -247,19 +251,14 @@ After cloning a template, `bun create` removes the `"bun-create"` section from `
   3. Copy files recursively using the fastest system calls available (on macOS, `fcopyfile`; on Linux, `copy_file_range`). Do not copy or traverse into the `node_modules` folder if it exists (this alone makes it faster than `cp`)
 
   4. Parse the `package.json` (again!), update `name` to be `${basename(destination)}`, remove the `bun-create` section from the `package.json` and save the updated `package.json` to disk.
-     * IF Next.js is detected, add `bun-framework-next` to the list of dependencies
-     * IF Create React App is detected, add the entry point in `/src/index.{js,jsx,ts,tsx}` to `public/index.html`
-     * IF Relay is detected, add `bun-macro-relay` so that Relay works
 
-  5. Auto-detect the npm client, preferring `pnpm`, `yarn` (v1), and lastly `npm`
+  5. Run any tasks defined in `"bun-create": { "preinstall" }`
 
-  6. Run any tasks defined in `"bun-create": { "preinstall" }` with the npm client
+  6. Run `bun install` unless `--no-install` is passed OR no dependencies are in package.json
 
-  7. Run `${npmClient} install` unless `--no-install` is passed OR no dependencies are in package.json
+  7. Run any tasks defined in `"bun-create": { "postinstall" }`
 
-  8. Run any tasks defined in `"bun-create": { "postinstall" }` with the npm client
-
-  9. Run `git init; git add -A .; git commit -am "Initial Commit";`
+  8. Run `git init; git add -A .; git commit -am "Initial Commit";`
      * Rename `gitignore` to `.gitignore`. npm strips `.gitignore` files from published packages.
      * If there are dependencies, this runs in a separate thread concurrently while node\_modules are being installed
      * Using libgit2 if available was tested and performed 3x slower in microbenchmarks

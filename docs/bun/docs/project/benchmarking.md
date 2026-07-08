@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/project/benchmarking.md
+Downloaded: 2026-07-08T21:08:09.500Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -151,7 +156,7 @@ Bun.gc(true); // synchronous
 Bun.gc(false); // asynchronous
 ```
 
-Heap snapshots show which objects are not being freed. Use the `bun:jsc` module to take a heap snapshot, then view it with Safari or WebKit GTK developer tools. To generate a heap snapshot:
+Heap snapshots show which objects are not being freed. Use `Bun.generateHeapSnapshot()` to take a heap snapshot, then view it with Safari or WebKit GTK developer tools. To generate a heap snapshot:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { generateHeapSnapshot } from "bun";
@@ -181,10 +186,10 @@ Once imported, you should see something like this:
 
 ### Native heap stats
 
-Bun uses mimalloc for the other heap. To print a summary of non-JavaScript memory usage on exit, set the `MIMALLOC_SHOW_STATS=1` environment variable.
+Bun uses mimalloc for the other heap. To print a summary of non-JavaScript memory usage, call `Bun.unsafe.mimallocDump()`.
 
-```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-MIMALLOC_SHOW_STATS=1 bun script.js
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+Bun.unsafe.mimallocDump();
 ```
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}

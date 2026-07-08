@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/process/spawn-stdout.md
+Downloaded: 2026-07-08T21:08:09.485Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,7 +15,7 @@ When you spawn a child process with [`Bun.spawn()`](/runtime/child-process), `pr
 const proc = Bun.spawn(["echo", "hello"]);
 
 const output = await proc.stdout.text();
-output; // => "hello"
+output; // => "hello\n"
 ```
 
 ***

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/node-api.md
+Downloaded: 2026-07-08T21:08:09.507Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Use Bun's Node-API module to build native add-ons to Node.js
 
-Node-API is an interface for building native add-ons to Node.js. Bun implements 95% of this interface from scratch, so most existing Node-API extensions work with Bun. See [issue #158](https://github.com/oven-sh/bun/issues/158) for completion status.
+Node-API is an interface for building native add-ons to Node.js. Bun implements this interface from scratch, so most existing Node-API extensions work with Bun out of the box.
 
 As in Node.js, you can `require()` `.node` files (Node-API modules) directly.
 

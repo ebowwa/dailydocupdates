@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/file-io.md
+Downloaded: 2026-07-08T21:08:09.504Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -31,7 +36,7 @@ const foo = Bun.file("foo.txt");
 
 await foo.text(); // contents as a string
 await foo.json(); // contents as a JSON object
-await foo.stream(); // contents as ReadableStream
+foo.stream(); // contents as ReadableStream
 await foo.arrayBuffer(); // contents as ArrayBuffer
 await foo.bytes(); // contents as Uint8Array
 ```

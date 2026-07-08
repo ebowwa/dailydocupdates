@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/remove.md
+Downloaded: 2026-07-08T21:08:09.498Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -136,8 +141,8 @@ bun remove <package>
   Skip lifecycle scripts in the project's <code>package.json</code> (dependency scripts are never run)
 </ParamField>
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
-  Maximum number of concurrent jobs for lifecycle scripts (default 5)
+<ParamField path="--concurrent-scripts" type="number">
+  Maximum number of concurrent jobs for lifecycle scripts (default: 2x CPU cores)
 </ParamField>
 
 ### Scope & Path

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/sql.md
+Downloaded: 2026-07-08T21:08:09.509Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -888,8 +893,8 @@ const sql = new SQL({
 
 | SSL Mode      | Description                                                                                                          |
 | ------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `disable`     | No SSL/TLS used. Connections fail if server requires SSL.                                                            |
-| `prefer`      | Tries SSL first, falls back to non-SSL if SSL fails. Default mode if none specified.                                 |
+| `disable`     | No SSL/TLS used. Connections fail if server requires SSL. Default mode if none specified.                            |
+| `prefer`      | Tries SSL first, falls back to non-SSL if SSL fails.                                                                 |
 | `require`     | Requires SSL without certificate verification. Fails if SSL cannot be established.                                   |
 | `verify-ca`   | Verifies server certificate is signed by trusted CA. Fails if verification fails.                                    |
 | `verify-full` | Most secure mode. Verifies certificate and hostname match. Protects against untrusted certificates and MITM attacks. |

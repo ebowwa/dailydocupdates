@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-07-07T21:24:49.027Z
+Downloaded: 2026-07-08T21:08:18.223Z
 -->
 
 > ## Documentation Index
@@ -21,7 +21,28 @@ surface (`REST`, `WebSocket`, `FIX`) or exchange (`Predictions`, `Margin`).
 FIX API changes, previously tracked on a separate page, now live here under
 the `FIX` tag.
 
-{/* changelog-tags: ["Breaking Change", "Upcoming"] */}
+{/* changelog-tags: ["Change", "Upcoming"] */}
+
+<Update
+  label="July 9, 2026"
+  tags={["REST", "Predictions"]}
+  rss={{
+title: "RFQ-scoped quote lookup endpoint",
+description: "GET /trade-api/v2/communications/rfqs/{rfq_id}/quotes/{quote_id} now supports looking up a quote within a specific RFQ. The quote-ID-only lookup endpoint is deprecated."
+}}
+>
+  REST now supports looking up a quote within a specific RFQ by passing both the
+  RFQ ID and quote ID in the path. The quote must belong to the requested RFQ;
+  otherwise, the endpoint returns `404 Not Found`.
+
+  The quote-ID-only lookup endpoint remains supported for now, but is
+  deprecated. Use the RFQ-scoped lookup endpoint instead.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/communications/rfqs/{rfq_id}/quotes/{quote_id}`
+  * `GET /trade-api/v2/communications/quotes/{quote_id}`
+</Update>
 
 <Update
   label="July 4, 2026"
@@ -141,22 +162,6 @@ description: "GET /trade-api/v2/margin/risk and GET /trade-api/v2/margin/positio
 
   * `GET /trade-api/v2/margin/risk`
   * `GET /trade-api/v2/margin/positions`
-</Update>
-
-<Update
-  label="July 9, 2026"
-  tags={["REST", "Predictions"]}
-  rss={{
-title: "Subaccount position transfers",
-description: "New POST /trade-api/v2/portfolio/subaccounts/positions/transfer moves a position between your own subaccounts; GET /trade-api/v2/portfolio/subaccounts/transfers now includes a transfer_type discriminator."
-}}
->
-  Direct accounts can now move a position between their own subaccounts with the new
-  `POST /trade-api/v2/portfolio/subaccounts/positions/transfer`. The per-contract transfer
-  `price` is a fixed-point dollar string (e.g. `"0.4050"`, supporting sub-penny precision)
-  and is always the YES-side price, regardless of `side`. These transfers also appear in
-  `GET /trade-api/v2/portfolio/subaccounts/transfers`, now discriminated by a `transfer_type` field.
-  See the [Subaccounts](/getting_started/subaccounts) concept page.
 </Update>
 
 <Update
@@ -343,7 +348,8 @@ description: "RFQ quotes are only durably queryable after acceptance, and quote 
   * `PUT /trade-api/v2/communications/rfqs/{rfq_id}/quotes/{quote_id}/accept`
   * `PUT /trade-api/v2/communications/rfqs/{rfq_id}/quotes/{quote_id}/confirm`
 
-  The existing quote-ID-only endpoints remain supported for now:
+  The existing quote-ID-only action endpoints remain supported for now, but are
+  deprecated. Use the RFQ-scoped action endpoints instead:
 
   * `DELETE /trade-api/v2/communications/quotes/{quote_id}`
   * `PUT /trade-api/v2/communications/quotes/{quote_id}/accept`
@@ -363,6 +369,7 @@ description: "RFQ quotes are only durably queryable after acceptance, and quote 
 
   * `GET /trade-api/v2/communications/quotes`
   * `GET /trade-api/v2/communications/quotes/{quote_id}`
+  * `GET /trade-api/v2/communications/rfqs/{rfq_id}/quotes/{quote_id}`
   * `DELETE /trade-api/v2/communications/quotes/{quote_id}`
   * `PUT /trade-api/v2/communications/quotes/{quote_id}/accept`
   * `PUT /trade-api/v2/communications/quotes/{quote_id}/confirm`

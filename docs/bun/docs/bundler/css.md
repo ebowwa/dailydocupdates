@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/css.md
+Downloaded: 2026-07-08T21:08:09.473Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -310,34 +315,34 @@ For browsers that don't support `light-dark()`, Bun's CSS bundler converts it to
 
 ```css title="styles.css" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 :root {
-  --lightningcss-light: initial;
-  --lightningcss-dark: ;
+  --buncss-light: initial;
+  --buncss-dark: ;
   color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --lightningcss-light: ;
-    --lightningcss-dark: initial;
+    --buncss-light: ;
+    --buncss-dark: initial;
   }
 }
 
 .light-theme {
-  --lightningcss-light: initial;
-  --lightningcss-dark: ;
+  --buncss-light: initial;
+  --buncss-dark: ;
   color-scheme: light;
 }
 
 .dark-theme {
-  --lightningcss-light: ;
-  --lightningcss-dark: initial;
+  --buncss-light: ;
+  --buncss-dark: initial;
   color-scheme: dark;
 }
 
 .themed-component {
-  background-color: var(--lightningcss-light, #ffffff) var(--lightningcss-dark, #121212);
-  color: var(--lightningcss-light, #333333) var(--lightningcss-dark, #eeeeee);
-  border-color: var(--lightningcss-light, #dddddd) var(--lightningcss-dark, #555555);
+  background-color: var(--buncss-light, #ffffff) var(--buncss-dark, #121212);
+  color: var(--buncss-light, #333333) var(--buncss-dark, #eeeeee);
+  border-color: var(--buncss-light, #dddddd) var(--buncss-dark, #555555);
 }
 ```
 

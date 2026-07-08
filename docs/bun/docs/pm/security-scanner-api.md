@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/security-scanner-api.md
+Downloaded: 2026-07-08T21:08:09.500Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -21,8 +26,7 @@ With a scanner configured, Bun:
 
 * Scans all packages before installation
 * Displays security warnings and advisories
-* Cancels installation if critical vulnerabilities are found
-* Disables [auto-install](/runtime/auto-install)
+* Cancels installation if fatal advisories are found
 
 ***
 

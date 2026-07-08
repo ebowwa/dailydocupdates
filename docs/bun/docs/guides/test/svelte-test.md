@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/svelte-test.md
+Downloaded: 2026-07-08T21:08:09.492Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -30,7 +35,7 @@ afterEach(async () => {
 });
 
 plugin({
-  title: "svelte loader",
+  name: "svelte loader",
   setup(builder) {
     builder.onLoad({ filter: /\.svelte(\?[^.]+)?$/ }, ({ path }) => {
       try {

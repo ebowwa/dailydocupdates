@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/util/path-to-file-url.md
+Downloaded: 2026-07-08T21:08:09.495Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -7,7 +12,7 @@
 Use `Bun.pathToFileURL()` to convert an absolute path to a `file://` URL.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
-Bun.pathToFileURL("/path/to/file.txt");
+Bun.pathToFileURL("/path/to/file.txt").href;
 // => "file:///path/to/file.txt"
 ```
 

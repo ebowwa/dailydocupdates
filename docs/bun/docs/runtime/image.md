@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/image.md
+Downloaded: 2026-07-08T21:08:09.506Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -16,14 +21,14 @@ The API is shaped after [Sharp](https://sharp.pixelplumbing.com/): construct fro
 
 ## Input
 
-The constructor accepts a path, bytes, or a `Blob` — including `Bun.file()` and `Bun.s3()`. `Blob#image()` is shorthand for `new Bun.Image(blob)`:
+The constructor accepts a path, bytes, or a `Blob` — including `Bun.file()` and `Bun.s3.file()`. `Blob#image()` is shorthand for `new Bun.Image(blob)`:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new Bun.Image("./photo.jpg"); // file path
 new Bun.Image(buffer); // Buffer / ArrayBuffer / TypedArray
 new Bun.Image(Bun.file("photo.jpg")); // BunFile (read lazily, off-thread)
 Bun.file("photo.jpg").image(); // same as above
-Bun.s3("bucket/photo.jpg").image(); // S3File
+Bun.s3.file("bucket/photo.jpg").image(); // S3File
 ```
 
 The format is sniffed from the bytes — extensions and `Content-Type` are ignored.
@@ -127,10 +132,10 @@ await img.blob(); // Blob with .type set to the output MIME
 await img.toBase64(); // string
 await img.dataurl(); // "data:image/png;base64,…"
 await img.write("out.webp"); // number (bytes written)
-await img.write(Bun.s3("bucket/out.webp"));
+await img.write(Bun.s3.file("bucket/out.webp"));
 ```
 
-`.write()` accepts the same destinations as `Bun.write` — a path string, `Bun.file()`, `Bun.s3()`, or an fd. If you didn't chain a format method and the destination is a path string, the extension picks one (`.jpg`/`.png`/`.webp`/`.heic`/`.avif`).
+`.write()` accepts the same destinations as `Bun.write` — a path string, `Bun.file()`, `Bun.s3.file()`, or an fd. If you didn't chain a format method and the destination is a path string, the extension picks one (`.jpg`/`.png`/`.webp`/`.heic`/`.avif`).
 
 ## Placeholders
 

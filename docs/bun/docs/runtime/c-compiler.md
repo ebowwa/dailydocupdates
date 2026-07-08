@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/c-compiler.md
+Downloaded: 2026-07-08T21:08:09.502Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -43,10 +48,10 @@ int hello() {
 }
 ```
 
-Running `hello.js` prints:
+Running `hello.ts` prints:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun hello.js
+bun hello.ts
 What is the answer to the universe? 42
 ```
 

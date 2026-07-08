@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/read-env.md
+Downloaded: 2026-07-08T21:08:09.488Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -27,9 +32,11 @@ bun --print process.env
 ```
 
 ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
-BAZ=stuff
-FOOBAR=aaaaaa
-<lots more lines>
+{
+  BAZ: "stuff",
+  FOOBAR: "aaaaaa",
+  <lots more lines>
+}
 ```
 
 ***

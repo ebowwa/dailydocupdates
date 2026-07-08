@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/workers.md
+Downloaded: 2026-07-08T21:08:09.511Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -50,11 +55,13 @@ declare var self: Worker;
 
 You can use `import` and `export` syntax in your worker code. Unlike in browsers, you don't need to pass `{type: "module"}` to use ES modules.
 
-To simplify error handling, Bun resolves the worker's script when `new Worker(url)` is called.
+If the worker's script fails to resolve, an `"error"` event is emitted on the `Worker` object.
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 const worker = new Worker("/not-found.js");
-// throws an error immediately
+worker.addEventListener("error", event => {
+  console.log(event.message);
+});
 ```
 
 The specifier passed to `Worker` is resolved relative to the project root (like typing `bun ./path/to/file.js`).
@@ -292,7 +299,7 @@ console.log(config); // => { apiUrl: "https://api.example.com" }
 
 ## Worker Events
 
-Listen for worker creation events using `process.emit()`:
+Listen for worker creation events using `process.on()`:
 
 ```ts title="index.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 process.on("worker", worker => {

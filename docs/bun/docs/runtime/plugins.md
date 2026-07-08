@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/plugins.md
+Downloaded: 2026-07-08T21:08:09.508Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -35,8 +40,7 @@ type PluginBuilder = {
   ) => void;
   onLoad: (
     args: { filter: RegExp; namespace?: string },
-    defer: () => Promise<void>,
-    callback: (args: { path: string }) => {
+    callback: (args: { path: string; loader: Loader; namespace: string; defer: () => Promise<void> }) => {
       loader?: Loader;
       contents?: string;
       exports?: Record<string, any>;
@@ -136,7 +140,7 @@ const result = await Bun.build({
       name: "Sleep for 10 seconds",
       setup(build) {
         build.onStart(async () => {
-          await Bunlog.sleep(10_000);
+          await Bun.sleep(10_000);
         });
       },
     },
@@ -203,8 +207,7 @@ plugin({
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 onLoad(
   args: { filter: RegExp; namespace?: string },
-  defer: () => Promise<void>,
-  callback: (args: { path: string, importer: string, namespace: string, kind: ImportKind  }) => {
+  callback: (args: { path: string; namespace: string; loader: Loader; defer: () => Promise<void> }) => {
     loader?: Loader;
     contents?: string;
     exports?: Record<string, any>;
@@ -220,7 +223,7 @@ Like `onResolve()`, the first argument to `onLoad()` filters which modules this 
 
 The second argument to `onLoad()` is a callback that runs for each matching module *before* Bun loads its contents into memory.
 
-The callback receives the matching module's *path*, its *importer* (the module that imported it), its *namespace*, and its *kind*.
+The callback receives the matching module's *path*, its *namespace*, the default *loader* for that file, and a *defer* function.
 
 The callback can return a new `contents` string for the module as well as a new `loader`.
 
@@ -375,7 +378,7 @@ Bun.build({
         build.onBeforeParse(
           {
             namespace: "file",
-            filter: "**/*.tsx",
+            filter: /\.tsx$/,
           },
           {
             napiModule: myNativeAddon,

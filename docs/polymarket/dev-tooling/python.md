@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/python.md
-Downloaded: 2026-07-07T21:24:50.540Z
+Downloaded: 2026-07-08T21:08:04.761Z
 -->
 
 > ## Documentation Index
@@ -1106,6 +1106,10 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0b16`
+
+* Fixed Deposit Wallet trading setup approvals to use the current Protocol V2 auto-redeem operator.
 
 ### `0.1.0b15`
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/process/ipc.md
+Downloaded: 2026-07-08T21:08:09.485Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -7,8 +12,8 @@
 Use [`Bun.spawn()`](/runtime/child-process) to spawn a child process. When spawning a second `bun` process, you can open a direct inter-process communication (IPC) channel between the two processes.
 
 <Note>
-  This API is only compatible with other `bun` processes. Use `process.execPath` to get a path to the currently running
-  `bun` executable.
+  To communicate with a Node.js process, set `serialization: "json"` in `Bun.spawn`. Use `process.execPath` to get a
+  path to the currently running `bun` executable.
 </Note>
 
 ```ts parent.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -54,7 +59,7 @@ process.on("message", message => {
 
 ***
 
-All messages are serialized with the JSC `serialize` API, which supports the same set of [transferrable types](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects) as `postMessage` and `structuredClone`, including strings, typed arrays, streams, and objects.
+By default, messages are serialized with the JSC `serialize` API, which supports everything [`structuredClone` supports](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), including strings, typed arrays, and objects. This does not support transferring ownership of objects.
 
 ```ts child.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // send a string

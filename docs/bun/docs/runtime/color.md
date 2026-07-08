@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/color.md
-Downloaded: 2026-07-05T21:01:09.971Z
+Downloaded: 2026-07-08T21:08:09.502Z
 -->
 
 > ## Documentation Index
@@ -56,7 +56,7 @@ It's a built-in alternative to the npm packages [`color`](https://github.com/Qix
 * RGBA objects like `{ r: 255, g: 0, b: 0, a: 1 }`
 * RGB arrays like `[255, 0, 0]`
 * RGBA arrays like `[255, 0, 0, 255]`
-* LAB strings like `"lab(50% 50% 50%)"`
+* LAB strings like `"lab(50% 50 50)"`
 * ... anything else that CSS can parse as a single color value
 
 ### Format colors as CSS

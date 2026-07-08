@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/snapshots.md
+Downloaded: 2026-07-08T21:08:09.513Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -36,7 +41,7 @@ your-project/
 The snapshot file contains:
 
 ```ts title="__snapshots__/snap.test.ts.snap" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
-// Bun Snapshot v1, https://bun.com/docs/test/snapshots
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
 
 exports[`snap 1`] = `"foo"`;
 ```
@@ -239,29 +244,6 @@ exports[`snapshot with dynamic values 1`] = `
 `;
 ```
 
-## Custom Serializers
-
-You can customize how objects are serialized in snapshots:
-
-```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
-import { test, expect } from "bun:test";
-
-// Custom serializer for Date objects
-expect.addSnapshotSerializer({
-  test: val => val instanceof Date,
-  serialize: val => `"${val.toISOString()}"`,
-});
-
-test("custom serializer", () => {
-  const event = {
-    name: "Meeting",
-    date: new Date("2024-01-01T10:00:00Z"),
-  };
-
-  expect(event).toMatchSnapshot();
-});
-```
-
 ## Best Practices
 
 ### Keep Snapshots Small
@@ -363,17 +345,6 @@ bun test --update-snapshots
 git add __snapshots__/
 git commit -m "Update snapshots after UI changes"
 ```
-
-### Cleaning Up Unused Snapshots
-
-Bun warns about unused snapshots:
-
-```txt title="warning" icon="warning" theme={"theme":{"light":"github-light","dark":"dracula"}}
-Warning: 1 unused snapshot found:
-  my-test.test.ts.snap: "old test that no longer exists 1"
-```
-
-Remove unused snapshots by deleting them from the snapshot files or by running tests with cleanup flags if available.
 
 ### Organizing Large Snapshot Files
 

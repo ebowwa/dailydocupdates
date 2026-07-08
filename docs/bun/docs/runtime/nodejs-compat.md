@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/nodejs-compat.md
+Downloaded: 2026-07-08T21:08:09.507Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -120,7 +125,7 @@ This page is updated regularly and reflects the latest version of Bun's compatib
 
 ### [`node:http2`](https://nodejs.org/api/http2.html)
 
-🟡 Client & server are implemented (95.25% of gRPC's test suite passes). Missing `options.allowHTTP1`, `options.enableConnectProtocol`, ALTSVC extension, and `http2stream.pushStream`.
+🟡 Client & server are implemented (95.25% of gRPC's test suite passes).
 
 ### [`node:module`](https://nodejs.org/api/module.html)
 
@@ -156,7 +161,7 @@ This page is updated regularly and reflects the latest version of Bun's compatib
 
 ### [`node:vm`](https://nodejs.org/api/vm.html)
 
-🟡 Core functionality and ES modules are implemented, including `vm.Script`, `vm.createContext`, `vm.runInContext`, `vm.runInNewContext`, `vm.runInThisContext`, `vm.compileFunction`, `vm.isContext`, `vm.Module`, `vm.SourceTextModule`, `vm.SyntheticModule`, and `importModuleDynamically` support. Options like `timeout` and `breakOnSigint` are fully supported. Missing `vm.measureMemory` and some `cachedData` functionality.
+🟡 Core functionality and ES modules are implemented, including `vm.Script`, `vm.createContext`, `vm.runInContext`, `vm.runInNewContext`, `vm.runInThisContext`, `vm.compileFunction`, `vm.isContext`, `vm.Module`, `vm.SourceTextModule`, `vm.SyntheticModule`, and `importModuleDynamically` support. Options like `timeout` and `breakOnSigint` are fully supported.
 
 ### [`node:wasi`](https://nodejs.org/api/wasi.html)
 
@@ -180,11 +185,11 @@ This page is updated regularly and reflects the latest version of Bun's compatib
 
 ### [`node:test`](https://nodejs.org/api/test.html)
 
-🟡 Partially implemented. Missing mocks, snapshots, timers. Use [`bun:test`](/test) instead.
+🟡 Partially implemented. Missing `mock.module`, `mock.timers`, snapshots. Use [`bun:test`](/test) instead.
 
 ### [`node:trace_events`](https://nodejs.org/api/tracing.html)
 
-🔴 Not implemented.
+🟢 Fully implemented.
 
 ## Node.js globals
 
@@ -356,7 +361,7 @@ The following list covers every global implemented by Node.js and Bun's compatib
 
 ### [`process`](https://nodejs.org/api/process.html)
 
-🟡 Mostly implemented. `process.binding` (internal Node.js bindings some packages rely on) is partially implemented. `process.title` is a no-op on macOS & Linux. `getActiveResourcesInfo` `setActiveResourcesInfo`, `getActiveResources` and `setSourceMapsEnabled` are stubs. Newer APIs like `process.loadEnvFile` and `process.getBuiltinModule` are not implemented.
+🟡 Mostly implemented. `process.binding` (internal Node.js bindings some packages rely on) is partially implemented. `process.title` is a no-op on macOS & Linux. `getActiveResourcesInfo` `setActiveResourcesInfo`, `getActiveResources` and `setSourceMapsEnabled` are stubs. Newer APIs like `process.loadEnvFile` are not implemented.
 
 ### [`queueMicrotask()`](https://developer.mozilla.org/en-US/docs/Web/API/queueMicrotask)
 

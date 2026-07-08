@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/index.md
+Downloaded: 2026-07-08T21:08:09.512Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -38,10 +43,10 @@ test("2 + 2", () => {
 
 The runner recursively searches the working directory for files that match the following patterns:
 
-* `*.test.{js|jsx|ts|tsx}`
-* `*_test.{js|jsx|ts|tsx}`
-* `*.spec.{js|jsx|ts|tsx}`
-* `*_spec.{js|jsx|ts|tsx}`
+* `*.test.{js|jsx|ts|tsx|mjs|cjs|mts|cts}`
+* `*_test.{js|jsx|ts|tsx|mjs|cjs|mts|cts}`
+* `*.spec.{js|jsx|ts|tsx|mjs|cjs|mts|cts}`
+* `*_spec.{js|jsx|ts|tsx|mjs|cjs|mts|cts}`
 
 To filter the set of *test files* to run, pass additional positional arguments to `bun test`. Any test file with a path that matches one of the filters runs. Filters are commonly file or directory names; glob patterns are not yet supported.
 

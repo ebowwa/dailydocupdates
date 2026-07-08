@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/shell.md
+Downloaded: 2026-07-08T21:08:09.509Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -290,7 +295,7 @@ await $`
   It prints:
 
   ```
-  echo hi
+  `echo hi`
   ```
 
   Use the `$(...)` syntax instead.
@@ -512,7 +517,7 @@ Exposes Bun Shell's escaping logic as a function:
 import { $ } from "bun";
 
 console.log($.escape('$(foo) `bar` "baz"'));
-// => \$(foo) \`bar\` \"baz\"
+// => "\$(foo) \`bar\` \"baz\""
 ```
 
 To skip escaping, wrap the string in a `{ raw: 'str' }` object:

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/loaders.md
+Downloaded: 2026-07-08T21:08:09.475Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -336,10 +341,8 @@ The loader uses [`lol-html`](https://github.com/cloudflare/lol-html) to extract 
   The selectors are:
 
   * `audio[src]`
-  * `iframe[src]`
   * `img[src]`
   * `img[srcset]`
-  * `link:not([rel~='stylesheet']):not([rel~='modulepreload']):not([rel~='manifest']):not([rel~='icon']):not([rel~='apple-touch-icon'])[href]`
   * `link[as='font'][href], link[type^='font/'][href]`
   * `link[as='image'][href]`
   * `link[as='style'][href]`
@@ -430,8 +433,8 @@ If `publicPath` is set, the import uses its value as a prefix to construct an ab
 
 | Public path                  | Resolved import                    |
 | ---------------------------- | ---------------------------------- |
-| `""` (default)               | `/logo.svg`                        |
-| `"/assets"`                  | `/assets/logo.svg`                 |
+| `""` (default)               | `./logo.svg`                       |
+| `"/assets/"`                 | `/assets/logo.svg`                 |
 | `"https://cdn.example.com/"` | `https://cdn.example.com/logo.svg` |
 
 <Note>The location and file name of the copied file are determined by the value of `naming.asset`.</Note>

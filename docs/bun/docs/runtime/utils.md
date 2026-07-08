@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/utils.md
+Downloaded: 2026-07-08T21:08:09.510Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -964,7 +969,7 @@ namespace Bun {
 
 ## `serialize` & `deserialize` in `bun:jsc`
 
-To save a JavaScript value into an ArrayBuffer & back, use `serialize` and `deserialize` from the `"bun:jsc"` module.
+To save a JavaScript value into a SharedArrayBuffer & back, use `serialize` and `deserialize` from the `"bun:jsc"` module.
 
 ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { serialize, deserialize } from "bun:jsc";
@@ -974,7 +979,7 @@ const obj = deserialize(buf);
 console.log(obj); // => { foo: "bar" }
 ```
 
-Internally, [`structuredClone`](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone) and [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) serialize and deserialize the same way. This exposes the underlying [HTML Structured Clone Algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm) to JavaScript as an ArrayBuffer.
+Internally, [`structuredClone`](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone) and [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) serialize and deserialize the same way. This exposes the underlying [HTML Structured Clone Algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm) to JavaScript as a SharedArrayBuffer.
 
 ***
 
