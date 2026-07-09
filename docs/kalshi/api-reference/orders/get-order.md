@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/get-order.md
-Downloaded: 2026-07-03T21:07:24.002Z
+Downloaded: 2026-07-09T21:24:05.951Z
 -->
 
 > ## Documentation Index
@@ -22,7 +22,7 @@ Downloaded: 2026-07-03T21:07:24.002Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.23.0
+  version: 3.24.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -118,8 +118,6 @@ components:
         - user_id
         - client_order_id
         - ticker
-        - side
-        - action
         - outcome_side
         - book_side
         - type
@@ -149,6 +147,7 @@ components:
             - 'yes'
             - 'no'
           deprecated: true
+          x-go-type-skip-optional-pointer: true
           description: >
             Deprecated. Use `outcome_side` (or `book_side`) instead. See [Order
             direction](/getting_started/order_direction). This field will not be
@@ -159,6 +158,7 @@ components:
             - buy
             - sell
           deprecated: true
+          x-go-type-skip-optional-pointer: true
           description: >
             Deprecated. Use `outcome_side` (or `book_side`) instead. See [Order
             direction](/getting_started/order_direction). This field will not be

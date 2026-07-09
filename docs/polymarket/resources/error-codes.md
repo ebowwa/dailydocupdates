@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/resources/error-codes.md
+Downloaded: 2026-07-09T21:24:03.341Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -269,6 +274,10 @@ These errors are returned when an order passes initial validation but fails duri
 
 <ResponseField name="400" type="Bad Request">
   `the market is not yet ready to process new orders`
+</ResponseField>
+
+<ResponseField name="500" type="Internal Server Error">
+  `order timed out` — The exchange could not process the order before the request deadline. This typically happens during bursts of concurrent order submissions from the same account. The order was rejected before reaching the order book and can be safely resubmitted.
 </ResponseField>
 
 ***

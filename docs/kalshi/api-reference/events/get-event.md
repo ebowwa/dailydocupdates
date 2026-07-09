@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-event.md
-Downloaded: 2026-07-03T21:07:23.993Z
+Downloaded: 2026-07-09T21:24:05.942Z
 -->
 
 > ## Documentation Index
@@ -22,7 +22,7 @@ All events are accessible through this endpoint, even if their associated market
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.23.0
+  version: 3.24.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -270,7 +270,6 @@ components:
         - previous_price_dollars
         - volume_fp
         - volume_24h_fp
-        - liquidity_dollars
         - open_interest_fp
         - result
         - can_close_early
@@ -411,8 +410,10 @@ components:
             Price for the last traded YES contract on this market a day ago in
             dollars
         liquidity_dollars:
-          $ref: '#/components/schemas/FixedPointDollars'
+          allOf:
+            - $ref: '#/components/schemas/FixedPointDollars'
           deprecated: true
+          x-go-type-skip-optional-pointer: true
           description: >-
             DEPRECATED: This field is deprecated and will always return
             "0.0000".

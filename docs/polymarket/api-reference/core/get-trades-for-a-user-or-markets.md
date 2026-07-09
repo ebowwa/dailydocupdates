@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/core/get-trades-for-a-user-or-markets.md
+Downloaded: 2026-07-09T21:24:03.319Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -98,6 +103,23 @@ paths:
             enum:
               - BUY
               - SELL
+        - in: query
+          name: start
+          schema:
+            type: integer
+            minimum: 0
+          description: >-
+            Lower-bound timestamp (epoch seconds) for the trade window. Omit or
+            pass `0` for the default window (most recent ~3 years); pass a
+            positive epoch (e.g. `1`) to retrieve full history.
+        - in: query
+          name: end
+          schema:
+            type: integer
+            minimum: 0
+          description: >-
+            Upper-bound timestamp (epoch seconds) for the trade window. Omit for
+            the default (current time); rows newer than `end` are excluded.
       responses:
         '200':
           description: Success

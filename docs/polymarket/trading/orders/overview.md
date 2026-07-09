@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/orders/overview.md
-Downloaded: 2026-07-02T21:07:40.414Z
+Downloaded: 2026-07-09T21:24:03.344Z
 -->
 
 > ## Documentation Index
@@ -38,9 +38,10 @@ The underlying order primitive is structured, hashed, and signed using the [EIP-
 * **GTC** and **GTD** are limit order types — they rest on the book at your specified price.
 
 <Note>
-  **GTD expiration**: There is a security threshold of one minute. If you need
-  the order to expire in 90 seconds, the correct expiration value is `now + 1
-      minute + 30 seconds`.
+  **GTD expiration**: Orders expire one minute before their stated expiration
+  as a security threshold, and the expiration must be at least three minutes
+  in the future. For a 5-minute effective lifetime, the correct expiration
+  value is `now + 1 minute + 5 minutes`.
 </Note>
 
 ### Post-Only Orders

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/rfq-messages.md
-Downloaded: 2026-07-02T21:07:44.795Z
+Downloaded: 2026-07-09T21:24:05.957Z
 -->
 
 > ## Documentation Index
@@ -116,6 +116,7 @@ Exchange response to an inbound QuoteRequest from an RFQ creator.
 | 303   | QuoteRequestType | Integer | Y        | 1 (MANUAL)                                                               |
 | 21023 | RfqId            | UUID    | C        | Server-assigned RFQ ID. Present when an RFQ ID is returned by the server |
 | 55    | Symbol           | String  | C        | Resolved market ticker. Present when MVE legs were submitted             |
+| 100   | ExDestination    | Integer | Y        | Exchange index for the RFQ market                                        |
 
 <Note>
   The server-assigned RFQ ID is returned in tag 21023. Store it if you want to reconcile later Quote or QuoteStatusReport messages to the created RFQ. RFQCancel accepts either your original client-assigned QuoteReqId (tag 131) or the server-assigned RfqId (tag 21023).
@@ -320,11 +321,11 @@ Exchange notifies that an RFQ creation request was rejected or that a quote requ
   ```
 
   ```fix QuoteRequestAck (Exchange → Creator) theme={null}
-  8=FIXT.1.1|35=b|131=client-req-123|303=1|21023=server-rfq-456|
+  8=FIXT.1.1|35=b|131=client-req-123|303=1|21023=server-rfq-456|100=0|
   ```
 
   ```fix QuoteRequestAck with Resolved Ticker (Exchange → Creator) theme={null}
-  8=FIXT.1.1|35=b|131=client-req-456|303=1|21023=server-rfq-789|55=PARLAY-MKT-ABC|
+  8=FIXT.1.1|35=b|131=client-req-456|303=1|21023=server-rfq-789|55=PARLAY-MKT-ABC|100=1|
   ```
 
   ```fix Quote Notification (Exchange → Creator) theme={null}

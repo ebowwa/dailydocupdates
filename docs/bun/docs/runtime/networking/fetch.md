@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/networking/fetch.md
-Downloaded: 2026-07-08T21:08:09.507Z
+Downloaded: 2026-07-09T21:24:05.150Z
 -->
 
 > ## Documentation Index
@@ -59,7 +59,7 @@ const response = await fetch("http://example.com", {
 
 ### Proxying requests
 
-To proxy a request, pass an object with the `proxy` property set to a URL string, or to an object whose `url` is a string or a `URL`:
+To proxy a request, pass an object with the `proxy` property set to a URL string, a `URL` instance, or to an object whose `url` is a string or a `URL`:
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("http://example.com", {

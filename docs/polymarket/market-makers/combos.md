@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/combos.md
-Downloaded: 2026-07-07T21:24:50.541Z
+Downloaded: 2026-07-09T21:24:03.337Z
 -->
 
 > ## Documentation Index
@@ -1628,8 +1628,8 @@ form](https://forms.gle/dk5A1DRw8EN5uP9z5).
 
 <Warning>
   Makers are expected to accept most selected quotes. We track acceptance rates,
-  and makers who reject more than 15% of selected quotes over a one-hour lookback
-  window may be paused from quoting for a few minutes.
+  and makers who reject more than 15% of selected quotes over a one-hour
+  lookback window may be paused from quoting for a few minutes.
 </Warning>
 
 Once access is enabled, your quoting system will immediately be asked to review
@@ -2105,7 +2105,7 @@ fresh outside the quote path.
       ```bash Condition ID theme={null}
       curl -G "https://data-api.polymarket.com/v1/positions/combos" \
         --data-urlencode "user=<maker_address>" \
-        --data-urlencode "combo_condition_id=<combo_condition_id>"
+        --data-urlencode "market_id=<combo_condition_id>"
       ```
 
       ```bash Position ID theme={null}
@@ -2140,6 +2140,7 @@ fresh outside the quote path.
           "status": "OPEN",
           "first_entry_at": "2026-06-08T00:00:00Z",
           "resolved_at": null,
+          "updated_at": "2026-06-08T00:00:00Z",
           "legs_total": 2,
           "legs_resolved": 0,
           "legs_pending": 2,
@@ -2160,27 +2161,143 @@ fresh outside the quote path.
       "pagination": {
         "limit": 50,
         "offset": 0,
-        "has_more": false,
-        "next_cursor": null
+        "has_more": true,
+        "next_cursor": "eyJsIjo1MCwibyI6NTB9"
       }
     }
     ```
+
+    Use `cursor` from `pagination.next_cursor` to fetch the next page. Keep the same
+    filters and `sort`; `cursor` supersedes `offset`. A `null` cursor means there
+    are no more pages.
+
+    ```bash Cursor theme={null}
+    curl -G "https://data-api.polymarket.com/v1/positions/combos" \
+      --data-urlencode "user=<maker_address>" \
+      --data-urlencode "limit=100" \
+      --data-urlencode "sort=first_entry_desc" \
+      --data-urlencode "cursor=<pagination.next_cursor>"
+    ```
+
+    Use `updatedAfter` with `sort=updated_asc` to incrementally sync changed
+    positions. Store the newest `updated_at` you process as your next watermark;
+    boundary rows may re-deliver, so upsert by `(combo_condition_id,
+        combo_position_id)`.
+
+    ```bash Incremental sync theme={null}
+    curl -G "https://data-api.polymarket.com/v1/positions/combos" \
+      --data-urlencode "user=<maker_address>" \
+      --data-urlencode "updatedAfter=<last_watermark_epoch_seconds>" \
+      --data-urlencode "sort=updated_asc" \
+      --data-urlencode "limit=1000"
+    ```
+
+    <Note>
+      **Displaying closed (redeemed) positions.** `entry_cost_usdc` is the
+      *remaining* cost basis (`entry_avg_price × shares_balance`), so it reads `~0`
+      once a winning combo is redeemed — and `shares_balance` does too. Two fields
+      carry the closed-position economics instead:
+
+      * `realized_payout_usdc` — gross redemption proceeds (winning shares redeem
+        1:1 at \$1; accumulates under `PARTIAL`)
+      * `total_cost_usdc` — original cost basis, reconstructed as
+        `entry_avg_price × (shares_balance + realized_payout)`
+
+      Net result of a finished combo = `realized_payout_usdc − total_cost_usdc`.
+    </Note>
   </Tab>
 </Tabs>
 
-<Note>
-  **Displaying closed (redeemed) positions.** `entry_cost_usdc` is the
-  *remaining* cost basis (`entry_avg_price × shares_balance`), so it reads `~0`
-  once a winning combo is redeemed — and `shares_balance` does too. Two fields
-  carry the closed-position economics instead:
+### List Combo Activity
 
-  * `realized_payout_usdc` — gross redemption proceeds (winning shares redeem
-    1:1 at \$1; accumulates under `PARTIAL`)
-  * `total_cost_usdc` — original cost basis, reconstructed as
-    `entry_avg_price × (shares_balance + realized_payout)`
+Use Combo activity when you need an audit trail for inventory-changing events,
+including splits, merges, conversions, wraps, unwraps, and redeems. Use Combo
+positions for current inventory state.
 
-  Net result of a finished combo = `realized_payout_usdc − total_cost_usdc`.
-</Note>
+<Tabs>
+  <Tab title="API">
+    Use the Data API to list Combo lifecycle activity for a wallet.
+
+    ```bash theme={null}
+    curl -G "https://data-api.polymarket.com/v1/activity/combos" \
+      --data-urlencode "user=<maker_address>" \
+      --data-urlencode "limit=50"
+    ```
+
+    Filter to specific Combos with `market_id`, which accepts comma-separated
+    `combo_condition_id` values.
+
+    ```bash Filter by Combo theme={null}
+    curl -G "https://data-api.polymarket.com/v1/activity/combos" \
+      --data-urlencode "user=<maker_address>" \
+      --data-urlencode "market_id=<combo_condition_id_1>,<combo_condition_id_2>"
+    ```
+
+    The response returns lifecycle events in `activity` and pagination metadata in
+    `pagination`.
+
+    ```json theme={null}
+    {
+      "activity": [
+        {
+          "id": "<tx_hash>-<log_index>",
+          "event_kind": "PositionsSplit",
+          "side": "Split",
+          "module_kind": "Combinatorial",
+          "user_address": "<maker_address>",
+          "combo_condition_id": "<combo_condition_id>",
+          "combo_position_id": "<combo_position_id>",
+          "module_id": 3,
+          "amount_usdc": 10.0,
+          "payout_usdc": null,
+          "timestamp": 1783379945,
+          "tx_dttm": "2026-07-06T23:19:05Z",
+          "tx_hash": "<tx_hash>",
+          "log_index": 2409,
+          "block_number": 89783300,
+          "legs": [
+            {
+              "leg_index": 0,
+              "leg_position_id": "<leg_position_id_1>",
+              "leg_condition_id": "<ctf_condition_id_1>",
+              "leg_outcome_index": 0,
+              "leg_outcome_label": "Yes",
+              "leg_status": "OPEN",
+              "leg_resolved_at": null,
+              "leg_current_price": "0.52"
+            }
+          ]
+        }
+      ],
+      "pagination": {
+        "limit": 50,
+        "offset": 0,
+        "has_more": true,
+        "next_cursor": "eyJsIjo1MCwibyI6NTB9"
+      }
+    }
+    ```
+
+    Use `cursor` from `pagination.next_cursor` to fetch the next page. `cursor`
+    supersedes `offset`. A `null` cursor means there are no more pages.
+
+    ```bash Cursor theme={null}
+    curl -G "https://data-api.polymarket.com/v1/activity/combos" \
+      --data-urlencode "user=<maker_address>" \
+      --data-urlencode "limit=50" \
+      --data-urlencode "cursor=<pagination.next_cursor>"
+    ```
+  </Tab>
+
+  <Tab title="TypeScript">
+    TypeScript SDK support for Combo activity is coming soon. Use the API tab for
+    now.
+  </Tab>
+
+  <Tab title="Python">
+    Python SDK support for Combo activity is coming soon. Use the API tab for now.
+  </Tab>
+</Tabs>
 
 ### Inventory Management
 

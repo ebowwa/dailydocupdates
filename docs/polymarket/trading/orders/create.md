@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/orders/create.md
-Downloaded: 2026-07-02T21:07:40.414Z
+Downloaded: 2026-07-09T21:24:03.344Z
 -->
 
 > ## Documentation Index
@@ -213,7 +213,7 @@ GTD orders auto-expire at a specified time. Useful for quoting around known even
       .size(dec!(10))
       .side(Side::Buy)
       .order_type(OrderType::GTD)
-      .expiration(Utc::now() + TimeDelta::hours(1))
+      .expiration(Utc::now() + TimeDelta::minutes(1) + TimeDelta::hours(1))
       .build()
       .await?;
   let signed = client.sign(&signer, order).await?;
@@ -222,9 +222,11 @@ GTD orders auto-expire at a specified time. Useful for quoting around known even
 </CodeGroup>
 
 <Note>
-  There is a security threshold of one minute on GTD expiration. To set an
-  effective lifetime of N seconds, use `now + 60 + N`. For example, for a
-  30-second effective lifetime, set the expiration to `now + 60 + 30`.
+  GTD orders expire one minute before their stated expiration as a security
+  threshold. To set an effective lifetime of N seconds, use `now + 60 + N`.
+  In addition, the expiration must be at least three minutes in the future —
+  orders expiring sooner are rejected — so the minimum effective lifetime is
+  about two minutes.
 </Note>
 
 ***

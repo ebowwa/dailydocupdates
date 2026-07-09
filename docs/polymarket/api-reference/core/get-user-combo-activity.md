@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/core/get-user-combo-activity.md
+Downloaded: 2026-07-09T21:24:03.319Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -71,6 +76,14 @@ paths:
             default: 0
             minimum: 0
             maximum: 10000
+        - in: query
+          name: cursor
+          schema:
+            type: string
+          description: >-
+            Opaque continuation token from a previous response's
+            pagination.next_cursor. When present it supersedes offset (which is
+            ignored). Invalid, tampered, or cross-endpoint tokens return 400.
       responses:
         '200':
           description: Success
@@ -198,7 +211,12 @@ components:
         next_cursor:
           type: string
           nullable: true
-          description: Opaque cursor for the next page; null when has_more is false.
+          description: >-
+            Opaque signed cursor for the next page; null when has_more is false.
+            Pass it back verbatim as ?cursor= on the next request (keep the same
+            sort where the endpoint has one). Never parse or construct it. On
+            cursor-enabled endpoints this makes deep pagination O(page) and
+            stable against concurrent inserts.
     ComboLeg:
       type: object
       properties:

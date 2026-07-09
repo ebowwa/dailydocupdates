@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/core/get-user-activity.md
+Downloaded: 2026-07-09T21:24:03.319Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -108,6 +113,9 @@ paths:
           schema:
             type: integer
             minimum: 0
+          description: >-
+            Upper-bound timestamp (epoch seconds) for the activity window. Omit
+            for the default (current time); rows newer than `end` are excluded.
         - in: query
           name: sortBy
           schema:

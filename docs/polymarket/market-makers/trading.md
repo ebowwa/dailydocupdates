@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/trading.md
-Downloaded: 2026-07-02T21:07:40.410Z
+Downloaded: 2026-07-09T21:24:03.339Z
 -->
 
 > ## Documentation Index
@@ -186,14 +186,14 @@ Auto-expire quotes before known events like market close or resolution:
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
-  // Expire in 1 hour
+  // Expire in 1 hour (+ 60s security threshold buffer)
   const expiringOrder = await client.createAndPostOrder(
     {
       tokenID,
       side: Side.BUY,
       price: 0.5,
       size: 1000,
-      expiration: Math.floor(Date.now() / 1000) + 3600,
+      expiration: Math.floor(Date.now() / 1000) + 60 + 3600,
     },
     undefined,
     OrderType.GTD,
@@ -205,14 +205,14 @@ Auto-expire quotes before known events like market close or resolution:
   from py_clob_client_v2 import OrderArgs, OrderType
   from py_clob_client_v2.order_builder.constants import BUY
 
-  # Expire in 1 hour
+  # Expire in 1 hour (+ 60s security threshold buffer)
   expiring_order = client.create_and_post_order(
       OrderArgs(
           token_id=token_id,
           side=BUY,
           price=0.50,
           size=1000,
-          expiration=int(time.time()) + 3600,
+          expiration=int(time.time()) + 60 + 3600,
       ),
       order_type=OrderType.GTD,
   )
@@ -222,14 +222,14 @@ Auto-expire quotes before known events like market close or resolution:
   use chrono::{TimeDelta, Utc};
   use polymarket_client_sdk_v2::clob::types::OrderType;
 
-  // Expire in 1 hour
+  // Expire in 1 hour (+ 60s security threshold buffer)
   let order = client.limit_order()
       .token_id(token_id)
       .price(dec!(0.50))
       .size(dec!(1000))
       .side(Side::Buy)
       .order_type(OrderType::GTD)
-      .expiration(Utc::now() + TimeDelta::hours(1))
+      .expiration(Utc::now() + TimeDelta::minutes(1) + TimeDelta::hours(1))
       .build().await?;
   let signed = client.sign(&signer, order).await?;
   client.post_order(signed).await?;
