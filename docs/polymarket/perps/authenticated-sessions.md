@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/authenticated-sessions.md
-Downloaded: 2026-07-07T21:24:50.543Z
+Downloaded: 2026-07-10T21:05:51.329Z
 -->
 
 > ## Documentation Index
@@ -447,7 +447,7 @@ and receive private real-time updates.
               "p": "65000.00",
               "qty": "0.01",
               "taker": true,
-              "fee": "0.01",
+              "fee": "0.26",
               "fea": "pUSD",
               "psz": "0",
               "pep": "0",

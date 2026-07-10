@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/get-fees.md
-Downloaded: 2026-07-07T21:24:50.521Z
+Downloaded: 2026-07-10T21:05:51.310Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,7 @@ Downloaded: 2026-07-07T21:24:50.521Z
 
 # Get Fees
 
-> Get the flat fee schedule for each instrument type and category.
+> Get the default fee schedule for each instrument type and category. Rates returned are the $0-tier defaults; the account's actual rate on each fill depends on its trailing 30-day volume tier.
 
 <Badge color="gray" size="md">Request Weight: **2**</Badge>
 
@@ -33,7 +33,10 @@ paths:
   /v1/info/fees:
     get:
       summary: Get Fees
-      description: Get the flat fee schedule for each instrument type and category.
+      description: >-
+        Get the default fee schedule for each instrument type and category.
+        Rates returned are the $0-tier defaults; the account's actual rate on
+        each fill depends on its trailing 30-day volume tier.
       operationId: getInfoFees
       responses:
         '200':
@@ -115,12 +118,16 @@ components:
         - crypto
     taker_fee_rate:
       type: string
-      description: Taker fee rate
-      example: '0.0002'
+      description: >-
+        Default taker fee rate for the $0 volume tier. Actual rate scales down
+        with the account's trailing 30-day volume tier.
+      example: '0.0004'
     maker_fee_rate:
       type: string
-      description: Maker fee rate
-      example: '-0.00005'
+      description: >-
+        Default maker fee rate for the $0 volume tier. Positive at lower tiers,
+        zero at the $500M tier, and a rebate (negative) at the top tier.
+      example: '0.000125'
     error:
       type: string
       description: >-

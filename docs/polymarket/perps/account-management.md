@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/account-management.md
-Downloaded: 2026-07-07T21:24:50.542Z
+Downloaded: 2026-07-10T21:05:51.329Z
 -->
 
 > ## Documentation Index
@@ -597,7 +597,7 @@ Use fills to reconcile executions, fees, realized PnL, and exposure changes.
           "price": "65000",
           "quantity": "0.01",
           "taker": true,
-          "fee": "0.13",
+          "fee": "0.26",
           "feeAsset": "pUSD",
           "previousSize": "0",
           "previousEntryPrice": "0",
@@ -638,7 +638,7 @@ Use fills to reconcile executions, fees, realized PnL, and exposure changes.
           "price": "65000",
           "quantity": "0.01",
           "taker": true,
-          "fee": "0.13",
+          "fee": "0.26",
           "fee_asset": "pUSD",
           "previous_size": "0",
           "previous_entry_price": "0",
@@ -677,7 +677,7 @@ Use fills to reconcile executions, fees, realized PnL, and exposure changes.
             "price": "65000",
             "quantity": "0.01",
             "taker": true,
-            "fee": "0.13",
+            "fee": "0.26",
             "fee_asset": "pUSD",
             "previous_size": "0",
             "previous_entry_price": "0",

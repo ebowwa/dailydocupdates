@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/trading.md
-Downloaded: 2026-07-07T21:24:50.548Z
+Downloaded: 2026-07-10T21:05:51.332Z
 -->
 
 > ## Documentation Index
@@ -2248,7 +2248,7 @@ reads. Track their lifecycle in addition to the position and fills they protect.
               "p": "65000",
               "qty": "0.01",
               "taker": true,
-              "fee": "0.13",
+              "fee": "0.26",
               "fea": "pUSD",
               "psz": "0",
               "pep": "0",
@@ -2323,8 +2323,13 @@ reads. Track their lifecycle in addition to the position and fills they protect.
 
 ## Trading Fees
 
-Use the fee schedule when you need to display or account for maker and taker
-trading fees. Fee rates are decimal strings, so `"0.0002"` means `0.02%`.
+Use the fee schedule when you need to display or account for the default maker
+and taker trading fees. Fee rates are decimal strings, so `"0.0004"` means
+`0.04%`.
+
+The schedule returns default (`$0` tier) rates. The account's actual rate on
+each fill depends on its trailing 30-day volume tier. See
+[Fees](/perps/learn-about-trading/fees) for the tier table.
 
 <Tabs>
   <Tab title="TypeScript">
@@ -2335,7 +2340,8 @@ trading fees. Fee rates are decimal strings, so `"0.0002"` means `0.02%`.
     // fees: PerpsFeeScheduleEntry[]
     ```
 
-    Each fee entry contains the market category and its maker and taker fee rates.
+    Each fee entry contains the market category and its default maker and taker fee
+    rates.
 
     ```ts theme={null}
     type PerpsFeeScheduleEntry = {
@@ -2358,7 +2364,8 @@ trading fees. Fee rates are decimal strings, so `"0.0002"` means `0.02%`.
     # fees: tuple[PerpsFeeScheduleEntry, ...]
     ```
 
-    Each fee entry contains the market category and its maker and taker fee rates.
+    Each fee entry contains the market category and its default maker and taker fee
+    rates.
 
     `maker_fee_rate` applies when an order adds liquidity, such as a resting or
     post-only order. `taker_fee_rate` applies when an order removes liquidity, such
@@ -2372,7 +2379,7 @@ trading fees. Fee rates are decimal strings, so `"0.0002"` means `0.02%`.
     curl "https://api.perpetuals.polymarket.com/v1/info/fees"
     ```
 
-    The response contains fee entries with maker and taker fee rates.
+    The response contains fee entries with default maker and taker fee rates.
 
     ```json theme={null}
     {
@@ -2380,8 +2387,8 @@ trading fees. Fee rates are decimal strings, so `"0.0002"` means `0.02%`.
         {
           "instrument_type": "perpetual",
           "category": "crypto",
-          "maker_fee_rate": "-0.00005",
-          "taker_fee_rate": "0.0002"
+          "maker_fee_rate": "0.000125",
+          "taker_fee_rate": "0.0004"
         }
       ]
     }

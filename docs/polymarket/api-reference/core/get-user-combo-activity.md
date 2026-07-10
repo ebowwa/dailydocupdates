@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/core/get-user-combo-activity.md
-Downloaded: 2026-07-09T21:24:03.319Z
+Downloaded: 2026-07-10T21:05:51.306Z
 -->
 
 > ## Documentation Index
@@ -146,12 +146,12 @@ components:
           type: string
         event_kind:
           type: string
-          description: >-
-            Raw on-chain event, e.g. PositionsSplit, PositionsMerged,
-            PositionRedeemed.
+          deprecated: true
+          description: Deprecated. Use `type` instead.
         side:
           type: string
-          description: Normalized label for rendering.
+          deprecated: true
+          description: Deprecated. Use `type` instead.
           enum:
             - Split
             - Merge
@@ -233,13 +233,26 @@ components:
           type: string
         leg_status:
           type: string
-          description: Placeholder (OPEN) until leg-resolution integration ships.
+          enum:
+            - OPEN
+            - RESOLVED_WIN
+            - RESOLVED_LOSS
+          description: >-
+            Live per-leg resolution state, derived from the leg market's
+            on-chain payout vector. Markets resolved with a fractional payout
+            (e.g. a 50/50 void) currently surface as OPEN with leg_resolved_at
+            set.
         leg_resolved_at:
           type: string
           nullable: true
+          description: >-
+            RFC3339 UTC. Set once the leg's market resolves on-chain, including
+            fractional resolutions that still report leg_status OPEN.
         leg_current_price:
           type: string
-          description: Placeholder ("0") until live-price integration ships.
+          description: >-
+            Live price for the leg outcome (decimal string, 0–1). "0" when no
+            price is available.
         market:
           $ref: '#/components/schemas/ComboMarket'
     ComboMarket:

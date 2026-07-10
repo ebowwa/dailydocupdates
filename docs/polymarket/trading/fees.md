@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/fees.md
+Downloaded: 2026-07-10T21:05:51.335Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -33,7 +38,7 @@ Where **C** = number of shares traded and **p** = price of the shares.
 | Category        | Taker Fee Rate | Maker Fee Rate | Maker Rebate |
 | --------------- | -------------- | -------------- | ------------ |
 | Crypto          | 0.07           | 0              | 20%          |
-| Sports          | 0.03           | 0              | 25%          |
+| Sports          | 0.05           | 0              | 15%          |
 | Finance         | 0.04           | 0              | 25%          |
 | Politics        | 0.04           | 0              | 25%          |
 | Economics       | 0.05           | 0              | 25%          |
@@ -48,7 +53,7 @@ Taker fees are calculated in USDC and vary based on the share price. The fee amo
 
 <Frame>
   <div className="p-3 bg-white rounded-xl">
-    <iframe title="Fee Curves" aria-label="Line chart" id="datawrapper-chart-cY9H4" src="https://datawrapper.dwcdn.net/cY9H4/" scrolling="no" frameborder="0" width={700} style={{ width: "0", minWidth: "100% !important", border: "none" }} height="450" data-external="1" />
+    <iframe title="Fee Curves" aria-label="Line chart" id="datawrapper-chart-dJ74e" src="https://datawrapper.dwcdn.net/dJ74e/" scrolling="no" frameborder="0" width={700} style={{ width: "0", minWidth: "100% !important", border: "none" }} height="450" data-external="1" />
   </div>
 </Frame>
 
@@ -86,29 +91,29 @@ Taker fees are calculated in USDC and vary based on the share price. The fee amo
   <Tab title="Sports">
     | Price  | Trade Value | Taker Fee (USDC) |
     | ------ | ----------- | ---------------- |
-    | \$0.01 | \$1         | \$0.03           |
-    | \$0.05 | \$5         | \$0.14           |
-    | \$0.10 | \$10        | \$0.27           |
-    | \$0.15 | \$15        | \$0.38           |
-    | \$0.20 | \$20        | \$0.48           |
-    | \$0.25 | \$25        | \$0.56           |
-    | \$0.30 | \$30        | \$0.63           |
-    | \$0.35 | \$35        | \$0.68           |
-    | \$0.40 | \$40        | \$0.72           |
-    | \$0.45 | \$45        | \$0.74           |
-    | \$0.50 | \$50        | \$0.75           |
-    | \$0.55 | \$55        | \$0.74           |
-    | \$0.60 | \$60        | \$0.72           |
-    | \$0.65 | \$65        | \$0.68           |
-    | \$0.70 | \$70        | \$0.63           |
-    | \$0.75 | \$75        | \$0.56           |
-    | \$0.80 | \$80        | \$0.48           |
-    | \$0.85 | \$85        | \$0.38           |
-    | \$0.90 | \$90        | \$0.27           |
-    | \$0.95 | \$95        | \$0.14           |
-    | \$0.99 | \$99        | \$0.03           |
+    | \$0.01 | \$1         | \$0.05           |
+    | \$0.05 | \$5         | \$0.24           |
+    | \$0.10 | \$10        | \$0.45           |
+    | \$0.15 | \$15        | \$0.64           |
+    | \$0.20 | \$20        | \$0.80           |
+    | \$0.25 | \$25        | \$0.94           |
+    | \$0.30 | \$30        | \$1.05           |
+    | \$0.35 | \$35        | \$1.14           |
+    | \$0.40 | \$40        | \$1.20           |
+    | \$0.45 | \$45        | \$1.24           |
+    | \$0.50 | \$50        | \$1.25           |
+    | \$0.55 | \$55        | \$1.24           |
+    | \$0.60 | \$60        | \$1.20           |
+    | \$0.65 | \$65        | \$1.14           |
+    | \$0.70 | \$70        | \$1.05           |
+    | \$0.75 | \$75        | \$0.94           |
+    | \$0.80 | \$80        | \$0.80           |
+    | \$0.85 | \$85        | \$0.64           |
+    | \$0.90 | \$90        | \$0.45           |
+    | \$0.95 | \$95        | \$0.24           |
+    | \$0.99 | \$99        | \$0.05           |
 
-    The fee in USDC **peaks at 50%** probability (\$0.75) and decreases symmetrically toward both extremes.
+    The fee in USDC **peaks at 50%** probability (\$1.25) and decreases symmetrically toward both extremes.
   </Tab>
 
   <Tab title="Finance / Politics / Mentions / Tech">

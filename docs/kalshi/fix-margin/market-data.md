@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix-margin/market-data.md
+Downloaded: 2026-07-10T21:05:54.378Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -69,21 +74,22 @@ Sent in response to a snapshot request and immediately after a snapshot-plus-upd
 
 Sent after a subscribed market's aggregated book levels change or a trade occurs. Correlate by `Symbol<55>` on each entry.
 
-| Tag | Name           | Type     | Required | Description                                             |
-| --- | -------------- | -------- | -------- | ------------------------------------------------------- |
-| 268 | NoMDEntries    | Integer  | Y        | Number of market data entries.                          |
-| 279 | MDUpdateAction | Char     | Y        | Repeating group field. `0`=New, `1`=Change, `2`=Delete. |
-| 55  | Symbol         | String   | Y        | Repeating group field. Margin market ticker.            |
-| 269 | MDEntryType    | Char     | Y        | Repeating group field. `0`=Bid, `1`=Offer, `2`=Trade    |
-| 270 | MDEntryPx      | Price    | Y        | Price in dollars.                                       |
-| 271 | MDEntrySize    | Quantity | Y        | Size in contracts.                                      |
+| Tag  | Name           | Type     | Required | Description                                             |
+| ---- | -------------- | -------- | -------- | ------------------------------------------------------- |
+| 268  | NoMDEntries    | Integer  | Y        | Number of market data entries.                          |
+| 279  | MDUpdateAction | Char     | Y        | Repeating group field. `0`=New, `1`=Change, `2`=Delete. |
+| 55   | Symbol         | String   | Y        | Repeating group field. Margin market ticker.            |
+| 269  | MDEntryType    | Char     | Y        | Repeating group field. `0`=Bid, `1`=Offer, `2`=Trade    |
+| 270  | MDEntryPx      | Price    | Y        | Price in dollars.                                       |
+| 271  | MDEntrySize    | Quantity | Y        | Size in contracts.                                      |
+| 2446 | AggressorSide  | Char     | C        | Trade entries only. `1`=Buy, `2`=Sell.                  |
 
 ```fix Example incremental update theme={null}
 8=FIXT.1.1|35=X|49=KalshiMD|56=your-api-key|268=1|279=1|55=BTC-PERP|269=0|270=19.5000|271=15.00|
 ```
 
 ```fix Example trade update theme={null}
-8=FIXT.1.1|35=X|49=KalshiMD|56=your-api-key|268=1|279=0|55=BTC-PERP|269=2|270=19.5000|271=3.00|
+8=FIXT.1.1|35=X|49=KalshiMD|56=your-api-key|268=1|279=0|55=BTC-PERP|269=2|270=19.5000|271=3.00|2446=1|
 ```
 
 ## Market Data Request Reject (35=Y)

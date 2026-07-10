@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/learn-about-trading/fees.md
-Downloaded: 2026-07-07T21:24:50.544Z
+Downloaded: 2026-07-10T21:05:51.330Z
 -->
 
 > ## Documentation Index
@@ -9,10 +9,11 @@ Downloaded: 2026-07-07T21:24:50.544Z
 
 # Fees
 
-> Flat maker and taker trading fees for Polymarket Perps
+> Tiered maker and taker trading fees for Polymarket Perps
 
-Every Perps fill uses the same fee schedule, regardless of account volume or
-maker share.
+Perps trading fees are tiered by an account's trailing 30-day trading volume.
+Higher-volume accounts pay lower taker fees, and the top tier earns a maker
+rebate instead of paying a maker fee.
 
 ## Fee Calculation
 
@@ -22,23 +23,40 @@ For each fill, the fee is calculated on the notional value of the trade:
 Fee = abs(Price * Quantity) * Rate
 ```
 
-Fees are denominated in the instrument's quote asset (pUSD).
+Fees are denominated in the instrument's quote asset (pUSD). The rate applied
+to a fill is set by the account's current volume tier.
 
-| Side  | Rate     | Basis Points |
-| ----- | -------- | ------------ |
-| Maker | -0.0050% | -0.5 bp      |
-| Taker | 0.0200%  | 2 bp         |
+| 30-Day Volume ≥ | Taker   | Maker    |
+| --------------- | ------- | -------- |
+| \$0             | 0.0400% | 0.0125%  |
+| \$1M            | 0.0370% | 0.0100%  |
+| \$5M            | 0.0350% | 0.0080%  |
+| \$25M           | 0.0300% | 0.0050%  |
+| \$100M          | 0.0270% | 0.0020%  |
+| \$500M          | 0.0250% | 0.0000%  |
+| \$1B            | 0.0200% | -0.0050% |
 
-A negative maker fee is a rebate. The maker receives the rebate amount, and the
-fee recipient is debited by the same amount in the internal ledger.
+New accounts start at the \$0 tier and move up as trailing 30-day volume crosses
+each threshold.
+
+A negative maker fee is a rebate: the maker receives the rebate amount, and the
+fee recipient's internal ledger is debited by the same amount.
+
+<Note>
+  A subset of accounts created during the Perps beta are temporarily on the
+  top-tier fee schedule regardless of trailing 30-day volume. Standard
+  volume-based tiering applies to these accounts once the transition period
+  ends.
+</Note>
 
 If you're integrating Perps, read the current fee schedule from
 [Trading Fees](/perps/trading#trading-fees).
 
 ## Fee Metrics
 
-Trailing 7-day activity metrics are available for visibility. These metrics are
-informational only. They do not affect the maker or taker fee rate.
+Trailing 7-day activity metrics are available for visibility. They are a
+rolling view of recent activity and do not, on their own, determine the volume
+tier used to set fees.
 
 | Metric              | Meaning                                                                        |
 | ------------------- | ------------------------------------------------------------------------------ |
@@ -55,5 +73,11 @@ If you're integrating Perps, read account metrics from
 
 ## Fee Accounting
 
-Collected taker fees are credited to the configured fee recipient's internal
-ledger account. Maker rebates are debited from the same account.
+Every fill's fee flows through a single fee-recipient account on the internal
+ledger:
+
+* Taker fees credit the recipient.
+* Maker fees credit the recipient at every tier where the maker rate is
+  non-negative.
+* At the top tier the maker rate is a rebate, so it debits the recipient and
+  credits the maker.

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/faq.md
-Downloaded: 2026-07-07T21:24:50.543Z
+Downloaded: 2026-07-10T21:05:51.330Z
 -->
 
 > ## Documentation Index
@@ -195,14 +195,19 @@ Common questions about Polymarket Perps.
 
 <AccordionGroup>
   <Accordion title="What are the current maker and taker fees?">
-    During the launch period, fees are flat.
+    Fees are tiered by trailing 30-day trading volume. New accounts start at the \$0 tier and move up as their volume crosses each threshold.
 
-    | Role  | Rate             |
-    | ----- | ---------------- |
-    | Maker | -0.5 bp (rebate) |
-    | Taker | 2 bp             |
+    | 30-Day Volume ≥ | Taker   | Maker    |
+    | --------------- | ------- | -------- |
+    | \$0             | 0.0400% | 0.0125%  |
+    | \$1M            | 0.0370% | 0.0100%  |
+    | \$5M            | 0.0350% | 0.0080%  |
+    | \$25M           | 0.0300% | 0.0050%  |
+    | \$100M          | 0.0270% | 0.0020%  |
+    | \$500M          | 0.0250% | 0.0000%  |
+    | \$1B            | 0.0200% | -0.0050% |
 
-    Fees are calculated per fill as `abs(Price * Quantity) * Rate`, denominated in the instrument's quote asset. After launch, the platform will move to a tiered structure based on volume and maker share. Details will be published before the transition. See [Trading Fees](/perps/trading#trading-fees).
+    Fees are calculated per fill as `abs(Price * Quantity) * Rate`, denominated in the instrument's quote asset (pUSD). Only the top tier earns a maker rebate; lower tiers pay a positive maker fee. See [Fees](/perps/learn-about-trading/fees) and [Trading Fees](/perps/trading#trading-fees).
   </Accordion>
 </AccordionGroup>
 

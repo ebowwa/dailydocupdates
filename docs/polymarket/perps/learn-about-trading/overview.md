@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/learn-about-trading/overview.md
-Downloaded: 2026-07-07T21:24:50.546Z
+Downloaded: 2026-07-10T21:05:51.331Z
 -->
 
 > ## Documentation Index
@@ -25,7 +25,7 @@ at risk, and why account balances change.
   </Card>
 
   <Card title="Fees" icon="percent" href="/perps/learn-about-trading/fees">
-    What each fill costs and how maker rebates work.
+    What each fill costs and how the volume-based fee tiers work.
   </Card>
 
   <Card title="Margin" icon="scale-balanced" href="/perps/learn-about-trading/margin">
