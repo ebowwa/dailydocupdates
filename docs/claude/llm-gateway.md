@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/llm-gateway.md
-Downloaded: 2026-07-04T20:58:40.459Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
