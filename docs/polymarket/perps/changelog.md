@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/changelog.md
-Downloaded: 2026-07-07T21:24:50.543Z
+Downloaded: 2026-07-13T20:56:53.621Z
 -->
 
 > ## Documentation Index
@@ -37,7 +37,7 @@ Notable changes to the Polymarket Perps API.
       auto-cancel status, trigger count, and daily reset time.
     </li>
 
-    <li>Auto-cancel is limited to 10 triggers per UTC day per account.</li>
+    <li>Auto-cancel is limited to 1000 triggers per UTC day per account.</li>
 
     <li>
       Added <code>updateLeverage</code> and <code>autoCancel</code> WebSocket

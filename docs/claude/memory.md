@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/memory.md
+Downloaded: 2026-07-13T20:57:00.668Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -326,10 +331,6 @@ Managed policy CLAUDE.md files cannot be excluded. This ensures organization-wid
 ## Auto memory
 
 Auto memory lets Claude accumulate knowledge across sessions without you writing anything. Claude saves notes for itself as it works: build commands, debugging insights, architecture notes, code style preferences, and workflow habits. Claude doesn't save something every session. It decides what's worth remembering based on whether the information would be useful in a future conversation.
-
-<Note>
-  Auto memory requires Claude Code v2.1.59 or later. Check your version with `claude --version`.
-</Note>
 
 ### Enable or disable auto memory
 

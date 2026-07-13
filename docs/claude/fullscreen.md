@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/fullscreen.md
+Downloaded: 2026-07-13T20:57:00.664Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -7,7 +12,7 @@
 > Enable a smoother, flicker-free rendering mode with mouse support and stable memory usage in long conversations.
 
 <Note>
-  Fullscreen rendering is an opt-in [research preview](#research-preview) and requires Claude Code v2.1.89 or later. Run `/tui fullscreen` to switch in your current conversation, or set `CLAUDE_CODE_NO_FLICKER=1` on versions before v2.1.110. Behavior may change based on feedback.
+  Fullscreen rendering is an opt-in [research preview](#research-preview). Run `/tui fullscreen` to switch in your current conversation, or set `CLAUDE_CODE_NO_FLICKER=1` on versions before v2.1.110. Behavior may change based on feedback.
 </Note>
 
 Fullscreen rendering is an alternative rendering path for the Claude Code CLI that eliminates flicker, keeps memory usage flat in long conversations, and adds mouse support. It draws the interface on the terminal's alternate screen buffer, like `vim` or `htop`, and only renders messages that are currently visible. This reduces the amount of data sent to your terminal on each update.
@@ -192,6 +197,29 @@ With mouse capture disabled, keyboard scrolling with `PgUp`, `PgDn`, `Ctrl+Home`
 To keep wheel scrolling but turn off click, drag, and hover handling, set `CLAUDE_CODE_DISABLE_MOUSE_CLICKS=1` instead. Requires Claude Code v2.1.195 or later. `CLAUDE_CODE_DISABLE_MOUSE` takes precedence when both variables are set.
 
 With clicks disabled, Claude Code still captures the mouse, so the wheel and touchpad scroll the conversation but left clicks do nothing inside Claude Code. You still need to hold your terminal's key for native click-and-drag selection. Right-click and middle-click paste continue to work on terminals that support them.
+
+## Troubleshooting
+
+### Stale or misplaced text on screen
+
+Fullscreen rendering sends only the cells that changed between frames. Some terminals, most commonly Windows Terminal and other ConPTY-backed hosts, coalesce these positioned writes incorrectly and leave fragments of earlier output on screen until you resize the window.
+
+Set [`CLAUDE_CODE_ALT_SCREEN_FULL_REPAINT=1`](/en/env-vars) to repaint every cell on every frame instead of sending incremental updates.
+
+On Windows PowerShell:
+
+```powershell theme={null}
+$env:CLAUDE_CODE_ALT_SCREEN_FULL_REPAINT = "1"
+claude
+```
+
+On macOS or Linux:
+
+```bash theme={null}
+CLAUDE_CODE_ALT_SCREEN_FULL_REPAINT=1 claude
+```
+
+On Windows, Claude Code already enables full repaint automatically for background sessions and [agent view](/en/agent-view), so you only need to set the variable for an interactive fullscreen session you launched directly.
 
 ## Research preview
 

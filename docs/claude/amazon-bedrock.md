@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/amazon-bedrock.md
-Downloaded: 2026-07-11T20:48:39.543Z
+Downloaded: 2026-07-13T20:57:00.652Z
 -->
 
 > ## Documentation Index
@@ -313,7 +313,7 @@ When a user selects one of these versions in `/model`, Claude Code calls Amazon 
 
 ## Startup model checks
 
-When Claude Code starts with Amazon Bedrock configured, it verifies that the models it intends to use are accessible in your account. This check requires Claude Code v2.1.94 or later.
+When Claude Code starts with Amazon Bedrock configured, it verifies that the models it intends to use are accessible in your account.
 
 If you have pinned a model version that is older than the current Claude Code default, and your account can invoke the newer version, Claude Code prompts you to update the pin. Accepting writes the new model ID to your [user settings file](/en/settings) and restarts Claude Code. Declining is remembered until the next default version change. Pins that point to an [application inference profile ARN](#map-each-model-version-to-an-inference-profile) are skipped, since those are managed by your administrator.
 
@@ -405,10 +405,6 @@ Example configuration:
 ## Use the Mantle endpoint
 
 Mantle is an Amazon Bedrock endpoint that serves Claude models through the native Anthropic API shape rather than the Amazon Bedrock Invoke API. It uses the same AWS credentials, IAM permissions, and `awsAuthRefresh` configuration described earlier on this page.
-
-<Note>
-  Mantle requires Claude Code v2.1.94 or later. Run `claude --version` to check.
-</Note>
 
 ### Enable Mantle
 

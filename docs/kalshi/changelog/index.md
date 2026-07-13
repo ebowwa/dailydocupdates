@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-07-10T21:05:54.377Z
+Downloaded: 2026-07-13T20:56:51.586Z
 -->
 
 > ## Documentation Index
@@ -22,6 +22,20 @@ FIX API changes, previously tracked on a separate page, now live here under
 the `FIX` tag.
 
 {/* changelog-tags: ["New Feature", "Upcoming"] */}
+
+<Update
+  label="July 23, 2026"
+  tags={["WebSocket", "Predictions"]}
+  rss={{
+title: "Pyth value WebSocket channel",
+description: "Authenticated WebSocket clients can subscribe to deduplicated Pyth price updates through the new pyth_value channel."
+}}
+>
+  Authenticated WebSocket clients can subscribe to the new `pyth_value` channel
+  to receive deduplicated Pyth prices by underlying ticker. The channel supports
+  filtering, dynamic subscription updates, and discovery of recently streamed
+  underlyings.
+</Update>
 
 <Update
   label="July 9, 2026"

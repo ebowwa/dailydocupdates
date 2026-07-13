@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/prompt-caching.md
+Downloaded: 2026-07-13T20:57:00.670Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -82,10 +87,6 @@ The cache is keyed by [effort level](/en/model-config#adjust-effort-level) as we
 Enabling [fast mode](/en/fast-mode) adds a request header that is part of the cache key, so the next request reads the entire conversation history with no cache hits. Those uncached input tokens are billed at [fast mode rates](/en/fast-mode#understand-the-cost-tradeoff), which is why turning it on at the start of a session costs less than turning it on deep into a long one. Enabling fast mode from a non-Opus model also [switches your model](#switching-models), which starts a fresh cache on its own.
 
 The cost applies once per conversation. After the first fast mode turn, Claude Code keeps sending the header and varies only the request's speed setting, which is not part of the cache key. Turning fast mode off, the [automatic fallback to standard speed](/en/fast-mode#handle-rate-limits) after a rate limit, and turning it back on later all keep the cache. `/clear` and `/compact` reset this, since they rebuild the cache at those points anyway.
-
-<Note>
-  Keeping the header across toggles requires Claude Code v2.1.86 or later. On earlier versions, every fast mode toggle and rate-limit fallback invalidates the cache.
-</Note>
 
 ### Connecting or disconnecting an MCP server
 

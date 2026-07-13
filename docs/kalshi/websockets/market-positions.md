@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/market-positions.md
+Downloaded: 2026-07-13T20:56:51.597Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -138,7 +143,7 @@ operations:
             type:
               type: string
               const: market_position
-              x-parser-schema-id: <anonymous-schema-109>
+              x-parser-schema-id: <anonymous-schema-117>
             sid:
               type: integer
               description: >-
@@ -161,7 +166,7 @@ operations:
                 user_id:
                   type: string
                   description: User ID for the position
-                  x-parser-schema-id: <anonymous-schema-111>
+                  x-parser-schema-id: <anonymous-schema-119>
                 market_ticker:
                   type: string
                   description: Unique market identifier
@@ -171,34 +176,34 @@ operations:
                 position_fp:
                   type: string
                   description: Fixed-point net position (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-112>
+                  x-parser-schema-id: <anonymous-schema-120>
                 position_cost_dollars:
                   type: string
                   description: >-
                     Current cost basis of the position as a fixed-point dollar
                     string
-                  x-parser-schema-id: <anonymous-schema-113>
+                  x-parser-schema-id: <anonymous-schema-121>
                 realized_pnl_dollars:
                   type: string
                   description: Realized profit/loss as a fixed-point dollar string
-                  x-parser-schema-id: <anonymous-schema-114>
+                  x-parser-schema-id: <anonymous-schema-122>
                 fees_paid_dollars:
                   type: string
                   description: Total fees paid as a fixed-point dollar string
-                  x-parser-schema-id: <anonymous-schema-115>
+                  x-parser-schema-id: <anonymous-schema-123>
                 position_fee_cost_dollars:
                   type: string
                   description: Total position fee cost as a fixed-point dollar string
-                  x-parser-schema-id: <anonymous-schema-116>
+                  x-parser-schema-id: <anonymous-schema-124>
                 volume_fp:
                   type: string
                   description: Fixed-point total volume traded (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-117>
+                  x-parser-schema-id: <anonymous-schema-125>
                 subaccount:
                   type: integer
                   description: Optional subaccount number for the position
-                  x-parser-schema-id: <anonymous-schema-118>
-              x-parser-schema-id: <anonymous-schema-110>
+                  x-parser-schema-id: <anonymous-schema-126>
+              x-parser-schema-id: <anonymous-schema-118>
           x-parser-schema-id: marketPositionPayload
         title: Market Position Update
         description: Real-time position updates for authenticated user

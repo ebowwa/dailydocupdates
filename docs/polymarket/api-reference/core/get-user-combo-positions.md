@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/core/get-user-combo-positions.md
-Downloaded: 2026-07-10T21:05:51.306Z
+Downloaded: 2026-07-13T20:56:53.600Z
 -->
 
 > ## Documentation Index
@@ -51,13 +51,24 @@ paths:
             $ref: '#/components/schemas/Address'
         - in: query
           name: status
+          style: form
+          explode: false
           schema:
-            type: string
-            enum:
-              - OPEN
-              - PARTIAL
-              - RESOLVED_WIN
-              - RESOLVED_LOSS
+            type: array
+            items:
+              type: string
+              enum:
+                - OPEN
+                - PARTIAL
+                - RESOLVED_PARTIAL
+                - RESOLVED_WIN
+                - RESOLVED_LOSS
+          description: >-
+            One or more statuses, comma-separated (e.g.
+            status=RESOLVED_WIN,RESOLVED_PARTIAL,RESOLVED_LOSS). Values are
+            case-insensitive; any invalid member is a 400. Omit for the default
+            listing (open positions plus resolved positions with a recorded
+            resolution).
         - in: query
           name: sort
           schema:
@@ -220,8 +231,12 @@ components:
           enum:
             - OPEN
             - PARTIAL
+            - RESOLVED_PARTIAL
             - RESOLVED_WIN
             - RESOLVED_LOSS
+          description: >-
+            RESOLVED_PARTIAL = the combo resolved at a fractional payout (e.g. a
+            leg voided 50/50) — redemption pays the fractional value per share.
         first_entry_at:
           type: string
           description: RFC3339 UTC
@@ -284,12 +299,13 @@ components:
           type: string
           enum:
             - OPEN
+            - RESOLVED_PARTIAL
             - RESOLVED_WIN
             - RESOLVED_LOSS
           description: >-
             Live per-leg resolution state, derived from the leg market's
             on-chain payout vector. Markets resolved with a fractional payout
-            (e.g. a 50/50 void) currently surface as OPEN with leg_resolved_at
+            (e.g. a 50/50 void) surface as RESOLVED_PARTIAL with leg_resolved_at
             set.
         leg_resolved_at:
           type: string

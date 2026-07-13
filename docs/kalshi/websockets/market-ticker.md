@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/market-ticker.md
+Downloaded: 2026-07-13T20:56:51.598Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -159,7 +164,7 @@ operations:
             type:
               type: string
               const: ticker
-              x-parser-schema-id: <anonymous-schema-73>
+              x-parser-schema-id: <anonymous-schema-81>
             sid:
               type: integer
               description: >-
@@ -200,45 +205,45 @@ operations:
                 price_dollars:
                   type: string
                   description: Last traded price in dollars
-                  x-parser-schema-id: <anonymous-schema-75>
+                  x-parser-schema-id: <anonymous-schema-83>
                 yes_bid_dollars:
                   type: string
                   description: Best bid price for yes side in dollars
-                  x-parser-schema-id: <anonymous-schema-76>
+                  x-parser-schema-id: <anonymous-schema-84>
                 yes_ask_dollars:
                   type: string
                   description: Best ask price for yes side in dollars
-                  x-parser-schema-id: <anonymous-schema-77>
+                  x-parser-schema-id: <anonymous-schema-85>
                 volume_fp:
                   type: string
                   description: Fixed-point total contracts traded (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-78>
+                  x-parser-schema-id: <anonymous-schema-86>
                 open_interest_fp:
                   type: string
                   description: Fixed-point open interest (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-79>
+                  x-parser-schema-id: <anonymous-schema-87>
                 dollar_volume:
                   type: integer
                   description: Number of dollars traded in the market so far
                   minimum: 0
-                  x-parser-schema-id: <anonymous-schema-80>
+                  x-parser-schema-id: <anonymous-schema-88>
                 dollar_open_interest:
                   type: integer
                   description: Number of dollars positioned in the market currently
                   minimum: 0
-                  x-parser-schema-id: <anonymous-schema-81>
+                  x-parser-schema-id: <anonymous-schema-89>
                 yes_bid_size_fp:
                   type: string
                   description: Fixed-point contracts at best bid (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-82>
+                  x-parser-schema-id: <anonymous-schema-90>
                 yes_ask_size_fp:
                   type: string
                   description: Fixed-point contracts at best ask (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-83>
+                  x-parser-schema-id: <anonymous-schema-91>
                 last_trade_size_fp:
                   type: string
                   description: Fixed-point contracts in last trade (2 decimals)
-                  x-parser-schema-id: <anonymous-schema-84>
+                  x-parser-schema-id: <anonymous-schema-92>
                 ts:
                   type: integer
                   deprecated: true
@@ -246,14 +251,14 @@ operations:
                     Deprecated - Unix timestamp for when the update happened (in
                     seconds). Use ts_ms instead.
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-85>
+                  x-parser-schema-id: <anonymous-schema-93>
                 ts_ms:
                   type: integer
                   description: >-
                     Unix timestamp for when the update happened (in
                     milliseconds)
                   format: int64
-                  x-parser-schema-id: <anonymous-schema-86>
+                  x-parser-schema-id: <anonymous-schema-94>
                 time:
                   type: string
                   deprecated: true
@@ -261,8 +266,8 @@ operations:
                     Deprecated - Timestamp for when the update happened
                     (RFC3339). Use ts_ms instead.
                   format: date-time
-                  x-parser-schema-id: <anonymous-schema-87>
-              x-parser-schema-id: <anonymous-schema-74>
+                  x-parser-schema-id: <anonymous-schema-95>
+              x-parser-schema-id: <anonymous-schema-82>
           x-parser-schema-id: tickerPayload
         title: Ticker Update
         description: Market price ticker information

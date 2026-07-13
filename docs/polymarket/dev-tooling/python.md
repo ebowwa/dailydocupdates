@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/python.md
-Downloaded: 2026-07-10T21:05:51.326Z
+Downloaded: 2026-07-13T20:56:53.618Z
 -->
 
 > ## Documentation Index
@@ -1106,6 +1106,10 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0b19`
+
+* Added `RESOLVED_PARTIAL` to `ComboPositionStatus` so Combo positions that resolve at a fractional payout (for example a voided leg) parse correctly instead of failing validation.
 
 ### `0.1.0b18`
 

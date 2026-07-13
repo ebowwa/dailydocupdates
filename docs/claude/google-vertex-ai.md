@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/google-vertex-ai.md
-Downloaded: 2026-07-11T20:48:39.555Z
+Downloaded: 2026-07-13T20:57:00.665Z
 -->
 
 > ## Documentation Index
@@ -98,10 +98,6 @@ To sign in with your own Google Cloud's Agent Platform credentials, follow [Sign
 ## Sign in with Agent Platform
 
 If you have Google Cloud credentials and want to start using Claude Code through Google Cloud's Agent Platform, the login wizard walks you through it. You complete the GCP-side prerequisites once per project; the wizard handles the Claude Code side.
-
-<Note>
-  The Google Cloud's Agent Platform setup wizard requires Claude Code v2.1.98 or later. Run `claude --version` to check.
-</Note>
 
 <Steps>
   <Step title="Enable Claude models in your GCP project">
@@ -245,7 +241,7 @@ export ANTHROPIC_DEFAULT_HAIKU_MODEL='claude-haiku-4-5@20251001'
 
 ## Startup model checks
 
-When Claude Code starts with Google Cloud's Agent Platform configured, it verifies that the models it intends to use are accessible in your project. This check requires Claude Code v2.1.98 or later.
+When Claude Code starts with Google Cloud's Agent Platform configured, it verifies that the models it intends to use are accessible in your project.
 
 If you have pinned a model version that is older than the current Claude Code default, and your project can invoke the newer version, Claude Code prompts you to update the pin. Accepting writes the new model ID to your [user settings file](/en/settings) and restarts Claude Code. Declining is remembered until the next default version change.
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/websockets/order-group-updates.md
+Downloaded: 2026-07-13T20:56:51.598Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -119,7 +124,7 @@ operations:
             type:
               type: string
               const: order_group_updates
-              x-parser-schema-id: <anonymous-schema-241>
+              x-parser-schema-id: <anonymous-schema-249>
             sid:
               type: integer
               description: >-
@@ -151,25 +156,25 @@ operations:
                     - reset
                     - deleted
                     - limit_updated
-                  x-parser-schema-id: <anonymous-schema-243>
+                  x-parser-schema-id: <anonymous-schema-251>
                 order_group_id:
                   type: string
                   description: Order group identifier
-                  x-parser-schema-id: <anonymous-schema-244>
+                  x-parser-schema-id: <anonymous-schema-252>
                 contracts_limit_fp:
                   type: string
                   description: >-
                     Updated contracts limit in fixed-point (2 decimals). Present
                     for "created" and "limit_updated" events only.
-                  x-parser-schema-id: <anonymous-schema-245>
+                  x-parser-schema-id: <anonymous-schema-253>
                 ts_ms:
                   type: integer
                   format: int64
                   description: >-
                     Matching engine timestamp at which the event was processed,
                     as Unix epoch milliseconds.
-                  x-parser-schema-id: <anonymous-schema-246>
-              x-parser-schema-id: <anonymous-schema-242>
+                  x-parser-schema-id: <anonymous-schema-254>
+              x-parser-schema-id: <anonymous-schema-250>
           x-parser-schema-id: orderGroupUpdatesPayload
         title: Order Group Updates
         description: Order group lifecycle and limit updates for authenticated user

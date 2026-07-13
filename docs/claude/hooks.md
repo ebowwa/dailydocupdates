@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/hooks.md
-Downloaded: 2026-07-09T21:24:13.453Z
+Downloaded: 2026-07-13T20:57:00.666Z
 -->
 
 > ## Documentation Index
@@ -1534,10 +1534,6 @@ As of v2.1.199, an MCP tool whose server marks it with [`_meta["anthropic/requir
 #### Defer a tool call for later
 
 `"defer"` is for integrations that run `claude -p` as a subprocess and read its JSON output, such as an Agent SDK app or a custom UI built on top of Claude Code. It lets that calling process pause Claude at a tool call, collect input through its own interface, and resume where it left off. Claude Code honors this value only in [non-interactive mode](/en/headless) with the `-p` flag. In interactive sessions it logs a warning and ignores the hook result.
-
-<Note>
-  The `defer` value requires Claude Code v2.1.89 or later. Earlier versions don't recognize it and the tool proceeds through the normal permission flow.
-</Note>
 
 The `AskUserQuestion` tool is the typical case: Claude wants to ask the user something, but there is no terminal to answer in. The round trip works like this:
 

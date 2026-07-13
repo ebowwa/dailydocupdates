@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/core/get-user-combo-activity.md
-Downloaded: 2026-07-10T21:05:51.306Z
+Downloaded: 2026-07-13T20:56:53.599Z
 -->
 
 > ## Documentation Index
@@ -235,12 +235,13 @@ components:
           type: string
           enum:
             - OPEN
+            - RESOLVED_PARTIAL
             - RESOLVED_WIN
             - RESOLVED_LOSS
           description: >-
             Live per-leg resolution state, derived from the leg market's
             on-chain payout vector. Markets resolved with a fractional payout
-            (e.g. a 50/50 void) currently surface as OPEN with leg_resolved_at
+            (e.g. a 50/50 void) surface as RESOLVED_PARTIAL with leg_resolved_at
             set.
         leg_resolved_at:
           type: string

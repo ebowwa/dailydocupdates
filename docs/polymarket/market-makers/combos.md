@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/combos.md
-Downloaded: 2026-07-10T21:05:51.328Z
+Downloaded: 2026-07-13T20:56:53.620Z
 -->
 
 > ## Documentation Index
@@ -2144,9 +2144,15 @@ fresh outside the quote path.
       ```
 
       ```bash Status theme={null}
+      # One status, or several comma-separated. Valid values: OPEN, PARTIAL,
+      # RESOLVED_PARTIAL, RESOLVED_WIN, RESOLVED_LOSS (case-insensitive).
       curl -G "https://data-api.polymarket.com/v1/positions/combos" \
         --data-urlencode "user=<maker_address>" \
         --data-urlencode "status=OPEN"
+
+      curl -G "https://data-api.polymarket.com/v1/positions/combos" \
+        --data-urlencode "user=<maker_address>" \
+        --data-urlencode "status=RESOLVED_WIN,RESOLVED_PARTIAL,RESOLVED_LOSS"
       ```
     </CodeGroup>
 

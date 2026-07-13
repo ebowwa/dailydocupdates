@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/ultrareview.md
-Downloaded: 2026-07-07T21:25:03.908Z
+Downloaded: 2026-07-13T20:57:00.675Z
 -->
 
 > ## Documentation Index
@@ -12,7 +12,7 @@ Downloaded: 2026-07-07T21:25:03.908Z
 > Run a deep, multi-agent code review in the cloud with /code-review ultra to find and verify bugs before you merge.
 
 <Note>
-  Ultrareview is a research preview feature available in Claude Code v2.1.86 and later. The feature, pricing, and availability may change based on feedback. The command is now invoked as `/code-review ultra`, and `/ultrareview` remains as an alias.
+  Ultrareview is a research preview feature. The feature, pricing, and availability may change based on feedback. The command is now invoked as `/code-review ultra`, and `/ultrareview` remains as an alias.
 </Note>
 
 Ultrareview is a deep code review that runs on Claude Code on the web infrastructure. When you run `/code-review ultra`, Claude Code launches a fleet of reviewer agents in a remote sandbox to find bugs in your branch or pull request.

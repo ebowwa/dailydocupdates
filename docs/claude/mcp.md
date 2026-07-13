@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/mcp.md
-Downloaded: 2026-07-09T21:24:13.454Z
+Downloaded: 2026-07-13T20:57:00.668Z
 -->
 
 > ## Documentation Index
@@ -673,7 +673,7 @@ Set `authServerMetadataUrl` in the `oauth` object of your server's config in `.m
 }
 ```
 
-The URL must use `https://`. `authServerMetadataUrl` requires Claude Code v2.1.64 or later. The metadata URL's `scopes_supported` overrides the scopes the upstream server advertises.
+The URL must use `https://`. The metadata URL's `scopes_supported` overrides the scopes the upstream server advertises.
 
 ### Restrict OAuth scopes
 

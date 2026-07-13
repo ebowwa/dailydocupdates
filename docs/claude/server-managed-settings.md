@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/server-managed-settings.md
+Downloaded: 2026-07-13T20:57:00.672Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -20,7 +25,6 @@ To use server-managed settings, you need:
 
 * Claude for Teams or Claude for Enterprise plan
 * The Owner or Primary Owner role in your Claude organization, to view and edit the configuration
-* Claude Code version 2.1.38 or later for Claude for Teams, or version 2.1.30 or later for Claude for Enterprise
 * Network access to `api.anthropic.com`
 
 ## Choose between server-managed and endpoint-managed settings
