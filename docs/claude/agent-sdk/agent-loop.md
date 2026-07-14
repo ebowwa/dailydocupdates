@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/agent-loop.md
-Downloaded: 2026-07-09T21:24:13.435Z
+Downloaded: 2026-07-14T21:00:55.437Z
 -->
 
 > ## Documentation Index
@@ -54,7 +54,7 @@ As the loop runs, the SDK yields a stream of messages. Each message carries a ty
 
 * **`SystemMessage`:** session lifecycle events. The `subtype` field distinguishes them:
 
-  * `"init"`: the first message with session metadata
+  * `"init"`: session metadata for the run. When a `SessionStart` or `Setup` hook runs during session startup, its [hook lifecycle messages](/en/agent-sdk/typescript#sdkhookstartedmessage) arrive before the `init` message
   * `"compact_boundary"`: fires after [compaction](#automatic-compaction)
   * `"informational"`: plain-text status banners from the loop
   * `"worker_shutting_down"`: the loop will end after the current turn because the host is exiting or Remote Control disconnected
@@ -447,4 +447,4 @@ Now that you understand the loop, here's where to go depending on what you're bu
 * **Need tighter control over what the agent can do?** Lock down tool access with [permissions](/en/agent-sdk/permissions), and use [hooks](/en/agent-sdk/hooks) to audit, block, or transform tool calls before they execute.
 * **Running long or expensive tasks?** Offload isolated work to [subagents](/en/agent-sdk/subagents) to keep your main context lean.
 
-For the broader conceptual picture of the agentic loop (not SDK-specific), see [How Claude Code works](/en/how-claude-code-works).
+For the broader conceptual picture of the agentic loop (not SDK-specific), see [How Claude Code works](/en/how-claude-code-works). For a practical guide to designing loops in Claude Code, from turn-based to goal-based and proactive loops, see [Loop engineering: getting started with loops](https://claude.com/blog/getting-started-with-loops) on the blog.

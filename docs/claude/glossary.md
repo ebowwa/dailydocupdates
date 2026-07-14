@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/glossary.md
-Downloaded: 2026-07-13T20:57:00.664Z
+Downloaded: 2026-07-14T21:00:55.457Z
 -->
 
 > ## Documentation Index
@@ -41,7 +41,7 @@ Learn more: [How Claude Code works](/en/how-claude-code-works#the-agentic-loop)
 
 ### Artifact
 
-A live, interactive web page Claude Code publishes from your session to a private URL on claude.ai, so you can see output visually or share it inside your organization instead of reading terminal text. The page updates in place when the session republishes. Artifacts you create from Claude Code appear in the same gallery as artifacts created in claude.ai conversations, but their sharing stops at your organization and they cannot be made public.
+A live, interactive web page Claude Code publishes from your session to a private URL on claude.ai, so you can see output visually or share it instead of reading terminal text. The page updates in place when the session republishes. Artifacts you create from Claude Code appear in the same gallery as artifacts created in claude.ai conversations. Sharing depends on your plan: on Pro and Max, a public link that anyone can open; on Team and Enterprise, sharing within your organization, plus public links once an Owner enables them.
 
 Learn more: [Share session output as artifacts](/en/artifacts)
 
@@ -195,7 +195,7 @@ Learn more: [Output styles](/en/output-styles)
 
 The baseline approval behavior for the session. Cycle with `Shift+Tab` in the CLI or use the mode selector in VS Code, Desktop, and claude.ai. Available modes are `default`, `acceptEdits`, `plan`, `auto`, `dontAsk`, and `bypassPermissions`.
 
-The `default` mode is labeled Manual in the CLI and in the VS Code and JetBrains extensions, and Claude Code accepts `manual` as an alias for the value.
+The `default` mode is labeled Manual in the CLI, in the VS Code and JetBrains extensions, and in the desktop app, and Claude Code accepts `manual` as an alias for the value.
 
 Learn more: [Choose a permission mode](/en/permission-modes)
 
@@ -233,7 +233,7 @@ Learn more: [Protect against prompt injection](/en/security#protect-against-prom
 
 ### Remote Control
 
-A way to continue a local Claude Code session from your phone or browser via claude.ai. Your code stays on your machine; only the UI is remote. Different from Claude Code on the web, which runs in a cloud sandbox.
+A way to continue a local Claude Code session from your phone or browser via claude.ai. Your code execution and files stay on your machine; the interface is remote. Different from Claude Code on the web, which runs in a cloud sandbox.
 
 Learn more: [Remote Control](/en/remote-control)
 

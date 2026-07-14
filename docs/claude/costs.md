@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/costs.md
-Downloaded: 2026-07-13T20:57:00.659Z
+Downloaded: 2026-07-14T21:00:55.452Z
 -->
 
 > ## Documentation Index
@@ -36,11 +36,28 @@ Total code changes:    0 lines added, 0 lines removed
 
 On a Pro, Max, Team, or Enterprise plan, `/usage` also shows a breakdown of what counts against your plan limits. It attributes recent usage to skills, subagents, plugins, and individual MCP servers, with each shown as a percentage of the total. Press `d` or `w` to switch between the last 24 hours and the last 7 days. The figures are approximate and computed from local session history on this machine, so usage from other devices or claude.ai is not included.
 
+When the request for your plan limits fails, most often because the usage endpoint is rate limited, `/usage` shows the last usage bars it loaded on this machine within the past 60 minutes, along with a `Showing last-known usage` note stating how long ago that data was fetched. Press `r` to retry; a successful retry replaces the last-known bars with fresh data. Without a snapshot from the past 60 minutes, `/usage` reports that the usage endpoint is rate limited and offers the same retry shortcut. Before v2.1.208, a rate-limited request in a session that hadn't loaded usage yet always showed the error with no bars.
+
 In the [VS Code extension](/en/vs-code#check-account-and-usage), the same breakdown appears in the Account & usage dialog with a Day and Week toggle. Requires Claude Code v2.1.174 or later.
 
 ### Set a spend limit on Pro and Max
 
-On Pro and Max plans, you can set a monthly spend limit on usage credits with the `/usage-credits` command. If you reach that limit while you still have usage credits available, Claude Code prompts you to raise or remove the limit so you can continue without leaving the CLI. Changing the limit requires billing access on the account.
+On Pro and Max plans, the `/usage-credits` command opens a dialog in the CLI where you manage [usage credits](https://support.claude.com/en/articles/12429409-extra-usage-for-paid-claude-plans). From the dialog you can:
+
+* Turn on usage credits for your account
+* Buy more usage credits, either a listed bundle or a custom amount
+* Set, change, or remove your monthly spend limit
+* Configure auto-reload, which buys more usage credits automatically when your balance falls below a threshold you set
+
+On Claude Code versions before v2.1.207 and on accounts where the in-CLI dialog isn't available, `/usage-credits` opens the usage-credits billing page in your browser instead. On Team and Enterprise plans, members with billing access get the same browser page, and members without billing access send a request from the CLI asking their admin to turn on usage credits or raise the limit.
+
+Changing the monthly spend limit requires billing access on the account. If you reach the limit while you still have usage credits available, Claude Code prompts you to raise or remove it so you can continue without leaving the CLI.
+
+Amounts you type into the dialog, such as a custom purchase amount, the monthly spend limit, or the auto-reload threshold and target, must be digits, optionally followed by a period and one or two decimal digits, for example `20` or `20.50`. Any other input, including commas, shows an inline error and isn't saved. Versions before v2.1.207 don't show the dialog and open the billing page instead.
+
+Claude Code asks you to type `yes` to confirm every purchase and every auto-reload change, whatever the amount, and the purchase confirmation shows the post-tax total you are approving. Changing the monthly spend limit asks for the same typed confirmation only above \$1,000, or above 1,000 units of a non-US-dollar billing currency. Before v2.1.208, purchases and auto-reload changes used that threshold too, so smaller amounts went through the standard dialog flow without the extra typed `yes` step.
+
+Amount fields open prefilled with a suggested value, and the first digit you type replaces the suggestion instead of appending to it. The screen that turns on usage credits opens with Cancel selected, so turning them on takes a deliberate selection rather than a stray Enter. Both require Claude Code v2.1.208 or later.
 
 ## Manage costs for your organization
 
@@ -48,22 +65,22 @@ Which controls you have depends on how your organization accesses Claude Code: a
 
 The table maps each setup to where you see spend, where you cap it, and how you pull per-user numbers.
 
-| Your setup                                                                              | See spend                                                                                                                           | Cap spend                      | Per-user reporting                                                                                                                                                                                                                                                |
-| :-------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- | :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Claude for Teams or Enterprise](#claude-for-teams-and-enterprise)                      | [Spend report in org analytics](https://support.claude.com/en/articles/12883420-view-usage-analytics-for-team-and-enterprise-plans) | Spend limits in admin settings | [Spend report CSV](https://support.claude.com/en/articles/12883420-view-usage-analytics-for-team-and-enterprise-plans); [Enterprise Analytics API](https://support.claude.com/en/articles/13703965-claude-enterprise-analytics-api-reference-guide) on Enterprise |
-| [Claude Console (API)](#claude-console)                                                 | [Console usage page](https://platform.claude.com/usage)                                                                             | Workspace spend limits         | [Console dashboard](https://platform.claude.com/claude-code), [Claude Code Analytics API](https://platform.claude.com/docs/en/build-with-claude/claude-code-analytics-api)                                                                                        |
-| [Amazon Bedrock, Google Cloud's Agent Platform, or Microsoft Foundry](#cloud-providers) | Your cloud billing console                                                                                                          | Your cloud's budget controls   | [OpenTelemetry](/en/monitoring-usage) or an [LLM gateway](/en/llm-gateway)                                                                                                                                                                                        |
+| Your setup                                                                              | See spend                                                                                                                           | Cap spend                      | Per-user reporting                                                                                                                                                                                                        |
+| :-------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- | :----------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Claude for Teams or Enterprise](#claude-for-teams-and-enterprise)                      | [Spend report in org analytics](https://support.claude.com/en/articles/12883420-view-usage-analytics-for-team-and-enterprise-plans) | Spend limits in admin settings | [Spend report CSV](https://support.claude.com/en/articles/12883420-view-usage-analytics-for-team-and-enterprise-plans); [Enterprise Analytics API](https://platform.claude.com/docs/en/api/admin/analytics) on Enterprise |
+| [Claude Console (API)](#claude-console)                                                 | [Console usage page](https://platform.claude.com/usage)                                                                             | Workspace spend limits         | [Console dashboard](https://platform.claude.com/claude-code), [Claude Code Analytics API](https://platform.claude.com/docs/en/build-with-claude/claude-code-analytics-api)                                                |
+| [Amazon Bedrock, Google Cloud's Agent Platform, or Microsoft Foundry](#cloud-providers) | Your cloud billing console                                                                                                          | Your cloud's budget controls   | [OpenTelemetry](/en/monitoring-usage) or an [LLM gateway](/en/llm-gateway)                                                                                                                                                |
 
 [OpenTelemetry export](/en/monitoring-usage) works on every setup and is the only option that streams per-user token and cost metrics into your own observability stack in near real time.
 
 ### Claude for Teams and Enterprise
 
-On Claude for Teams and Enterprise plans, each member's Claude Code usage draws from a per-seat allowance that resets on a rolling five-hour window and a weekly window. The allowance is shared with Claude chat and Cowork, and its size depends on the [seat tier](https://support.claude.com/en/articles/11845131-use-claude-code-with-your-team-or-enterprise-plan). Your controls live in the claude.ai admin console, not the Claude Console.
+On Claude for Teams and Enterprise plans, each member's Claude Code usage draws from a per-seat allowance that resets on a rolling five-hour window and a weekly window. The allowance is shared with Claude chat and Cowork, and its size depends on the member's [seat tier](https://support.claude.com/en/articles/11845131-use-claude-code-with-your-team-or-enterprise-plan) (Standard or Premium). Your controls live in the claude.ai admin console, not the Claude Console.
 
 * **See spend**: the [spend report in org analytics](https://support.claude.com/en/articles/12883420-view-usage-analytics-for-team-and-enterprise-plans) shows estimated spend per user and per model, with CSV export, updated daily. The report covers usage-credit spend and appears once usage credits are turned on. Usage inside the seat allowance isn't metered in dollars.
 * **See adoption**: the [analytics dashboard](https://claude.ai/analytics/claude-code) shows daily active users, sessions, and contribution metrics, with CSV export of contribution data. See [track team usage with analytics](/en/analytics).
 * **Cap spend**: the seat allowance is the default ceiling. To let members continue past it, turn on [usage credits](https://support.claude.com/en/articles/12429409-extra-usage-for-paid-claude-plans) and set spend limits at the organization, group, or individual member level.
-* **Pull per-user numbers**: on the Enterprise plan, the [Enterprise Analytics API](https://support.claude.com/en/articles/13703965-claude-enterprise-analytics-api-reference-guide) returns per-user usage and cost reports across Claude surfaces, including Claude Code. A Primary Owner creates a key with the `read:analytics` scope at [claude.ai/analytics/api-keys](https://claude.ai/analytics/api-keys). On the Teams plan, export the [spend report CSV](https://support.claude.com/en/articles/12883420-view-usage-analytics-for-team-and-enterprise-plans), which lists token usage and estimated spend per user and per model.
+* **Pull per-user numbers**: on the Enterprise plan, the [Enterprise Analytics API](https://platform.claude.com/docs/en/api/admin/analytics) returns per-user usage and cost reports across Claude surfaces, including Claude Code. A Primary Owner creates a key with the `read:analytics` scope at [claude.ai/analytics/api-keys](https://claude.ai/analytics/api-keys). On the Teams plan, export the [spend report CSV](https://support.claude.com/en/articles/12883420-view-usage-analytics-for-team-and-enterprise-plans), which lists token usage and estimated spend per user and per model.
 
 The [Claude Enterprise consumption guide](https://support.claude.com/en/articles/14782391-claude-enterprise-consumption-guide) is the planning reference for admins. It explains how consumption differs across Claude chat, Claude Code, and Cowork, and gives per-user dollar starting points for budgeting. Budget more for a coding seat than a chat seat: each Claude Code turn carries file contents, tool calls, and multi-step reasoning, so one debugging session can consume more than a day of chat.
 

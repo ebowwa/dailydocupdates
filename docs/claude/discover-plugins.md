@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/discover-plugins.md
-Downloaded: 2026-07-13T20:57:00.661Z
+Downloaded: 2026-07-14T21:00:55.454Z
 -->
 
 > ## Documentation Index
@@ -317,6 +317,8 @@ Two kinds of plugins are never listed as unused:
 The **Not used recently** header and the **Last used** line are both hidden when your organization restricts marketplaces with [`strictKnownMarketplaces`](/en/settings#strictknownmarketplaces).
 
 A plugin's [language server](/en/plugins#add-lsp-servers-to-your-plugin) counts as used when it delivers diagnostics or answers a code navigation request, so an LSP plugin whose server is active in your sessions isn't listed as unused. Before v2.1.203, language server activity couldn't be counted as use, so plugins that contribute an LSP server were exempt from the group entirely, the same way theme and output style plugins still are.
+
+The first session on a version that counts language server activity also resets the usage record of each LSP plugin that hadn't recorded any use yet, so Claude Code doesn't judge a plugin you installed earlier as unused based on data recorded before its server activity was tracked. Before v2.1.206, that first session could list an actively used LSP plugin under **Not used recently** and suggest reviewing it.
 
 When you install a plugin that declares dependencies, the install output lists which dependencies were auto-installed alongside it.
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/features-overview.md
+Downloaded: 2026-07-14T21:00:55.456Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -65,7 +70,7 @@ The same triggers tell you when to update what you already have. A repeated mist
 
 ### Compare similar features
 
-Some features can seem similar. Here's how to tell them apart.
+Some features can seem similar. For a deeper walkthrough of choosing between them, see [Steering Claude Code: when to use CLAUDE.md, skills, hooks, and subagents](https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more) on the blog. Here's how to tell them apart.
 
 <Tabs>
   <Tab title="Skill vs Subagent">

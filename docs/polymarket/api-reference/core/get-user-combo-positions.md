@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/core/get-user-combo-positions.md
-Downloaded: 2026-07-13T20:56:53.600Z
+Downloaded: 2026-07-14T21:00:33.642Z
 -->
 
 > ## Documentation Index
@@ -9,7 +9,7 @@ Downloaded: 2026-07-13T20:56:53.600Z
 
 # Get user combo positions
 
-> Combinatorial (multi-market) positions held by a user, with per-leg breakdown. Also available at /v1/data/user/{address}/positions/combos (address from the path).
+> Combinatorial (multi-market) positions held by a user, with per-leg breakdown. Also available at /v1/data/user/{address}/positions/combos (address from the path). Open positions with shares_balance below 0.001 are omitted (dust floor — e.g. sub-0.001 remainders left by "sell all" cashouts); resolved positions are served regardless of balance.
 
 
 
@@ -42,7 +42,9 @@ paths:
       description: >-
         Combinatorial (multi-market) positions held by a user, with per-leg
         breakdown. Also available at /v1/data/user/{address}/positions/combos
-        (address from the path).
+        (address from the path). Open positions with shares_balance below 0.001
+        are omitted (dust floor — e.g. sub-0.001 remainders left by "sell all"
+        cashouts); resolved positions are served regardless of balance.
       parameters:
         - in: query
           name: user

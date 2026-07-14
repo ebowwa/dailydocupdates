@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/combos.md
-Downloaded: 2026-07-13T20:56:53.620Z
+Downloaded: 2026-07-14T21:00:33.661Z
 -->
 
 > ## Documentation Index
@@ -1887,6 +1887,13 @@ Use Combo position workflows to manage inventory throughout the quote lifecycle.
 
 List Combo positions as part of your background inventory sync. Keep this state
 fresh outside the quote path.
+
+<Note>
+  Default listings omit open positions with a share balance below 0.001, such
+  as dust left after a sell-all cashout. Resolved positions are always
+  returned, and incremental sync requests return every position regardless of
+  balance.
+</Note>
 
 <Tabs>
   <Tab title="TypeScript">

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/interactive-mode.md
-Downloaded: 2026-07-07T21:25:03.897Z
+Downloaded: 2026-07-14T21:00:55.459Z
 -->
 
 > ## Documentation Index
@@ -132,6 +132,25 @@ Enable vim-style editing via `/config` → Editor mode.
 | `O`     | Open line above                       | NORMAL         |
 | `v`     | Start character-wise visual selection | NORMAL         |
 | `V`     | Start line-wise visual selection      | NORMAL         |
+
+### Remap INSERT-mode key sequences
+
+The [`vimInsertModeRemaps`](/en/settings#available-settings) setting maps a two-key INSERT-mode sequence to Escape, so a mapping like `jj` returns you to NORMAL mode. {/* min-version: 2.1.208 */}Requires Claude Code v2.1.208 or later.
+
+The following `~/.claude/settings.json` example turns on vim mode and maps `jj` to Escape:
+
+```json theme={null}
+{
+  "editorMode": "vim",
+  "vimInsertModeRemaps": { "jj": "<Esc>" }
+}
+```
+
+Each key is exactly two printable characters typed in sequence, and `"<Esc>"` is the only supported target. Entries with a different length or target are ignored.
+
+Typing the first character of a sequence inserts it normally. Pressing the second character within one second removes that pending character and switches to NORMAL mode, leaving neither character in your input. After the one-second window, or if a different key follows, both characters stay as literal text, so you can still type a word containing the sequence by pausing between the two keys.
+
+Claude Code reads this setting from your user settings file, the `--settings` flag, and [managed settings](/en/permissions#managed-settings) only. Entries in a project's `.claude/settings.json` or `.claude/settings.local.json` are ignored, so a checked-out repository can't remap your keystrokes.
 
 ### Navigation (NORMAL mode)
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/headless.md
-Downloaded: 2026-07-09T21:24:13.452Z
+Downloaded: 2026-07-14T21:00:55.458Z
 -->
 
 > ## Documentation Index
@@ -152,6 +152,8 @@ Use `--output-format stream-json` with `--verbose` and `--include-partial-messag
 claude -p "Explain recursion" --output-format stream-json --verbose --include-partial-messages
 ```
 
+The last line of the stream is a `result` message with the final response text, cost, and session metadata. {/* min-version: 2.1.208 */}Before v2.1.208, piping a large response could truncate the final line and omit the `result` message.
+
 The following example uses [jq](https://jqlang.github.io/jq/) to filter for text deltas and display just the streaming text. The `-r` flag outputs raw strings (no quotes) and `-j` joins without newlines so tokens stream continuously:
 
 ```bash theme={null}
@@ -173,7 +175,10 @@ When an API request fails with a retryable error, Claude Code emits a `system/ap
 | `uuid`           | string          | unique event identifier                                                                                                                                                                                |
 | `session_id`     | string          | session the event belongs to                                                                                                                                                                           |
 
-The `system/init` event reports session metadata including the model, tools, MCP servers, and loaded plugins. It is the first event in the stream unless [`CLAUDE_CODE_SYNC_PLUGIN_INSTALL`](/en/env-vars) is set, in which case `plugin_install` events precede it.
+The `system/init` event reports session metadata including the model, tools, MCP servers, and loaded plugins. It is the first event in the stream unless startup events precede it:
+
+* `plugin_install` events, when [`CLAUDE_CODE_SYNC_PLUGIN_INSTALL`](/en/env-vars) is set.
+* {/* min-version: 2.1.204 */}[`hook_started`, `hook_progress`, and `hook_response` events](/en/agent-sdk/typescript#sdkhookstartedmessage), while a configured [`SessionStart`](/en/hooks#sessionstart) or [`Setup`](/en/hooks#setup) hook runs. These stream as the hook produces them. Claude Code v2.1.169 through v2.1.203 delivered them in one batch after the hook completed, still ahead of `system/init`; v2.1.204 restored live delivery.
 
 The event also carries an optional `capabilities` array of strings naming the protocol behaviors this Claude Code version implements, such as `interrupt_receipt_v1`. Check it to feature-detect instead of comparing version strings, and ignore values you don't recognize. The field requires Claude Code v2.1.205 or later and is absent from earlier versions. See [`SDKSystemMessage`](/en/agent-sdk/typescript#sdksystemmessage) for the capability list.
 

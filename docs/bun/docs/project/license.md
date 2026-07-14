@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/project/license.md
-Downloaded: 2026-07-08T21:08:09.501Z
+Downloaded: 2026-07-14T21:00:58.028Z
 -->
 
 > ## Documentation Index
@@ -22,7 +22,7 @@ Bun statically links JavaScriptCore (and WebKit), which is LGPL-2 licensed. WebC
 Bun's patched version of WebKit lives at [https://github.com/oven-sh/webkit](https://github.com/oven-sh/webkit). To relink Bun with changes:
 
 * `git clone https://github.com/oven-sh/WebKit vendor/WebKit`
-* `git -C vendor/WebKit checkout <commit>` (the commit hash in `WEBKIT_VERSION` in `scripts/build/deps/webkit.ts`)
+* `bun sync-webkit-source` (checks out the version pinned in `WEBKIT_VERSION` in `scripts/build/deps/webkit.ts`)
 * `bun run build:local`
 
 `bun run build:local` compiles JavaScriptCore, compiles Bun's `.cpp` bindings for JavaScriptCore (the object files that use JavaScriptCore), and outputs a new `bun` binary with your changes.
