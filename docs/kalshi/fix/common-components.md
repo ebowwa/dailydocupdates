@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/fix/common-components.md
+Downloaded: 2026-07-15T21:01:12.523Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,7 +17,7 @@ Kalshi's FIX implementation uses **FIXT.1.1** with application version **FIX50SP
 
 Download the Kalshi-specific FIX dictionary for import into your FIX engine:
 
-* [Kalshi FIX Dictionary (XML)](https://kalshi-public-docs.s3.us-east-1.amazonaws.com/fix/kalshi-fix-dictionary.xml)
+* [Kalshi FIX Dictionary (XML)](https://assets.kalshi.com/fix/kalshi-fix-dictionary.xml)
 
 <Note>
   If you are using a FIX engine such as [QuickFIX/J](https://www.quickfixj.org/), [QuickFIX/N](https://quickfixn.readthedocs.io/), or [quickfix-go](https://github.com/quickfixgo/quickfix), the standard header and trailer fields below are managed automatically by the library. This section is primarily a reference for custom implementations or debugging.

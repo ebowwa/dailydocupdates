@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/learn-about-trading/margin.md
-Downloaded: 2026-07-07T21:24:50.545Z
+Downloaded: 2026-07-15T21:00:54.852Z
 -->
 
 > ## Documentation Index
@@ -41,15 +41,33 @@ Because equity depends on Mark Price, equity follows live mark updates. See
 
 ## Margin Requirements
 
+Initial margin is set by your configured leverage:
+
 ```text theme={null}
-IM = Notional / L_max
-MM = Notional / L_maint
+IM = Notional / Leverage
 ```
 
-Margin requirements scale with position size through leverage tiers. Larger
-positions require proportionally more margin. Margin is calculated incrementally
-across tiers, so a position spanning two tiers uses the lower tier's rate on
-notional up to its upper bound and the next tier's rate on the remainder.
+Leverage tiers cap the leverage available as your position grows — larger
+positions must run at lower leverage and therefore post proportionally more
+initial margin. The cap is enforced against your worst-case position notional
+(position plus resting orders on the heavier side): an order that would grow it
+into a tier whose `max_leverage` is below your configured leverage is rejected
+with `invalid_leverage`, and you must lower your leverage setting first. Your
+configured leverage applies to your entire notional, not bracket by bracket.
+Fetch each market's tier schedule from
+[Market Data](/perps/market-data#fetch-instruments).
+
+Maintenance margin uses a flat per-market rate, independent of position size,
+tier, and your leverage setting:
+
+```text theme={null}
+MM = Notional × MMR        where MMR = 0.5 / MaxLeverage
+```
+
+`MaxLeverage` is the market's maximum leverage, so on a 20x market
+`MMR = 2.5%` for every position. MM equals half the initial margin of a
+position opened at max leverage; at lower leverage your IM is higher but MM
+stays the same, so the gap between entry requirement and liquidation grows.
 
 Margin requirements are static across sessions.
 

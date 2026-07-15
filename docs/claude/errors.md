@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/errors.md
-Downloaded: 2026-07-14T21:00:55.456Z
+Downloaded: 2026-07-15T21:01:16.572Z
 -->
 
 > ## Documentation Index
@@ -283,6 +283,8 @@ You've hit your Opus limit · resets 3:45pm
 ```
 
 Claude Code blocks further requests until the reset time shown in the message. The session and weekly limits are shared across all models, so switching models doesn't restore access. The Opus limit applies only to Opus requests, so switching to another model with `/model` keeps you working.
+
+Usage counts against the session and weekly allowances at the same time. A single burst of heavy activity, such as a large workflow fanout, can exhaust the weekly allowance before the session window resets.
 
 **What to do:**
 

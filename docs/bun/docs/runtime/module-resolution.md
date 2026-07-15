@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/runtime/module-resolution.md
-Downloaded: 2026-07-07T21:25:14.169Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

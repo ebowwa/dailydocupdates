@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/faq.md
-Downloaded: 2026-07-10T21:05:51.330Z
+Downloaded: 2026-07-15T21:00:54.851Z
 -->
 
 > ## Documentation Index
@@ -120,18 +120,21 @@ Common questions about Polymarket Perps.
   </Accordion>
 
   <Accordion title="What are leverage tiers and why does my margin go up as my position grows?">
-    Margin requirements scale with position notional through tiers. Larger
-    positions need proportionally more margin to limit system-wide risk and reduce
-    liquidation cascades. Margin is calculated incrementally across tiers,
-    equivalent to summing bracket by bracket. Fetch live tier values from [`GET
+    Tiers cap the maximum leverage available as position notional grows. Building
+    a larger position requires lowering your leverage setting, which raises the
+    initial margin rate on your entire position — the cap is not applied bracket
+    by bracket. Tiers affect initial margin only; the maintenance margin rate is
+    flat per market. Fetch live tier values from [`GET
           /v1/info/instruments`](/perps/market-data#fetch-instruments).
   </Accordion>
 
-  <Accordion title="Why is maintenance margin always half of initial margin?">
-    By design, maintenance margin rate is half of the maximum leverage requirement
-    for the tier. A position is liquidated only after losing roughly half of the
-    margin posted to open it, which gives traders a buffer between entering a
-    position and being force-closed.
+  <Accordion title="How is maintenance margin set?">
+    The maintenance margin rate is flat per market: `MMR = 0.5 / max_leverage`,
+    independent of position size and of your leverage setting — for example, 2.5%
+    on a 20x market. It equals half the initial margin rate at maximum leverage,
+    so a max-leverage position is liquidated only after losing roughly half of its
+    posted margin; at lower leverage the buffer between entry margin and
+    liquidation is larger.
   </Accordion>
 
   <Accordion title="What happens between margin call and liquidation?">

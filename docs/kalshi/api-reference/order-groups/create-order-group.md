@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/order-groups/create-order-group.md
-Downloaded: 2026-07-09T21:24:05.949Z
+Downloaded: 2026-07-15T21:01:12.518Z
 -->
 
 > ## Documentation Index
@@ -153,6 +153,7 @@ components:
           allOf:
             - $ref: '#/components/schemas/ExchangeIndex'
           x-go-type-skip-optional-pointer: true
+          x-omitempty: false
     FixedPointCount:
       type: string
       description: >-

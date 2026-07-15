@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/third-party-integrations.md
-Downloaded: 2026-07-14T21:00:55.469Z
+Downloaded: 2026-07-15T21:01:16.583Z
 -->
 
 > ## Documentation Index
@@ -204,6 +204,8 @@ Select a deployment option to view setup instructions:
 * [Claude Platform on AWS](/en/claude-platform-on-aws)
 * [Google Cloud's Agent Platform](/en/google-vertex-ai)
 * [Microsoft Foundry](/en/microsoft-foundry)
+
+For Amazon Bedrock and Google Vertex AI, you can also run `claude` and select **3rd-party platform** at the login prompt to launch an interactive setup wizard.
 
 ## Configure proxies and gateways
 

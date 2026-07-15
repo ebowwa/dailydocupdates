@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/fullscreen.md
-Downloaded: 2026-07-14T21:00:55.456Z
+Downloaded: 2026-07-15T21:01:16.573Z
 -->
 
 > ## Documentation Index
@@ -12,7 +12,7 @@ Downloaded: 2026-07-14T21:00:55.456Z
 > Enable a smoother, flicker-free rendering mode with mouse support and stable memory usage in long conversations.
 
 <Note>
-  Fullscreen rendering is an opt-in [research preview](#research-preview). Run `/tui fullscreen` to switch in your current conversation, or set `CLAUDE_CODE_NO_FLICKER=1` on versions before v2.1.110. Behavior may change based on feedback.
+  Fullscreen rendering is an opt-in [research preview](#research-preview). Run `/tui fullscreen` to switch in your current conversation. Behavior may change based on feedback.
 </Note>
 
 Fullscreen rendering is an alternative rendering path for the Claude Code CLI that eliminates flicker, keeps memory usage flat in long conversations, and adds mouse support. It draws the interface on the terminal's alternate screen buffer, like `vim` or `htop`, and only renders messages that are currently visible. This reduces the amount of data sent to your terminal on each update.

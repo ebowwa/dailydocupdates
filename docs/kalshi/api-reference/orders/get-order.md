@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/orders/get-order.md
-Downloaded: 2026-07-09T21:24:05.951Z
+Downloaded: 2026-07-15T21:01:12.519Z
 -->
 
 > ## Documentation Index
@@ -271,6 +271,7 @@ components:
           allOf:
             - $ref: '#/components/schemas/ExchangeIndex'
           x-go-type-skip-optional-pointer: true
+          x-omitempty: false
     ErrorResponse:
       type: object
       properties:

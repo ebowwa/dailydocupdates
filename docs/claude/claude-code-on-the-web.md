@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/claude-code-on-the-web.md
-Downloaded: 2026-07-09T21:24:13.445Z
+Downloaded: 2026-07-15T21:01:16.566Z
 -->
 
 > ## Documentation Index
@@ -110,6 +110,13 @@ For exact versions, ask Claude to run `check-tools` in a cloud session. This com
 
 Cloud sessions include built-in GitHub tools that let Claude read issues, list pull requests, fetch diffs, and post comments without any setup. These tools authenticate through the [GitHub proxy](#github-proxy) using whichever method you configured under [GitHub authentication options](#github-authentication-options), so your token never enters the container.
 
+You can set `GH_TOKEN` or `GITHUB_TOKEN` yourself in [environment settings](#configure-your-environment), or leave both unset and let the [GitHub proxy](#github-proxy) authenticate for you:
+
+* If you set a token, it passes through to the container unchanged, so `gh` and your scripts use it directly.
+* If you set neither, the container sets both variables to the placeholder string `proxy-injected` and the proxy substitutes your real credentials on outbound GitHub requests. `gh` works without a token of your own, but a script that reads `GITHUB_TOKEN` directly gets the placeholder, not a usable token.
+
+To check which case applies to your session, ask Claude to run `echo $GH_TOKEN`.
+
 The `gh` CLI isn't pre-installed. If you need a `gh` command the built-in tools don't cover, like `gh release` or `gh workflow run`, install and authenticate it yourself:
 
 <Steps>
@@ -117,8 +124,8 @@ The `gh` CLI isn't pre-installed. If you need a `gh` command the built-in tools 
     Add `apt update && apt install -y gh` to your [setup script](#setup-scripts).
   </Step>
 
-  <Step title="Provide a token">
-    Add a `GH_TOKEN` environment variable to your [environment settings](#configure-your-environment) with a GitHub personal access token. `gh` reads `GH_TOKEN` automatically, so no `gh auth login` step is needed.
+  <Step title="Provide a token if the proxy is not handling authentication">
+    If `echo $GH_TOKEN` prints `proxy-injected`, the [GitHub proxy](#github-proxy) authenticates `gh` for you and this step is unnecessary. Otherwise, add a `GH_TOKEN` environment variable to your [environment settings](#configure-your-environment) with a GitHub personal access token. `gh` reads `GH_TOKEN` automatically, so no `gh auth login` step is needed.
   </Step>
 </Steps>
 
@@ -182,6 +189,19 @@ NODE_ENV=development
 LOG_LEVEL=debug
 DATABASE_URL=postgres://localhost:5432/myapp
 ```
+
+### Organization-shared environments
+
+Owners and admins on Team and Enterprise plans can create cloud environments that are shared with every member of the organization. Shared environments appear in each member's environment selector alongside their personal ones, so a team can standardize on one configuration instead of each member recreating it.
+
+Manage shared environments from the **Cloud environments** page in [admin settings](https://claude.ai/admin-settings). From there you can:
+
+* Create, edit, and archive shared environments. Each one has the same fields as a personal environment: a name, a [network access level](#access-levels), [environment variables](#configure-your-environment) in `.env` format, and a [setup script](#setup-scripts).
+* Set the default environment for the organization.
+
+Values in a shared environment reach every member's sessions in that environment. Like personal environments, shared environments have no dedicated secrets store, so don't include secrets.
+
+Organizations in the self-hosted runners program also manage their runner pools from the same page.
 
 ## Setup scripts
 
@@ -313,13 +333,18 @@ registry.example.com
 
 Use `*.` for wildcard subdomain matching. Check **Also include default list of common package managers** to keep the [Trusted domains](#default-allowed-domains) alongside your custom entries, or leave it unchecked to allow only what you list.
 
+Allowed domains are configured per environment. There's no organization-level allowlist that Owners can push to all users' environments; [server-managed settings](/en/server-managed-settings) can restrict cloud sessions but can't add allowed domains.
+
 ### GitHub proxy
 
-For security, all GitHub operations go through a dedicated proxy service that transparently handles all git interactions. Inside the sandbox, the git client authenticates using a custom-built scoped credential. This proxy:
+For security, all GitHub operations go through a dedicated proxy service that keeps your real GitHub credentials outside the sandbox. The proxy authenticates two kinds of traffic:
 
-* Manages GitHub authentication securely: the git client uses a scoped credential inside the sandbox, which the proxy verifies and translates to your actual GitHub authentication token
-* Restricts git push operations to the current working branch for safety
-* Enables cloning, fetching, and PR operations while maintaining security boundaries
+* Git interactions: the git client inside the sandbox uses a custom-built scoped credential, which the proxy verifies and translates to your actual GitHub authentication token
+* GitHub API requests: the proxy substitutes your real credentials on requests from the built-in GitHub tools, and from `gh` when your session sets the `proxy-injected` placeholder described in [Work with GitHub issues and pull requests](#work-with-github-issues-and-pull-requests)
+
+The proxy also restricts git push operations to the current working branch for safety, and enables cloning, fetching, and PR operations while maintaining security boundaries.
+
+The proxy limits GitHub API and release-asset requests to repositories attached to the session, regardless of the environment's [network access level](#access-levels). Setup scripts that download release assets from unattached repositories return a 403. Committed files from public repositories are fetched through `raw.githubusercontent.com`, which the [security proxy](#security-proxy) handles instead. That domain is in the default [Trusted list](#default-allowed-domains), so the files stay reachable unless the environment's [access level](#access-levels) excludes it.
 
 ### Security proxy
 

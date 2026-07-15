@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/perps/learn-about-trading/index-price.md
-Downloaded: 2026-07-07T21:24:50.545Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/events/get-events.md
-Downloaded: 2026-07-09T21:24:05.943Z
+Downloaded: 2026-07-15T21:01:12.514Z
 -->
 
 > ## Documentation Index
@@ -313,6 +313,7 @@ components:
           allOf:
             - $ref: '#/components/schemas/ExchangeIndex'
           x-go-type-skip-optional-pointer: true
+          x-omitempty: false
     Milestone:
       type: object
       required:
@@ -675,6 +676,7 @@ components:
           allOf:
             - $ref: '#/components/schemas/ExchangeIndex'
           x-go-type-skip-optional-pointer: true
+          x-omitempty: false
     SettlementSource:
       type: object
       properties:

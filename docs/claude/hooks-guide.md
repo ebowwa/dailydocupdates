@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/hooks-guide.md
-Downloaded: 2026-07-13T20:57:00.666Z
+Downloaded: 2026-07-15T21:01:16.574Z
 -->
 
 > ## Documentation Index
@@ -592,7 +592,18 @@ Returning `"allow"` skips the interactive prompt but doesn't override [permissio
 
 Other events use different decision patterns. For example, `PostToolUse` and `Stop` hooks use a top-level `decision: "block"` field, while `PermissionRequest` uses `hookSpecificOutput.decision.behavior`. See the [summary table](/en/hooks#decision-control) in the reference for a full breakdown by event.
 
-For `UserPromptSubmit` hooks, use `additionalContext` instead to inject text into Claude's context.
+For `UserPromptSubmit` hooks, use `hookSpecificOutput.additionalContext` instead to inject text into Claude's context. Nest `additionalContext` inside `hookSpecificOutput`; if you place it at the top level of the JSON, Claude Code silently ignores it. For example, this output adds the current branch state to every prompt:
+
+```json theme={null}
+{
+  "hookSpecificOutput": {
+    "hookEventName": "UserPromptSubmit",
+    "additionalContext": "Current branch: release-42. Deploy freeze until Friday."
+  }
+}
+```
+
+See [UserPromptSubmit decision control](/en/hooks#userpromptsubmit-decision-control) for the full output shape, including blocking prompts and setting the session title.
 
 Hooks with `type: "prompt"` handle output differently: see [Prompt-based hooks](#prompt-based-hooks).
 
@@ -615,7 +626,7 @@ Without a matcher, a hook fires on every occurrence of its event. Matchers let y
 }
 ```
 
-The `"Edit|Write"` matcher fires only when Claude uses the `Edit` or `Write` tool, not when it uses `Bash`, `Read`, or any other tool. See [Matcher patterns](/en/hooks#matcher-patterns) for how plain names and regular expressions are evaluated.
+The `"Edit|Write"` matcher fires only when Claude uses the `Edit` or `Write` tool, not when it uses `Bash`, `Read`, or any other tool. {/* min-version: 2.1.191 */}On Claude Code v2.1.191 or later, a comma separates alternatives the same way, so `"Edit, Write"` is equivalent. See [Matcher patterns](/en/hooks#matcher-patterns) for how plain names and regular expressions are evaluated.
 
 <Note>
   Claude can also create or modify files by running shell commands through the `Bash` tool. If your hook must see every file change, such as for compliance scanning or audit logging, add a [`Stop`](/en/hooks#stop) hook that scans the working tree once per turn. For per-call coverage instead, also match `Bash` and have your script list modified and untracked files with `git status --porcelain`.

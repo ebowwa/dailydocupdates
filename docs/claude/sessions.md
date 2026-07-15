@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/sessions.md
+Downloaded: 2026-07-15T21:01:16.581Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -103,7 +108,7 @@ For checkpoint-based rewind within a single session, see [Checkpointing](/en/che
 
 These commands control what's in the context window without leaving the session:
 
-* **`/clear`**: start fresh with an empty context. The previous conversation is saved and resumable
+* **`/clear`**: start fresh with an empty context. The previous conversation is saved and resumable with `/resume`, or, in the same Claude Code process, {/* min-version: 2.1.191 */}from [the rewind menu's previous-session entry](/en/checkpointing#rewind-past-a-cleared-conversation)
 * **`/compact [instructions]`**: replace history with a summary, optionally focused on what you specify
 * **`/context`**: show what is currently consuming context
 
