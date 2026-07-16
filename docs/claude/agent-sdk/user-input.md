@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/user-input.md
-Downloaded: 2026-07-14T21:00:55.442Z
+Downloaded: 2026-07-16T20:59:06.325Z
 -->
 
 > ## Documentation Index
@@ -52,6 +52,8 @@ The callback fires in two cases:
 
 <Warning>
   **The callback never fires for auto-approved tools.** Any approval earlier in the [permission evaluation flow](/en/agent-sdk/permissions#how-permissions-are-evaluated), an allow rule or a mode like `acceptEdits` or `bypassPermissions`, resolves the call before `canUseTool` is consulted. If you list a tool bare in `allowed_tools`, a `canUseTool` check for that tool never runs unless an ask rule or `plan` mode routes the call back to a prompt. For logic that must apply to every tool call, use a [`PreToolUse` hook](/en/agent-sdk/hooks), which executes before the rest of the flow and can allow, deny, or modify requests.
+
+  `AskUserQuestion`, MCP tools marked [`requiresUserInteraction`](/en/mcp#require-approval-for-a-specific-tool), and connector tools [your organization set to `ask`](/en/mcp#organization-controls-on-connector-tools) reach the callback even when an allow rule matches. In `dontAsk` mode these calls are denied instead, without invoking the callback.
 </Warning>
 
 You can also use the [`PermissionRequest` hook](/en/agent-sdk/hooks#available-hooks) to send external notifications (Slack, email, push) when Claude is waiting for approval.

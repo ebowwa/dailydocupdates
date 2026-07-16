@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/sessions.md
-Downloaded: 2026-07-15T21:01:16.581Z
+Downloaded: 2026-07-16T20:59:06.345Z
 -->
 
 > ## Documentation Index
@@ -32,6 +32,8 @@ Sessions created with [`claude -p`](/en/headless) or the [Agent SDK](/en/agent-s
 ### Where the session picker looks
 
 Sessions are stored per project directory. By default the session picker shows interactive sessions from the current worktree, plus sessions started elsewhere that added the current directory with `/add-dir`. Use `Ctrl+W` to widen to all worktrees of the repository or `Ctrl+A` to widen to every project on this machine.
+
+{/* min-version: 2.1.211 */}Sessions whose first prompt was a [`/loop`](/en/scheduled-tasks#run-a-prompt-repeatedly-with-%2Floop) command don't appear in the picker; running `/loop` later in a conversation doesn't hide the session. Before v2.1.211, a `/loop` run early in a conversation hid the session from the picker permanently.
 
 {/* min-version: 2.1.169 */}From v2.1.169, moving a session with [`/cd`](/en/commands) relocates it to the new directory's project storage, so it appears in that directory's picker afterward. {/* min-version: 2.1.196 */}As of v2.1.196, a moved session stays out of the old directory's picker even after a crash or forced exit. On earlier versions, it could also reappear in the old directory's list after an exit that wasn't clean when the old path contained special characters such as underscores.
 

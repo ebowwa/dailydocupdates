@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/bundler/macros.md
-Downloaded: 2026-07-08T21:08:09.476Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

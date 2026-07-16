@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/quickstart.md
+Downloaded: 2026-07-16T20:59:06.343Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -29,19 +34,19 @@ To install Claude Code, use one of the following methods:
   <Tab title="Native Install (Recommended)">
     **macOS, Linux, WSL:**
 
-    ```bash theme={null}
+    ```bash theme={null} theme={null} theme={null}
     curl -fsSL https://claude.ai/install.sh | bash
     ```
 
     **Windows PowerShell:**
 
-    ```powershell theme={null}
+    ```powershell theme={null} theme={null} theme={null}
     irm https://claude.ai/install.ps1 | iex
     ```
 
     **Windows CMD:**
 
-    ```batch theme={null}
+    ```batch theme={null} theme={null} theme={null}
     curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
     ```
 
@@ -57,7 +62,7 @@ To install Claude Code, use one of the following methods:
   </Tab>
 
   <Tab title="Homebrew">
-    ```bash theme={null}
+    ```bash theme={null} theme={null} theme={null}
     brew install --cask claude-code
     ```
 
@@ -69,7 +74,7 @@ To install Claude Code, use one of the following methods:
   </Tab>
 
   <Tab title="WinGet">
-    ```powershell theme={null}
+    ```powershell theme={null} theme={null} theme={null}
     winget install Anthropic.ClaudeCode
     ```
 
@@ -275,11 +280,11 @@ Here are the most important commands for daily use. Shell commands run from your
 
 **Session commands**
 
-| Command           | What it does               | Example  |
-| ----------------- | -------------------------- | -------- |
-| `/clear`          | Clear conversation history | `/clear` |
-| `/help`           | Show available commands    | `/help`  |
-| `/exit` or Ctrl+D | Exit Claude Code           | `/exit`  |
+| Command                 | What it does               | Example  |
+| ----------------------- | -------------------------- | -------- |
+| `/clear`                | Clear conversation history | `/clear` |
+| `/help`                 | Show available commands    | `/help`  |
+| `/exit` or Ctrl+D twice | Exit Claude Code           | `/exit`  |
 
 See the [CLI reference](/en/cli-reference) for the complete list of shell commands and the [commands reference](/en/commands) for the complete list of session commands.
 

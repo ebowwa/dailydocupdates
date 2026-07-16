@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/zero-data-retention.md
-Downloaded: 2026-07-14T21:00:55.473Z
+Downloaded: 2026-07-16T20:59:06.351Z
 -->
 
 > ## Documentation Index
@@ -33,6 +33,10 @@ ZDR covers Claude Code inference on Claude for Enterprise.
 <Warning>
   ZDR is enabled on a per-organization basis. Each new organization requires ZDR to be enabled separately by your Anthropic account team. ZDR does not automatically apply to new organizations created under the same account. Contact your account team to enable ZDR for any new organizations.
 </Warning>
+
+### Route Claude Code traffic to your ZDR organization
+
+ZDR applies to requests that authenticate into a ZDR-enabled organization. If a developer signs in to Claude Code with a personal account or with an API key from a different organization, those sessions are not covered. To restrict login to your ZDR organization, deploy the `forceLoginMethod` and `forceLoginOrgUUID` managed settings; see [Restrict login to your organization](/en/authentication#restrict-login-to-your-organization).
 
 ### What ZDR covers
 

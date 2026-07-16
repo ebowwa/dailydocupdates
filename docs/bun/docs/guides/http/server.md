@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/guides/http/server.md
-Downloaded: 2026-07-08T21:08:09.482Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.

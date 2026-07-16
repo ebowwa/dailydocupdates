@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/hooks.md
-Downloaded: 2026-07-14T21:00:55.437Z
+Downloaded: 2026-07-16T20:59:06.319Z
 -->
 
 > ## Documentation Index
@@ -782,6 +782,8 @@ const myHook: HookCallback = async (input, toolUseID, { signal }) => {
 * Use the `AbortSignal` from the third callback argument to handle cancellation gracefully in TypeScript
 
 {/* min-version: 2.1.208 */}A `UserPromptSubmit` or [`UserPromptExpansion`](/en/hooks#userpromptexpansion) callback that exceeds its timeout blocks that prompt with a timeout message and the session continues. Interrupting the query while a callback is pending cancels the pending tool call. Before v2.1.208, a callback timeout on those events ended the query with `error_during_execution`, and an interrupt during a pending `PreToolUse` callback could let the tool call proceed.
+
+{/* min-version: 2.1.210 */}A `PreToolUse` callback that exceeds its timeout blocks the tool call, and Claude receives an error result naming the timeout. If another `PreToolUse` hook returned an explicit deny, Claude receives that denial instead. Before v2.1.210, Claude Code reported the timeout to Claude as if the user had rejected the tool call, so an unattended session stopped and waited for input.
 
 ### Tool blocked unexpectedly
 

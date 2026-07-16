@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/keybindings.md
-Downloaded: 2026-07-14T21:00:55.459Z
+Downloaded: 2026-07-16T20:59:06.339Z
 -->
 
 > ## Documentation Index
@@ -82,7 +82,7 @@ Actions available in the `Global` context:
 | Action                 | Default   | Description                                                                                                  |
 | :--------------------- | :-------- | :----------------------------------------------------------------------------------------------------------- |
 | `app:interrupt`        | Ctrl+C    | Cancel current operation                                                                                     |
-| `app:exit`             | Ctrl+D    | Exit Claude Code                                                                                             |
+| `app:exit`             | Ctrl+D    | Exit Claude Code. Press twice within 800ms to confirm                                                        |
 | `app:redraw`           | (unbound) | Force terminal redraw                                                                                        |
 | `app:toggleTodos`      | Ctrl+T    | Toggle visibility of Claude's to-do checklist. This is not the [`/tasks`](/en/commands) background-task view |
 | `app:toggleTranscript` | Ctrl+O    | Toggle verbose transcript                                                                                    |

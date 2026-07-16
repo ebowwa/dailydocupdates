@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/routines.md
-Downloaded: 2026-07-14T21:00:55.465Z
+Downloaded: 2026-07-16T20:59:06.344Z
 -->
 
 > ## Documentation Index
@@ -128,6 +128,8 @@ A successful start looks like a conversation: Claude asks follow-up questions ab
 `/schedule` in the CLI creates scheduled routines only. To add an API or GitHub trigger, edit the routine on the web at [claude.ai/code/routines](https://claude.ai/code/routines).
 
 The CLI also supports managing existing routines. Run `/schedule list` to see all routines, `/schedule update` to change one, or `/schedule run` to trigger it immediately.
+
+A routine with no schedule trigger, such as one started only by API calls or GitHub events, has no next run time, and the CLI shows none when Claude saves or updates it. Before v2.1.211, the CLI reported a next run time in the year 1 for these routines.
 
 ## Configure triggers
 

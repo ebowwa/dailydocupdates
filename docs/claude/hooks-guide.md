@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/hooks-guide.md
-Downloaded: 2026-07-15T21:01:16.574Z
+Downloaded: 2026-07-16T20:59:06.339Z
 -->
 
 > ## Documentation Index
@@ -582,13 +582,13 @@ For example, a `PreToolUse` hook can deny a tool call and tell Claude why, or es
 
 With `"deny"`, Claude Code cancels the tool call and feeds `permissionDecisionReason` back to Claude. These `permissionDecision` values are specific to `PreToolUse`:
 
-* `"allow"`: skip the interactive permission prompt. Deny and ask rules, including enterprise managed deny lists, still apply
+* `"allow"`: skip the interactive permission prompt. Deny and ask rules, including enterprise managed deny lists, still apply, as do prompts for connector tools [your organization set to `ask`](/en/mcp#organization-controls-on-connector-tools) and MCP tools marked [`requiresUserInteraction`](/en/mcp#require-approval-for-a-specific-tool)
 * `"deny"`: cancel the tool call and send the reason to Claude
 * `"ask"`: show the permission prompt to the user as normal
 
 A fourth value, `"defer"`, is available in [non-interactive mode](/en/headless) with the `-p` flag. It exits the process with the tool call preserved so an Agent SDK wrapper can collect input and resume. See [Defer a tool call for later](/en/hooks#defer-a-tool-call-for-later) in the reference.
 
-Returning `"allow"` skips the interactive prompt but doesn't override [permission rules](/en/permissions#manage-permissions). If a deny rule matches the tool call, the call is blocked even when your hook returns `"allow"`. If an ask rule matches, the user is still prompted. This means deny rules from any settings scope, including [managed settings](/en/settings#settings-files), always take precedence over hook approvals.
+Returning `"allow"` skips the interactive prompt but doesn't override [permission rules](/en/permissions#manage-permissions). If a deny rule matches the tool call, the call is blocked even when your hook returns `"allow"`. If an ask rule matches, the user is still prompted, and so are connector tools [your organization set to `ask`](/en/mcp#organization-controls-on-connector-tools) and MCP tools marked [`requiresUserInteraction`](/en/mcp#require-approval-for-a-specific-tool). This means deny rules from any settings scope, including [managed settings](/en/settings#settings-files), always take precedence over hook approvals.
 
 Other events use different decision patterns. For example, `PostToolUse` and `Stop` hooks use a top-level `decision: "block"` field, while `PermissionRequest` uses `hookSpecificOutput.decision.behavior`. See the [summary table](/en/hooks#decision-control) in the reference for a full breakdown by event.
 
@@ -909,7 +909,7 @@ Keep these constraints in mind when designing hooks:
 
 `PreToolUse` hooks fire before any permission-mode check. A hook that returns `permissionDecision: "deny"` blocks the tool even in `bypassPermissions` mode or with `--dangerously-skip-permissions`. This lets you enforce policy that users can't bypass by changing their permission mode.
 
-The reverse is not true: a hook returning `"allow"` doesn't bypass deny rules from settings. Hooks can tighten restrictions but not loosen them past what permission rules allow.
+The reverse is not true: a hook returning `"allow"` doesn't bypass deny rules from settings, and it can't suppress the prompt for connector tools [your organization set to `ask`](/en/mcp#organization-controls-on-connector-tools) or MCP tools marked [`requiresUserInteraction`](/en/mcp#require-approval-for-a-specific-tool). Hooks can tighten restrictions but not loosen them past what permission rules allow.
 
 ### Hook not firing
 
