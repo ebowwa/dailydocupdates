@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/python.md
-Downloaded: 2026-07-13T20:56:53.618Z
+Downloaded: 2026-07-17T20:55:43.477Z
 -->
 
 > ## Documentation Index
@@ -1106,6 +1106,18 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0b21`
+
+* `setup_trading_approvals` no longer requests approvals for the retired CLOB v1 Neg Risk Adapter.
+
+### `0.1.0b20`
+
+* RFQ quoter sessions now keep running when the server introduces new error codes: unrecognized codes are carried on rejection errors as plain strings, while known codes stay typed through the `RfqErrorCode` enum.
+* Added `ConnectionLostError` carrying the WebSocket close `code` and `reason`. Losing an RFQ session connection now raises it from in-flight operations and the session iterator, instead of a generic `TransportError`. Closing the session still ends iteration cleanly.
+* Optional decimal fields on streamed market and user events treat empty strings as absent (for example a trade's `fee_rate_bps` or a price change's `best_bid` and `best_ask`).
+* Batch price reads return `TokenId`-keyed maps.
+* Perps streams handle fill and trade frames that batch multiple entries.
 
 ### `0.1.0b19`
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/web-quickstart.md
-Downloaded: 2026-07-13T20:57:00.675Z
+Downloaded: 2026-07-17T20:55:43.456Z
 -->
 
 > ## Documentation Index
@@ -196,6 +196,12 @@ Enterprise organizations may need an Owner to enable Claude Code on the web. Con
 `/web-setup` runs inside the Claude Code CLI, not your shell. Launch `claude` first, then type `/web-setup` at the prompt.
 
 If you typed it inside Claude Code and the command menu shows `No commands match "/web-setup"`, or submitting it returns `Unknown command: /web-setup`, the command is hidden because a requirement isn't met. The cause is usually that you're authenticated with an API key or third-party provider instead of a claude.ai subscription. Run `/login` to sign in with your claude.ai account.
+
+On Team and Enterprise plans, the command is also hidden when any of the following apply:
+
+* an administrator has disabled Claude Code on the web for your organization
+* an administrator has disabled the [Quick web setup toggle](/en/claude-code-on-the-web#github-authentication-options)
+* your Enterprise organization has [Zero Data Retention](/en/zero-data-retention) enabled, which makes Claude Code on the web unavailable
 
 ### "Could not create a cloud environment" or "No cloud environment available" when using `--cloud` or ultraplan
 

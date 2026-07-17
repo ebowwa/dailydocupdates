@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/faq.md
-Downloaded: 2026-07-15T21:00:54.851Z
+Downloaded: 2026-07-17T20:55:43.480Z
 -->
 
 > ## Documentation Index
@@ -198,7 +198,7 @@ Common questions about Polymarket Perps.
 
 <AccordionGroup>
   <Accordion title="What are the current maker and taker fees?">
-    Fees are tiered by trailing 30-day trading volume. New accounts start at the \$0 tier and move up as their volume crosses each threshold.
+    Fees are tiered by trailing 30-day trading volume. New accounts start at the \$0 tier and move up as their volume crosses each threshold. Fee tiers are re-evaluated every UTC day.
 
     | 30-Day Volume ≥ | Taker   | Maker    |
     | --------------- | ------- | -------- |

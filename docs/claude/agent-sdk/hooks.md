@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/hooks.md
-Downloaded: 2026-07-16T20:59:06.319Z
+Downloaded: 2026-07-17T20:55:43.422Z
 -->
 
 > ## Documentation Index
@@ -655,7 +655,7 @@ Use `Notification` hooks to receive system notifications from the agent and forw
 
 Each notification includes a `message` field with a human-readable description and optionally a `title`.
 
-This example forwards every notification to a Slack channel. It requires a [Slack incoming webhook URL](https://api.slack.com/messaging/webhooks), which you create by adding an app to your Slack workspace and enabling incoming webhooks:
+This example forwards every notification to a Slack channel. It requires a [Slack incoming webhook URL](https://docs.slack.dev/messaging/sending-messages-using-incoming-webhooks/), which you create by adding an app to your Slack workspace and enabling incoming webhooks:
 
 <CodeGroup>
   ```python Python theme={null}

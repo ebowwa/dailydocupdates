@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/mcp.md
-Downloaded: 2026-07-16T20:59:06.320Z
+Downloaded: 2026-07-17T20:55:43.422Z
 -->
 
 > ## Documentation Index
@@ -648,9 +648,22 @@ export GITHUB_TOKEN=YOUR_GITHUB_PAT
 
 ### Query a database
 
-This example uses the [Postgres MCP server](https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres) to query a database. The reference server is archived but still runs with `npx`. The connection string is passed as an argument to the server. The agent automatically discovers the database schema, writes the SQL query, and returns the results.
+This example uses [DBHub](https://github.com/bytebase/dbhub) to query a Postgres database. The agent automatically discovers the database schema, writes the SQL query, and returns the results.
 
-Before running, set the `DATABASE_URL` environment variable to your connection string. Replace the placeholder values with your own database details:
+DBHub's `execute_sql` tool runs whatever SQL the agent emits, including writes, unless you restrict it. Setting `readonly = true` in the [DBHub configuration file](https://dbhub.ai/config/toml) makes DBHub reject `INSERT`, `UPDATE`, `DELETE`, and DDL statements, so the example cannot modify your data even if the agent emits a write. DBHub resolves `${DATABASE_URL}` from the process environment when it loads the config, so the connection string stays out of the file. Create this `dbhub.toml` next to your script:
+
+```toml dbhub.toml theme={null}
+[[sources]]
+id = "production"
+dsn = "${DATABASE_URL}"
+
+[[tools]]
+name = "execute_sql"
+source = "production"
+readonly = true
+```
+
+The script then points DBHub at the config file instead of passing a connection string directly. Before running, set the `DATABASE_URL` environment variable to your connection string. Replace the placeholder values with your own database details:
 
 ```bash theme={null}
 export DATABASE_URL=postgresql://user:password@localhost:5432/mydb
@@ -660,9 +673,6 @@ export DATABASE_URL=postgresql://user:password@localhost:5432/mydb
   ```typescript TypeScript theme={null}
   import { query } from "@anthropic-ai/claude-agent-sdk";
 
-  // Connection string from environment variable
-  const connectionString = process.env.DATABASE_URL;
-
   for await (const message of query({
     // Natural language query - Claude writes the SQL
     prompt: "How many users signed up last week? Break it down by day.",
@@ -670,12 +680,11 @@ export DATABASE_URL=postgresql://user:password@localhost:5432/mydb
       mcpServers: {
         postgres: {
           command: "npx",
-          // Pass connection string as argument to the server
-          args: ["-y", "@modelcontextprotocol/server-postgres", connectionString]
+          // dbhub.toml sets readonly = true, so execute_sql rejects writes
+          args: ["-y", "@bytebase/dbhub", "--config", "dbhub.toml"]
         }
       },
-      // Allow only read queries, not writes
-      allowedTools: ["mcp__postgres__query"]
+      allowedTools: ["mcp__postgres__execute_sql"]
     }
   })) {
     if (message.type === "result" && message.subtype === "success") {
@@ -686,28 +695,24 @@ export DATABASE_URL=postgresql://user:password@localhost:5432/mydb
 
   ```python Python theme={null}
   import asyncio
-  import os
   from claude_agent_sdk import query, ClaudeAgentOptions, ResultMessage
 
 
   async def main():
-      # Connection string from environment variable
-      connection_string = os.environ["DATABASE_URL"]
-
       options = ClaudeAgentOptions(
           mcp_servers={
               "postgres": {
                   "command": "npx",
-                  # Pass connection string as argument to the server
+                  # dbhub.toml sets readonly = true, so execute_sql rejects writes
                   "args": [
                       "-y",
-                      "@modelcontextprotocol/server-postgres",
-                      connection_string,
+                      "@bytebase/dbhub",
+                      "--config",
+                      "dbhub.toml",
                   ],
               }
           },
-          # Allow only read queries, not writes
-          allowed_tools=["mcp__postgres__query"],
+          allowed_tools=["mcp__postgres__execute_sql"],
       )
 
       # Natural language query - Claude writes the SQL
@@ -733,26 +738,34 @@ The SDK emits a `system` message with subtype `init` at the start of each query.
   ```typescript TypeScript theme={null}
   import { query } from "@anthropic-ai/claude-agent-sdk";
 
-  for await (const message of query({
-    prompt: "Process data",
-    options: {
-      mcpServers: {
-        // Replace dataServer with your server configuration
-        "data-processor": dataServer
+  try {
+    for await (const message of query({
+      prompt: "Process data",
+      options: {
+        mcpServers: {
+          // Replace dataServer with your server configuration
+          "data-processor": dataServer
+        }
+      }
+    })) {
+      if (message.type === "system" && message.subtype === "init") {
+        const failedServers = message.mcp_servers.filter((s) => s.status === "failed");
+
+        if (failedServers.length > 0) {
+          console.warn("Failed to connect:", failedServers);
+        }
+      }
+
+      if (message.type === "result" && message.subtype === "error_during_execution") {
+        console.error("Execution failed");
       }
     }
-  })) {
-    if (message.type === "system" && message.subtype === "init") {
-      const failedServers = message.mcp_servers.filter((s) => s.status === "failed");
-
-      if (failedServers.length > 0) {
-        console.warn("Failed to connect:", failedServers);
-      }
-    }
-
-    if (message.type === "result" && message.subtype === "error_during_execution") {
-      console.error("Execution failed");
-    }
+  } catch (error) {
+    // A single-shot query() throws after yielding an error result.
+    // If the failure was an error result, the error subtype branch above
+    // has already run; connection or process failures yield no result
+    // message.
+    console.log(`Session ended with an error: ${error}`);
   }
   ```
 
@@ -765,22 +778,29 @@ The SDK emits a `system` message with subtype `init` at the start of each query.
       # Replace data_server with your server configuration
       options = ClaudeAgentOptions(mcp_servers={"data-processor": data_server})
 
-      async for message in query(prompt="Process data", options=options):
-          if isinstance(message, SystemMessage) and message.subtype == "init":
-              failed_servers = [
-                  s
-                  for s in message.data.get("mcp_servers", [])
-                  if s.get("status") == "failed"
-              ]
+      try:
+          async for message in query(prompt="Process data", options=options):
+              if isinstance(message, SystemMessage) and message.subtype == "init":
+                  failed_servers = [
+                      s
+                      for s in message.data.get("mcp_servers", [])
+                      if s.get("status") == "failed"
+                  ]
 
-              if failed_servers:
-                  print(f"Failed to connect: {failed_servers}")
+                  if failed_servers:
+                      print(f"Failed to connect: {failed_servers}")
 
-          if (
-              isinstance(message, ResultMessage)
-              and message.subtype == "error_during_execution"
-          ):
-              print("Execution failed")
+              if (
+                  isinstance(message, ResultMessage)
+                  and message.subtype == "error_during_execution"
+              ):
+                  print("Execution failed")
+      except Exception as error:
+          # A single-shot query() raises after yielding an error result.
+          # If the failure was an error result, the error subtype branch
+          # above has already run; connection or process failures yield
+          # no result message.
+          print(f"Session ended with an error: {error}")
 
 
   asyncio.run(main())

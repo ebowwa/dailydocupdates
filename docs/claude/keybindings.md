@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/keybindings.md
-Downloaded: 2026-07-16T20:59:06.339Z
+Downloaded: 2026-07-17T20:55:43.445Z
 -->
 
 > ## Documentation Index
@@ -164,6 +164,8 @@ Actions available in the `Transcript` context:
 | `transcript:toggleShowAll` | Ctrl+E            | Toggle show all content |
 | `transcript:exit`          | q, Ctrl+C, Escape | Exit transcript view    |
 
+`transcript:toggleShowAll` applies in the default renderer only; in [fullscreen rendering](/en/fullscreen), the transcript viewer doesn't offer a show-all toggle.
+
 ### History search actions
 
 Actions available in the `HistorySearch` context:
@@ -175,6 +177,8 @@ Actions available in the `HistorySearch` context:
 | `historySearch:cancel`     | Ctrl+C      | Cancel search                             |
 | `historySearch:execute`    | Enter       | Execute selected command                  |
 | `historySearch:cycleScope` | Ctrl+S      | Cycle scope: session, project, everywhere |
+
+The `historySearch:next`, `historySearch:accept`, `historySearch:cancel`, and `historySearch:execute` defaults apply to the inline history search in the default renderer, which always searches prompts from all projects. `historySearch:cycleScope` takes effect only in [fullscreen rendering](/en/fullscreen), where `Ctrl+R` opens a search dialog instead and `Ctrl+S` cycles its scope. The dialog's other keys are fixed and can't be rebound: `Enter` or `Tab` places the highlighted match in the prompt input and `Esc` cancels.
 
 ### Task actions
 

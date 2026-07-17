@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/typescript.md
-Downloaded: 2026-07-16T20:59:06.324Z
+Downloaded: 2026-07-17T20:55:43.427Z
 -->
 
 > ## Documentation Index
@@ -809,7 +809,7 @@ type PermissionMode =
   | "bypassPermissions" // Bypass permission checks; explicit ask rules still prompt
   | "plan" // Planning mode - explore without editing
   | "dontAsk" // Don't prompt for permissions, deny if not pre-approved
-  | "auto"; // Use a model classifier to approve or deny each tool call
+  | "auto"; // Model classifier approves or denies permission prompts
 ```
 
 ### `CanUseTool`
@@ -1843,7 +1843,7 @@ type AgentInput = {
   run_in_background?: boolean;
   name?: string;
   mode?: "acceptEdits" | "auto" | "bypassPermissions" | "default" | "dontAsk" | "plan";
-  isolation?: "worktree";
+  isolation?: "worktree" | "remote";
 };
 ```
 

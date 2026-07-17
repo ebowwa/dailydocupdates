@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-makers/combos.md
-Downloaded: 2026-07-14T21:00:33.661Z
+Downloaded: 2026-07-17T20:55:43.478Z
 -->
 
 > ## Documentation Index
@@ -354,14 +354,16 @@ need a Polymarket account; create one at [polymarket.com](https://polymarket.com
       </Step>
 
       <Step title="Check Approval Requirements">
-        Before posting quotes, `maker_address` must approve the contracts that may
-        transfer assets during RFQ execution.
+        Before posting quotes or managing Combo inventory, `maker_address` must approve
+        the contracts that may transfer its assets.
 
-        | Approval                    | Required when                                 | Contract call                                           |
-        | --------------------------- | --------------------------------------------- | ------------------------------------------------------- |
-        | pUSD collateral             | The quoted order transfers pUSD               | `CollateralToken.approve(ExchangeV3, maxUint256)`       |
-        | Combo positions             | The quoted order transfers Combo positions    | `PositionManager.setApprovalForAll(ExchangeV3, true)`   |
-        | AutoRedeemer Combo operator | You want automatic redemption flows to use it | `PositionManager.setApprovalForAll(AutoRedeemer, true)` |
+        | Approval                    | Required when                                     | Contract call                                           |
+        | --------------------------- | ------------------------------------------------- | ------------------------------------------------------- |
+        | pUSD collateral             | The quoted order transfers pUSD                   | `CollateralToken.approve(ExchangeV3, maxUint256)`       |
+        | Combo positions             | The quoted order transfers Combo positions        | `PositionManager.setApprovalForAll(ExchangeV3, true)`   |
+        | Router pUSD collateral      | You split pUSD into positions through the Router  | `CollateralToken.approve(Router, maxUint256)`           |
+        | Router positions            | You manage or redeem positions through the Router | `PositionManager.setApprovalForAll(Router, true)`       |
+        | AutoRedeemer Combo operator | You want automatic redemption flows to use it     | `PositionManager.setApprovalForAll(AutoRedeemer, true)` |
 
         Use these contract addresses to build the approval calls.
 
@@ -369,6 +371,7 @@ need a Polymarket account; create one at [polymarket.com](https://polymarket.com
         | --------------------- | -------------------------------------------- |
         | pUSD collateral token | `0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB` |
         | Exchange v3           | `0xe3333700cA9d93003F00f0F71f8515005F6c00Aa` |
+        | Router                | `0x12121212006e4CD160D18e3f00711DA5c3372600` |
         | PositionManager       | `0x006F54F7f9A22e0000CC2AB60031000000ae9fEF` |
         | AutoRedeemer          | `0xa1200000d0002264C9a1698e001292D00E1b00af` |
 
@@ -403,9 +406,19 @@ need a Polymarket account; create one at [polymarket.com](https://polymarket.com
             "data": "<approve_exchange_v3_calldata>"
           },
           {
+            "target": "0xC011a7E12a19f7B1f670d46F03B03f3342E82DFB",
+            "value": "0",
+            "data": "<approve_router_calldata>"
+          },
+          {
             "target": "0x006F54F7f9A22e0000CC2AB60031000000ae9fEF",
             "value": "0",
             "data": "<approve_exchange_v3_operator_calldata>"
+          },
+          {
+            "target": "0x006F54F7f9A22e0000CC2AB60031000000ae9fEF",
+            "value": "0",
+            "data": "<approve_router_operator_calldata>"
           },
           {
             "target": "0x006F54F7f9A22e0000CC2AB60031000000ae9fEF",
@@ -2177,6 +2190,8 @@ fresh outside the quote path.
           "shares_balance": "10",
           "entry_avg_price_usdc": "0.45",
           "entry_cost_usdc": "4.5",
+          "gross_entry_cost_usdc": "4.590000",
+          "entry_fees_usdc": "0.090000",
           "realized_payout_usdc": "0.00",
           "total_cost_usdc": "4.50",
           "status": "OPEN",
@@ -2208,6 +2223,13 @@ fresh outside the quote path.
       }
     }
     ```
+
+    `gross_entry_cost_usdc` and `entry_fees_usdc` carry the exact six-decimal entry
+    basis: gross includes attributed BUY fees (SELL fees are excluded), and the
+    exact net basis is `gross_entry_cost_usdc − entry_fees_usdc`. Parse both as
+    decimal strings — converting through a float loses the precision they exist to
+    preserve. The 2-decimal `entry_cost_usdc` / `total_cost_usdc` remain the
+    rounded display-basis fields.
 
     Use `cursor` from `pagination.next_cursor` to fetch the next page. Keep the same
     filters and `sort`; `cursor` supersedes `offset`. A `null` cursor means there
@@ -3792,6 +3814,11 @@ In this section, we will talk you through how to handle errors with the RFQ syst
       if (!OpenRfqSessionError.isError(error)) throw error;
 
       switch (error.name) {
+        case "ConnectionLostError":
+          // error: ConnectionLostError
+          // error.code: WebSocketCloseCode
+          // error.reason: string
+          break;
         case "TransportError":
           // error: TransportError
           break;
@@ -3816,6 +3843,11 @@ In this section, we will talk you through how to handle errors with the RFQ syst
           // error: RfqQuoteRejectedError
           // error.rfqId: RfqId
           // error.code: RfqErrorCode | undefined
+          break;
+        case "ConnectionLostError":
+          // error: ConnectionLostError
+          // error.code: WebSocketCloseCode
+          // error.reason: string
           break;
         case "SigningError":
           // error: SigningError
@@ -3852,6 +3884,11 @@ In this section, we will talk you through how to handle errors with the RFQ syst
           // error.quoteId: RfqQuoteId
           // error.code: RfqErrorCode | undefined
           break;
+        case "ConnectionLostError":
+          // error: ConnectionLostError
+          // error.code: WebSocketCloseCode
+          // error.reason: string
+          break;
         case "TimeoutError":
           // error: TimeoutError
           break;
@@ -3884,6 +3921,11 @@ In this section, we will talk you through how to handle errors with the RFQ syst
           // error.quoteId: RfqQuoteId
           // error.code: RfqErrorCode | undefined
           break;
+        case "ConnectionLostError":
+          // error: ConnectionLostError
+          // error.code: WebSocketCloseCode
+          // error.reason: string
+          break;
         case "TimeoutError":
           // error: TimeoutError
           break;
@@ -3901,13 +3943,17 @@ In this section, we will talk you through how to handle errors with the RFQ syst
     Wrap `client.open_rfq_session()` in `try`/`except` and catch SDK exception types.
 
     ```python theme={null}
-    from polymarket import TimeoutError, TransportError
+    from polymarket import ConnectionLostError, TimeoutError, TransportError
 
 
     try:
         async with client.open_rfq_session() as session:
             async for event in session:
                 ...
+    except ConnectionLostError as error:
+        # error.code: int
+        # error.reason: str
+        ...
     except TimeoutError as error:
         # error: TimeoutError
         ...
@@ -3924,14 +3970,23 @@ In this section, we will talk you through how to handle errors with the RFQ syst
     ```python theme={null}
     from decimal import Decimal
 
-    from polymarket import RfqQuoteRejectedError, TimeoutError, TransportError
+    from polymarket import (
+        ConnectionLostError,
+        RfqQuoteRejectedError,
+        TimeoutError,
+        TransportError,
+    )
 
 
     try:
         reference = await event.quote(price=Decimal("0.45"))
     except RfqQuoteRejectedError as error:
         # error.rfq_id: RfqId
-        # error.code: RfqErrorCode | None
+        # error.code: RfqErrorCode | str | None
+        ...
+    except ConnectionLostError as error:
+        # error.code: int
+        # error.reason: str
         ...
     except TimeoutError as error:
         # error: TimeoutError
@@ -3947,7 +4002,12 @@ In this section, we will talk you through how to handle errors with the RFQ syst
     cancellation rejection, timeout, and transport errors.
 
     ```python theme={null}
-    from polymarket import RfqCancelQuoteRejectedError, TimeoutError, TransportError
+    from polymarket import (
+        ConnectionLostError,
+        RfqCancelQuoteRejectedError,
+        TimeoutError,
+        TransportError,
+    )
 
 
     try:
@@ -3955,7 +4015,11 @@ In this section, we will talk you through how to handle errors with the RFQ syst
     except RfqCancelQuoteRejectedError as error:
         # error.rfq_id: RfqId
         # error.quote_id: RfqQuoteId
-        # error.code: RfqErrorCode | None
+        # error.code: RfqErrorCode | str | None
+        ...
+    except ConnectionLostError as error:
+        # error.code: int
+        # error.reason: str
         ...
     except TimeoutError as error:
         # error: TimeoutError
@@ -3971,7 +4035,12 @@ In this section, we will talk you through how to handle errors with the RFQ syst
     RFQ confirmation rejection, timeout, and transport errors.
 
     ```python theme={null}
-    from polymarket import RfqConfirmationRejectedError, TimeoutError, TransportError
+    from polymarket import (
+        ConnectionLostError,
+        RfqConfirmationRejectedError,
+        TimeoutError,
+        TransportError,
+    )
 
 
     try:
@@ -3982,7 +4051,11 @@ In this section, we will talk you through how to handle errors with the RFQ syst
     except RfqConfirmationRejectedError as error:
         # error.rfq_id: RfqId
         # error.quote_id: RfqQuoteId
-        # error.code: RfqErrorCode | None
+        # error.code: RfqErrorCode | str | None
+        ...
+    except ConnectionLostError as error:
+        # error.code: int
+        # error.reason: str
         ...
     except TimeoutError as error:
         # error: TimeoutError
@@ -4046,9 +4119,11 @@ In this section, we will talk you through how to handle errors with the RFQ syst
     | `INVALID_CONFIRMATION`                     | Last Look confirmation payload is invalid                      |
     | `MAKER_NOT_REQUIRED`                       | This quote maker is not required for last-look confirmation    |
     | `MAKER_ALREADY_RESPONDED`                  | This quote maker already responded to the confirmation request |
+    | `MAKER_QUOTE_LIMITED`                      | Quote submissions from this maker are temporarily limited      |
     | `SERVICE_UNAVAILABLE`                      | RFQ service dependency is temporarily unavailable              |
 
-    Treat these errors as command-level failures. Keep the WebSocket session alive
-    unless the connection itself closes or authentication fails.
+    Treat these errors as command-level failures, including new codes introduced
+    after this list was written. Keep the WebSocket session alive unless the
+    connection itself closes or authentication fails.
   </Tab>
 </Tabs>

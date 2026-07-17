@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/core/get-user-activity.md
-Downloaded: 2026-07-09T21:24:03.319Z
+Downloaded: 2026-07-17T20:55:43.462Z
 -->
 
 > ## Documentation Index
@@ -45,13 +45,19 @@ paths:
             default: 100
             minimum: 0
             maximum: 500
+          description: Page size. Values above the maximum are clamped to 500.
         - in: query
           name: offset
           schema:
             type: integer
             default: 0
             minimum: 0
-            maximum: 10000
+            maximum: 5000
+          description: >-
+            Starting index for pagination. Requests past the cap are rejected
+            with a 400 (never silently clamped). To read history deeper than
+            offset 5000, page inside `start`/`end` windows — each window has its
+            own offset budget.
         - in: query
           name: user
           required: true
@@ -107,7 +113,9 @@ paths:
           description: >-
             Lower-bound timestamp (epoch seconds) for the activity window. Omit
             or pass `0` for the default window (most recent ~3 years); pass a
-            positive epoch (e.g. `1`) to retrieve full history.
+            positive epoch (e.g. `1`) to retrieve full history. With
+            `sortDirection=ASC`, omitting `start` already reads from the
+            beginning of the account's history (no default window).
         - in: query
           name: end
           schema:
@@ -133,6 +141,10 @@ paths:
               - ASC
               - DESC
             default: DESC
+          description: >-
+            `DESC` (default) returns the newest rows first; `ASC` the oldest
+            first. Both orders are stable — the same query returns the same rows
+            at any `limit`/`offset`, so pages compose without gaps or repeats.
         - in: query
           name: side
           schema:

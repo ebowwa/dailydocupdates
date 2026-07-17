@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/core/get-user-combo-positions.md
-Downloaded: 2026-07-14T21:00:33.642Z
+Downloaded: 2026-07-17T20:55:43.462Z
 -->
 
 > ## Documentation Index
@@ -228,6 +228,20 @@ components:
             Original cost basis = entry_avg_price × (shares_balance +
             realized_payout). Survives redemption burning the shares; equals
             entry_cost_usdc while OPEN.
+        gross_entry_cost_usdc:
+          type: string
+          description: >-
+            Exact gross entry basis including attributed BUY fees, as a
+            six-decimal precision-preserving string (e.g. "8999.997488") — parse
+            it as a decimal, never through a float. Tracks the remaining basis
+            while the position is live and freezes once it is terminal. Exact
+            net basis = gross_entry_cost_usdc − entry_fees_usdc.
+        entry_fees_usdc:
+          type: string
+          description: >-
+            BUY-fee portion of the same basis, as a six-decimal
+            precision-preserving string. SELL fees are excluded; always ≤
+            gross_entry_cost_usdc.
         status:
           type: string
           enum:

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/llm-gateway-protocol.md
-Downloaded: 2026-07-16T20:59:06.340Z
+Downloaded: 2026-07-17T20:55:43.445Z
 -->
 
 > ## Documentation Index
@@ -54,6 +54,8 @@ Microsoft Foundry and the [Claude Platform on AWS](/en/claude-platform-on-aws) i
 Token-counting endpoints are the only optional ones: when they're absent, Claude Code estimates context usage locally. Inference requests post to `/v1/messages?beta=true`, so match on the path, not the full URL. The Google Cloud's Agent Platform method suffixes attach to the publisher model path, as in `/projects/{project}/locations/{location}/publishers/anthropic/models/{model}:streamRawPredict`.
 
 A gateway also sees best-effort startup traffic it can reject without breaking anything: a `HEAD /` connectivity probe, and on Amazon Bedrock-format gateways a `GET /inference-profiles?type=SYSTEM_DEFINED` request.
+
+The [fast mode](/en/fast-mode) availability check never appears in gateway logs: it calls `api.anthropic.com` directly rather than following `ANTHROPIC_BASE_URL`, so on a network that blocks direct egress to `api.anthropic.com`, fast mode can report a connectivity error while inference through the gateway keeps working. The [WebFetch domain safety check](/en/data-usage#webfetch-domain-safety-check) also calls `api.anthropic.com` directly. [Use fast mode behind proxies and LLM gateways](/en/fast-mode#use-fast-mode-behind-proxies-and-llm-gateways) covers the variables that restore it.
 
 ### Streaming
 

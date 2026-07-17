@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/data-usage.md
-Downloaded: 2026-07-16T20:59:06.335Z
+Downloaded: 2026-07-17T20:55:43.438Z
 -->
 
 > ## Documentation Index
@@ -78,12 +78,12 @@ Claude Code runs locally. To interact with the LLM, Claude Code sends data over 
 
 Encryption at rest depends on your model provider:
 
-| Provider                      | Encryption at rest                                                                                                                    |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Anthropic API                 | Infrastructure-level disk encryption (AES-256). Enable [Zero Data Retention](/en/zero-data-retention) for no server-side persistence. |
-| Amazon Bedrock                | AES-256 with AWS-managed keys. Customer-managed keys available via AWS KMS.                                                           |
-| Google Cloud's Agent Platform | Google-managed encryption keys. CMEK available.                                                                                       |
-| Microsoft Foundry             | Requests route to Anthropic infrastructure with AES-256 disk encryption.                                                              |
+| Provider                      | Encryption at rest                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Anthropic API                 | Infrastructure-level disk encryption (AES-256). Enable [Zero Data Retention](/en/zero-data-retention) for no server-side persistence.                                                                                                                                                                                                                                                                                                   |
+| Amazon Bedrock                | AES-256 with AWS-managed keys. Customer-managed keys available via AWS KMS.                                                                                                                                                                                                                                                                                                                                                             |
+| Google Cloud's Agent Platform | Google-managed encryption keys. CMEK available.                                                                                                                                                                                                                                                                                                                                                                                         |
+| Microsoft Foundry             | Depends on the deployment's [hosting option](https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry#hosting-options). For Hosted on Azure deployments, prompts and completions remain within Azure; only usage metadata and content flagged by Anthropic's safety systems egress to Anthropic. For Hosted on Anthropic deployments, requests route to Anthropic infrastructure with AES-256 disk encryption. |
 
 Claude Code is built on Anthropic's APIs. For details on API security controls, including API logging procedures, see the compliance artifacts in the [Anthropic Trust Center](https://trust.anthropic.com).
 
@@ -119,7 +119,7 @@ When you use a third-party provider such as Amazon Bedrock or Google Cloud's Age
 
 ## Default behaviors by API provider
 
-By default, error reporting, telemetry, and bug reporting are disabled when using Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry, or Claude Platform on AWS. Session quality surveys and the WebFetch domain safety check are exceptions and run regardless of provider. On a signed-in [Claude apps gateway](/en/claude-apps-gateway) session, usage analytics, error reporting, and survey ratings to Anthropic are disabled by the gateway credential itself, with no setting to re-enable them. You can opt out of all non-essential traffic, including surveys, at once by setting `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC`. This variable does not affect the WebFetch check, which has its own opt-out. Here are the full default behaviors:
+By default, error reporting, telemetry, and bug reporting are disabled when using Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry, or Claude Platform on AWS. Session quality surveys and the WebFetch domain safety check are exceptions and run regardless of provider. On a signed-in [Claude apps gateway](/en/claude-apps-gateway) session, usage analytics, error reporting, and survey ratings to Anthropic are disabled by the gateway credential itself, with no setting to re-enable them. You can opt out of all non-essential traffic, including surveys, at once by setting `CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC`. This variable doesn't affect the WebFetch check or official plugin marketplace auto-install; each has its own opt-out: `skipWebFetchPreflight` in [settings](/en/settings) for WebFetch, and `CLAUDE_CODE_DISABLE_OFFICIAL_MARKETPLACE_AUTOINSTALL` for the marketplace. Here are the full default behaviors:
 
 | Service                              | Claude API                                                                                            | Google Cloud's Agent Platform API                                                      | Amazon Bedrock API                                                                     | Microsoft Foundry API                                                                  | Claude Platform on AWS                                                                 |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |

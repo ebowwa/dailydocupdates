@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/typescript.md
-Downloaded: 2026-07-13T20:56:53.618Z
+Downloaded: 2026-07-17T20:55:43.477Z
 -->
 
 > ## Documentation Index
@@ -1107,6 +1107,27 @@ Secure clients expose the API credentials created for the authenticated session.
 </Tabs>
 
 ## Changelog
+
+### `0.1.0-beta.18`
+
+* `setupTradingApprovals` and `prepareTradingApprovals` no longer request approvals for the retired CLOB v1 Neg Risk Adapter.
+* Streams drop unknown or unreadable WebSocket frames instead of closing the connection. RFQ quoter sessions no longer fail with `TransportError` on an unrecognized frame; a caller waiting on an unreadable acknowledgement fails through its acknowledgement timeout instead.
+* Removed `RfqKnownInboundMessageSchema` from `@polymarket/bindings`; each RFQ inbound message schema declares its own object shape directly.
+
+### `0.1.0-beta.17`
+
+* RFQ quoter sessions now keep running when the server introduces new error codes. `RfqErrorCode` is an open type: known codes are enumerated in `RfqKnownErrorCode`, and unrecognized codes flow through rejection errors as plain strings.
+* Deprecated the `RfqErrorCode` value alias; migrate enum member access:
+
+```diff theme={null}
+-if (error.code === RfqErrorCode.RateLimited) {
++if (error.code === RfqKnownErrorCode.RateLimited) {
+```
+
+* Added `ConnectionLostError` carrying the WebSocket close `code` and `reason`. Losing an RFQ session connection now rejects in-flight operations and fails the session iterator with it, instead of ending the event loop silently. Closing the session still ends iteration cleanly.
+* Streamed market and user events normalize empty-string optional decimal fields (for example a trade's `feeRateBps` or a price change's `bestBid` and `bestAsk`) to `null`.
+* Batch price reads (`fetchPrices`, `fetchMidpoints`, `fetchSpreads`) return `TokenId`-keyed records of branded decimal strings.
+* Perps sessions handle fills and trades frames that batch multiple entries.
 
 ### `0.1.0-beta.16`
 

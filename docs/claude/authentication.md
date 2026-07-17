@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/authentication.md
-Downloaded: 2026-07-16T20:59:06.327Z
+Downloaded: 2026-07-17T20:55:43.430Z
 -->
 
 > ## Documentation Index
@@ -191,6 +191,6 @@ The command walks you through OAuth authorization and prints a token to the term
 export CLAUDE_CODE_OAUTH_TOKEN=your-token
 ```
 
-This token authenticates with your Claude subscription and requires a Pro, Max, Team, or Enterprise plan. It is scoped to inference only and cannot establish [Remote Control](/en/remote-control) sessions.
+This token authenticates with your Claude subscription and requires a Pro, Max, Team, or Enterprise plan. It can only make model requests, so it can't establish [Remote Control](/en/remote-control) sessions or fetch [claude.ai connectors](/en/mcp#use-mcp-servers-from-claude-ai). MCP servers you configure locally still work.
 
 [Bare mode](/en/headless#start-faster-with-bare-mode) does not read `CLAUDE_CODE_OAUTH_TOKEN`. If your script passes `--bare`, authenticate with `ANTHROPIC_API_KEY` or an `apiKeyHelper` instead.

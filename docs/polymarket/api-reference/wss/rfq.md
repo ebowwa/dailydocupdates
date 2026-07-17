@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/wss/rfq.md
+Downloaded: 2026-07-17T20:55:43.475Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -1441,7 +1446,10 @@ operations:
                 required: false
               - name: code
                 type: string
-                description: Stable machine-readable error code.
+                description: >-
+                  Stable machine-readable error code. New codes may be
+                  introduced over time; treat unrecognized codes as
+                  command-level failures.
                 enumValues:
                   - ADDRESS_MISMATCH
                   - ALLOWANCE_VALIDATION_FAILED
@@ -1460,6 +1468,7 @@ operations:
                   - LEG_METADATA_UNAVAILABLE
                   - MAKER_ALREADY_RESPONDED
                   - MAKER_NOT_REQUIRED
+                  - MAKER_QUOTE_LIMITED
                   - PRE_EXECUTION_BALANCE_RESERVATION_FAILED
                   - QUOTE_MISMATCH
                   - QUOTE_UNAVAILABLE
@@ -1503,7 +1512,9 @@ operations:
               x-parser-schema-id: <anonymous-schema-87>
             code:
               type: string
-              description: Stable machine-readable error code.
+              description: >-
+                Stable machine-readable error code. New codes may be introduced
+                over time; treat unrecognized codes as command-level failures.
               enum:
                 - ADDRESS_MISMATCH
                 - ALLOWANCE_VALIDATION_FAILED
@@ -1522,6 +1533,7 @@ operations:
                 - LEG_METADATA_UNAVAILABLE
                 - MAKER_ALREADY_RESPONDED
                 - MAKER_NOT_REQUIRED
+                - MAKER_QUOTE_LIMITED
                 - PRE_EXECUTION_BALANCE_RESERVATION_FAILED
                 - QUOTE_MISMATCH
                 - QUOTE_UNAVAILABLE

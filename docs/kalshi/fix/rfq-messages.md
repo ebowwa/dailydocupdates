@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/fix/rfq-messages.md
-Downloaded: 2026-07-09T21:24:05.957Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
