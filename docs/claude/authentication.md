@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/authentication.md
-Downloaded: 2026-07-17T20:55:43.430Z
+Downloaded: 2026-07-18T20:49:38.014Z
 -->
 
 > ## Documentation Index
@@ -124,6 +124,11 @@ For teams using Amazon Bedrock, Google Cloud's Agent Platform, or Microsoft Foun
 
 To require that developer sessions authenticate into a specific Anthropic organization, set [`forceLoginMethod` and `forceLoginOrgUUID`](/en/settings#available-settings) in [managed settings](/en/settings#settings-files). Set `forceLoginOrgUUID` to your organization ID, shown in [claude.ai admin settings](https://claude.ai/admin-settings/organization) for Claude for Teams or Enterprise organizations, or at [platform.claude.com/settings/organization](https://platform.claude.com/settings/organization) for Console organizations. With both keys set, Claude Code restricts login to the listed organization and exits at startup if the active credential belongs to a different one.
 
+Developers can log in from several paths: the terminal `/login` flow, the [VS Code extension](/en/vs-code), the Agent SDK, `claude setup-token`, and `/install-github-app`. On Claude Code v2.1.212 or later, every path enforces `forceLoginMethod`; before v2.1.212, only terminal logins enforced either key. The paths differ on `forceLoginOrgUUID`:
+
+* **Terminal, VS Code extension, and Agent SDK logins**: enforce both keys
+* **`claude setup-token` and `/install-github-app`**: enforce only `forceLoginMethod`, so they can mint a token in a different organization
+
 Deploy the keys through your device management tooling. [Server-managed settings](/en/server-managed-settings) reach only accounts that are already authenticated into your organization, so they can't redirect a developer's first login. If your organization distributes server-managed settings as well, set the keys in both places: managed-settings sources [don't merge](/en/server-managed-settings#settings-precedence), and cached server-managed settings replace the device-managed file entirely.
 
 The keys also block sessions authenticated by `ANTHROPIC_API_KEY`, `ANTHROPIC_AUTH_TOKEN`, or `apiKeyHelper`, since organization membership can't be verified for an environment credential. Cloud provider sessions such as Amazon Bedrock authenticate against your cloud provider and aren't blocked; restrict those through your cloud IAM policies. See [`forceLoginOrgUUID`](/en/settings#available-settings) in the settings reference for the full behavior. Before v2.1.146, the pin applied only to the login flow and didn't block API-key credentials.
@@ -185,7 +190,7 @@ For CI pipelines, scripts, or other environments where interactive browser login
 claude setup-token
 ```
 
-The command walks you through OAuth authorization and prints a token to the terminal. It does not save the token anywhere; copy it and set it as the `CLAUDE_CODE_OAUTH_TOKEN` environment variable wherever you want to authenticate:
+The command opens the same browser authorization flow as `/login`, and the token prints to the terminal after you approve access in the browser. It does not save the token anywhere; copy it and set it as the `CLAUDE_CODE_OAUTH_TOKEN` environment variable wherever you want to authenticate:
 
 ```bash theme={null}
 export CLAUDE_CODE_OAUTH_TOKEN=your-token

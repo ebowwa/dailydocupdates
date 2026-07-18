@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/interactive-mode.md
-Downloaded: 2026-07-17T20:55:43.444Z
+Downloaded: 2026-07-18T20:49:38.029Z
 -->
 
 > ## Documentation Index
@@ -363,6 +363,8 @@ Side questions have full visibility into the current conversation, so you can as
 * **Low cost**: the side question reuses the parent conversation's prompt cache, so the additional cost is minimal.
 
 Earlier side questions from the same session appear as a dimmed list above the current answer. They stay out of the conversation history but remain visible in the overlay until you clear them.
+
+To return to the overlay after dismissing it, run `/btw` with no question. The overlay reopens on your most recent exchange. Press `Left` to step back through earlier answers. Before v2.1.212, `/btw` without a question printed a usage message instead.
 
 Once the answer appears, the overlay accepts these keys.
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/artifacts.md
-Downloaded: 2026-07-17T20:55:43.429Z
+Downloaded: 2026-07-18T20:49:38.014Z
 -->
 
 > ## Documentation Index
@@ -231,7 +231,7 @@ Owners on Team and Enterprise plans control artifacts from [claude.ai admin sett
 
 ### Enable or disable artifacts
 
-To enable or disable artifacts for the whole organization, go to **Settings > Claude Code > Capabilities** and use the **Artifacts** toggle. On Enterprise plans with role-based access control, you can additionally scope artifacts to specific roles: go to **Settings > Roles**, edit a role, and set the **Artifacts** permission under the **Claude Code** group.
+To enable or disable artifacts for the whole organization, go to [**Settings > Claude Code > Capabilities**](https://claude.ai/admin-settings/claude-code) and use the **Artifacts** toggle. On Enterprise plans with role-based access control, you can additionally scope artifacts to specific roles: go to [**Settings > Roles**](https://claude.ai/admin-settings/roles), edit a role, and set the **Artifacts** permission under the **Claude Code** group.
 
 ### Control connector calls from artifacts
 
@@ -243,7 +243,7 @@ Public sharing is off by default on Team and Enterprise plans, so members can sh
 
 ### Set a retention policy
 
-To set how long artifacts are kept before automatic deletion, go to **Settings > Data & privacy controls**. You can set separate retention periods for artifacts that are still private to their author and artifacts that have been shared.
+To set how long artifacts are kept before automatic deletion, go to [**Settings > Data & privacy controls**](https://claude.ai/admin-settings/data-privacy-controls). You can set separate retention periods for artifacts that are still private to their author and artifacts that have been shared.
 
 ### Review the audit log
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/desktop.md
-Downloaded: 2026-07-17T20:55:43.439Z
+Downloaded: 2026-07-18T20:49:38.022Z
 -->
 
 > ## Documentation Index
@@ -381,7 +381,7 @@ Dispatch is one of several ways to work with Claude when you're away from your t
 
 ## Extend Claude Code
 
-Connect external services, add reusable workflows, customize Claude's behavior, and configure preview servers. To manage connectors, skills, and plugins in one place, click **Customize** in the sidebar.
+Connect external services, add reusable workflows, customize Claude's behavior, and configure preview servers. To manage connectors, skills, and plugins in one place, click **Customize** in the sidebar. The [Cowork](https://claude.com/product/cowork) tab in the Desktop app sources its skills, plugins, and connectors from this Customize configuration, which syncs through your claude.ai account, not from the CLI's `~/.claude` directory.
 
 ### Connect external tools
 
@@ -399,13 +399,15 @@ Connectors are [MCP servers](/en/mcp) with a graphical setup flow. Use them for 
 
 You can send a command while Claude is working, the same as any other message, and the session returns to idle once the turn finishes. Before v2.1.206, a command sent mid-turn could leave the session showing as running and messages you sent afterward weren't delivered.
 
+Personal skills in `~/.claude/skills/` apply to local sessions; an [SSH](#ssh-sessions) session reads `~/.claude/skills/` from the remote host's home directory, not from your machine. Cloud sessions load the skills enabled for your claude.ai account instead. See [Skills in Cowork and cloud sessions](/en/skills#skills-in-cowork-and-cloud-sessions).
+
 ### Install plugins
 
 [Plugins](/en/plugins) are reusable packages that add skills, agents, hooks, MCP servers, and LSP configurations to Claude Code. You can install plugins from the desktop app without using the terminal.
 
 For local and [SSH](#ssh-sessions) sessions, click the **+** button next to the prompt box and select **Plugins** to see your installed plugins and their skills. To add a plugin, select **Add plugin** from the submenu to open the plugin browser, which shows available plugins from your configured [marketplaces](/en/plugin-marketplaces) including the official Anthropic marketplace. Select **Manage plugins** to enable, disable, or uninstall plugins.
 
-Plugins can be scoped to your user account, a specific project, or local-only. If your organization manages plugins centrally, those plugins are available in desktop sessions the same way they are in the CLI. The plugin browser is not available in cloud sessions, but plugins declared in the repository's `.claude/settings.json` under [`enabledPlugins`](/en/settings#enabledplugins) still load. Plugins aren't available in WSL sessions. For the full plugin reference including creating your own plugins, see [plugins](/en/plugins).
+Plugins can be scoped to your user account, a specific project, or local-only. If your organization manages plugins centrally, those plugins are available in desktop sessions the same way they are in the CLI. The plugin browser is not available in cloud sessions, and plugins you install from the desktop app aren't available for cloud sessions; to use a plugin in a cloud session, declare it in the repository's `.claude/settings.json` under [`enabledPlugins`](/en/settings#enabledplugins) so it [installs at session start](/en/claude-code-on-the-web#what’s-available-in-cloud-sessions). Plugins aren't available in WSL sessions. For the full plugin reference including creating your own plugins, see [plugins](/en/plugins).
 
 ### Configure preview servers
 
@@ -884,4 +886,4 @@ git checkout <branch-name>
 * Open Help → Get Support in the desktop app, or visit the [Claude support center](https://support.claude.com/) directly
 * For problems that also reproduce in the standalone `claude` CLI, search or file a bug on [GitHub Issues](https://github.com/anthropics/claude-code/issues)
 
-When reporting a problem, include your desktop app version, your operating system, the exact error message, and relevant logs. On macOS, check Console.app. On Windows, check Event Viewer → Windows Logs → Application.
+When reporting a problem, include your desktop app version, your operating system, the exact error message, and relevant logs. On macOS, check Console.app. On Windows, check Event Viewer → Windows Logs → Application. Review log excerpts before posting them to a public issue; they can include file paths and other details from your environment.
