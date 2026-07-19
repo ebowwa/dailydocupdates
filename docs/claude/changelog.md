@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/changelog.md
-Downloaded: 2026-07-18T20:49:38.015Z
+Downloaded: 2026-07-19T20:50:17.327Z
 -->
 
 > ## Documentation Index
@@ -14,6 +14,10 @@ Downloaded: 2026-07-18T20:49:38.015Z
 This page is generated from the [CHANGELOG.md on GitHub](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md).
 
 Run `claude --version` to check your installed version.
+
+<Update label="2.1.215" description="July 19, 2026">
+  * Claude no longer runs the `/verify` and `/code-review` skills on its own; invoke them with `/verify` or `/code-review` when you want them
+</Update>
 
 <Update label="2.1.214" description="July 18, 2026">
   * Fixed single-segment `dir/**` allow rules like `Edit(src/**)` auto-approving writes to nested `dir/` directories anywhere in the tree instead of only `<cwd>/dir`
