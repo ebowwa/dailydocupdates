@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/withdraw.md
+Downloaded: 2026-07-20T21:12:08.358Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,7 +19,6 @@ The `ts` field is Unix seconds (not milliseconds) because the on-chain contract 
 against `block.timestamp`. It must also match the `uint64 ts` in the signed EIP-712 struct.
 
 
-<Badge color="gray" size="md">Request Weight: **1**</Badge>
 
 
 ## OpenAPI

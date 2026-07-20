@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/perps/trading.md
+Downloaded: 2026-07-20T21:12:08.366Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -1441,11 +1446,13 @@ These orders do not rest on the book.
   </Tab>
 </Tabs>
 
-## Cancel Resting Orders
+## Cancel Orders
 
 Cancel resting orders when they are stale, conflict with updated strategy, or
 should no longer remain on the book. Canceling a resting order does not close any
 filled position.
+
+### Cancel Single Orders
 
 <Tabs>
   <Tab title="TypeScript">
@@ -1505,6 +1512,14 @@ filled position.
   <Tab title="API">
     Cancel by order ID with `DELETE /v1/trade/orders`.
 
+    Use the same signing flow as [Place Orders](#place-orders) to create
+    `<cancel_signature>`. For hashing, sign the compact operation, not the
+    structured JSON body:
+
+    ```ts theme={null}
+    ["cancelOrders", [1234567890]];
+    ```
+
     ```bash theme={null}
     curl -X DELETE "https://api.perpetuals.polymarket.com/v1/trade/orders" \
       -H "content-type: application/json" \
@@ -1519,7 +1534,12 @@ filled position.
       }'
     ```
 
-    Cancel by client order ID with `DELETE /v1/trade/orders-coid`.
+    Cancel by client order ID with `DELETE /v1/trade/orders-coid`. For hashing,
+    the compact operation is:
+
+    ```ts theme={null}
+    ["cancelOrdersCOID", ["7f9e4a2b6c8d0e1f1234567890abcdef"]];
+    ```
 
     ```bash theme={null}
     curl -X DELETE "https://api.perpetuals.polymarket.com/v1/trade/orders-coid" \
@@ -1556,6 +1576,106 @@ filled position.
       ]
       ```
     </CodeGroup>
+  </Tab>
+</Tabs>
+
+### Cancel All Orders
+
+Cancel every open order for your account in a single request, for example when
+pulling quotes during a fast move or shutting down a strategy. Scope the
+request to one instrument to clear only that book while quotes on other
+instruments stay live.
+
+A successful response confirms the request was accepted, not that every order
+is already gone: individual orders can still race with fills or other cancels.
+Confirm the final state from your open orders.
+
+<Tabs>
+  <Tab title="TypeScript">
+    Cancel all open orders, or only the open orders on one instrument.
+
+    <CodeGroup>
+      ```ts All Instruments theme={null}
+      await session.cancelAllOrders();
+      ```
+
+      ```ts One Instrument theme={null}
+      await session.cancelAllOrders({ instrumentId: instrument.id });
+      ```
+    </CodeGroup>
+
+    The call resolves once the request is accepted and throws if it is rejected.
+    Use `session.fetchOpenOrders()` to confirm the remaining open orders.
+  </Tab>
+
+  <Tab title="Python">
+    Cancel all open orders, or only the open orders on one instrument.
+
+    <CodeGroup>
+      ```python All Instruments theme={null}
+      await session.cancel_all_orders()
+      ```
+
+      ```python One Instrument theme={null}
+      await session.cancel_all_orders(instrument_id=instrument.id)
+      ```
+    </CodeGroup>
+
+    The call returns once the request is accepted and raises if it is rejected.
+    Use `session.fetch_open_orders()` to confirm the remaining open orders.
+  </Tab>
+
+  <Tab title="API">
+    Cancel all open orders with `DELETE /v1/trade/orders/all`. Use the same
+    signing flow as [Place Orders](#place-orders) to create `<cancel_signature>`.
+    For hashing, sign the compact operation, not the structured JSON body.
+
+    To cancel across all instruments, the compact `args` is an empty array:
+
+    ```ts theme={null}
+    ["cancelAll", []];
+    ```
+
+    ```bash theme={null}
+    curl -X DELETE "https://api.perpetuals.polymarket.com/v1/trade/orders/all" \
+      -H "content-type: application/json" \
+      -d '{
+        "op": {
+          "type": "cancelAll",
+          "args": {}
+        },
+        "sig": "<cancel_signature>",
+        "salt": 234567894,
+        "ts": 1767000050000
+      }'
+    ```
+
+    To cancel only the open orders on one instrument, the compact `args` holds the
+    instrument ID, and the JSON body passes it as `iid`:
+
+    ```ts theme={null}
+    ["cancelAll", [1]];
+    ```
+
+    ```bash theme={null}
+    curl -X DELETE "https://api.perpetuals.polymarket.com/v1/trade/orders/all" \
+      -H "content-type: application/json" \
+      -d '{
+        "op": {
+          "type": "cancelAll",
+          "args": { "iid": 1 }
+        },
+        "sig": "<cancel_signature>",
+        "salt": 234567895,
+        "ts": 1767000060000
+      }'
+    ```
+
+    The response confirms the request was accepted.
+
+    ```json theme={null}
+    { "status": "ok" }
+    ```
   </Tab>
 </Tabs>
 

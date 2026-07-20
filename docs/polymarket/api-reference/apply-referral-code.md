@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/apply-referral-code.md
+Downloaded: 2026-07-20T21:12:08.342Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,7 +13,6 @@
 can only apply a referral code if they do not already have one.
 
 
-<Badge color="gray" size="md">Request Weight: **1**</Badge>
 
 
 ## OpenAPI

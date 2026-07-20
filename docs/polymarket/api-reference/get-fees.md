@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/get-fees.md
+Downloaded: 2026-07-20T21:12:08.348Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,6 @@
 
 > Get the default fee schedule for each instrument type and category. Rates returned are the $0-tier defaults; the account's actual rate on each fill depends on its trailing 30-day volume tier.
 
-<Badge color="gray" size="md">Request Weight: **2**</Badge>
 
 
 ## OpenAPI

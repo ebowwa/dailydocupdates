@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/websockets/market-and-event-lifecycle.md
-Downloaded: 2026-07-13T20:56:51.597Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

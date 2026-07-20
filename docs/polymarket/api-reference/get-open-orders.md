@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/get-open-orders.md
+Downloaded: 2026-07-20T21:12:08.349Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,15 +11,6 @@
 
 > Get open orders for the authenticated account.
 
-<Badge color="gray" size="md">Request Weight:</Badge>
-
-<br />
-
-<Badge color="gray" size="md">With instrument ID: **1**</Badge>
-
-<br />
-
-<Badge color="gray" size="md">Without instrument ID: **20**</Badge>
 
 
 ## OpenAPI

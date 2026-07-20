@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/get-fills.md
+Downloaded: 2026-07-20T21:12:08.348Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -9,7 +14,6 @@ If no end time is provided, the current time will be used.
 Maximum of 100 entries returned per request.
 
 
-<Badge color="gray" size="md">Request Weight: **10**</Badge>
 
 
 ## OpenAPI

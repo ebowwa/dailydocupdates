@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/check-invite-code.md
+Downloaded: 2026-07-20T21:12:08.343Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,7 +13,6 @@
 response is invalid if that address already has an account.
 
 
-<Badge color="gray" size="md">Request Weight: **1**</Badge>
 
 
 ## OpenAPI

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/get-book.md
+Downloaded: 2026-07-20T21:12:08.347Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,23 +11,6 @@
 
 > Get book for an instrument.
 
-<Badge color="gray" size="md">Request Weight:</Badge>
-
-<br />
-
-<Badge color="gray" size="md">Depth 10: **2**</Badge>
-
-<br />
-
-<Badge color="gray" size="md">Depth 100: **5**</Badge>
-
-<br />
-
-<Badge color="gray" size="md">Depth 500: **10**</Badge>
-
-<br />
-
-<Badge color="gray" size="md">Depth 1000: **20**</Badge>
 
 
 ## OpenAPI

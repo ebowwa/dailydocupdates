@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/get-account-stats.md
+Downloaded: 2026-07-20T21:12:08.346Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -9,7 +14,6 @@ account maker share, and entity maker share when applicable).
 Stats are cached by UTC day and may be stale by up to 24 hours.
 
 
-<Badge color="gray" size="md">Request Weight: **2**</Badge>
 
 
 ## OpenAPI

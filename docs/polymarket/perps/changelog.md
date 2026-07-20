@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/changelog.md
-Downloaded: 2026-07-13T20:56:53.621Z
+Downloaded: 2026-07-20T21:12:08.364Z
 -->
 
 > ## Documentation Index
@@ -12,6 +12,13 @@ Downloaded: 2026-07-13T20:56:53.621Z
 > Recent changes to the Polymarket Perps API and platform
 
 Notable changes to the Polymarket Perps API.
+
+<Update label="Jul 6, 2026" description="Cancel all orders added">
+  Added <code>DELETE /v1/trade/orders/all</code> to cancel all open orders in
+  one request, optionally scoped to a single instrument. Available in the SDKs
+  as <code>cancelAllOrders</code> (TypeScript) and{" "}
+  <code>cancel\_all\_orders</code> (Python).
+</Update>
 
 <Update label="Jun 11, 2026" description="Cancel responses include order IDs">
   Cancel responses now include `oid` and `coid` fields.

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/bunfig.md
+Downloaded: 2026-07-20T21:12:13.356Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -863,9 +868,11 @@ elide-lines = 10
 
 ### `run.noOrphans` - don't leave orphan processes behind
 
-When `true`, Bun watches the process that spawned it and exits as soon as that parent goes away — even if the parent was `SIGKILL`ed and never got a chance to forward a signal. On its own exit, Bun also recursively `SIGKILL`s every descendant process so nothing it spawned outlives it. Useful when Bun is launched by a supervisor (Electron, a CI runner, a thin shim) that may be force-killed.
+When `true`, Bun watches the process that spawned it and exits as soon as that parent goes away, even if the parent was force-killed and never got a chance to forward a signal. On its own exit, Bun also terminates every descendant process so nothing it spawned outlives it. Useful when Bun is launched by a supervisor (Electron, a CI runner, a thin shim) that may be force-killed.
 
-Linux and macOS only (no-op on Windows and other platforms). Equivalent to the `--no-orphans` CLI flag or the `BUN_FEATURE_FLAG_NO_ORPHANS=1` environment variable.
+On Linux this uses `prctl(PR_SET_PDEATHSIG)` and a `/proc` descendant walk; on macOS, `EVFILT_PROC`/`NOTE_EXIT` on the event loop's kqueue and a libproc descendant walk; on Windows, a thread-pool wait on the parent's process handle and a kill-on-close Job Object.
+
+Equivalent to the `--no-orphans` CLI flag or the `BUN_FEATURE_FLAG_NO_ORPHANS=1` environment variable.
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [run]
