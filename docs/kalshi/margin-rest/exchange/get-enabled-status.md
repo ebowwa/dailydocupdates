@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/margin-rest/exchange/get-enabled-status.md
+Downloaded: 2026-07-21T21:13:55.858Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -37,8 +42,6 @@ tags:
     description: Order group management endpoints
   - name: portfolio
     description: Portfolio and balance information endpoints
-  - name: fcm
-    description: FCM member specific endpoints
   - name: risk
     description: Margin risk metrics, parameters, and limits
   - name: funding

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/outdated.md
+Downloaded: 2026-07-21T21:18:03.775Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -129,7 +134,7 @@ bun outdated --filter='@monorepo/{types,cli}'
 
 ### Catalog Dependencies
 
-`bun outdated` also checks [catalog](/pm/catalogs) dependencies defined in `package.json`:
+`bun outdated` also checks [catalog](/docs/pm/catalogs) dependencies defined in `package.json`:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun outdated -r

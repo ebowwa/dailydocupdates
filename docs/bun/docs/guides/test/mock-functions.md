@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/mock-functions.md
+Downloaded: 2026-07-21T21:18:03.770Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -67,4 +72,4 @@ test("random", async () => {
 
 ***
 
-See [Mocks](/test/mocks).
+See [Mocks](/docs/test/mocks).

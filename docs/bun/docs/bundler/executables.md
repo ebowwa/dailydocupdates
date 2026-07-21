@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/executables.md
+Downloaded: 2026-07-21T21:18:03.752Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -281,7 +286,7 @@ Use the `--define` flag to inject build-time constants into your executable, suc
 
 Bun inlines these constants into the binary at build time, so they cost nothing at runtime and enable dead code elimination.
 
-<Note>For more examples and patterns, see the [Build-time constants guide](/guides/runtime/build-time-constants).</Note>
+<Note>For more examples and patterns, see the [Build-time constants guide](/docs/guides/runtime/build-time-constants).</Note>
 
 ***
 
@@ -600,7 +605,7 @@ The result is a single file you can deploy anywhere without installing Node.js, 
 
 Bun serves the frontend assets with the correct MIME types and cache headers. The HTML import is replaced with a manifest object that `Bun.serve` uses to serve the pre-bundled assets.
 
-For more on building full-stack applications, see the [full-stack guide](/bundler/fullstack).
+For more on building full-stack applications, see the [full-stack guide](/docs/bundler/fullstack).
 
 ***
 
@@ -1212,7 +1217,7 @@ console.log(`Running in ${config.environment} mode`);
 console.log(`API endpoint: ${config.apiUrl}`);
 ```
 
-Plugins can perform any transformation: compile YAML/TOML configs, inline SQL queries, generate type-safe API clients, or preprocess templates. See the [plugin documentation](/bundler/plugins).
+Plugins can perform any transformation: compile YAML/TOML configs, inline SQL queries, generate type-safe API clients, or preprocess templates. See the [plugin documentation](/docs/bundler/plugins).
 
 ***
 
@@ -1223,7 +1228,7 @@ The `--compile` flag does not support the following flags:
 * `--outdir` — use `outfile` instead.
 * `--public-path`
 * `--target=node`
-* `--target=browser` (without HTML entrypoints — see [Standalone HTML](/bundler/standalone-html) for `--compile --target=browser` with `.html` files)
+* `--target=browser` (without HTML entrypoints — see [Standalone HTML](/docs/bundler/standalone-html) for `--compile --target=browser` with `.html` files)
 * `--no-bundle` - Bun always bundles everything into the executable.
 
 ***

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/plugins.md
+Downloaded: 2026-07-21T21:18:03.782Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -303,7 +308,7 @@ The `.defer()` function can only be called once per `onLoad` callback.
 
 Bun's bundler is fast partly because it is written in native code and uses multiple threads to load and parse modules in parallel. Plugins written in JavaScript cannot take advantage of this, because JavaScript itself is single-threaded.
 
-Native plugins are written as [NAPI](/runtime/node-api) modules and can run on multiple threads, so they run much faster than JavaScript plugins. They can also skip unnecessary work such as the UTF-8 -> UTF-16 conversion needed to pass strings to JavaScript.
+Native plugins are written as [NAPI](/docs/runtime/node-api) modules and can run on multiple threads, so they run much faster than JavaScript plugins. They can also skip unnecessary work such as the UTF-8 -> UTF-16 conversion needed to pass strings to JavaScript.
 
 The following lifecycle hooks are available to native plugins:
 

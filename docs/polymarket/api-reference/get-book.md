@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/get-book.md
-Downloaded: 2026-07-20T21:12:08.347Z
+Downloaded: 2026-07-21T21:09:50.581Z
 -->
 
 > ## Documentation Index
@@ -11,6 +11,23 @@ Downloaded: 2026-07-20T21:12:08.347Z
 
 > Get book for an instrument.
 
+<Badge color="gray" size="md">Request Weight:</Badge>
+
+<br />
+
+<Badge color="gray" size="md">Depth 10: **2**</Badge>
+
+<br />
+
+<Badge color="gray" size="md">Depth 100: **5**</Badge>
+
+<br />
+
+<Badge color="gray" size="md">Depth 500: **10**</Badge>
+
+<br />
+
+<Badge color="gray" size="md">Depth 1000: **20**</Badge>
 
 
 ## OpenAPI

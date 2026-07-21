@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/bail.md
+Downloaded: 2026-07-21T21:18:03.769Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -21,4 +26,4 @@ bun test --bail=10
 
 ***
 
-See [`bun test`](/test).
+See [`bun test`](/docs/test).

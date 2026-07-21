@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/index.md
+Downloaded: 2026-07-21T21:18:03.753Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -149,7 +154,7 @@ bun build ./index.tsx --outdir ./out --watch
 
 ## Content types
 
-Like the Bun runtime, the bundler supports a range of file types by default. The following table lists the bundler's standard "loaders". See [loaders](/bundler/loaders).
+Like the Bun runtime, the bundler supports a range of file types by default. The following table lists the bundler's standard "loaders". See [loaders](/docs/bundler/loaders).
 
 | Extensions                                            | Details                                                                                                                                                                                                                                                                                                                     |
 | ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -183,11 +188,11 @@ If the bundler encounters an import with an unrecognized extension, it treats th
 
 The exact behavior of the file loader also depends on [`naming`](#naming) and [`publicPath`](#publicpath).
 
-<Info>See [loaders](/bundler/loaders) for more on the file loader.</Info>
+<Info>See [loaders](/docs/bundler/loaders) for more on the file loader.</Info>
 
 ### Plugins
 
-Plugins can override or extend the behavior described in this table. See [loaders](/bundler/loaders).
+Plugins can override or extend the behavior described in this table. See [loaders](/docs/bundler/loaders).
 
 ## API
 
@@ -562,7 +567,7 @@ await Bun.build({
 });
 ```
 
-Bun's plugin system is shared by the runtime and the bundler. See [plugins](/bundler/plugins).
+Bun's plugin system is shared by the runtime and the bundler. See [plugins](/docs/bundler/plugins).
 
 ### env
 
@@ -1481,7 +1486,7 @@ Each artifact also contains the following properties:
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `kind`      | What kind of build output this file is. A build generates bundled entrypoints, code-split "chunks", sourcemaps, bytecode, and copied assets (like images). |
 | `path`      | Absolute path to the file on disk                                                                                                                          |
-| `loader`    | The loader used to interpret the file. See [loaders](/bundler/loaders) for how Bun maps file extensions to built-in loaders.                               |
+| `loader`    | The loader used to interpret the file. See [loaders](/docs/bundler/loaders) for how Bun maps file extensions to built-in loaders.                               |
 | `hash`      | The hash of the file contents. Always defined for assets.                                                                                                  |
 | `sourcemap` | The sourcemap file corresponding to this file, if generated. Only defined for entrypoints and chunks.                                                      |
 
@@ -1586,7 +1591,7 @@ bun build ./cli.tsx --outfile mycli --compile
 ./mycli
 ```
 
-See [standalone executables](/bundler/executables).
+See [standalone executables](/docs/bundler/executables).
 
 ## Logs and errors
 

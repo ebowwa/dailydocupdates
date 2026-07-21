@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/scopes-registries.md
+Downloaded: 2026-07-21T21:18:03.777Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -35,4 +40,4 @@ To configure a private registry scoped to a particular organization:
 
 ### `.npmrc`
 
-Bun also reads [`.npmrc`](/pm/npmrc) files.
+Bun also reads [`.npmrc`](/docs/pm/npmrc) files.

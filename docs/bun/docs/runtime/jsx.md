@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/jsx.md
+Downloaded: 2026-07-21T21:18:03.781Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -22,7 +27,7 @@ console.log(<Component message="Hello world!" />);
 
 ## Configuration
 
-Bun reads your `tsconfig.json` or `jsconfig.json` to determine how to perform the JSX transform internally. If you'd rather not use either, you can set the same options in [`bunfig.toml`](/runtime/bunfig).
+Bun reads your `tsconfig.json` or `jsconfig.json` to determine how to perform the JSX transform internally. If you'd rather not use either, you can set the same options in [`bunfig.toml`](/docs/runtime/bunfig).
 
 Bun respects the following compiler options.
 

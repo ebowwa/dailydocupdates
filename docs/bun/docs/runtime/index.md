@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/index.md
+Downloaded: 2026-07-21T21:18:03.781Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -25,7 +30,7 @@ Use `bun run` to execute a source file.
 bun run index.js
 ```
 
-Bun supports TypeScript and JSX with no configuration. Bun transpiles every file on the fly with its native [transpiler](/runtime/transpiler) before running it.
+Bun supports TypeScript and JSX with no configuration. Bun transpiles every file on the fly with its native [transpiler](/docs/runtime/transpiler) before running it.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run index.js
@@ -94,7 +99,7 @@ Cleaning...
 Done.
 ```
 
-Bun executes the script command in a subshell. On Linux & macOS, it checks for the following shells in order, using the first one it finds: `bash`, `sh`, `zsh`. On Windows, it uses the [Bun Shell](/runtime/shell) to support bash-like syntax and many common commands.
+Bun executes the script command in a subshell. On Linux & macOS, it checks for the following shells in order, using the first one it finds: `bash`, `sh`, `zsh`. On Windows, it uses the [Bun Shell](/docs/runtime/shell) to support bash-like syntax and many common commands.
 
 <Note>⚡️ The startup time for `npm run` on Linux is roughly 170ms; with Bun it is `6ms`.</Note>
 
@@ -153,7 +158,7 @@ bun run --filter 'ba*' <script>
 
 executes `<script>` in both `bar` and `baz`, but not in `foo`.
 
-See [`--filter`](/pm/filter#running-scripts-with-filter).
+See [`--filter`](/docs/pm/filter#running-scripts-with-filter).
 
 ## `bun run -` to pipe code from stdin
 

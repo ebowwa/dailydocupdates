@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/html-static.md
+Downloaded: 2026-07-21T21:18:03.753Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -137,7 +142,7 @@ Press h + Enter to show shortcuts
 
 ## JavaScript, TypeScript, and JSX
 
-Bun's transpiler natively implements JavaScript, TypeScript, and JSX support. See [loaders](/bundler/loaders).
+Bun's transpiler natively implements JavaScript, TypeScript, and JSX support. See [loaders](/docs/bundler/loaders).
 
 <Note>Bun's transpiler is also used at runtime.</Note>
 
@@ -147,7 +152,7 @@ You can use ESM and CommonJS in your JavaScript, TypeScript, and JSX files. Bun 
 
 There is no pre-build or separate optimization step. It's all done at the same time.
 
-See [module resolution](/runtime/module-resolution).
+See [module resolution](/docs/runtime/module-resolution).
 
 ## CSS
 
@@ -470,7 +475,7 @@ Bun resolves all paths relative to your HTML file, so you can organize your proj
 
 ## How this works
 
-This is a small wrapper around Bun's support for [HTML imports](/bundler/fullstack) in JavaScript.
+This is a small wrapper around Bun's support for [HTML imports](/docs/bundler/fullstack) in JavaScript.
 
 ## Standalone HTML
 
@@ -480,8 +485,8 @@ You can bundle your entire frontend into a **single self-contained `.html` file*
 bun build --compile --target=browser ./index.html --outdir=dist
 ```
 
-Learn more in the [Standalone HTML docs](/bundler/standalone-html).
+Learn more in the [Standalone HTML docs](/docs/bundler/standalone-html).
 
 ## Adding a backend to your frontend
 
-To add a backend to your frontend, use the `routes` option in `Bun.serve`. See the [full-stack docs](/bundler/fullstack).
+To add a backend to your frontend, use the `routes` option in `Bun.serve`. See the [full-stack docs](/docs/bundler/fullstack).

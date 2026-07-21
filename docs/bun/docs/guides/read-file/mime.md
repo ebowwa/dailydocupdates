@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/read-file/mime.md
+Downloaded: 2026-07-21T21:18:03.765Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -19,4 +24,4 @@ file.type; // image/png
 
 ***
 
-See [File I/O](/runtime/file-io) for more on working with `BunFile`.
+See [File I/O](/docs/runtime/file-io) for more on working with `BunFile`.

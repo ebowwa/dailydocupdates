@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/set-env.md
+Downloaded: 2026-07-21T21:18:03.767Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -46,4 +51,4 @@ You can also set variables on the command line.
 
 ***
 
-See [Environment variables](/runtime/environment-variables).
+See [Environment variables](/docs/runtime/environment-variables).

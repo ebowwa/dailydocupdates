@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/dev-tooling/python.md
-Downloaded: 2026-07-17T20:55:43.477Z
+Downloaded: 2026-07-21T21:09:50.595Z
 -->
 
 > ## Documentation Index
@@ -1201,12 +1201,12 @@ Secure clients expose the API credentials created for the authenticated session.
 
 ### `0.1.0b6`
 
-* Added `list_combo_markets` for fetching the Combo market catalog with SDK pagination. See [Combos](/market-makers/combos).
+* Added `list_combo_markets` for fetching the Combo market catalog with SDK pagination. See [Combos](/trading/combos/overview).
 * Parse RFQ quote rejections that use the `SUBMISSION_WINDOW_CLOSED` gateway error code.
 
 ### `0.1.0b5`
 
-* Added Combos support for multi-leg RFQ positions. See [Combos](/market-makers/combos).
+* Added Combos support for multi-leg RFQ positions. See [Combos](/trading/combos/overview).
 * Added notebook-friendly model display for Jupyter workflows.
 * `ConditionId` is now deprecated in favor of `CtfConditionId`; existing
   `ConditionId` exports remain available as deprecated aliases.

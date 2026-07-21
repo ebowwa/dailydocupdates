@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/todo-tests.md
+Downloaded: 2026-07-21T21:18:03.771Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -70,5 +75,5 @@ $ echo $?
 
 See also:
 
-* [Skip a test](/guides/test/skip-tests)
-* [Writing tests](/test/writing-tests)
+* [Skip a test](/docs/guides/test/skip-tests)
+* [Writing tests](/docs/test/writing-tests)

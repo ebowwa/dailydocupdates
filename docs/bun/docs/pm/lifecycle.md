@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/lifecycle.md
+Downloaded: 2026-07-21T21:18:03.776Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -78,7 +83,7 @@ To disable lifecycle scripts for all packages, use the `--ignore-scripts` flag.
 bun install --ignore-scripts
 ```
 
-To make this the default for a project, set [`install.ignoreScripts`](/runtime/bunfig#install-ignorescripts) in `bunfig.toml`:
+To make this the default for a project, set [`install.ignoreScripts`](/docs/runtime/bunfig#install-ignorescripts) in `bunfig.toml`:
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]

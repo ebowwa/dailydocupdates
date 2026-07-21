@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/install/azure-artifacts.md
+Downloaded: 2026-07-21T21:18:03.762Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -31,7 +36,7 @@ password = "$NPM_PASSWORD"
 
 ***
 
-Then assign your Azure Personal Access Token to the `NPM_PASSWORD` environment variable. Bun [automatically reads](/runtime/environment-variables) `.env` files, so create a file called `.env` in your project root. Don't base64 encode the token; Bun does that for you.
+Then assign your Azure Personal Access Token to the `NPM_PASSWORD` environment variable. Bun [automatically reads](/docs/runtime/environment-variables) `.env` files, so create a file called `.env` in your project root. Don't base64 encode the token; Bun does that for you.
 
 ```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 NPM_PASSWORD=<paste token here>

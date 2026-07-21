@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/index.md
+Downloaded: 2026-07-21T21:18:03.785Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -26,7 +31,7 @@ Bun ships with a fast, built-in, Jest-compatible test runner. Tests run in the B
 bun test
 ```
 
-Tests are written in JavaScript or TypeScript with a Jest-like API. See [Writing tests](/test/writing-tests).
+Tests are written in JavaScript or TypeScript with a Jest-like API. See [Writing tests](/docs/test/writing-tests).
 
 ```ts math.test.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { expect, test } from "bun:test";
@@ -62,7 +67,7 @@ To run a specific file in the test runner, make sure the path starts with `./` o
 bun test ./test/specific-file.test.ts
 ```
 
-The test runner runs all tests in a single process. It loads all `--preload` scripts (see [Lifecycle](/test/lifecycle)), then runs all tests. If a test fails, the test runner exits with a non-zero exit code.
+The test runner runs all tests in a single process. It loads all `--preload` scripts (see [Lifecycle](/docs/test/lifecycle)), then runs all tests. If a test fails, the test runner exits with a non-zero exit code.
 
 ## CI/CD integration
 
@@ -306,7 +311,7 @@ Define hooks inside test files, or in a separate file preloaded with the `--prel
 bun test --preload ./setup.ts
 ```
 
-See [Lifecycle](/test/lifecycle).
+See [Lifecycle](/docs/test/lifecycle).
 
 ## Mocks
 
@@ -334,7 +339,7 @@ const random = mock(() => Math.random()); // [!code --]
 const random = jest.fn(() => Math.random()); // [!code ++]
 ```
 
-See [Mocks](/test/mocks).
+See [Mocks](/docs/test/mocks).
 
 ## Snapshot testing
 
@@ -355,7 +360,7 @@ To update snapshots, use the `--update-snapshots` flag.
 bun test --update-snapshots
 ```
 
-See [Snapshots](/test/snapshots).
+See [Snapshots](/docs/test/snapshots).
 
 ## UI & DOM testing
 
@@ -365,7 +370,7 @@ Bun is compatible with popular UI testing libraries:
 * [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro/)
 * [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 
-See [DOM testing](/test/dom).
+See [DOM testing](/docs/test/dom).
 
 ## Performance
 

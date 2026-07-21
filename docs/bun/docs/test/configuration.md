@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/configuration.md
+Downloaded: 2026-07-21T21:18:03.785Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -334,7 +339,7 @@ coveragePathIgnorePatterns = [
 ]
 ```
 
-Files matching any of these patterns are excluded from coverage calculation and reporting. See [Code coverage](/test/code-coverage).
+Files matching any of these patterns are excluded from coverage calculation and reporting. See [Code coverage](/docs/test/code-coverage).
 
 #### Common Ignore Patterns
 

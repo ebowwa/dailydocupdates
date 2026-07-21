@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/npmrc.md
+Downloaded: 2026-07-21T21:18:03.777Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -7,7 +12,7 @@
 Bun loads configuration options from [`.npmrc`](https://docs.npmjs.com/cli/v10/configuring-npm/npmrc) files, so you can reuse your existing registry and scope configuration.
 
 <Note>
-  We recommend migrating your `.npmrc` file to Bun's [`bunfig.toml`](/runtime/bunfig) format, which supports more
+  We recommend migrating your `.npmrc` file to Bun's [`bunfig.toml`](/docs/runtime/bunfig) format, which supports more
   options, including Bun-specific ones.
 </Note>
 
@@ -25,7 +30,7 @@ To change it, set the `registry` option in `.npmrc`:
 registry=http://localhost:4873/
 ```
 
-The equivalent `bunfig.toml` option is [`install.registry`](/runtime/bunfig#install-registry):
+The equivalent `bunfig.toml` option is [`install.registry`](/docs/runtime/bunfig#install-registry):
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 install.registry = "http://localhost:4873/"
@@ -39,7 +44,7 @@ install.registry = "http://localhost:4873/"
 @myorg:registry=http://localhost:4873/
 ```
 
-The equivalent `bunfig.toml` option is to add a key in [`install.scopes`](/runtime/bunfig#install-registry):
+The equivalent `bunfig.toml` option is to add a key in [`install.scopes`](/docs/runtime/bunfig#install-registry):
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install.scopes]
@@ -75,7 +80,7 @@ The following options are supported:
 * `_auth` (base64 encoded username:password, for example `btoa(username + ":" + password)`)
 * `email`
 
-The equivalent `bunfig.toml` option is to add a key in [`install.scopes`](/runtime/bunfig#install-registry):
+The equivalent `bunfig.toml` option is to add a key in [`install.scopes`](/docs/runtime/bunfig#install-registry):
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install.scopes]
@@ -90,7 +95,7 @@ Controls how workspace packages are installed when available locally:
 link-workspace-packages=true
 ```
 
-The equivalent `bunfig.toml` option is [`install.linkWorkspacePackages`](/runtime/bunfig#install-linkworkspacepackages):
+The equivalent `bunfig.toml` option is [`install.linkWorkspacePackages`](/docs/runtime/bunfig#install-linkworkspacepackages):
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]
@@ -105,7 +110,7 @@ Always saves exact versions without the `^` prefix:
 save-exact=true
 ```
 
-The equivalent `bunfig.toml` option is [`install.exact`](/runtime/bunfig#install-exact):
+The equivalent `bunfig.toml` option is [`install.exact`](/docs/runtime/bunfig#install-exact):
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]
@@ -130,7 +135,7 @@ Shows what would be installed without installing anything:
 dry-run=true
 ```
 
-The equivalent `bunfig.toml` option is [`install.dryRun`](/runtime/bunfig#install-dryrun):
+The equivalent `bunfig.toml` option is [`install.dryRun`](/docs/runtime/bunfig#install-dryrun):
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]
@@ -149,7 +154,7 @@ cache=/path/to/cache
 cache=false
 ```
 
-The equivalent `bunfig.toml` option is [`install.cache`](/runtime/bunfig#install-cache):
+The equivalent `bunfig.toml` option is [`install.cache`](/docs/runtime/bunfig#install-cache):
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install.cache]
@@ -196,7 +201,7 @@ Valid values: `dev`, `peer`, `optional`
 
 ### `install-strategy` and `node-linker`: Installation strategy
 
-Control how packages are laid out in `node_modules`. For compatibility with other package managers, Bun accepts both npm's `install-strategy` and pnpm/yarn's `node-linker`. See [isolated installs](/pm/isolated-installs) for how the hoisted and isolated layouts differ.
+Control how packages are laid out in `node_modules`. For compatibility with other package managers, Bun accepts both npm's `install-strategy` and pnpm/yarn's `node-linker`. See [isolated installs](/docs/pm/isolated-installs) for how the hoisted and isolated layouts differ.
 
 **npm's `install-strategy`:**
 

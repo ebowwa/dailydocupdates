@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/skip-tests.md
+Downloaded: 2026-07-21T21:18:03.770Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -39,5 +44,5 @@ Ran 3 tests across 1 file. [74.00ms]
 
 See also:
 
-* [Mark a test as a todo](/guides/test/todo-tests)
-* [Writing tests](/test/writing-tests)
+* [Mark a test as a todo](/docs/guides/test/todo-tests)
+* [Writing tests](/docs/test/writing-tests)

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/margin-rest/market/get-markets.md
-Downloaded: 2026-07-15T21:01:12.527Z
+Downloaded: 2026-07-21T21:13:55.860Z
 -->
 
 > ## Documentation Index
@@ -42,8 +42,6 @@ tags:
     description: Order group management endpoints
   - name: portfolio
     description: Portfolio and balance information endpoints
-  - name: fcm
-    description: FCM member specific endpoints
   - name: risk
     description: Margin risk metrics, parameters, and limits
   - name: funding

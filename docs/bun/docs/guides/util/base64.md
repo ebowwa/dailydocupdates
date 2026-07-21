@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/util/base64.md
+Downloaded: 2026-07-21T21:18:03.771Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -48,4 +53,4 @@ const text = bytes.toString("utf8");
 
 ***
 
-See [Web APIs](/runtime/web-apis).
+See [Web APIs](/docs/runtime/web-apis).

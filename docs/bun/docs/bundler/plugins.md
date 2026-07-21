@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/plugins.md
+Downloaded: 2026-07-21T21:18:03.753Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -415,7 +420,7 @@ It receives the file's contents and can optionally return new source code.
 onEnd(callback: (result: BuildOutput) => void | Promise<void>): void;
 ```
 
-Registers a callback to be run after the bundle is complete. The callback receives the [`BuildOutput`](/docs/bundler#outputs) object containing the build results, including output files and any build messages.
+Registers a callback to be run after the bundle is complete. The callback receives the [`BuildOutput`](/docs/docs/bundler#outputs) object containing the build results, including output files and any build messages.
 
 ```ts title="index.ts" icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const result = await Bun.build({

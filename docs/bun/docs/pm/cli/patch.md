@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/patch.md
+Downloaded: 2026-07-21T21:18:03.775Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -15,7 +20,7 @@ Features:
 * Generates `.patch` files that Bun applies to dependencies in `node_modules` on install
 * `.patch` files can be committed to your repository and reused across installs, projects, and machines
 * `"patchedDependencies"` in `package.json` keeps track of patched packages
-* Patches packages in `node_modules/` while preserving the integrity of Bun's [Global Cache](/pm/global-cache)
+* Patches packages in `node_modules/` while preserving the integrity of Bun's [Global Cache](/docs/pm/global-cache)
 * Test your changes locally before committing them with `bun patch --commit <pkg>`
 * To preserve disk space and keep `bun install` fast, patched packages are committed to the Global Cache and shared across projects where possible
 
@@ -42,7 +47,7 @@ bun patch node_modules/react
 
 #### Step 2. Test your changes locally
 
-`bun patch <pkg>` makes it safe to edit `<pkg>` in `node_modules/` directly, while preserving the integrity of Bun's [Global Cache](/pm/global-cache). It works by re-creating an unlinked clone of the package in `node_modules/` and diffing it against the original package in the Global Cache.
+`bun patch <pkg>` makes it safe to edit `<pkg>` in `node_modules/` directly, while preserving the integrity of Bun's [Global Cache](/docs/pm/global-cache). It works by re-creating an unlinked clone of the package in `node_modules/` and diffing it against the original package in the Global Cache.
 
 #### Step 3. Commit your changes
 

@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/websocket/simple.md
+Downloaded: 2026-07-21T21:18:03.773Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Build a simple WebSocket server
 
-Start a WebSocket server with [`Bun.serve`](/runtime/http/server).
+Start a WebSocket server with [`Bun.serve`](/docs/runtime/http/server).
 
 Inside `fetch`, `server.upgrade()` attempts to upgrade incoming `ws:` or `wss:` requests to WebSocket connections.
 

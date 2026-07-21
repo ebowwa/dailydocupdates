@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/get-credentials.md
-Downloaded: 2026-07-20T21:12:08.347Z
+Downloaded: 2026-07-21T21:09:50.581Z
 -->
 
 > ## Documentation Index
@@ -11,6 +11,7 @@ Downloaded: 2026-07-20T21:12:08.347Z
 
 > Get the account ID, address, and proxy keys for the authenticated account.
 
+<Badge color="gray" size="md">Request Weight: **2**</Badge>
 
 
 ## OpenAPI

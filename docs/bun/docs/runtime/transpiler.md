@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/transpiler.md
+Downloaded: 2026-07-21T21:18:03.784Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -55,7 +60,7 @@ transpiler.transformSync("<div>hi!</div>", "tsx");
 <Accordion title="Nitty gritty">
   `.transformSync` runs the transpiler in the same thread as the calling code.
 
-  [Macros](/bundler/macros) run in the same thread as the transpiler, but in a separate event loop from the rest of your application. Macros and regular code share globals, so it is possible (but not recommended) to share state between them. Using AST nodes outside of a macro is undefined behavior.
+  [Macros](/docs/bundler/macros) run in the same thread as the transpiler, but in a separate event loop from the rest of your application. Macros and regular code share globals, so it is possible (but not recommended) to share state between them. Using AST nodes outside of a macro is undefined behavior.
 </Accordion>
 
 ***

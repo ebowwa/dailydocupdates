@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/archive.md
+Downloaded: 2026-07-21T21:18:03.778Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -286,7 +291,7 @@ const jsonFiles = await archive.files("**/*.json");
 const codeFiles = await archive.files(["**/*.ts", "**/*.js"]);
 ```
 
-Supported glob patterns (subset of [Bun.Glob](/docs/api/glob) syntax):
+Supported glob patterns (subset of [Bun.Glob](/docs/docs/api/glob) syntax):
 
 * `*` - Match any characters except `/`
 * `**` - Match any characters including `/`
@@ -295,7 +300,7 @@ Supported glob patterns (subset of [Bun.Glob](/docs/api/glob) syntax):
 * `{a,b}` - Match alternatives
 * `!pattern` - Exclude files matching pattern (negation). When only negative patterns are provided, all files not matching them are included.
 
-See [Bun.Glob](/docs/api/glob) for the full glob syntax including escaping and advanced patterns.
+See [Bun.Glob](/docs/docs/api/glob) for the full glob syntax including escaping and advanced patterns.
 
 ## Compression
 

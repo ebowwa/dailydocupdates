@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/networking/fetch.md
+Downloaded: 2026-07-21T21:18:03.782Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -292,7 +297,7 @@ const response = await fetch("s3://my-bucket/path/to/object", {
 
 Only PUT and POST methods support request bodies when using S3. For uploads, Bun automatically uses multipart upload for streaming bodies.
 
-See the [S3](/runtime/s3) documentation.
+See the [S3](/docs/runtime/s3) documentation.
 
 #### File URLs - `file://`
 
@@ -403,7 +408,7 @@ dns.prefetch("bun.com");
 
 By default, Bun caches and deduplicates DNS queries in-memory for up to 30 seconds. `dns.getCacheStats()` returns the cache stats.
 
-See [DNS caching](/runtime/networking/dns).
+See [DNS caching](/docs/runtime/networking/dns).
 
 ### Preconnect to a host
 

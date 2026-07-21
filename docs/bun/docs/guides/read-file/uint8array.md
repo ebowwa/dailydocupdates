@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/read-file/uint8array.md
+Downloaded: 2026-07-21T21:18:03.765Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -20,4 +25,4 @@ byteArray.length; // length of byteArray
 
 ***
 
-See [Typed arrays](/runtime/binary-data#typedarray) for more on working with `Uint8Array` and other binary data formats in Bun.
+See [Typed arrays](/docs/runtime/binary-data#typedarray) for more on working with `Uint8Array` and other binary data formats in Bun.

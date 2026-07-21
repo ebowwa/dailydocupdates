@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/index.md
+Downloaded: 2026-07-21T21:18:03.774Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,7 +15,7 @@
   <Card
     icon="cog"
     title="Bun Runtime"
-    href="/runtime"
+    href="/docs/runtime"
     cta={
   <span>
     Get started with <code>bun run</code>
@@ -23,7 +28,7 @@
   <Card
     icon="box"
     title="Bun Package Manager"
-    href="/pm/cli/install"
+    href="/docs/pm/cli/install"
     cta={
   <span>
     Get started with <code>bun install</code>
@@ -36,7 +41,7 @@
   <Card
     icon="flask-conical"
     title="Bun Test Runner"
-    href="/test"
+    href="/docs/test"
     cta={
   <span>
     Get started with <code>bun test</code>
@@ -49,7 +54,7 @@
   <Card
     icon="combine"
     title="Bun Bundler"
-    href="/bundler"
+    href="/docs/bundler"
     cta={
   <span>
     Get started with <code>bun build</code>
@@ -67,11 +72,11 @@
 Bun ships as a single, dependency-free binary and includes a runtime, package manager, test runner, and bundler. New to Bun?
 
 <CardGroup>
-  <Card icon="download" title="Install Bun" href="/installation">
+  <Card icon="download" title="Install Bun" href="/docs/installation">
     Supported platforms and all install methods.
   </Card>
 
-  <Card icon="zap" title="Quickstart" href="/quickstart">
+  <Card icon="zap" title="Quickstart" href="/docs/quickstart">
     Hello world in minutes with Bun.serve.
   </Card>
 </CardGroup>
@@ -134,6 +139,6 @@ Bun is designed from the ground-up with today's JavaScript ecosystem in mind.
 * **TypeScript & JSX support**. You can directly execute `.jsx`, `.ts`, and `.tsx` files; Bun's transpiler converts these to vanilla JavaScript before execution.
 * **ESM & CommonJS compatibility**. The world is moving towards ES modules (ESM), but millions of packages on npm still require CommonJS. Bun recommends ES modules, but supports CommonJS.
 * **Web-standard APIs**. Bun implements standard Web APIs like `fetch`, `WebSocket`, and `ReadableStream`. Bun is powered by the JavaScriptCore engine, which is developed by Apple for Safari, so some APIs like [`Headers`](https://developer.mozilla.org/en-US/docs/Web/API/Headers) and [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL) directly use [Safari's implementation](https://github.com/oven-sh/bun/blob/HEAD/src/jsc/bindings/webcore/JSFetchHeaders.cpp).
-* **Node.js compatibility**. In addition to supporting Node-style module resolution, Bun aims for full compatibility with built-in Node.js globals (`process`, `Buffer`) and modules (`path`, `fs`, `http`). *This is an ongoing effort.* See [Node.js compatibility](/runtime/nodejs-compat) for the current status.
+* **Node.js compatibility**. In addition to supporting Node-style module resolution, Bun aims for full compatibility with built-in Node.js globals (`process`, `Buffer`) and modules (`path`, `fs`, `http`). *This is an ongoing effort.* See [Node.js compatibility](/docs/runtime/nodejs-compat) for the current status.
 
 Bun is more than a runtime. The long-term goal is a cohesive, infrastructural toolkit for building apps with JavaScript/TypeScript: a package manager, transpiler, bundler, script runner, and test runner.

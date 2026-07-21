@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/internal-transfer.md
-Downloaded: 2026-07-20T21:12:08.351Z
+Downloaded: 2026-07-21T21:09:50.585Z
 -->
 
 > ## Documentation Index
@@ -13,6 +13,7 @@ Downloaded: 2026-07-20T21:12:08.351Z
 Requires proxy signature using the standard signed-op flow.
 
 
+<Badge color="gray" size="md">Request Weight: **1**</Badge>
 
 
 ## OpenAPI

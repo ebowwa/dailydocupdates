@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/create-account-invite.md
-Downloaded: 2026-07-20T21:12:08.344Z
+Downloaded: 2026-07-21T21:09:50.578Z
 -->
 
 > ## Documentation Index
@@ -13,6 +13,7 @@ Downloaded: 2026-07-20T21:12:08.344Z
 is idempotent for accounts that already have a primary invite code.
 
 
+<Badge color="gray" size="md">Request Weight: **1**</Badge>
 
 
 ## OpenAPI

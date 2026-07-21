@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/test/run-tests.md
+Downloaded: 2026-07-21T21:18:03.770Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Run your tests with the Bun test runner
 
-Bun has a built-in [test runner](/test) with a Jest-like `expect` API.
+Bun has a built-in [test runner](/docs/test) with a Jest-like `expect` API.
 
 ***
 
@@ -110,4 +115,4 @@ Ran 3 tests across 3 files. [59.00ms]
 
 ***
 
-See [`bun test`](/test).
+See [`bun test`](/docs/test).

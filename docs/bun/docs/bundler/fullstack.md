@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/bundler/fullstack.md
+Downloaded: 2026-07-21T21:18:03.752Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -506,7 +511,7 @@ env = "PUBLIC_*"  # only inline env vars starting with PUBLIC_ (recommended)
       is not defined` in the browser.
 </Note>
 
-See [HTML & static sites](/bundler/html-static#inline-environment-variables) for build-time configuration and examples.
+See [HTML & static sites](/docs/bundler/html-static#inline-environment-variables) for build-time configuration and examples.
 
 ## How It Works
 

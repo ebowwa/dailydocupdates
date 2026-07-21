@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/bunfig.md
-Downloaded: 2026-07-20T21:12:13.356Z
+Downloaded: 2026-07-21T21:18:03.779Z
 -->
 
 > ## Documentation Index
@@ -89,7 +89,7 @@ The `define` field replaces global identifiers with constant expressions whereve
 
 ### `loader`
 
-Configure how Bun maps file extensions to [loaders](/bundler/loaders). Use this to load file types Bun doesn't support natively.
+Configure how Bun maps file extensions to [loaders](/docs/bundler/loaders). Use this to load file types Bun doesn't support natively.
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [loader]
@@ -460,7 +460,7 @@ exact = false
 
 Whether to skip lifecycle scripts during install. Default `false`. Equivalent to the `--ignore-scripts` flag.
 
-When `true`, Bun does not run any `preinstall` / `install` / `postinstall` / `prepare` scripts, both for your project and for packages in `trustedDependencies`. See [Lifecycle scripts](/pm/lifecycle).
+When `true`, Bun does not run any `preinstall` / `install` / `postinstall` / `prepare` scripts, both for your project and for packages in `trustedDependencies`. See [Lifecycle scripts](/docs/pm/lifecycle).
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]
@@ -489,7 +489,7 @@ saveTextLockfile = false
 
 ### `install.auto`
 
-Configure Bun's [auto-install](/runtime/auto-install) behavior. Default `"auto"` — when no `node_modules` folder is found, Bun installs dependencies on the fly during execution.
+Configure Bun's [auto-install](/docs/runtime/auto-install) behavior. Default `"auto"` — when no `node_modules` folder is found, Bun installs dependencies on the fly during execution.
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]
@@ -655,7 +655,7 @@ print = "yarn"
 
 Configure the linker strategy: how `bun install` lays out dependencies in `node_modules`. Defaults to `"isolated"` for new workspaces, `"hoisted"` for new single-package projects and existing projects (made pre-v1.3.2).
 
-See [Isolated installs](/pm/isolated-installs).
+See [Isolated installs](/docs/pm/isolated-installs).
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]
@@ -673,7 +673,7 @@ Valid values are:
 
 When using the `"isolated"` linker, share package installations across projects in a global virtual store at `<cache>/links/` and link `node_modules/.bun/<pkg>@<ver>` into it instead of materializing each package into the project. Makes warm installs after `rm -rf node_modules` an order of magnitude faster. Default `false`. Can also be set with the `BUN_INSTALL_GLOBAL_STORE` environment variable.
 
-See [Global virtual store](/pm/global-store).
+See [Global virtual store](/docs/pm/global-store).
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]
@@ -737,7 +737,7 @@ When a security scanner is configured:
 * Installation is cancelled if fatal issues are found
 * Security warnings are displayed during installation
 
-Learn more about [using and writing security scanners](/pm/security-scanner-api).
+Learn more about [using and writing security scanners](/docs/pm/security-scanner-api).
 
 ### `install.minimumReleaseAge`
 
@@ -749,7 +749,7 @@ Configure a minimum age (in seconds) for npm package versions. Package versions 
 minimumReleaseAge = 259200
 ```
 
-See [Minimum release age](/pm/cli/install#minimum-release-age).
+See [Minimum release age](/docs/pm/cli/install#minimum-release-age).
 
 ### `install.minimumReleaseAgeExcludes`
 

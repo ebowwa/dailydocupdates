@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/quickstart.md
+Downloaded: 2026-07-21T21:18:03.778Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,7 +15,7 @@
 
 Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by installing a package.
 
-<Info>Prerequisites: Bun installed and available on your `PATH`. See [installation](/installation) for setup.</Info>
+<Info>Prerequisites: Bun installed and available on your `PATH`. See [installation](/docs/installation) for setup.</Info>
 
 ***
 

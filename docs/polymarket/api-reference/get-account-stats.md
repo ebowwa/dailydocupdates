@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/get-account-stats.md
-Downloaded: 2026-07-20T21:12:08.346Z
+Downloaded: 2026-07-21T21:09:50.580Z
 -->
 
 > ## Documentation Index
@@ -14,6 +14,7 @@ account maker share, and entity maker share when applicable).
 Stats are cached by UTC day and may be stale by up to 24 hours.
 
 
+<Badge color="gray" size="md">Request Weight: **2**</Badge>
 
 
 ## OpenAPI

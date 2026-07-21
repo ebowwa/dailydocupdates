@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/codesign-macos-executable.md
+Downloaded: 2026-07-21T21:18:03.765Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -59,4 +64,4 @@ codesign -vvv --verify ./myapp
 
 ***
 
-For more information on macOS codesigning, refer to [Apple's Code Signing documentation](https://developer.apple.com/documentation/security/code_signing_services). For details about creating single-file executables with Bun, see [Standalone Executables](/bundler/executables). This guide requires Bun v1.2.4 or newer.
+For more information on macOS codesigning, refer to [Apple's Code Signing documentation](https://developer.apple.com/documentation/security/code_signing_services). For details about creating single-file executables with Bun, see [Standalone Executables](/docs/bundler/executables). This guide requires Bun v1.2.4 or newer.

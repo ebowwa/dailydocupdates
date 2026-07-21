@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/color.md
+Downloaded: 2026-07-21T21:18:03.779Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -248,7 +253,7 @@ Bun.color([255, 0, 0], "HEX"); // "#FF0000"
 
 ### Bundle-time client-side color formatting
 
-Like many of Bun's APIs, you can invoke `Bun.color` at bundle time with a [macro](/bundler/macros) for use in client-side JavaScript builds:
+Like many of Bun's APIs, you can invoke `Bun.color` at bundle time with a [macro](/docs/bundler/macros) for use in client-side JavaScript builds:
 
 ```ts client-side.ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { color } from "bun" with { type: "macro" };

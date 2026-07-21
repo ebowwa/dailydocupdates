@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/http/sse.md
+Downloaded: 2026-07-21T21:18:03.761Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -11,7 +16,7 @@ To implement an SSE endpoint in Bun, return a `Response` whose body is a streami
 <Note>
   `Bun.serve` closes idle connections after **10 seconds** by default. A quiet SSE stream counts as idle, so the
   examples below call `server.timeout(req, 0)` to disable the timeout for the stream. See
-  [`idleTimeout`](/runtime/http/server#idletimeout) for details.
+  [`idleTimeout`](/docs/runtime/http/server#idletimeout) for details.
 </Note>
 
 ## Using an async generator

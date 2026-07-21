@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/delete-directory.md
+Downloaded: 2026-07-21T21:18:03.766Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -36,4 +41,4 @@ try {
 
 ***
 
-See [File I/O](/runtime/file-io) for more filesystem operations.
+See [File I/O](/docs/runtime/file-io) for more filesystem operations.

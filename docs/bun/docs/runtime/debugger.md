@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/debugger.md
+Downloaded: 2026-07-21T21:18:03.779Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -117,7 +122,7 @@ What each button does:
 
 ### Visual Studio Code Debugger
 
-Visual Studio Code support for debugging Bun scripts is experimental. To use it, install the [Bun VSCode extension](/guides/runtime/vscode-debugger).
+Visual Studio Code support for debugging Bun scripts is experimental. To use it, install the [Bun VSCode extension](/docs/guides/runtime/vscode-debugger).
 
 ***
 

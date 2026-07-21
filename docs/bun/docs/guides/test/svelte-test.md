@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/test/svelte-test.md
+Downloaded: 2026-07-21T21:18:03.770Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # import, require, and test Svelte components with bun test
 
-Use Bun's [Plugin API](/runtime/plugins) to add a custom loader for `.svelte` files, and the `test.preload` option in `bunfig.toml` to load it before your tests run.
+Use Bun's [Plugin API](/docs/runtime/plugins) to add a custom loader for `.svelte` files, and the `test.preload` option in `bunfig.toml` to load it before your tests run.
 
 First, install `@testing-library/svelte`, `svelte`, and `@happy-dom/global-registrator`.
 

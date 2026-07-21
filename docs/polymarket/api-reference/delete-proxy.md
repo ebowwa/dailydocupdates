@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/delete-proxy.md
-Downloaded: 2026-07-20T21:12:08.345Z
+Downloaded: 2026-07-21T21:09:50.579Z
 -->
 
 > ## Documentation Index
@@ -13,6 +13,7 @@ Downloaded: 2026-07-20T21:12:08.345Z
 Requires EOA signature, see [EOA signing](/http/signing#1-eoa-signing).
 
 
+<Badge color="gray" size="md">Request Weight: **1**</Badge>
 
 
 ## OpenAPI

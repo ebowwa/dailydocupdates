@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/util/hash-a-password.md
+Downloaded: 2026-07-21T21:18:03.772Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -54,4 +59,4 @@ const isMatch = await Bun.password.verify(password, hash);
 
 ***
 
-See [`Bun.password`](/runtime/hashing#bun-password).
+See [`Bun.password`](/docs/runtime/hashing#bun-password).

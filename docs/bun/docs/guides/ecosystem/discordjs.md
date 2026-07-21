@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/discordjs.md
+Downloaded: 2026-07-21T21:18:03.757Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -153,11 +158,11 @@ When you deploy, there's no build or bundling step. Bun runs `bot.ts` and every 
 To keep the bot online and bring it back after a crash or reboot, run it under a process manager.
 
 <Columns cols={2}>
-  <Card title="systemd" href="/guides/ecosystem/systemd" icon="server">
+  <Card title="systemd" href="/docs/guides/ecosystem/systemd" icon="server">
     Run your bot as a Linux daemon
   </Card>
 
-  <Card title="PM2" href="/guides/ecosystem/pm2" icon="cog">
+  <Card title="PM2" href="/docs/guides/ecosystem/pm2" icon="cog">
     Manage your bot with PM2
   </Card>
 </Columns>

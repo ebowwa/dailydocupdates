@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/ecosystem/vite.md
+Downloaded: 2026-07-21T21:18:03.760Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 <Note>
   You can use Vite with Bun, but many projects get faster builds & drop hundreds of dependencies by switching to [HTML
-  imports](/bundler/html-static).
+  imports](/docs/bundler/html-static).
 </Note>
 
 ***

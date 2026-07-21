@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/get-limit-tiers.md
-Downloaded: 2026-07-20T21:12:08.349Z
+Downloaded: 2026-07-21T21:09:50.583Z
 -->
 
 > ## Documentation Index
@@ -11,6 +11,7 @@ Downloaded: 2026-07-20T21:12:08.349Z
 
 > Get the list of account limit tiers. Action and open-order fields are enforced per account; legacy request-rate fields are not used for gateway request enforcement.
 
+<Badge color="gray" size="md">Request Weight: **2**</Badge>
 
 
 ## OpenAPI

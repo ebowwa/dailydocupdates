@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/ffi.md
+Downloaded: 2026-07-21T21:18:03.780Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,7 +13,7 @@
 
 <Warning>
   `bun:ffi` is **experimental**, with known bugs and limitations, and should not be relied on in production. The most
-  stable way to interact with native code from Bun is to write a [Node-API module](/runtime/node-api).
+  stable way to interact with native code from Bun is to write a [Node-API module](/docs/runtime/node-api).
 </Warning>
 
 Use the built-in `bun:ffi` module to efficiently call native libraries from JavaScript. It works with any language that supports the C ABI, including Zig, Rust, C/C++, C#, Nim, and Kotlin.
@@ -50,7 +55,7 @@ console.log(`SQLite 3 version: ${sqlite3_libversion()}`);
 
 According to [our benchmark](https://github.com/oven-sh/bun/tree/main/bench/ffi), `bun:ffi` is roughly 2-6x faster than Node.js FFI through `Node-API`.
 
-<Image src="/images/ffi.png" height="400" />
+<Image src="/docs/images/ffi.png" height="400" />
 
 Bun generates and just-in-time compiles C bindings that efficiently convert values between JavaScript types and native types. To compile C, Bun embeds [TinyCC](https://github.com/TinyCC/tinycc), a small and fast C compiler.
 
@@ -319,7 +324,7 @@ When you're done with a `JSCallback`, call `close()` to free the memory.
 
 `JSCallback` has experimental support for thread-safe callbacks. You need this if you pass a callback function into a different thread from the one that created it. Enable it with the optional `threadsafe` parameter.
 
-Thread-safe callbacks work best when run from another thread that is running JavaScript code, that is, a [`Worker`](/runtime/workers). A future version of Bun will enable them to be called from any thread, such as new threads spawned by your native library that Bun is not aware of.
+Thread-safe callbacks work best when run from another thread that is running JavaScript code, that is, a [`Worker`](/docs/runtime/workers). A future version of Bun will enable them to be called from any thread, such as new threads spawned by your native library that Bun is not aware of.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const searchIterator = new JSCallback((ptr, length) => /hello/.test(new CString(ptr, length)), {

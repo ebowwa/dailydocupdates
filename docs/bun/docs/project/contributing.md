@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/project/contributing.md
-Downloaded: 2026-07-14T21:00:58.028Z
+Downloaded: 2026-07-21T21:18:03.777Z
 -->
 
 > ## Documentation Index
@@ -13,7 +13,7 @@ Downloaded: 2026-07-14T21:00:58.028Z
 
 Configuring a development environment for Bun can take 10-30 minutes depending on your internet connection and computer speed. You will need \~10GB of free disk space for the repository and build artifacts.
 
-If you are using Windows, see [Building Windows](/project/building-windows).
+If you are using Windows, see [Building Windows](/docs/project/building-windows).
 
 ## Using Nix (Alternative)
 

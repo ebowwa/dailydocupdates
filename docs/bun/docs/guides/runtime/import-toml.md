@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/import-toml.md
+Downloaded: 2026-07-21T21:18:03.766Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -29,4 +34,4 @@ data.author.name; // => "John Dough"
 
 ***
 
-See [TypeScript](/runtime/typescript) for more on using TypeScript with Bun.
+See [TypeScript](/docs/runtime/typescript) for more on using TypeScript with Bun.

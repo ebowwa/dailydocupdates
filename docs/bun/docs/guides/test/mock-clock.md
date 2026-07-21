@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/mock-clock.md
+Downloaded: 2026-07-21T21:18:03.770Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -22,7 +27,7 @@ test("party like it's 1999", () => {
 
 ***
 
-Call `setSystemTime` in a [lifecycle hook](/test/lifecycle) like `beforeAll` to give your tests a deterministic "fake clock".
+Call `setSystemTime` in a [lifecycle hook](/docs/test/lifecycle) like `beforeAll` to give your tests a deterministic "fake clock".
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect, beforeAll, setSystemTime } from "bun:test";
@@ -47,4 +52,4 @@ setSystemTime(); // reset to actual time
 
 ***
 
-See [Dates and times](/test/dates-times).
+See [Dates and times](/docs/test/dates-times).

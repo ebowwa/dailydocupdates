@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/update-snapshots.md
+Downloaded: 2026-07-21T21:18:03.771Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -46,4 +51,4 @@ Ran 1 tests across 1 files. [102.00ms]
 
 ***
 
-See [Snapshots](/test/snapshots).
+See [Snapshots](/docs/test/snapshots).

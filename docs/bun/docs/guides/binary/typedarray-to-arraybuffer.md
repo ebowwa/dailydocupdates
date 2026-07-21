@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/binary/typedarray-to-arraybuffer.md
+Downloaded: 2026-07-21T21:18:03.756Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -24,4 +29,4 @@ arr.byteLength; // => 32
 
 ***
 
-See [Binary Data](/runtime/binary-data#conversion).
+See [Binary Data](/docs/runtime/binary-data#conversion).

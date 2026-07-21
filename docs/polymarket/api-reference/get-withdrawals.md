@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/get-withdrawals.md
-Downloaded: 2026-07-20T21:12:08.351Z
+Downloaded: 2026-07-21T21:09:50.584Z
 -->
 
 > ## Documentation Index
@@ -14,6 +14,7 @@ If no end time is provided, the current time will be used.
 Maximum of 100 entries returned per request.
 
 
+<Badge color="gray" size="md">Request Weight: **10**</Badge>
 
 
 ## OpenAPI

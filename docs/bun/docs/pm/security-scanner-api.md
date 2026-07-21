@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/security-scanner-api.md
+Downloaded: 2026-07-21T21:18:03.777Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -90,6 +95,6 @@ For a complete example with tests and CI setup, see the official template:
 
 ## Related
 
-* [Configuration (bunfig.toml)](/runtime/bunfig#install-security-scanner)
-* [Package Manager](/installation)
+* [Configuration (bunfig.toml)](/docs/runtime/bunfig#install-security-scanner)
+* [Package Manager](/docs/installation)
 * [Security Scanner Template](https://github.com/oven-sh/security-scanner-template)

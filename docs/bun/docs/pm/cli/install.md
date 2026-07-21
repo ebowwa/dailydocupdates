@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/install.md
+Downloaded: 2026-07-21T21:18:03.775Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -83,7 +88,7 @@ BUN_FEATURE_FLAG_DISABLE_IGNORE_SCRIPTS=1 bun install
 
 ## Workspaces
 
-Bun supports `"workspaces"` in package.json. See [workspaces](/pm/workspaces).
+Bun supports `"workspaces"` in package.json. See [workspaces](/docs/pm/workspaces).
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -110,13 +115,13 @@ bun install --filter '!pkg-c'
 bun install --filter './packages/pkg-a'
 ```
 
-See [filtering](/pm/filter#bun-install-and-bun-outdated).
+See [filtering](/docs/pm/filter#bun-install-and-bun-outdated).
 
 ***
 
 ## Overrides and resolutions
 
-Bun supports npm's `"overrides"` and Yarn's `"resolutions"` in `package.json`. Both specify a version range for *metadependencies*, the dependencies of your dependencies. See [overrides and resolutions](/pm/overrides).
+Bun supports npm's `"overrides"` and Yarn's `"resolutions"` in `package.json`. Both specify a version range for *metadependencies*, the dependencies of your dependencies. See [overrides and resolutions](/docs/pm/overrides).
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -168,7 +173,7 @@ For reproducible installs, use `--frozen-lockfile`. Bun installs the exact versi
 bun install --frozen-lockfile
 ```
 
-See [lockfile](/pm/lockfile) for more on `bun.lock`.
+See [lockfile](/docs/pm/lockfile) for more on `bun.lock`.
 
 ***
 
@@ -200,7 +205,7 @@ bun install --dry-run
 
 ## Non-npm dependencies
 
-Bun supports installing dependencies from Git, GitHub, and local or remotely-hosted tarballs. See [`bun add`](/pm/cli/add).
+Bun supports installing dependencies from Git, GitHub, and local or remotely-hosted tarballs. See [`bun add`](/docs/pm/cli/add).
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
@@ -231,7 +236,7 @@ bun install --linker hoisted
 
 ### Isolated installs
 
-A pnpm-like approach that creates strict dependency isolation to prevent [phantom dependencies](/pm/isolated-installs), packages that can be imported without being declared in `package.json`:
+A pnpm-like approach that creates strict dependency isolation to prevent [phantom dependencies](/docs/pm/isolated-installs), packages that can be imported without being declared in `package.json`:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun install --linker isolated
@@ -247,7 +252,7 @@ The default linker strategy depends on whether you're starting fresh or have an 
 * **New single-package projects**: `hoisted` (traditional npm behavior)
 * **Existing projects (made pre-v1.3.2)**: `hoisted` (preserves backward compatibility)
 
-The default is controlled by a `configVersion` field in your lockfile. For a detailed explanation, see [isolated installs](/pm/isolated-installs).
+The default is controlled by a `configVersion` field in your lockfile. For a detailed explanation, see [isolated installs](/docs/pm/isolated-installs).
 
 ***
 
@@ -281,7 +286,7 @@ When the minimum age filter is active:
   * Exact version requests (like `package@1.1.1`) still respect the age gate but bypass the stability check
 * Versions without a `time` field are treated as passing the age check (the npm registry should always provide timestamps)
 
-For more advanced security scanning, including integration with services and custom filtering, see the [Security Scanner API](/pm/security-scanner-api).
+For more advanced security scanning, including integration with services and custom filtering, see the [Security Scanner API](/docs/pm/security-scanner-api).
 
 ***
 

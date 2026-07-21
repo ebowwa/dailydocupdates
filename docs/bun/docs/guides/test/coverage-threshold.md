@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/coverage-threshold.md
+Downloaded: 2026-07-21T21:18:03.769Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -64,4 +69,4 @@ coverageThreshold = { lines = 0.5, functions = 0.7 }
 
 ***
 
-See [Code coverage](/test/code-coverage).
+See [Code coverage](/docs/test/code-coverage).

@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/nodejs-compat.md
-Downloaded: 2026-07-18T20:49:41.913Z
+Downloaded: 2026-07-21T21:18:03.782Z
 -->
 
 > ## Documentation Index
@@ -129,7 +129,7 @@ This page is updated regularly and reflects the latest version of Bun's compatib
 
 ### [`node:module`](https://nodejs.org/api/module.html)
 
-🟡 Missing `syncBuiltinESMExports`, `Module#load()`. Overriding `require.cache` is supported for ESM & CJS modules. `module._extensions`, `module._pathCache`, `module._cache` are no-ops. `module.register` is not implemented; we recommend [`Bun.plugin`](/runtime/plugins) instead.
+🟡 Missing `syncBuiltinESMExports`, `Module#load()`. Overriding `require.cache` is supported for ESM & CJS modules. `module._extensions`, `module._pathCache`, `module._cache` are no-ops. `module.register` is not implemented; we recommend [`Bun.plugin`](/docs/runtime/plugins) instead.
 
 ### [`node:net`](https://nodejs.org/api/net.html)
 
@@ -157,7 +157,7 @@ This page is updated regularly and reflects the latest version of Bun's compatib
 
 ### [`node:v8`](https://nodejs.org/api/v8.html)
 
-🟡 `writeHeapSnapshot` and `getHeapSnapshot` are implemented. `serialize` and `deserialize` use JavaScriptCore's wire format instead of V8's. Other methods are not implemented. For profiling, use [`bun:jsc`](/project/benchmarking#javascript-heap-stats) instead.
+🟡 `writeHeapSnapshot` and `getHeapSnapshot` are implemented. `serialize` and `deserialize` use JavaScriptCore's wire format instead of V8's. Other methods are not implemented. For profiling, use [`bun:jsc`](/docs/project/benchmarking#javascript-heap-stats) instead.
 
 ### [`node:vm`](https://nodejs.org/api/vm.html)
 
@@ -185,7 +185,7 @@ This page is updated regularly and reflects the latest version of Bun's compatib
 
 ### [`node:test`](https://nodejs.org/api/test.html)
 
-🟡 Partially implemented. The in-process API works when test files run under `bun test`: tests, suites, subtests, hooks, `t.plan()`, `t.assert`, `assert.register()`, `t.waitFor()`, `getTestContext()`, and `t.mock` (function/method/getter/setter/property mocks and mock timers). Missing `run()`, `node:test/reporters`, snapshot testing, `mock.module()`, code coverage, `--test-only`, test-level `signal`/`t.signal` abort, and Node's `--test` CLI runner mode. `test.only()` / `{only: true}` are accepted but do not filter. `concurrency` is validated but subtests always run serially. Use [`bun:test`](/test) instead.
+🟡 Partially implemented. The in-process API works when test files run under `bun test`: tests, suites, subtests, hooks, `t.plan()`, `t.assert`, `assert.register()`, `t.waitFor()`, `getTestContext()`, and `t.mock` (function/method/getter/setter/property mocks and mock timers). Missing `run()`, `node:test/reporters`, snapshot testing, `mock.module()`, code coverage, `--test-only`, test-level `signal`/`t.signal` abort, and Node's `--test` CLI runner mode. `test.only()` / `{only: true}` are accepted but do not filter. `concurrency` is validated but subtests always run serially. Use [`bun:test`](/docs/test) instead.
 
 ### [`node:trace_events`](https://nodejs.org/api/tracing.html)
 

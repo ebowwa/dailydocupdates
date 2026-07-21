@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/util/main.md
+Downloaded: 2026-07-21T21:18:03.772Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -38,4 +43,4 @@ bun run foo.ts
 
 ***
 
-See [Utils](/runtime/utils).
+See [Utils](/docs/runtime/utils).

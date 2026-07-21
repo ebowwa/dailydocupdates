@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/project/benchmarking.md
+Downloaded: 2026-07-21T21:18:03.777Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -177,7 +182,7 @@ Once imported, you should see something like this:
   <img alt="Viewing heap snapshot in Safari" src="https://user-images.githubusercontent.com/709451/204429337-b0d8935f-3509-4071-b991-217794d1fb27.png" caption="Viewing heap snapshot in Safari Dev Tools" />
 </Frame>
 
-> The [web debugger](/runtime/debugger#inspect) timeline also tracks the memory usage of the running debug session.
+> The [web debugger](/docs/runtime/debugger#inspect) timeline also tracks the memory usage of the running debug session.
 
 ### Native heap stats
 

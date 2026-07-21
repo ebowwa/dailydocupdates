@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/util/which-path-to-executable-bin.md
+Downloaded: 2026-07-21T21:18:03.773Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,4 +19,4 @@ Bun.which("bun"); // => "/home/user/.bun/bin/bun"
 
 ***
 
-See [`Bun.which`](/runtime/utils#bun-which).
+See [`Bun.which`](/docs/runtime/utils#bun-which).

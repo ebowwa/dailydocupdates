@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/get-statistics.md
-Downloaded: 2026-07-20T21:12:08.350Z
+Downloaded: 2026-07-21T21:09:50.584Z
 -->
 
 > ## Documentation Index
@@ -11,6 +11,7 @@ Downloaded: 2026-07-20T21:12:08.350Z
 
 > Get last 24-hour statistics for all instruments.
 
+<Badge color="gray" size="md">Request Weight: **2**</Badge>
 
 
 ## OpenAPI

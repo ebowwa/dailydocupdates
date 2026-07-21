@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/file-types.md
+Downloaded: 2026-07-21T21:18:03.780Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -10,7 +15,7 @@ The Bun bundler implements a set of default loaders. As a rule of thumb, the bun
 
 `.js` `.cjs` `.mjs` `.mts` `.cts` `.ts` `.tsx` `.jsx` `.css` `.json` `.jsonc` `.json5` `.toml` `.yaml` `.yml` `.txt` `.wasm` `.node` `.html` `.sh`
 
-Bun uses the file extension to pick the built-in *loader* that parses the file. Every loader has a name, such as `js`, `tsx`, or `json`. These names are used when building [plugins](/bundler/plugins) that extend Bun with custom loaders.
+Bun uses the file extension to pick the built-in *loader* that parses the file. Every loader has a name, such as `js`, `tsx`, or `json`. These names are used when building [plugins](/docs/bundler/plugins) that extend Bun with custom loaders.
 
 To specify a loader explicitly, use the `type` import attribute.
 
@@ -290,7 +295,7 @@ In the bundler, `.node` files are handled using the [`file`](#file) loader.
 
 **SQLite loader**. `with { "type": "sqlite" }` import attribute
 
-In the runtime and bundler, SQLite databases can be directly imported. The database is loaded with [`bun:sqlite`](/runtime/sqlite).
+In the runtime and bundler, SQLite databases can be directly imported. The database is loaded with [`bun:sqlite`](/docs/runtime/sqlite).
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import db from "./my.db" with { type: "sqlite" };
@@ -307,7 +312,7 @@ You can change this behavior with the `"embed"` attribute:
 import db from "./my.db" with { type: "sqlite", embed: "true" };
 ```
 
-When using a [standalone executable](/bundler/executables), the database is embedded into the single-file executable.
+When using a [standalone executable](/docs/bundler/executables), the database is embedded into the single-file executable.
 
 Otherwise, the database to embed is copied into the `outdir` with a hashed filename.
 
@@ -387,7 +392,7 @@ The list of selectors is:
 
 **CSS loader**. Default for `.css`.
 
-CSS files can be directly imported. This is primarily useful for [full-stack applications](/bundler/html-static) where CSS is bundled alongside HTML.
+CSS files can be directly imported. This is primarily useful for [full-stack applications](/docs/bundler/html-static) where CSS is bundled alongside HTML.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import "./styles.css";
@@ -399,7 +404,7 @@ The import returns no value; it's only used for its side effects.
 
 **Bun Shell loader**. Default for `.sh` files
 
-This loader parses [Bun Shell](/runtime/shell) scripts. It's only supported when starting Bun itself, so it's not available in the bundler or in the runtime.
+This loader parses [Bun Shell](/docs/runtime/shell) scripts. It's only supported when starting Bun itself, so it's not available in the bundler or in the runtime.
 
 ```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run ./script.sh
@@ -439,7 +444,7 @@ If `publicPath` is set, the import uses its value as a prefix to construct an ab
 | `"https://cdn.example.com/"` | `https://cdn.example.com/logo.svg` |
 
 <Note>
-  The location and file name of the copied file is determined by the value of [`naming.asset`](/bundler#naming).
+  The location and file name of the copied file is determined by the value of [`naming.asset`](/docs/bundler#naming).
 </Note>
 
 <Accordion title="Fixing TypeScript import errors">

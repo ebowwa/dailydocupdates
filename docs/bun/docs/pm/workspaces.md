@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/workspaces.md
+Downloaded: 2026-07-21T21:18:03.777Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -46,7 +51,7 @@ The `"workspaces"` key in the root `package.json` lists the subdirectories to tr
 
 <Note>
   **Glob support** — Bun supports full glob syntax in `"workspaces"`, including negative patterns such as
-  `!**/excluded/**`. See [supported glob patterns](/runtime/glob#supported-glob-patterns).
+  `!**/excluded/**`. See [supported glob patterns](/docs/runtime/glob#supported-glob-patterns).
 </Note>
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -97,14 +102,14 @@ Workspaces have a few major benefits.
 
 * **Code can be split into logical parts.** If one package relies on another, add it as a dependency in `package.json`. If package `b` depends on `a`, `bun install` installs your local `packages/a` directory into `node_modules` instead of downloading it from the npm registry.
 * **Dependencies can be de-duplicated.** If `a` and `b` share a common dependency, it is *hoisted* to the root `node_modules` directory. This saves disk space and minimizes the "dependency hell" of multiple versions of a package installed at once.
-* **Run scripts in multiple packages.** Use the [`--filter` flag](/pm/filter) to run `package.json` scripts in several packages at once, or `--workspaces` to run scripts across all workspaces.
+* **Run scripts in multiple packages.** Use the [`--filter` flag](/docs/pm/filter) to run `package.json` scripts in several packages at once, or `--workspaces` to run scripts across all workspaces.
 
 ## Share versions with Catalogs
 
 When many packages need the same dependency versions, define those versions once
 in a catalog in the root `package.json` and reference them from your workspaces
 with the `catalog:` protocol. Updating the catalog updates every package that
-references it. See [Catalogs](/pm/catalogs).
+references it. See [Catalogs](/docs/pm/catalogs).
 
 <Note>
   ⚡️ **Speed** — Installs are fast, even for big monorepos. Bun installs the [Remix](https://github.com/remix-run/remix) monorepo in about `500ms` on Linux.

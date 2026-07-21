@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/environment-variables.md
+Downloaded: 2026-07-21T21:18:03.779Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -38,7 +43,7 @@ You can also set variables on the command line.
 </CodeGroup>
 
 <Accordion title="Cross-platform solution with Windows">
-  For a cross-platform solution, use [Bun Shell](/runtime/shell), for example through `bun exec`.
+  For a cross-platform solution, use [Bun Shell](/docs/runtime/shell), for example through `bun exec`.
 
   ```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
   bun exec 'FOO=helloworld bun run dev'

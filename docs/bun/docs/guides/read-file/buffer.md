@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/read-file/buffer.md
+Downloaded: 2026-07-21T21:18:03.764Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -18,4 +23,4 @@ const buffer = Buffer.from(arrbuf);
 
 ***
 
-See [Buffer](/runtime/binary-data#buffer) for more on working with `Buffer` and other binary data formats in Bun.
+See [Buffer](/docs/runtime/binary-data#buffer) for more on working with `Buffer` and other binary data formats in Bun.

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/bunx.md
+Downloaded: 2026-07-21T21:18:03.775Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -45,7 +50,7 @@ Run these executables with `bunx`:
 bunx my-cli
 ```
 
-As with `npx`, `bunx` checks for a locally installed package first, then falls back to auto-installing it from `npm`. Installed packages are stored in Bun's [global cache](/pm/global-cache) for future use.
+As with `npx`, `bunx` checks for a locally installed package first, then falls back to auto-installing it from `npm`. Installed packages are stored in Bun's [global cache](/docs/pm/global-cache) for future use.
 
 ## Arguments and flags
 

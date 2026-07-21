@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/install/workspaces.md
+Downloaded: 2026-07-21T21:18:03.763Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -58,7 +63,7 @@ bun install
 
 ***
 
-To add npm dependencies to a particular workspace, `cd` to that directory and run `bun add` as you normally would. Bun detects that you are in a workspace and [hoists](/pm/isolated-installs) the dependency as needed.
+To add npm dependencies to a particular workspace, `cd` to that directory and run `bun add` as you normally would. Bun detects that you are in a workspace and [hoists](/docs/pm/isolated-installs) the dependency as needed.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 cd packages/stuff-a
@@ -67,4 +72,4 @@ bun add zod
 
 ***
 
-See [`bun install`](/pm/cli/install).
+See [`bun install`](/docs/pm/cli/install).

@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/process/ipc.md
+Downloaded: 2026-07-21T21:18:03.764Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Spawn a child process and communicate using IPC
 
-Use [`Bun.spawn()`](/runtime/child-process) to spawn a child process. When spawning a second `bun` process, you can open a direct inter-process communication (IPC) channel between the two processes.
+Use [`Bun.spawn()`](/docs/runtime/child-process) to spawn a child process. When spawning a second `bun` process, you can open a direct inter-process communication (IPC) channel between the two processes.
 
 <Note>
   To communicate with a Node.js process, set `serialization: "json"` in `Bun.spawn`. Use `process.execPath` to get a
@@ -66,4 +71,4 @@ process.send({ message: "Hello from child as object" });
 
 ***
 
-See [Child processes](/runtime/child-process).
+See [Child processes](/docs/runtime/child-process).

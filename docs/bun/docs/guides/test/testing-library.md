@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/testing-library.md
+Downloaded: 2026-07-21T21:18:03.771Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,7 +13,7 @@ You can use [Testing Library](https://testing-library.com/) with Bun's test runn
 
 ***
 
-First, install [Happy DOM](https://github.com/capricorn86/happy-dom) (see [Bun's Happy DOM guide](/guides/test/happy-dom)).
+First, install [Happy DOM](https://github.com/capricorn86/happy-dom) (see [Bun's Happy DOM guide](/docs/guides/test/happy-dom)).
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun add -D @happy-dom/global-registrator
@@ -90,4 +95,4 @@ test("Can use Testing Library", () => {
 
 ***
 
-See the [Testing Library docs](https://testing-library.com/), the [Happy DOM repo](https://github.com/capricorn86/happy-dom), and [DOM testing](/test/dom).
+See the [Testing Library docs](https://testing-library.com/), the [Happy DOM repo](https://github.com/capricorn86/happy-dom), and [DOM testing](/docs/test/dom).

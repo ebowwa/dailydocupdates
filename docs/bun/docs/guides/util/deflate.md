@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/util/deflate.md
+Downloaded: 2026-07-21T21:18:03.771Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -17,4 +22,4 @@ const decompressed = Bun.inflateSync(compressed);
 
 ***
 
-See [Utils](/runtime/utils).
+See [Utils](/docs/runtime/utils).

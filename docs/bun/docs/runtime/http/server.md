@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/http/server.md
+Downloaded: 2026-07-21T21:18:03.781Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -69,9 +74,9 @@ Bun.serve({
 });
 ```
 
-HTML imports don't just serve HTML: they run Bun's [bundler](/bundler), JavaScript transpiler, and CSS parser, so you can build frontends with React, TypeScript, and Tailwind CSS.
+HTML imports don't just serve HTML: they run Bun's [bundler](/docs/bundler), JavaScript transpiler, and CSS parser, so you can build frontends with React, TypeScript, and Tailwind CSS.
 
-For a complete guide to building full-stack applications with HTML imports, see [fullstack dev server](/bundler/fullstack).
+For a complete guide to building full-stack applications with HTML imports, see [fullstack dev server](/docs/bundler/fullstack).
 
 ***
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/http/file-uploads.md
+Downloaded: 2026-07-21T21:18:03.760Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -63,7 +68,7 @@ The form sends a `POST` request with the form data to the `/action` endpoint. Ha
 
 First, call [`.formData()`](https://developer.mozilla.org/en-US/docs/Web/API/Request/formData) on the incoming `Request` to asynchronously parse its contents into a `FormData` instance. Then use [`.get()`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/get) to extract the `name` and `profilePicture` fields; `name` is a `string` and `profilePicture` is a `Blob`.
 
-Finally, write the `Blob` to disk with [`Bun.write()`](/runtime/file-io#writing-files-bun-write).
+Finally, write the `Blob` to disk with [`Bun.write()`](/docs/runtime/file-io#writing-files-bun-write).
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/JUhaF6Mf68z_zHyy/icons/typescript.svg?fit=max&auto=format&n=JUhaF6Mf68z_zHyy&q=85&s=7ac549adaea8d5487d8fbd58cc3ea35b" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({

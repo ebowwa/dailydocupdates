@@ -1,10 +1,15 @@
+<!--
+Source: https://bun.com/docs/guides/process/spawn.md
+Downloaded: 2026-07-21T21:18:03.764Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Spawn a child process
 
-Use [`Bun.spawn()`](/runtime/child-process) to spawn a child process.
+Use [`Bun.spawn()`](/docs/runtime/child-process) to spawn a child process.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["echo", "hello"]);
@@ -40,4 +45,4 @@ output; // => "hello\n"
 
 ***
 
-See [Child processes](/runtime/child-process).
+See [Child processes](/docs/runtime/child-process).

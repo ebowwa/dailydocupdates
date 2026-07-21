@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/filter.md
+Downloaded: 2026-07-21T21:18:03.776Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -51,7 +56,7 @@ bun outdated --filter 'pkg-*'
 bun outdated --filter './'
 ```
 
-See [`bun install`](/pm/cli/install) and [`bun outdated`](/pm/cli/outdated).
+See [`bun install`](/docs/pm/cli/install) and [`bun outdated`](/docs/pm/cli/outdated).
 
 ***
 
@@ -86,7 +91,7 @@ Both scripts run in parallel, and a terminal UI shows their respective outputs:
 
 ### Running scripts in workspaces
 
-Filters respect your [workspace configuration](/pm/workspaces): if your `package.json` specifies which packages are part of the workspace,
+Filters respect your [workspace configuration](/docs/pm/workspaces): if your `package.json` specifies which packages are part of the workspace,
 `--filter` only matches those packages. In a workspace, `--filter` can also run scripts in packages located anywhere in the workspace:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}

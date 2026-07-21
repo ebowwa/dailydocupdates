@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/cancel-orders-coid.md
-Downloaded: 2026-07-20T21:12:08.343Z
+Downloaded: 2026-07-21T21:09:50.577Z
 -->
 
 > ## Documentation Index
@@ -13,6 +13,7 @@ Downloaded: 2026-07-20T21:12:08.343Z
 Requires proxy signature, see [proxy signing](/http/signing#2-proxy-signing).
 
 
+<Badge color="gray" size="md">Request Weight: **1 + floor(n / 20)**</Badge> <Badge color="gray" size="md">Action Weight: **0**</Badge>
 
 
 ## OpenAPI

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/cli/update.md
+Downloaded: 2026-07-21T21:18:03.776Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,7 +11,7 @@
 
 > Update dependencies to latest versions
 
-<Note>To upgrade your Bun CLI version, see [`bun upgrade`](/installation#upgrading).</Note>
+<Note>To upgrade your Bun CLI version, see [`bun upgrade`](/docs/installation#upgrading).</Note>
 
 To update all dependencies to the latest version:
 

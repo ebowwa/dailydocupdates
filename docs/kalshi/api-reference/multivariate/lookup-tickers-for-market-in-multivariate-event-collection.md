@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/multivariate/lookup-tickers-for-market-in-multivariate-event-collection.md
-Downloaded: 2026-07-17T20:55:40.322Z
+Downloaded: 2026-07-21T21:13:55.850Z
 -->
 
 > ## Documentation Index
@@ -11,13 +11,6 @@ Downloaded: 2026-07-17T20:55:40.322Z
 
 > DEPRECATED: This endpoint predates RFQs and should not be used for new integrations. Endpoint for looking up an individual market in a multivariate event collection. If CreateMarketInMultivariateEventCollection has never been hit with that variable combination before, this will return a 404.
 
-<Warning>
-  This endpoint is deprecated and predates RFQs. Do not use it for new integrations.
-</Warning>
-
-<Note>
-  **Rate limit:** 2 tokens per request. See `GET /trade-api/v2/account/endpoint_costs` for current non-default endpoint costs.
-</Note>
 
 
 ## OpenAPI

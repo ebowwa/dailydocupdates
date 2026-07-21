@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/margin-rest/orders/amend-order.md
+Downloaded: 2026-07-21T21:13:55.861Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,9 +11,6 @@
 
 > Endpoint for amending the price and/or max number of fillable contracts in an existing margin order.
 
-<Note>
-  Amending a resting order preserves queue position only when the amendment decreases size. All other amendments — like increasing size or changing price forfeit queue position and place the order at the back of the queue.
-</Note>
 
 
 ## OpenAPI
@@ -40,8 +42,6 @@ tags:
     description: Order group management endpoints
   - name: portfolio
     description: Portfolio and balance information endpoints
-  - name: fcm
-    description: FCM member specific endpoints
   - name: risk
     description: Margin risk metrics, parameters, and limits
   - name: funding

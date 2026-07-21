@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/install/custom-registry.md
+Downloaded: 2026-07-21T21:18:03.762Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -20,7 +25,7 @@ registry = "https://usertitle:password@registry.npmjs.org"
 
 ***
 
-Your `bunfig.toml` can reference environment variables. Bun automatically loads environment variables from `.env.local`, `.env.[NODE_ENV]`, and `.env`. See [Environment variables](/runtime/environment-variables).
+Your `bunfig.toml` can reference environment variables. Bun automatically loads environment variables from `.env.local`, `.env.[NODE_ENV]`, and `.env`. See [Environment variables](/docs/runtime/environment-variables).
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]
@@ -29,4 +34,4 @@ registry = { url = "https://registry.npmjs.org", token = "$npm_token" }
 
 ***
 
-See [`bun install`](/pm/cli/install).
+See [`bun install`](/docs/pm/cli/install).

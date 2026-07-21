@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/c-compiler.md
+Downloaded: 2026-07-21T21:18:03.779Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -54,7 +59,7 @@ What is the answer to the universe? 42
 
 ### Primitive types
 
-`cc` supports the same `FFIType` values as [`dlopen`](/runtime/ffi).
+`cc` supports the same `FFIType` values as [`dlopen`](/docs/runtime/ffi).
 
 | `FFIType`   | C Type         | Aliases                     |
 | ----------- | -------------- | --------------------------- |

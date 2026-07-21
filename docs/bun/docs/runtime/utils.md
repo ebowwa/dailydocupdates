@@ -1,6 +1,6 @@
 <!--
 Source: https://bun.com/docs/runtime/utils.md
-Downloaded: 2026-07-19T20:50:07.906Z
+Downloaded: 2026-07-21T21:18:03.784Z
 -->
 
 > ## Documentation Index
@@ -241,7 +241,7 @@ const currentFile = import.meta.url;
 Bun.openInEditor(currentFile);
 ```
 
-You can override this with the `debug.editor` setting in your [`bunfig.toml`](/runtime/bunfig).
+You can override this with the `debug.editor` setting in your [`bunfig.toml`](/docs/runtime/bunfig).
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [debug] # [!code ++]
@@ -787,7 +787,7 @@ await Bun.readableStreamToFormData(stream, multipartFormBoundary);
 
 ## `Bun.resolveSync()`
 
-Resolves a file path or module specifier using Bun's internal [module resolution](/runtime/module-resolution) algorithm. The first argument is the path to resolve, and the second argument is the "root". If no match is found, it throws an `Error`.
+Resolves a file path or module specifier using Bun's internal [module resolution](/docs/runtime/module-resolution) algorithm. The first argument is the path to resolve, and the second argument is the "root". If no match is found, it throws an `Error`.
 
 ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.resolveSync("./foo.ts", "/path/to/project");

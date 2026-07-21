@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/get-tickers.md
-Downloaded: 2026-07-20T21:12:08.350Z
+Downloaded: 2026-07-21T21:09:50.584Z
 -->
 
 > ## Documentation Index
@@ -11,6 +11,7 @@ Downloaded: 2026-07-20T21:12:08.350Z
 
 > Get all instrument tickers with live market data.
 
+<Badge color="gray" size="md">Request Weight: **2**</Badge>
 
 
 ## OpenAPI

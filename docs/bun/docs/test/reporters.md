@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/test/reporters.md
+Downloaded: 2026-07-21T21:18:03.785Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -97,7 +102,7 @@ The JUnit reporter does not include:
 
 `bun test` detects when it's running inside GitHub Actions and emits GitHub Actions annotations to the console directly. No configuration is needed beyond installing Bun and running `bun test`.
 
-For an example GitHub Actions workflow, see [CI/CD integration](/pm/cli/install#ci%2Fcd).
+For an example GitHub Actions workflow, see [CI/CD integration](/docs/pm/cli/install#ci%2Fcd).
 
 ***
 

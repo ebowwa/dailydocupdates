@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/pm/global-store.md
+Downloaded: 2026-07-21T21:18:03.776Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,7 +19,7 @@ The result: warm installs are roughly **7× faster** (one symlink per package in
 
 ## Enabling
 
-The global virtual store is **off by default**. It only applies to the [isolated linker](/pm/isolated-installs); it is not used by the hoisted linker.
+The global virtual store is **off by default**. It only applies to the [isolated linker](/docs/pm/isolated-installs); it is not used by the hoisted linker.
 
 To enable it for a project:
 
@@ -85,7 +90,7 @@ Cold-to-warm timings on cloned real-world repositories (macOS arm64):
 
 ## Directory structure
 
-The on-disk layout adds one level of indirection compared to [isolated installs](/pm/isolated-installs#directory-structure):
+The on-disk layout adds one level of indirection compared to [isolated installs](/docs/pm/isolated-installs#directory-structure):
 
 ```bash tree layout icon="list-tree" theme={"theme":{"light":"github-light","dark":"dracula"}}
 ~/.bun/install/cache/
@@ -131,7 +136,7 @@ When packages live under the project's `node_modules/.bun/`, Node's module resol
 
 In practice this only affects **true phantom dependencies**: a package doing `require('helper')` for something it never declared in `dependencies`, `peerDependencies`, or `peerDependenciesMeta`. If you hit this, add the helper to the consuming package's dependencies (the right fix) or set `globalStore = false`.
 
-[`publicHoistPattern`](/runtime/bunfig#install-publichoistpattern) and [`hoistPattern`](/runtime/bunfig#install-hoistpattern) hoist into the project's `node_modules`, which packages inside the global store can't reach. They still work for resolving hoisted packages from your own source code.
+[`publicHoistPattern`](/docs/runtime/bunfig#install-publichoistpattern) and [`hoistPattern`](/docs/runtime/bunfig#install-hoistpattern) hoist into the project's `node_modules`, which packages inside the global store can't reach. They still work for resolving hoisted packages from your own source code.
 
 ### `node_modules` is mostly symlinks
 
@@ -147,6 +152,6 @@ Multiple `bun install` processes (parallel CI jobs, concurrent workspace builds)
 
 ## Related documentation
 
-* [Package manager > Isolated installs](/pm/isolated-installs) — The linker the global store builds on
-* [Package manager > Global cache](/pm/global-cache) — Where downloaded packages are stored
-* [Runtime > bunfig](/runtime/bunfig#install-globalstore) — `bunfig.toml` reference
+* [Package manager > Isolated installs](/docs/pm/isolated-installs) — The linker the global store builds on
+* [Package manager > Global cache](/docs/pm/global-cache) — Where downloaded packages are stored
+* [Runtime > bunfig](/docs/runtime/bunfig#install-globalstore) — `bunfig.toml` reference

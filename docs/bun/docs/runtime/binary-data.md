@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/binary-data.md
+Downloaded: 2026-07-21T21:18:03.778Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -374,7 +379,7 @@ for await (const chunk of stream) {
 // => "world"
 ```
 
-For more on streams in Bun, see [Streams](/runtime/streams).
+For more on streams in Bun, see [Streams](/docs/runtime/streams).
 
 ***
 

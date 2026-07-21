@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/runtime/typescript.md
+Downloaded: 2026-07-21T21:18:03.767Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -49,8 +54,8 @@ Here is the full set of recommended `compilerOptions` for a Bun project. With th
 
 ***
 
-If you're using TypeScript 6.0 or later, you also need `"types": ["bun"]` in your `compilerOptions`. See [TypeScript 6 and 7](/typescript-6) for details.
+If you're using TypeScript 6.0 or later, you also need `"types": ["bun"]` in your `compilerOptions`. See [TypeScript 6 and 7](/docs/typescript-6) for details.
 
 ***
 
-See [TypeScript](/runtime/typescript).
+See [TypeScript](/docs/runtime/typescript).

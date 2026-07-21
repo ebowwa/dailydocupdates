@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/rerun-each.md
+Downloaded: 2026-07-21T21:18:03.770Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -13,4 +18,4 @@ bun test --rerun-each 10
 
 ***
 
-See [`bun test`](/test).
+See [`bun test`](/docs/test).

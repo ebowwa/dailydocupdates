@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/file-io.md
+Downloaded: 2026-07-21T21:18:03.780Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -7,7 +12,7 @@
 > Bun provides a set of optimized APIs for reading and writing files.
 
 <Note>
-  The `Bun.file` and `Bun.write` APIs documented on this page are heavily optimized and are the recommended way to work with files in Bun. For operations they don't cover, such as `mkdir` or `readdir`, use Bun's [nearly complete](/runtime/nodejs-compat#node-fs) implementation of the [`node:fs`](https://nodejs.org/api/fs.html) module.
+  The `Bun.file` and `Bun.write` APIs documented on this page are heavily optimized and are the recommended way to work with files in Bun. For operations they don't cover, such as `mkdir` or `readdir`, use Bun's [nearly complete](/docs/runtime/nodejs-compat#node-fs) implementation of the [`node:fs`](https://nodejs.org/api/fs.html) module.
 </Note>
 
 ***

@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/typescript.md
+Downloaded: 2026-07-21T21:18:03.786Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -59,4 +64,4 @@ bun init
 
 ## TypeScript 6 and 7
 
-If you're using TypeScript 6.0 or later, you also need `"types": ["bun"]` in your `compilerOptions`. See [TypeScript 6 and 7](/typescript-6).
+If you're using TypeScript 6.0 or later, you also need `"types": ["bun"]` in your `compilerOptions`. See [TypeScript 6 and 7](/docs/typescript-6).

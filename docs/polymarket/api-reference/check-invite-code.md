@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/check-invite-code.md
-Downloaded: 2026-07-20T21:12:08.343Z
+Downloaded: 2026-07-21T21:09:50.577Z
 -->
 
 > ## Documentation Index
@@ -13,6 +13,7 @@ Downloaded: 2026-07-20T21:12:08.343Z
 response is invalid if that address already has an account.
 
 
+<Badge color="gray" size="md">Request Weight: **1**</Badge>
 
 
 ## OpenAPI
