@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/process/nanoseconds.md
+Downloaded: 2026-07-22T21:08:17.160Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -12,4 +17,4 @@ Bun.nanoseconds();
 
 ***
 
-See [Utils](/runtime/utils) for more utilities.
+See [Utils](/docs/runtime/utils) for more utilities.

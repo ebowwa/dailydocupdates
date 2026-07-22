@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/fix/common-components.md
-Downloaded: 2026-07-15T21:01:12.523Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

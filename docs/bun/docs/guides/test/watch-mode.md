@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/guides/test/watch-mode.md
+Downloaded: 2026-07-22T21:08:17.166Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -21,4 +26,4 @@ Watch mode restarts the running Bun process whenever a file changes. It's fast. 
 
 ***
 
-See [`bun test`](/test).
+See [`bun test`](/docs/test).

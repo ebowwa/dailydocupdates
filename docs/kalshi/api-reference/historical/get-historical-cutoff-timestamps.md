@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/historical/get-historical-cutoff-timestamps.md
-Downloaded: 2026-07-17T20:55:40.318Z
+Downloaded: 2026-07-22T21:07:54.643Z
 -->
 
 > ## Documentation Index
@@ -15,6 +15,7 @@ Downloaded: 2026-07-17T20:55:40.318Z
 - `market_settled_ts` : Markets that **settled** before this timestamp, and their candlesticks, must be accessed via `GET /historical/markets` and `GET /historical/markets/{ticker}/candlesticks`.
 - `trades_created_ts` : Trades that were **filled** before this timestamp must be accessed via `GET /historical/fills`.
 - `orders_updated_ts` : Orders that were **canceled or fully executed** before this timestamp must be accessed via `GET /historical/orders`. Resting (active) orders are always available in `GET /portfolio/orders`.
+- `market_positions_last_updated_ts` : Settled positions **archived from the live data set** before this timestamp must be accessed via `GET /historical/positions`. Unsettled positions are always available in `GET /portfolio/positions`.
 
 
 
@@ -25,7 +26,7 @@ Downloaded: 2026-07-17T20:55:40.318Z
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.25.0
+  version: 3.26.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -93,6 +94,11 @@ paths:
         - `orders_updated_ts` : Orders that were **canceled or fully executed**
         before this timestamp must be accessed via `GET /historical/orders`.
         Resting (active) orders are always available in `GET /portfolio/orders`.
+
+        - `market_positions_last_updated_ts` : Settled positions **archived from
+        the live data set** before this timestamp must be accessed via `GET
+        /historical/positions`. Unsettled positions are always available in `GET
+        /portfolio/positions`.
       operationId: GetHistoricalCutoff
       responses:
         '200':
@@ -134,5 +140,12 @@ components:
             canceled or fully executed before this timestamp must be accessed
             via `GET /historical/orders`. Resting (active) orders are always
             available in `GET /portfolio/orders`.
+        market_positions_last_updated_ts:
+          type: string
+          format: date-time
+          description: >
+            Cutoff based on **position last-update time**. Settled positions
+            archived from the live data set before this timestamp are served
+            through the historical section of position reads.
 
 ````
