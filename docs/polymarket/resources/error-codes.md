@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/resources/error-codes.md
+Downloaded: 2026-07-23T21:04:54.615Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -21,19 +26,26 @@ All CLOB API errors return a JSON object with a single `error` field:
 These errors can occur on **any authenticated endpoint**.
 
 <ResponseField name="401" type="Unauthorized">
-  `Unauthorized/Invalid api key` — Your API key is missing, expired, or invalid. Ensure you're sending all required [authentication headers](/trading/overview#authentication).
+  `Unauthorized/Invalid api key` — Your API key is missing, expired, or invalid.
+  Ensure you're sending all required [authentication
+  headers](/getting-started/api#authentication).
 </ResponseField>
 
 <ResponseField name="401" type="Unauthorized">
-  `Invalid L1 Request headers` — Your L1 authentication headers (HMAC signature) are malformed or the signature doesn't match. See [Authentication](/api-reference/authentication).
+  `Invalid L1 Request headers` — Your L1 authentication headers (HMAC signature)
+  are malformed or the signature doesn't match. See
+  [Authentication](/getting-started/api#authentication).
 </ResponseField>
 
 <ResponseField name="503" type="Service Unavailable">
-  `Trading is currently disabled. Check polymarket.com for updates` — The exchange is temporarily paused. No orders (including cancels) are accepted.
+  `Trading is currently disabled. Check polymarket.com for updates` — The
+  exchange is temporarily paused. No orders (including cancels) are accepted.
 </ResponseField>
 
 <ResponseField name="429" type="Too Many Requests">
-  `Too Many Requests` — You've exceeded the [rate limit](/api-reference/rate-limits). Back off and retry with exponential backoff.
+  `Too Many Requests` — You've exceeded the [rate
+  limit](/api-reference/rate-limits). Back off and retry with exponential
+  backoff.
 </ResponseField>
 
 ***
@@ -45,7 +57,8 @@ Errors from the order book endpoints.
 ### GET book
 
 <ResponseField name="400" type="Bad Request">
-  `Invalid token id` — The `token_id` query parameter is missing or not a valid token ID.
+  `Invalid token id` — The `token_id` query parameter is missing or not a valid
+  token ID.
 </ResponseField>
 
 <ResponseField name="404" type="Not Found">
@@ -59,7 +72,8 @@ Errors from the order book endpoints.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `Payload exceeds the limit` — Too many token IDs in a single request. Reduce the batch size.
+  `Payload exceeds the limit` — Too many token IDs in a single request. Reduce
+  the batch size.
 </ResponseField>
 
 ***
@@ -145,11 +159,13 @@ Errors from order placement endpoints.
 ### POST order
 
 <ResponseField name="400" type="Bad Request">
-  `Invalid order payload` — The request body is malformed, missing required fields, or contains invalid values.
+  `Invalid order payload` — The request body is malformed, missing required
+  fields, or contains invalid values.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `the order owner has to be the owner of the API KEY` — The `maker` address in the order doesn't match the address associated with your API key.
+  `the order owner has to be the owner of the API KEY` — The `maker` address in
+  the order doesn't match the address associated with your API key.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
@@ -165,11 +181,17 @@ Errors from order placement endpoints.
 </ResponseField>
 
 <ResponseField name="503" type="Service Unavailable">
-  `Trading is currently cancel-only. New orders are not accepted, but cancels are allowed.` — The exchange is in cancel-only mode. You can cancel existing orders but cannot place new orders.
+  `Trading is currently cancel-only. New orders are not accepted, but cancels
+      are allowed.` — The exchange is in cancel-only mode. You can cancel existing
+  orders but cannot place new orders.
 </ResponseField>
 
 <ResponseField name="503" type="Service Unavailable">
-  `post-only mode: only post-only orders and cancels are allowed` — The exchange is in post-only mode. You can cancel orders and place orders with `postOnly: true`; non-post-only orders are rejected. The response includes `code: "post_only_mode"` and `retry_after_seconds`, and the same retry delay is also sent in the `Retry-After` HTTP header.
+  `post-only mode: only post-only orders and cancels are allowed` — The exchange
+  is in post-only mode. You can cancel orders and place orders with `postOnly:
+      true`; non-post-only orders are rejected. The response includes `code:
+      "post_only_mode"` and `retry_after_seconds`, and the same retry delay is also
+  sent in the `Retry-After` HTTP header.
 </ResponseField>
 
 Example response:
@@ -189,7 +211,8 @@ The retry delay is also sent in the `Retry-After` HTTP header.
 All errors from `POST /order` apply, plus:
 
 <ResponseField name="400" type="Bad Request">
-  `Too many orders in payload: {N}, max allowed: {M}` — The batch contains more orders than the maximum allowed per request.
+  `Too many orders in payload: {N}, max allowed: {M}` — The batch contains more
+  orders than the maximum allowed per request.
 </ResponseField>
 
 Per-order errors are returned in the `200` response array, with individual error messages for each failed order.
@@ -224,15 +247,20 @@ In post-only mode, non-post-only orders in a batch return per-order errors:
 These errors are returned when an order passes initial validation but fails during processing. They appear in the response body of `POST /order` and `POST /orders`.
 
 <ResponseField name="400" type="Bad Request">
-  `invalid post-only order: order crosses book` — A post-only (maker) order would immediately match. Adjust the price so it rests on the book.
+  `invalid post-only order: order crosses book` — A post-only (maker) order
+  would immediately match. Adjust the price so it rests on the book.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `order {id} is invalid. Price ({price}) breaks minimum tick size rule: {tick}` — The order price doesn't align with the market's tick size. Use [`GET /tick-size`](/api-reference/clob#get-tick-size) to check the valid tick size.
+  `order {id} is invalid. Price ({price}) breaks minimum tick size rule: {tick}`
+  — The order price doesn't align with the market's tick size. Use [`GET
+      /tick-size`](/api-reference/market-data/get-tick-size) to check the valid tick
+  size.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `order {id} is invalid. Size ({size}) lower than the minimum: {min}` — The order size is below the market minimum.
+  `order {id} is invalid. Size ({size}) lower than the minimum: {min}` — The
+  order size is below the market minimum.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
@@ -244,11 +272,15 @@ These errors are returned when an order passes initial validation but fails duri
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `not enough balance / allowance` — Insufficient pUSD balance or token allowance. Check your balance with [`GET /balance-allowance`](/api-reference/clob#get-balance-allowance) and approve the exchange contract if needed.
+  `not enough balance / allowance` — Insufficient pUSD balance or token
+  allowance. Make sure the account holds enough pUSD and grant the exchange
+  allowances with [Set Up Trading
+  Approvals](/trading/wallets-auth#set-up-trading-approvals).
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `invalid expiration` — The order expiration timestamp is in the past or invalid.
+  `invalid expiration` — The order expiration timestamp is in the past or
+  invalid.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
@@ -260,11 +292,15 @@ These errors are returned when an order passes initial validation but fails duri
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `order couldn't be fully filled. FOK orders are fully filled or killed.` — A Fill-or-Kill order could not be completely filled by available liquidity. The entire order is rejected.
+  `order couldn't be fully filled. FOK orders are fully filled or killed.` — A
+  Fill-or-Kill order could not be completely filled by available liquidity. The
+  entire order is rejected.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `no orders found to match with FAK order. FAK orders are partially filled or killed if no match is found.` — A Fill-and-Kill order found no matching orders at all. At least one match is required.
+  `no orders found to match with FAK order. FAK orders are partially filled or
+      killed if no match is found.` — A Fill-and-Kill order found no matching orders
+  at all. At least one match is required.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
@@ -272,7 +308,10 @@ These errors are returned when an order passes initial validation but fails duri
 </ResponseField>
 
 <ResponseField name="500" type="Internal Server Error">
-  `order timed out` — The exchange could not process the order before the request deadline. This typically happens during bursts of concurrent order submissions from the same account. The order was rejected before reaching the order book and can be safely resubmitted.
+  `order timed out` — The exchange could not process the order before the
+  request deadline. This typically happens during bursts of concurrent order
+  submissions from the same account. The order was rejected before reaching the
+  order book and can be safely resubmitted.
 </ResponseField>
 
 ***
@@ -282,7 +321,8 @@ These errors are returned when an order passes initial validation but fails duri
 Internal matching engine errors that may surface during order execution.
 
 <ResponseField name="425" type="Too Early">
-  The matching engine is restarting. Retry with exponential backoff. See [Matching Engine](/trading/matching-engine) for details on restart schedule and handling.
+  The matching engine is restarting. Retry with exponential backoff. See
+  [Matching Engine Restarts](/trading/matching-engine) for restart handling.
 </ResponseField>
 
 <ResponseField name="500" type="Internal Server Error">
@@ -290,7 +330,8 @@ Internal matching engine errors that may surface during order execution.
 </ResponseField>
 
 <ResponseField name="500" type="Internal Server Error">
-  `FOK orders are filled or killed` — A Fill-or-Kill order could not be fully satisfied.
+  `FOK orders are filled or killed` — A Fill-or-Kill order could not be fully
+  satisfied.
 </ResponseField>
 
 <ResponseField name="500" type="Internal Server Error">
@@ -298,7 +339,8 @@ Internal matching engine errors that may surface during order execution.
 </ResponseField>
 
 <ResponseField name="500" type="Internal Server Error">
-  `the price of the taker's order has a discrepancy greater than allowed with the worst maker order`
+  `the price of the taker's order has a discrepancy greater than allowed with
+      the worst maker order`
 </ResponseField>
 
 ***
@@ -324,7 +366,8 @@ Errors from order cancellation endpoints.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `Too many orders in payload, max allowed: {N}` — Too many order IDs in a single cancellation request.
+  `Too many orders in payload, max allowed: {N}` — Too many order IDs in a
+  single cancellation request.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
@@ -334,7 +377,8 @@ Errors from order cancellation endpoints.
 ### DELETE cancel-market-orders
 
 <ResponseField name="400" type="Bad Request">
-  `Invalid order payload` — The request body is malformed or contains invalid filter parameters.
+  `Invalid order payload` — The request body is malformed or contains invalid
+  filter parameters.
 </ResponseField>
 
 ***
@@ -350,13 +394,15 @@ Errors from order query endpoints.
 </ResponseField>
 
 <ResponseField name="500" type="Internal Server Error">
-  `Internal server error` — An unexpected error occurred while fetching the order.
+  `Internal server error` — An unexpected error occurred while fetching the
+  order.
 </ResponseField>
 
 ### GET orders
 
 <ResponseField name="400" type="Bad Request">
-  `invalid order params payload` — The query parameters are malformed or contain invalid values.
+  `invalid order params payload` — The query parameters are malformed or contain
+  invalid values.
 </ResponseField>
 
 <ResponseField name="500" type="Internal Server Error">
@@ -370,7 +416,8 @@ Errors from order query endpoints.
 ### GET trades
 
 <ResponseField name="400" type="Bad Request">
-  `Invalid trade params payload` — The query parameters are malformed or contain invalid values.
+  `Invalid trade params payload` — The query parameters are malformed or contain
+  invalid values.
 </ResponseField>
 
 <ResponseField name="500" type="Internal Server Error">
@@ -384,7 +431,8 @@ Errors from order query endpoints.
 </ResponseField>
 
 <ResponseField name="500" type="Internal Server Error">
-  `Internal server error` — An unexpected error occurred while fetching the last trade price.
+  `Internal server error` — An unexpected error occurred while fetching the last
+  trade price.
 </ResponseField>
 
 ### POST last-trades-prices
@@ -438,7 +486,8 @@ Errors from order query endpoints.
 ### GET prices-history
 
 <ResponseField name="400" type="Bad Request">
-  Filter validation errors — One or more query parameters (`market`, `startTs`, `endTs`, `fidelity`) are invalid.
+  Filter validation errors — One or more query parameters (`market`, `startTs`,
+  `endTs`, `fidelity`) are invalid.
 </ResponseField>
 
 ### GET ohlc
@@ -452,7 +501,8 @@ Errors from order query endpoints.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `invalid fidelity: {val}` — The `fidelity` parameter must be one of: `1m`, `5m`, `15m`, `30m`, `1h`, `4h`, `1d`, `1w`.
+  `invalid fidelity: {val}` — The `fidelity` parameter must be one of: `1m`,
+  `5m`, `15m`, `30m`, `1h`, `4h`, `1d`, `1w`.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
@@ -466,7 +516,8 @@ Errors from order query endpoints.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `either market or asset_id must be provided` — You must specify either a `market` (condition ID) or `asset_id` (token ID).
+  `either market or asset_id must be provided` — You must specify either a
+  `market` (condition ID) or `asset_id` (token ID).
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
@@ -480,7 +531,8 @@ Errors from order query endpoints.
 ### POST auth api-key
 
 <ResponseField name="401" type="Unauthorized">
-  `Invalid L1 Request headers` — L1 authentication headers are missing or invalid.
+  `Invalid L1 Request headers` — L1 authentication headers are missing or
+  invalid.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
@@ -490,19 +542,22 @@ Errors from order query endpoints.
 ### GET auth api-keys
 
 <ResponseField name="500" type="Internal Server Error">
-  `Could not retrieve API keys` — An unexpected error occurred while fetching your API keys.
+  `Could not retrieve API keys` — An unexpected error occurred while fetching
+  your API keys.
 </ResponseField>
 
 ### DELETE auth api-key
 
 <ResponseField name="500" type="Internal Server Error">
-  `Could not delete API key` — An unexpected error occurred while deleting the API key.
+  `Could not delete API key` — An unexpected error occurred while deleting the
+  API key.
 </ResponseField>
 
 ### GET auth derive-api-key
 
 <ResponseField name="401" type="Unauthorized">
-  `Invalid L1 Request headers` — L1 authentication headers are missing or invalid.
+  `Invalid L1 Request headers` — L1 authentication headers are missing or
+  invalid.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
@@ -522,7 +577,8 @@ Errors from order query endpoints.
 ### GET auth builder-api-key
 
 <ResponseField name="500" type="Internal Server Error">
-  `could not get builder api keys` — An unexpected error occurred while fetching builder API keys.
+  `could not get builder api keys` — An unexpected error occurred while fetching
+  builder API keys.
 </ResponseField>
 
 ### DELETE auth builder-api-key
@@ -532,11 +588,13 @@ Errors from order query endpoints.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `invalid revoke builder api key headers` — Required authentication headers are missing.
+  `invalid revoke builder api key headers` — Required authentication headers are
+  missing.
 </ResponseField>
 
 <ResponseField name="500" type="Internal Server Error">
-  `could not revoke the builder api key: {key}` — An unexpected error occurred while revoking the key.
+  `could not revoke the builder api key: {key}` — An unexpected error occurred
+  while revoking the key.
 </ResponseField>
 
 ***
@@ -546,11 +604,13 @@ Errors from order query endpoints.
 ### GET builder trades
 
 <ResponseField name="400" type="Bad Request">
-  `invalid builder trade params` — The query parameters are malformed or contain invalid values.
+  `invalid builder trade params` — The query parameters are malformed or contain
+  invalid values.
 </ResponseField>
 
 <ResponseField name="500" type="Internal Server Error">
-  `could not fetch builder trades` — An unexpected error occurred while fetching builder trades.
+  `could not fetch builder trades` — An unexpected error occurred while fetching
+  builder trades.
 </ResponseField>
 
 ***
@@ -560,27 +620,31 @@ Errors from order query endpoints.
 ### GET balance-allowance
 
 <ResponseField name="400" type="Bad Request">
-  `Invalid asset type` — The `asset_type` parameter is not a recognized asset type.
+  `Invalid asset type` — The `asset_type` parameter is not a recognized asset
+  type.
 </ResponseField>
 
 <ResponseField name="400" type="Bad Request">
-  `Invalid signature_type` — The `signature_type` parameter must be `EOA`, `POLY_PROXY`, or `GNOSIS_SAFE`.
+  `Invalid signature_type` — The `signature_type` parameter must be `EOA`,
+  `POLY_PROXY`, or `GNOSIS_SAFE`.
 </ResponseField>
 
 ***
 
 ## Status Code Reference
 
-| Status | Meaning               | Common Causes                                                                                       |
-| ------ | --------------------- | --------------------------------------------------------------------------------------------------- |
-| `400`  | Bad Request           | Invalid parameters, malformed payload, business logic violation                                     |
-| `401`  | Unauthorized          | Missing or invalid API key, bad HMAC signature, expired timestamp                                   |
-| `404`  | Not Found             | Market doesn't exist, order not found, token ID not recognized                                      |
-| `425`  | Too Early             | Matching engine is restarting — retry with backoff. See [Matching Engine](/trading/matching-engine) |
-| `429`  | Too Many Requests     | Rate limit exceeded — implement exponential backoff                                                 |
-| `500`  | Internal Server Error | Unexpected server error — retry with backoff                                                        |
-| `503`  | Service Unavailable   | Exchange paused, or order placement blocked by cancel-only / post-only mode                         |
+| Status | Meaning               | Common Causes                                                                                                |
+| ------ | --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `400`  | Bad Request           | Invalid parameters, malformed payload, business logic violation                                              |
+| `401`  | Unauthorized          | Missing or invalid API key, bad HMAC signature, expired timestamp                                            |
+| `404`  | Not Found             | Market doesn't exist, order not found, token ID not recognized                                               |
+| `425`  | Too Early             | Matching engine is restarting — retry with backoff. See [Matching Engine Restarts](/trading/matching-engine) |
+| `429`  | Too Many Requests     | Rate limit exceeded — implement exponential backoff                                                          |
+| `500`  | Internal Server Error | Unexpected server error — retry with backoff                                                                 |
+| `503`  | Service Unavailable   | Exchange paused, or order placement blocked by cancel-only / post-only mode                                  |
 
 <Note>
-  The CLOB API has an internal override: any error message containing `"not found"` returns `404`, `"unauthorized"` returns `401`, and `"context canceled"` returns `400`, regardless of the original status code.
+  The CLOB API has an internal override: any error message containing `"not
+      found"` returns `404`, `"unauthorized"` returns `401`, and `"context
+      canceled"` returns `400`, regardless of the original status code.
 </Note>

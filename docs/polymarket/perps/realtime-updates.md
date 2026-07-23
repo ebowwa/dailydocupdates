@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/perps/realtime-updates.md
+Downloaded: 2026-07-23T21:04:54.613Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -20,7 +25,8 @@ the view no longer needs live data.
 
 <Tabs>
   <Tab title="TypeScript">
-    Subscribe from a `PublicClient` and iterate over the merged event stream.
+    Subscribe from a `PublicClient` or `SecureClient` and iterate over the merged
+    event stream.
 
     ```ts theme={null}
     import { createPublicClient } from "@polymarket/client";
@@ -53,7 +59,8 @@ the view no longer needs live data.
   </Tab>
 
   <Tab title="Python">
-    Subscribe from an `AsyncPublicClient` and iterate over the merged event stream.
+    Subscribe from an `AsyncPublicClient` or `AsyncSecureClient` and iterate over
+    the merged event stream.
 
     ```python theme={null}
     from polymarket import AsyncPublicClient

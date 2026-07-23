@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/combos/market-makers.md
-Downloaded: 2026-07-21T21:09:50.600Z
+Downloaded: 2026-07-23T21:04:54.616Z
 -->
 
 > ## Documentation Index
@@ -33,27 +33,27 @@ need a Polymarket account; create one at [polymarket.com](https://polymarket.com
 
         <CodeGroup>
           ```bash pnpm theme={null}
-          pnpm add @polymarket/client@beta viem
+          pnpm add @polymarket/client@latest viem
           ```
 
           ```bash npm theme={null}
-          npm install @polymarket/client@beta viem
+          npm install @polymarket/client@latest viem
           ```
 
           ```bash yarn theme={null}
-          yarn add @polymarket/client@beta viem
+          yarn add @polymarket/client@latest viem
           ```
         </CodeGroup>
 
         <Note>
           This page uses Viem for wallet signing. See the [TypeScript tooling
-          guide](/dev-tooling/typescript#wallet-integrations) for other wallet library
+          guide](/getting-started/typescript#wallet-integrations) for other wallet library
           integrations.
         </Note>
       </Step>
 
       <Step title="Create a Secure Client">
-        Create an instance of `SecureClient` with a wallet that has funds for fulfilling
+        Create a `SecureClient` with a wallet that has funds for fulfilling
         user requests and its signer details.
 
         ```ts theme={null}
@@ -222,7 +222,7 @@ need a Polymarket account; create one at [polymarket.com](https://polymarket.com
       <Step title="Acquire CLOB Credentials">
         RFQ WebSocket authentication uses CLOB API credentials: API key, secret, and
         passphrase. If you need credentials, start with [Getting API
-        Credentials](/api-reference/authentication#using-the-rest-api).
+        Credentials](/getting-started/api#authentication).
       </Step>
 
       <Step title="Resolve Quoter Identity">
@@ -234,11 +234,10 @@ need a Polymarket account; create one at [polymarket.com](https://polymarket.com
         | -------------- | ---------------- | ----------------------------- | -------------------- |
         | Deposit Wallet | `3` POLY\_1271   | Deposit wallet address        | Deposit wallet       |
         | Safe Wallet    | `2` Safe         | Authenticated signing address | Derived Safe wallet  |
-        | Poly Proxy     | `1` Proxy        | Authenticated signing address | Derived proxy wallet |
+        | Proxy Wallet   | `1` Proxy        | Authenticated signing address | Derived proxy wallet |
         | EOA            | `0` EOA          | EOA address                   | Same EOA address     |
 
-        For more detail, see [Signature Types and
-        Funder](/api-reference/authentication#signature-types-and-funder).
+        For more detail, see [Wallets and Authentication](/trading/wallets-auth#wallet-types).
       </Step>
 
       <Step title="Authenticate">
@@ -316,10 +315,10 @@ need a Polymarket account; create one at [polymarket.com](https://polymarket.com
         | AutoRedeemer          | `0xa1200000d0002264C9a1698e001292D00E1b00af` |
 
         <Note>
-          The following steps show the Deposit Wallet
-          [batch](/trading/deposit-wallets#submit-a-deposit-wallet-batch) path. If you
-          are trading with an EOA, submit the approvals directly from `maker_address`.
-          For Safe or Poly Proxy wallet flows, use an SDK.
+          The following steps use the Deposit Wallet [gasless transaction
+          flow](/trading/wallets-auth#execute-gasless-transactions). If you are trading
+          with an EOA, submit the approvals directly from `maker_address`. For Safe or
+          Proxy Wallet flows, use an SDK.
         </Note>
       </Step>
 
@@ -508,8 +507,8 @@ request using collateral or inventory.
 | Buy YES       | Buy NO at `1 - price` | Sell YES at `price`    |
 | Sell YES      | Buy YES at `price`    | Sell NO at `1 - price` |
 
-See [Combinatorial Positions](/trading/ctf/combinatorial) for more detail on the
-YES/NO position model.
+See [Combinatorial Positions](/trading/positions/combinatorial) for more detail
+on the YES/NO position model.
 
 The diagram below shows the maker-side quote lifecycle, from receiving a quote
 request through its terminal outcome.
@@ -940,7 +939,7 @@ RFQ system. Quoters should respond within the **400 ms** submission window.
         | -------------- | --------------- | -------------------------- | ------------------------------ |
         | Deposit Wallet | `3`             | `depositWalletTypedData`   | ERC-7739-wrapped signature     |
         | Safe Wallet    | `2`             | `exchangeV3OrderTypedData` | Standard 65-byte EVM signature |
-        | Poly Proxy     | `1`             | `exchangeV3OrderTypedData` | Standard 65-byte EVM signature |
+        | Proxy Wallet   | `1`             | `exchangeV3OrderTypedData` | Standard 65-byte EVM signature |
         | EOA            | `0`             | `exchangeV3OrderTypedData` | Standard 65-byte EVM signature |
 
         The example below shows how to produce `signature` with Viem for both signing
@@ -1859,12 +1858,12 @@ fresh outside the quote path.
       type ComboPosition,
     } from "@polymarket/client";
 
-    const positions = client.listComboPositions({
+    const pages = client.listComboPositions({
       status: ComboPositionStatus.Open,
       pageSize: 50,
     });
 
-    for await (const page of positions) {
+    for await (const page of pages) {
       for (const position of page.items) {
         // position: ComboPosition
       }
@@ -1967,6 +1966,28 @@ fresh outside the quote path.
     so both can read as zero after a winning Combo is redeemed. Use
     `realizedPayoutUsdc` for gross redemption proceeds and `totalCostUsdc` for
     original cost basis; net result is `realizedPayoutUsdc - totalCostUsdc`.
+
+    You can filter positions by the following criteria:
+
+    <CodeGroup>
+      ```ts Condition ID theme={null}
+      const pages = client.listComboPositions({
+        conditionId: "<combo_condition_id>",
+      });
+      ```
+
+      ```ts Position ID theme={null}
+      const pages = client.listComboPositions({
+        positionId: "<yes_position_id|no_position_id>",
+      });
+      ```
+
+      ```ts Status theme={null}
+      const pages = client.listComboPositions({
+        status: ComboPositionStatus.Open,
+      });
+      ```
+    </CodeGroup>
   </Tab>
 
   <Tab title="Python">
@@ -1975,9 +1996,9 @@ fresh outside the quote path.
     `Decimal` values for numeric position amounts.
 
     ```python theme={null}
-    positions = client.list_combo_positions(status="OPEN")
+    pages = client.list_combo_positions(status="OPEN")
 
-    async for page in positions:
+    async for page in pages:
         for position in page.items:
             # position: ComboPosition
             ...
@@ -2075,6 +2096,26 @@ fresh outside the quote path.
     inventory, so both can be zero after a winning Combo is redeemed. Use
     `realized_payout_usdc` for gross redemption proceeds and `total_cost_usdc` for
     original cost basis; net result is `realized_payout_usdc - total_cost_usdc`.
+
+    <CodeGroup>
+      ```python Condition ID theme={null}
+      pages = client.list_combo_positions(
+          condition_id="<combo_condition_id>",
+      )
+      ```
+
+      ```python Position ID theme={null}
+      pages = client.list_combo_positions(
+          position_id="<yes_position_id|no_position_id>",
+      )
+      ```
+
+      ```python Status theme={null}
+      pages = client.list_combo_positions(
+          status="OPEN",
+      )
+      ```
+    </CodeGroup>
   </Tab>
 
   <Tab title="API">
@@ -2674,8 +2715,8 @@ collateral.
     a Deposit Wallet.
 
     <Note>
-      If you use a Safe or Poly Proxy wallet, use one of the SDKs instead because
-      those wallet integrations require wallet-specific signing and encoding.
+      If you use a Safe or Proxy Wallet, use one of the SDKs instead because those
+      wallet integrations require wallet-specific signing and encoding.
     </Note>
 
     Use these contract addresses when building the call list.
@@ -2954,9 +2995,11 @@ collateral.
     ```ts theme={null}
     import { ComboPositionStatus } from "@polymarket/client";
 
-    for await (const page of client.listComboPositions({
+    const pages = client.listComboPositions({
       status: ComboPositionStatus.ResolvedWin,
-    })) {
+    });
+
+    for await (const page of pages) {
       for (const position of page.items) {
         const redeem = await client.redeemPositions({
           positionId: position.positionId,
@@ -2985,9 +3028,9 @@ collateral.
     You can list resolved winning positions first, then redeem each one.
 
     ```python theme={null}
-    positions = client.list_combo_positions(status="RESOLVED_WIN")
+    pages = client.list_combo_positions(status="RESOLVED_WIN")
 
-    async for position in positions.iter_items():
+    async for position in pages.iter_items():
         redeem = await client.redeem_positions(
             position_id=position.position_id,
         )
@@ -3002,8 +3045,8 @@ collateral.
     a Deposit Wallet.
 
     <Note>
-      If you use a Safe or Poly Proxy wallet, use one of the SDKs instead because
-      those wallet integrations require wallet-specific signing and encoding.
+      If you use a Safe or Proxy Wallet, use one of the SDKs instead because those
+      wallet integrations require wallet-specific signing and encoding.
     </Note>
 
     | Contract        | Address                                      |
@@ -3204,9 +3247,9 @@ Combo legs. Markets are ordered by volume descending.
     Combo legs.
 
     ```ts theme={null}
-    const paginator = client.listComboMarkets({ pageSize: 50 });
+    const pages = client.listComboMarkets({ pageSize: 50 });
 
-    for await (const page of paginator) {
+    for await (const page of pages) {
       // page.items: ComboMarket[]
     }
     ```
@@ -3214,7 +3257,7 @@ Combo legs. Markets are ordered by volume descending.
     Use `exclude` to omit markets you have already shown or selected.
 
     ```ts theme={null}
-    const paginator = client.listComboMarkets({
+    const pages = client.listComboMarkets({
       exclude: selectedConditionIds,
       pageSize: 50,
     });
@@ -3252,16 +3295,16 @@ Combo legs. Markets are ordered by volume descending.
     Combo legs.
 
     ```python theme={null}
-    paginator = client.list_combo_markets(page_size=50)
+    pages = client.list_combo_markets(page_size=50)
 
-    async for market in paginator.iter_items():
+    async for market in pages.iter_items():
         print(market.title, market.outcomes.yes.position_id)
     ```
 
     Use `exclude` to omit markets you have already shown or selected.
 
     ```python theme={null}
-    paginator = client.list_combo_markets(
+    pages = client.list_combo_markets(
         exclude=selected_condition_ids,
         page_size=50,
     )
@@ -3337,7 +3380,9 @@ back to market data.
     store.
 
     ```ts theme={null}
-    for await (const page of client.listMarkets({ closed: false })) {
+    const pages = client.listMarkets({ closed: false });
+
+    for await (const page of pages) {
       for (const market of page.items) {
         for (const positionId of market.positionIds) {
           marketByPositionId.set(positionId, market);
@@ -3350,13 +3395,9 @@ back to market data.
     will want this context ready before the **400 ms** quote window starts.
 
     ```ts theme={null}
-    const page = await client
-      .listMarkets({
-        positionIds: event.legPositionIds,
-      })
-      .firstPage();
-
-    const markets = page.items;
+    const pages = client.listMarkets({
+      positionIds: event.legPositionIds,
+    });
     ```
   </Tab>
 
@@ -3365,7 +3406,9 @@ back to market data.
     store.
 
     ```python theme={null}
-    async for market in client.list_markets(closed=False).iter_items():
+    pages = client.list_markets(closed=False)
+
+    async for market in pages.iter_items():
         for position_id in market.position_ids:
             market_by_position_id[position_id] = market
     ```
@@ -3374,20 +3417,18 @@ back to market data.
     will want this context ready before the **400 ms** quote window starts.
 
     ```python theme={null}
-    page = await client.list_markets(
+    pages = client.list_markets(
         position_ids=event.leg_position_ids,
-    ).first_page()
-
-    markets = page.items
+    )
     ```
   </Tab>
 
   <Tab title="API">
-    Use Gamma `GET /markets` to resolve Combo leg position IDs into market metadata.
-    Build this mapping outside the quote path.
+    Use Gamma `GET /markets/keyset` to resolve Combo leg position IDs into market
+    metadata. Build this mapping outside the quote path.
 
     ```bash theme={null}
-    curl -G "https://gamma-api.polymarket.com/markets" \
+    curl -G "https://gamma-api.polymarket.com/markets/keyset" \
       --data-urlencode "closed=false" \
       --data-urlencode "limit=100"
     ```
@@ -3407,7 +3448,7 @@ back to market data.
     inside the **400 ms** quote window.
 
     ```bash theme={null}
-    curl -G "https://gamma-api.polymarket.com/markets" \
+    curl -G "https://gamma-api.polymarket.com/markets/keyset" \
       --data-urlencode "position_ids=<leg_position_id_1>" \
       --data-urlencode "position_ids=<leg_position_id_2>"
     ```

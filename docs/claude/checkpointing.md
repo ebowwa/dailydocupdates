@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/checkpointing.md
-Downloaded: 2026-07-21T21:16:34.991Z
+Downloaded: 2026-07-23T21:06:10.052Z
 -->
 
 > ## Documentation Index
@@ -88,6 +88,10 @@ cp source.txt dest.txt
 ```
 
 These file modifications cannot be undone through rewind. Only direct file edits made through Claude's file editing tools are tracked.
+
+### Subagent edits not restored
+
+Except for a [skill with `context: fork`](/docs/en/skills#run-skills-in-a-subagent) that runs in the foreground, edits a [subagent](/docs/en/sub-agents) applies land outside your session's checkpoints, so rewinding doesn't restore them, even though the subagent makes them with Claude's file editing tools. This includes a background [`/code-review --fix`](/docs/en/code-review) run and any forked skill that runs in the background. Use git to revert those edits. The foreground fork edits your working tree during your own turn, so rewinding restores its edits as usual. {/* min-version: 2.1.218 */}A forked skill runs in the background by default; set `background: false` in its frontmatter to run it in the foreground, where the invoking turn waits for the result. Before v2.1.218, forked skills always ran in the foreground.
 
 ### External changes not tracked
 

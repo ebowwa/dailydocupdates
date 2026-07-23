@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/bridge/withdraw.md
+Downloaded: 2026-07-23T21:04:54.616Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -40,7 +45,7 @@ Withdraw pUSD from your Polymarket wallet to any supported chain and token. Fund
 
 ## Create Withdrawal Addresses
 
-Generate bridge addresses configured for your withdrawal destination. See the [Bridge API Reference](/api-reference/introduction) for full request and response schemas.
+Generate bridge addresses configured for your withdrawal destination. See [Create withdrawal addresses](/api-reference/bridge/create-withdrawal-addresses) for the full request and response schemas.
 
 <Tip>
   **Builders: attach your code.** If you route user funds through this endpoint,
@@ -52,10 +57,12 @@ Generate bridge addresses configured for your withdrawal destination. See the [B
   Builder](https://polymarket.com/settings?tab=builder).
 </Tip>
 
+Tell the bridge where you're sending funds, including the destination chain, the destination token, and the recipient wallet, and it hands back one address per address type.
+
 ```bash theme={null}
 curl -X POST https://bridge.polymarket.com/withdraw \
   -H "Content-Type: application/json" \
-  -H "X-Builder-Code: <YOUR_BUILDER_CODE>" \
+  -H "X-Builder-Code: <builder_code>" \
   -d '{
     "address": "0x9156dd10bea4c8d7e2d591b633d1694b1d764756",
     "toChainId": "1",
@@ -63,6 +70,19 @@ curl -X POST https://bridge.polymarket.com/withdraw \
     "recipientAddr": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
   }'
 ```
+
+```json theme={null}
+{
+  "address": {
+    "evm": "0x23566f8b2E82aDfCf01846E54899d110e97AC053",
+    "svm": "CrvTBvzryYxBHbWu2TiQpcqD5M7Le7iBKzVmEj3f36Jb",
+    "btc": "bc1q8eau83qffxcj8ht4hsjdza3lha9r3egfqysj3g"
+  },
+  "note": "Send funds to these addresses to bridge to your destination chain and token."
+}
+```
+
+Your Polymarket wallet lives on Polygon, so you always send pUSD to the `evm` address. The response also includes `svm` and `btc` addresses because withdrawals and deposits share the same response format. Ignore those addresses when withdrawing.
 
 ### Address Types
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/fees.md
+Downloaded: 2026-07-23T21:04:54.617Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -6,15 +11,9 @@
 
 > Understanding trading fees on Polymarket
 
-Polymarket charges a small taker fee on certain markets. Fees are set by the protocol and applied at match time — you don't include fee information in your orders. These fees fund the [Maker Rebates Program](/market-makers/maker-rebates), which redistributes fees daily to market makers to incentivize deeper liquidity and tighter spreads. Takers can also earn a portion of fees back through the tiered [Taker Rebate Program](/trading/taker-rebates).
+Polymarket charges a small taker fee on certain markets. Fees are set by the protocol and applied at match time — you don't include fee information in your orders. These fees fund the [Maker Rebates Program](/programs/maker-rebates), which redistributes fees daily to market makers to incentivize deeper liquidity and tighter spreads. Takers can also earn a portion of fees back through the tiered [Taker Rebate Program](/programs/taker-rebates).
 
 **Geopolitical and world events markets are fee-free.** Polymarket does not charge fees or profit from trading activity on these markets. There are also no Polymarket fees to deposit or withdraw USDC (though intermediaries like Coinbase or MoonPay may charge their own fees).
-
-<Note>
-  Fees are determined per-market at match time. Markets with fees enabled have
-  `feesEnabled` set to `true` on the market object. Query fee parameters for
-  any market with `getClobMarketInfo(conditionID)`.
-</Note>
 
 ***
 
@@ -22,13 +21,17 @@ Polymarket charges a small taker fee on certain markets. Fees are set by the pro
 
 Fees are calculated using the following formula:
 
-```text theme={null}
+```text theme={null} theme={null}
 fee = C × feeRate × p × (1 - p)
 ```
 
-Where **C** = number of shares traded and **p** = price of the shares.
+Where **C** = number of shares traded and **p** = price of the shares. See
+[Market Details](/market-data/market-details#trading-fees) to read the fee
+parameters for a market.
 
-**Makers are never charged fees.** Only takers pay fees. The fee parameters differ by market category:
+<Note>**Makers are never charged fees.** Only takers pay fees.</Note>
+
+The fee parameters differ by market category:
 
 | Category        | Taker Fee Rate | Maker Fee Rate | Maker Rebate |
 | --------------- | -------------- | -------------- | ------------ |
@@ -52,7 +55,7 @@ Taker fees are calculated in USDC and vary based on the share price. The fee amo
   </div>
 </Frame>
 
-### Fee Tables (100 Shares)
+## Fee Tables (100 Shares)
 
 <Tabs>
   <Tab title="Crypto">
@@ -168,40 +171,6 @@ Taker fees are calculated in USDC and vary based on the share price. The fee amo
   </Tab>
 </Tabs>
 
-### Fee Precision
+## Fee Precision
 
 Fees are rounded to 5 decimal places. The smallest fee charged is **0.00001 USDC**. Anything smaller rounds to zero, so very small trades near the extremes may incur no fee at all.
-
-***
-
-## Fee Handling
-
-Fees are calculated and applied at match time by the protocol — you do not need to include fee information in your orders. The SDK handles everything automatically.
-
-To query fee parameters for a specific market, use `getClobMarketInfo(conditionID)`:
-
-<CodeGroup>
-  ```typescript TypeScript theme={null}
-  const info = await client.getClobMarketInfo(conditionID);
-  // info.fd = { r: feeRate, e: exponent, to: takerOnly }
-  ```
-
-  ```python Python theme={null}
-  info = client.get_clob_market_info(condition_id)
-  # info["fd"] = { "r": fee_rate, "e": exponent, "to": taker_only }
-  ```
-</CodeGroup>
-
-***
-
-## Next Steps
-
-<CardGroup cols={2}>
-  <Card title="Maker Rebates Program" icon="coins" href="/market-makers/maker-rebates">
-    Learn how taker fees fund daily USDC rebates for liquidity providers.
-  </Card>
-
-  <Card title="Place Orders" icon="plus" href="/trading/quickstart">
-    Start placing orders on Polymarket.
-  </Card>
-</CardGroup>

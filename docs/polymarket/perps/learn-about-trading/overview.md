@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/perps/learn-about-trading/overview.md
+Downloaded: 2026-07-23T21:04:54.613Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -47,7 +52,7 @@ at risk, and why account balances change.
     How session state affects pricing feed selection.
   </Card>
 
-  <Card title="Geographic Restrictions" icon="globe" href="/perps/learn-about-trading/geographic-restrictions">
+  <Card title="Geographic Restrictions" icon="globe" href="/api-reference/perps/geographic-restrictions">
     Where order placement is restricted.
   </Card>
 </CardGroup>

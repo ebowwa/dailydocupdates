@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/resources/contracts.md
+Downloaded: 2026-07-23T21:04:54.615Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -18,19 +23,6 @@ All Polymarket contracts are deployed on **Polygon mainnet** (Chain ID: 137). Th
 | Neg Risk CTF Exchange                  | [`0xe2222d279d744050d28e00520010520000310F59`](https://polygonscan.com/address/0xe2222d279d744050d28e00520010520000310F59) |
 | Neg Risk Adapter (CLOB v1, deprecated) | [`0xd91E80cF2E7be2e162c6513ceD06f1dD0dA35296`](https://polygonscan.com/address/0xd91E80cF2E7be2e162c6513ceD06f1dD0dA35296) |
 | Conditional Tokens (CTF)               | [`0x4D97DCd97eC945f40cF65F87097ACe5EA0476045`](https://polygonscan.com/address/0x4D97DCd97eC945f40cF65F87097ACe5EA0476045) |
-
-<Warning>
-  **CLOB v1 Neg Risk Adapter is being retired.** Relayer calls to
-  [`0xd91E80cF2E7be2e162c6513ceD06f1dD0dA35296`](https://polygonscan.com/address/0xd91E80cF2E7be2e162c6513ceD06f1dD0dA35296)
-  are from CLOB v1 and should not be used on CLOB v2. All CLOB v2 neg risk
-  actions use pUSD collateral via
-  [`NegRiskCtfCollateralAdapter`](https://polygonscan.com/address/0xadA2005600Dec949baf300f4C6120000bDB6eAab)
-  at `0xadA2005600Dec949baf300f4C6120000bDB6eAab`.
-
-  Relayer redeems to the old adapter remain available until **Friday, July 17,
-  2026 at 00:00 UTC**, after which calls to that address are fully retired.
-  Migrate any flows that still depend on the old address.
-</Warning>
 
 ***
 

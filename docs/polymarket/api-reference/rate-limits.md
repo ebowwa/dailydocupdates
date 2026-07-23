@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/api-reference/rate-limits.md
+Downloaded: 2026-07-23T21:04:54.600Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -120,17 +125,3 @@ Base URL: `https://bridge.polymarket.com`
 | ----------------- | -------------- |
 | Relayer `/submit` | 25 req / 1 min |
 | User PNL API      | 200 req / 10s  |
-
-***
-
-## Next Steps
-
-<CardGroup cols={2}>
-  <Card title="Authentication" icon="key" href="/api-reference/authentication">
-    Learn how to authenticate trading requests.
-  </Card>
-
-  <Card title="Clients & SDKs" icon="cube" href="/api-reference/clients-sdks">
-    Official TypeScript, Python, and Rust libraries.
-  </Card>
-</CardGroup>

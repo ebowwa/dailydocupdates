@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/perps/place-your-first-trade.md
+Downloaded: 2026-07-23T21:04:54.613Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -26,21 +31,21 @@ You need a Polymarket account with pUSD available before you start. Create one a
 
         <CodeGroup>
           ```bash pnpm theme={null}
-          pnpm add @polymarket/client@beta viem
+          pnpm add @polymarket/client@latest viem
           ```
 
           ```bash npm theme={null}
-          npm install @polymarket/client@beta viem
+          npm install @polymarket/client@latest viem
           ```
 
           ```bash yarn theme={null}
-          yarn add @polymarket/client@beta viem
+          yarn add @polymarket/client@latest viem
           ```
         </CodeGroup>
 
         <Note>
           This page uses Viem for wallet signing. See the [TypeScript tooling
-          guide](/dev-tooling/typescript#wallet-integrations) for other wallet library
+          guide](/getting-started/typescript#wallet-integrations) for other wallet library
           integrations.
         </Note>
       </Step>

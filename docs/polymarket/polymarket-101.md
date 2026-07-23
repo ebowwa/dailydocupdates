@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/polymarket-101.md
+Downloaded: 2026-07-23T21:04:54.614Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,11 +19,11 @@ The platform is non-custodial, meaning you always control your funds. All trades
 
 Polymarket operates on a non-custodial model. You maintain full control of your funds at all times.
 
-* **You control your funds** - Assets are held in your wallet, secured by your private key
-* **Smart contract enforcement** - Trades execute automatically through audited smart contracts
-* **No intermediary risk** - Polymarket never takes possession of your funds — you maintain full control through your private key
-* **Full transparency** - All trades and positions are recorded onchain and publicly verifiable
-* **Trustless execution** - Settlement happens automatically based on market resolution
+* Assets are held in your wallet, secured by your private key.
+* Trades execute automatically through audited smart contracts.
+* Polymarket never takes possession of your funds.
+* All trades and positions are recorded onchain and publicly verifiable.
+* Settlement happens automatically based on market resolution.
 
 <Warning>
   Keep your private key safe and never share it with anyone. If you lose your
@@ -80,11 +85,11 @@ This community-driven process ensures fair and accurate market resolution.
 
 Polymarket is built on **Polygon**, a blockchain network, for several key reasons:
 
-* **Global accessibility** - Anyone with an internet connection can participate
-* **Non-custodial** - You control your funds, not a centralized entity
-* **Transparent** - All activity is publicly verifiable onchain
-* **Fast and affordable** - Polygon enables quick, low-cost transactions
-* **Stable value** - pUSD is a standard ERC-20 backed by USDC, with backing enforced onchain by the smart contract — avoiding crypto volatility
+* Anyone with an internet connection can participate.
+* You control your funds, not a centralized entity.
+* All activity is publicly verifiable onchain.
+* Polygon enables quick, low-cost transactions.
+* pUSD is a standard ERC-20 backed by USDC, with backing enforced onchain by the smart contract, so its value stays stable.
 
 ## Smart Wallets
 
@@ -108,12 +113,6 @@ Each smart-wallet user has their own wallet address. See
 [Contracts](/resources/contracts) for all deployed factory and trading contract
 addresses on Polygon.
 
-<Tip>
-  For details on signature types (`EOA`, `POLY_PROXY`, `GNOSIS_SAFE`,
-  `POLY_1271`) and how to configure your trading client for each wallet type,
-  see [Signature Types](/trading/overview#signature-types).
-</Tip>
-
 ***
 
 ## Getting Started
@@ -121,7 +120,7 @@ addresses on Polygon.
 Ready to start trading?
 
 <CardGroup cols={2}>
-  <Card title="Quickstart Guide" icon="rocket" href="/quickstart">
+  <Card title="Trading Quickstart" icon="rocket" href="/trading/quickstart">
     Set up your account and make your first trade.
   </Card>
 

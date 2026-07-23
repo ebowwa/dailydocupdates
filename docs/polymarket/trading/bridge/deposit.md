@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/bridge/deposit.md
+Downloaded: 2026-07-23T21:04:54.616Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -17,7 +22,7 @@ Polymarket uses **pUSD** (Polymarket USD) on Polygon as collateral for all tradi
 
 ## Create Bridge Addresses
 
-Generate unique bridge addresses linked to your Polymarket wallet. See the [Bridge API Reference](/api-reference/introduction) for full request and response schemas.
+Generate unique bridge addresses linked to your Polymarket wallet. See [Create bridge addresses](/api-reference/bridge/create-bridge-addresses) for the full request and response schemas.
 
 <Tip>
   **Builders: attach your code.** If you route user funds through this endpoint,
@@ -32,9 +37,11 @@ Generate unique bridge addresses linked to your Polymarket wallet. See the [Brid
 ```bash theme={null}
 curl -X POST https://bridge.polymarket.com/deposit \
   -H "Content-Type: application/json" \
-  -H "X-Builder-Code: <YOUR_BUILDER_CODE>" \
+  -H "X-Builder-Code: <builder_code>" \
   -d '{"address": "0x56687bf447db6ffa42ffe2204a05edaa20f55839"}'
 ```
+
+The response returns one bridge address per address type (`evm`, `svm`, `btc`, `tvm`). Send from the matching source chain to the matching address.
 
 ### Address Types
 

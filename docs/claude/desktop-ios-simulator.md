@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/desktop-ios-simulator.md
-Downloaded: 2026-07-22T21:08:09.025Z
+Downloaded: 2026-07-23T21:06:10.058Z
 -->
 
 > ## Documentation Index
@@ -108,7 +108,7 @@ Two actions follow your session's [permission mode](/docs/en/permissions#permiss
 You can turn Claude's simulator access off in the desktop app's settings. Organizations have two ways to turn it off for everyone:
 
 * The `disableMobileSimulatorTools` [managed setting](/docs/en/desktop#managed-settings) blocks Claude's simulator tools. The simulator pane stays usable for your own taps, and the setting can't be overridden from within the app.
-* A policy that requires sessions to run inside an isolated virtual machine disables the pane and the tools entirely.
+* The `requireCoworkFullVmSandbox` policy key, which runs Claude's tools inside an isolated virtual machine instead of on your Mac, disables the simulator pane and Claude's simulator tools entirely, so the pane can't attach a device while it's set.
 
 Claude tells you when either applies.
 

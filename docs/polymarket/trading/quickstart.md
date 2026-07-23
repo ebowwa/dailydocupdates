@@ -1,299 +1,176 @@
+<!--
+Source: https://docs.polymarket.com/trading/quickstart.md
+Downloaded: 2026-07-23T21:04:54.619Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Quickstart
+# Place Your First Order
 
-> Place your first order on Polymarket
+> Learn how to authenticate with the CLOB and submit your first market order.
 
-This guide walks you through placing an order on Polymarket end-to-end.
+This guide shows you how to place your first order using an existing Polymarket account. For this guide, we recommend having at least 10 pUSD available. Create or fund an account at [polymarket.com](https://polymarket.com/) before you start.
+
+Find your Polymarket wallet address in your profile menu:
+
+<Frame>
+  <img className="hidden lg:block" src="https://mintcdn.com/polymarket-292d1b1b/1lJ_npwaE_MShiVL/images/deposit-wallet-desktop.png?fit=max&auto=format&n=1lJ_npwaE_MShiVL&q=85&s=6be3b87c53d6718f973db37e134ee944" alt="Polymarket profile menu showing the account wallet address on desktop" width="1280" height="274" data-path="images/deposit-wallet-desktop.png" />
+
+  <img className="block lg:hidden" src="https://mintcdn.com/polymarket-292d1b1b/1lJ_npwaE_MShiVL/images/deposit-wallet-mobile.png?fit=max&auto=format&n=1lJ_npwaE_MShiVL&q=85&s=4d6f87ed5440c5297e60d6331c47dc73" alt="Polymarket profile menu showing the account wallet address on mobile" width="529" height="274" data-path="images/deposit-wallet-mobile.png" />
+</Frame>
 
 <Steps>
-  <Step title="Install the SDK">
-    <CodeGroup>
-      ```bash TypeScript theme={null}
-      npm install @polymarket/clob-client-v2 viem
-      ```
+  <Step title="Authenticate">
+    First, authenticate with the CLOB.
 
-      ```bash Python theme={null}
-      pip install py-clob-client-v2
-      ```
+    <Tabs>
+      <Tab title="TypeScript">
+        Pass the signer and wallet address to `createSecureClient`.
 
-      ```bash Rust theme={null}
-      cargo add polymarket_client_sdk_v2 --features clob
-      ```
-    </CodeGroup>
+        ```ts theme={null}
+        import { createSecureClient, OrderSide } from "@polymarket/client";
+        import { privateKey } from "@polymarket/client/viem";
+
+        const client = await createSecureClient({
+          wallet: process.env.POLYMARKET_WALLET_ADDRESS,
+          signer: privateKey(process.env.POLYMARKET_PRIVATE_KEY),
+        });
+        ```
+
+        <Note>
+          This example uses Viem. See [Wallet
+          Integrations](/getting-started/typescript#wallet-integrations) to connect a
+          signer from another supported wallet library.
+        </Note>
+      </Tab>
+
+      <Tab title="Python">
+        Pass the private key and wallet address to `AsyncSecureClient.create`.
+
+        ```python theme={null}
+        import os
+
+        from polymarket import AsyncSecureClient
+
+        client = await AsyncSecureClient.create(
+            private_key=os.environ["POLYMARKET_PRIVATE_KEY"],
+            wallet=os.environ["POLYMARKET_WALLET_ADDRESS"],
+        )
+        ```
+      </Tab>
+    </Tabs>
   </Step>
 
-  <Step title="Set Up Your Client">
-    Derive your API credentials and initialize the trading client. This example uses
-    a deposit wallet with signature type `3` (`POLY_1271`), which is the wallet path
-    for new API users:
+  <Step title="Choose an Outcome">
+    Then, fetch the market and select the outcome you want to buy. Orders identify each outcome by its token ID. See [Market Data](/market-data/overview) to find a different market.
 
-    <CodeGroup>
-      ```typescript TypeScript theme={null}
-      import { ClobClient, SignatureTypeV2 } from "@polymarket/clob-client-v2";
-      import { createWalletClient, http } from "viem";
-      import { privateKeyToAccount } from "viem/accounts";
+    <Tabs>
+      <Tab title="TypeScript">
+        ```ts theme={null}
+        const market = await client.fetchMarket({
+          slug: "will-the-us-confirm-that-aliens-exist-before-2027-789-924-249",
+        });
 
-      const HOST = "https://clob.polymarket.com";
-      const CHAIN_ID = 137; // Polygon mainnet
-      const account = privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`);
-      const signer = createWalletClient({ account, transport: http() });
-      const depositWalletAddress = process.env.DEPOSIT_WALLET_ADDRESS!;
+        const tokenId = market.outcomes.yes.tokenId!;
+        ```
+      </Tab>
 
-      // Derive API credentials
-      const tempClient = new ClobClient({ host: HOST, chain: CHAIN_ID, signer });
-      const apiCreds = await tempClient.createOrDeriveApiKey();
+      <Tab title="Python">
+        ```python theme={null}
+        market = await client.get_market(
+            slug="will-the-us-confirm-that-aliens-exist-before-2027-789-924-249",
+        )
 
-      // Initialize trading client
-      const client = new ClobClient({
-        host: HOST,
-        chain: CHAIN_ID,
-        signer,
-        creds: apiCreds,
-        signatureType: SignatureTypeV2.POLY_1271,
-        funderAddress: depositWalletAddress,
-      });
-      ```
-
-      ```python Python theme={null}
-      from py_clob_client_v2 import ClobClient, SignatureTypeV2
-      import os
-
-      host = "https://clob.polymarket.com"
-      chain = 137  # Polygon mainnet
-      private_key = os.getenv("PRIVATE_KEY")
-      deposit_wallet_address = os.getenv("DEPOSIT_WALLET_ADDRESS")
-
-      # Derive API credentials
-      temp_client = ClobClient(host, key=private_key, chain_id=chain)
-      api_creds = temp_client.create_or_derive_api_key()
-
-      # Initialize trading client
-      client = ClobClient(
-          host,
-          key=private_key,
-          chain_id=chain,
-          creds=api_creds,
-          signature_type=SignatureTypeV2.POLY_1271,
-          funder=deposit_wallet_address
-      )
-      ```
-
-      ```rust Rust theme={null}
-      use std::str::FromStr;
-      use polymarket_client_sdk_v2::POLYGON;
-      use polymarket_client_sdk_v2::auth::{LocalSigner, Signer};
-      use polymarket_client_sdk_v2::clob::types::SignatureType;
-      use polymarket_client_sdk_v2::clob::{Client, Config};
-
-      let private_key = std::env::var("POLYMARKET_PRIVATE_KEY")?;
-      let signer = LocalSigner::from_str(&private_key)?
-          .with_chain_id(Some(POLYGON));
-      let deposit_wallet = std::env::var("DEPOSIT_WALLET_ADDRESS")?.parse()?;
-
-      // Derive API credentials and initialize client
-      let client = Client::new("https://clob.polymarket.com", Config::default())?
-          .authentication_builder(&signer)
-          .funder(deposit_wallet)
-          .signature_type(SignatureType::Poly1271)
-          .authenticate()
-          .await?;
-      ```
-    </CodeGroup>
-
-    <Note>
-      Existing EOA, Safe, and Proxy integrations can keep using their current
-      signature type and funder address. See [Signature
-      Types](/trading/overview#signature-types) for all wallet types.
-    </Note>
-
-    <Warning>
-      Before trading from a deposit wallet, the deposit wallet needs **pUSD** and
-      the required trading approvals. See the [Deposit Wallet
-      Guide](/trading/deposit-wallets) for wallet creation, funding, approvals, and
-      balance sync.
-    </Warning>
+        token_id = market.outcomes.yes.token_id
+        assert token_id is not None
+        ```
+      </Tab>
+    </Tabs>
   </Step>
 
-  <Step title="Place an Order">
-    Get a token ID from the [Markets API](/market-data/fetching-markets), then create and submit your order:
+  <Step title="Place a Market Order">
+    Then, submit a small market buy. The order fills against available liquidity, and any unfilled amount is canceled instead of remaining open.
 
-    <CodeGroup>
-      ```typescript TypeScript theme={null}
-      import { Side, OrderType } from "@polymarket/clob-client-v2";
+    <Tabs>
+      <Tab title="TypeScript">
+        Use `placeMarketOrder` to place the market order.
 
-      const response = await client.createAndPostOrder(
-        {
-          tokenID: "YOUR_TOKEN_ID",
-          price: 0.5,
-          size: 10,
-          side: Side.BUY,
-        },
-        {
-          tickSize: "0.01",
-          negRisk: false, // Set to true for multi-outcome markets
-        },
-        OrderType.GTC,
-      );
+        ```ts theme={null}
+        const response = await client.placeMarketOrder({
+          tokenId,
+          side: OrderSide.BUY,
+          amount: "10", // Spend up to 10 pUSD
+        });
 
-      console.log("Order ID:", response.orderID);
-      console.log("Status:", response.status);
-      ```
+        if (!response.ok) {
+          throw new Error(response.message);
+        }
 
-      ```python Python theme={null}
-      from py_clob_client_v2 import OrderArgs, OrderType, PartialCreateOrderOptions
-      from py_clob_client_v2.order_builder.constants import BUY
+        // response.orderId: string
+        ```
+      </Tab>
 
-      response = client.create_and_post_order(
-          OrderArgs(
-              token_id="YOUR_TOKEN_ID",
-              price=0.50,
-              size=10,
-              side=BUY,
-          ),
-          options=PartialCreateOrderOptions(
-              tick_size="0.01",
-              neg_risk=False,  # Set to True for multi-outcome markets
-          ),
-          order_type=OrderType.GTC
-      )
+      <Tab title="Python">
+        Use `place_market_order` to place the market order.
 
-      print("Order ID:", response["orderID"])
-      print("Status:", response["status"])
-      ```
+        ```python theme={null}
+        response = await client.place_market_order(
+            token_id=token_id,
+            side="BUY",
+            amount="10",  # Spend up to 10 pUSD
+        )
 
-      ```rust Rust theme={null}
-      use polymarket_client_sdk_v2::clob::types::Side;
-      use polymarket_client_sdk_v2::types::dec;
+        if not response.ok:
+            raise RuntimeError(response.message)
 
-      let token_id = "YOUR_TOKEN_ID".parse()?;
-
-      // Tick size and neg risk are auto-fetched by the order builder
-      let order = client
-          .limit_order()
-          .token_id(token_id)
-          .price(dec!(0.50))
-          .size(dec!(10))
-          .side(Side::Buy)
-          .build()
-          .await?;
-      let signed_order = client.sign(&signer, order).await?;
-      let response = client.post_order(signed_order).await?;
-
-      println!("Order ID: {}", response.order_id);
-      println!("Status: {:?}", response.status);
-      ```
-    </CodeGroup>
-
-    <Tip>
-      Look up a market's `tickSize` and `negRisk` values using the SDK's
-      `getTickSize()` and `getNegRisk()` methods, or from the market object returned
-      by the API.
-    </Tip>
+        # response.order_id: str
+        ```
+      </Tab>
+    </Tabs>
   </Step>
 
-  <Step title="Check Your Orders">
-    <CodeGroup>
-      ```typescript TypeScript theme={null}
-      // View all open orders
-      const openOrders = await client.getOpenOrders();
-      console.log(`You have ${openOrders.length} open orders`);
+  <Step title="Check Your Position">
+    Finally, after the trade settles, list your positions for the selected market and find the outcome you bought.
 
-      // View your trade history
-      const trades = await client.getTrades();
-      console.log(`You've made ${trades.length} trades`);
+    <Tabs>
+      <Tab title="TypeScript">
+        ```ts theme={null}
+        const page = await client
+          .listPositions({
+            market: [market.conditionId!],
+          })
+          .firstPage();
 
-      // Cancel an order
-      await client.cancelOrder(response.orderID);
-      ```
+        const position = page.items.find((item) => item.tokenId === tokenId);
+        if (!position) {
+          throw new Error("Position not found.");
+        }
 
-      ```python Python theme={null}
-      # View all open orders
-      open_orders = client.get_orders()
-      print(f"You have {len(open_orders)} open orders")
+        const positionSize = position.size; // Outcome shares held
+        ```
+      </Tab>
 
-      # View your trade history
-      trades = client.get_trades()
-      print(f"You've made {len(trades)} trades")
+      <Tab title="Python">
+        ```python theme={null}
+        condition_id = market.condition_id
+        assert condition_id is not None
 
-      # Cancel an order
-      client.cancel(order_id=response["orderID"])
-      ```
+        page = await client.list_positions(market=[condition_id]).first_page()
 
-      ```rust Rust theme={null}
-      use polymarket_client_sdk_v2::clob::types::request::{OrdersRequest, TradesRequest};
+        position = next(
+            (item for item in page.items if item.token_id == token_id),
+            None,
+        )
+        if position is None:
+            raise RuntimeError("Position not found.")
 
-      // View all open orders
-      let open_orders = client.orders(&OrdersRequest::default(), None).await?;
-      println!("You have {} open orders", open_orders.data.len());
+        position_size = position.size  # Outcome shares held
+        ```
+      </Tab>
+    </Tabs>
 
-      // View your trade history
-      let trades = client.trades(&TradesRequest::default(), None).await?;
-      println!("You've made {} trades", trades.data.len());
-
-      // Cancel an order
-      client.cancel_order(&response.order_id).await?;
-      ```
-    </CodeGroup>
+    That's it—you placed your first market order on Polymarket.
   </Step>
 </Steps>
-
-***
-
-## Troubleshooting
-
-<AccordionGroup>
-  <Accordion title="L2 AUTH NOT AVAILABLE - Invalid Signature">
-    Wrong private key, signature type, or funder address for the derived API credentials.
-
-    * Check that `signatureType` matches your account type (`0`, `1`, `2`, or `3`)
-    * Ensure `funder` is correct for your wallet type
-    * Re-derive credentials with `createOrDeriveApiKey()` if unsure
-  </Accordion>
-
-  <Accordion title="Order rejected - insufficient balance">
-    Your funder address doesn't have enough tokens:
-
-    * **BUY orders**: need pUSD in your funder address
-    * **SELL orders**: need outcome tokens in your funder address
-    * Ensure you have more pUSD than what's committed in open orders
-  </Accordion>
-
-  <Accordion title="Order rejected - insufficient allowance">
-    You need to approve the Exchange contract to spend your tokens. Deposit wallet
-    approvals must be executed from the deposit wallet through a relayer `WALLET`
-    batch. Existing Safe and Proxy users should use their current relayer approval
-    flow.
-  </Accordion>
-
-  <Accordion title="What is my funder address">
-    Your funder address is the wallet where your funds are held:
-
-    * **EOA (type 0)**: Your wallet address directly
-    * **Deposit wallet (type 3)**: The deposit wallet deployed for the owner or session signer
-    * **Proxy/Safe wallet (type 1 or 2)**: Existing Polymarket.com wallet address
-
-    New API users should create a deposit wallet. Existing Proxy and Safe users
-    can continue using their current wallet address.
-  </Accordion>
-
-  <Accordion title="Blocked by Cloudflare or Geoblock">
-    You're trying to place a trade from a restricted region. See [Geographic Restrictions](/api-reference/geoblock) for details.
-  </Accordion>
-</AccordionGroup>
-
-***
-
-## Next Steps
-
-<CardGroup cols={2}>
-  <Card title="Create Orders" icon="plus" href="/trading/orders/create">
-    Order types, tick sizes, and error handling
-  </Card>
-
-  <Card title="Order Attribution" icon="tag" href="/trading/orders/attribution">
-    Attribute orders to your builder account for volume credit
-  </Card>
-</CardGroup>

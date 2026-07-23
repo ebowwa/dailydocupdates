@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/api-reference/geoblock.md
-Downloaded: 2026-07-20T21:12:08.346Z
+Downloaded: 2026-07-23T21:04:54.592Z
 -->
 
 > ## Documentation Index
@@ -193,21 +193,6 @@ The geoblocking system includes:
         print("Trading available")
     ```
   </Tab>
-
-  <Tab title="Rust">
-    ```rust theme={null}
-    use polymarket_client_sdk_v2::clob::{Client, Config};
-
-    let client = Client::new("https://clob.polymarket.com", Config::default())?;
-    let geo = client.check_geoblock().await?;
-
-    if geo.blocked {
-        println!("Trading not available in {}", geo.country);
-    } else {
-        println!("Trading available");
-    }
-    ```
-  </Tab>
 </Tabs>
 
 ***
@@ -229,7 +214,7 @@ If you believe you are incorrectly restricted or have questions about geographic
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Authentication" icon="key" href="/api-reference/authentication">
+  <Card title="Authentication" icon="key" href="/getting-started/api#authentication">
     Learn how to authenticate trading requests.
   </Card>
 

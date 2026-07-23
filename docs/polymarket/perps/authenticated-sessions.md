@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/perps/authenticated-sessions.md
+Downloaded: 2026-07-23T21:04:54.611Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -31,7 +36,7 @@ data, and receive private real-time updates.
 
         <Note>
           This example uses Viem for wallet signing. See the [TypeScript tooling
-          guide](/dev-tooling/typescript#wallet-integrations) for other wallet library
+          guide](/getting-started/typescript#wallet-integrations) for other wallet library
           integrations.
         </Note>
       </Step>

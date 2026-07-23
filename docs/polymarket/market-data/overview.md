@@ -1,111 +1,79 @@
+<!--
+Source: https://docs.polymarket.com/market-data/overview.md
+Downloaded: 2026-07-23T21:04:54.610Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Overview
 
-> Fetch market data with no authentication required
+> Learn how Polymarket organizes market data and where to begin.
 
-All market data is available through public REST endpoints. No API key, no authentication, no wallet required.
+Market data starts with identifying the event, market, or outcome your
+application cares about. The pages in this section take you from that choice to
+the data your application needs.
 
-```bash theme={null}
-curl "https://gamma-api.polymarket.com/events?limit=5"
-```
+## Understand the Data Model
 
-***
+On Polymarket, an event groups one or more markets. Each market is a tradable
+question with YES and NO outcomes, and each outcome has its own token ID. Use
+the token ID for the outcome whose price or order book you want to read.
 
-## Data Model
+<Frame>
+  <img src="https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/core-concepts/event.png?fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=0c9a264aec9a22ce5a20c4cc7980806d" alt="" className="dark:hidden" width="1540" height="952" data-path="images/core-concepts/event.png" />
 
-Polymarket structures data using two organizational models. The most fundamental element is always markets—events simply provide additional organization.
+  <img src="https://mintcdn.com/polymarket-292d1b1b/FOMte3ewbG-LVy3k/images/dark/core-concepts/event.png?fit=max&auto=format&n=FOMte3ewbG-LVy3k&q=85&s=912e41bebfe8c1a43ef53b89685ca3d2" alt="" className="hidden dark:block" width="1540" height="952" data-path="images/dark/core-concepts/event.png" />
+</Frame>
 
 <Steps>
-  <Step title="Event">
-    A top-level object representing a question (e.g., "Who will win the 2024
-    Presidential Election?"). Contains one or more markets.
+  <Step title="Discover an event">
+    Browse active events, search by topic, or fetch an event directly from its
+    Polymarket URL.
   </Step>
 
-  <Step title="Market">
-    A specific tradable binary outcome within an event. Maps to a pair of CLOB
-    token IDs, a market address, a question ID, and a condition ID.
+  <Step title="Select a market">
+    Inspect the event's markets and choose the specific question your app cares
+    about.
+  </Step>
+
+  <Step title="Choose an outcome">
+    Choose YES or NO and keep its token ID. You'll use it to read prices, access
+    the order book, and place orders.
+  </Step>
+
+  <Step title="Read or stream data">
+    Use the identifiers you've collected to retrieve or stream the market data
+    your application needs.
   </Step>
 </Steps>
 
-### Single-Market Events vs Multi-Market Events
+## Choose a Workflow
 
-| Type                | Example                                                                                        |
-| ------------------- | ---------------------------------------------------------------------------------------------- |
-| Single-market event | "Will Bitcoin reach \$100k?" → 1 market (Yes/No)                                               |
-| Multi-market event  | "Where will Barron Trump attend College?" → Markets for Georgetown, NYU, UPenn, Harvard, Other |
-
-### Outcomes and Prices
-
-Each market has `outcomes` and `outcomePrices` arrays that map 1:1. Prices represent implied probabilities:
-
-```json theme={null}
-{
-  "outcomes": "[\"Yes\", \"No\"]",
-  "outcomePrices": "[\"0.20\", \"0.80\"]"
-}
-// Index 0: "Yes" → 0.20 (20% probability)
-// Index 1: "No" → 0.80 (80% probability)
-```
-
-<Info>Markets can be traded via the CLOB if `enableOrderBook` is `true`.</Info>
-
-***
-
-## Available Data
-
-Endpoints are split across three APIs. See the [API Reference](/api-reference/introduction) for full endpoint documentation with parameters and response schemas.
-
-### Gamma API - Events Markets and Discovery
-
-| Endpoint             | Description                                 |
-| -------------------- | ------------------------------------------- |
-| `GET /events`        | List events with filtering and pagination   |
-| `GET /events/{id}`   | Get a single event by ID                    |
-| `GET /markets`       | List markets with filtering and pagination  |
-| `GET /markets/{id}`  | Get a single market by ID                   |
-| `GET /public-search` | Search across events, markets, and profiles |
-| `GET /tags`          | Ranked tags/categories                      |
-| `GET /series`        | Series (grouped events)                     |
-| `GET /sports`        | Sports metadata                             |
-| `GET /teams`         | Teams                                       |
-
-### CLOB API - Prices and Orderbooks
-
-| Endpoint              | Description                       |
-| --------------------- | --------------------------------- |
-| `GET /price`          | Price for a single token          |
-| `GET /prices`         | Prices for multiple tokens        |
-| `GET /book`           | Order book for a token            |
-| `POST /books`         | Order books for multiple tokens   |
-| `GET /prices-history` | Historical price data for a token |
-| `GET /midpoint`       | Midpoint price for a token        |
-| `GET /spread`         | Spread for a token                |
-
-### Data API - Positions Trades and Analytics
-
-| Endpoint                               | Description                  |
-| -------------------------------------- | ---------------------------- |
-| `GET /positions?user={address}`        | Current positions for a user |
-| `GET /closed-positions?user={address}` | Closed positions for a user  |
-| `GET /activity?user={address}`         | Onchain activity for a user  |
-| `GET /value?user={address}`            | Total position value         |
-| `GET /oi`                              | Open interest for a market   |
-| `GET /holders`                         | Top holders of a market      |
-| `GET /trades`                          | Trade history                |
-
-***
-
-## Next Steps
+If you are new to Polymarket market data, start with [Discover
+Markets](/market-data/discover-markets).
 
 <CardGroup cols={2}>
-  <Card title="Fetching Markets" icon="magnifying-glass" href="/market-data/fetching-markets">
-    Three strategies for discovering and querying markets.
+  <Card title="Discover Markets" icon="magnifying-glass" href="/market-data/discover-markets">
+    Find the events and markets your application cares about.
   </Card>
 
-  <Card title="API Reference" icon="code" href="/api-reference/introduction">
-    Full endpoint documentation with parameters and response schemas.
+  <Card title="Get Market Details" icon="list-tree" href="/market-data/market-details">
+    Understand a market's outcomes, status, trading constraints, fees, and other
+    properties.
+  </Card>
+
+  <Card title="Prices and Order Books" icon="chart-line" href="/market-data/prices-order-books">
+    Understand current pricing and liquidity, or inspect how prices have
+    changed.
+  </Card>
+
+  <Card title="Analytics" icon="chart-column" href="/market-data/public-analytics">
+    Analyze market activity and compare trader and builder performance.
+  </Card>
+
+  <Card title="Real-Time Data" icon="radio" href="/market-data/realtime-data">
+    Keep your application current as markets and related data change.
   </Card>
 </CardGroup>

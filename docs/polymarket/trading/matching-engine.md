@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/matching-engine.md
+Downloaded: 2026-07-23T21:04:54.618Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -42,7 +47,8 @@ After every restart, the matching engine enters **post-only mode for 2 minutes**
   </Step>
 
   <Step title="Back off and retry">
-    Wait and retry with exponential backoff. Start at 1–2 seconds and increase the interval on each retry.
+    Wait and retry with exponential backoff. Start at 1–2 seconds and increase the
+    interval on each retry.
   </Step>
 
   <Step title="Handle post-only mode">
@@ -52,94 +58,84 @@ After every restart, the matching engine enters **post-only mode for 2 minutes**
 
 ### Code Examples
 
-Check the HTTP status code on responses to the CLOB API and retry on `425`:
+Retry an eligible post-only limit order when the matching engine returns `425`:
 
-<CodeGroup>
-  ```typescript TypeScript theme={null}
-  const CLOB_HOST = "https://clob.polymarket.com";
+<Tabs>
+  <Tab title="TypeScript">
+    Given a `SecureClient`, call `placeLimitOrder()` again after
+    each backoff interval:
 
-  async function postWithRetry(path: string, body: any, headers: Record<string, string>) {
-    const MAX_RETRIES = 10;
-    let delay = 1000;
+    ```typescript TypeScript theme={null} theme={null}
+    import { OrderSide, RequestRejectedError } from "@polymarket/client";
 
-    for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
-      const response = await fetch(`${CLOB_HOST}${path}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", ...headers },
-        body: JSON.stringify(body),
-      });
+    async function placeWithRestartRetry() {
+      const MAX_RETRIES = 10;
+      let delay = 1000;
 
-      if (response.status === 425) {
-        console.log(`Engine restarting, retrying in ${delay / 1000}s...`);
-        await new Promise((r) => setTimeout(r, delay));
-        delay = Math.min(delay * 2, 30000);
-        continue;
-      }
-
-      return response;
-    }
-    throw new Error("Engine restart exceeded maximum retry attempts");
-  }
-  ```
-
-  ```python Python theme={null}
-  import time
-  import requests
-
-  CLOB_HOST = "https://clob.polymarket.com"
-
-  def post_with_retry(path, body, headers, max_retries=10):
-      delay = 1
-
-      for attempt in range(max_retries):
-          response = requests.post(
-              f"{CLOB_HOST}{path}",
-              json=body,
-              headers=headers,
-          )
-
-          if response.status_code == 425:
-              print(f"Engine restarting, retrying in {delay}s...")
-              time.sleep(delay)
-              delay = min(delay * 2, 30)
-              continue
-
-          return response
-
-      raise Exception("Engine restart exceeded maximum retry attempts")
-  ```
-
-  ```rust Rust theme={null}
-  use polymarket_client_sdk_v2::error::{Kind, StatusCode};
-
-  // Wrap SDK calls with retry logic for HTTP 425.
-  // Re-build and re-sign the order each attempt since SignedOrder is consumed.
-  let mut delay = std::time::Duration::from_secs(1);
-
-  for _ in 0..10 {
-      let order = client.limit_order()
-          .token_id(token_id).price(price).size(size).side(side)
-          .build().await?;
-      let signed = client.sign(&signer, order).await?;
-
-      match client.post_order(signed).await {
-          Ok(response) => return Ok(response),
-          Err(err) if err.kind() == Kind::Status => {
-              if let Some(status) = err.downcast_ref::<polymarket_client_sdk_v2::error::Status>() {
-                  if status.status_code == StatusCode::from_u16(425).unwrap() {
-                      eprintln!("Engine restarting, retrying in {delay:?}...");
-                      tokio::time::sleep(delay).await;
-                      delay = (delay * 2).min(std::time::Duration::from_secs(30));
-                      continue;
-                  }
-              }
-              return Err(err);
+      for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+        try {
+          return await client.placeLimitOrder({
+            tokenId: yesTokenId,
+            side: OrderSide.BUY,
+            price: "0.52",
+            size: "10",
+            postOnly: true,
+          });
+        } catch (error) {
+          if (!(error instanceof RequestRejectedError) || error.status !== 425) {
+            throw error;
           }
-          Err(err) => return Err(err),
+
+          await new Promise((r) => setTimeout(r, delay));
+          delay = Math.min(delay * 2, 30000);
+        }
       }
-  }
-  ```
-</CodeGroup>
+
+      throw new Error("Engine restart exceeded maximum retry attempts");
+    }
+
+    const response = await placeWithRestartRetry();
+    ```
+  </Tab>
+
+  <Tab title="Python">
+    Given an `AsyncSecureClient`, call `place_limit_order()` again
+    after each backoff interval. The synchronous `SecureClient` raises the same
+    error:
+
+    ```python Python theme={null} theme={null}
+    import asyncio
+
+    from polymarket import RequestRejectedError
+
+
+    async def place_with_restart_retry():
+        max_retries = 10
+        delay = 1
+
+        for _ in range(max_retries):
+            try:
+                return await client.place_limit_order(
+                    token_id=yes_token_id,
+                    side="BUY",
+                    price="0.52",
+                    size="10",
+                    post_only=True,
+                )
+            except RequestRejectedError as error:
+                if error.status != 425:
+                    raise
+
+                await asyncio.sleep(delay)
+                delay = min(delay * 2, 30)
+
+        raise RuntimeError("Engine restart exceeded maximum retry attempts")
+
+
+    response = await place_with_restart_retry()
+    ```
+  </Tab>
+</Tabs>
 
 ***
 
@@ -153,7 +149,7 @@ In cancel-only mode, new orders are rejected, but cancel requests are still acce
 
 `POST /order` and `POST /orders` return `503`:
 
-```json theme={null}
+```json theme={null} theme={null}
 {
   "error": "Trading is currently cancel-only. New orders are not accepted, but cancels are allowed."
 }
@@ -165,7 +161,7 @@ After every restart, the matching engine enters post-only mode for **2 minutes**
 
 `POST /order` returns `503` with a retry delay in both the response body and the `Retry-After` HTTP header:
 
-```json theme={null}
+```json theme={null} theme={null}
 {
   "error": "post-only mode: only post-only orders and cancels are allowed",
   "code": "post_only_mode",
@@ -175,7 +171,7 @@ After every restart, the matching engine enters post-only mode for **2 minutes**
 
 `POST /orders` returns per-order errors for non-post-only orders in the batch:
 
-```json theme={null}
+```json theme={null} theme={null}
 [
   {
     "errorMsg": "post-only mode: only post-only orders and cancels are allowed",

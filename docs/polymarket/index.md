@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/index.md
-Downloaded: 2026-07-17T20:55:43.477Z
+Downloaded: 2026-07-23T21:04:54.610Z
 -->
 
 > ## Documentation Index
@@ -29,8 +29,22 @@ export const IconCard = ({icon, title, description, href, color}) => {
 
 <a href="https://docs.polymarket.us" target="_blank" className="group flex items-center gap-3 mx-4 md:mx-24 mt-6 px-5 py-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-blue-500 transition-all duration-200 no-underline">
   <span className="text-2xl">🇺🇸</span>
-  <span className="text-sm text-gray-600 dark:text-zinc-400">Looking for <span className="font-semibold text-gray-800 dark:text-zinc-200">Polymarket US</span> documentation?</span>
-  <span className="ml-auto text-sm font-medium text-gray-500 dark:text-zinc-400 group-hover:translate-x-0.5 transition-transform duration-200">Visit US Docs →</span>
+
+  <span className="text-sm text-gray-600 dark:text-zinc-400">
+    Looking for{" "}
+
+    <span className="font-semibold text-gray-800 dark:text-zinc-200">
+      Polymarket US
+    </span>
+
+    {" "}
+
+    documentation?
+  </span>
+
+  <span className="ml-auto text-sm font-medium text-gray-500 dark:text-zinc-400 group-hover:translate-x-0.5 transition-transform duration-200">
+    Visit US Docs →
+  </span>
 </a>
 
 <svg className=" absolute stroke-black dark:stroke-white opacity-30 dark:opacity-40 top-0 right-0 md:w-[700px] md:h-[700px] w-[300px] h-[300px] pointer-events-none rotate-[-10deg] translate-x-20 md:translate-x-60 -translate-y-0 " width="1000" height="1205" viewBox="0 0 422 509" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,88 +60,84 @@ export const IconCard = ({icon, title, description, href, color}) => {
     <div className="max-w-2xl px-4  md:px-24 mt-4 text-lg text-gray-500 dark:text-zinc-500">
       Build on the world's largest prediction market. APIs, SDKs, and tools for prediction market developers.
     </div>
+  </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 px-4  md:px-24 ">
-      <div className="flex flex-col justify-center ">
+  <div className="max-w-6xl mx-auto px-4  md:px-24 mt-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div>
         <h2 className="text-xl font-semibold text-gray-900 dark:text-zinc-50">
           Developer Quickstart
         </h2>
 
-        <p className="mt-3 text-gray-500 dark:text-zinc-400">
-          Make your first API request in minutes. Learn the basics of the Polymarket platform, fetch market data, place orders, and redeem winning positions.
+        <p className="mt-3 text-gray-500 dark:text-zinc-400 max-w-2xl">
+          Make your first API request in minutes. Learn the basics of the
+          Polymarket platform, fetch market data, place orders, and redeem
+          winning positions.
         </p>
 
         <div className="mt-6">
-          <a href="/quickstart" className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary rounded-full hover:bg-indigo-700 transition-colors">
-            Get Started →
+          <a href="/trading/quickstart" className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary rounded-full hover:bg-indigo-700 transition-colors">
+            Place Your First Order →
           </a>
         </div>
       </div>
 
-      <CodeGroup>
-        ```typescript TypeScript theme={null}
-        import { ClobClient, Side } from "@polymarket/clob-client-v2";
+      <div className="lg:pt-1">
+        <CodeGroup>
+          ```typescript TypeScript theme={null}
+          import { createPublicClient } from "@polymarket/client";
 
-        const client = new ClobClient({ host, chain: chainId, signer, creds });
+          const client = createPublicClient();
 
-        const order = await client.createAndPostOrder(
-          { tokenID, price: 0.50, size: 10, side: Side.BUY },
-          { tickSize: "0.01", negRisk: false }
-        );
-        ```
+          const pages = client.listMarkets({ closed: false });
+          const { items: markets } = await pages.firstPage();
+          ```
 
-        ```python Python theme={null}
-        from py_clob_client_v2 import ClobClient, OrderArgs, PartialCreateOrderOptions
-        from py_clob_client_v2.order_builder.constants import BUY
+          ```python Python theme={null}
+          from polymarket import AsyncPublicClient
 
-        client = ClobClient(host, key=key, chain_id=chain, creds=creds)
-        order = client.create_and_post_order(
-            OrderArgs(token_id=token_id, price=0.50, size=10, side=BUY),
-            options=PartialCreateOrderOptions(tick_size="0.01", neg_risk=False)
-        )
-        ```
+          async with AsyncPublicClient() as client:
+              markets = client.list_markets(closed=False)
 
-        ```rust Rust theme={null}
-        use polymarket_client_sdk_v2::clob::{Client, Config};
-        use polymarket_client_sdk_v2::clob::types::Side;
-        use polymarket_client_sdk_v2::types::dec;
+              async for market in markets.iter_items():
+                  print(market.question)
+          ```
 
-        let client = Client::new(host, Config::default())?.authentication_builder(&signer).authenticate().await?;
-        let order = client.limit_order().token_id(token_id).price(dec!(0.50)).size(dec!(10)).side(Side::Buy).build().await?;
-        let signed = client.sign(&signer, order).await?;
-        let response = client.post_order(signed).await?;
-        ```
-      </CodeGroup>
+          ```bash API theme={null}
+          curl -G "https://gamma-api.polymarket.com/markets/keyset" \
+            --data-urlencode "closed=false" \
+            --data-urlencode "limit=5"
+          ```
+        </CodeGroup>
+      </div>
     </div>
-  </div>
 
-  <div className="max-w-6xl mx-auto px-4  md:px-24">
-    <h2 className="text-2xl font-semibold text-gray-900 dark:text-zinc-50">
-      Get Familiar with Polymarket
-    </h2>
+    <div className="mt-12">
+      <h2 className="text-2xl font-semibold text-gray-900 dark:text-zinc-50">
+        Get Familiar with Polymarket
+      </h2>
 
-    <p className="mt-2 text-gray-500 dark:text-zinc-400 max-w-2xl">
-      Learn the fundamentals, explore our APIs, and start building on the world's largest prediction market.
-    </p>
+      <p className="mt-2 text-gray-500 dark:text-zinc-400 max-w-2xl">
+        Learn how Polymarket works, explore the concepts behind markets and
+        trading, or choose how to integrate.
+      </p>
 
-    <div className="mt-8">
-      <CardGroup cols={2}>
-        <Card title="Quickstart" icon="rocket" href="/quickstart">
-          Set up your environment and make your first API call in minutes.
-        </Card>
+      <div className="mt-8">
+        <CardGroup cols={3}>
+          <Card title="Polymarket 101" icon="lightbulb" href="/polymarket-101">
+            Learn how prediction markets work and how to use Polymarket.
+          </Card>
 
-        <Card title="Core Concepts" icon="lightbulb" href="/concepts/markets-events">
-          Understand markets, events, tokens, and how trading works.
-        </Card>
+          <Card title="Core Concepts" icon="book" href="/concepts/markets-events">
+            Understand markets and events, prices and order books, positions,
+            orders, and resolution.
+          </Card>
 
-        <Card title="API Reference" icon="code" href="/api-reference/introduction">
-          Explore REST endpoints, WebSocket streams, and authentication.
-        </Card>
-
-        <Card title="SDKs" icon="cube" href="/api-reference/clients-sdks">
-          Official Python, TypeScript, and Rust libraries for faster development.
-        </Card>
-      </CardGroup>
+          <Card title="SDKs & APIs" icon="code" href="/getting-started/sdks-apis">
+            Choose the integration approach that best fits your application.
+          </Card>
+        </CardGroup>
+      </div>
     </div>
 
     <div className="my-12 ">

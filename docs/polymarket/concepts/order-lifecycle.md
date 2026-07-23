@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/concepts/order-lifecycle.md
+Downloaded: 2026-07-23T21:04:54.608Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -23,7 +28,7 @@ All orders on Polymarket are **limit orders**. A limit order specifies the price
   immediately against the best available resting orders.
 </Note>
 
-Orders are **EIP712-signed messages**. When you place an order, you sign a structured message with your private key. This signature authorizes the Exchange contract to execute the trade on your behalf—without ever taking custody of your funds.
+Orders are **EIP712-signed messages**. When you place an order, you sign a structured message with your private key. This signature authorizes the Exchange contract to execute the trade on your behalf, without ever taking custody of your funds.
 
 ## Order Types
 
@@ -63,7 +68,7 @@ Post-only orders will only rest on the book. If a post-only order would match im
   <Step title="Match or Rest">
     **If the order is marketable** (your buy price ≥ lowest ask, or your sell price ≤ highest bid), it matches against resting orders. Some markets apply a short taker delay before matching:
 
-    * **Taker delay:** used on selected crypto and finance up/down markets. The order is held for 250 ms, then validation runs again and the order is matched or placed on the book. The API waits for this hold and returns the final order result. To check a specific market, call the public CLOB endpoint `GET https://clob.polymarket.com/clob-markets/{condition_id}` or SDK method `getClobMarketInfo(conditionID)` and look for `itode: true`.
+    * **Taker delay:** used on selected crypto and finance up/down markets. The order is held for 250 ms, then validation runs again and the order is matched or placed on the book. The API waits for this hold and returns the final order result. To check a specific market, call the public CLOB endpoint `GET https://clob.polymarket.com/clob-markets/{condition_id}` and look for `itode: true`.
     * **Sports/game delay:** enabled on configured sports markets around live game conditions. The order waits for the market's configured delay window before matching.
 
     During either delay, the order is pending and cannot be canceled. If the market, balance, allowance, or risk checks fail when the delay expires, the order is rejected instead of matching.
@@ -82,7 +87,7 @@ Post-only orders will only rest on the book. If a post-only order would match im
     * Transfers tokens from seller to buyer
     * Transfers pUSD from buyer to seller
 
-    Settlement is **atomic**—either the entire trade succeeds or nothing happens.
+    Settlement is **atomic**: either the entire trade succeeds or nothing happens.
   </Step>
 
   <Step title="Confirmation">
@@ -126,7 +131,7 @@ Price improvement always benefits the taker. If you place a buy order at `$0.55`
 
 You can cancel orders at any time before they're matched via the CLOB API, except while a marketable order is in a pending delay window.
 
-Partial fills cannot be cancelled—only the unfilled portion of an order can be cancelled.
+Partial fills cannot be cancelled: only the unfilled portion of an order can be cancelled.
 
 ## Requirements
 
@@ -153,7 +158,7 @@ Before placing orders, ensure:
     Learn how markets are resolved and winning tokens redeemed.
   </Card>
 
-  <Card title="Trading Guide" icon="book" href="/trading/overview">
+  <Card title="Trading Guide" icon="book" href="/trading/quickstart">
     Start placing orders with our step-by-step guide.
   </Card>
 </CardGroup>
