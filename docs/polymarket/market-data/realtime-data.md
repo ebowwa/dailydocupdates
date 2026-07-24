@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-data/realtime-data.md
-Downloaded: 2026-07-23T21:04:54.611Z
+Downloaded: 2026-07-24T21:04:03.610Z
 -->
 
 > ## Documentation Index
@@ -58,7 +58,7 @@ market's order book and trading state.
       #### Order Book
 
       <CodeGroup>
-        ```ts MarketBookEvent theme={null}
+        ```ts MarketBookEvent Type theme={null}
         type OrderBookLevel = {
           price: DecimalString;
           size: DecimalString;
@@ -82,7 +82,7 @@ market's order book and trading state.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json MarketBookEvent Example theme={null}
         {
           "topic": "market",
           "type": "book",
@@ -101,7 +101,7 @@ market's order book and trading state.
       #### Price Change
 
       <CodeGroup>
-        ```ts MarketPriceChangeEvent theme={null}
+        ```ts MarketPriceChangeEvent Type theme={null}
         type PriceChange = {
           tokenId: TokenId;
           price: DecimalString;
@@ -123,7 +123,7 @@ market's order book and trading state.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json MarketPriceChangeEvent Example theme={null}
         {
           "topic": "market",
           "type": "price_change",
@@ -149,7 +149,7 @@ market's order book and trading state.
       #### Last Trade Price
 
       <CodeGroup>
-        ```ts MarketLastTradePriceEvent theme={null}
+        ```ts MarketLastTradePriceEvent Type theme={null}
         type MarketLastTradePriceEvent = {
           topic: "market";
           type: "last_trade_price";
@@ -166,7 +166,7 @@ market's order book and trading state.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json MarketLastTradePriceEvent Example theme={null}
         {
           "topic": "market",
           "type": "last_trade_price",
@@ -187,7 +187,7 @@ market's order book and trading state.
       #### Tick Size Change
 
       <CodeGroup>
-        ```ts MarketTickSizeChangeEvent theme={null}
+        ```ts MarketTickSizeChangeEvent Type theme={null}
         type MarketTickSizeChangeEvent = {
           topic: "market";
           type: "tick_size_change";
@@ -201,7 +201,7 @@ market's order book and trading state.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json MarketTickSizeChangeEvent Example theme={null}
         {
           "topic": "market",
           "type": "tick_size_change",
@@ -260,7 +260,7 @@ market's order book and trading state.
       #### Best Bid and Ask
 
       <CodeGroup>
-        ```ts MarketBestBidAskEvent theme={null}
+        ```ts MarketBestBidAskEvent Type theme={null}
         type MarketBestBidAskEvent = {
           topic: "market";
           type: "best_bid_ask";
@@ -275,7 +275,7 @@ market's order book and trading state.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json MarketBestBidAskEvent Example theme={null}
         {
           "topic": "market",
           "type": "best_bid_ask",
@@ -294,7 +294,7 @@ market's order book and trading state.
       #### New Market
 
       <CodeGroup>
-        ```ts NewMarketEvent theme={null}
+        ```ts NewMarketEvent Type theme={null}
         type NewMarketEvent = {
           topic: "market";
           type: "new_market";
@@ -330,7 +330,7 @@ market's order book and trading state.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json NewMarketEvent Example theme={null}
         {
           "topic": "market",
           "type": "new_market",
@@ -354,7 +354,7 @@ market's order book and trading state.
       #### Market Resolved
 
       <CodeGroup>
-        ```ts MarketResolvedEvent theme={null}
+        ```ts MarketResolvedEvent Type theme={null}
         type MarketResolvedEvent = {
           topic: "market";
           type: "market_resolved";
@@ -377,7 +377,7 @@ market's order book and trading state.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json MarketResolvedEvent Example theme={null}
         {
           "topic": "market",
           "type": "market_resolved",
@@ -425,7 +425,7 @@ market's order book and trading state.
       #### Order Book
 
       <CodeGroup>
-        ```python MarketBookEvent theme={null}
+        ```python MarketBookEvent Type theme={null}
         class OrderBookLevel:
             price: Decimal
             size: Decimal
@@ -448,7 +448,7 @@ market's order book and trading state.
             payload: MarketBookPayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json MarketBookEvent Example theme={null}
         {
           "topic": "market",
           "type": "book",
@@ -467,7 +467,7 @@ market's order book and trading state.
       #### Price Change
 
       <CodeGroup>
-        ```python MarketPriceChangeEvent theme={null}
+        ```python MarketPriceChangeEvent Type theme={null}
         class PriceChange:
             token_id: TokenId
             price: Decimal
@@ -488,7 +488,7 @@ market's order book and trading state.
             payload: MarketPriceChangePayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json MarketPriceChangeEvent Example theme={null}
         {
           "topic": "market",
           "type": "price_change",
@@ -514,7 +514,7 @@ market's order book and trading state.
       #### Last Trade Price
 
       <CodeGroup>
-        ```python MarketLastTradePriceEvent theme={null}
+        ```python MarketLastTradePriceEvent Type theme={null}
         class MarketLastTradePricePayload:
             market: str
             token_id: TokenId
@@ -531,7 +531,7 @@ market's order book and trading state.
             payload: MarketLastTradePricePayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json MarketLastTradePriceEvent Example theme={null}
         {
           "topic": "market",
           "type": "last_trade_price",
@@ -552,7 +552,7 @@ market's order book and trading state.
       #### Tick Size Change
 
       <CodeGroup>
-        ```python MarketTickSizeChangeEvent theme={null}
+        ```python MarketTickSizeChangeEvent Type theme={null}
         class MarketTickSizeChangePayload:
             market: str
             token_id: TokenId
@@ -566,7 +566,7 @@ market's order book and trading state.
             payload: MarketTickSizeChangePayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json MarketTickSizeChangeEvent Example theme={null}
         {
           "topic": "market",
           "type": "tick_size_change",
@@ -610,7 +610,7 @@ market's order book and trading state.
       #### Best Bid and Ask
 
       <CodeGroup>
-        ```python MarketBestBidAskEvent theme={null}
+        ```python MarketBestBidAskEvent Type theme={null}
         class MarketBestBidAskPayload:
             market: str
             token_id: TokenId
@@ -625,7 +625,7 @@ market's order book and trading state.
             payload: MarketBestBidAskPayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json MarketBestBidAskEvent Example theme={null}
         {
           "topic": "market",
           "type": "best_bid_ask",
@@ -644,7 +644,7 @@ market's order book and trading state.
       #### New Market
 
       <CodeGroup>
-        ```python NewMarketEvent theme={null}
+        ```python NewMarketEvent Type theme={null}
         class MarketEventMessage:
             id: str
             ticker: str | None
@@ -681,7 +681,7 @@ market's order book and trading state.
             payload: NewMarketPayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json NewMarketEvent Example theme={null}
         {
           "topic": "market",
           "type": "new_market",
@@ -705,7 +705,7 @@ market's order book and trading state.
       #### Market Resolved
 
       <CodeGroup>
-        ```python MarketResolvedEvent theme={null}
+        ```python MarketResolvedEvent Type theme={null}
         class MarketResolvedPayload:
             id: str
             market: str
@@ -722,7 +722,7 @@ market's order book and trading state.
             payload: MarketResolvedPayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json MarketResolvedEvent Example theme={null}
         {
           "topic": "market",
           "type": "market_resolved",
@@ -950,7 +950,7 @@ it ends. NFL and CFB updates can also reflect possession changes.
 
     <Accordion title="Sports Event">
       <CodeGroup>
-        ```ts SportsEvent theme={null}
+        ```ts SportsEvent Type theme={null}
         type SportsEvent = {
           topic: "sports";
           type: "sport_result";
@@ -973,7 +973,7 @@ it ends. NFL and CFB updates can also reflect possession changes.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json SportsEvent Example theme={null}
         {
           "topic": "sports",
           "type": "sport_result",
@@ -1012,7 +1012,7 @@ it ends. NFL and CFB updates can also reflect possession changes.
 
     <Accordion title="Sports Event">
       <CodeGroup>
-        ```python SportsEvent theme={null}
+        ```python SportsEvent Type theme={null}
         class SportsGameResult:
             game_id: int
             sportradar_game_id: str | None
@@ -1037,7 +1037,7 @@ it ends. NFL and CFB updates can also reflect possession changes.
         SportsEvent = SportsResultEvent
         ```
 
-        ```json JSON Example theme={null}
+        ```json SportsEvent Example theme={null}
         {
           "topic": "sports",
           "type": "sport_result",
@@ -1183,7 +1183,7 @@ Use the symbol format for the selected price source:
       #### Binance Price Update
 
       <CodeGroup>
-        ```ts CryptoPricesBinanceEvent theme={null}
+        ```ts CryptoPricesBinanceEvent Type theme={null}
         type PriceUpdatePayload = {
           symbol: string;
           timestamp: EpochMilliseconds;
@@ -1198,7 +1198,7 @@ Use the symbol format for the selected price source:
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json CryptoPricesBinanceEvent Example theme={null}
         {
           "topic": "prices.crypto.binance",
           "type": "update",
@@ -1215,7 +1215,7 @@ Use the symbol format for the selected price source:
       #### Chainlink Price Update
 
       <CodeGroup>
-        ```ts CryptoPricesChainlinkEvent theme={null}
+        ```ts CryptoPricesChainlinkEvent Type theme={null}
         type CryptoPricesChainlinkEvent = {
           topic: "prices.crypto.chainlink";
           type: "update";
@@ -1224,7 +1224,7 @@ Use the symbol format for the selected price source:
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json CryptoPricesChainlinkEvent Example theme={null}
         {
           "topic": "prices.crypto.chainlink",
           "type": "update",
@@ -1264,7 +1264,7 @@ Use the symbol format for the selected price source:
       #### Binance Price Update
 
       <CodeGroup>
-        ```python CryptoPricesBinanceEvent theme={null}
+        ```python CryptoPricesBinanceEvent Type theme={null}
         class PriceUpdatePayload:
             symbol: str
             timestamp: int
@@ -1277,7 +1277,7 @@ Use the symbol format for the selected price source:
             payload: PriceUpdatePayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json CryptoPricesBinanceEvent Example theme={null}
         {
           "topic": "prices.crypto.binance",
           "type": "update",
@@ -1294,7 +1294,7 @@ Use the symbol format for the selected price source:
       #### Chainlink Price Update
 
       <CodeGroup>
-        ```python CryptoPricesChainlinkEvent theme={null}
+        ```python CryptoPricesChainlinkEvent Type theme={null}
         class CryptoPricesChainlinkEvent:
             topic: Literal["prices.crypto.chainlink"]
             type: Literal["update"]
@@ -1302,7 +1302,7 @@ Use the symbol format for the selected price source:
             payload: PriceUpdatePayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json CryptoPricesChainlinkEvent Example theme={null}
         {
           "topic": "prices.crypto.chainlink",
           "type": "update",
@@ -1425,7 +1425,7 @@ forex pairs, precious metals, and commodities.
       #### Equity Price Update
 
       <CodeGroup>
-        ```ts EquityPricesUpdateEvent theme={null}
+        ```ts EquityPricesUpdateEvent Type theme={null}
         type EquityPriceUpdatePayload = {
           symbol: string;
           value: DecimalString;
@@ -1442,7 +1442,7 @@ forex pairs, precious metals, and commodities.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json EquityPricesUpdateEvent Example theme={null}
         {
           "topic": "prices.equity.pyth",
           "type": "update",
@@ -1461,7 +1461,7 @@ forex pairs, precious metals, and commodities.
       #### Equity Price Snapshot
 
       <CodeGroup>
-        ```ts EquityPricesSubscribeEvent theme={null}
+        ```ts EquityPricesSubscribeEvent Type theme={null}
         type EquityPriceSnapshotPoint = {
           timestamp: number;
           value: DecimalString;
@@ -1480,7 +1480,7 @@ forex pairs, precious metals, and commodities.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json EquityPricesSubscribeEvent Example theme={null}
         {
           "topic": "prices.equity.pyth",
           "type": "subscribe",
@@ -1517,7 +1517,7 @@ forex pairs, precious metals, and commodities.
       #### Equity Price Update
 
       <CodeGroup>
-        ```python EquityPricesUpdateEvent theme={null}
+        ```python EquityPricesUpdateEvent Type theme={null}
         class EquityPriceUpdatePayload:
             symbol: str
             value: Decimal
@@ -1532,7 +1532,7 @@ forex pairs, precious metals, and commodities.
             payload: EquityPriceUpdatePayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json EquityPricesUpdateEvent Example theme={null}
         {
           "topic": "prices.equity.pyth",
           "type": "update",
@@ -1551,7 +1551,7 @@ forex pairs, precious metals, and commodities.
       #### Equity Price Snapshot
 
       <CodeGroup>
-        ```python EquityPricesSubscribeEvent theme={null}
+        ```python EquityPricesSubscribeEvent Type theme={null}
         class EquityPriceSnapshotEntry:
             timestamp: int
             value: Decimal
@@ -1567,7 +1567,7 @@ forex pairs, precious metals, and commodities.
             payload: EquityPriceSubscribePayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json EquityPricesSubscribeEvent Example theme={null}
         {
           "topic": "prices.equity.pyth",
           "type": "subscribe",
@@ -1738,7 +1738,7 @@ reply to another comment; reply events include the parent comment's ID.
       #### New Comment
 
       <CodeGroup>
-        ```ts CommentCreatedEvent theme={null}
+        ```ts CommentCreatedEvent Type theme={null}
         type Comment = {
           id: CommentId;
           body?: string | null;
@@ -1765,7 +1765,7 @@ reply to another comment; reply events include the parent comment's ID.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json CommentCreatedEvent Example theme={null}
         {
           "topic": "comments",
           "type": "comment_created",
@@ -1796,7 +1796,7 @@ reply to another comment; reply events include the parent comment's ID.
       #### Removed Comment
 
       <CodeGroup>
-        ```ts CommentRemovedEvent theme={null}
+        ```ts CommentRemovedEvent Type theme={null}
         type CommentRemovedPayload = {
           id: string;
           body?: string | null;
@@ -1823,7 +1823,7 @@ reply to another comment; reply events include the parent comment's ID.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json CommentRemovedEvent Example theme={null}
         {
           "topic": "comments",
           "type": "comment_removed",
@@ -1842,7 +1842,7 @@ reply to another comment; reply events include the parent comment's ID.
       #### New Reaction
 
       <CodeGroup>
-        ```ts ReactionCreatedEvent theme={null}
+        ```ts ReactionCreatedEvent Type theme={null}
         type Reaction = {
           id: string;
           commentID?: number | null;
@@ -1861,7 +1861,7 @@ reply to another comment; reply events include the parent comment's ID.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json ReactionCreatedEvent Example theme={null}
         {
           "topic": "comments",
           "type": "reaction_created",
@@ -1881,7 +1881,7 @@ reply to another comment; reply events include the parent comment's ID.
       #### Removed Reaction
 
       <CodeGroup>
-        ```ts ReactionRemovedEvent theme={null}
+        ```ts ReactionRemovedEvent Type theme={null}
         type ReactionRemovedEvent = {
           topic: "comments";
           type: "reaction_removed";
@@ -1890,7 +1890,7 @@ reply to another comment; reply events include the parent comment's ID.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json ReactionRemovedEvent Example theme={null}
         {
           "topic": "comments",
           "type": "reaction_removed",
@@ -1942,7 +1942,7 @@ reply to another comment; reply events include the parent comment's ID.
       #### New Comment
 
       <CodeGroup>
-        ```python CommentCreatedEvent theme={null}
+        ```python CommentCreatedEvent Type theme={null}
         class Comment:
             id: CommentId
             body: str | None
@@ -1967,7 +1967,7 @@ reply to another comment; reply events include the parent comment's ID.
             payload: Comment
         ```
 
-        ```json JSON Example theme={null}
+        ```json CommentCreatedEvent Example theme={null}
         {
           "topic": "comments",
           "type": "comment_created",
@@ -1998,7 +1998,7 @@ reply to another comment; reply events include the parent comment's ID.
       #### Removed Comment
 
       <CodeGroup>
-        ```python CommentRemovedEvent theme={null}
+        ```python CommentRemovedEvent Type theme={null}
         class CommentRemovedPayload:
             id: str
             body: str | None
@@ -2023,7 +2023,7 @@ reply to another comment; reply events include the parent comment's ID.
             payload: CommentRemovedPayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json CommentRemovedEvent Example theme={null}
         {
           "topic": "comments",
           "type": "comment_removed",
@@ -2042,7 +2042,7 @@ reply to another comment; reply events include the parent comment's ID.
       #### New Reaction
 
       <CodeGroup>
-        ```python ReactionCreatedEvent theme={null}
+        ```python ReactionCreatedEvent Type theme={null}
         class Reaction:
             id: str
             comment_id: int | None
@@ -2059,7 +2059,7 @@ reply to another comment; reply events include the parent comment's ID.
             payload: Reaction
         ```
 
-        ```json JSON Example theme={null}
+        ```json ReactionCreatedEvent Example theme={null}
         {
           "topic": "comments",
           "type": "reaction_created",
@@ -2079,7 +2079,7 @@ reply to another comment; reply events include the parent comment's ID.
       #### Removed Reaction
 
       <CodeGroup>
-        ```python ReactionRemovedEvent theme={null}
+        ```python ReactionRemovedEvent Type theme={null}
         class ReactionRemovedEvent:
             topic: Literal["comments"]
             type: Literal["reaction_removed"]
@@ -2087,7 +2087,7 @@ reply to another comment; reply events include the parent comment's ID.
             payload: Reaction
         ```
 
-        ```json JSON Example theme={null}
+        ```json ReactionRemovedEvent Example theme={null}
         {
           "topic": "comments",
           "type": "reaction_removed",

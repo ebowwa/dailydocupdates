@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-data/public-analytics.md
-Downloaded: 2026-07-23T21:04:54.611Z
+Downloaded: 2026-07-24T21:04:03.609Z
 -->
 
 > ## Documentation Index
@@ -80,7 +80,7 @@ size, outcome, wallet, and timestamp.
 
     <Accordion title="Output: Trade[]">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts Trade Type theme={null}
         type Trade = {
           side?: Side | null;
           conditionId?: CtfConditionId | null;
@@ -104,7 +104,7 @@ size, outcome, wallet, and timestamp.
         };
         ```
 
-        ```json Example theme={null}
+        ```json Trade Example theme={null}
         [
           {
             "side": "SELL",
@@ -136,7 +136,7 @@ size, outcome, wallet, and timestamp.
 
     <Accordion title="Output: tuple[Trade, ...]">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python Trade Type theme={null}
         class Trade:
             side: Literal["BUY", "SELL"] | None
             condition_id: CtfConditionId | None
@@ -159,7 +159,7 @@ size, outcome, wallet, and timestamp.
             token_id: TokenId | None
         ```
 
-        ```json Example theme={null}
+        ```json Trade Example theme={null}
         [
           {
             "side": "SELL",
@@ -226,14 +226,14 @@ markets.
 
     <Accordion title="Output: OpenInterest[]">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts OpenInterest Type theme={null}
         type OpenInterest = {
           market?: Hash64 | null;
           value?: DecimalString | null;
         };
         ```
 
-        ```json Example theme={null}
+        ```json OpenInterest Example theme={null}
         [
           {
             "market": "0x747dc809fb79e1b05be09c42d6179459a58de2ef3e40f02484a4e1260f741f75",
@@ -257,13 +257,13 @@ markets.
 
     <Accordion title="Output: tuple[OpenInterest, ...]">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python OpenInterest Type theme={null}
         class OpenInterest:
             market: CtfConditionId | Literal["GLOBAL"] | None
             value: Decimal | None
         ```
 
-        ```json Example theme={null}
+        ```json OpenInterest Example theme={null}
         [
           {
             "market": "0x747dc809fb79e1b05be09c42d6179459a58de2ef3e40f02484a4e1260f741f75",
@@ -316,7 +316,7 @@ Find the largest public holders for each outcome token in a market.
 
     <Accordion title="Output: MetaHolder[]">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts MetaHolder Type theme={null}
         type Holder = {
           wallet?: Address | null;
           tokenId?: TokenId | null;
@@ -336,7 +336,7 @@ Find the largest public holders for each outcome token in a market.
         };
         ```
 
-        ```json Example theme={null}
+        ```json MetaHolder Example theme={null}
         [
           {
             "token": "107505882767731489358349912513945399560393482969656700824895970500493757150417",
@@ -367,7 +367,7 @@ Find the largest public holders for each outcome token in a market.
 
     <Accordion title="Output: tuple[MetaHolder, ...]">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python MetaHolder Type theme={null}
         class Holder:
             wallet: EvmAddress | None
             token_id: TokenId | None
@@ -385,7 +385,7 @@ Find the largest public holders for each outcome token in a market.
             holders: tuple[Holder, ...] | None
         ```
 
-        ```json Example theme={null}
+        ```json MetaHolder Example theme={null}
         [
           {
             "token": "107505882767731489358349912513945399560393482969656700824895970500493757150417",
@@ -451,7 +451,7 @@ Summarize activity across an event and break the volume down by market.
 
     <Accordion title="Output: LiveVolume[]">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts LiveVolume Type theme={null}
         type MarketVolume = {
           market?: Hash64 | null;
           value?: DecimalString | null;
@@ -463,7 +463,7 @@ Summarize activity across an event and break the volume down by market.
         };
         ```
 
-        ```json Example theme={null}
+        ```json LiveVolume Example theme={null}
         [
           {
             "total": "60773073.437817",
@@ -501,7 +501,7 @@ Summarize activity across an event and break the volume down by market.
 
     <Accordion title="Output: tuple[LiveVolume, ...]">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python LiveVolume Type theme={null}
         class MarketVolume:
             market: CtfConditionId | None
             value: Decimal | None
@@ -511,7 +511,7 @@ Summarize activity across an event and break the volume down by market.
             markets: tuple[MarketVolume, ...] | None
         ```
 
-        ```json Example theme={null}
+        ```json LiveVolume Example theme={null}
         [
           {
             "total": "60773073.437817",
@@ -591,7 +591,7 @@ Compare trader volume and profit and loss over a selected period.
 
     <Accordion title="Output: TraderLeaderboardEntry[]">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts TraderLeaderboardEntry Type theme={null}
         type TraderLeaderboardEntry = {
           rank?: string | null;
           userName?: string | null;
@@ -604,7 +604,7 @@ Compare trader volume and profit and loss over a selected period.
         };
         ```
 
-        ```json Example theme={null}
+        ```json TraderLeaderboardEntry Example theme={null}
         [
           {
             "rank": "1",
@@ -632,7 +632,7 @@ Compare trader volume and profit and loss over a selected period.
 
     <Accordion title="Output: tuple[TraderLeaderboardEntry, ...]">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python TraderLeaderboardEntry Type theme={null}
         class TraderLeaderboardEntry:
             rank: str | None
             user_name: str | None
@@ -644,7 +644,7 @@ Compare trader volume and profit and loss over a selected period.
             verified_badge: bool | None
         ```
 
-        ```json Example theme={null}
+        ```json TraderLeaderboardEntry Example theme={null}
         [
           {
             "rank": "1",
@@ -707,7 +707,7 @@ Compare builders by attributed volume and active users.
 
     <Accordion title="Output: LeaderboardEntry[]">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts LeaderboardEntry Type theme={null}
         type LeaderboardEntry = {
           rank?: string | null;
           builder?: string | null;
@@ -718,7 +718,7 @@ Compare builders by attributed volume and active users.
         };
         ```
 
-        ```json Example theme={null}
+        ```json LeaderboardEntry Example theme={null}
         [
           {
             "rank": "1",
@@ -746,7 +746,7 @@ Compare builders by attributed volume and active users.
 
     <Accordion title="Output: tuple[LeaderboardEntry, ...]">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python LeaderboardEntry Type theme={null}
         class LeaderboardEntry:
             rank: str | None
             builder: str | None
@@ -756,7 +756,7 @@ Compare builders by attributed volume and active users.
             builder_logo: str | None
         ```
 
-        ```json Example theme={null}
+        ```json LeaderboardEntry Example theme={null}
         [
           {
             "rank": "1",
@@ -815,7 +815,7 @@ Track attributed builder volume and active users over time.
 
     <Accordion title="Output: BuilderVolumeEntry[]">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts BuilderVolumeEntry Type theme={null}
         type BuilderVolumeEntry = {
           bucketAt?: IsoDateTimeString | null;
           builder?: string | null;
@@ -827,7 +827,7 @@ Track attributed builder volume and active users over time.
         };
         ```
 
-        ```json Example theme={null}
+        ```json BuilderVolumeEntry Example theme={null}
         [
           {
             "bucketAt": "2026-06-29T00:00:00Z",
@@ -871,7 +871,7 @@ Track attributed builder volume and active users over time.
 
     <Accordion title="Output: tuple[BuilderVolumeEntry, ...]">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python BuilderVolumeEntry Type theme={null}
         class BuilderVolumeEntry:
             bucket_at: datetime | None
             builder: str | None
@@ -882,7 +882,7 @@ Track attributed builder volume and active users over time.
             rank: str | None
         ```
 
-        ```json Example theme={null}
+        ```json BuilderVolumeEntry Example theme={null}
         [
           {
             "bucket_at": "2026-06-29T00:00:00Z",

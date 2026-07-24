@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/wallet-activity.md
-Downloaded: 2026-07-23T21:04:54.619Z
+Downloaded: 2026-07-24T21:04:03.617Z
 -->
 
 > ## Documentation Index
@@ -34,7 +34,7 @@ Inspect a wallet's current outcome exposure and unrealized performance.
 
     <Accordion title="Output: Position[]">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts Position Type theme={null}
         type Position = {
           conditionId: CtfConditionId;
           wallet?: Address | null;
@@ -65,7 +65,7 @@ Inspect a wallet's current outcome exposure and unrealized performance.
         };
         ```
 
-        ```json Example theme={null}
+        ```json Position Example theme={null}
         [
           {
             "conditionId": "0x747dc809fb79e1b05be09c42d6179459a58de2ef3e40f02484a4e1260f741f75",
@@ -107,7 +107,7 @@ Inspect a wallet's current outcome exposure and unrealized performance.
 
     <Accordion title="Output: tuple[Position, ...]">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python Position Type theme={null}
         class Position:
             condition_id: CtfConditionId
             wallet: EvmAddress | None
@@ -137,7 +137,7 @@ Inspect a wallet's current outcome exposure and unrealized performance.
             negative_risk: bool | None
         ```
 
-        ```json Example theme={null}
+        ```json Position Example theme={null}
         [
           {
             "condition_id": "0x747dc809fb79e1b05be09c42d6179459a58de2ef3e40f02484a4e1260f741f75",
@@ -223,7 +223,7 @@ their realized performance.
 
     <Accordion title="Output: ClosedPosition[]">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts ClosedPosition Type theme={null}
         type ClosedPosition = {
           wallet?: Address | null;
           tokenId?: TokenId | null;
@@ -245,7 +245,7 @@ their realized performance.
         };
         ```
 
-        ```json Example theme={null}
+        ```json ClosedPosition Example theme={null}
         [
           {
             "wallet": "0x8ba1f109551bD432803012645Ac136ddd64DBA72",
@@ -281,7 +281,7 @@ their realized performance.
 
     <Accordion title="Output: tuple[ClosedPosition, ...]">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python ClosedPosition Type theme={null}
         class ClosedPosition:
             wallet: EvmAddress | None
             token_id: TokenId | None
@@ -302,7 +302,7 @@ their realized performance.
             end_date: date | None
         ```
 
-        ```json Example theme={null}
+        ```json ClosedPosition Example theme={null}
         [
           {
             "wallet": "0x8ba1f109551bD432803012645Ac136ddd64DBA72",
@@ -392,7 +392,7 @@ Follow the timeline for a wallet across trades and other activity.
           | YieldActivity;
         ```
 
-        ```json Activity Examples theme={null}
+        ```json Activity Example theme={null}
         [
           {
             "type": "TRADE",
@@ -456,7 +456,7 @@ Follow the timeline for a wallet across trades and other activity.
         )
         ```
 
-        ```json Trade Example theme={null}
+        ```json Activity Example theme={null}
         [
           {
             "type": "TRADE",
@@ -536,7 +536,7 @@ account. The CLOB retains them for 48 hours.
 
     <Accordion title="Output: Notification[]">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts Notification Type theme={null}
         type Notification = {
           id: NotificationId;
           owner: string;
@@ -546,7 +546,7 @@ account. The CLOB retains them for 48 hours.
         };
         ```
 
-        ```json Example theme={null}
+        ```json Notification Example theme={null}
         [
           {
             "id": 1,
@@ -575,7 +575,7 @@ account. The CLOB retains them for 48 hours.
 
     <Accordion title="Output: tuple[Notification, ...]">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python Notification Type theme={null}
         class Notification:
             id: int
             owner: str
@@ -584,7 +584,7 @@ account. The CLOB retains them for 48 hours.
             timestamp: datetime
         ```
 
-        ```json Example theme={null}
+        ```json Notification Example theme={null}
         [
           {
             "id": 1,
@@ -730,14 +730,14 @@ Read the current portfolio value for a wallet.
 
     <Accordion title="Output: Value[]">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts Value Type theme={null}
         type Value = {
           user?: Address | null;
           value?: DecimalString | null;
         };
         ```
 
-        ```json Example theme={null}
+        ```json Value Example theme={null}
         [
           {
             "user": "0x8ba1f109551bD432803012645Ac136ddd64DBA72",
@@ -761,13 +761,13 @@ Read the current portfolio value for a wallet.
 
     <Accordion title="Output: tuple[PortfolioValue, ...]">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python PortfolioValue Type theme={null}
         class PortfolioValue:
             user: EvmAddress | None
             value: Decimal | None
         ```
 
-        ```json Example theme={null}
+        ```json PortfolioValue Example theme={null}
         [
           {
             "user": "0x8ba1f109551bD432803012645Ac136ddd64DBA72",

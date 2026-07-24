@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/manage-orders.md
-Downloaded: 2026-07-23T21:04:54.617Z
+Downloaded: 2026-07-24T21:04:03.616Z
 -->
 
 > ## Documentation Index
@@ -35,7 +35,7 @@ orders.
     values:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts OpenOrder Type theme={null}
       type OpenOrder = {
         id: string;
         conditionId: CtfConditionId;
@@ -55,7 +55,7 @@ orders.
       };
       ```
 
-      ```json Example theme={null}
+      ```json OpenOrder Example theme={null}
       {
         "id": "0xff354cd7ca7539dfa9c28d90943ab5779a4eac34b9b37a757d7b32bdfb11790b",
         "conditionId": "0x747dc809fb79e1b05be09c42d6179459a58de2ef3e40f02484a4e1260f741f75",
@@ -94,7 +94,7 @@ orders.
     values:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python OpenOrder Type theme={null}
       class OpenOrder:
           id: str
           condition_id: CtfConditionId
@@ -113,7 +113,7 @@ orders.
           expires_at: datetime | None
       ```
 
-      ```json Example theme={null}
+      ```json OpenOrder Example theme={null}
       {
         "id": "0xff354cd7ca7539dfa9c28d90943ab5779a4eac34b9b37a757d7b32bdfb11790b",
         "condition_id": "0x747dc809fb79e1b05be09c42d6179459a58de2ef3e40f02484a4e1260f741f75",
@@ -166,7 +166,7 @@ orders.
     The CLOB returns the order in its wire response shape:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts Order Type theme={null}
       type Order = {
         id: string;
         market: string;
@@ -186,7 +186,7 @@ orders.
       };
       ```
 
-      ```json Example theme={null}
+      ```json Order Example theme={null}
       {
         "id": "ORDER_ID",
         "market": "0x747dc809fb79e1b05be09c42d6179459a58de2ef3e40f02484a4e1260f741f75",
@@ -260,7 +260,7 @@ what's actually live on the book.
     Each page contains `OpenOrder` items:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts OpenOrder Type theme={null}
       type OpenOrder = {
         id: string;
         conditionId: CtfConditionId;
@@ -280,7 +280,7 @@ what's actually live on the book.
       };
       ```
 
-      ```json Example theme={null}
+      ```json OpenOrder Example theme={null}
       {
         "items": [
           {
@@ -345,7 +345,7 @@ what's actually live on the book.
     Each page contains `OpenOrder` items:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python OpenOrder Type theme={null}
       class OpenOrder:
           id: str
           condition_id: CtfConditionId
@@ -364,7 +364,7 @@ what's actually live on the book.
           expires_at: datetime | None
       ```
 
-      ```json Example theme={null}
+      ```json OpenOrder Example theme={null}
       {
         "items": [
           {
@@ -422,7 +422,7 @@ what's actually live on the book.
     The CLOB returns the matching orders in its wire response shape:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts Order Type theme={null}
       type Order = {
         id: string;
         market: string;
@@ -442,7 +442,7 @@ what's actually live on the book.
       };
       ```
 
-      ```json Example theme={null}
+      ```json Order Example theme={null}
       [
         {
           "id": "ORDER_ID",
@@ -524,7 +524,7 @@ position size, or audit what actually matched.
     Each page contains `ClobTrade` items:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts ClobTrade Type theme={null}
       type MakerOrder = {
         orderId: string;
         tokenId: TokenId;
@@ -559,7 +559,7 @@ position size, or audit what actually matched.
       };
       ```
 
-      ```json Example theme={null}
+      ```json ClobTrade Example theme={null}
       {
         "items": [
           {
@@ -638,7 +638,7 @@ position size, or audit what actually matched.
     Each page contains `ClobTrade` items:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python ClobTrade Type theme={null}
       class MakerOrder:
           order_id: str
           token_id: TokenId
@@ -671,7 +671,7 @@ position size, or audit what actually matched.
           updated_at: datetime
       ```
 
-      ```json Example theme={null}
+      ```json ClobTrade Example theme={null}
       {
         "items": [
           {
@@ -732,7 +732,7 @@ position size, or audit what actually matched.
     The CLOB returns the matching trades in its wire response shape:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts Trade Type theme={null}
       type MakerOrder = {
         order_id: string;
         asset_id: string;
@@ -767,7 +767,7 @@ position size, or audit what actually matched.
       };
       ```
 
-      ```json Example theme={null}
+      ```json Trade Example theme={null}
       [
         {
           "id": "TRADE_ID",
@@ -858,7 +858,7 @@ Orders do not appear here until they match.
     Each page contains `BuilderTrade` items:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts BuilderTrade Type theme={null}
       type BuilderTrade = {
         id: string;
         tradeType: string;
@@ -886,7 +886,7 @@ Orders do not appear here until they match.
       };
       ```
 
-      ```json Example theme={null}
+      ```json BuilderTrade Example theme={null}
       {
         "items": [
           {
@@ -976,7 +976,7 @@ Orders do not appear here until they match.
     Each page contains `BuilderTrade` items:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python BuilderTrade Type theme={null}
       class BuilderTrade:
           id: str
           trade_type: str
@@ -1003,7 +1003,7 @@ Orders do not appear here until they match.
           updated_at: datetime | None
       ```
 
-      ```json Example theme={null}
+      ```json BuilderTrade Example theme={null}
       {
         "items": [
           {
@@ -1557,7 +1557,7 @@ fast instead of waiting for a rejection.
     The method returns the account's closed-only state as a boolean:
 
     <CodeGroup>
-      ```json Example theme={null}
+      ```json ClosedOnlyMode Example theme={null}
       false
       ```
     </CodeGroup>
@@ -1576,7 +1576,7 @@ fast instead of waiting for a rejection.
     The method returns the account's closed-only state as a `bool`:
 
     <CodeGroup>
-      ```json Example theme={null}
+      ```json ClosedOnlyMode Example theme={null}
       false
       ```
     </CodeGroup>
@@ -1608,13 +1608,13 @@ fast instead of waiting for a rejection.
     ```
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts ClosedOnlyMode Type theme={null}
       type ClosedOnlyMode = {
         closed_only: boolean;
       };
       ```
 
-      ```json Example theme={null}
+      ```json ClosedOnlyMode Example theme={null}
       {
         "closed_only": false
       }
@@ -1658,11 +1658,11 @@ check.
     The response maps each order ID to its scoring status:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts OrdersScoringResponse Type theme={null}
       type OrdersScoringResponse = Record<string, boolean>;
       ```
 
-      ```json Example theme={null}
+      ```json OrdersScoringResponse Example theme={null}
       {
         "ORDER_ID_1": true,
         "ORDER_ID_2": false
@@ -1695,11 +1695,11 @@ check.
     The response maps each order ID to its scoring status:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python OrdersScoringResponse Type theme={null}
       dict[str, bool]
       ```
 
-      ```json Example theme={null}
+      ```json OrdersScoringResponse Example theme={null}
       {
         "ORDER_ID_1": true,
         "ORDER_ID_2": false

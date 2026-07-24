@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/hooks.md
-Downloaded: 2026-07-23T21:06:10.062Z
+Downloaded: 2026-07-24T21:04:21.340Z
 -->
 
 > ## Documentation Index
@@ -646,12 +646,16 @@ For example, a `PreToolUse` hook for a Bash command receives this on stdin:
   "hook_event_name": "PreToolUse",
   "tool_name": "Bash",
   "tool_input": {
-    "command": "npm test"
-  }
+    "command": "npm test",
+    "description": "Run test suite",
+    "timeout": 120000,
+    "run_in_background": false
+  },
+  "tool_use_id": "toolu_01ABC123..."
 }
 ```
 
-The `tool_name` and `tool_input` fields are event-specific. Each [hook event](#hook-events) section documents the additional fields for that event.
+The `tool_name`, `tool_input`, and `tool_use_id` fields are event-specific. Each [hook event](#hook-events) section documents the additional fields for that event.
 
 ### Exit code output
 

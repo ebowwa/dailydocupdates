@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/workflows.md
-Downloaded: 2026-07-23T21:06:10.075Z
+Downloaded: 2026-07-24T21:04:21.351Z
 -->
 
 > ## Documentation Index
@@ -201,6 +201,13 @@ Run `/workflows`, select the run you want to keep, and press `s`. In the save di
 {/* min-version: 2.1.208 */}The save dialog shows the resolved path for the personal location. Before v2.1.208, it showed `~/.claude/workflows/` even when `CLAUDE_CONFIG_DIR` was set; the file was still saved under the configured directory.
 
 Press Enter to save. The workflow runs as `/<name>` in future sessions from either location.
+
+{/* min-version: 2.1.216 */}Claude Code checks the save location for symlinks before writing, and shows an error instead of writing through one. What it checks depends on where you save:
+
+* Project location: Claude Code refuses if `.claude`, `.claude/workflows`, or the target file is a symlink.
+* Personal location: Claude Code refuses only if the target file itself is a symlink, so a `~/.claude` directory managed by a dotfiles tool still works.
+
+Before v2.1.216, Claude Code followed the link, which could place the file outside the location you chose.
 
 {/* min-version: 2.1.178 */}In a monorepo with several `.claude/` directories, you can keep workflows alongside the package they apply to. As of v2.1.178, saving to the project location writes to the closest `.claude/workflows/` directory that already exists between your working directory and the repository root, or to the repository root if none exists yet. Project workflows also load from every `.claude/workflows/` along that path, and when more than one defines the same name Claude Code runs the one closest to the working directory.
 

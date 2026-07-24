@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-data/market-details.md
-Downloaded: 2026-07-23T21:04:54.610Z
+Downloaded: 2026-07-24T21:04:03.609Z
 -->
 
 > ## Documentation Index
@@ -200,7 +200,7 @@ markets can resolve YES.
     `MarketState` groups the market's operational state and timing:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts MarketState Type theme={null}
       type MarketState = {
         active?: boolean | null;
         closed?: boolean | null;
@@ -214,7 +214,7 @@ markets can resolve YES.
       };
       ```
 
-      ```json Example theme={null}
+      ```json MarketState Example theme={null}
       {
         "active": true,
         "closed": false,
@@ -247,7 +247,7 @@ markets can resolve YES.
     `MarketState` groups the market's operational state and timing:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python MarketState Type theme={null}
       class MarketState:
           active: bool | None
           closed: bool | None
@@ -260,7 +260,7 @@ markets can resolve YES.
           closed_time: datetime | None
       ```
 
-      ```json Example theme={null}
+      ```json MarketState Example theme={null}
       {
         "active": true,
         "closed": false,
@@ -411,14 +411,14 @@ Read the active constraints for a market in your integration:
     The SDK groups these constraints in `MarketTrading`:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts MarketTrading Type theme={null}
       type MarketTrading = {
         minimumTickSize?: TickSizeValue | null;
         minimumOrderSize?: DecimalString | null;
       };
       ```
 
-      ```json Example theme={null}
+      ```json MarketTrading Example theme={null}
       {
         "minimumTickSize": 0.01,
         "minimumOrderSize": "5"
@@ -442,13 +442,13 @@ Read the active constraints for a market in your integration:
     The SDK groups these constraints in `MarketTrading`:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python MarketTrading Type theme={null}
       class MarketTrading:
           minimum_tick_size: Decimal | None
           minimum_order_size: Decimal | None
       ```
 
-      ```json Example theme={null}
+      ```json MarketTrading Example theme={null}
       {
         "minimum_tick_size": 0.01,
         "minimum_order_size": "5"
@@ -502,7 +502,7 @@ with price, which side pays them, and what share is returned to makers.
     `FeeSchedule`:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts MarketTrading Type theme={null}
       type FeeSchedule = {
         rate: DecimalString;
         exponent: number;
@@ -516,7 +516,7 @@ with price, which side pays them, and what share is returned to makers.
       };
       ```
 
-      ```json Example theme={null}
+      ```json MarketTrading Example theme={null}
       {
         "feesEnabled": true,
         "feeSchedule": {
@@ -548,7 +548,7 @@ with price, which side pays them, and what share is returned to makers.
     `FeeSchedule`:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python MarketTrading Type theme={null}
       class FeeSchedule:
           rate: Decimal
           exponent: int | float
@@ -560,7 +560,7 @@ with price, which side pays them, and what share is returned to makers.
           fee_schedule: FeeSchedule | None
       ```
 
-      ```json Example theme={null}
+      ```json MarketTrading Example theme={null}
       {
         "fees_enabled": true,
         "fee_schedule": {
@@ -626,7 +626,7 @@ minimum qualifying size and remain within its maximum qualifying spread. See
     dated allocation through `ClobRewards`:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts ClobRewards Type theme={null}
       type MarketRewards = {
         clobRewards?: ClobRewards[] | null;
         rewardsMinSize?: DecimalString | null;
@@ -645,7 +645,7 @@ minimum qualifying size and remain within its maximum qualifying spread. See
       };
       ```
 
-      ```json Example theme={null}
+      ```json ClobRewards Example theme={null}
       {
         "rewardsMinSize": "100",
         "rewardsMaxSpread": 3,
@@ -682,7 +682,7 @@ minimum qualifying size and remain within its maximum qualifying spread. See
     dated allocation through `ClobReward`:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python ClobReward Type theme={null}
       class MarketRewards:
           clob_rewards: tuple[ClobReward, ...] | None
           rewards_min_size: Decimal | None
@@ -699,7 +699,7 @@ minimum qualifying size and remain within its maximum qualifying spread. See
           end_date: date | None
       ```
 
-      ```json Example theme={null}
+      ```json ClobReward Example theme={null}
       {
         "rewards_min_size": 100,
         "rewards_max_spread": 3,
@@ -780,7 +780,7 @@ time of the game.
     The SDK groups these values by their role:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts MarketSportsMetadata Type theme={null}
       type MarketState = {
         startDate?: IsoDateTimeString | null;
         endDate?: IsoDateTimeString | null;
@@ -795,7 +795,7 @@ time of the game.
       };
       ```
 
-      ```json Example theme={null}
+      ```json MarketSportsMetadata Example theme={null}
       {
         "state": {
           "startDate": "2024-03-15T00:00:00Z",
@@ -831,7 +831,7 @@ time of the game.
     The SDK groups these values by their role:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python MarketSportsMetadata Type theme={null}
       class MarketState:
           start_date: datetime | None
           end_date: datetime | None
@@ -843,7 +843,7 @@ time of the game.
           game_start_time: datetime | None
       ```
 
-      ```json Example theme={null}
+      ```json MarketSportsMetadata Example theme={null}
       {
         "state": {
           "start_date": "2024-03-15T00:00:00Z",
@@ -914,7 +914,7 @@ trades. Use them to compare markets or monitor changes over time.
     `MarketPrices`:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts MarketPrices Type theme={null}
       type MarketMetrics = {
         liquidity?: DecimalString | null;
         volume24hr?: DecimalString | null;
@@ -929,7 +929,7 @@ trades. Use them to compare markets or monitor changes over time.
       };
       ```
 
-      ```json Example theme={null}
+      ```json MarketPrices Example theme={null}
       {
         "metrics": {
           "liquidity": "150248.32",
@@ -964,7 +964,7 @@ trades. Use them to compare markets or monitor changes over time.
     `MarketPrices`:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python MarketPrices Type theme={null}
       class MarketMetrics:
           liquidity: Decimal | None
           volume_24hr: Decimal | None
@@ -977,7 +977,7 @@ trades. Use them to compare markets or monitor changes over time.
           one_day_price_change: Decimal | None
       ```
 
-      ```json Example theme={null}
+      ```json MarketPrices Example theme={null}
       {
         "metrics": {
           "liquidity": "150248.32",

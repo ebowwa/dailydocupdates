@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/costs.md
-Downloaded: 2026-07-23T21:06:10.056Z
+Downloaded: 2026-07-24T21:04:21.335Z
 -->
 
 > ## Documentation Index
@@ -25,7 +25,7 @@ This page covers how to [track your costs](#track-your-costs), [manage costs for
   The Session block in `/usage` shows API token usage and is intended for API users. Claude Max and Pro subscribers have usage included in their subscription, so the session cost figure isn't relevant for billing purposes. Subscribers see plan usage bars, activity stats, and a usage breakdown on the same screen.
 </Note>
 
-The Session block at the top of `/usage` shows detailed token usage statistics for your current session. The dollar figure is an estimate computed locally from token counts and may differ from your actual bill. For authoritative billing, see the Usage page in the [Claude Console](https://platform.claude.com/usage).
+The Session block at the top of `/usage` shows detailed token usage statistics for your current session. Claude Code computes the dollar figure locally from token counts priced at standard list rates, so it doesn't reflect promotional pricing or contracted discounts and may differ from your actual bill. For authoritative billing, see the Usage page in the [Claude Console](https://platform.claude.com/usage).
 
 ```text theme={null}
 Total cost:            $0.55

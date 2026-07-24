@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/place-orders.md
-Downloaded: 2026-07-23T21:04:54.618Z
+Downloaded: 2026-07-24T21:04:03.616Z
 -->
 
 > ## Documentation Index
@@ -1429,11 +1429,11 @@ ladder of quotes across multiple price levels when market making.
     ```
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python OrderResponse Type theme={null}
       tuple[OrderResponse, ...]
       ```
 
-      ```json Example theme={null}
+      ```json OrderResponse Example theme={null}
       [
         {
           "ok": true,

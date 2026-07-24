@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/perps/market-data.md
+Downloaded: 2026-07-24T21:04:03.612Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -59,7 +64,7 @@ workflow.
     where `PerpsInstrument` is:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts PerpsInstrument Type theme={null}
       type PerpsInstrument = {
         id: PerpsInstrumentId;
         category: PerpsInstrumentCategory;
@@ -76,6 +81,7 @@ workflow.
         maxMarketNotional: DecimalString;
         maxLimitNotional: DecimalString;
         maxLeverage: number;
+        isolatedOnly: boolean;
         riskTiers: PerpsRiskTier[];
       };
 
@@ -85,7 +91,7 @@ workflow.
       };
       ```
 
-      ```json Example theme={null}
+      ```json PerpsInstrument Example theme={null}
       {
         "id": 1,
         "category": "crypto",
@@ -102,6 +108,7 @@ workflow.
         "maxMarketNotional": "100000",
         "maxLimitNotional": "1000000",
         "maxLeverage": 10,
+        "isolatedOnly": false,
         "riskTiers": [{ "lowerBound": "0", "maxLeverage": 10 }]
       }
       ```
@@ -110,24 +117,25 @@ workflow.
     `PerpsInstrument` includes the market metadata and trading constraints your app
     needs before submitting orders.
 
-    | Field               | Description                                                   |
-    | ------------------- | ------------------------------------------------------------- |
-    | `id`                | Instrument identifier.                                        |
-    | `category`          | Market category, such as crypto, index, equity, or commodity. |
-    | `symbol`            | Human-readable market symbol.                                 |
-    | `baseAsset`         | Base asset for the instrument.                                |
-    | `quoteAsset`        | Quote asset used for prices.                                  |
-    | `fundingInterval`   | Funding interval for the instrument, such as `1h`.            |
-    | `quantityDecimals`  | Decimal precision for quantities.                             |
-    | `priceDecimals`     | Decimal precision for prices.                                 |
-    | `priceBounds`       | Price-bound value for the instrument.                         |
-    | `liquidationFee`    | Liquidation fee value for the instrument.                     |
-    | `maxOrderCount`     | Maximum order count for the instrument.                       |
-    | `minNotional`       | Minimum notional value for orders.                            |
-    | `maxMarketNotional` | Maximum notional value for market orders.                     |
-    | `maxLimitNotional`  | Maximum notional value for limit orders.                      |
-    | `maxLeverage`       | Maximum leverage allowed for the instrument.                  |
-    | `riskTiers`         | Risk tiers for larger position sizes.                         |
+    | Field               | Description                                                                                                             |
+    | ------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+    | `id`                | Instrument identifier.                                                                                                  |
+    | `category`          | Market category, such as crypto, index, equity, or commodity.                                                           |
+    | `symbol`            | Human-readable market symbol.                                                                                           |
+    | `baseAsset`         | Base asset for the instrument.                                                                                          |
+    | `quoteAsset`        | Quote asset used for prices.                                                                                            |
+    | `fundingInterval`   | Funding interval for the instrument, such as `1h`.                                                                      |
+    | `quantityDecimals`  | Decimal precision for quantities.                                                                                       |
+    | `priceDecimals`     | Decimal precision for prices.                                                                                           |
+    | `priceBounds`       | Price-bound value for the instrument.                                                                                   |
+    | `liquidationFee`    | Liquidation fee value for the instrument.                                                                               |
+    | `maxOrderCount`     | Maximum order count for the instrument.                                                                                 |
+    | `minNotional`       | Minimum notional value for orders.                                                                                      |
+    | `maxMarketNotional` | Maximum notional value for market orders.                                                                               |
+    | `maxLimitNotional`  | Maximum notional value for limit orders.                                                                                |
+    | `maxLeverage`       | Maximum leverage allowed for the instrument.                                                                            |
+    | `isolatedOnly`      | Whether the instrument supports only isolated margin. When `false`, both cross and isolated margin modes are supported. |
+    | `riskTiers`         | Risk tiers for larger position sizes.                                                                                   |
   </Tab>
 
   <Tab title="Python">
@@ -164,32 +172,34 @@ workflow.
       "max_market_notional": "100000",
       "max_limit_notional": "1000000",
       "max_leverage": 10,
+      "isolated_only": false,
       "risk_tiers": [{ "lower_bound": "0", "max_leverage": 10 }]
     }
     ```
 
     `PerpsInstrument` exposes these attributes:
 
-    | Attribute                   | Description                                                   |
-    | --------------------------- | ------------------------------------------------------------- |
-    | `id`                        | Instrument identifier.                                        |
-    | `category`                  | Market category, such as crypto, index, equity, or commodity. |
-    | `symbol`                    | Human-readable market symbol.                                 |
-    | `base_asset`                | Base asset for the instrument.                                |
-    | `quote_asset`               | Quote asset used for prices.                                  |
-    | `funding_interval`          | Funding interval for the instrument, such as `1h`.            |
-    | `quantity_decimals`         | Decimal precision for quantities.                             |
-    | `price_decimals`            | Decimal precision for prices.                                 |
-    | `price_bounds`              | Price-bound value for the instrument.                         |
-    | `liquidation_fee`           | Liquidation fee value for the instrument.                     |
-    | `max_order_count`           | Maximum order count for the instrument.                       |
-    | `min_notional`              | Minimum notional value for orders.                            |
-    | `max_market_notional`       | Maximum notional value for market orders.                     |
-    | `max_limit_notional`        | Maximum notional value for limit orders.                      |
-    | `max_leverage`              | Maximum leverage allowed for the instrument.                  |
-    | `risk_tiers`                | Risk tiers for larger position sizes.                         |
-    | `risk_tiers[].lower_bound`  | Lower notional bound for the risk tier.                       |
-    | `risk_tiers[].max_leverage` | Maximum leverage allowed for the risk tier.                   |
+    | Attribute                   | Description                                                                                                             |
+    | --------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+    | `id`                        | Instrument identifier.                                                                                                  |
+    | `category`                  | Market category, such as crypto, index, equity, or commodity.                                                           |
+    | `symbol`                    | Human-readable market symbol.                                                                                           |
+    | `base_asset`                | Base asset for the instrument.                                                                                          |
+    | `quote_asset`               | Quote asset used for prices.                                                                                            |
+    | `funding_interval`          | Funding interval for the instrument, such as `1h`.                                                                      |
+    | `quantity_decimals`         | Decimal precision for quantities.                                                                                       |
+    | `price_decimals`            | Decimal precision for prices.                                                                                           |
+    | `price_bounds`              | Price-bound value for the instrument.                                                                                   |
+    | `liquidation_fee`           | Liquidation fee value for the instrument.                                                                               |
+    | `max_order_count`           | Maximum order count for the instrument.                                                                                 |
+    | `min_notional`              | Minimum notional value for orders.                                                                                      |
+    | `max_market_notional`       | Maximum notional value for market orders.                                                                               |
+    | `max_limit_notional`        | Maximum notional value for limit orders.                                                                                |
+    | `max_leverage`              | Maximum leverage allowed for the instrument.                                                                            |
+    | `isolated_only`             | Whether the instrument supports only isolated margin. When `False`, both cross and isolated margin modes are supported. |
+    | `risk_tiers`                | Risk tiers for larger position sizes.                                                                                   |
+    | `risk_tiers[].lower_bound`  | Lower notional bound for the risk tier.                                                                                 |
+    | `risk_tiers[].max_leverage` | Maximum leverage allowed for the risk tier.                                                                             |
   </Tab>
 
   <Tab title="API">
@@ -227,6 +237,7 @@ workflow.
         "max_market_notional": "100000",
         "max_limit_notional": "1000000",
         "max_leverage": 10,
+        "isolated_only": false,
         "risk_tiers": [{ "lower_bound": "0", "max_leverage": 10 }]
       }
     ]
@@ -235,27 +246,28 @@ workflow.
     Each instrument object includes the market metadata and trading constraints your
     app needs before submitting orders.
 
-    | Field                       | Description                                                           |
-    | --------------------------- | --------------------------------------------------------------------- |
-    | `instrument_id`             | Instrument identifier.                                                |
-    | `instrument_type`           | Instrument type. Perps instruments use `perpetual`.                   |
-    | `category`                  | Market category, such as `crypto`, `index`, `equity`, or `commodity`. |
-    | `symbol`                    | Human-readable market symbol.                                         |
-    | `base_asset`                | Base asset for the instrument.                                        |
-    | `quote_asset`               | Quote asset used for prices.                                          |
-    | `funding_interval`          | Funding interval for the instrument, such as `1h`.                    |
-    | `quantity_decimals`         | Decimal precision for quantities.                                     |
-    | `price_decimals`            | Decimal precision for prices.                                         |
-    | `price_bounds`              | Price-bound value for the instrument.                                 |
-    | `liquidation_fee`           | Liquidation fee value for the instrument.                             |
-    | `max_order_count`           | Maximum order count for the instrument.                               |
-    | `min_notional`              | Minimum notional value for orders.                                    |
-    | `max_market_notional`       | Maximum notional value for market orders.                             |
-    | `max_limit_notional`        | Maximum notional value for limit orders.                              |
-    | `max_leverage`              | Maximum leverage allowed for the instrument.                          |
-    | `risk_tiers`                | Risk tiers for larger position sizes.                                 |
-    | `risk_tiers[].lower_bound`  | Lower notional bound for the risk tier.                               |
-    | `risk_tiers[].max_leverage` | Maximum leverage allowed for the risk tier.                           |
+    | Field                       | Description                                                                                                             |
+    | --------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+    | `instrument_id`             | Instrument identifier.                                                                                                  |
+    | `instrument_type`           | Instrument type. Perps instruments use `perpetual`.                                                                     |
+    | `category`                  | Market category, such as `crypto`, `index`, `equity`, or `commodity`.                                                   |
+    | `symbol`                    | Human-readable market symbol.                                                                                           |
+    | `base_asset`                | Base asset for the instrument.                                                                                          |
+    | `quote_asset`               | Quote asset used for prices.                                                                                            |
+    | `funding_interval`          | Funding interval for the instrument, such as `1h`.                                                                      |
+    | `quantity_decimals`         | Decimal precision for quantities.                                                                                       |
+    | `price_decimals`            | Decimal precision for prices.                                                                                           |
+    | `price_bounds`              | Price-bound value for the instrument.                                                                                   |
+    | `liquidation_fee`           | Liquidation fee value for the instrument.                                                                               |
+    | `max_order_count`           | Maximum order count for the instrument.                                                                                 |
+    | `min_notional`              | Minimum notional value for orders.                                                                                      |
+    | `max_market_notional`       | Maximum notional value for market orders.                                                                               |
+    | `max_limit_notional`        | Maximum notional value for limit orders.                                                                                |
+    | `max_leverage`              | Maximum leverage allowed for the instrument.                                                                            |
+    | `isolated_only`             | Whether the instrument supports only isolated margin. When `false`, both cross and isolated margin modes are supported. |
+    | `risk_tiers`                | Risk tiers for larger position sizes.                                                                                   |
+    | `risk_tiers[].lower_bound`  | Lower notional bound for the risk tier.                                                                                 |
+    | `risk_tiers[].max_leverage` | Maximum leverage allowed for the risk tier.                                                                             |
   </Tab>
 </Tabs>
 
@@ -286,7 +298,7 @@ trading now.
     where `PerpsTicker` is:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts PerpsTicker Type theme={null}
       type PerpsTicker = {
         instrumentId: PerpsInstrumentId;
         symbol: string;
@@ -303,7 +315,7 @@ trading now.
       };
       ```
 
-      ```json Example theme={null}
+      ```json PerpsTicker Example theme={null}
       {
         "instrumentId": 1,
         "symbol": "BTC-PERP",
@@ -428,7 +440,7 @@ liquidity at the requested depth.
     where `PerpsBook` and `PerpsBookLevel` are:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts PerpsBook Type theme={null}
       type PerpsBook = {
         instrumentId: PerpsInstrumentId;
         bids: PerpsBookLevel[];
@@ -443,7 +455,7 @@ liquidity at the requested depth.
       };
       ```
 
-      ```json Example theme={null}
+      ```json PerpsBook Example theme={null}
       {
         "instrumentId": 1,
         "bids": [
@@ -565,7 +577,7 @@ backtests, or trading signals.
     where `PerpsCandle` is:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts PerpsCandle Type theme={null}
       type PerpsCandle = {
         timestamp: EpochMilliseconds;
         open: DecimalString;
@@ -577,7 +589,7 @@ backtests, or trading signals.
       };
       ```
 
-      ```json Example theme={null}
+      ```json PerpsCandle Example theme={null}
       {
         "timestamp": 1766120400000,
         "open": "65000.00",
@@ -673,7 +685,7 @@ This is useful for trade tape views and execution analysis.
     where `PerpsPublicTrade` is:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts PerpsPublicTrade Type theme={null}
       type PerpsPublicTrade = {
         tradeId: PerpsTradeId;
         instrumentId: PerpsInstrumentId;
@@ -685,7 +697,7 @@ This is useful for trade tape views and execution analysis.
       };
       ```
 
-      ```json Example theme={null}
+      ```json PerpsPublicTrade Example theme={null}
       {
         "tradeId": 987654,
         "instrumentId": 1,
@@ -781,14 +793,14 @@ prices differ from the index over time.
     where `PerpsFundingRate` is:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts PerpsFundingRate Type theme={null}
       type PerpsFundingRate = {
         fundingRate: DecimalString;
         timestamp: EpochMilliseconds;
       };
       ```
 
-      ```json Example theme={null}
+      ```json PerpsFundingRate Example theme={null}
       {
         "fundingRate": "0.0001",
         "timestamp": 1766120400000

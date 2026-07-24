@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/realtime-order-updates.md
-Downloaded: 2026-07-23T21:04:54.619Z
+Downloaded: 2026-07-24T21:04:03.617Z
 -->
 
 > ## Documentation Index
@@ -50,7 +50,7 @@ provide condition IDs to follow selected markets.
       #### Order Update
 
       <CodeGroup>
-        ```ts UserOrderEvent theme={null}
+        ```ts UserOrderEvent Type theme={null}
         type UserOrderEvent = {
           topic: "user";
           type: "order";
@@ -77,7 +77,7 @@ provide condition IDs to follow selected markets.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json UserOrderEvent Example theme={null}
         {
           "topic": "user",
           "type": "order",
@@ -102,7 +102,7 @@ provide condition IDs to follow selected markets.
       #### Trade Update
 
       <CodeGroup>
-        ```ts UserTradeEvent theme={null}
+        ```ts UserTradeEvent Type theme={null}
         type TradeMakerOrder = {
           orderId: string;
           owner: string;
@@ -150,7 +150,7 @@ provide condition IDs to follow selected markets.
         };
         ```
 
-        ```json JSON Example theme={null}
+        ```json UserTradeEvent Example theme={null}
         {
           "topic": "user",
           "type": "trade",
@@ -206,7 +206,7 @@ provide condition IDs to follow selected markets.
       #### Order Update
 
       <CodeGroup>
-        ```python UserOrderEvent theme={null}
+        ```python UserOrderEvent Type theme={null}
         class UserOrderPayload:
             id: str
             owner: str
@@ -233,7 +233,7 @@ provide condition IDs to follow selected markets.
             payload: UserOrderPayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json UserOrderEvent Example theme={null}
         {
           "topic": "user",
           "type": "order",
@@ -258,7 +258,7 @@ provide condition IDs to follow selected markets.
       #### Trade Update
 
       <CodeGroup>
-        ```python UserTradeEvent theme={null}
+        ```python UserTradeEvent Type theme={null}
         class UserTradeMakerOrder:
             order_id: str
             owner: str
@@ -306,7 +306,7 @@ provide condition IDs to follow selected markets.
             payload: UserTradePayload
         ```
 
-        ```json JSON Example theme={null}
+        ```json UserTradeEvent Example theme={null}
         {
           "topic": "user",
           "type": "trade",

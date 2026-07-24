@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-data/prices-order-books.md
-Downloaded: 2026-07-23T21:04:54.610Z
+Downloaded: 2026-07-24T21:04:03.609Z
 -->
 
 > ## Documentation Index
@@ -84,7 +84,7 @@ determine whether the book changed between reads.
     needed to interpret them:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts OrderBook Type theme={null}
       type OrderBookLevel = {
         price: DecimalString;
         size: DecimalString;
@@ -104,7 +104,7 @@ determine whether the book changed between reads.
       };
       ```
 
-      ```json Example theme={null}
+      ```json OrderBook Example theme={null}
       {
         "conditionId": "0x747dc809fb79e1b05be09c42d6179459a58de2ef3e40f02484a4e1260f741f75",
         "tokenId": "107505882767731489358349912513945399560393482969656700824895970500493757150417",
@@ -146,7 +146,7 @@ determine whether the book changed between reads.
     needed to interpret them:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python OrderBook Type theme={null}
       class OrderBookLevel:
           price: Decimal
           size: Decimal
@@ -164,7 +164,7 @@ determine whether the book changed between reads.
           hash: str
       ```
 
-      ```json Example theme={null}
+      ```json OrderBook Example theme={null}
       {
         "condition_id": "0x747dc809fb79e1b05be09c42d6179459a58de2ef3e40f02484a4e1260f741f75",
         "token_id": "107505882767731489358349912513945399560393482969656700824895970500493757150417",
@@ -489,11 +489,11 @@ outcome.
     `Prices` maps each token ID to the requested side and price:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts Prices Type theme={null}
       type Prices = Record<TokenId, Partial<Record<OrderSide, DecimalString>>>;
       ```
 
-      ```json Example theme={null}
+      ```json Prices Example theme={null}
       {
         "107505882767731489358349912513945399560393482969656700824895970500493757150417": {
           "BUY": "0.08"
@@ -642,11 +642,11 @@ Fetch midpoint prices for several outcomes in one request.
     `Midpoints` maps each token ID to its midpoint:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts Midpoints Type theme={null}
       type Midpoints = Record<TokenId, DecimalString>;
       ```
 
-      ```json Example theme={null}
+      ```json Midpoints Example theme={null}
       {
         "107505882767731489358349912513945399560393482969656700824895970500493757150417": "0.085",
         "7305630249804085635496399869905769372294302716159034447326228509068694952392": "0.915"
@@ -777,11 +777,11 @@ request.
     The result maps each token ID to its spread:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts Spreads Type theme={null}
       type Spreads = Record<TokenId, DecimalString>;
       ```
 
-      ```json Example theme={null}
+      ```json Spreads Example theme={null}
       {
         "107505882767731489358349912513945399560393482969656700824895970500493757150417": "0.01",
         "7305630249804085635496399869905769372294302716159034447326228509068694952392": "0.02"
@@ -852,14 +852,14 @@ includes the trade price and side.
     `LastTradePrice` pairs the traded price with its order side:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts LastTradePrice Type theme={null}
       type LastTradePrice = {
         price: DecimalString;
         side: OrderSide;
       };
       ```
 
-      ```json Example theme={null}
+      ```json LastTradePrice Example theme={null}
       {
         "price": "0.08",
         "side": "SELL"
@@ -882,13 +882,13 @@ includes the trade price and side.
     `LastTradePrice` pairs the traded price with its order side:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python LastTradePrice Type theme={null}
       class LastTradePrice:
           price: Decimal
           side: OrderSide
       ```
 
-      ```json Example theme={null}
+      ```json LastTradePrice Example theme={null}
       {
         "price": "0.08",
         "side": "SELL"
@@ -939,7 +939,7 @@ Fetch the most recent matched trade for several outcomes in one request.
     price and side:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts LastTradePriceForToken Type theme={null}
       type LastTradePriceForToken = {
         tokenId: TokenId;
         price: DecimalString;
@@ -947,7 +947,7 @@ Fetch the most recent matched trade for several outcomes in one request.
       };
       ```
 
-      ```json Example theme={null}
+      ```json LastTradePriceForToken Example theme={null}
       [
         {
           "tokenId": "107505882767731489358349912513945399560393482969656700824895970500493757150417",
@@ -981,14 +981,14 @@ Fetch the most recent matched trade for several outcomes in one request.
     price and side:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python LastTradePriceForToken Type theme={null}
       class LastTradePriceForToken:
           token_id: TokenId
           price: Decimal
           side: OrderSide
       ```
 
-      ```json Example theme={null}
+      ```json LastTradePriceForToken Example theme={null}
       [
         {
           "token_id": "107505882767731489358349912513945399560393482969656700824895970500493757150417",
@@ -1079,14 +1079,14 @@ ranges require a sampling interval.
     Each `PriceHistoryPoint` contains a timestamp and its observed price:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts PriceHistoryPoint Type theme={null}
       type PriceHistoryPoint = {
         t: number;
         p: number;
       };
       ```
 
-      ```json Example theme={null}
+      ```json PriceHistoryPoint Example theme={null}
       [
         { "t": 1782666007, "p": 0.085 },
         { "t": 1782669606, "p": 0.085 },
@@ -1130,13 +1130,13 @@ ranges require a sampling interval.
     Each `PriceHistoryPoint` contains a timestamp and its observed price:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python PriceHistoryPoint Type theme={null}
       class PriceHistoryPoint:
           t: int
           p: float
       ```
 
-      ```json Example theme={null}
+      ```json PriceHistoryPoint Example theme={null}
       [
         { "t": 1782666007, "p": 0.085 },
         { "t": 1782669606, "p": 0.085 },

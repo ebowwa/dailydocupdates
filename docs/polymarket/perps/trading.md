@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/trading.md
-Downloaded: 2026-07-20T21:12:08.366Z
+Downloaded: 2026-07-24T21:04:03.613Z
 -->
 
 > ## Documentation Index
@@ -158,6 +158,7 @@ the market and include the constraints used later when building an order.
         "max_market_notional": "100000",
         "max_limit_notional": "1000000",
         "max_leverage": 10,
+        "isolated_only": false,
         "risk_tiers": [{ "lower_bound": "0", "max_leverage": 10 }]
       }
     ]
@@ -338,7 +339,7 @@ execution when the order should fill immediately or cancel any unfilled quantity
         remains on the book.
 
         <CodeGroup>
-          ```ts PerpsOrder theme={null}
+          ```ts PerpsOrder Type theme={null}
           type PerpsOrder = {
             id: PerpsOrderId;
             instrumentId: PerpsInstrumentId;
@@ -357,7 +358,7 @@ execution when the order should fill immediately or cancel any unfilled quantity
           };
           ```
 
-          ```json Example theme={null}
+          ```json PerpsOrder Example theme={null}
           {
             "id": 1234567890,
             "instrumentId": 1,
@@ -1894,9 +1895,10 @@ the same instrument.
 
 Leverage controls how much notional exposure a position can carry relative to its
 margin. Cross margin uses available account collateral for the position;
-non-cross margin keeps the position isolated. Validate leverage against
-`instrument.maxLeverage` and the current `instrument.riskTiers` before submitting
-the change.
+non-cross margin keeps the position isolated. Some instruments support only
+isolated margin and reject cross margin. Validate leverage against the
+instrument's maximum leverage and current risk tiers before submitting the
+change.
 
 <Tabs>
   <Tab title="TypeScript">
@@ -1914,8 +1916,9 @@ the change.
       </Step>
 
       <Step title="Update Leverage">
-        Update leverage and whether the position uses cross margin. The result confirms
-        the effective leverage configuration after the update.
+        Update leverage and whether the position uses cross margin. Validate leverage
+        against `instrument.maxLeverage` and the current `instrument.riskTiers`, and
+        request `crossMargin: true` only when `instrument.isolatedOnly` is `false`.
 
         ```ts theme={null}
         const result = await session.updateLeverage({
@@ -1955,8 +1958,9 @@ the change.
       </Step>
 
       <Step title="Update Leverage">
-        Update leverage and whether the position uses cross margin. The result confirms
-        the effective leverage configuration after the update.
+        Update leverage and whether the position uses cross margin. Validate leverage
+        against `instrument.max_leverage` and the current `instrument.risk_tiers`, and
+        request `cross_margin=True` only when `instrument.isolated_only` is `False`.
 
         ```python theme={null}
         result = await session.update_leverage(
@@ -1999,7 +2003,9 @@ the change.
 
       <Step title="Build the Leverage Operation">
         Create an `updateLeverage` operation with the instrument ID, leverage, and margin
-        mode.
+        mode. Validate leverage against the instrument's `max_leverage` and current
+        `risk_tiers`, and set `cross` to `true` only when the instrument reports
+        `isolated_only: false`.
 
         ```json theme={null}
         {

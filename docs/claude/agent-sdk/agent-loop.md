@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/agent-sdk/agent-loop.md
-Downloaded: 2026-07-21T21:16:34.978Z
+Downloaded: 2026-07-24T21:04:21.321Z
 -->
 
 > ## Documentation Index
@@ -186,6 +186,8 @@ You can limit how many turns the loop takes, how much it costs, how deeply Claud
 | Max budget (`max_budget_usd` / `maxBudgetUsd`) | Maximum cost before stopping | No limit |
 
 When either limit is hit, the SDK returns a `ResultMessage` with a corresponding error subtype (`error_max_turns` or `error_max_budget_usd`). See [Handle the result](#handle-the-result) for how to check these subtypes and [`ClaudeAgentOptions`](/docs/en/agent-sdk/python#claudeagentoptions) / [`Options`](/docs/en/agent-sdk/typescript#options) for syntax.
+
+The budget cap covers [subagents](/docs/en/agent-sdk/subagents): their spend counts toward the total. {/* min-version: 2.1.217 */}Once spend reaches the cap, spawning another subagent fails with `Budget limit reached`, and Claude Code stops any background subagents still running. The cap-enforcement behaviors require Claude Code v2.1.217 or later.
 
 With [streaming input](/docs/en/agent-sdk/streaming-vs-single-mode), a message you send while a turn is still running stays queued when that turn ends at the max-turns limit, and it starts its own turn with its own max-turns limit. Before v2.1.205, a message that arrived on the turn's final iteration could be consumed into the ending turn and lost without ever reaching the model.
 

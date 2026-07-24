@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/market-data/discover-markets.md
-Downloaded: 2026-07-23T21:04:54.610Z
+Downloaded: 2026-07-24T21:04:03.609Z
 -->
 
 > ## Documentation Index
@@ -49,7 +49,7 @@ Fetch an event when you already know its identifier.
 
     <Accordion title="Output: Event">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts Event Type theme={null}
         type Market = {
           id: string;
           slug?: string | null;
@@ -69,7 +69,7 @@ Fetch an event when you already know its identifier.
         };
         ```
 
-        ```json Example theme={null}
+        ```json Event Example theme={null}
         {
           "id": "90177",
           "slug": "will-the-us-confirm-that-aliens-exist-before-2027",
@@ -125,7 +125,7 @@ Fetch an event when you already know its identifier.
 
     <Accordion title="Output: Event">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python Event Type theme={null}
         class MarketOutcome:
             token_id: str | None
 
@@ -147,7 +147,7 @@ Fetch an event when you already know its identifier.
             markets: tuple[Market, ...]
         ```
 
-        ```json Example theme={null}
+        ```json Event Example theme={null}
         {
           "id": "90177",
           "slug": "will-the-us-confirm-that-aliens-exist-before-2027",
@@ -190,7 +190,7 @@ Fetch an event when you already know its identifier.
 
     <Accordion title="Output: Event">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts Event Type theme={null}
         type Market = {
           id: string;
           slug: string;
@@ -207,7 +207,7 @@ Fetch an event when you already know its identifier.
         };
         ```
 
-        ```json Example theme={null}
+        ```json Event Example theme={null}
         {
           "id": "90177",
           "slug": "will-the-us-confirm-that-aliens-exist-before-2027",
@@ -247,7 +247,7 @@ List events when you need a browsable or filterable feed.
 
     <Accordion title="Output: Event[]">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts Page Type theme={null}
         type Market = {
           id: string;
           slug?: string | null;
@@ -269,7 +269,7 @@ List events when you need a browsable or filterable feed.
         };
         ```
 
-        ```json Example theme={null}
+        ```json Page Example theme={null}
         {
           "items": [
             {
@@ -327,7 +327,7 @@ List events when you need a browsable or filterable feed.
 
     <Accordion title="Output: Event[]">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python Page Type theme={null}
         class Market:
             id: str
             slug: str | None
@@ -346,7 +346,7 @@ List events when you need a browsable or filterable feed.
             next_cursor: str | None
         ```
 
-        ```json Example theme={null}
+        ```json Page Example theme={null}
         {
           "items": [
             {
@@ -454,7 +454,7 @@ Fetch a market when you already know its identifier.
 
     <Accordion title="Output: Market">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts Market Type theme={null}
         type Market = {
           id: string;
           slug?: string | null;
@@ -467,7 +467,7 @@ Fetch a market when you already know its identifier.
         };
         ```
 
-        ```json Example theme={null}
+        ```json Market Example theme={null}
         {
           "id": "703257",
           "slug": "will-the-us-confirm-that-aliens-exist-before-2027-789-924-249",
@@ -515,7 +515,7 @@ Fetch a market when you already know its identifier.
 
     <Accordion title="Output: Market">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python Market Type theme={null}
         class MarketOutcome:
             token_id: str | None
 
@@ -531,7 +531,7 @@ Fetch a market when you already know its identifier.
             outcomes: MarketOutcomes
         ```
 
-        ```json Example theme={null}
+        ```json Market Example theme={null}
         {
           "id": "703257",
           "slug": "will-the-us-confirm-that-aliens-exist-before-2027-789-924-249",
@@ -1113,7 +1113,7 @@ Search returns matching events, tags, and profiles for a free-text query in one 
 
     <Accordion title="Output: SearchResults">
       <CodeGroup>
-        ```ts Type theme={null}
+        ```ts SearchResults Type theme={null}
         type Event = {
           id: string;
           slug?: string | null;
@@ -1139,7 +1139,7 @@ Search returns matching events, tags, and profiles for a free-text query in one 
         };
         ```
 
-        ```json Example theme={null}
+        ```json SearchResults Example theme={null}
         {
           "events": [
             {
@@ -1175,7 +1175,7 @@ Search returns matching events, tags, and profiles for a free-text query in one 
 
     <Accordion title="Output: SearchResults">
       <CodeGroup>
-        ```python Type theme={null}
+        ```python SearchResults Type theme={null}
         class Event:
             id: str
             slug: str | None
@@ -1197,7 +1197,7 @@ Search returns matching events, tags, and profiles for a free-text query in one 
             profiles: tuple[Profile, ...]
         ```
 
-        ```json Example theme={null}
+        ```json SearchResults Example theme={null}
         {
           "events": [
             {

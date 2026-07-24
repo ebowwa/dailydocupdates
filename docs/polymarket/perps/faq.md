@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/faq.md
-Downloaded: 2026-07-17T20:55:43.480Z
+Downloaded: 2026-07-24T21:04:03.611Z
 -->
 
 > ## Documentation Index
@@ -58,7 +58,7 @@ Common questions about Polymarket Perps.
 
 <AccordionGroup>
   <Accordion title="What order types are supported?">
-    Limit and market-style orders are supported with `gtc`, `ioc`, and `fok` time-in-force values. GTC orders can be tagged post-only, which rejects the order if it would take liquidity. Closing orders can be tagged reduce-only, which prevents the order from increasing exposure. See [Configure Order Behavior](/perps/trading#configure-order-behavior) and [Close a Position](/perps/trading#close-a-position).
+    Limit and market-style orders are supported with GTC, IOC, and FOK time-in-force values. GTC orders can be tagged post-only, which rejects the order if it would take liquidity. Closing orders can be tagged reduce-only, which prevents the order from increasing exposure. See [Configure Order Behavior](/perps/trading#configure-order-behavior) and [Close a Position](/perps/trading#close-a-position).
   </Accordion>
 
   <Accordion title="Why was my order rejected when my balance looks fine?">
@@ -116,7 +116,7 @@ Common questions about Polymarket Perps.
     * Isolated margin funds each position with a dedicated margin allocation. Liquidation only closes the affected position.
     * Cross margin shares account collateral across all cross positions. Unrealized PnL on one position can offset margin on another, but a liquidation evaluates and can unwind the whole cross account.
 
-    The web app opens new positions in isolated mode by default. Cross is opt-in through the API using leverage configuration. See [Update Leverage](/perps/trading#update-leverage).
+    The web app opens new positions in isolated mode by default. Cross is opt-in through the API using leverage configuration, and only for instruments that allow it: some markets are isolated-only and reject cross margin. Instrument data shows which margin modes each market supports. See [Update Leverage](/perps/trading#update-leverage) and [Fetch Instruments](/perps/market-data#fetch-instruments).
   </Accordion>
 
   <Accordion title="What are leverage tiers and why does my margin go up as my position grows?">
@@ -227,14 +227,6 @@ Common questions about Polymarket Perps.
     you use a Safe wallet elsewhere on Polymarket, your Perps balances, positions,
     and history are all tracked against the underlying EOA. Use that EOA when
     looking up your account or referencing it in support requests.
-  </Accordion>
-
-  <Accordion title="Which requests need a signature vs. just headers?">
-    * Signed requests with `sig`, `salt`, and `ts`: `POST /account/key`, all `/trade/*` actions, and `PATCH /trade/leverage`. The signer is the main address for `createProxy` and the proxy address for everything else.
-    * Header credentials with `POLYMARKET-PROXY` and `POLYMARKET-SECRET`: private `/account/*` reads.
-    * WebSocket authentication: send a single `auth` message after connecting, then subscribe to private channels.
-
-    See [Authenticated Sessions](/perps/authenticated-sessions).
   </Accordion>
 
   <Accordion title="How do I avoid clock-skew rejections?">

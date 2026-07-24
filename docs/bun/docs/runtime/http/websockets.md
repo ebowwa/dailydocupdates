@@ -1,3 +1,8 @@
+<!--
+Source: https://bun.com/docs/runtime/http/websockets.md
+Downloaded: 2026-07-24T21:04:25.142Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://bun.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -398,8 +403,8 @@ interface ServerWebSocket {
   readonly subscriptions: string[];
   send(message: string | ArrayBuffer | Uint8Array, compress?: boolean): number;
   close(code?: number, reason?: string): void;
-  subscribe(topic: string): void;
-  unsubscribe(topic: string): void;
+  subscribe(topic: string): boolean;
+  unsubscribe(topic: string): boolean;
   publish(topic: string, message: string | ArrayBuffer | Uint8Array): void;
   isSubscribed(topic: string): boolean;
   cork(cb: (ws: ServerWebSocket) => void): void;

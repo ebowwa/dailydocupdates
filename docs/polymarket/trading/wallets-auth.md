@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/wallets-auth.md
-Downloaded: 2026-07-23T21:04:54.620Z
+Downloaded: 2026-07-24T21:04:03.617Z
 -->
 
 > ## Documentation Index
@@ -78,7 +78,7 @@ This key authorizes gasless wallet operations for the account. Copy the **Signer
         `client.account` contains the signer, account wallet, and wallet type for the session.
 
         <CodeGroup>
-          ```ts Type theme={null}
+          ```ts AccountIdentity Type theme={null}
           type AccountIdentity = {
             signer: EvmAddress;
             wallet: EvmAddress;
@@ -93,7 +93,7 @@ This key authorizes gasless wallet operations for the account. Copy the **Signer
           }
           ```
 
-          ```json Example theme={null}
+          ```json AccountIdentity Example theme={null}
           {
             "signer": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
             "wallet": "0x2e234dae75c793f67a35089c9d99245e1c58470b",
@@ -320,7 +320,7 @@ Copy the **API Key**, **Secret**, and **Passphrase** shown after creation.
         `client.account` contains the signer, account wallet, and wallet type for the session.
 
         <CodeGroup>
-          ```ts Type theme={null}
+          ```ts AccountIdentity Type theme={null}
           type AccountIdentity = {
             signer: EvmAddress;
             wallet: EvmAddress;
@@ -335,7 +335,7 @@ Copy the **API Key**, **Secret**, and **Passphrase** shown after creation.
           }
           ```
 
-          ```json Example theme={null}
+          ```json AccountIdentity Example theme={null}
           {
             "signer": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
             "wallet": "0x2e234dae75c793f67a35089c9d99245e1c58470b",

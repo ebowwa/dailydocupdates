@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/errors.md
-Downloaded: 2026-07-23T21:06:10.060Z
+Downloaded: 2026-07-24T21:04:21.338Z
 -->
 
 > ## Documentation Index
@@ -13,7 +13,7 @@ Downloaded: 2026-07-23T21:06:10.060Z
 
 This page lists runtime errors Claude Code displays and how to recover from each one, plus what to check when responses seem off without an error. For installation errors such as `command not found` or TLS failures during setup, see [Troubleshoot installation and login](/docs/en/troubleshoot-install).
 
-These errors and recovery commands apply across the CLI, the [Desktop app](/docs/en/desktop), and [Claude Code on the web](/docs/en/claude-code-on-the-web), since all three wrap the same Claude Code CLI. For surface-specific issues, see the troubleshooting section on that surface's page.
+Except for [Wrapper and IDE errors](#wrapper-and-ide-errors), which the launching program prints rather than Claude Code itself, these errors and recovery commands apply across the CLI, the [Desktop app](/docs/en/desktop), and [Claude Code on the web](/docs/en/claude-code-on-the-web), since all three wrap the same Claude Code CLI. For other surface-specific issues, see the troubleshooting section on that surface's page.
 
 <Note>
   Claude Code calls the Claude API for model responses, so most runtime errors map to an underlying API error code. This page covers what each error means inside Claude Code and how to recover. For the raw HTTP status code definitions, see the [Claude Platform error reference](https://platform.claude.com/docs/en/api/errors).
@@ -50,6 +50,7 @@ Match the message you see in your terminal to a section below.
 | `Routines are disabled by your organization's policy`                                              | [Authentication](#routines-are-disabled-by-your-organizations-policy)                                                         |
 | `Remote Control is only available when using Claude via api.anthropic.com`                         | [Authentication](#remote-control-requires-the-anthropic-api)                                                                  |
 | `OAuth token revoked` / `OAuth token has expired`                                                  | [Authentication](#oauth-token-revoked-or-expired)                                                                             |
+| `API Error: 401 Invalid authentication credentials`                                                | [Authentication](#api-error-401-invalid-authentication-credentials)                                                           |
 | `Login expired · Please run /login`                                                                | [Authentication](#login-expired)                                                                                              |
 | `Failed to authenticate: OAuth session expired and could not be refreshed`                         | [Authentication](#login-expired)                                                                                              |
 | `does not meet scope requirement user:profile`                                                     | [Authentication](#oauth-scope-requirement)                                                                                    |
@@ -90,6 +91,7 @@ Match the message you see in your terminal to a section below.
 | `Error: Workspace not trusted` when starting Remote Control                                        | [Command-line errors](#workspace-not-trusted-when-starting-remote-control)                                                    |
 | `Could not import <server>: <reason>`                                                              | [Command-line errors](#could-not-import-a-server-from-claude-desktop)                                                         |
 | `Error: MCP tool <name> (passed via --permission-prompt-tool) not found`                           | [Command-line errors](#mcp-permission-prompt-tool-not-found)                                                                  |
+| `Input must be provided either through stdin or as a prompt argument when using --print`           | [Command-line errors](#input-must-be-provided-when-using-print)                                                               |
 | `Diff is too large for ultrareview` / `PR #<N> is too large for ultrareview`                       | [Command-line errors](#diff-is-too-large-for-ultrareview)                                                                     |
 | `Failed to resume the conversation`                                                                | [Command-line errors](#failed-to-resume-the-conversation)                                                                     |
 | `Marketplace "<name>" is registered from an untrusted source`                                      | [Plugin errors](#marketplace-is-registered-from-an-untrusted-source)                                                          |
@@ -106,6 +108,7 @@ Match the message you see in your terminal to a section below.
 | `This session was running agent '<name>', which is no longer available`                            | [Background session errors](#session-agent-no-longer-available)                                                               |
 | `CLAUDE_CODE_PROCESS_WRAPPER: launcher ...`                                                        | [Background session errors](#claude_code_process_wrapper-launcher-errors)                                                     |
 | `EUNKNOWN: unknown error, uv_spawn`                                                                | [Background session errors](#eunknown-when-starting-a-background-session)                                                     |
+| `Claude Code process exited with code N`                                                           | [Wrapper and IDE errors](#claude-code-process-exited-with-code-n)                                                             |
 | `Restored the code, but skipped N files`                                                           | [Rewind warnings](#restored-the-code-but-skipped-files)                                                                       |
 | `Ignoring N permissions.allow entries from ... this workspace has not been trusted`                | [Configuration warnings](#workspace-has-not-been-trusted)                                                                     |
 | Responses seem lower quality than usual                                                            | [Response quality](#responses-seem-lower-quality-than-usual)                                                                  |
@@ -577,6 +580,21 @@ API Error: 401 ... authentication_error
 * For repeated prompts to log in across launches, see the system clock and macOS Keychain checks in [Troubleshooting](/docs/en/troubleshoot-install#not-logged-in-or-token-expired)
 * For other failures including `403 Forbidden` and OAuth browser issues, see [Login and authentication](/docs/en/troubleshoot-install#login-and-authentication)
 
+### API Error: 401 Invalid authentication credentials
+
+The API recognized the format of your credential but rejected the account or organization behind it. Anthropic returns this message when a credential was recently revoked, when an organization was disabled or removed your access, or when the account itself was deactivated, so an expired token isn't the cause. The credential can be your saved login or an approved `ANTHROPIC_API_KEY`, and the fix differs, so start by running `/status` to see which one is active.
+
+```text theme={null}
+Please run /login · API Error: 401 Invalid authentication credentials
+```
+
+**What to do:**
+
+* If `/status` shows an `API key` row, an approved [`ANTHROPIC_API_KEY`](/docs/en/authentication#authentication-precedence) is the active credential and takes precedence over your login, so `/login` doesn't replace it. Rotate the key in the Claude Console, or run `unset ANTHROPIC_API_KEY` to fall back to your subscription.
+* If `/status` shows only your login, run `/login` once. If the credential was revoked, a fresh login replaces it.
+* If the same message returns for the same login account, the account or organization is no longer active. Check the account and organization that `/status` reports, and ask your organization admin to restore access.
+* If [`ANTHROPIC_BASE_URL`](/docs/en/env-vars) points at an [LLM gateway](/docs/en/llm-gateway), the text after `401` is your gateway's message rather than Anthropic's, and `/login` doesn't change it. Fix the credential your gateway expects instead.
+
 ### Login expired
 
 Claude Code tried to renew your saved claude.ai or Claude Console login and the OAuth service rejected the stored refresh token, so Claude Code cleared the saved credentials. After that, each request stops locally before it reaches the API, because only `/login` can create new credentials. {/* min-version: 2.1.206 */}Before v2.1.206, Claude Code sent the request anyway with whatever credential remained in the environment, and every model then failed with [There's an issue with the selected model](#theres-an-issue-with-the-selected-model) or a 401 instead of a prompt to sign in.
@@ -955,6 +973,7 @@ There's an issue with the selected model (claude-...). It may not exist or you m
 * **Agent SDK**: the error text omits the hint because the model is set programmatically. Set [`model` on `Options`](/docs/en/agent-sdk/typescript#options) in TypeScript or [`ClaudeAgentOptions(model=...)`](/docs/en/agent-sdk/python#claudeagentoptions) in Python, and handle the structured `model_not_found` error to surface your own retry or model picker.
 * Use an alias such as `sonnet` or `opus` instead of a full versioned ID. Aliases resolve to a maintained default so they don't go stale. See [Model configuration](/docs/en/model-config).
 * If the wrong model keeps coming back in the CLI, a stale ID is set somewhere. Check in [priority order](/docs/en/model-config#setting-your-model): the `--model` flag, the `ANTHROPIC_MODEL` environment variable, then the `model` field in `.claude/settings.local.json`, your project's `.claude/settings.json`, and `~/.claude/settings.json`. Remove the stale value and Claude Code falls back to your account default.
+* A newly launched model can be available on the Anthropic API before Amazon Bedrock, Google Cloud's Agent Platform, or Microsoft Foundry offers it. If you pinned a new model ID on one of those providers and see this error, check your provider's model catalog for availability in your region, and keep the previous version pinned until the new one appears there.
 * {/* min-version: 2.1.206 */}Claude Code reports an expired claude.ai login as [Login expired](#login-expired), not as this error. Before v2.1.206, an expired login that could no longer be refreshed failed every model with this error; run `/login` if you see that on an older version.
 * For Google Cloud's Agent Platform deployments, see [Google Cloud's Agent Platform troubleshooting](/docs/en/google-vertex-ai#troubleshooting).
 
@@ -1011,7 +1030,7 @@ Claude Code treats a model family alias, one of `opus`, `sonnet`, `haiku`, or `f
 
 ### thinking.type.enabled is not supported for this model
 
-Your Claude Code version is older than the minimum for Sonnet 5, Opus 4.8, or Opus 4.7. The CLI sent a thinking configuration the model no longer accepts.
+Your Claude Code version is older than the minimum for the selected model. The CLI sent a thinking configuration the model no longer accepts.
 
 ```text theme={null}
 API Error: 400 ... "thinking.type.enabled" is not supported for this model. Use "thinking.type.adaptive" and "output_config.effort" to control thinking behavior.
@@ -1019,9 +1038,9 @@ API Error: 400 ... "thinking.type.enabled" is not supported for this model. Use 
 
 **What to do:**
 
-* Run `claude update` and restart Claude Code. Opus 4.7 needs v2.1.111 or later. Opus 4.8 needs v2.1.154 or later. Sonnet 5 needs v2.1.197 or later
+* Run `claude update` and restart Claude Code. Opus 4.7 needs v2.1.111 or later. Opus 4.8 needs v2.1.154 or later. Sonnet 5 needs v2.1.197 or later. Opus 5 needs v2.1.219 or later
 * If you can't upgrade, run `/model` and select Opus 4.6 or Sonnet 4.6 instead
-* {/* min-version: agent-sdk@0.3.197 */}If you hit this in the [Agent SDK](/docs/en/agent-sdk/overview), upgrade the SDK package instead. Opus 4.8 needs TypeScript SDK v0.3.154 or later and Python SDK v0.2.88 or later. Sonnet 5 needs TypeScript SDK v0.3.197 or later
+* {/* min-version: agent-sdk@0.3.219 */}If you hit this in the [Agent SDK](/docs/en/agent-sdk/overview), upgrade the SDK package instead. Opus 4.8 needs TypeScript SDK v0.3.154 or later and Python SDK v0.2.88 or later. Sonnet 5 needs TypeScript SDK v0.3.197 or later. Opus 5 needs TypeScript SDK v0.3.219 or later
 
 ### Thinking budget exceeds output limit
 
@@ -1236,6 +1255,21 @@ The list after `Available MCP tools:` names the MCP tools that were connected wh
 * Confirm the tool name matches the `mcp__<server>__<tool>` name the server exposes
 * If the server needs longer than 30 seconds to start, raise [`MCP_TIMEOUT`](/docs/en/env-vars)
 
+<h3 id="input-must-be-provided-when-using-print">
+  Input must be provided when using --print
+</h3>
+
+Bare `claude` needs stdout to be a terminal to start the interactive UI. When stdout is redirected, or the console isn't a real terminal, such as PowerShell ISE and some IDE output panes, `claude` runs [non-interactively](/docs/en/headless) instead. That is the same mode as `claude -p`, which requires a prompt, so the message names `--print` even when you didn't pass the flag. Passing `-p`/`--print` with no prompt and nothing piped on stdin produces the same error anywhere.
+
+```text theme={null}
+Error: Input must be provided either through stdin or as a prompt argument when using --print
+```
+
+**What to do:**
+
+* For interactive use, run `claude` in a real terminal: Windows Terminal or the PowerShell console rather than ISE, and your IDE's integrated terminal rather than an output pane
+* For one-shot use, pass the prompt: `claude -p "your question"`, or pipe it with `echo "your question" | claude -p`
+
 ### Diff is too large for ultrareview
 
 The diff between your branch and the base branch, including uncommitted and staged changes, exceeds the size limits for an [ultrareview](/docs/en/ultrareview), so `/code-review ultra` and the `claude ultrareview` subcommand refuse the review before the cloud session starts. A refused review doesn't use a free run and doesn't bill usage credits. {/* min-version: 2.1.216 */}The message names the limits in effect, the size of your diff, and the files that contribute the most changed lines. Before v2.1.216, the message showed only the raw diff statistics.
@@ -1431,7 +1465,7 @@ This session has no saved transcript — it was stopped before its first respons
   Session agent no longer available
 </h3>
 
-You resumed a session that was running a [custom agent](/docs/en/sub-agents#invoke-subagents-explicitly), started with `--agent` or the `agent` setting, and no agent by that name exists anymore. Claude Code searches the session's original directory first, when you have [trusted that workspace](/docs/en/permissions#project-allow-rules-and-workspace-trust), then the directory you resume from, and warns when neither has the agent. The session still resumes, but with the default tools and system prompt, so the agent's tool restrictions no longer apply:
+You resumed a session that was running a [custom agent](/docs/en/sub-agents#invoke-subagents-explicitly), started with `--agent` or the `agent` setting, and Claude Code didn't find an agent by that name. It searches the session's original directory first, when you have [trusted that workspace](/docs/en/permissions#project-allow-rules-and-workspace-trust), then the directory you resume from. The session still resumes, but with the default tools and system prompt, so the agent's tool restrictions no longer apply:
 
 ```text theme={null}
 This session was running agent 'code-reviewer', which is no longer available (no agent by that name in /home/you/project). Continuing with the default tools and system prompt — the agent's tool restrictions no longer apply. To restore it, re-create the agent, or resume with an explicit --agent <name>.
@@ -1482,6 +1516,24 @@ Before v2.1.212, Claude Code used only Windows PowerShell 5.1 to start the servi
 * If the message reads `Couldn't start the session`, upgrade to v2.1.212 or later. On earlier versions you can also run `claude daemon run` in a separate terminal first, then start the background session again. That command runs the background service in the terminal's foreground, so the service lasts only as long as that terminal stays open.
 * If the error appears on v2.1.212 or later, ask your Windows administrator to allow the Claude Code executable in the restriction policy
 * If the background service stops when you close the terminal, Claude Code started it without PowerShell. Install PowerShell 7, or ask your administrator to unblock PowerShell, so the service can outlive the terminal.
+
+## Wrapper and IDE errors
+
+These errors come from the program that launched Claude Code for you, such as an IDE extension or an [Agent SDK](/docs/en/agent-sdk/overview) application, rather than from Claude Code itself.
+
+### Claude Code process exited with code N
+
+The underlying `claude` process exited with a non-zero code. The exit code alone doesn't say what failed: the real error is in the process's own output, which the wrapper appends when it captured any and otherwise keeps in its logs.
+
+```text theme={null}
+Error: Claude Code process exited with code 1
+```
+
+**What to do:**
+
+* In VS Code, follow the **View output logs** link shown with the error to see the underlying failure
+* Run `claude` in a terminal in the same project. The failure usually reproduces there with its real error message, which you can then look up on this page.
+* Run `claude doctor` in a terminal to check the installation and configuration
 
 ## Rewind warnings
 
@@ -1534,7 +1586,7 @@ If Claude's answers seem less capable than you expect but no error is shown, the
 
 * A configured [`--fallback-model`](/docs/en/cli-reference#cli-flags) takes over after an availability error, for that turn only, with a notice in the transcript
 * An Amazon Bedrock or Google Cloud's Agent Platform startup check finds your default model unavailable
-* [Automatic model fallback](/docs/en/model-config#automatic-model-fallback) on Fable 5 moves the session to the default Opus model and shows a notice in the transcript
+* [Automatic model fallback](/docs/en/model-config#automatic-model-fallback) on Fable 5 and Opus 5 moves the session to the flagged category's fallback model, when that category has one, and shows a notice in the transcript
 
 The Model selection check below catches the second and third cases; the first appears as a transcript notice rather than a `/model` change. [Model configuration](/docs/en/model-config) explains when each fallback applies.
 

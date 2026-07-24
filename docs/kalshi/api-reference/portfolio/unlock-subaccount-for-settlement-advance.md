@@ -1,21 +1,21 @@
 <!--
-Source: https://docs.kalshi.com/api-reference/portfolio/get-all-subaccount-balances.md
-Downloaded: 2026-07-24T21:04:03.396Z
+Source: https://docs.kalshi.com/api-reference/portfolio/unlock-subaccount-for-settlement-advance.md
+Downloaded: 2026-07-24T21:04:03.397Z
 -->
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Get All Subaccount Balances
+# Unlock Subaccount for Settlement Advance
 
-> Gets balances for all subaccounts including the primary account.
+> Unlocks a subaccount. Unlocking is rejected while the subaccount has an outstanding settlement advance.
 
 
 
 ## OpenAPI
 
-````yaml /openapi.yaml get /portfolio/subaccounts/balances
+````yaml /openapi.yaml delete /portfolio/subaccounts/settlement-advance-lock
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
@@ -65,22 +65,35 @@ tags:
   - name: structured-targets
     description: Structured targets endpoints
 paths:
-  /portfolio/subaccounts/balances:
-    get:
+  /portfolio/subaccounts/settlement-advance-lock:
+    delete:
       tags:
         - portfolio
-      summary: Get All Subaccount Balances
-      description: Gets balances for all subaccounts including the primary account.
-      operationId: GetSubaccountBalances
+      summary: Unlock Subaccount for Settlement Advance
+      description: >-
+        Unlocks a subaccount. Unlocking is rejected while the subaccount has an
+        outstanding settlement advance.
+      operationId: UnlockSubaccountForSettlementAdvance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnlockSubaccountForSettlementAdvanceRequest'
       responses:
         '200':
-          description: Balances retrieved successfully
+          description: Subaccount unlocked successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetSubaccountBalancesResponse'
+                $ref: >-
+                  #/components/schemas/UnlockSubaccountForSettlementAdvanceResponse
+        '400':
+          $ref: '#/components/responses/BadRequestError'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
+        '409':
+          $ref: '#/components/responses/ConflictError'
         '500':
           $ref: '#/components/responses/InternalServerError'
       security:
@@ -89,50 +102,33 @@ paths:
           kalshiAccessTimestamp: []
 components:
   schemas:
-    GetSubaccountBalancesResponse:
-      type: object
-      required:
-        - subaccount_balances
-      properties:
-        subaccount_balances:
-          type: array
-          items:
-            $ref: '#/components/schemas/SubaccountBalance'
-    SubaccountBalance:
+    UnlockSubaccountForSettlementAdvanceRequest:
       type: object
       required:
         - subaccount_number
-        - exchange_index
-        - balance
-        - updated_ts
-        - voluntarily_locked
-        - settlement_advance
       properties:
         subaccount_number:
           type: integer
-          description: Subaccount number (0 for primary, 1-63 for subaccounts).
+          nullable: true
+          description: Subaccount number (0 for primary, 1-63 for numbered subaccounts).
+          x-oapi-codegen-extra-tags:
+            validate: required
         exchange_index:
-          type: integer
-          description: Exchange index the balance is held on.
-        balance:
-          $ref: '#/components/schemas/FixedPointDollars'
-          description: Balance in dollars.
-        updated_ts:
-          type: integer
-          format: int64
-          description: Unix timestamp of last balance update.
-        voluntarily_locked:
-          type: boolean
-          description: >-
-            Whether this subaccount is voluntarily locked for settlement advance
-            computation.
-        settlement_advance_state:
-          type: string
-          format: uuid
-          description: Current settlement advance state token, if one has been established.
-        settlement_advance:
-          $ref: '#/components/schemas/FixedPointDollars'
-          description: Outstanding settlement advance in dollars.
+          allOf:
+            - $ref: '#/components/schemas/ExchangeIndex'
+          description: Identifier for an exchange shard. Defaults to 0 if unspecified.
+          x-go-type-skip-optional-pointer: true
+          x-oapi-codegen-extra-tags:
+            validate: gte=0
+    UnlockSubaccountForSettlementAdvanceResponse:
+      type: object
+      description: Empty response indicating the subaccount was unlocked successfully.
+    ExchangeIndex:
+      type: integer
+      description: >-
+        Identifier for an exchange shard. Defaults to 0 if unspecified. Note:
+        currently only 0 supported.
+      example: 0
     ErrorResponse:
       type: object
       properties:
@@ -148,17 +144,21 @@ components:
         service:
           type: string
           description: The name of the service that generated the error
-    FixedPointDollars:
-      type: string
-      description: >-
-        US dollar amount as a fixed-point decimal string with up to 6 decimal
-        places of precision. This is the maximum supported precision; valid
-        quote intervals for a given market are constrained by that market's
-        price level structure.
-      example: '0.5600'
   responses:
+    BadRequestError:
+      description: Bad request - invalid input
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     UnauthorizedError:
       description: Unauthorized - authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    ConflictError:
+      description: Conflict - resource already exists or cannot be modified
       content:
         application/json:
           schema:

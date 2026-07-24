@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/authenticated-sessions.md
-Downloaded: 2026-07-23T21:04:54.611Z
+Downloaded: 2026-07-24T21:04:03.610Z
 -->
 
 > ## Documentation Index
@@ -537,7 +537,7 @@ needs to continue in a new runtime context.
     where `PerpsCredentials` is:
 
     <CodeGroup>
-      ```ts Type theme={null}
+      ```ts PerpsCredentials Type theme={null}
       type PerpsCredentials = {
         proxy: EvmAddress;
         privateKey: PrivateKey;
@@ -546,7 +546,7 @@ needs to continue in a new runtime context.
       };
       ```
 
-      ```json Example theme={null}
+      ```json PerpsCredentials Example theme={null}
       {
         "proxy": "0x1111111111111111111111111111111111111111",
         "privateKey": "0x2222222222222222222222222222222222222222222222222222222222222222",
@@ -579,13 +579,13 @@ needs to continue in a new runtime context.
     where `PerpsCredentials` is:
 
     <CodeGroup>
-      ```python Type theme={null}
+      ```python PerpsCredentials Type theme={null}
       from polymarket import PerpsCredentials
 
       # credentials: PerpsCredentials
       ```
 
-      ```json Example theme={null}
+      ```json PerpsCredentials Example theme={null}
       {
         "proxy": "0x1111111111111111111111111111111111111111",
         "private_key": "0x2222222222222222222222222222222222222222222222222222222222222222",
