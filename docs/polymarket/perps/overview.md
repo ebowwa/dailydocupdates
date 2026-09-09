@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/perps/overview.md
-Downloaded: 2026-09-08T22:24:08.175Z
+Downloaded: 2026-09-09T22:17:58.163Z
 -->
 
 > ## Documentation Index
@@ -11,10 +11,10 @@ Downloaded: 2026-09-08T22:24:08.175Z
 
 > Start here for Polymarket perpetual markets
 
-Polymarket Perps are perpetual contracts that track an underlying asset such as
-an index, commodity, crypto asset, or equity. Perps trade continuously and do not
-expire, so traders can open, manage, and close leveraged positions without
-waiting for a market resolution event.
+Polymarket [Perps](https://polymarket.com/perps) are perpetual contracts that
+track an underlying asset such as an index, commodity, crypto asset, or equity.
+Perps trade continuously and do not expire, so traders can open, manage, and
+close leveraged positions without waiting for a market resolution event.
 
 ## How Perps Work
 

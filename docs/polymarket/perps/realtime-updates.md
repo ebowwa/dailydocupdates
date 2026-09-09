@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/perps/realtime-updates.md
+Downloaded: 2026-09-09T22:17:58.164Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -972,8 +977,9 @@ Use candles to update charts with live OHLCV data.
     }
     ```
 
-    The public stream supports `1m`, `5m`, `15m`, `30m`, `1h`, `4h`, `6h`, `12h`,
-    `1d`, and `1w` candle intervals.
+    The public stream supports `1s`, `1m`, `5m`, `15m`, `30m`, `1h`, `4h`, `6h`,
+    `12h`, `1d`, and `1w` candle intervals. Any other interval is refused in the
+    subscribe acknowledgement with an `invalid channel` error.
 
     After subscribing, the stream emits kline update frames like this.
 

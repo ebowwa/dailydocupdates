@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/changelog/sdks.md
-Downloaded: 2026-09-04T22:10:02.848Z
+Downloaded: 2026-09-09T22:17:58.165Z
 -->
 
 > ## Documentation Index
@@ -13,6 +13,145 @@ Downloaded: 2026-09-04T22:10:02.848Z
 
 <Tabs>
   <Tab title="TypeScript">
+    ### `0.10.0`
+
+    * Breaking change: trade, activity, position, and Combo feeds now use server cursors and automatically retry transient rate limits. Restart scans with a new first page; previously saved cursors are not reusable. Replace `market` filters with `conditionId` and top-level `start`/`end` with `window`. Time windows accept epoch seconds or `Date` values; `window: "full"` requests full history. Condition filters accept at most 20 distinct IDs.
+
+    ```diff theme={null}
+    const pages = client.listActivity({
+      user,
+    -  market: [conditionId],
+    -  start,
+    -  end,
+    +  conditionId: [conditionId],
+    +  window: { start, end },
+    });
+    ```
+
+    * Breaking change: `listPositions(...)` now covers open, redeemable, and closed positions. Replace `listClosedPositions(...)` with `status: PositionStatus.Closed`, and `listMarketPositions(...)` with a public client's `listPositions({ conditionId })`. Market-holder results are individual positions rather than groups by outcome. The default `Open` status includes redeemable positions.
+
+    ```diff theme={null}
+    +import { PositionStatus } from "@polymarket/client";
+
+    -const pages = client.listClosedPositions({ user });
+    +const pages = client.listPositions({ user, status: PositionStatus.Closed });
+    ```
+
+    * Breaking change: secure `listPositions(...)` always selects the authenticated wallet and rejects `user: null`. Use a public client to list a market's holders.
+
+    ```diff theme={null}
+    -const pages = secureClient.listPositions({ user: null, market: [conditionId] });
+    +const pages = publicClient.listPositions({ conditionId });
+    ```
+
+    * Breaking change: position rows expose `currentSize`, `currentPrice`, `totalSize`, and explicit fee-exclusive entry economics. Money, size, price, and PnL values use decimal strings; `entryFeesUsdc` is disclosed separately and must not be deducted from `entryCostUsdc` again. Optional feed metadata now uses `undefined` for absent values, and returned timestamps use epoch milliseconds.
+
+    ```diff theme={null}
+    -const shares = position.size;
+    -const price = position.curPrice;
+    -const bought = position.totalBought;
+    +const shares = position.currentSize;
+    +const price = position.currentPrice;
+    +const bought = position.totalSize;
+    ```
+
+    * Breaking change: request vocabularies now use exported enums, including `SortDirection`, `TradeFilterType`, `PositionFilterType`, `PositionSortBy`, `ComboPositionSortBy`, and `TipSide`. Replace the removed `Side` type with `OrderSide`.
+
+    ```diff theme={null}
+    -import type { Side } from "@polymarket/client";
+    +import { OrderSide } from "@polymarket/client";
+
+    -const side: Side = "BUY";
+    +const side = OrderSide.BUY;
+    ```
+
+    * Added migration activity through `ActivityType.MIGRATION` and `MigrationActivity`, plus tip activity through `ActivityType.TIP` and `TipSide`. Combo positions now support `ComboPositionStatus.Redeemable` as a sole status filter.
+    * Breaking change: Combo activity includes `positionId` on every row and removes `transactionAt`, `logIndex`, and `moduleId`. Use `timestamp` for the activity time.
+
+    ```diff theme={null}
+    -const occurredAt = activity.transactionAt;
+    +const occurredAt = activity.timestamp;
+    ```
+
+    * Breaking change: `listMarketHolders(...)` now returns a paginator. Pass `conditionIds` and `pageSize`; `minBalance` is measured in display shares. Optional `includePnl` adds gross holdings and position economics for one condition ID with a page size of at most 100. Merge outcome groups across pages by `assetId`.
+
+    ```diff theme={null}
+    -const holders = await client.listMarketHolders({ market: [conditionId], limit: 10 });
+    +const pages = client.listMarketHolders({ conditionIds: [conditionId], pageSize: 10 });
+    +const firstPage = await pages.firstPage();
+    +const holders = firstPage.items;
+    ```
+
+    * Breaking change: `fetchPortfolioValue(...)` returns one `PortfolioValue` with a decimal-string `value`, and accepts `conditionIds` instead of `market`. Position and portfolio reads also canonicalize PolyV2 condition IDs.
+
+    ```diff theme={null}
+    -const [portfolio] = await client.fetchPortfolioValue({ user, market: [conditionId] });
+    +const portfolio = await client.fetchPortfolioValue({ user, conditionIds: [conditionId] });
+    ```
+
+    * Added `fetchUserStats(...)`, `fetchUserPnl(...)`, and `fetchUserVolume(...)` for account analytics, with authenticated-wallet defaults on secure clients. Breaking change: replace `fetchTradedMarketCount(...)` with the exact distinct-market count on `fetchUserStats(...)`. It returns `null` for an unknown user.
+
+    ```diff theme={null}
+    -const count = (await client.fetchTradedMarketCount({ user })).traded;
+    +const stats = await client.fetchUserStats({ user });
+    +const count = stats?.tradedMarketCount ?? null;
+    ```
+
+    * Breaking change: replace `fetchPriceHistory(...)` with cursor-paginated `listPriceHistory(...)`. Pass `assetId` and exactly one time selection: `interval`, `start` with optional `end`, or `asOf`. Replace minute-based `fidelity` with `bucketSeconds`; omit it for automatic resolution. Explicit ranges span at most 15 days. Each point includes a decimal-string price, epoch-millisecond timestamp, and `resolutionSeconds`.
+
+    ```diff theme={null}
+    +import { PriceHistoryInterval } from "@polymarket/client";
+
+    -const history = await client.fetchPriceHistory({ assetId, interval: "1d", fidelity: 60 });
+    +const pages = client.listPriceHistory({
+    +  assetId,
+    +  interval: PriceHistoryInterval.OneDay,
+    +  bucketSeconds: 3600,
+    +});
+    +const firstPage = await pages.firstPage();
+    +const history = firstPage.items;
+    ```
+
+    * Breaking change: replace `listOpenInterest(...)` with `fetchOpenInterest(...)` and pass `conditionIds` for selected markets. Values represent priced gross open interest in USDC.
+
+    ```diff theme={null}
+    -const openInterest = await client.listOpenInterest({ market: [conditionId] });
+    +const openInterest = await client.fetchOpenInterest({ conditionIds: [conditionId] });
+    ```
+
+    * Breaking change: `fetchEventLiveVolume(...)` accepts `eventIds` and returns cumulative taker volume in shares, with market rows in `markets` and a decimal-string `takerVolumeTotal`.
+
+    ```diff theme={null}
+    -const volume = await client.fetchEventLiveVolume({ id: eventId });
+    +const volume = await client.fetchEventLiveVolume({ eventIds: [eventId] });
+    ```
+
+    * Breaking change: builder rankings now return cursor-paginated `BuilderStanding` rows. Builder volume returns complete `BuilderVolumePoint` date buckets; `bucketLimit` bounds buckets rather than builder rows. Replace `timePeriod` with `window` for rankings or `interval` for volume. Use `BuilderVolumeInterval.Year` for yearly buckets.
+
+    ```diff theme={null}
+    +import { BuilderVolumeInterval, LeaderboardWindow } from "@polymarket/client";
+
+    -const pages = client.listBuilderLeaderboard({ timePeriod: "MONTH" });
+    -const volume = await client.fetchBuilderVolume({ timePeriod: "MONTH" });
+    +const pages = client.listBuilderLeaderboard({ window: LeaderboardWindow.Month });
+    +const volume = await client.fetchBuilderVolume({ interval: BuilderVolumeInterval.Month });
+    ```
+
+    * Breaking change: trader rankings use cursor pagination, `window`, and `sortBy`; the list no longer accepts `user` or `userName` filters. Use `fetchTraderLeaderboardStanding({ user })` for one wallet's standing. Added `listBiggestWinners(...)` with market and Combo variants.
+
+    ```diff theme={null}
+    +import { LeaderboardWindow, TraderLeaderboardSort } from "@polymarket/client";
+
+    -const pages = client.listTraderLeaderboard({ timePeriod: "MONTH", orderBy: "PNL" });
+    +const pages = client.listTraderLeaderboard({
+    +  window: LeaderboardWindow.Month,
+    +  sortBy: TraderLeaderboardSort.Pnl,
+    +});
+    ```
+
+    * Added `fetchResolutions(...)` for resolution lifecycle lookups by question, condition, or event, with typed timestamps, transaction metadata, payouts, and finality. Unset values are omitted.
+    * Combo leg markets now preserve `question`, `groupItemTitle`, `sportsMarketType`, `line`, and `outcomes`. Trade activity tolerates unknown outcome metadata.
+
     ### `0.9.0`
 
     * Order estimation, preparation, creation, and placement now accept protocol-neutral `assetId` values. Structured PolyV2 position IDs select PolyV2 routing automatically, while `tokenId` remains available as a deprecated alias.

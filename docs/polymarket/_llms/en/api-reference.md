@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/_llms/en/api-reference.md
+Downloaded: 2026-09-09T22:17:58.157Z
+-->
+
 # Polymarket Documentation: English API Reference
 
 ## API Reference
@@ -19,6 +24,7 @@
 - [Get Instruments](https://docs.polymarket.com/api-reference/get-instruments.md): Get all instruments.
 - [Get Tickers](https://docs.polymarket.com/api-reference/get-tickers.md): Get all instrument tickers with live market data.
 - [Get Statistics](https://docs.polymarket.com/api-reference/get-statistics.md): Get last 24-hour statistics for all instruments.
+- [Get Exchange Statistics](https://docs.polymarket.com/api-reference/get-exchange-statistics.md): Get aggregate statistics for all pUSD-quoted Polymarket perpetual markets. The time window is half-open: trades at `start_timestamp` are included and trades at `end_timestamp` are excluded. The maximum window is 31 days. Open interest is the one-sided USD notional from the latest complete sample bef…
 - [Get Klines](https://docs.polymarket.com/api-reference/get-klines.md): Get klines for an instrument. If no end time is provided, the current time will be used. Maximum of 1000 entries returned per request.
 - [Get Mark Price History](https://docs.polymarket.com/api-reference/get-mark-price-history.md): Get mark price history for an instrument, bucketed by interval. If no end time is provided, the current time will be used. Maximum of 1000 entries returned per request. Only buckets with at least one mark update are included. For intervals of a minute or coarser, a bucket cut mid-way by `end_timesta…
 - [Get BBO](https://docs.polymarket.com/api-reference/get-bbo.md): Get best bid and offer for all instruments.
@@ -55,7 +61,7 @@
 - [Withdraw](https://docs.polymarket.com/api-reference/withdraw.md): Submit a signed withdrawal request. Requires EOA signature, see [EOA signing](/http/signing#1-eoa-signing).
 - [Internal Transfer](https://docs.polymarket.com/api-reference/internal-transfer.md): Submit a signed internal ledger transfer between two exchange accounts. Requires proxy signature using the standard signed-op flow.
 - [Get Deposits](https://docs.polymarket.com/api-reference/get-deposits.md): Get deposit history for the authenticated account. If no end time is provided, the current time will be used. Maximum of 100 entries returned per request.
-- [Get Internal Transfers](https://docs.polymarket.com/api-reference/get-internal-transfers.md): Get settled internal transfer history for the authenticated account. Returns both inbound and outbound transfers.
+- [Get Internal Transfers](https://docs.polymarket.com/api-reference/get-internal-transfers.md): Get settled internal transfer history for the authenticated account. Returns both inbound and outbound transfers unless `direction` narrows the page to one side; a value other than `in` or `out` is refused.
 - [Get Withdrawals](https://docs.polymarket.com/api-reference/get-withdrawals.md): Get withdrawal history for the authenticated account. If no end time is provided, the current time will be used. Maximum of 100 entries returned per request.
 - [Get Account Stats](https://docs.polymarket.com/api-reference/get-account-stats.md): Get the authenticated account's 7-day trading stats (taker volume, maker volume, account maker share, and entity maker share when applicable). Stats are cached by UTC day and may be stale by up to 24 hours.
 - [Get Account Limits](https://docs.polymarket.com/api-reference/get-account-limits.md): Get the authenticated account's effective rate-limit allowances for its current volume-based tier: order-action rate, open-order cap, and the display-only messages-per-minute figure. `open_orders` reflects the account's current live open-order count; the rate-usage counters (`actions_per_minute`, `a…

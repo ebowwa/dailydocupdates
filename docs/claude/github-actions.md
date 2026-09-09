@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/github-actions.md
+Downloaded: 2026-09-09T22:18:21.604Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -25,6 +30,8 @@ You can set up the Claude Code GitHub Action in one of two ways:
 For either path, you need admin access to the repository.
 
 ### Quick setup
+
+`/install-github-app` works only with github.com repositories. If your repository's git remote is on gitlab.com or bitbucket.org, the command prints a notice and exits instead of starting setup. To run Claude Code from GitLab pipelines, see [Claude Code GitLab CI/CD](/docs/en/gitlab-ci-cd).
 
 Before you start, install the [GitHub CLI](https://cli.github.com) and authenticate it with `gh auth login`. Claude Code checks for it and warns you if it's missing.
 

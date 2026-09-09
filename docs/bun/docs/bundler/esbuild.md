@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/bundler/esbuild.md
-Downloaded: 2026-08-31T23:38:52.406Z
--->
-
 # esbuild
 
 > Migration guide from esbuild to Bun's bundler

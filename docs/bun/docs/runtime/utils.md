@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/runtime/utils.md
-Downloaded: 2026-09-01T22:25:21.125Z
--->
-
 # Utils
 
 > Use Bun's utility functions to work with the runtime

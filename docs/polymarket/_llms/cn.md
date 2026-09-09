@@ -1,8 +1,13 @@
+<!--
+Source: https://docs.polymarket.com/_llms/cn.md
+Downloaded: 2026-09-09T22:17:58.165Z
+-->
+
 # Polymarket Documentation: Chinese
 
 ## Chinese
 
-- [Chinese / API 参考 (118 pages)](https://docs.polymarket.com/_llms/cn/api.md): Documentation for Chinese / API 参考.
+- [Chinese / API 参考 (119 pages)](https://docs.polymarket.com/_llms/cn/api.md): Documentation for Chinese / API 参考.
 
 ### 预测市场
 

@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/websockets/cfbenchmarks-value-5hz.md
-Downloaded: 2026-09-04T22:10:05.830Z
+Downloaded: 2026-09-09T22:18:02.814Z
 -->
 
 > ## Documentation Index
@@ -11,7 +11,7 @@ Downloaded: 2026-09-04T22:10:05.830Z
 
 > Real-time CF Benchmarks index value updates at up to 5 updates per second, each carrying the raw upstream frame plus parsed value fields. Requires authentication.
 
-This is the high-frequency sibling of the once-per-second [`cfbenchmarks_value`](/websockets/cfbenchmarks-value) channel. It carries the indices CF Benchmarks publishes at 200ms granularity (currently `BRTI`, `ETHUSD_RTI`, `SOLUSD_RTI`, `XRPUSD_RTI`, and `DOGEUSD_RTI`); all other indices remain available on `cfbenchmarks_value` only. Messages are lean raw ticks — they do not include the 60-second or quarter-hour averages, which stay on the per-second channel.
+This is the high-frequency sibling of the once-per-second [`cfbenchmarks_value`](/websockets/cfbenchmarks-value) channel. It carries BTC (`BRTI`), ETH (`ETHUSD_RTI`), SOL (`SOLUSD_RTI`), XRP (`XRPUSD_RTI`), and DOGE (`DOGEUSD_RTI`) at up to five updates per second. For BNB, HYPE, NEAR, ZEC, SUI, BCH, LTC, LINK, SHIB/kSHIB, ADA, WLD, AAVE, VVV, and other per-second indices, see the [coin and index ID table](/websockets/cfbenchmarks-value#coins-and-index-ids). Use this channel's `indexlist` action to discover its available IDs. Messages are lean raw ticks — they do not include the 60-second or quarter-hour averages, which stay on the per-second channel.
 
 **Requirements:**
 - Authentication required
@@ -51,12 +51,15 @@ description: >
 
 
   This is the high-frequency sibling of the once-per-second
-  [`cfbenchmarks_value`](/websockets/cfbenchmarks-value) channel. It carries the
-  indices CF Benchmarks publishes at 200ms granularity (currently `BRTI`,
-  `ETHUSD_RTI`, `SOLUSD_RTI`, `XRPUSD_RTI`, and `DOGEUSD_RTI`); all other
-  indices remain available on `cfbenchmarks_value` only. Messages are lean raw
-  ticks — they do not include the 60-second or quarter-hour averages, which stay
-  on the per-second channel.
+  [`cfbenchmarks_value`](/websockets/cfbenchmarks-value) channel. It carries BTC
+  (`BRTI`), ETH (`ETHUSD_RTI`), SOL (`SOLUSD_RTI`), XRP (`XRPUSD_RTI`), and DOGE
+  (`DOGEUSD_RTI`) at up to five updates per second. For BNB, HYPE, NEAR, ZEC,
+  SUI, BCH, LTC, LINK, SHIB/kSHIB, ADA, WLD, AAVE, VVV, and other per-second
+  indices, see the [coin and index ID
+  table](/websockets/cfbenchmarks-value#coins-and-index-ids). Use this channel's
+  `indexlist` action to discover its available IDs. Messages are lean raw ticks
+  — they do not include the 60-second or quarter-hour averages, which stay on
+  the per-second channel.
 
 
   **Requirements:**

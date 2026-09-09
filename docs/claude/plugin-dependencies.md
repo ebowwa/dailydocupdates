@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/plugin-dependencies.md
+Downloaded: 2026-09-09T22:18:21.617Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -112,6 +117,8 @@ claude --plugin-dir ./my-dependency --plugin-dir ./my-plugin
 ```
 
 The local copy of the dependency satisfies your plugin's dependency entry, even when the entry names a marketplace, so you don't need to install the dependency from its marketplace. Claude Code doesn't check a [version constraint](#declare-a-dependency-with-a-version-constraint) against a local copy, so the local `plugin.json` doesn't need a `version`. Before v2.1.242, a dependency entry that named a marketplace never matched the local copy, and Claude Code disabled your plugin at load.
+
+When both plugins sit in one parent folder, you can pass that folder to `--plugin-dir` once. If the folder isn't itself a plugin, Claude Code loads each child folder that has a `.claude-plugin/plugin.json`. Requires Claude Code v2.1.265 or later.
 
 If you haven't installed the dependency from its marketplace, your plugin stops loading when the local copy goes away:
 

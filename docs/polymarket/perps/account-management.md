@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/perps/account-management.md
+Downloaded: 2026-09-09T22:17:58.163Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -662,6 +667,7 @@ Use fills to reconcile executions, fees, realized PnL, and exposure changes.
     ```
 
     Use the response's `more` field to continue fetching older or newer records.
+    Pass `instrument_id` to narrow the pages to one instrument's fills.
 
     Each page returns execution records you can use to reconcile fees, PnL, and exposure.
 

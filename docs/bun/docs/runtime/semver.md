@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/runtime/semver.md
-Downloaded: 2026-09-01T22:25:21.125Z
--->
-
 # Semver
 
 > Use Bun's semantic versioning API

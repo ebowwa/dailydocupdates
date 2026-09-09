@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/api-reference/incentive-programs/get-incentives.md
+Downloaded: 2026-09-09T22:18:02.811Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -14,7 +19,7 @@
 openapi: 3.0.0
 info:
   title: Kalshi Trade API Manual Endpoints
-  version: 3.29.0
+  version: 3.30.0
   description: >-
     Manually defined OpenAPI spec for endpoints being migrated to spec-first
     approach
@@ -86,8 +91,8 @@ paths:
           in: query
           required: false
           description: >-
-            Type filter. Can be "all", "liquidity", "volume", or
-            "margin_maker_volume". Default is "all".
+            Type filter. Can be "all", "liquidity", "volume",
+            "margin_maker_volume", or "margin_taker_volume". Default is "all".
           schema:
             type: string
             enum:
@@ -95,6 +100,7 @@ paths:
               - liquidity
               - volume
               - margin_maker_volume
+              - margin_taker_volume
         - name: incentive_description
           in: query
           required: false
@@ -192,6 +198,7 @@ components:
             - liquidity
             - volume
             - margin_maker_volume
+            - margin_taker_volume
           description: Type of incentive program
         incentive_description:
           type: string

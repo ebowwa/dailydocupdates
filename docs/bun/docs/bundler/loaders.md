@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/bundler/loaders.md
-Downloaded: 2026-09-01T22:25:21.130Z
--->
-
 # Loaders
 
 > Built-in loaders for the Bun bundler and runtime

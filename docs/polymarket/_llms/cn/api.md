@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/_llms/cn/api.md
+Downloaded: 2026-09-09T22:17:58.166Z
+-->
+
 # Polymarket Documentation: Chinese API 参考
 
 ## API 参考
@@ -168,6 +173,7 @@
 - [按客户端订单 ID 修改订单](https://docs.polymarket.com/cn/api-reference/wss/perps-modify-orders-coid.md): 通过永续合约 WebSocket 按客户端订单 ID 修改订单。
 - [批量更新杠杆](https://docs.polymarket.com/cn/api-reference/endpoints/perps/patch-trade-leverage-batch.md): Update leverage for up to 100 unique instruments. Updates are processed sequentially and are not atomic. If only some responses arrive before the gateway deadline, missing item results use `internal_error`; whether those updates applied is unknown. If no responses arrive, the request returns 500. Re…
 - [批量更新杠杆](https://docs.polymarket.com/cn/api-reference/wss/perps-update-leverages.md): 通过永续合约 WebSocket 批量更新杠杆。
+- [获取交易所统计数据](https://docs.polymarket.com/cn/api-reference/endpoints/perps/get-info-exchange-stats.md): Get aggregate statistics for all pUSD-quoted Polymarket perpetual markets. The time window is half-open: trades at `start_timestamp` are included and trades at `end_timestamp` are excluded. The maximum window is 31 days. Open interest is the one-sided USD notional from the latest complete sample bef…
 
 ### WebSocket
 

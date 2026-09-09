@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/changelog/perps.md
-Downloaded: 2026-09-08T22:24:08.177Z
+Downloaded: 2026-09-09T22:17:58.165Z
 -->
 
 > ## Documentation Index
@@ -98,6 +98,18 @@ Notable changes to the Polymarket Perps API.
       OI per rewards entity, up from $1M. Accounts without an entity mapping qualify
   independently. The 6% APR rate and calculation on the account's full daily
   average gross OI across all instruments are unchanged.
+</Update>
+
+<Update label="Sep 2, 2026" description="Exchange statistics endpoint added">
+  Added `GET /v1/info/exchange-stats`, a public endpoint returning aggregate
+  statistics for all pUSD-quoted perpetual markets over a required
+  `[start_timestamp, end_timestamp)` window of up to 31 days: matched USD
+  volume, gross positive maker and taker trading fees (rebates, incentives,
+  and referral payments excluded), and one-sided open interest in USD notional
+  with its sample time, taken from the latest complete sample before the
+  window end — both null when no complete sample is available. Responses are
+  cached for five minutes; a request costs weight 10, and a request served
+  from cache costs 1.
 </Update>
 
 <Update label="Sep 1, 2026" description="Concurrent WebSocket posts and HTTP overload shedding">

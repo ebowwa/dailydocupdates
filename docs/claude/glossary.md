@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/glossary.md
-Downloaded: 2026-09-01T22:25:35.418Z
+Downloaded: 2026-09-09T22:18:21.628Z
 -->
 
 > ## Documentation Index
@@ -137,7 +137,7 @@ Learn more: [Sessions from Dispatch](/docs/en/desktop#sessions-from-dispatch)
 
 ### Effort level
 
-A setting that controls how much of the adaptive-reasoning thinking budget Claude uses on each turn. Higher effort means more thinking tokens and deeper reasoning; lower effort is faster and cheaper. Effort is supported on Fable 5.1 and Fable 5, on Opus 4.6 and later, and on Sonnet 4.6 and later.
+A setting that controls adaptive reasoning, which lets the model decide whether and how much to think on each step. Higher effort means more thinking tokens and deeper reasoning; lower effort is faster and cheaper. Effort is supported on Fable models, on Opus 4.6 and later, and on Sonnet 4.6 and later.
 
 Learn more: [Adjust effort level](/docs/en/model-config#adjust-effort-level)
 

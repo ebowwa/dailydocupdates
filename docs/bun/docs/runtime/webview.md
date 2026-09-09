@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/runtime/webview.md
-Downloaded: 2026-09-01T22:25:21.122Z
--->
-
 # WebView
 
 > Control a headless browser from Bun for automation, testing, and scraping — zero dependencies on macOS, Chrome DevTools Protocol everywhere else
