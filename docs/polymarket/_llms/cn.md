@@ -1,13 +1,13 @@
 <!--
 Source: https://docs.polymarket.com/_llms/cn.md
-Downloaded: 2026-09-09T22:17:58.165Z
+Downloaded: 2026-09-10T22:17:46.077Z
 -->
 
 # Polymarket Documentation: Chinese
 
 ## Chinese
 
-- [Chinese / API 参考 (119 pages)](https://docs.polymarket.com/_llms/cn/api.md): Documentation for Chinese / API 参考.
+- [Chinese / API 参考 (141 pages)](https://docs.polymarket.com/_llms/cn/api.md): Documentation for Chinese / API 参考.
 
 ### 预测市场
 
@@ -97,13 +97,14 @@ Downloaded: 2026-09-09T22:17:58.165Z
 
 ## OpenAPI Specs
 
+- [openapi](https://data-api.polymarket.com/v2/openapi.json)
 - [gamma-openapi](/api-spec/gamma-openapi.yaml)
 - [clob-openapi](/api-spec/clob-openapi.yaml)
-- [data-openapi](/api-spec/data-openapi.yaml)
 - [relayer-openapi](/api-spec/relayer-openapi.yaml)
 - [combos-rfq-openapi](/api-spec/combos-rfq-openapi.yaml)
 - [perps-openapi](/api-spec/perps-openapi.json)
 - [bridge-openapi](/api-spec/bridge-openapi.yaml)
+- [data-openapi](/api-spec/data-openapi.yaml)
 
 ## AsyncAPI Specs
 

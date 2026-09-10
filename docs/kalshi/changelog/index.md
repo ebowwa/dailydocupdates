@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-09-09T22:18:02.820Z
+Downloaded: 2026-09-10T22:17:51.192Z
 -->
 
 > ## Documentation Index
@@ -20,6 +20,33 @@ Predictions and Margin exchanges. Use the entry tags to filter by API
 surface (`REST`, `WebSocket`, `FIX`) or exchange (`Predictions`, `Margin`).
 FIX API changes, previously tracked on a separate page, now live here under
 the `FIX` tag.
+
+<Update
+  label="September 17, 2026"
+  tags={["WebSocket", "Predictions", "Margin"]}
+  rss={{
+title: "WebSocket subscriptions are ready when acknowledged",
+description: "Fixes a race that could skip the first event after a subscription acknowledgement."
+}}
+>
+  Fixed a race that could skip events arriving immediately after a `subscribed`
+  response, including on the `cfbenchmarks_value_5hz` channel. The acknowledgement
+  continues to precede subscription data.
+</Update>
+
+<Update
+  label="September 17, 2026"
+  tags={["REST", "FIX", "Predictions"]}
+  rss={{
+title: "RFQ and quote writes share the shard 1 rate-limit budget",
+description: "RFQ and quote mutations across REST and FIX consume the shard 1 Write budget instead of the unscoped Write budget."
+}}
+>
+  RFQ and quote creation/cancellation, quote acceptance/confirmation, and
+  FIX New Order Single (`35=D`) carrying `QuoteID` now consume the shard 1
+  Write budget, shared with shard 1 order writes. Endpoint costs and Read
+  budgets are unchanged. No `exchange_index` or `ExDestination` is required.
+</Update>
 
 <Update
   label="September 10, 2026"

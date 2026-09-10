@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/_llms/en/api-reference/predictions.md
+Downloaded: 2026-09-10T22:17:46.076Z
+-->
+
 # Polymarket Documentation: English API Reference Predictions
 
 ## Predictions
@@ -6,6 +11,8 @@
 - [Rate Limits](https://docs.polymarket.com/api-reference/rate-limits.md): Cloudflare IP-based request limits for Polymarket APIs
 - [CLOB Trading Rate Limits](https://docs.polymarket.com/api-reference/trading-rate-limits.md): Per-signer token-bucket limits for CLOB order and cancellation requests
 - [Geographic Restrictions](https://docs.polymarket.com/api-reference/geoblock.md): Check geographic restrictions before placing orders on the Polymarket API
+- [Data API v2](https://docs.polymarket.com/api-reference/data-api/overview.md): Read wallet portfolios, trade and activity feeds, market state, and ranked leaderboards through one consistent response contract.
+- [Get data freshness](https://docs.polymarket.com/api-reference/service/get-data-freshness.md): How fresh the data behind this API is.
 
 ### Events
 
@@ -23,9 +30,10 @@
 - [Get market by slug](https://docs.polymarket.com/api-reference/markets/get-market-by-slug.md)
 - [Get market tags by id](https://docs.polymarket.com/api-reference/markets/get-market-tags-by-id.md)
 - [Get market by token](https://docs.polymarket.com/api-reference/markets/get-market-by-token.md): Returns the parent market for a given token ID. Useful when you have a token ID and need to resolve its parent market without knowing the condition ID in advance.
-- [Get top holders for markets](https://docs.polymarket.com/api-reference/core/get-top-holders-for-markets.md)
-- [Get open interest](https://docs.polymarket.com/api-reference/misc/get-open-interest.md)
-- [Get live volume for an event](https://docs.polymarket.com/api-reference/misc/get-live-volume-for-an-event.md)
+- [List a market's top holders](https://docs.polymarket.com/api-reference/markets/list-a-markets-top-holders.md): Top holders of a market, netted per user and grouped by outcome token.
+- [Get open interest](https://docs.polymarket.com/api-reference/markets/get-open-interest.md): Priced gross open interest per market.
+- [Get live volume for an event](https://docs.polymarket.com/api-reference/markets/get-live-volume-for-an-event.md): Cumulative one-side (taker) volume per market.
+- [Get resolution state](https://docs.polymarket.com/api-reference/markets/get-resolution-state.md): Complete resolution state by one selector family.
 - [Get simplified markets](https://docs.polymarket.com/api-reference/markets/get-simplified-markets.md)
 - [Get sampling markets](https://docs.polymarket.com/api-reference/markets/get-sampling-markets.md)
 - [Get sampling simplified markets](https://docs.polymarket.com/api-reference/markets/get-sampling-simplified-markets.md)
@@ -46,6 +54,7 @@
 - [Get last trade prices (query parameters)](https://docs.polymarket.com/api-reference/market-data/get-last-trade-prices-query-parameters.md): Retrieves last trade prices for multiple token IDs using query parameters. Maximum 500 token IDs can be requested per call.
 - [Get last trade prices (request body)](https://docs.polymarket.com/api-reference/market-data/get-last-trade-prices-request-body.md): Retrieves last trade prices for multiple token IDs using a request body. Maximum 500 token IDs can be requested per call.
 - [Get prices history](https://docs.polymarket.com/api-reference/markets/get-prices-history.md): Retrieve historical price data for a market.
+- [Get a token's price history](https://docs.polymarket.com/api-reference/markets/get-a-tokens-price-history.md): The price-history series for one outcome token, or a single point-in-time observation.
 - [Get batch prices history](https://docs.polymarket.com/api-reference/markets/get-batch-prices-history.md): Retrieve historical price data for multiple markets in a single request.
 - [Get fee rate](https://docs.polymarket.com/api-reference/market-data/get-fee-rate.md): Retrieves the base fee rate for a specific token ID. The fee rate can be provided either as a query parameter or as a path parameter.
 - [Get fee rate by path parameter](https://docs.polymarket.com/api-reference/market-data/get-fee-rate-by-path-parameter.md): Retrieves the base fee rate for a specific token ID using the token ID as a path parameter.
@@ -69,6 +78,7 @@
 
 ### Trades
 
+- [List trades](https://docs.polymarket.com/api-reference/feeds/list-trades.md): Keyset-paginated trade feed in the standard `{ data, pagination }` envelope.
 - [Get trades](https://docs.polymarket.com/api-reference/trade/get-trades.md): Retrieves trades for the authenticated user. Returns paginated results. Requires readonly or level 2 API key authentication.
 - [Get builder trades](https://docs.polymarket.com/api-reference/trade/get-builder-trades.md): Retrieves trades attributed to a builder code.
 
@@ -89,23 +99,20 @@
 ### Profile
 
 - [Get public profile by wallet address](https://docs.polymarket.com/api-reference/profiles/get-public-profile-by-wallet-address.md)
-- [Get current positions for a user](https://docs.polymarket.com/api-reference/core/get-current-positions-for-a-user.md)
-- [Get closed positions for a user](https://docs.polymarket.com/api-reference/core/get-closed-positions-for-a-user.md)
-- [Get user activity](https://docs.polymarket.com/api-reference/core/get-user-activity.md)
-- [Get total value of a user's positions](https://docs.polymarket.com/api-reference/core/get-total-value-of-a-users-positions.md)
-- [Get trades for a user or markets](https://docs.polymarket.com/api-reference/core/get-trades-for-a-user-or-markets.md)
-- [Get total markets a user has traded](https://docs.polymarket.com/api-reference/misc/get-total-markets-a-user-has-traded.md)
-- [Get positions for a market](https://docs.polymarket.com/api-reference/core/get-positions-for-a-market.md)
-- [Download an accounting snapshot (ZIP of CSVs)](https://docs.polymarket.com/api-reference/misc/download-an-accounting-snapshot-zip-of-csvs.md)
+- [Get a user's profile stats](https://docs.polymarket.com/api-reference/wallet/get-a-users-profile-stats.md): The profile card for one wallet in a single call.
+- [List positions for a user or market](https://docs.polymarket.com/api-reference/wallet/list-positions-for-a-user-or-market.md): A keyset page of positions in the standard `{ data, pagination }` envelope. One route serves a user's open book, their closed book (`status=CLOSED`), and a market's holders (market anchor).
+- [Get portfolio value](https://docs.polymarket.com/api-reference/wallet/get-portfolio-value.md): The user's portfolio value: single-market holdings marked to market plus unresolved combo positions at cost basis.
+- [Get a user's PnL series](https://docs.polymarket.com/api-reference/wallet/get-a-users-pnl-series.md): Complete cumulative native-PnL atoms and compositions.
+- [Get a user's trading volume](https://docs.polymarket.com/api-reference/wallet/get-a-users-trading-volume.md): One wallet's trading volume over a window, in both units side by side.
+- [List account activity](https://docs.polymarket.com/api-reference/feeds/list-account-activity.md): Keyset-paginated activity feed (trades, splits, merges, redeems, …) in the standard `{ data, pagination }` envelope.
+- [Get wallet approvals](https://docs.polymarket.com/api-reference/wallet/get-wallet-approvals.md): Polygon token/operator approval state for one wallet.
 
-### Leaderboard
+### Boards
 
-- [Get trader leaderboard rankings](https://docs.polymarket.com/api-reference/core/get-trader-leaderboard-rankings.md)
-
-### Builders
-
-- [Get aggregated builder leaderboard](https://docs.polymarket.com/api-reference/builders/get-aggregated-builder-leaderboard.md)
-- [Get daily builder volume time-series](https://docs.polymarket.com/api-reference/builders/get-daily-builder-volume-time-series.md)
+- [Get the trader leaderboard](https://docs.polymarket.com/api-reference/boards/get-the-trader-leaderboard.md): The ranked board of realized PnL, combos included.
+- [List the biggest wins](https://docs.polymarket.com/api-reference/boards/list-the-biggest-wins.md): The biggest single winning positions.
+- [Get the builders leaderboard](https://docs.polymarket.com/api-reference/boards/get-the-builders-leaderboard.md): The ranked board of builders by volume.
+- [Get builder volume over time](https://docs.polymarket.com/api-reference/boards/get-builder-volume-over-time.md): The per-builder volume time series.
 
 ### Search
 
@@ -154,8 +161,8 @@
 - [Submit a quote](https://docs.polymarket.com/api-reference/maker/submit-a-quote.md): Submit a signed maker quote for an active RFQ. Requires CLOB L2 authentication for the maker role.
 - [Cancel a quote](https://docs.polymarket.com/api-reference/maker/cancel-a-quote.md): Cancel an active maker quote before it is selected. Requires CLOB L2 authentication for the maker role. `signer_address` and `maker_address` must match the authenticated identity.
 - [Confirm or decline last look](https://docs.polymarket.com/api-reference/maker/confirm-or-decline-last-look.md): Respond to a last-look confirmation request for a selected quote. Requires CLOB L2 authentication for the maker role. `decision` must be `CONFIRM` or `DECLINE`.
-- [Get user combo positions](https://docs.polymarket.com/api-reference/core/get-user-combo-positions.md): Combinatorial (multi-market) positions held by a user, with per-leg breakdown. Also available at /v1/data/user/{address}/positions/combos (address from the path). Open positions with shares_balance below 0.001 are omitted (dust floor — e.g. sub-0.001 remainders left by "sell all" cashouts); resolved…
-- [Get user combo activity](https://docs.polymarket.com/api-reference/core/get-user-combo-activity.md): Combo lifecycle and redeem events (split / merge / convert / compress / wrap / unwrap / redeem) for a user, with per-leg breakdown. The combo counterpart to /activity trade rows. Also available at /v1/data/user/{address}/activity/combos (address from the path).
+- [List combo positions](https://docs.polymarket.com/api-reference/wallet/list-combo-positions.md): Combo positions for a user, in the standard `{ data, pagination }` envelope.
+- [List combo activity](https://docs.polymarket.com/api-reference/feeds/list-combo-activity.md): Keyset-paginated combo lifecycle + redemption feed for a user, in the standard `{ data, pagination }` envelope.
 - [Quoter Gateway](https://docs.polymarket.com/api-reference/wss/rfq.md): Authenticated WebSocket for combinatorial RFQ quoters — receive requests, submit quotes, confirm last look, and track execution.
 
 ### WebSocket
@@ -172,14 +179,36 @@
 - [Get transaction status](https://docs.polymarket.com/api-reference/bridge/get-transaction-status.md): Returns the deposits and withdrawals seen at a bridge address, newest first. Responses are cursor-paginated: each request returns one page plus a `nextCursor`. To read the full history, pass each `nextCursor` back as `cursor` until it comes back null. To track only recent activity, keep requesting t…
 - [Create withdrawal addresses](https://docs.polymarket.com/api-reference/bridge/create-withdrawal-addresses.md)
 
+### Data API v1 (Legacy)
+
+- [Migrating to Data API v2](https://docs.polymarket.com/api-reference/data-api/migrating-from-v1.md): Move an integration from the original Data API routes to their v2 counterparts: the route mapping, the contract changes, and what stays on v1.
+- [Get current positions for a user](https://docs.polymarket.com/api-reference/core/get-current-positions-for-a-user.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/positions`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
+- [Get closed positions for a user](https://docs.polymarket.com/api-reference/core/get-closed-positions-for-a-user.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/positions?status=CLOSED`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
+- [Get positions for a market](https://docs.polymarket.com/api-reference/core/get-positions-for-a-market.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/positions`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
+- [Get trades for a user or markets](https://docs.polymarket.com/api-reference/core/get-trades-for-a-user-or-markets.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/trades`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
+- [Get user activity](https://docs.polymarket.com/api-reference/core/get-user-activity.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/activity`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
+- [Get total value of a user's positions](https://docs.polymarket.com/api-reference/core/get-total-value-of-a-users-positions.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/value`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
+- [Get total markets a user has traded](https://docs.polymarket.com/api-reference/misc/get-total-markets-a-user-has-traded.md)
+- [Download an accounting snapshot (ZIP of CSVs)](https://docs.polymarket.com/api-reference/misc/download-an-accounting-snapshot-zip-of-csvs.md)
+- [Get top holders for markets](https://docs.polymarket.com/api-reference/core/get-top-holders-for-markets.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/holders`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
+- [Get open interest](https://docs.polymarket.com/api-reference/misc/get-open-interest.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/oi`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
+- [Get live volume for an event](https://docs.polymarket.com/api-reference/misc/get-live-volume-for-an-event.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/live-volume`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
+- [Get trader leaderboard rankings](https://docs.polymarket.com/api-reference/core/get-trader-leaderboard-rankings.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/leaderboard`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
+- [Get aggregated builder leaderboard](https://docs.polymarket.com/api-reference/builders/get-aggregated-builder-leaderboard.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/builders/leaderboard`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
+- [Get daily builder volume time-series](https://docs.polymarket.com/api-reference/builders/get-daily-builder-volume-time-series.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/builders/volume`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1).
+- [Get user combo positions](https://docs.polymarket.com/api-reference/core/get-user-combo-positions.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/positions/combos`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1). Combinatorial (multi-market) positions held by a user, with per-leg breakdown. Also available at /v1/data/user/{address}/positions/combos (address…
+- [Get user combo activity](https://docs.polymarket.com/api-reference/core/get-user-combo-activity.md): **Data API v2:** this route has a v2 counterpart, `GET /v2/activity/combos`. See [Migrating to Data API v2](/api-reference/data-api/migrating-from-v1). Combo lifecycle and redeem events (split / merge / convert / compress / wrap / unwrap / redeem) for a user, with per-leg breakdown. The combo counte…
+
 ## OpenAPI Specs
 
+- [openapi](https:/data-api.polymarket.com/v2/openapi.json)
 - [gamma-openapi](/api-spec/gamma-openapi.yaml)
 - [clob-openapi](/api-spec/clob-openapi.yaml)
-- [data-openapi](/api-spec/data-openapi.yaml)
+- [openapi](https://data-api.polymarket.com/v2/openapi.json)
 - [relayer-openapi](/api-spec/relayer-openapi.yaml)
 - [combos-rfq-openapi](/api-spec/combos-rfq-openapi.yaml)
 - [bridge-openapi](/api-spec/bridge-openapi.yaml)
+- [data-openapi](/api-spec/data-openapi.yaml)
 
 ## AsyncAPI Specs
 

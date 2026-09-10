@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/changelog/predictions.md
+Downloaded: 2026-09-10T22:17:46.075Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -5,6 +10,16 @@
 # Predictions Changelog
 
 > Important changes to Polymarket prediction markets, including the CLOB, APIs, web application, and mobile applications.
+
+<Update label="Sep 4, 2026" description="Data API v2 release">
+  * **New API**: Data API v2 is live at `https://data-api.polymarket.com/v2` for wallet activity, market data, and trader and builder analytics. Start with the [Data API overview](/api-reference/data-api/overview) or [Migrating from v1](/api-reference/data-api/migrating-from-v1).
+  * **Response contract**: Every endpoint wraps its payload in `data`. Paginated reads add `pagination` with opaque cursors (no offset parameter). Each endpoint takes snake\_case parameters with camelCase aliases, names on-chain ids `condition`/`condition_id`, encodes money and size as JSON numbers (bare fields are shares, `_usdc` fields are USD), and signals load with `429` plus `Retry-After`.
+  * **New capabilities over v1**: cumulative wallet PnL series (`/v2/user-pnl`), profile stats (`/v2/user-stats`), windowed wallet volume (`/v2/user-volume`), the biggest-winners board, builder leaderboard and volume, per-holder position economics (`/v2/holders?include_pnl=true`), and resolution lifecycle reads (`/v2/resolutions`).
+  * **Price history moves to the data host**: `GET /v2/prices-history` replaces the CLOB-hosted route, with three explicit window forms (`interval`, `start`/`end`, `as_of`), second-based `bucket_seconds`, and cursor pagination.
+  * **TypeScript SDK**: The SDK's Data API methods now use v2. See the [SDK changelog](/changelog/sdks).
+  * **Rate limits**: per-family limits are published on [Rate Limits](/api-reference/rate-limits).
+  * **v1 status**: `/v1` keeps serving unchanged but is frozen. New fields and endpoints land on v2 only. The v1 reference lives under **Data API v1 (Legacy)**.
+</Update>
 
 <Update label="Aug 17, 2026" description="Crypto taker delay reduced to 50ms">
   * **Lower taker delay**: The taker delay on crypto markets is now `50ms`, down from `250ms`. The change took effect on **August 17 at 11:00 UTC (7:00 AM ET)**.

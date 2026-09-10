@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/analytics.md
+Downloaded: 2026-09-10T22:18:03.124Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -120,10 +125,6 @@ Click **Export all users** to download complete contribution data for all users 
 ### PR attribution
 
 When contribution metrics are enabled, Claude Code analyzes merged pull requests to determine which code was written with Claude Code assistance. This is done by matching Claude Code session activity against the code in each PR.
-
-#### Tagging criteria
-
-PRs are tagged as "with Claude Code" if they contain at least one line of code written during a Claude Code session. The system uses conservative matching: only code where there is high confidence in Claude Code's involvement is counted as assisted.
 
 #### Attribution process
 

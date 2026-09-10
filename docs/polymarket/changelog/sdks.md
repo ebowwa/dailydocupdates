@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/changelog/sdks.md
-Downloaded: 2026-09-09T22:17:58.165Z
+Downloaded: 2026-09-10T22:17:46.076Z
 -->
 
 > ## Documentation Index
@@ -82,7 +82,7 @@ Downloaded: 2026-09-09T22:17:58.165Z
     +const holders = firstPage.items;
     ```
 
-    * Breaking change: `fetchPortfolioValue(...)` returns one `PortfolioValue` with a decimal-string `value`, and accepts `conditionIds` instead of `market`. Position and portfolio reads also canonicalize PolyV2 condition IDs.
+    * Breaking change: `fetchPortfolioValue(...)` returns one `PortfolioValue` with a decimal-string `value`, and accepts `conditionIds` instead of `market`. Position and portfolio reads also canonicalize Polymarket Protocol V2 condition IDs.
 
     ```diff theme={null}
     -const [portfolio] = await client.fetchPortfolioValue({ user, market: [conditionId] });
@@ -154,7 +154,7 @@ Downloaded: 2026-09-09T22:17:58.165Z
 
     ### `0.9.0`
 
-    * Order estimation, preparation, creation, and placement now accept protocol-neutral `assetId` values. Structured PolyV2 position IDs select PolyV2 routing automatically, while `tokenId` remains available as a deprecated alias.
+    * Order estimation, preparation, creation, and placement now accept protocol-neutral `assetId` values. Structured Polymarket Protocol V2 position IDs select Polymarket Protocol V2 routing automatically, while `tokenId` remains available as a deprecated alias.
     * Added `fetchTradingApprovalsState(...)` for reading a wallet's missing trading approvals without a signer or transaction workflow. Malformed approval-check responses now raise `UnexpectedResponseError`.
     * Markets and events now expose their protocol through `version`, and markets expose Combo eligibility through `market.state.comboStatus`. Combo status values introduced after this release pass through as strings.
     * Secure account reads now reject invalid request values and `user: null` with `UserInputError` instead of silently selecting the wallet or throwing an untyped error.
@@ -190,8 +190,8 @@ Downloaded: 2026-09-09T22:17:58.165Z
     ### `0.8.0`
 
     * Added protocol-neutral `assetId` and `conditionId` fields to CLOB reads, filters, realtime events, and Data API responses. The deprecated `tokenId`, `tokenIds`, and `market` aliases still work.
-    * Position lifecycle methods now split, merge, and redeem ordinary PolyV2 positions. Redemption by position ID supports binary, negative-risk, and Combo positions.
-    * `setupTradingApprovals()` and `prepareTradingApprovals()` now include the PolyV2 binary and negative-risk modules.
+    * Position lifecycle methods now split, merge, and redeem ordinary Polymarket Protocol V2 positions. Redemption by position ID supports binary, negative-risk, and Combo positions.
+    * `setupTradingApprovals()` and `prepareTradingApprovals()` now include the Polymarket Protocol V2 binary and negative-risk modules.
     * Combo market discovery now exposes whether a market is `pending` and excludes pending markets when selecting live RFQ legs.
     * Live volume reads now return `null` for empty market identifiers.
     * Renamed the low-level CTF and Router transaction builders and their error guards to contract-specific names. This is a breaking change for callers that import them directly.
@@ -216,7 +216,7 @@ Downloaded: 2026-09-09T22:17:58.165Z
     * Added scoped Deposit Wallet session keys through `client.authorizeSessionKey(...)`, `client.fetchSessionKeys()`, and `client.revokeSessionKey(...)`. Secure clients can use an authorized session signer for ordinary operations. Scopes default to `ALL`; known scopes are enumerated while newer scope strings remain usable.
     * Account notifications now use a `NotificationType`-discriminated union with a typed payload for every supported kind. `fetchNotifications(...)` omits kinds unknown to this SDK version and rejects a response when a recognized kind has a malformed payload.
     * `RateLimitError.rateLimit` now carries the `Poly-RateLimit-*` state returned with a rejection. Pass `onRateLimitUpdate` when creating a client to receive per-signer bucket, remaining, reset, tier, and warning updates from any response that reports them.
-    * Order estimation, preparation, creation, and placement now accept PolyV2 position IDs and route them through Exchange V3 signing and trading approvals. Existing token-ID orders remain supported.
+    * Order estimation, preparation, creation, and placement now accept Polymarket Protocol V2 position IDs and route them through Exchange V3 signing and trading approvals. Existing token-ID orders remain supported.
     * `listComboPositions(...)` now accepts either one status or an array of statuses.
     * `RequestRejectedError.restriction` distinguishes matching-engine restarts from post-only mode, and `retryAfter` falls back to the response body's `retry_after_seconds` value when the header is absent. Batch post-only rejections now use the `post_only_mode` order error code.
     * Order preparation now tolerates insignificant floating-point drift on valid tick-grid prices and uses exact fixed-point amount calculations. CLOB salts that cannot round-trip through a JavaScript number are rejected before submission.
@@ -230,7 +230,7 @@ Downloaded: 2026-09-09T22:17:58.165Z
     ### `0.6.0`
 
     * Added requester-side Combos RFQ support through `client.requestComboQuote(...)`, `client.acceptComboQuote(...)`, and `client.waitForComboFill(...)`. You can also call `fetchRfqStatus` from `@polymarket/client/actions`. Authenticate requests with `builderApiKey(...)` or `remoteBuilderSigning(...)`. Winning quotes can be stored as JSON, and SELL quotes include the exact post-fee `netReceive`. No-quote, decline, and expiry outcomes return values. Gateway rejections throw `RfqRequestRejectedError`.
-    * Market outcomes now include a nullable PolyV2 `positionId` alongside the CLOB `tokenId`. New code should use the protocol-neutral `ConditionId`, `ConditionIdSchema`, `OptionalConditionIdSchema`, and `toConditionId`. The CTF-named aliases and market-level `positionIds` array remain available for compatibility but are deprecated.
+    * Market outcomes now include a nullable Polymarket Protocol V2 `positionId` alongside the CLOB `tokenId`. New code should use the protocol-neutral `ConditionId`, `ConditionIdSchema`, `OptionalConditionIdSchema`, and `toConditionId`. The CTF-named aliases and market-level `positionIds` array remain available for compatibility but are deprecated.
     * Breaking change: `client.fetchLastTradePrice(...)` now returns `LastTradePrice | null`. It returns `null` when the token has not traded. `client.fetchLastTradePrices(...)` leaves untraded tokens out of the response, so match results by `tokenId` instead of array position.
 
     ```diff theme={null}
@@ -460,11 +460,121 @@ Downloaded: 2026-09-09T22:17:58.165Z
   </Tab>
 
   <Tab title="Python">
+    ### `0.10.0`
+
+    * Breaking change: trade, activity, position, and Combo reads now use server cursors. Restart scans from the first page when upgrading from `0.9.0`. Replace `market` filters with `condition_id`. Time bounds accept epoch seconds or timezone-aware `datetime` values. Use `full_history=True` without `start` or `end` to request full history. Position reads remain unbounded by default, including holdings without an activity timestamp.
+
+    ```diff theme={null}
+    pages = client.list_activity(
+        user=user,
+    -    market=[condition_id],
+    +    condition_id=[condition_id],
+    )
+    ```
+
+    * Breaking change: `list_positions(...)` replaces `list_closed_positions(...)` and `list_market_positions(...)`. Use `status="CLOSED"` for closed positions and `status="REDEEMABLE"` for redeemable positions. For a market's holders, use a public client's `list_positions(condition_id=condition_id)`. Secure clients default to the authenticated wallet. Market position results are individual `Position` rows.
+
+    ```diff theme={null}
+    -pages = client.list_closed_positions(user=user)
+    +pages = client.list_positions(user=user, status="CLOSED")
+    ```
+
+    * Breaking change: position rows now expose `current_size`, `current_price`, `total_size`, and explicit entry costs and fees. Prices, sizes, PnL, and percentages use `Decimal`. `entry_cost_usdc` excludes fees. Do not subtract `entry_fees_usdc` from it again.
+
+    ```diff theme={null}
+    -shares = position.size
+    -price = position.cur_price
+    -bought = position.total_bought
+    +shares = position.current_size
+    +price = position.current_price
+    +bought = position.total_size
+    ```
+
+    * Breaking change: replace `get_market_holders(...)` with the paginated `list_market_holders(...)`. Pass `condition_ids` and `page_size`. Merge outcome groups across pages by `asset_id`. `include_pnl=True` adds position economics for one condition with a maximum page size of 100.
+
+    ```diff theme={null}
+    -holders = await client.get_market_holders(market=[condition_id], limit=10)
+    +pages = client.list_market_holders(condition_ids=[condition_id], page_size=10)
+    +page = await pages.first_page()
+    +holders = page.items
+    ```
+
+    * Breaking change: `get_portfolio_value(...)` returns one `PortfolioValue` instead of a tuple. Portfolio and open-interest filters now use `condition_ids`.
+
+    ```diff theme={null}
+    -values = await client.get_portfolio_values(user=user, market=[condition_id])
+    -value = values[0].value
+    +portfolio = await client.get_portfolio_value(user=user, condition_ids=[condition_id])
+    +value = portfolio.value
+
+    -interest = await client.get_open_interests(market=[condition_id])
+    +interest = await client.get_open_interests(condition_ids=[condition_id])
+    ```
+
+    * Added `get_user_stats(...)`, `get_user_pnl(...)`, and `get_user_volume(...)` for wallet analytics. Breaking change: replace `get_traded_market_count(...)` with `UserStats.traded_market_count`. Statistics return `None` when unavailable. Secure clients default these reads to the authenticated wallet.
+
+    ```diff theme={null}
+    -count = (await client.get_traded_market_count(user=user)).traded
+    +stats = await client.get_user_stats(user=user)
+    +count = stats.traded_market_count if stats is not None else None
+    ```
+
+    * Breaking change: replace `get_price_history(...)` with the paginated `list_price_history(...)`. Use `asset_id`, `start`/`end`, and `bucket_seconds` instead of `token_id`, `start_ts`/`end_ts`, and minute-based `fidelity`. Select an interval, a window of at most 15 days, or an exact `as_of` timestamp. Price points now expose `timestamp`, `price`, and `resolution_seconds`.
+
+    ```diff theme={null}
+    -points = await client.get_price_history(asset_id=asset_id, interval="1d", fidelity=1)
+    +pages = client.list_price_history(asset_id=asset_id, interval="1d", bucket_seconds=60)
+    +page = await pages.first_page()
+    +points = page.items
+    ```
+
+    * Breaking change: trader and builder leaderboards now take lowercase `window` values. Trader sorting uses `sort_by`. Use `get_trader_leaderboard_standing(user=...)` for an individual wallet's rankings. Added `list_biggest_winners(...)` for winning market and Combo positions.
+
+    ```diff theme={null}
+    -pages = client.list_trader_leaderboard(time_period="DAY", order_by="PNL")
+    +pages = client.list_trader_leaderboard(window="day", sort_by="PNL")
+
+    -pages = client.list_builder_leaderboard(time_period="DAY")
+    +pages = client.list_builder_leaderboard(window="day")
+    ```
+
+    * Breaking change: `get_builder_volumes(...)` returns `BuilderVolumePoint` calendar buckets. Use `interval` and `bucket_limit`, which counts dates rather than rows.
+
+    ```diff theme={null}
+    -volumes = await client.get_builder_volumes(time_period="DAY")
+    +volumes = await client.get_builder_volumes(interval="day", bucket_limit=30)
+    ```
+
+    * Breaking change: `get_event_live_volume(...)` accepts integer `event_ids` and returns one combined `LiveVolume`. Read `taker_volume_total` for total shares and `markets` for the breakdown.
+
+    ```diff theme={null}
+    -volumes = await client.get_event_live_volumes(id=str(event_id))
+    +volume = await client.get_event_live_volume(event_ids=[event_id])
+    ```
+
+    * Added `get_resolutions(...)` for resolution status and payouts by question, conditions, or events. Resolution payouts preserve their values through serialization and parsing.
+    * Breaking change: Combo position sorting now uses separate `sort_by` and `sort_direction` arguments. Status filters accept multiple values, except `"REDEEMABLE"`, which must be used alone. Update bounds accept epoch seconds or timezone-aware `datetime` values.
+
+    ```diff theme={null}
+    -pages = client.list_combo_positions(user=user, sort="current_value_desc")
+    +pages = client.list_combo_positions(user=user, sort_by="CURRENT_VALUE", sort_direction="DESC")
+    ```
+
+    * Added typed migration and tip activity and public activity/status enums. Breaking change: Combo activity now exposes `position_id` and uses `timestamp` instead of `transaction_at`. `log_index` and `module_id` are removed.
+
+    ```diff theme={null}
+    -occurred_at = activity.transaction_at
+    +occurred_at = activity.timestamp
+    ```
+
+    * Data reads now retry short-lived rate limits. Invalid filters, time bounds, event IDs, and cursor inputs raise `UserInputError`. Malformed response identities raise `UnexpectedResponseError`.
+    * Fixed UTC interpretation of date-only timestamps, preservation of full position history and zero-valued Combo update bounds, and dataframe exports containing both enum and string activity values.
+
     ### `0.9.0`
 
-    * Added protocol-neutral `asset_id` and `condition_id` fields across CLOB reads, filters, realtime events, and Data API responses. Pass a CTF token ID or Poly V2 position ID through `asset_id`; the deprecated `token_id`, `token_ids`, and `market` aliases remain available for compatibility.
-    * Order estimation, creation, and placement now route Poly V2 position IDs through Exchange V3, and `setup_trading_approvals()` includes the Poly V2 binary and negative-risk modules.
-    * Position lifecycle methods now split and merge ordinary Poly V2 positions. `merge_multiple_positions(...)` accepts Poly V2 `position_id` requests, and `redeem_positions(position_id=...)` redeems a resolved Poly V2 position.
+    * Added protocol-neutral `asset_id` and `condition_id` fields across CLOB reads, filters, realtime events, and Data API responses. Pass a CTF token ID or Polymarket Protocol V2 position ID through `asset_id`; the deprecated `token_id`, `token_ids`, and `market` aliases remain available for compatibility.
+    * Order estimation, creation, and placement now route Polymarket Protocol V2 position IDs through Exchange V3, and `setup_trading_approvals()` includes the Polymarket Protocol V2 binary and negative-risk modules.
+    * Position lifecycle methods now split and merge ordinary Polymarket Protocol V2 positions. `merge_multiple_positions(...)` accepts Polymarket Protocol V2 `position_id` requests, and `redeem_positions(position_id=...)` redeems a resolved Polymarket Protocol V2 position.
 
     ### `0.8.0`
 

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/getting-started/api.md
+Downloaded: 2026-09-10T22:17:46.064Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -27,10 +32,11 @@ Each API serves a distinct part of an integration.
         Read prices and order books, then place and manage orders.
       </Card>
 
-      <Card title="Data API" icon="chart-line">
+      <Card title="Data API" icon="chart-line" href="/api-reference/data-api/overview">
         **`https://data-api.polymarket.com`**
 
-        Analyze positions, activity, and market participation.
+        Analyze positions, activity, and market participation with cursor
+        pagination and a shared response envelope.
       </Card>
 
       <Card title="Relayer API" icon="bolt">

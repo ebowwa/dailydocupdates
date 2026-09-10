@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/market-data/prices-order-books.md
+Downloaded: 2026-09-10T22:17:46.066Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -28,9 +33,6 @@ the outcome token IDs. To find or fetch one, see
     Given a market, read its outcome token IDs:
 
     ```python theme={null}
-    if market.outcomes.yes.token_id is None or market.outcomes.no.token_id is None:
-        raise RuntimeError("Market token IDs not found")
-
     yes_token_id = market.outcomes.yes.token_id
     no_token_id = market.outcomes.no.token_id
     ```
@@ -1055,143 +1057,208 @@ Tokens that have never traded are omitted from the multi-token response.
 
 ## Price History
 
-Price history is a time series of observed prices for an outcome. Fetch either
-a relative window or an absolute time range, but do not combine the two forms.
-You can also control the interval between returned observations; longer time
-ranges require a sampling interval.
-
-| Range setting     | Behavior                                                                   |
-| ----------------- | -------------------------------------------------------------------------- |
-| Relative window   | Fetch the last `1h`, `6h`, `1d`, `1w`, or all available data with `max`.   |
-| Absolute range    | Fetch observations between a start and end time expressed as Unix seconds. |
-| Sampling interval | Set the interval between observations in minutes.                          |
+Read historical prices for an outcome token over a selected time period.
 
 <Tabs>
   <Tab title="TypeScript">
-    Call `fetchPriceHistory()` on a `PublicClient` or `SecureClient` to fetch historical
-    prices. Set `interval` for a relative window, or set `startTs` and `endTs`
-    for an absolute range. Use `fidelity` to set the sampling interval in
-    minutes.
+    Call `listPriceHistory()` on a `PublicClient` or `SecureClient`. Choose a
+    relative window, an explicit time range, or a point in time.
 
     <CodeGroup>
       ```ts Relative Window theme={null}
-      const history = await client.fetchPriceHistory({
-        tokenId: yesTokenId,
-        interval: "1d",
-        fidelity: 60,
+      import { PriceHistoryInterval } from "@polymarket/client";
+
+      const pages = client.listPriceHistory({
+        assetId: yesTokenId,
+        interval: PriceHistoryInterval.OneDay,
+        bucketSeconds: 3600,
       });
 
-      // history: PriceHistoryPoint[]
+      for await (const page of pages) {
+        // page.items: PriceHistoryPoint[]
+      }
       ```
 
       ```ts Absolute Range theme={null}
-      const history = await client.fetchPriceHistory({
-        tokenId: yesTokenId,
-        startTs: 1782666000,
-        endTs: 1782676800,
-        fidelity: 60,
+      const pages = client.listPriceHistory({
+        assetId: yesTokenId,
+        start: 1788278400,
+        end: 1788364800,
+        bucketSeconds: 3600,
       });
 
-      // history: PriceHistoryPoint[]
+      for await (const page of pages) {
+        // page.items: PriceHistoryPoint[]
+      }
+      ```
+
+      ```ts Point In Time theme={null}
+      const pages = client.listPriceHistory({
+        assetId: yesTokenId,
+        asOf: 1788364800,
+      });
+      const observation = await pages.firstPage();
+
+      // observation.items: PriceHistoryPoint[] (at most one item)
       ```
     </CodeGroup>
 
-    Each `PriceHistoryPoint` contains a timestamp and its observed price:
+    Each `PriceHistoryPoint` carries the observation time in epoch
+    milliseconds, the price as a decimal string, and the window it was
+    observed in:
 
-    <CodeGroup>
-      ```ts PriceHistoryPoint Type theme={null}
-      type PriceHistoryPoint = {
-        t: number;
-        p: number;
-      };
-      ```
+    <Accordion title="Output: PriceHistoryPoint">
+      <CodeGroup>
+        ```ts PriceHistoryPoint Type theme={null}
+        type PriceHistoryPoint = {
+          /** Observation time as Unix epoch milliseconds. */
+          timestamp: EpochMilliseconds;
+          /** Observed price, normalized to a decimal string. */
+          price: DecimalString;
+          /** Width of the observation window in seconds; zero identifies an exact tick. */
+          resolutionSeconds: number;
+        };
+        ```
 
-      ```json PriceHistoryPoint Example theme={null}
-      [
-        { "t": 1782666007, "p": 0.085 },
-        { "t": 1782669606, "p": 0.085 },
-        { "t": 1782673206, "p": 0.085 },
-        "..."
-      ]
-      ```
-    </CodeGroup>
+        ```json PriceHistoryPoint Example theme={null}
+        [
+          { "timestamp": 1788354000000, "price": "0.255", "resolutionSeconds": 3600 },
+          { "timestamp": 1788357600000, "price": "0.255", "resolutionSeconds": 3600 },
+          { "timestamp": 1788361200000, "price": "0.255", "resolutionSeconds": 3600 }
+        ]
+        ```
+      </CodeGroup>
+    </Accordion>
+
+    Points are oldest first. The final observation can fall between bucket
+    boundaries. Read `resolutionSeconds` instead of assuming uniform spacing.
+
+    <Accordion title="History Windows and Resolution">
+      * Explicit `start`/`end` ranges span at most 15 days. `start` is inclusive and `end` exclusive.
+      * `PriceHistoryInterval.Max` returns full history at 12-hour buckets by default. Explicit `bucketSeconds` values of 10800 or 43200 also cover full history. Finer widths return only the last 30 days.
+      * `bucketSeconds` accepts 60 to 86400 seconds, with a floor of 600 for `max`/`1m` and 300 for `1w`. Omit it to let the server choose a width for the span and available history.
+      * One-minute data lasts at least 7 days, five-minute at least 60 days, and thirty-minute at least 90 days (floors, not exact horizons). Three-hour and twelve-hour data is permanent. Explicitly requesting a resolution the store cannot fill returns an empty or sparse page with `resolution_seconds` echoing the requested grid; omit `bucket_seconds` to always get the densest series that exists.
+    </Accordion>
   </Tab>
 
   <Tab title="Python">
-    Call `get_price_history()` on an `AsyncPublicClient` or `AsyncSecureClient`
-    to fetch historical prices. Set `interval` for a relative window, or set
-    `start_ts` and `end_ts` for an absolute range. Use `fidelity` to set the
-    sampling interval in minutes. The synchronous `PublicClient` and
-    `SecureClient` provide the same method.
+    Call `list_price_history()` on an existing `AsyncPublicClient` or `AsyncSecureClient`.
+
+    Choose a relative window, an explicit time range, or a point in time.
 
     <CodeGroup>
       ```python Relative Window theme={null}
-      history = await client.get_price_history(
-          token_id=yes_token_id,
+      pages = client.list_price_history(
+          asset_id=yes_token_id,
           interval="1d",
-          fidelity=60,
+          bucket_seconds=3600,
       )
 
-      # history: tuple[PriceHistoryPoint, ...]
+      async for page in pages:
+          # page.items: tuple[PriceHistoryPoint, ...]
+          pass
       ```
 
       ```python Absolute Range theme={null}
-      history = await client.get_price_history(
-          token_id=yes_token_id,
-          start_ts=1782666000,
-          end_ts=1782676800,
-          fidelity=60,
+      pages = client.list_price_history(
+          asset_id=yes_token_id,
+          start=1788278400,
+          end=1788364800,
+          bucket_seconds=3600,
       )
 
-      # history: tuple[PriceHistoryPoint, ...]
+      async for page in pages:
+          # page.items: tuple[PriceHistoryPoint, ...]
+          pass
+      ```
+
+      ```python Point in Time theme={null}
+      pages = client.list_price_history(
+          asset_id=yes_token_id,
+          as_of=1788364800,
+      )
+      page = await pages.first_page()
+      observation = page.items[0] if page.items else None
+
+      # observation: PriceHistoryPoint | None
       ```
     </CodeGroup>
 
-    Each `PriceHistoryPoint` contains a timestamp and its observed price:
+    <Accordion title="Output: PriceHistoryPoint">
+      <CodeGroup>
+        ```python PriceHistoryPoint Type theme={null}
+        class PriceHistoryPoint:
+            timestamp: datetime
+            price: Decimal
+            resolution_seconds: int
+        ```
 
-    <CodeGroup>
-      ```python PriceHistoryPoint Type theme={null}
-      class PriceHistoryPoint:
-          t: int
-          p: float
-      ```
+        ```json PriceHistoryPoint Example theme={null}
+        {
+          "timestamp": "2026-09-07T17:04:00Z",
+          "price": "0.955",
+          "resolution_seconds": 60
+        }
+        ```
+      </CodeGroup>
+    </Accordion>
 
-      ```json PriceHistoryPoint Example theme={null}
-      [
-        { "t": 1782666007, "p": 0.085 },
-        { "t": 1782669606, "p": 0.085 },
-        { "t": 1782673206, "p": 0.085 },
-        "..."
-      ]
-      ```
-    </CodeGroup>
+    Points are ordered oldest first. `timestamp` is a timezone-aware `datetime` and `price` is a `Decimal`. `resolution_seconds` is the observation window in seconds, with zero for an exact tick.
+
+    <Accordion title="History Windows and Resolution">
+      * Explicit ranges span at most 15 days. `start` is inclusive and `end` is exclusive.
+      * Choose exactly one of `interval`, `start`, or `as_of`. An `as_of` request cannot set `bucket_seconds` or `page_size`.
+      * `bucket_seconds` accepts 60 to 86400 seconds. The minimum is 600 for `max`, `all`, and `1m`, and 300 for `1w`. Omit it to let the service choose the resolution.
+      * Use `interval="max"` without `bucket_seconds` for full history at the default resolution.
+    </Accordion>
   </Tab>
 
   <Tab title="API">
-    Set `interval` for a relative window, or set `startTs` and `endTs` for an
-    absolute range. Use `fidelity` to set the sampling interval in minutes.
+    Pass `token_id` and exactly one time form: `interval` for a relative
+    window, `start` (with optional `end`, epoch seconds, at most 15 days) for
+    an absolute range, or `as_of` for a point-in-time read. `bucket_seconds`
+    sets the bucket width in seconds; deeper pages come from `?cursor=`.
 
     <CodeGroup>
       ```bash Relative Window theme={null}
-      curl "https://clob.polymarket.com/prices-history?market=$TOKEN_ID&interval=1d&fidelity=60"
+      curl "https://data-api.polymarket.com/v2/prices-history?token_id=$TOKEN_ID&interval=1d&bucket_seconds=3600"
       ```
 
       ```bash Absolute Range theme={null}
-      curl "https://clob.polymarket.com/prices-history?market=$TOKEN_ID&startTs=1782666000&endTs=1782676800&fidelity=60"
+      curl "https://data-api.polymarket.com/v2/prices-history?token_id=$TOKEN_ID&start=1788278400&end=1788364800&bucket_seconds=3600"
+      ```
+
+      ```bash Point In Time theme={null}
+      curl "https://data-api.polymarket.com/v2/prices-history?token_id=$TOKEN_ID&as_of=1788364800"
       ```
     </CodeGroup>
 
-    The response contains the price points under `history`:
+    The response contains the price points under `data`, oldest first, with
+    the cursor pagination object:
 
     ```json theme={null}
     {
-      "history": [
-        { "t": 1782666007, "p": 0.085 },
-        { "t": 1782669606, "p": 0.085 },
-        { "t": 1782673206, "p": 0.085 },
-        "..."
-      ]
+      "data": [
+        { "timestamp": 1788354000, "price": 0.255, "resolution_seconds": 3600 },
+        { "timestamp": 1788357600, "price": 0.255, "resolution_seconds": 3600 },
+        { "timestamp": 1788361200, "price": 0.255, "resolution_seconds": 3600 }
+      ],
+      "pagination": {
+        "limit": 3,
+        "has_more": true,
+        "next_cursor": "eyJkYXRhIjp7InR5cGUiOiJwcmljZXNfaGlzdG9yeSI…"
+      }
     }
     ```
+
+    Points are oldest first. The final observation can fall between bucket
+    boundaries. Read `resolution_seconds` instead of assuming uniform spacing.
+
+    <Accordion title="History Windows and Resolution">
+      * Explicit `start`/`end` ranges span at most 15 days. `start` is inclusive and `end` exclusive.
+      * `max` returns full history at 12-hour buckets by default. Explicit `bucket_seconds` values of 10800 or 43200 also cover full history. Finer widths return only the last 30 days.
+      * `bucket_seconds` accepts 60 to 86400 seconds, with a floor of 600 for `max`/`1m` and 300 for `1w`. Omit it to let the server choose a width for the span and available history.
+      * One-minute data lasts at least 7 days, five-minute at least 60 days, and thirty-minute at least 90 days (floors, not exact horizons). Three-hour and twelve-hour data is permanent. Explicitly requesting a resolution the store cannot fill returns an empty or sparse page with `resolution_seconds` echoing the requested grid; omit `bucket_seconds` to always get the densest series that exists.
+    </Accordion>
   </Tab>
 </Tabs>

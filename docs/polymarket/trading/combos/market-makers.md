@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/trading/combos/market-makers.md
-Downloaded: 2026-09-04T22:10:02.843Z
+Downloaded: 2026-09-10T22:17:46.069Z
 -->
 
 > ## Documentation Index
@@ -1858,11 +1858,7 @@ fresh outside the quote path.
     authenticated account.
 
     ```ts theme={null}
-    import {
-      ComboPositionSort,
-      ComboPositionStatus,
-      type ComboPosition,
-    } from "@polymarket/client";
+    import { ComboPositionStatus, type ComboPosition } from "@polymarket/client";
 
     const pages = client.listComboPositions({
       status: ComboPositionStatus.Open,
@@ -1881,21 +1877,24 @@ fresh outside the quote path.
 
     <CodeGroup>
       ```ts Condition ID theme={null}
-      const positions = client.listComboPositions({
+      const pages = client.listComboPositions({
         conditionId: ["<combo_condition_id_1>", "<combo_condition_id_2>"],
       });
       ```
 
       ```ts Status theme={null}
-      const positions = client.listComboPositions({
+      const pages = client.listComboPositions({
         status: ComboPositionStatus.Open,
       });
       ```
 
       ```ts Incremental Sync theme={null}
-      const positions = client.listComboPositions({
+      import { ComboPositionSortBy, SortDirection } from "@polymarket/client";
+
+      const pages = client.listComboPositions({
         updatedAfter: lastWatermarkSeconds,
-        sort: ComboPositionSort.UpdatedAsc,
+        sortBy: ComboPositionSortBy.Updated,
+        sortDirection: SortDirection.Asc,
         pageSize: 1000,
       });
       ```
@@ -1903,232 +1902,201 @@ fresh outside the quote path.
 
     Each returned item is a `ComboPosition`.
 
-    <CodeGroup>
-      ```ts ComboPosition theme={null}
-      type ComboPosition = {
-        conditionId: ComboConditionId;
-        positionId: PositionId;
-        outcome: ComboPositionOutcome;
-        moduleId: number;
-        wallet: Address;
-        shares: DecimalString;
-        entryAvgPriceUsdc?: DecimalString | null;
-        entryCostUsdc?: DecimalString | null;
-        realizedPayoutUsdc?: DecimalString | null;
-        totalCostUsdc?: DecimalString | null;
-        status: ComboPositionStatus;
-        redeemable: boolean;
-        firstEntryAt: IsoDateTimeString;
-        resolvedAt?: IsoDateTimeString | null;
-        updatedAt?: IsoDateTimeString;
-        legsTotal: number;
-        legsResolved: number;
-        legsPending: number;
-        legs: ComboPositionLeg[];
-      };
-      ```
+    <Accordion title="Output: ComboPosition">
+      <CodeGroup>
+        ```ts ComboPosition Type theme={null}
+        type ComboPosition = {
+          conditionId: ComboConditionId;
+          positionId: PositionId;
+          outcomeIndex: number;
+          outcomeLabel: string;
+          wallet: EvmAddress;
+          currentSize: DecimalString;
+          entryAvgPriceUsdc: DecimalString;
+          entryCostUsdc: DecimalString;
+          grossEntryCostUsdc: DecimalString;
+          entryFeesUsdc: DecimalString;
+          realizedPayoutUsdc: DecimalString;
+          status: ComboPositionStatus;
+          redeemable: boolean;
+          firstEntryAt: IsoDateTimeString;
+          resolvedAt?: IsoDateTimeString | null;
+          updatedAt: IsoDateTimeString;
+          legsTotal: number;
+          legsResolved: number;
+          legsPending: number;
+          legs: ComboPositionLeg[];
+        };
+        ```
 
-      ```ts ComboPositionLeg theme={null}
-      type ComboPositionLeg = {
-        legIndex: number;
-        legPositionId: PositionId;
-        legConditionId: CtfConditionId;
-        legOutcomeIndex: number;
-        legOutcomeLabel?: string | null;
-        legStatus: ComboPositionStatus;
-        legResolvedAt?: IsoDateTimeString | null;
-        legCurrentPrice?: DecimalString | null;
-        market?: ComboPositionMarket | null;
-      };
-      ```
+        ```ts ComboPositionLeg Type theme={null}
+        type ComboPositionLeg = {
+          legIndex: number;
+          legPositionId: PositionId;
+          legConditionId: ConditionId;
+          legOutcomeIndex: number;
+          legOutcomeLabel?: string | null;
+          legStatus: ComboPositionStatus;
+          legResolvedAt?: IsoDateTimeString | null;
+          legCurrentPrice?: DecimalString | null;
+          market?: ComboPositionMarket | null;
+        };
+        ```
 
-      ```ts ComboPositionMarket theme={null}
-      type ComboPositionMarket = {
-        marketId?: string | null;
-        slug?: string | null;
-        title?: string | null;
-        outcome?: string | null;
-        imageUrl?: string | null;
-        iconUrl?: string | null;
-        category?: string | null;
-        subcategory?: string | null;
-        tags?: string[] | null;
-        endDate?: IsoDateTimeString | null;
-        event?: ComboPositionMarketEvent | null;
-      };
-      ```
+        ```ts ComboPositionMarket Type theme={null}
+        type ComboPositionMarket = {
+          marketId?: string | null;
+          slug?: string | null;
+          title?: string | null;
+          question?: string | null;
+          groupItemTitle?: string | null;
+          sportsMarketType?: string | null;
+          line?: number | null;
+          outcomes?: string[] | null;
+          outcome?: string | null;
+          imageUrl?: string | null;
+          iconUrl?: string | null;
+          category?: string | null;
+          subcategory?: string | null;
+          tags?: string[] | null;
+          endDate?: IsoDateTimeString | null;
+          event?: ComboPositionMarketEvent | null;
+        };
+        ```
 
-      ```ts ComboPositionMarketEvent theme={null}
-      type ComboPositionMarketEvent = {
-        eventId?: string | null;
-        eventSlug?: string | null;
-        eventTitle?: string | null;
-        eventImage?: string | null;
-      };
-      ```
-    </CodeGroup>
+        ```ts ComboPositionMarketEvent Type theme={null}
+        type ComboPositionMarketEvent = {
+          eventId?: string | null;
+          eventSlug?: string | null;
+          eventTitle?: string | null;
+          eventImage?: string | null;
+        };
+        ```
+      </CodeGroup>
+    </Accordion>
 
-    For redeemed positions, `shares` and `entryCostUsdc` track remaining inventory,
-    so both can read as zero after a winning Combo is redeemed. Use
-    `realizedPayoutUsdc` for gross redemption proceeds and `totalCostUsdc` for
-    original cost basis; net result is `realizedPayoutUsdc - totalCostUsdc`.
-
-    You can filter positions by the following criteria:
-
-    <CodeGroup>
-      ```ts Condition ID theme={null}
-      const pages = client.listComboPositions({
-        conditionId: "<combo_condition_id>",
-      });
-      ```
-
-      ```ts Position ID theme={null}
-      const pages = client.listComboPositions({
-        positionId: "<yes_position_id|no_position_id>",
-      });
-      ```
-
-      ```ts Status theme={null}
-      const pages = client.listComboPositions({
-        status: ComboPositionStatus.Open,
-      });
-      ```
-    </CodeGroup>
+    After redemption, `currentSize` is zero and the entry basis remains.
+    `grossEntryCostUsdc` is the exact fee-inclusive basis. Net result is
+    `realizedPayoutUsdc - grossEntryCostUsdc`. The fee-exclusive basis is
+    `grossEntryCostUsdc - entryFeesUsdc`. `entryCostUsdc` is the rounded
+    weighted-average display basis.
   </Tab>
 
   <Tab title="Python">
-    Use `client.list_combo_positions(...)` to page through Combo positions for the
-    authenticated wallet. The Python SDK returns snake\_case model fields and
-    `Decimal` values for numeric position amounts.
+    Call `list_combo_positions()` on an existing `AsyncSecureClient`.
 
     ```python theme={null}
-    pages = client.list_combo_positions(status="OPEN")
+    pages = client.list_combo_positions(status="OPEN", page_size=50)
 
     async for page in pages:
-        for position in page.items:
-            # position: ComboPosition
-            ...
+        # page.items: tuple[ComboPosition, ...]
+        pass
     ```
 
-    You can filter positions by the following criteria. `condition_id` accepts one
-    Combo condition ID or a sequence of Combo condition IDs.
+    Filter by Combo condition or update time.
 
     <CodeGroup>
       ```python Condition ID theme={null}
-      positions = client.list_combo_positions(
+      pages = client.list_combo_positions(
           condition_id=["<combo_condition_id_1>", "<combo_condition_id_2>"],
       )
       ```
 
       ```python Status theme={null}
-      positions = client.list_combo_positions(
-          status="OPEN",
+      pages = client.list_combo_positions(
+          status=["OPEN", "PARTIAL"],
       )
       ```
 
       ```python Incremental Sync theme={null}
-      positions = client.list_combo_positions(
+      pages = client.list_combo_positions(
           updated_after=last_watermark_seconds,
-          sort="updated_asc",
+          sort_by="UPDATED",
+          sort_direction="ASC",
           page_size=1000,
       )
       ```
     </CodeGroup>
 
-    The returned `ComboPosition` models include the following fields:
+    `condition_id` accepts one Combo condition ID or a sequence. `"REDEEMABLE"` must be the only status when selected. Update bounds accept epoch seconds or timezone-aware `datetime` values. Zero is a valid bound.
 
-    <CodeGroup>
-      ```python ComboPosition theme={null}
-      class ComboPosition:
-          condition_id: ComboConditionId
-          position_id: PositionId
-          outcome: ComboPositionOutcome
-          module_id: int
-          wallet: EvmAddress
-          shares: Decimal
-          entry_avg_price_usdc: Decimal | None
-          entry_cost_usdc: Decimal | None
-          realized_payout_usdc: Decimal | None
-          total_cost_usdc: Decimal | None
-          status: ComboPositionStatus
-          redeemable: bool
-          first_entry_at: datetime
-          resolved_at: datetime | None
-          updated_at: datetime | None
-          legs_total: int
-          legs_resolved: int
-          legs_pending: int
-          legs: tuple[ComboPositionLeg, ...]
-      ```
+    <Accordion title="Output: ComboPosition">
+      <CodeGroup>
+        ```python ComboPositionMarketEvent Type theme={null}
+        class ComboPositionMarketEvent:
+            event_id: EventId | None
+            event_slug: str | None
+            event_title: str | None
+            event_image: str | None
+        ```
 
-      ```python ComboPositionLeg theme={null}
-      class ComboPositionLeg:
-          leg_index: int
-          leg_position_id: PositionId
-          leg_condition_id: CtfConditionId
-          leg_outcome_index: int
-          leg_outcome_label: str | None
-          leg_status: ComboPositionStatus
-          leg_resolved_at: datetime | None
-          leg_current_price: Decimal | None
-          market: ComboPositionMarket | None
-      ```
+        ```python ComboPositionMarket Type theme={null}
+        class ComboPositionMarket:
+            market_id: MarketId | None
+            slug: str | None
+            title: str | None
+            question: str | None
+            group_item_title: str | None
+            sports_market_type: str | None
+            line: Decimal | None
+            outcomes: tuple[str, ...] | None
+            outcome: str | None
+            image_url: str | None
+            icon_url: str | None
+            category: str | None
+            subcategory: str | None
+            tags: tuple[str, ...] | None
+            end_date: datetime | None
+            event: ComboPositionMarketEvent | None
+        ```
 
-      ```python ComboPositionMarket theme={null}
-      class ComboPositionMarket:
-          market_id: str | None
-          slug: str | None
-          title: str | None
-          outcome: str | None
-          image_url: str | None
-          icon_url: str | None
-          category: str | None
-          subcategory: str | None
-          tags: tuple[str, ...] | None
-          end_date: datetime | None
-          event: ComboPositionMarketEvent | None
-      ```
+        ```python ComboPositionLeg Type theme={null}
+        class ComboPositionLeg:
+            leg_index: int
+            leg_position_id: PositionId
+            leg_condition_id: ConditionId
+            leg_outcome_index: int
+            leg_outcome_label: str | None
+            leg_status: ComboPositionStatus
+            leg_resolved_at: datetime | None
+            leg_current_price: Decimal | None
+            market: ComboPositionMarket | None
+        ```
 
-      ```python ComboPositionMarketEvent theme={null}
-      class ComboPositionMarketEvent:
-          event_id: str | None
-          event_slug: str | None
-          event_title: str | None
-          event_image: str | None
-      ```
-    </CodeGroup>
+        ```python ComboPosition Type theme={null}
+        class ComboPosition:
+            condition_id: ComboConditionId
+            position_id: PositionId
+            wallet: EvmAddress
+            outcome_index: int
+            outcome_label: str
+            current_size: Decimal
+            entry_avg_price_usdc: Decimal
+            entry_cost_usdc: Decimal
+            gross_entry_cost_usdc: Decimal
+            entry_fees_usdc: Decimal
+            realized_payout_usdc: Decimal
+            status: ComboPositionStatus
+            redeemable: bool
+            first_entry_at: datetime
+            resolved_at: datetime | None
+            updated_at: datetime
+            legs_total: int
+            legs_resolved: int
+            legs_pending: int
+            legs: tuple[ComboPositionLeg, ...]
+        ```
+      </CodeGroup>
+    </Accordion>
 
-    For redeemed positions, `shares` and `entry_cost_usdc` track remaining
-    inventory, so both can be zero after a winning Combo is redeemed. Use
-    `realized_payout_usdc` for gross redemption proceeds and `total_cost_usdc` for
-    original cost basis; net result is `realized_payout_usdc - total_cost_usdc`.
-
-    <CodeGroup>
-      ```python Condition ID theme={null}
-      pages = client.list_combo_positions(
-          condition_id="<combo_condition_id>",
-      )
-      ```
-
-      ```python Position ID theme={null}
-      pages = client.list_combo_positions(
-          position_id="<yes_position_id|no_position_id>",
-      )
-      ```
-
-      ```python Status theme={null}
-      pages = client.list_combo_positions(
-          status="OPEN",
-      )
-      ```
-    </CodeGroup>
+    After redemption, `current_size` is zero and the entry basis remains. `gross_entry_cost_usdc` is the fee-inclusive basis. Net result is `realized_payout_usdc - gross_entry_cost_usdc`. The fee-exclusive basis is `gross_entry_cost_usdc - entry_fees_usdc`. `entry_cost_usdc` is the rounded weighted-average basis.
   </Tab>
 
   <Tab title="API">
     Use the Data API to list Combo positions for a wallet.
 
     ```bash theme={null}
-    curl -G "https://data-api.polymarket.com/v1/positions/combos" \
+    curl -G "https://data-api.polymarket.com/v2/positions/combos" \
       --data-urlencode "user=<maker_address>" \
       --data-urlencode "limit=50" \
       --data-urlencode "status=OPEN"
@@ -2138,49 +2106,46 @@ fresh outside the quote path.
 
     <CodeGroup>
       ```bash Condition ID theme={null}
-      curl -G "https://data-api.polymarket.com/v1/positions/combos" \
+      curl -G "https://data-api.polymarket.com/v2/positions/combos" \
         --data-urlencode "user=<maker_address>" \
-        --data-urlencode "market_id=<combo_condition_id>"
-      ```
-
-      ```bash Position ID theme={null}
-      curl -G "https://data-api.polymarket.com/v1/positions/combos" \
-        --data-urlencode "user=<maker_address>" \
-        --data-urlencode "combo_position_id=<yes_position_id|no_position_id>"
+        --data-urlencode "condition=<combo_condition_id>"
       ```
 
       ```bash Status theme={null}
-      # One status, or several comma-separated. Valid values: OPEN, PARTIAL,
-      # RESOLVED_PARTIAL, RESOLVED_WIN, RESOLVED_LOSS (case-insensitive).
-      curl -G "https://data-api.polymarket.com/v1/positions/combos" \
+      # One status, or several comma-separated. Valid values: OPEN, REDEEMABLE,
+      # PARTIAL, RESOLVED_WIN, RESOLVED_LOSS, RESOLVED_PARTIAL.
+      # REDEEMABLE must be used alone; combining it with another status is a 400.
+      curl -G "https://data-api.polymarket.com/v2/positions/combos" \
         --data-urlencode "user=<maker_address>" \
         --data-urlencode "status=OPEN"
 
-      curl -G "https://data-api.polymarket.com/v1/positions/combos" \
+      curl -G "https://data-api.polymarket.com/v2/positions/combos" \
         --data-urlencode "user=<maker_address>" \
         --data-urlencode "status=RESOLVED_WIN,RESOLVED_PARTIAL,RESOLVED_LOSS"
       ```
     </CodeGroup>
 
-    The response returns Combo positions in `combos` and pagination metadata in
-    `pagination`.
+    The response returns Combo positions in `data` and pagination metadata in
+    `pagination`. Each leg carries enriched market and event metadata (trimmed
+    here):
 
     ```json theme={null}
     {
-      "combos": [
+      "data": [
         {
           "combo_condition_id": "<combo_condition_id>",
           "combo_position_id": "<yes_position_id>",
-          "module_id": 3,
-          "user_address": "<maker_address>",
-          "shares_balance": "10",
-          "entry_avg_price_usdc": "0.45",
-          "entry_cost_usdc": "4.5",
-          "gross_entry_cost_usdc": "4.590000",
-          "entry_fees_usdc": "0.090000",
-          "realized_payout_usdc": "0.00",
-          "total_cost_usdc": "4.50",
+          "outcome_index": 0,
+          "outcome_label": "Yes",
+          "proxy_wallet": "<maker_address>",
+          "current_size": 10,
+          "entry_avg_price_usdc": 0.45,
+          "entry_cost_usdc": 4.5,
+          "gross_entry_cost_usdc": 4.59,
+          "entry_fees_usdc": 0.09,
+          "realized_payout_usdc": 0,
           "status": "OPEN",
+          "redeemable": false,
           "first_entry_at": "2026-06-08T00:00:00Z",
           "resolved_at": null,
           "updated_at": "2026-06-08T00:00:00Z",
@@ -2196,7 +2161,13 @@ fresh outside the quote path.
               "leg_outcome_label": "Yes",
               "leg_status": "OPEN",
               "leg_resolved_at": null,
-              "leg_current_price": "0.52"
+              "leg_current_price": 0.52,
+              "market": {
+                "market_id": "<gamma_market_id>",
+                "title": "<market_title>",
+                "outcomes": ["Yes", "No"],
+                "event": { "event_id": "<gamma_event_id>" }
+              }
             }
           ]
         }
@@ -2205,47 +2176,48 @@ fresh outside the quote path.
         "limit": 50,
         "offset": 0,
         "has_more": true,
-        "next_cursor": "eyJsIjo1MCwibyI6NTB9"
+        "next_cursor": "eyJkYXRhIjp7InR5cGUiOiJjb21ib19wb3NpdGlvbnMi…"
       }
     }
     ```
 
-    `gross_entry_cost_usdc` and `entry_fees_usdc` carry the exact six-decimal entry
-    basis: gross includes attributed BUY fees (SELL fees are excluded), and the
-    exact net basis is `gross_entry_cost_usdc − entry_fees_usdc`. Parse both as
-    decimal strings — converting through a float loses the precision they exist to
-    preserve. The 2-decimal `entry_cost_usdc` / `total_cost_usdc` remain the
-    rounded display-basis fields.
+    `gross_entry_cost_usdc` and `entry_fees_usdc` carry the exact entry basis at
+    six-decimal grain: gross includes attributed BUY fees (SELL fees are
+    excluded), and the exact fee-exclusive basis is `gross_entry_cost_usdc −
+        entry_fees_usdc`. `entry_cost_usdc` remains the rounded weighted-average
+    display basis; do not reconstruct gross as `entry_cost_usdc +
+        entry_fees_usdc`.
 
-    Use `cursor` from `pagination.next_cursor` to fetch the next page. Keep the same
-    filters and `sort`; `cursor` supersedes `offset`. A `null` cursor means there
-    are no more pages.
+    Use `cursor` from `pagination.next_cursor` to fetch the next page. Keep the
+    same filters; the cursor binds them, and a follow-up page that contradicts
+    them returns a `400`. A `null` cursor means there are no more pages.
 
     ```bash Cursor theme={null}
-    curl -G "https://data-api.polymarket.com/v1/positions/combos" \
+    curl -G "https://data-api.polymarket.com/v2/positions/combos" \
       --data-urlencode "user=<maker_address>" \
       --data-urlencode "limit=100" \
-      --data-urlencode "sort=first_entry_desc" \
+      --data-urlencode "sort_by=FIRST_ENTRY" \
       --data-urlencode "cursor=<pagination.next_cursor>"
     ```
 
-    Use `updatedAfter` with `sort=updated_asc` to incrementally sync changed
-    positions. Store the newest `updated_at` you process as your next watermark;
-    boundary rows may re-deliver, so upsert by `(combo_condition_id,
-        combo_position_id)`.
+    Use `updated_after` with `sort_by=UPDATED` and `sort_direction=ASC` to
+    incrementally sync changed positions. Store the newest `updated_at` you
+    process as your next watermark; the bound is inclusive, so boundary rows may
+    re-deliver — upsert by `(combo_condition_id, combo_position_id)`.
 
     ```bash Incremental sync theme={null}
-    curl -G "https://data-api.polymarket.com/v1/positions/combos" \
+    curl -G "https://data-api.polymarket.com/v2/positions/combos" \
       --data-urlencode "user=<maker_address>" \
-      --data-urlencode "updatedAfter=<last_watermark_epoch_seconds>" \
-      --data-urlencode "sort=updated_asc" \
+      --data-urlencode "updated_after=<last_watermark_epoch_seconds>" \
+      --data-urlencode "sort_by=UPDATED" \
+      --data-urlencode "sort_direction=ASC" \
       --data-urlencode "limit=1000"
     ```
 
-    For redeemed positions, `shares_balance` and `entry_cost_usdc` track remaining
-    inventory, so both can read as zero after a winning Combo is redeemed. Use
-    `realized_payout_usdc` for gross redemption proceeds and `total_cost_usdc` for
-    original cost basis; net result is `realized_payout_usdc - total_cost_usdc`.
+    For redeemed positions, `current_size` tracks remaining inventory, so it reads
+    zero after a winning Combo is redeemed. The entry fields keep the original
+    basis: gross redemption proceeds accrue to `realized_payout_usdc`, and the net
+    result is `realized_payout_usdc − gross_entry_cost_usdc`.
   </Tab>
 </Tabs>
 
@@ -2263,9 +2235,9 @@ positions for current inventory state.
     ```ts theme={null}
     import { ComboActivityType, type ComboActivity } from "@polymarket/client";
 
-    const activity = client.listComboActivity({ pageSize: 50 });
+    const pages = client.listComboActivity({ pageSize: 50 });
 
-    for await (const page of activity) {
+    for await (const page of pages) {
       for (const item of page.items) {
         // item: ComboActivity
         if (item.type === ComboActivityType.Redeem) {
@@ -2278,338 +2250,138 @@ positions for current inventory state.
     Filter to one or more Combos with `conditionId`.
 
     ```ts theme={null}
-    const activity = client.listComboActivity({
+    const pages = client.listComboActivity({
       conditionId: ["<combo_condition_id_1>", "<combo_condition_id_2>"],
     });
     ```
 
-    Each returned item is a discriminated `ComboActivity` union. All lifecycle rows
-    share the base fields; redeem rows also include the redeemed position ID and
-    payout.
-
-    <CodeGroup>
-      ```ts ComboActivity theme={null}
-      type ComboActivity =
-        | ComboSplitActivity
-        | ComboMergeActivity
-        | ComboConvertActivity
-        | ComboCompressActivity
-        | ComboWrapActivity
-        | ComboUnwrapActivity
-        | ComboRedeemActivity;
-      ```
-
-      ```ts Split / Merge theme={null}
-      type ComboSplitActivity = {
-        id: ComboActivityId;
-        type: ComboActivityType.Split;
-        wallet: Address;
-        conditionId: ComboConditionId;
-        moduleId: number;
-        amount: DecimalString | null;
-        timestamp: EpochMilliseconds;
-        transactionAt: IsoDateTimeString;
-        transactionHash: TxHash;
-        logIndex: number;
-        blockNumber: number;
-        legs: ComboPositionLeg[];
-      };
-
-      type ComboMergeActivity = {
-        id: ComboActivityId;
-        type: ComboActivityType.Merge;
-        wallet: Address;
-        conditionId: ComboConditionId;
-        moduleId: number;
-        amount: DecimalString | null;
-        timestamp: EpochMilliseconds;
-        transactionAt: IsoDateTimeString;
-        transactionHash: TxHash;
-        logIndex: number;
-        blockNumber: number;
-        legs: ComboPositionLeg[];
-      };
-      ```
-
-      ```ts Convert / Compress theme={null}
-      type ComboConvertActivity = {
-        id: ComboActivityId;
-        type: ComboActivityType.Convert;
-        wallet: Address;
-        conditionId: ComboConditionId;
-        moduleId: number;
-        amount: DecimalString | null;
-        timestamp: EpochMilliseconds;
-        transactionAt: IsoDateTimeString;
-        transactionHash: TxHash;
-        logIndex: number;
-        blockNumber: number;
-        legs: ComboPositionLeg[];
-      };
-
-      type ComboCompressActivity = {
-        id: ComboActivityId;
-        type: ComboActivityType.Compress;
-        wallet: Address;
-        conditionId: ComboConditionId;
-        moduleId: number;
-        amount: DecimalString | null;
-        timestamp: EpochMilliseconds;
-        transactionAt: IsoDateTimeString;
-        transactionHash: TxHash;
-        logIndex: number;
-        blockNumber: number;
-        legs: ComboPositionLeg[];
-      };
-      ```
-
-      ```ts Wrap / Unwrap theme={null}
-      type ComboWrapActivity = {
-        id: ComboActivityId;
-        type: ComboActivityType.Wrap;
-        wallet: Address;
-        conditionId: ComboConditionId;
-        moduleId: number;
-        amount: DecimalString | null;
-        timestamp: EpochMilliseconds;
-        transactionAt: IsoDateTimeString;
-        transactionHash: TxHash;
-        logIndex: number;
-        blockNumber: number;
-        legs: ComboPositionLeg[];
-      };
-
-      type ComboUnwrapActivity = {
-        id: ComboActivityId;
-        type: ComboActivityType.Unwrap;
-        wallet: Address;
-        conditionId: ComboConditionId;
-        moduleId: number;
-        amount: DecimalString | null;
-        timestamp: EpochMilliseconds;
-        transactionAt: IsoDateTimeString;
-        transactionHash: TxHash;
-        logIndex: number;
-        blockNumber: number;
-        legs: ComboPositionLeg[];
-      };
-      ```
-
-      ```ts ComboRedeemActivity theme={null}
-      type ComboRedeemActivity = {
-        id: ComboActivityId;
-        type: ComboActivityType.Redeem;
-        wallet: Address;
-        conditionId: ComboConditionId;
-        moduleId: number;
-        amount: DecimalString | null;
-        timestamp: EpochMilliseconds;
-        transactionAt: IsoDateTimeString;
-        transactionHash: TxHash;
-        logIndex: number;
-        blockNumber: number;
-        legs: ComboPositionLeg[];
-        positionId: PositionId;
-        payout: DecimalString | null;
-      };
-      ```
-    </CodeGroup>
-  </Tab>
-
-  <Tab title="Python">
-    Use `client.list_combo_activity(...)` to page through Combo lifecycle activity
-    for a wallet.
-
-    ```python theme={null}
-    activity = client.list_combo_activity(
-        user="<maker_address>",
-        page_size=50,
-    )
-
-    for page in activity:
-        for item in page.items:
-            # item: ComboActivity
-            if item.type == "REDEEM":
-                print(item.position_id, item.payout)
-    ```
-
-    Filter to one or more Combos with `condition_id`.
-
-    ```python theme={null}
-    activity = client.list_combo_activity(
-        user="<maker_address>",
-        condition_id=["<combo_condition_id_1>", "<combo_condition_id_2>"],
-    )
-    ```
-
-    The returned `ComboActivity` models use a `type` discriminator. All lifecycle
-    rows share the base fields; redeem rows also include the redeemed position ID
-    and payout.
-
-    <CodeGroup>
-      ```python ComboActivity theme={null}
-      ComboActivity = (
-          ComboSplitActivity
+    <Accordion title="Output: ComboActivity">
+      <CodeGroup>
+        ```ts ComboActivity Union theme={null}
+        type ComboActivity =
+          | ComboSplitActivity
           | ComboMergeActivity
           | ComboConvertActivity
           | ComboCompressActivity
           | ComboWrapActivity
           | ComboUnwrapActivity
-          | ComboRedeemActivity
-      )
-      ```
+          | ComboRedeemActivity;
+        ```
 
-      ```python Split / Merge theme={null}
-      class ComboSplitActivity:
-          id: ComboActivityId
-          type: Literal["SPLIT"]
-          wallet: EvmAddress
-          condition_id: ComboConditionId
-          module_id: int
-          amount: Decimal | None
-          timestamp: datetime
-          transaction_at: datetime
-          transaction_hash: TransactionHash
-          log_index: int
-          block_number: int
-          legs: tuple[ComboPositionLeg, ...]
+        ```ts ComboRedeemActivity Type theme={null}
+        type ComboRedeemActivity = {
+          id: ComboActivityId;
+          type: ComboActivityType.Redeem;
+          wallet: EvmAddress;
+          conditionId: ComboConditionId;
+          positionId: PositionId;
+          amount: DecimalString | null;
+          timestamp: EpochMilliseconds;
+          transactionHash: TxHash;
+          blockNumber: number;
+          legs: ComboPositionLeg[];
+          payout: DecimalString | null;
+        };
+        ```
+      </CodeGroup>
+    </Accordion>
 
+    Every `ComboActivity` includes `positionId` and a `timestamp` in epoch
+    milliseconds. Only `type: ComboActivityType.Redeem` carries `payout`.
+    The other variants have the same common fields.
+  </Tab>
 
-      class ComboMergeActivity:
-          id: ComboActivityId
-          type: Literal["MERGE"]
-          wallet: EvmAddress
-          condition_id: ComboConditionId
-          module_id: int
-          amount: Decimal | None
-          timestamp: datetime
-          transaction_at: datetime
-          transaction_hash: TransactionHash
-          log_index: int
-          block_number: int
-          legs: tuple[ComboPositionLeg, ...]
-      ```
+  <Tab title="Python">
+    Call `list_combo_activity()` on an existing `AsyncSecureClient`.
 
-      ```python Convert / Compress theme={null}
-      class ComboConvertActivity:
-          id: ComboActivityId
-          type: Literal["CONVERT"]
-          wallet: EvmAddress
-          condition_id: ComboConditionId
-          module_id: int
-          amount: Decimal | None
-          timestamp: datetime
-          transaction_at: datetime
-          transaction_hash: TransactionHash
-          log_index: int
-          block_number: int
-          legs: tuple[ComboPositionLeg, ...]
+    ```python theme={null}
+    pages = client.list_combo_activity(page_size=50)
 
+    async for page in pages:
+        for item in page.items:
+            if item.type == "REDEEM":
+                position_id = item.position_id
+                payout = item.payout
+    ```
 
-      class ComboCompressActivity:
-          id: ComboActivityId
-          type: Literal["COMPRESS"]
-          wallet: EvmAddress
-          condition_id: ComboConditionId
-          module_id: int
-          amount: Decimal | None
-          timestamp: datetime
-          transaction_at: datetime
-          transaction_hash: TransactionHash
-          log_index: int
-          block_number: int
-          legs: tuple[ComboPositionLeg, ...]
-      ```
+    Filter to one or more Combos with `condition_id`.
 
-      ```python Wrap / Unwrap theme={null}
-      class ComboWrapActivity:
-          id: ComboActivityId
-          type: Literal["WRAP"]
-          wallet: EvmAddress
-          condition_id: ComboConditionId
-          module_id: int
-          amount: Decimal | None
-          timestamp: datetime
-          transaction_at: datetime
-          transaction_hash: TransactionHash
-          log_index: int
-          block_number: int
-          legs: tuple[ComboPositionLeg, ...]
+    ```python theme={null}
+    pages = client.list_combo_activity(
+        condition_id=["<combo_condition_id_1>", "<combo_condition_id_2>"],
+    )
+    ```
 
+    <Accordion title="Output: ComboActivity">
+      <CodeGroup>
+        ```python ComboActivity Union theme={null}
+        ComboActivity = (
+            ComboSplitActivity
+            | ComboMergeActivity
+            | ComboConvertActivity
+            | ComboCompressActivity
+            | ComboWrapActivity
+            | ComboUnwrapActivity
+            | ComboRedeemActivity
+        )
+        ```
 
-      class ComboUnwrapActivity:
-          id: ComboActivityId
-          type: Literal["UNWRAP"]
-          wallet: EvmAddress
-          condition_id: ComboConditionId
-          module_id: int
-          amount: Decimal | None
-          timestamp: datetime
-          transaction_at: datetime
-          transaction_hash: TransactionHash
-          log_index: int
-          block_number: int
-          legs: tuple[ComboPositionLeg, ...]
-      ```
+        ```python ComboRedeemActivity Type theme={null}
+        class ComboRedeemActivity:
+            id: ComboActivityId
+            wallet: EvmAddress
+            condition_id: ComboConditionId
+            position_id: PositionId
+            amount: Decimal | None
+            timestamp: datetime
+            transaction_hash: TransactionHash
+            block_number: int
+            legs: tuple[ComboPositionLeg, ...]
+            type: Literal[ComboActivityType.REDEEM]
+            payout: Decimal | None
+        ```
+      </CodeGroup>
+    </Accordion>
 
-      ```python ComboRedeemActivity theme={null}
-      class ComboRedeemActivity:
-          id: ComboActivityId
-          type: Literal["REDEEM"]
-          wallet: EvmAddress
-          condition_id: ComboConditionId
-          module_id: int
-          amount: Decimal | None
-          timestamp: datetime
-          transaction_at: datetime
-          transaction_hash: TransactionHash
-          log_index: int
-          block_number: int
-          legs: tuple[ComboPositionLeg, ...]
-          position_id: PositionId
-          payout: Decimal | None
-      ```
-    </CodeGroup>
+    Every `ComboActivity` includes `position_id` and a timezone-aware `timestamp`. Only the `"REDEEM"` variant carries `payout`. The other variants share the common fields.
   </Tab>
 
   <Tab title="API">
     Use the Data API to list Combo lifecycle activity for a wallet.
 
     ```bash theme={null}
-    curl -G "https://data-api.polymarket.com/v1/activity/combos" \
+    curl -G "https://data-api.polymarket.com/v2/activity/combos" \
       --data-urlencode "user=<maker_address>" \
       --data-urlencode "limit=50"
     ```
 
-    Filter to specific Combos with `market_id`, which accepts comma-separated
-    `combo_condition_id` values.
+    Filter to specific Combos with `condition`, which accepts comma-separated
+    `combo_condition_id` values (at most 20 distinct).
 
     ```bash Filter by Combo theme={null}
-    curl -G "https://data-api.polymarket.com/v1/activity/combos" \
+    curl -G "https://data-api.polymarket.com/v2/activity/combos" \
       --data-urlencode "user=<maker_address>" \
-      --data-urlencode "market_id=<combo_condition_id_1>,<combo_condition_id_2>"
+      --data-urlencode "condition=<combo_condition_id_1>,<combo_condition_id_2>"
     ```
 
-    The response returns lifecycle events in `activity` and pagination metadata in
-    `pagination`.
+    The response returns lifecycle events in `data` and pagination metadata in
+    `pagination`. Each leg carries enriched market and event metadata (trimmed
+    here):
 
     ```json theme={null}
     {
-      "activity": [
+      "data": [
         {
-          "id": "<tx_hash>-<log_index>",
+          "id": "<transaction_hash>-<log_index>",
           "type": "SPLIT",
-          "user_address": "<maker_address>",
+          "proxy_wallet": "<maker_address>",
           "combo_condition_id": "<combo_condition_id>",
           "combo_position_id": "<combo_position_id>",
-          "module_id": 3,
           "amount_usdc": 10.0,
           "payout_usdc": null,
           "timestamp": 1783379945,
-          "tx_dttm": "2026-07-06T23:19:05Z",
-          "tx_hash": "<tx_hash>",
-          "log_index": 2409,
           "block_number": 89783300,
+          "transaction_hash": "<transaction_hash>",
           "legs": [
             {
               "leg_index": 0,
@@ -2619,7 +2391,13 @@ positions for current inventory state.
               "leg_outcome_label": "Yes",
               "leg_status": "OPEN",
               "leg_resolved_at": null,
-              "leg_current_price": "0.52"
+              "leg_current_price": 0.52,
+              "market": {
+                "market_id": "<gamma_market_id>",
+                "title": "<market_title>",
+                "outcomes": ["Yes", "No"],
+                "event": { "event_id": "<gamma_event_id>" }
+              }
             }
           ]
         }
@@ -2628,16 +2406,16 @@ positions for current inventory state.
         "limit": 50,
         "offset": 0,
         "has_more": true,
-        "next_cursor": "eyJsIjo1MCwibyI6NTB9"
+        "next_cursor": "eyJkYXRhIjp7InR5cGUiOiJjb21ib19hY3Rpdml0eSI…"
       }
     }
     ```
 
-    Use `cursor` from `pagination.next_cursor` to fetch the next page. `cursor`
-    supersedes `offset`. A `null` cursor means there are no more pages.
+    Use `cursor` from `pagination.next_cursor` to fetch the next page, re-sending
+    the same filters on every page. A `null` cursor means there are no more pages.
 
     ```bash Cursor theme={null}
-    curl -G "https://data-api.polymarket.com/v1/activity/combos" \
+    curl -G "https://data-api.polymarket.com/v2/activity/combos" \
       --data-urlencode "user=<maker_address>" \
       --data-urlencode "limit=50" \
       --data-urlencode "cursor=<pagination.next_cursor>"

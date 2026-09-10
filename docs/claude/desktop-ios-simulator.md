@@ -1,8 +1,3 @@
-<!--
-Source: https://code.claude.com/docs/en/desktop-ios-simulator.md
-Downloaded: 2026-09-02T22:24:48.325Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
