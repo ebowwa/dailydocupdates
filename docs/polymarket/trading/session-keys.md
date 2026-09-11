@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.polymarket.com/trading/session-keys.md
-Downloaded: 2026-09-04T22:10:02.839Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.

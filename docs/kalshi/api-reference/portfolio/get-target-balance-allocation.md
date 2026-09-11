@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/api-reference/portfolio/get-target-balance-allocation.md
-Downloaded: 2026-09-09T22:18:02.806Z
+Downloaded: 2026-09-11T22:17:40.068Z
 -->
 
 > ## Documentation Index
@@ -98,11 +98,14 @@ components:
       type: object
       required:
         - allocations
+        - resting_margin_reservation
       properties:
         allocations:
           type: array
           items:
             $ref: '#/components/schemas/TargetBalanceAllocation'
+        resting_margin_reservation:
+          $ref: '#/components/schemas/RestingMarginReservation'
     TargetBalanceAllocation:
       type: object
       required:
@@ -118,6 +121,20 @@ components:
           minimum: 0
           maximum: 100
           description: Target percentage of sweepable balance for the exchange index
+    RestingMarginReservation:
+      type: string
+      enum:
+        - max
+        - sum
+      x-enum-varnames:
+        - RestingMarginReservationMax
+        - RestingMarginReservationSum
+      description: >
+        Collateral an automatic rebalance leaves behind for resting orders.
+        `max` reserves the
+
+        largest single market-side commitment. `sum` reserves the summed margin
+        of every resting order.
     ErrorResponse:
       type: object
       properties:

@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/prompt-caching.md
-Downloaded: 2026-09-10T22:18:03.102Z
+Downloaded: 2026-09-11T22:17:35.090Z
 -->
 
 > ## Documentation Index
@@ -55,7 +55,7 @@ Caching happens server-side, in whichever infrastructure serves your model. Wher
 * **Microsoft Foundry**: depends on the deployment's [hosting option](https://platform.claude.com/docs/en/build-with-claude/claude-in-microsoft-foundry#hosting-options). Hosted on Azure deployments are served on Azure infrastructure; Hosted on Anthropic deployments are served on Anthropic's infrastructure
 * **Custom `ANTHROPIC_BASE_URL` or [LLM gateway](/docs/en/llm-gateway)**: the cache lives wherever your requests are forwarded, and whether caching works depends on the gateway
 
-Claude Code also appends system context mid-conversation, such as file-change notices, and marks that block for caching on every provider and connection.
+Claude Code also appends system context mid-conversation, such as file-change notices, and marks that block for caching on every provider and connection unless you set [`CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS`](/docs/en/llm-gateway-protocol#disable-pre-release-capabilities), in which case that block is sent uncached.
 
 At the provider's own endpoint, Amazon Bedrock and its [Mantle endpoint](/docs/en/amazon-bedrock#use-the-mantle-endpoint), Google Cloud's Agent Platform, and Microsoft Foundry cache the block the same way the Claude API does.
 
@@ -77,7 +77,6 @@ These actions cause the next request to miss part or all of the cache. You see a
 * [Connecting or disconnecting an MCP server](#connecting-or-disconnecting-an-mcp-server)
 * [Enabling or disabling a plugin](#enabling-or-disabling-a-plugin)
 * [Denying an entire tool](#denying-an-entire-tool)
-* [Changing output style](#changing-output-style)
 * [Compacting the conversation](#compacting-the-conversation)
 * [Accumulating many images](#accumulating-many-images)
 * [Upgrading Claude Code](#upgrading-claude-code)
@@ -167,14 +166,6 @@ Adding a bare tool name like `Bash` or `WebFetch` as a [deny rule](/docs/en/perm
 
 Only a deny rule that matches in the tool-name position has this effect: a bare tool name, the equivalent `Bash(*)` form, or a [tool-name glob](/docs/en/permissions#tool-name-wildcards) like `"*"`. A glob that matches only MCP tools, such as `"mcp__*"`, removes those tools the same way but leaves the cache intact when the matched tools are [deferred](#connecting-or-disconnecting-an-mcp-server), the default, since deferred definitions were never in the cached prefix. Scoped deny rules like `Bash(rm *)`, and all allow and ask rules, don't change which tools Claude sees. Claude Code checks them when Claude attempts a call, leaving the prefix intact.
 
-### Changing output style
-
-When you switch [output styles](/docs/en/output-styles) mid-session with `/config` or the `outputStyle` setting, Claude uses the new style starting with your next message. In a conversation that [keeps a recorded system prompt](/docs/en/cli-reference#system-prompt-flags-in-resumed-conversations), as sessions signed in with a claude.ai or Console account do by default, Claude Code delivers the new style's instructions as a message in the conversation. That request still reads the system prompt and the earlier conversation from the cache.
-
-In sessions that don't [fetch feature flags](/docs/en/env-vars#features-that-need-feature-flag-fetching), such as on Amazon Bedrock, Google Cloud's Agent Platform, or Microsoft Foundry, the style's instructions are part of the system prompt, so the request after a switch reads the entire conversation history with no cache hits. There, switch styles before your first message in a session or right after `/clear` or `/compact`, when there is little or no conversation history to re-read.
-
-Before v2.1.251, a mid-session style switch kept the cache but didn't apply until you ran `/clear` or started a new session.
-
 ### Compacting the conversation
 
 [Compaction](/docs/en/context-window#what-survives-compaction) replaces your message history with a summary. By design, this invalidates the conversation layer, since the next request has a new, shorter history that doesn't share a prefix with the old one. Claude Code reuses the system prompt layer unless the conversation was [resumed while keeping a system prompt that would otherwise have changed](#resuming-a-session); in that case the first compaction switches to the current prompt and that layer rebuilds once. It reloads project context from disk, which cache-hits only if CLAUDE.md and memory are unchanged since the session started.
@@ -210,6 +201,7 @@ These actions either append to the end of the conversation or don't touch the re
 * [Editing files in your repository](#editing-files-in-your-repository)
 * [Editing CLAUDE.md mid-session](#editing-claude-md-mid-session)
 * [Changing permission mode](#changing-permission-mode)
+* [Changing output style](#changing-output-style)
 * [Invoking skills and commands](#invoking-skills-and-commands)
 * [Running `/recap`](#running-%2Frecap)
 * [Rewinding the conversation](#rewinding-the-conversation)
@@ -229,6 +221,12 @@ Your project-root and user-level CLAUDE.md files are read once at session start 
 
 Switching between [permission modes](/docs/en/permission-modes), such as from Manual to accept edits, does not change the system prompt or tool definitions, so mode changes are cache-safe. The exception is plan mode with the [`opusplan`](/docs/en/model-config#opusplan-model-setting) model setting, which switches the model between Opus and Sonnet as you enter or leave plan mode. That makes the mode toggle a [model switch](#switching-models).
 
+### Changing output style
+
+When you switch [output styles](/docs/en/output-styles) mid-session with `/config` or the `outputStyle` setting, Claude uses the new style starting with your next message. Claude Code delivers the new style's instructions as a message in the conversation, so that request still reads the system prompt and the earlier conversation from the cache.
+
+Before v2.1.251, a mid-session style switch kept the cache but didn't apply until you ran `/clear` or started a new session.
+
 ### Invoking skills and commands
 
 [Skills](/docs/en/skills) and [commands](/docs/en/commands) inject their instructions as user messages at the point of invocation. Nothing earlier in the conversation changes. A skill or command whose frontmatter names a `model` can be a [model switch](#switching-models) for that turn.
@@ -247,10 +245,7 @@ Restoring file checkpoints alongside the conversation has no separate effect on 
 
 When you [resume a session](/docs/en/sessions#resume-a-session), Claude Code sends the whole conversation again, and the request reads from the cache whatever part of its prefix is unchanged and still within the [cache lifetime](#cache-lifetime). The layer table at the top of this page says what changes each layer.
 
-The system prompt is the one layer a resume can treat two ways. It would change after a [Claude Code upgrade](#upgrading-claude-code) or with different [`--append-system-prompt`](/docs/en/cli-reference#system-prompt-flags) text on the resume, and whether the resumed conversation picks up that change right away varies by how you connect.
-
-* In sessions signed in with a claude.ai or Console account, and other sessions that [fetch feature flags](/docs/en/env-vars#features-that-need-feature-flag-fetching), the resumed conversation keeps the system prompt it started with by default, so its history still sits behind the same prompt. The change takes effect once the conversation is compacted or in a new conversation. [System prompt flags in resumed conversations](/docs/en/cli-reference#system-prompt-flags-in-resumed-conversations) covers `--system-prompt-snapshot off` and bare mode, where this doesn't apply.
-* On Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry, and other sessions that don't fetch feature flags, Claude Code builds the system prompt fresh on the resume, so the history now sits behind a different prompt and the resumed request reprocesses the entire conversation with no cache hits. The cost scales with the length of the conversation.
+The system prompt would change after a [Claude Code upgrade](#upgrading-claude-code) or with different [`--append-system-prompt`](/docs/en/cli-reference#system-prompt-flags) text on the resume. By default, the resumed conversation keeps the system prompt it started with, so its history still sits behind the same prompt, and the change takes effect once the conversation is compacted or in a new conversation. [System prompt flags in resumed conversations](/docs/en/cli-reference#system-prompt-flags-in-resumed-conversations) covers `--system-prompt-snapshot off` and bare mode, where this doesn't apply.
 
 ## Cache lifetime
 

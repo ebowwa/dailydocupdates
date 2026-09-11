@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/pm/workspaces.md
-Downloaded: 2026-09-03T22:20:47.577Z
--->
-
 # Workspaces
 
 > Develop complex monorepos with multiple independent packages

@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.polymarket.com/trading/manage-orders.md
+Downloaded: 2026-09-11T22:17:35.052Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.polymarket.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -214,14 +219,14 @@ orders.
   </Tab>
 </Tabs>
 
-See [Order Statuses](/concepts/order-lifecycle#order-statuses) to interpret the
-returned `status`.
+See the [order response reference](/api-reference/trade/get-single-order-by-id)
+for quantity units and statuses.
 
 ## List Open Orders
 
-Retrieve every resting order on the account, optionally narrowed to one token,
-one market, or a specific order ID. Use this to reconcile local state with
-what's actually live on the book.
+Retrieve every resting order on the account, optionally narrowed to one token
+or market. Filtering by a specific order ID can also return a canceled or fully
+matched order.
 
 <Tabs>
   <Tab title="TypeScript">
@@ -469,8 +474,8 @@ what's actually live on the book.
   </Tab>
 </Tabs>
 
-See [Order Statuses](/concepts/order-lifecycle#order-statuses) to interpret each
-order's `status`.
+See the [order response reference](/api-reference/trade/get-single-order-by-id)
+for quantity units and statuses.
 
 ## List Account Trades
 
@@ -1102,7 +1107,9 @@ Cancel only as broadly as needed. Start with known order IDs, use a market or
 token filter when withdrawing a set of quotes, and reserve account-wide
 cancellation for exceptional situations. Cancellation remains available while
 the exchange is in cancel-only mode, when new orders are rejected. For a
-partially filled order, cancellation removes only its unfilled remainder.
+partially filled order, cancellation removes only its unfilled remainder,
+including when the market resolves. It preserves the original and matched
+sizes and does not undo settled fills.
 
 ### Cancel Orders by ID
 

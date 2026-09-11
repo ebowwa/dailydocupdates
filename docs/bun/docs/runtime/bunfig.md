@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/runtime/bunfig.md
-Downloaded: 2026-09-04T22:10:07.697Z
--->
-
 # bunfig.toml
 
 > Configure Bun's behavior using its configuration file bunfig.toml

@@ -1,8 +1,3 @@
-<!--
-Source: https://docs.kalshi.com/fix-margin/authentication.md
-Downloaded: 2026-09-03T22:20:48.031Z
--->
-
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.

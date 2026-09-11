@@ -1,8 +1,3 @@
-<!--
-Source: https://bun.com/docs/runtime/http/error-handling.md
-Downloaded: 2026-09-03T22:20:47.570Z
--->
-
 # Error Handling
 
 > Learn how to handle errors in Bun's development server

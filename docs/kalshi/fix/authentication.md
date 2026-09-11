@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/fix/authentication.md
-Downloaded: 2026-09-03T22:20:48.024Z
+Downloaded: 2026-09-11T22:17:40.079Z
 -->
 
 > ## Documentation Index
@@ -96,6 +96,16 @@ PreHashString = SendingTime + SOH + MsgType + SOH + MsgSeqNum + SOH + SenderComp
   raw_data_value = b64encode(signature).decode('utf-8')
   ```
 </CodeGroup>
+
+## Reconnecting
+
+Use one active FIX connection per API key. If Logon is rejected, inspect Text (`58`) in the Logout (`35=5`) response:
+
+* `already exists`: check for another connection using the same key before retrying.
+* `rate limit exceeded` or `FIX logon service busy; retry with backoff`: retry with exponential backoff and jitter.
+* Authentication, permission, or invalid-field errors: correct the issue before retrying.
+
+Avoid overlapping reconnect attempts. Generate a fresh SendingTime and signature for each attempt, and follow the sequence-number and retransmission rules below.
 
 ## Heartbeat & Sequence Numbers
 

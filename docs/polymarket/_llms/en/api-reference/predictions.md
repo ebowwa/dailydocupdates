@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/_llms/en/api-reference/predictions.md
-Downloaded: 2026-09-10T22:17:46.076Z
+Downloaded: 2026-09-11T22:17:35.061Z
 -->
 
 # Polymarket Documentation: English API Reference Predictions
@@ -67,9 +67,9 @@ Downloaded: 2026-09-10T22:17:46.076Z
 
 - [Post a new order](https://docs.polymarket.com/api-reference/trade/post-a-new-order.md): Creates a new order in the order book
 - [Cancel single order](https://docs.polymarket.com/api-reference/trade/cancel-single-order.md): Cancels a single order by its ID. Works even in cancel-only mode.
-- [Get single order by ID](https://docs.polymarket.com/api-reference/trade/get-single-order-by-id.md): Retrieves a specific order by its ID (order hash) for the authenticated user. Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
+- [Get single order by ID](https://docs.polymarket.com/api-reference/trade/get-single-order-by-id.md): Retrieves a specific order by its ID (order hash) for the authenticated user, including canceled or fully matched orders. Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
 - [Post multiple orders](https://docs.polymarket.com/api-reference/trade/post-multiple-orders.md): Creates multiple new orders in the order book. Orders are processed in parallel. Maximum 15 orders per request.
-- [Get user orders](https://docs.polymarket.com/api-reference/trade/get-user-orders.md): Retrieves open orders for the authenticated user. Returns paginated results. Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
+- [Get user orders](https://docs.polymarket.com/api-reference/trade/get-user-orders.md): Retrieves live orders for the authenticated user. Returns paginated results. Filtering by id returns that order regardless of status, including canceled or fully matched orders. Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
 - [Cancel multiple orders](https://docs.polymarket.com/api-reference/trade/cancel-multiple-orders.md): Cancels multiple orders by their IDs. Maximum 1000 orders per request. Duplicate order IDs in the request are automatically ignored. Works even in cancel-only mode.
 - [Cancel all orders](https://docs.polymarket.com/api-reference/trade/cancel-all-orders.md): Cancels all open orders for the authenticated user. Works even in cancel-only mode.
 - [Cancel orders for a market](https://docs.polymarket.com/api-reference/trade/cancel-orders-for-a-market.md): Cancels all open orders for the authenticated user in a specific market (condition) and asset. Works even in cancel-only mode.

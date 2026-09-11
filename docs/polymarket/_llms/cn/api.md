@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.polymarket.com/_llms/cn/api.md
-Downloaded: 2026-09-10T22:17:46.077Z
+Downloaded: 2026-09-11T22:17:35.061Z
 -->
 
 # Polymarket Documentation: Chinese API 参考
@@ -69,9 +69,9 @@ Downloaded: 2026-09-10T22:17:46.077Z
 
 - [提交新订单](https://docs.polymarket.com/cn/api-reference/endpoints/clob/post-order.md): Creates a new order in the order book
 - [取消单个订单](https://docs.polymarket.com/cn/api-reference/endpoints/clob/delete-order.md): Cancels a single order by its ID. Works even in cancel-only mode.
-- [按 ID 获取订单](https://docs.polymarket.com/cn/api-reference/endpoints/clob/get-data-order-orderid.md): Retrieves a specific order by its ID (order hash) for the authenticated user. Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
+- [按 ID 获取订单](https://docs.polymarket.com/cn/api-reference/endpoints/clob/get-data-order-orderid.md): Retrieves a specific order by its ID (order hash) for the authenticated user, including canceled or fully matched orders. Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
 - [批量提交订单](https://docs.polymarket.com/cn/api-reference/endpoints/clob/post-orders.md): Creates multiple new orders in the order book. Orders are processed in parallel. Maximum 15 orders per request.
-- [获取用户订单](https://docs.polymarket.com/cn/api-reference/endpoints/clob/get-data-orders.md): Retrieves open orders for the authenticated user. Returns paginated results. Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
+- [获取用户订单](https://docs.polymarket.com/cn/api-reference/endpoints/clob/get-data-orders.md): Retrieves live orders for the authenticated user. Returns paginated results. Filtering by id returns that order regardless of status, including canceled or fully matched orders. Builder-authenticated clients can also use this endpoint to retrieve orders attributed to their builder account.
 - [批量取消订单](https://docs.polymarket.com/cn/api-reference/endpoints/clob/delete-orders.md): Cancels multiple orders by their IDs. Maximum 1000 orders per request. Duplicate order IDs in the request are automatically ignored. Works even in cancel-only mode.
 - [取消所有订单](https://docs.polymarket.com/cn/api-reference/endpoints/clob/delete-cancel-all.md): Cancels all open orders for the authenticated user. Works even in cancel-only mode.
 - [取消市场订单](https://docs.polymarket.com/cn/api-reference/endpoints/clob/delete-cancel-market-orders.md): Cancels all open orders for the authenticated user in a specific market (condition) and asset. Works even in cancel-only mode.

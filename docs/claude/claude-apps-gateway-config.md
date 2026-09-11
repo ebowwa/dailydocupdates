@@ -1,6 +1,6 @@
 <!--
 Source: https://code.claude.com/docs/en/claude-apps-gateway-config.md
-Downloaded: 2026-09-10T22:18:03.121Z
+Downloaded: 2026-09-11T22:17:35.111Z
 -->
 
 > ## Documentation Index
@@ -35,7 +35,7 @@ Five sections are [required](#required-sections). Every other section is [option
 
 * [`admin`](#admin): Admin API auth and retention for spend limits
 * [`enforcement`](#enforcement): spend-limit fail-open or fail-closed behavior
-* [`pricing`](#pricing): contracted rates and a discount multiplier for the spend meter
+* [`pricing`](#pricing): contracted rates and a discount multiplier for the spend meter and for the cost figures developers see
 * [`models`](#models) and `auto_include_builtin_models`: admin-curated model list and per-upstream IDs
 * [`managed`](#managed): managed settings policies by IdP group
 * [`telemetry`](#telemetry): OTLP forwarding to your observability stack
@@ -444,7 +444,7 @@ The `enforcement` block controls how spend-limit checks behave when the store is
 The `pricing` block tells the spend meter what to charge instead of USD list price, so caps and [`/effective`](/docs/en/claude-apps-gateway-spend-limits#%2Feffective) reflect your contracted rates. Amounts stay in USD and remain an estimate, not an invoice. Two prerequisites:
 
 * Claude Code v2.1.227 or later on the gateway server. Earlier versions reject the unknown key at boot.
-* An [`admin:`](#admin) block, because only the spend meter reads `pricing`. The gateway refuses to start with `pricing` set and no `admin`.
+* An [`admin:`](#admin) block or, in v2.1.268 or later, a [`managed:`](#managed) block with at least one policy. The gateway refuses to start with `pricing` set and neither block, because nothing would read it.
 
 ```yaml theme={null}
 pricing:
@@ -461,7 +461,7 @@ pricing:
 | Field        | Required | Description                                                                                                                                                                |
 | ------------ | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `multiplier` | No       | Default `1`. The meter multiplies every metered amount by this, whether list-priced or overridden, so `0.85` bills 85% of the price. Must be greater than 0 and at most 1. |
-| `overrides`  | No       | Rows of `{upstream, model, input, output, cache_read, cache_write}` in USD per million tokens. All four rates are required and must be positive.                           |
+| `overrides`  | No       | Rows of `{upstream, model, input, output, cache_read, cache_write}` in USD per million tokens. All four rates are required. Each must be greater than 0 and at most 10000. |
 
 How the meter matches an override row:
 
@@ -472,6 +472,14 @@ How the meter matches an override row:
 * Web-search requests stay at the \$0.01 list price; the multiplier still applies to them.
 
 For per-region rates, give each region its own named upstream and one row per upstream.
+
+#### Send the rates to signed-in clients
+
+With v2.1.268 or later on the gateway server, the gateway also puts the rates from `pricing` into the [`managed`](#managed) policies it serves, as the [`modelPricing`](/docs/en/settings-reference#modelpricing) managed setting. Developers matched by a policy then see the `pricing` rates for the first upstream that serves each model ID in `/usage`, the status line, and OpenTelemetry. A developer who matches no policy receives no managed settings, so their figures stay at list price. Clients apply the setting in Claude Code v2.1.242 or later.
+
+* What the gateway adds: unless a policy's `cli` block already sets `modelPricing`, the gateway adds the `multiplier` and, for every model ID a client can request, the override row of the first upstream that serves that ID. A rate that only a failover upstream charges stays on the gateway.
+* Opt one policy out: set `modelPricing` to `{}` in that policy's `cli` block, and its developers stay at list price.
+* Keep a policy's own rates: a policy whose `cli` block sets `modelPricing` with its own `multiplier` or `overrides` keeps that `modelPricing` whole, and the gateway adds no rates of its own to it.
 
 ### `models`
 
@@ -772,6 +780,8 @@ Without a `forward_to` destination for a signal, the gateway accepts and discard
 
 [Traces](/docs/en/monitoring-usage#traces-beta) also require `CLAUDE_CODE_ENHANCED_TELEMETRY_BETA=1` on each client. Set it in a managed policy's `env` block, since the gateway doesn't push it. Developers approve it in the same [security approval dialog](#managed) that the pushed endpoint already triggers.
 
+Set it to `1` only in the policies whose groups you want traced. A policy that doesn't set it inherits the value from your `match: {}` catch-all policy if that policy sets one, per the [merge rules](#managed). To keep a group's clients from sending traces even when a developer sets the variable locally, set it to `0` in that group's policy.
+
 Both protobuf and JSON OTLP encodings are relayed, and any OpenTelemetry-compatible backend works as a destination.
 
 #### Export directly to your collector
@@ -890,6 +900,7 @@ store:
 #   fail_closed_on_error: false
 
 # Meter at contracted rates instead of USD list price. Requires admin:.
+# With managed:, the same rates also go to signed-in clients.
 # Rates below are placeholders, not real contract prices.
 # pricing:
 #   multiplier: 0.85

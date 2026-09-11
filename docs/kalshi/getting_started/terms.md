@@ -1,3 +1,8 @@
+<!--
+Source: https://docs.kalshi.com/getting_started/terms.md
+Downloaded: 2026-09-11T22:17:40.061Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.kalshi.com/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -8,7 +13,7 @@
 
 Here are some core terminologies used in Kalshi exchange:
 
-**Category:** A high-level discovery grouping for related series, such as sports, crypto, or weather. A series belongs to one category. Use [Get Series List](/api-reference/market/get-series-list) with the `category` filter to browse series in a category.
+**Category:** A high-level discovery grouping for related series, such as sports, crypto, or weather. Each series has a primary `category` and a list of discovery categories, `categories`. Use [Get Series List](/api-reference/market/get-series-list) with the `category` filter to browse series in a category; the filter matches any of a series' categories.
 
 **Subcategory:** A narrower discovery grouping within a category. A series can belong to multiple subcategories. In API filters, subcategories are often represented as tags; use [Get Tags for Series Categories](/api-reference/search/get-tags-for-series-categories) to discover tags grouped by category.
 

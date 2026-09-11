@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/getting_started/rate_limits.md
-Downloaded: 2026-09-10T22:17:51.166Z
+Downloaded: 2026-09-11T22:17:40.059Z
 -->
 
 > ## Documentation Index
@@ -28,7 +28,7 @@ You have two independent token budgets:
 
 The split is by operation type, not by protocol. REST and FIX requests drain the same buckets.
 
-## Sharded exchanges have per-shard Write budgets
+## Predictions per-shard Write budgets
 
 A single order write that explicitly targets an [exchange shard](/getting_started/exchange_sharding) draws from a Write bucket scoped to that shard, and each shard's bucket carries your full tier budget:
 
@@ -79,7 +79,17 @@ The whole batch must fit in the bucket at once. A 25-order create batch needs 25
 
 ## Perps limits use separate buckets
 
-The Perps API uses the same bucket mechanics, including the two-second Write bucket above Basic, but perps traffic is metered in its own Read and Write buckets. Perps calls do not draw down your event-contract budgets, and event-contract calls do not draw down your perps budgets. In effect you have up to four independent buckets: event-contract Read, event-contract Write, perps Read, and perps Write.
+The Perps API uses the same bucket mechanics, including the two-second Write bucket above Basic, but perps traffic is metered in its own Read and Write buckets. Perps calls do not draw down your event-contract budgets, and event-contract calls do not draw down your perps budgets. Each exchange has its own Read budget and Write budgets.
+
+Single-order Perps creates and amends use a Write budget per margin shard, with your full perps tier budget on each shard. The API and FIX share these budgets.
+
+* The API selects the shard automatically from the required `ticker`.
+* FIX selects the shard from `Symbol` (tag 55) for New Order Single and Order Cancel/Replace Request.
+* If ticker is empty, omitted, or its shard cannot be resolved, the request consumes its full token cost from the default margin Write budget.
+
+Single-order Perps API cancels and decreases, and FIX Order Cancel Requests, cost **1 token** each from the default margin Write budget, regardless of the market's shard.
+
+Shard 0 uses the unscoped margin Write budget. API v1 and other operations, including order groups and scheduled orders, continue to use that unscoped budget. Read budgets are not shard-scoped.
 
 Check your perps tier and limits with [`GET /account/limits/perps`](/margin-rest/account/get-perps-account-api-limits), the perps counterpart of [`GET /account/limits`](/api-reference/account/get-account-api-limits).
 

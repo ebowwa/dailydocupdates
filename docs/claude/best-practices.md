@@ -1,3 +1,8 @@
+<!--
+Source: https://code.claude.com/docs/en/best-practices.md
+Downloaded: 2026-09-11T22:17:35.091Z
+-->
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
@@ -410,7 +415,7 @@ You can also use subagents for verification after Claude implements something. S
 ### Rewind with checkpoints
 
 <Tip>
-  Every prompt you send creates a checkpoint. You can restore conversation, code, or both to any previous checkpoint.
+  Every prompt you send that starts a turn creates a checkpoint. You can restore conversation, code, or both to any previous checkpoint.
 </Tip>
 
 Claude automatically snapshots files before each change so a checkpoint can restore them. Double-tap `Escape` or run `/rewind` to open the rewind menu. You can restore conversation only, restore code only, restore both, or summarize from a selected message. See [Checkpointing](/docs/en/checkpointing) for details.

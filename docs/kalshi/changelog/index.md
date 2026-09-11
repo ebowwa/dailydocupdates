@@ -1,6 +1,6 @@
 <!--
 Source: https://docs.kalshi.com/changelog/index.md
-Downloaded: 2026-09-10T22:17:51.192Z
+Downloaded: 2026-09-11T22:17:40.091Z
 -->
 
 > ## Documentation Index
@@ -20,6 +20,58 @@ Predictions and Margin exchanges. Use the entry tags to filter by API
 surface (`REST`, `WebSocket`, `FIX`) or exchange (`Predictions`, `Margin`).
 FIX API changes, previously tracked on a separate page, now live here under
 the `FIX` tag.
+
+<Update
+  label="September 17, 2026"
+  tags={["REST", "Predictions"]}
+  rss={{
+title: "Target balance allocations include their reservation policy",
+description: "GET /trade-api/v2/portfolio/target_balance_allocation now returns resting_margin_reservation."
+}}
+>
+  `GET /trade-api/v2/portfolio/target_balance_allocation` now returns
+  `resting_margin_reservation` (`max` or `sum`), including when allocations are empty.
+  Clients can preserve the current resting-order collateral reservation policy when
+  updating target allocations or stopping automatic rebalancing.
+</Update>
+
+<Update
+  label="September 17, 2026"
+  tags={["REST", "Predictions"]}
+  rss={{
+title: "Series responses include a categories list",
+description: "GET /trade-api/v2/series and GET /trade-api/v2/series/{series_ticker} now return a categories list; the category filter matches any entry in that list."
+}}
+>
+  Series objects now include `categories`, the list of discovery categories
+  for a series. The existing `category` field is the series' primary
+  category. The `category` filter on `GET /trade-api/v2/series` matches any
+  entry in `categories`, so a series returned for `category=Commodities` can
+  show a different primary `category`.
+
+  **Affected endpoints:**
+
+  * `GET /trade-api/v2/series`
+  * `GET /trade-api/v2/series/{series_ticker}`
+</Update>
+
+<Update
+  label="September 17, 2026"
+  tags={["REST", "WebSocket", "FIX", "Predictions"]}
+  rss={{
+title: "Returning to idiomatic MVE series",
+description: "As of the September 17th maintenance window, new combos will be created on KXMVECROSSCATEGORY, and Football combos on KXMVECROSSCATEGORY0."
+}}
+>
+  As of the September 17th maintenance window, new combos will be created on the
+  `KXMVECROSSCATEGORY` series, and Football combos on the
+  `KXMVECROSSCATEGORY0` series.
+
+  **Notes**
+
+  * The exchange shard (1) is staying the same.
+  * No existing tickers are changed.
+</Update>
 
 <Update
   label="September 17, 2026"
@@ -46,6 +98,20 @@ description: "RFQ and quote mutations across REST and FIX consume the shard 1 Wr
   FIX New Order Single (`35=D`) carrying `QuoteID` now consume the shard 1
   Write budget, shared with shard 1 order writes. Endpoint costs and Read
   budgets are unchanged. No `exchange_index` or `ExDestination` is required.
+</Update>
+
+<Update
+  label="September 10, 2026"
+  tags={["REST", "FIX", "Margin"]}
+  rss={{
+title: "Per-shard margin order rate limits",
+description: "Margin creates and amends use ticker-selected shard budgets."
+}}
+>
+  Margin creates and amends now use per-shard Write budgets, shared across the API
+  and FIX and selected automatically from `ticker` or `Symbol` (tag 55).
+  If the ticker's shard cannot be resolved, the request uses the default margin
+  Write budget.
 </Update>
 
 <Update
